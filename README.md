@@ -33,10 +33,10 @@ developer version – non-commercial use only
     - iOS+simulator - "libpaceval_ios_staticLIB.a" (static library)<br>
     - Linux 64bit   - "libpaceval_linux_staticLIB.a" (static library)<br>
     - Linux 64bit   - "libpaceval_linux_sharedLIB.so" (shared library)<br>
-    - ARM 64bit   - "libpaceval_ARM64_LIB.a" (static library)<br>
-    - ARM 64bit   - "libpacevalARM64_sharedLIB.so" (shared library)<br>
-    - ARM 32bit   - "libpaceval_ARM32_LIB.a" (static library)<br>
-    - ARM 32bit   - "libpacevalARM32_sharedLIB.so" (shared library)<br>
+    - ARM 64bit     - "libpaceval_ARM64_LIB.a" (static library)<br>
+    - ARM 64bit     - "libpacevalARM64_sharedLIB.so" (shared library)<br>
+    - ARM 32bit     - "libpaceval_ARM32_LIB.a" (static library)<br>
+    - ARM 32bit     - "libpacevalARM32_sharedLIB.so" (shared library)<br>
    
 •   "examples_sources" folder<br>
     includes source-code, project files and executables of the demo and<br> 
@@ -50,6 +50,7 @@ developer version – non-commercial use only
     - Eclipse/GCC (Linux 64bit)<br>
     - Eclipse/GCC (ARM64 64bit)<br>
     - Eclipse/GCC (ARM32 32bit)<br>
+    
     other programming languages via Foreign function interface (FFI)<br>
     - .NET<br>
     - ABAP<br>
