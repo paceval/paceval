@@ -49,8 +49,7 @@ developer version – non-commercial use only
     - Eclipse/GCC+Mingw-w64 (Windows 64bit)<br>
     - Eclipse/GCC (Linux 64bit)<br>
     - Eclipse/GCC (ARM64 64bit)<br>
-    - Eclipse/GCC (ARM32 32bit)<br>
-    
+    - Eclipse/GCC (ARM32 32bit)<br><br>    
     other programming languages via Foreign function interface (FFI)<br>
     - .NET<br>
     - ABAP<br>
