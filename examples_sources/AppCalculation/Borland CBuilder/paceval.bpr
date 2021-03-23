@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="paceval-Calculation.exe"/>
+    <OBJFILES value="paceval.obj main.obj graph.obj 
+      ..\system-independent\source_public\paceval_main.obj"/>
+    <RESFILES value="paceval.res"/>
+    <IDLFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) main.dfm graph.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="NMFast50.lib dclocx50.lib vclx50.lib bcbsmp50.lib vcljpg50.lib vcl50.lib"/>
+    <SPARELIBS value="vcl50.lib vcljpg50.lib bcbsmp50.lib vclx50.lib dclocx50.lib NMFast50.lib"/>
+    <PACKAGES value="vcl50.bpi vclx50.bpi vcljpg50.bpi bcbsmp50.bpi dclocx50.bpi"/>
+    <PATHCPP value=".;..\system-independent\source_public"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value=""/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="paceval.cpp"/>
+    <INCLUDEPATH value="..\system-independent\source_public;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="..\system-independent\source_public;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par -w-8027 -w-8026"/>
+    <WARNOPTSTR value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-O2 -Vx -Ve -X- -a1 -6 -b- -k- -vi -c -tW -tWM"/>
+    <PFLAGS value="-H- -W- -$Y- -$U -$R -$Q -$L- -$H- -$D- -$C- -$A- -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w0 /zn"/>
+    <LFLAGS value="-D&quot;&quot; -H:0x1000000 -Hc:0x1000000 -B:0x10000000 -S:0x1000000 -Sc:0x1000000 
+      -aa -Tpe -GD -s -w"/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=10
+Item0=$(BCB)\include;$(BCB)\include\vcl
+Item1=..\system-independent\source_public;C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\system-independent\libs\cppb4;$(BCB)\include;$(BCB)\include\vcl
+Item2=C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\system-independent\libs\cppb4;$(BCB)\include;$(BCB)\include\vcl
+Item3=C:\Program Files (x86)\Borland\CBuilder5\Projects;..\system-independent\libs\cppb4;$(BCB)\include;$(BCB)\include\vcl
+Item4=..\system-independent\libs\cppb4;$(BCB)\include;$(BCB)\include\vcl
+Item5=..\system-independent\sbaparser;..\system-independent\source;..\system-independent\public;$(BCB)\include;$(BCB)\include\vcl
+Item6=..\system-independent\source;..\system-independent\public;$(BCB)\include;$(BCB)\include\vcl
+Item7=..\system-independent\source;..\system-independent\public;..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\include;$(BCB)\include\vcl
+Item8=..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\include;$(BCB)\include\vcl
+Item9=..\..\sbParser-SDK\source\system-independent\sbaparser;..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=9
+Item0=$(BCB)\lib\obj;$(BCB)\lib
+Item1=..\system-independent\source_public;C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\system-independent\libs\cppb4;$(BCB)\lib\obj;$(BCB)\lib
+Item2=C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\system-independent\libs\cppb4;$(BCB)\lib\obj;$(BCB)\lib
+Item3=C:\Program Files (x86)\Borland\CBuilder5\Projects;..\system-independent\libs\cppb4;$(BCB)\lib\obj;$(BCB)\lib
+Item4=..\system-independent\libs\cppb4;$(BCB)\lib\obj;$(BCB)\lib
+Item5=..\system-independent\source;..\system-independent\public;$(BCB)\lib\obj;$(BCB)\lib
+Item6=..\system-independent\source;..\system-independent\public;..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\lib\obj;$(BCB)\lib
+Item7=..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\lib\obj;$(BCB)\lib
+Item8=..\..\sbParser-SDK\source\system-independent\sbaparser;..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[HistoryLists\hlIntOutputDir]
+Count=4
+Item0=C:\temp\bcb\
+Item1=C:\temp\bcb
+Item2=C:\temp\
+Item3=C:\temp
+
+[HistoryLists\hlRunParameters]
+Count=2
+Item0=C:\Users\koenning\OneDrive\Own Development\paceval\bcb4Demo\1_1.pac
+Item1=ashkashkas
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=1
+LinkCGLIB=0
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>
