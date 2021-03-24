@@ -5,7 +5,7 @@
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_main.cpp
 //---------------------------------------------------------------------------
-
+ 
 //---------------------------------------------------------------------------
 #if defined(_MSC_VER)
 #endif //#if defined(_MSC_VER)
@@ -991,11 +991,7 @@ extern "C" float paceval_fmathv(PACEVAL_HANDLE* handle_pacevalComputation_in,
 
     for (unsigned long iCount = 0; iCount < numberOfVariables_in; iCount++)
     {
-#if defined(_MSC_VER)
-        valuesVariablesArray[iCount] = va_arg(argumentList, float);
-#else
         valuesVariablesArray[iCount] = va_arg(argumentList, double); //e.g. GNUC:'float' is promoted to 'double' when passed through '...'
-#endif
     }
     va_end(argumentList);
 
@@ -1089,11 +1085,7 @@ extern "C" float paceval_fmathvi(PACEVAL_HANDLE* handle_pacevalComputation_in,
 
     for (unsigned long iCount = 0; iCount < numberOfVariables_in; iCount++)
     {
-#if defined(_MSC_VER)
-        valuesVariablesArray[iCount] = va_arg(argumentList, float);
-#else
         valuesVariablesArray[iCount] = va_arg(argumentList, double); //e.g. GNUC:'float' is promoted to 'double' when passed through '...'
-#endif
     }
     va_end(argumentList);
 
