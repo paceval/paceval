@@ -112,8 +112,6 @@ int main(int argc, char* argv[])
     {
         if (paceval_fmathv(NULL, &errType, "paceval_LibrarySupportsLongDouble", 0, "", NULL) != 0)
             printf("\n\nYour paceval. library supports long double.");
-        else
-            printf("\n\nYour paceval. library not supports long double.");
 
         printf("\n\n%s",
                CreateErrorMessage(charBuffer500, PACEVAL_ERR_COMPUTATION_USER_COMPILER_NOT_SUPPORTS_LONG_DOUBLE, 500));
