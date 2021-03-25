@@ -1,6 +1,0 @@
-USEUNIT("paceval_example5.cpp");
-USEUNIT("..\..\system-independent\source_public\paceval_main.cpp");
-//---------------------------------------------------------------------------
-This file is used by the project manager only and should be treated like the project file
-
-main
