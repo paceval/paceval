@@ -13,6 +13,7 @@ developer version – non-commercial use only
     - Linux 64bit
     - ARM64 64bit
     - ARM32 32bit
+    - Android 64bit
 
 •   "documentation mathematical engine" folder
     includes the presentations
@@ -25,16 +26,20 @@ developer version – non-commercial use only
     - paceval_main.cpp
     and includes the dynamic and/or static libraries 
     for
-    - Windows 32bit - "paceval_win32.dll" (shared library)
-    - Windows 64bit - "paceval_win64i.dll" (shared library)
-    - macOS 64bit   - "libpaceval_macos_staticLIB.a" (static library)
-    - iOS+simulator - "libpaceval_ios_staticLIB.a" (static library)
-    - Linux 64bit   - "libpaceval_linux_staticLIB.a" (static library)
-    - Linux 64bit   - "libpaceval_linux_sharedLIB.so" (shared library)
-    - ARM 64bit     - "libpaceval_ARM64_LIB.a" (static library)<br>
-    - ARM 64bit     - "libpacevalARM64_sharedLIB.so" (shared library)<br>
-    - ARM 32bit     - "libpaceval_ARM32_LIB.a" (static library)<br>
-    - ARM 32bit     - "libpacevalARM32_sharedLIB.so" (shared library)<br>
+    - Windows 32bit      - "paceval_win32.dll" (shared library)
+    - Windows 64bit      - "paceval_win64i.dll" (shared library)
+    - macOS 64bit        - "libpaceval_macos_staticLIB.a" (static library)
+    - iOS+simulator      - "libpaceval_ios_staticLIB.a" (static library)
+    - Linux 64bit        - "libpaceval_linux_staticLIB.a" (static library)
+    - Linux 64bit        - "libpaceval_linux_sharedLIB.so" (shared library)
+    - ARM 64bit          - "libpaceval_ARM64_LIB.a" (static library)
+    - ARM 64bit          - "libpacevalARM64_sharedLIB.so" (shared library)
+    - ARM 32bit          - "libpaceval_ARM32_LIB.a" (static library)
+    - ARM 32bit          - "libpacevalARM32_sharedLIB.so" (shared library)
+    - Android 64bit      - "libpaceval_android_staticLIB.a" (static library)
+    - Android+simulator  - "libpaceval_android_staticLIB.a" (static library)
+    - Android 64bit      - "libpaceval_android_sharedLIB.so" (shared library)
+    - Android+simulator  - "libpaceval_android_sharedLIB.so" (shared library)
 
 •   "examples_sources" folder
     includes source-code, project files and executables of the demo and 
