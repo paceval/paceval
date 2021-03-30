@@ -16,6 +16,7 @@ developer version – non-commercial use only
     - Linux 64bit<br>
     - ARM64 64bit<br>
     - ARM32 32bit<br>
+    - Android 64bit<br>
 
 •   "documentation mathematical engine" folder<br>
     includes the presentations<br>
@@ -28,16 +29,20 @@ developer version – non-commercial use only
     - paceval_main.cpp<br>
     and includes the dynamic and/or static libraries<br>
     for<br>
-    - Windows 32bit - "paceval_win32.dll" (shared library)<br>
-    - Windows 64bit - "paceval_win64i.dll" (shared library)<br>
-    - macOS 64bit   - "libpaceval_macos_staticLIB.a" (static library)<br>
-    - iOS+simulator - "libpaceval_ios_staticLIB.a" (static library)<br>
-    - Linux 64bit   - "libpaceval_linux_staticLIB.a" (static library)<br>
-    - Linux 64bit   - "libpaceval_linux_sharedLIB.so" (shared library)<br>
-    - ARM 64bit     - "libpaceval_ARM64_LIB.a" (static library)<br>
-    - ARM 64bit     - "libpacevalARM64_sharedLIB.so" (shared library)<br>
-    - ARM 32bit     - "libpaceval_ARM32_LIB.a" (static library)<br>
-    - ARM 32bit     - "libpacevalARM32_sharedLIB.so" (shared library)<br>
+    - Windows 32bit      - "paceval_win32.dll" (shared library)<br>
+    - Windows 64bit      - "paceval_win64i.dll" (shared library)<br>
+    - macOS 64bit        - "libpaceval_macos_staticLIB.a" (static library)<br>
+    - iOS+simulator      - "libpaceval_ios_staticLIB.a" (static library)<br>
+    - Linux 64bit        - "libpaceval_linux_staticLIB.a" (static library)<br>
+    - Linux 64bit        - "libpaceval_linux_sharedLIB.so" (shared library)<br>
+    - ARM 64bit          - "libpaceval_ARM64_LIB.a" (static library)<br>
+    - ARM 64bit          - "libpacevalARM64_sharedLIB.so" (shared library)<br>
+    - ARM 32bit          - "libpaceval_ARM32_LIB.a" (static library)<br>
+    - ARM 32bit          - "libpacevalARM32_sharedLIB.so" (shared library)<br>
+    - Android 64bit      - "libpaceval_android_staticLIB.a" (static library)<br>
+    - Android+simulator  - "libpaceval_android_staticLIB.a" (static library)<br>
+    - Android 64bit      - "libpaceval_android_sharedLIB.so" (shared library)<br>
+    - Android+simulator  - "libpaceval_android_sharedLIB.so" (shared library)<br>
    
 •   "examples_sources" folder<br>
     includes source-code, project files and executables of the demo and<br> 
