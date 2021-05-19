@@ -107,7 +107,7 @@ typedef bool paceval_callbackUserFunctionType(const int,
 
 //---------------------------------------------------------------------------
 //  paceval_CreateComputation
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_CreateComputation
 //---------------------------------------------------------------------------
 PACEVAL_HANDLE paceval_CreateComputation(const char* functionString_in,
         unsigned long numberOfVariables_in,
@@ -117,7 +117,7 @@ PACEVAL_HANDLE paceval_CreateComputation(const char* functionString_in,
 
 //---------------------------------------------------------------------------
 //  paceval_CreateMultipleComputations
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_CreateMultipleComputations
 //---------------------------------------------------------------------------
 bool paceval_CreateMultipleComputations(PACEVAL_HANDLE handle_pacevalComputations_out[],
                                         const char* functionStrings_in[],
@@ -128,35 +128,41 @@ bool paceval_CreateMultipleComputations(PACEVAL_HANDLE handle_pacevalComputation
                                         paceval_callbackStatusType* paceval_callbackStatus_in);
 
 //---------------------------------------------------------------------------
+//  paceval_ExistComputation
+//  see  https://paceval.com/api/#paceval_ExistComputation
+//---------------------------------------------------------------------------
+bool paceval_ExistComputation(PACEVAL_HANDLE handle_pacevalComputation_in);
+
+//---------------------------------------------------------------------------
 //  paceval_DeleteComputation
-//  see  http://www.paceval.com/api
+//  see  hhttps://paceval.com/api/#paceval_DeleteComputation
 //---------------------------------------------------------------------------
 bool paceval_DeleteComputation(PACEVAL_HANDLE handle_pacevalComputation_in);
 
 //---------------------------------------------------------------------------
 //  paceval_ldConvertFloatToString
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dConvertFloatToString
 //---------------------------------------------------------------------------
 int paceval_ldConvertFloatToString(char* destinationString_out,
                                    long double float_in);
 
 //---------------------------------------------------------------------------
 //  paceval_dConvertFloatToString
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dConvertFloatToString
 //---------------------------------------------------------------------------
 int paceval_dConvertFloatToString(char* destinationString_out,
                                   double float_in);
 
 //---------------------------------------------------------------------------
 //  paceval_fConvertFloatToString
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dConvertFloatToString
 //---------------------------------------------------------------------------
 int paceval_fConvertFloatToString(char* destinationString_out,
                                   float float_in);
 
 //---------------------------------------------------------------------------
 //  paceval_ldConvertStringToFloat
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dConvertStringToFloat
 //---------------------------------------------------------------------------
 long double paceval_ldConvertStringToFloat(const char* sourceString_in,
         int* errorType_out,
@@ -167,7 +173,7 @@ long double paceval_ldConvertStringToFloat(const char* sourceString_in,
 
 //---------------------------------------------------------------------------
 //  paceval_dConvertStringToFloat
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dConvertStringToFloat
 //---------------------------------------------------------------------------
 double paceval_dConvertStringToFloat(const char* sourceString_in,
                                      int* errorType_out,
@@ -178,7 +184,7 @@ double paceval_dConvertStringToFloat(const char* sourceString_in,
 
 //---------------------------------------------------------------------------
 //  paceval_fConvertStringToFloat
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dConvertStringToFloat
 //---------------------------------------------------------------------------
 float paceval_fConvertStringToFloat(const char* sourceString_in,
                                     int* errorType_out,
@@ -189,7 +195,7 @@ float paceval_fConvertStringToFloat(const char* sourceString_in,
 
 //---------------------------------------------------------------------------
 //  paceval_ldmathv
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dmathv
 //---------------------------------------------------------------------------
 long double paceval_ldmathv(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
                             int* errorType_out,
@@ -199,7 +205,7 @@ long double paceval_ldmathv(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
 
 //---------------------------------------------------------------------------
 //  paceval_dmathv
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dmathv
 //---------------------------------------------------------------------------
 double paceval_dmathv(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
                       int* errorType_out,
@@ -209,7 +215,7 @@ double paceval_dmathv(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
 
 //---------------------------------------------------------------------------
 //  paceval_fmathv
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dmathv
 //---------------------------------------------------------------------------
 float paceval_fmathv(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
                      int* errorType_out,
@@ -219,7 +225,7 @@ float paceval_fmathv(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
 
 //---------------------------------------------------------------------------
 //  paceval_ldmathvi
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dmathvi
 //---------------------------------------------------------------------------
 long double paceval_ldmathvi(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
                              int* errorType_out,
@@ -231,7 +237,7 @@ long double paceval_ldmathvi(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
 
 //---------------------------------------------------------------------------
 //  paceval_dmathvi
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dmathvi
 //---------------------------------------------------------------------------
 double paceval_dmathvi(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
                        int* errorType_out,
@@ -243,7 +249,7 @@ double paceval_dmathvi(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
 
 //---------------------------------------------------------------------------
 //  paceval_fmathvi
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dmathvi
 //---------------------------------------------------------------------------
 float paceval_fmathvi(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
                       int* errorType_out,
@@ -255,7 +261,7 @@ float paceval_fmathvi(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
 
 //---------------------------------------------------------------------------
 //  paceval_ldGetComputationResult
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_GetComputationResult
 //---------------------------------------------------------------------------
 long double paceval_ldGetComputationResult(PACEVAL_HANDLE handle_pacevalComputation_in,
         long double values_in[],
@@ -264,7 +270,7 @@ long double paceval_ldGetComputationResult(PACEVAL_HANDLE handle_pacevalComputat
 
 //---------------------------------------------------------------------------
 //  paceval_dGetComputationResult
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_GetComputationResult
 //---------------------------------------------------------------------------
 double paceval_dGetComputationResult(PACEVAL_HANDLE handle_pacevalComputation_in,
                                      double values_in[],
@@ -273,7 +279,7 @@ double paceval_dGetComputationResult(PACEVAL_HANDLE handle_pacevalComputation_in
 
 //---------------------------------------------------------------------------
 //  paceval_fGetComputationResult
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_GetComputationResult
 //---------------------------------------------------------------------------
 float paceval_fGetComputationResult(PACEVAL_HANDLE handle_pacevalComputation_in,
                                     float values_in[],
@@ -282,7 +288,7 @@ float paceval_fGetComputationResult(PACEVAL_HANDLE handle_pacevalComputation_in,
 
 //---------------------------------------------------------------------------
 //  paceval_ldGetComputationResultExt
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dGetComputationResultExt
 //---------------------------------------------------------------------------
 bool paceval_ldGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_in,
                                        long double values_in[],
@@ -294,7 +300,7 @@ bool paceval_ldGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_
 
 //---------------------------------------------------------------------------
 //  paceval_dGetComputationResultExt
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dGetComputationResultExt
 //---------------------------------------------------------------------------
 bool paceval_dGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_in,
                                       double values_in[],
@@ -306,7 +312,7 @@ bool paceval_dGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_i
 
 //---------------------------------------------------------------------------
 //  paceval_fGetComputationResultExt
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dGetComputationResultExt
 //---------------------------------------------------------------------------
 bool paceval_fGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_in,
                                       float values_in[],
@@ -318,7 +324,7 @@ bool paceval_fGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_i
 
 //---------------------------------------------------------------------------
 //  paceval_ldGetMultipleComputationsResults
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dGetMultipleComputationsResults
 //---------------------------------------------------------------------------
 bool paceval_ldGetMultipleComputationsResults(PACEVAL_HANDLE handle_pacevalComputations_in[],
         unsigned long numberOfpacevalComputations_in,
@@ -330,7 +336,7 @@ bool paceval_ldGetMultipleComputationsResults(PACEVAL_HANDLE handle_pacevalCompu
 
 //---------------------------------------------------------------------------
 //  paceval_dGetMultipleComputationsResults
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dGetMultipleComputationsResults
 //---------------------------------------------------------------------------
 bool paceval_dGetMultipleComputationsResults(PACEVAL_HANDLE handle_pacevalComputations_in[],
         unsigned long numberOfpacevalComputations_in,
@@ -342,7 +348,7 @@ bool paceval_dGetMultipleComputationsResults(PACEVAL_HANDLE handle_pacevalComput
 
 //---------------------------------------------------------------------------
 //  paceval_fGetMultipleComputationsResults
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_dGetMultipleComputationsResults
 //---------------------------------------------------------------------------
 bool paceval_fGetMultipleComputationsResults(PACEVAL_HANDLE handle_pacevalComputations_in[],
         unsigned long numberOfpacevalComputations_in,
@@ -354,13 +360,13 @@ bool paceval_fGetMultipleComputationsResults(PACEVAL_HANDLE handle_pacevalComput
 
 //---------------------------------------------------------------------------
 //  paceval_GetIsError
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_GetIsError
 //---------------------------------------------------------------------------
 bool paceval_GetIsError(PACEVAL_HANDLE handle_pacevalComputation_in);
 
 //---------------------------------------------------------------------------
 //  paceval_GetErrorInformation
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_GetErrorInformation
 //---------------------------------------------------------------------------
 int paceval_GetErrorInformation(PACEVAL_HANDLE handle_pacevalComputation_in,
                                 char *lastError_strOperator_out,
@@ -368,7 +374,7 @@ int paceval_GetErrorInformation(PACEVAL_HANDLE handle_pacevalComputation_in,
 
 //---------------------------------------------------------------------------
 //  paceval_CreateErrorInformationText
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/?et_fb=1&PageSpeed=off#paceval_CreateErrorInformationText
 //---------------------------------------------------------------------------
 int paceval_CreateErrorInformationText(PACEVAL_HANDLE handle_pacevalComputation_in,
                                        char* lastError_strMessage_out,
@@ -376,21 +382,21 @@ int paceval_CreateErrorInformationText(PACEVAL_HANDLE handle_pacevalComputation_
 
 //---------------------------------------------------------------------------
 //  paceval_GetErrorTypeMessage
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/?et_fb=1&PageSpeed=off#paceval_GetErrorTypeMessage
 //---------------------------------------------------------------------------
 int paceval_GetErrorTypeMessage(int errorType_in,
                                 char* errorType_strMessage_out);
 
 //---------------------------------------------------------------------------
 //  paceval_GetComputationVersionString
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_GetComputationVersionString
 //---------------------------------------------------------------------------
 int paceval_GetComputationVersionString(PACEVAL_HANDLE handle_pacevalComputation_in,
                                         char* paceval_strVersion_out);
 
 //---------------------------------------------------------------------------
 //  paceval_SetCallbackUserFunction
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/?et_fb=1&PageSpeed=off#paceval_SetCallbackUserFunction
 //---------------------------------------------------------------------------
 bool paceval_SetCallbackUserFunction(unsigned int numberUserFunction_in,
                                      const char* singleFunctionString_in,
@@ -398,19 +404,19 @@ bool paceval_SetCallbackUserFunction(unsigned int numberUserFunction_in,
 
 //---------------------------------------------------------------------------
 //  paceval_InitializeLibrary
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_InitializeLibrary
 //---------------------------------------------------------------------------
 bool paceval_InitializeLibrary(const char* initString_in);
 
 //---------------------------------------------------------------------------
 //  paceval_FreeLibrary
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_FreeLibrary
 //---------------------------------------------------------------------------
 bool paceval_FreeLibrary();
 
 //---------------------------------------------------------------------------
 //  paceval_CreateXMLFromParameters
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_CreateXMLFromParameters
 //---------------------------------------------------------------------------
 unsigned long paceval_CreateXMLFromParameters(char* paceval_strXML_out,
         const char* functionString_in,
@@ -421,7 +427,7 @@ unsigned long paceval_CreateXMLFromParameters(char* paceval_strXML_out,
 
 //---------------------------------------------------------------------------
 //  paceval_ReadParametersFromXML
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_ReadParametersFromXML
 //---------------------------------------------------------------------------
 int paceval_ReadParametersFromXML(const char* paceval_strXML_in,
                                   unsigned long* functionStringLength_out,
@@ -435,7 +441,7 @@ int paceval_ReadParametersFromXML(const char* paceval_strXML_in,
 
 //---------------------------------------------------------------------------
 //  paceval_GetComputationInformationXML
-//  see  http://www.paceval.com/api
+//  see  https://paceval.com/api/#paceval_GetComputationInformationXML
 //---------------------------------------------------------------------------
 unsigned long paceval_GetComputationInformationXML(PACEVAL_HANDLE handle_pacevalComputation_in,
         char* paceval_strXML_out);

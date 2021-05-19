@@ -132,6 +132,8 @@ bool paceval_callbackUserFunction1(const int useCalculationPrecision_in,
 	{
 		*resultAsFloat =
 			sin(*valueFieldAsFloat) * cos(*valueFieldAsFloat);
+
+		return true;
 	}
 	}
 
@@ -292,6 +294,10 @@ void __fastcall TpacevalFormMainCalculation::doCalculate_pacevalCalculation()
 	{
 		stringValueVariable = StringGridVariables->Rows[iCount + 1]->Strings[1];
 
+                //Potential improvement: We are not yet checking whether the conversion
+                //                       has lost any accuracy. Can be checked with
+                //                       trusted interval computing enabled e.g. for
+                //                       paceval_fConvertStringToFloat.
 		if (RadioButtonLongDouble->Checked)
 		{
 			ldValuesVariablesArray[iCount] =
@@ -977,15 +983,10 @@ void __fastcall TpacevalFormMainCalculation::FormShow(TObject *Sender)
 	RichEditIntroduction->Text = RichEditIntroduction->Text
 								 + "In addition, it demonstrates how precise and reliable paceval. works. The trusted interval computation \"TINC\" shows an interval within the true results can be found. And, finally, you can draw the function for a selected variable.";
 
-	handle_pacevalVersionComputation = NULL;
-
 	success = paceval_SetCallbackUserFunction(1, "my_function1",
 			  paceval_callbackUserFunction1);
-	success = paceval_SetCallbackUserFunction(2, "my_function2",
-			  paceval_callbackUserFunction1);
-	success = paceval_SetCallbackUserFunction(3, "my_function3",
-			  paceval_callbackUserFunction1);
 
+	handle_pacevalVersionComputation = NULL;
 	pacevalVersionNumber = paceval_fmathv(&handle_pacevalVersionComputation, &errType,
 										  "paceval_VersionNumber", 0, "");
 
@@ -994,6 +995,9 @@ void __fastcall TpacevalFormMainCalculation::FormShow(TObject *Sender)
 	{
 		this->Caption = this->Caption + " with paceval. Version "
 						+ paceval_mainVersionString + "." + paceval_subVersionString;
+#if defined(_WIN64)
+		this->Caption = this->Caption + " (64 bit)";
+#endif
 
 		paceval_GetComputationVersionString(handle_pacevalVersionComputation,
 											pacevalVersionString);

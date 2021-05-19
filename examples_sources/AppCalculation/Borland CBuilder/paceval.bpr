@@ -21,7 +21,7 @@
     <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
     <RELEASELIBPATH value="$(BCB)\lib\release"/>
     <LINKER value="ilink32"/>
-    <USERDEFINES value=""/>
+    <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT"/>
     <MAINSOURCE value="paceval.cpp"/>
     <INCLUDEPATH value="..\system-independent\source_public;$(BCB)\include;$(BCB)\include\vcl"/>
@@ -30,12 +30,12 @@
     <WARNOPTSTR value=""/>
   </MACROS>
   <OPTIONS>
-    <CFLAG1 value="-O2 -Vx -Ve -X- -a1 -6 -b- -k- -vi -c -tW -tWM"/>
-    <PFLAGS value="-H- -W- -$Y- -$U -$R -$Q -$L- -$H- -$D- -$C- -$A- -v -JPHNE -M"/>
+    <CFLAG1 value="-Od -Vx -Ve -X- -r- -a1 -6 -b- -k -y -v -vi- -c -tW -tWM"/>
+    <PFLAGS value="-H- -W- -$Y+ -$W -$U -$R -$Q -$O- -$H- -$C- -$A- -v -JPHNE -M"/>
     <RFLAGS value=""/>
-    <AFLAGS value="/mx /w0 /zn"/>
+    <AFLAGS value="/mx /w0 /zi"/>
     <LFLAGS value="-D&quot;&quot; -H:0x1000000 -Hc:0x1000000 -B:0x10000000 -S:0x1000000 -Sc:0x1000000 
-      -aa -Tpe -GD -s -w"/>
+      -aa -Tpe -GD -s -w -v"/>
   </OPTIONS>
   <LINKER>
     <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
@@ -71,29 +71,31 @@ ProductVersion=1.0.0.0
 Comments=
 
 [HistoryLists\hlIncludePath]
-Count=10
-Item0=$(BCB)\include;$(BCB)\include\vcl
-Item1=..\system-independent\source_public;C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\system-independent\libs\cppb4;$(BCB)\include;$(BCB)\include\vcl
-Item2=C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\system-independent\libs\cppb4;$(BCB)\include;$(BCB)\include\vcl
-Item3=C:\Program Files (x86)\Borland\CBuilder5\Projects;..\system-independent\libs\cppb4;$(BCB)\include;$(BCB)\include\vcl
-Item4=..\system-independent\libs\cppb4;$(BCB)\include;$(BCB)\include\vcl
-Item5=..\system-independent\sbaparser;..\system-independent\source;..\system-independent\public;$(BCB)\include;$(BCB)\include\vcl
-Item6=..\system-independent\source;..\system-independent\public;$(BCB)\include;$(BCB)\include\vcl
-Item7=..\system-independent\source;..\system-independent\public;..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\include;$(BCB)\include\vcl
-Item8=..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\include;$(BCB)\include\vcl
-Item9=..\..\sbParser-SDK\source\system-independent\sbaparser;..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\include;$(BCB)\include\vcl
+Count=11
+Item0=..\system-independent\source_public;$(BCB)\include;$(BCB)\include\vcl
+Item1=$(BCB)\include;$(BCB)\include\vcl
+Item2=..\system-independent\source_public;C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\system-independent\libs\cppb4;$(BCB)\include;$(BCB)\include\vcl
+Item3=C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\system-independent\libs\cppb4;$(BCB)\include;$(BCB)\include\vcl
+Item4=C:\Program Files (x86)\Borland\CBuilder5\Projects;..\system-independent\libs\cppb4;$(BCB)\include;$(BCB)\include\vcl
+Item5=..\system-independent\libs\cppb4;$(BCB)\include;$(BCB)\include\vcl
+Item6=..\system-independent\sbaparser;..\system-independent\source;..\system-independent\public;$(BCB)\include;$(BCB)\include\vcl
+Item7=..\system-independent\source;..\system-independent\public;$(BCB)\include;$(BCB)\include\vcl
+Item8=..\system-independent\source;..\system-independent\public;..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\include;$(BCB)\include\vcl
+Item9=..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\include;$(BCB)\include\vcl
+Item10=..\..\sbParser-SDK\source\system-independent\sbaparser;..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=9
-Item0=$(BCB)\lib\obj;$(BCB)\lib
-Item1=..\system-independent\source_public;C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\system-independent\libs\cppb4;$(BCB)\lib\obj;$(BCB)\lib
-Item2=C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\system-independent\libs\cppb4;$(BCB)\lib\obj;$(BCB)\lib
-Item3=C:\Program Files (x86)\Borland\CBuilder5\Projects;..\system-independent\libs\cppb4;$(BCB)\lib\obj;$(BCB)\lib
-Item4=..\system-independent\libs\cppb4;$(BCB)\lib\obj;$(BCB)\lib
-Item5=..\system-independent\source;..\system-independent\public;$(BCB)\lib\obj;$(BCB)\lib
-Item6=..\system-independent\source;..\system-independent\public;..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\lib\obj;$(BCB)\lib
-Item7=..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\lib\obj;$(BCB)\lib
-Item8=..\..\sbParser-SDK\source\system-independent\sbaparser;..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\lib\obj;$(BCB)\lib
+Count=10
+Item0=..\system-independent\source_public;$(BCB)\lib\obj;$(BCB)\lib
+Item1=$(BCB)\lib\obj;$(BCB)\lib
+Item2=..\system-independent\source_public;C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\system-independent\libs\cppb4;$(BCB)\lib\obj;$(BCB)\lib
+Item3=C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\system-independent\libs\cppb4;$(BCB)\lib\obj;$(BCB)\lib
+Item4=C:\Program Files (x86)\Borland\CBuilder5\Projects;..\system-independent\libs\cppb4;$(BCB)\lib\obj;$(BCB)\lib
+Item5=..\system-independent\libs\cppb4;$(BCB)\lib\obj;$(BCB)\lib
+Item6=..\system-independent\source;..\system-independent\public;$(BCB)\lib\obj;$(BCB)\lib
+Item7=..\system-independent\source;..\system-independent\public;..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\lib\obj;$(BCB)\lib
+Item8=..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\lib\obj;$(BCB)\lib
+Item9=..\..\sbParser-SDK\source\system-independent\sbaparser;..\..\..\..\Users\koenning\OneDrive\Own Development\SoftBase\Development\Main\Products\paceval\bcb4Demo;$(BCB)\lib\obj;$(BCB)\lib
 
 [HistoryLists\hlDebugSourcePath]
 Count=1
