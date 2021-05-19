@@ -1,0 +1,38 @@
+Windows compilers and long double support
+-----------------------------------------
+
+The paceval_win64i.dll in this paceval.-Software Development Kit [SDK] is compiled with 
+the GNU Compiler Collection (GCC) MinGW.
+
+Links & Literature
+[1] https://en.wikipedia.org/wiki/MinGW
+
+With this, paceval_win64i.dll also supports natively long double (80-bit precision) in addition to
+double (64-bit precision) and float (32-bit precision) for Windows x64/64-bit.
+Support of long double (80-bit precision) is preferred for many analytics, approximations and 
+iterations. These may lose several decimal digits of precision.
+Much larger loss of precision can occur for boundary or corner cases, often caused by cancellation 
+errors or loss of significance. 
+
+However, you can consider to use Trusted Interval Computing (TINC) to identify these corner cases  
+putting bounds on rounding errors and measurement errors of the computation system to yield 
+reliable results.
+
+Links & Literature
+[2] https://en.wikipedia.org/wiki/Loss_of_significance
+[3] https://en.wikipedia.org/wiki/Long_double
+[4] https://en.wikipedia.org/wiki/Single-precision_floating-point_format
+[5] https://en.wikipedia.org/wiki/Double-precision_floating-point_format
+
+Microsoft Visual C++ 32-bit and 64-bit does not support long double (80-bit precision) -
+Excerpt from the MSDN : "Previous(...) versions of Microsoft C / C++ and Microsoft Visual C++ supported
+the long double, 80-bit precision data type. (...), however, the long double data type
+maps to the double, 64-bit precision data type."
+
+Embarcadero 64-bit Windows does not support long double (80-bit precision) - 
+Excerpt from "Embarcadero 64-bit Windows Data Types Compared to 32-bit Windows Data Types:
+On (...) 64-bit Windows, the Extended type is an alias for a Double, or 8 bytes."
+
+Links & Literature
+[6] https://docs.microsoft.com/en-us/previous-versions/9cx8xs15(v=vs.140)?redirectedfrom=MSDN
+[7] http://docwiki.embarcadero.com/Libraries/Sydney/en/System.Extended
