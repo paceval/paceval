@@ -251,6 +251,12 @@ extern "C" float pacevalLibrary_fmathvi(PACEVAL_HANDLE* handle_pacevalComputatio
 #endif //defined(paceval_use_dll)
 
 #if defined(paceval_use_dll) && (paceval_use_dll == 1)
+bool (*pacevalLibrary_ExistComputation)(PACEVAL_HANDLE handle_pacevalComputation_in);
+#else
+extern "C" bool pacevalLibrary_ExistComputation(PACEVAL_HANDLE handle_pacevalComputation_in);
+#endif //defined(paceval_use_dll)
+
+#if defined(paceval_use_dll) && (paceval_use_dll == 1)
 bool (*pacevalLibrary_DeleteComputation)(PACEVAL_HANDLE handle_pacevalComputation_in);
 #else
 extern "C" bool pacevalLibrary_DeleteComputation(PACEVAL_HANDLE handle_pacevalComputation_in);
@@ -571,6 +577,12 @@ extern "C" bool paceval_InitializeLibrary(const char* initString_in)
         pacevalLibrary_CreateMultipleComputations = (bool(*)(void **,const char **, unsigned long, unsigned long, const char *, bool, bool (*)(const void *, const paceval_eStatusTypes, const int)))
                 GetProcAddress(handle_paceval_DLL, "pacevalLibrary_CreateMultipleComputations");
 
+    pacevalLibrary_ExistComputation = (bool(*)(void *))
+                                       GetProcAddress(handle_paceval_DLL, "_pacevalLibrary_ExistComputation");
+    if (pacevalLibrary_ExistComputation == NULL)
+        pacevalLibrary_ExistComputation = (bool(*)(void *))
+                                           GetProcAddress(handle_paceval_DLL, "pacevalLibrary_ExistComputation");
+
     pacevalLibrary_DeleteComputation = (bool(*)(void *))
                                        GetProcAddress(handle_paceval_DLL, "_pacevalLibrary_DeleteComputation");
     if (pacevalLibrary_DeleteComputation == NULL)
@@ -742,6 +754,7 @@ extern "C" bool paceval_InitializeLibrary(const char* initString_in)
     if ((pacevalLibrary_Initialize == NULL)
             || (pacevalLibrary_Free == NULL)
             || (pacevalLibrary_CreateComputation == NULL)
+            || (pacevalLibrary_ExistComputation == NULL)
             || (pacevalLibrary_CreateMultipleComputations == NULL)
             || (pacevalLibrary_DeleteComputation == NULL)
             || (pacevalLibrary_ldConvertFloatToString == NULL)
@@ -856,6 +869,11 @@ extern "C" bool paceval_CreateMultipleComputations(PACEVAL_HANDLE handle_paceval
             variables_in,
             useInterval_in,
             paceval_callbackStatus_in);
+}
+
+extern "C" bool paceval_ExistComputation(PACEVAL_HANDLE handle_pacevalComputation_in)
+{
+    return pacevalLibrary_ExistComputation(handle_pacevalComputation_in);
 }
 
 extern "C" bool paceval_DeleteComputation(PACEVAL_HANDLE handle_pacevalComputation_in)
@@ -1085,7 +1103,7 @@ extern "C" float paceval_fmathvi(PACEVAL_HANDLE* handle_pacevalComputation_in,
 
     for (unsigned long iCount = 0; iCount < numberOfVariables_in; iCount++)
     {
-        valuesVariablesArray[iCount] = va_arg(argumentList, double); //e.g. GNUC:'float' is promoted to 'double' when passed through '...'
+		valuesVariablesArray[iCount] = va_arg(argumentList, double); //e.g. GNUC:'float' is promoted to 'double' when passed through '...'
     }
     va_end(argumentList);
 
