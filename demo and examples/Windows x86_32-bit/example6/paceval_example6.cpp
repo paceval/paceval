@@ -30,6 +30,8 @@ void CalculateAndPresentDoubleExample6(PACEVAL_HANDLE handle_pacevalComputations
                                        const char* fileForInference, unsigned long numberOfVariables_in);
 void CalculateAndPresentLongDoubleExample6(PACEVAL_HANDLE handle_pacevalComputations_in[],
         const char* fileForInference, unsigned long numberOfVariables_in);
+bool paceval_callbackStatus(const PACEVAL_HANDLE handle_pacevalComputation_in,
+                            const paceval_eStatusTypes paceval_eStatus_in, const int percentageDone_in);
 
 //this function retrieves the variable out of 1..10 which holds the maximum value
 #define function_maxFrom10 "1*((x1>x2) AND (x1>x3) AND (x1>x4) AND (x1>x5) AND (x1>x6) AND (x1>x7) AND (x1>x8) AND (x1>x9) AND (x1>x10)) + \
@@ -109,7 +111,7 @@ int main(int argc, char* argv[])
 
                 if (paceval_GetIsError(handle_pacevalComputationsArray[iCount]) == true)
                 {
-                    PrintErrorMessage(handle_pacevalComputationsArray[iCount]);
+                    printf("\n -- error in creating paceval-Computation objects");
                     success = false;
                 }
 
@@ -171,7 +173,7 @@ int main(int argc, char* argv[])
         {
             printf("\nInitialize for ML inference and create paceval-Computation objects \nfor 10 functions '0' to '9'...");
             success = paceval_CreateMultipleComputations(handle_pacevalComputationsArray,
-                      functionStringsArray, 10, numberOfVariables, variablesString, false, NULL);
+                      functionStringsArray, 10, numberOfVariables, variablesString, false, &paceval_callbackStatus);
         }
         if (success == false)
             printf("\n -- error in creating paceval-Computation objects");
@@ -250,7 +252,10 @@ int main(int argc, char* argv[])
         printf("\n\n");
         printf(versionString);
 
-        printf("\n\n[Threads usages: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL));
+        if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL) > 0)
+            printf("\n\n[Threads usages: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL));
+        if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL) > 0)
+            printf("\n[Cache hits: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL));
 
         for (unsigned int iCount = 0; iCount < 10; iCount++)
         {
@@ -641,6 +646,23 @@ const char* CreateErrorMessage(char* messageBuffer, int pacevalErrorType, int le
     delete[] errMessage;
 
     return messageBuffer;
+}
+
+bool paceval_callbackStatus(const PACEVAL_HANDLE handle_pacevalComputation_in,
+                            const paceval_eStatusTypes paceval_eStatus_in, const int percentageDone_in)
+{
+    if (paceval_eStatus_in == PACEVAL_STATUS_ANALYSIS_PROGRESS)
+    {
+        int errType;
+
+        if ((int)paceval_fmathv(NULL, &errType, "(percentageDone=25) OR (percentageDone=50) OR (percentageDone=75)",
+                                1, "percentageDone", (float)percentageDone_in))
+        {
+            printf(".");
+        }
+    }
+
+    return true;
 }
 
 
