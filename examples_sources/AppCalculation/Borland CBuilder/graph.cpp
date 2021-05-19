@@ -10,10 +10,10 @@
 
 #include <Grids.hpp>
 
-#if (__BORLANDC__ == 0x550)
+#if (__BORLANDC__ <= 0x650)
 #else
 #include <Vcl.Controls.hpp>
-#endif //#if (__BORLANDC__ == 0x520)
+#endif //#if (__BORLANDC__)
 
 #include "graph.h"
 

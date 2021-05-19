@@ -12,11 +12,14 @@
 #include <jpeg.hpp>
 #include <Dialogs.hpp>
 #include <OleCtrls.hpp>
-#include <vcfi.hpp>
-#include <Menus.hpp>
-#include <Grids.hpp>
-#include <Graphics.hpp>
 #include <Buttons.hpp>
+#include <Graphics.hpp>
+#include <Grids.hpp>
+#include <Menus.hpp>
+#if (__BORLANDC__ <= 0x650)
+#include <vcfi.hpp>
+#else
+#endif //#if (__BORLANDC__)
 //---------------------------------------------------------------------------
 
 class TpacevalFormMainCalculation : public TForm

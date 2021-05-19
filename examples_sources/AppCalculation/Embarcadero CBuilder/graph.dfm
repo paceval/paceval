@@ -1172,7 +1172,7 @@ object FormGraphForVariable: TFormGraphForVariable
       object Label2: TLabel
         Left = 11
         Top = 26
-        Width = 75
+        Width = 68
         Height = 26
         Caption = 'Result f(...): (vertical)'
         WordWrap = True

@@ -10,7 +10,7 @@
 
 #include <Grids.hpp>
 
-#if (__BORLANDC__)
+#if (__BORLANDC__ <= 0x650)
 #else
 #include <Vcl.Controls.hpp>
 #endif //#if (__BORLANDC__)
