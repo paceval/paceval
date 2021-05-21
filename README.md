@@ -5,6 +5,7 @@
 https://www.paceval.com<br>
 [paceval-Mathematical Engine-Motivation.pdf](https://github.com/paceval/paceval/files/6521237/paceval-Mathematical.Engine-Motivation.pdf) and
 [paceval-Mathematical Engine-Our solution.pdf](https://github.com/paceval/paceval/files/6521239/paceval-Mathematical.Engine-Our.solution.pdf)<br>
+Download Installer Software Development Kit, https://paceval.com/product-demo/<br>
 
 Release-content – paceval.-Software Development Kit [SDK] 4.01<br>
 developer version – non-commercial use only 
