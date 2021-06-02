@@ -1,4 +1,4 @@
-![10019436_l-e1442994613885 2](https://user-images.githubusercontent.com/81245979/119109158-38872480-ba21-11eb-9aae-6ad25515a87d.jpg)
+![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2021/06/paceval_github-1.jpg)<br>
 
 # paceval.
 <b>the system independent mathematical engine</b><br>
@@ -99,6 +99,9 @@ developer version – non-commercial use only
     - Scratch<br>
     - Swift<br>
     - Visual Basic<br>
+
+![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2021/06/mathematical_model.jpg)<br>
+![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2021/06/mathematical_engine.jpg)
 
 Copyright © 2015-2021 paceval.® All rights reserved.<br>
 mailto:info@paceval.com
