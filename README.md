@@ -1,6 +1,6 @@
 ![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2021/06/paceval_github-1.jpg)<br>
 
-# paceval.
+# <i><b>pace</b>val.</i>
 <b>the system independent mathematical engine</b><br>
 https://www.paceval.com<br>
 [paceval-Mathematical Engine-Motivation.pdf](https://github.com/paceval/paceval/files/6521237/paceval-Mathematical.Engine-Motivation.pdf) and
