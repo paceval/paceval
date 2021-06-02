@@ -7,6 +7,16 @@ https://www.paceval.com<br>
 [paceval-Mathematical Engine-Our solution.pdf](https://github.com/paceval/paceval/files/6521239/paceval-Mathematical.Engine-Our.solution.pdf)<br>
 Download Installer Software Development Kit, https://paceval.com/product-demo/<br>
 
+“<b>Our goal</b> was to create<br>
+• [fast parallel calculation](https://paceval.com/developers/#fast_parallel_calculation) of mathematical functions<br>
+• built-in mathematical [precision](https://paceval.com/developers/#precision)<br>
+• support of functions of [any length](https://paceval.com/developers/#any_number_parameters)<br>
+• support of [any number of variables](https://paceval.com/developers/#any_number_parameters)<br>
+• a [system-independent](https://paceval.com/developers/#system_independent) solution<br>
+• a solution that [can also be run on small systems](https://paceval.com/#run_small_systems)<br>
+• with [any programming language](https://paceval.com/api/#any_programming_language)<br>
+to compute [all financial, stochastic, engineering, and scientific functions](https://paceval.com/product-brief/#all_functions), as well as [all machine learning models](https://paceval.com/product-brief/#all_functions).”<br>
+
 <b>Release-content – paceval.-Software Development Kit [SDK] 4.01</b><br>
 developer version – non-commercial use only 
 
@@ -73,15 +83,21 @@ developer version – non-commercial use only
     - Go<br>
     - Java<br>
     - Julia<br>
+    - Kotlin<br>
+    - Maple<br>
     - Mathematica<br>
     - MATLAB<br>
+    - Mendix<br>
     - Node.js<br>
+    - Octave<br>
     - Pascal<br>
     - Perl<br>
     - PHP (incl. paceval. example)<br>
     - Python<br>
     - Ruby<br>
     - Rust<br>
+    - Scratch<br>
+    - Swift<br>
     - Visual Basic<br>
 
 Copyright © 2015-2021 paceval.® All rights reserved.<br>
