@@ -20,7 +20,7 @@ to compute [all financial, stochastic, engineering, and scientific functions](ht
 <b>Release-content – paceval.-Software Development Kit [SDK] 4.01</b><br>
 developer version – non-commercial use only 
 
-•   "demo and examples" folder<br>
+•   <b>["demo and examples"](https://github.com/paceval/paceval/tree/main/demo%20and%20examples) folder<br></b>
     includes the executables<br>
     - paceval. demo application “calculation” (folder "AppCalculation")<br>
     - 6 paceval examples (folder "example1" to "example6")<br>
@@ -33,12 +33,12 @@ developer version – non-commercial use only
     - ARM32 32bit<br>
     - Android 64bit<br>
 
-•   "documentation mathematical engine" folder<br>
+•   <b>["documentation mathematical engine"](https://github.com/paceval/paceval/tree/main/documentation%20mathematical%20engine) folder<br></b>
     includes the presentations<br>
     - "Mathematical Engine - Motivation"<br>
     - "Mathematical Engine - Our solution"<br>
 
-•   "paceval libraries" folder<br>
+•   <b>["paceval libraries"](https://github.com/paceval/paceval/tree/main/paceval%20libraries) folder<br></b>
     includes the system-independent C++ header and C++ file<br>
     - paceval_main.h<br>
     - paceval_main.cpp<br>
@@ -59,7 +59,7 @@ developer version – non-commercial use only
     - Android 64bit      - "libpaceval_android_sharedLIB.so" (shared library)<br>
     - Android+simulator  - "libpaceval_android_sharedLIB.so" (shared library)<br>
    
-•   "examples_sources" folder<br>
+•   <b>["examples_sources"](https://github.com/paceval/paceval/tree/main/examples_sources) folder<br></b>
     includes source-code, project files and executables of the demo and<br> 
     examples (see "demo and examples" folder)<br>
     for C++ and compilers<br>
@@ -71,7 +71,7 @@ developer version – non-commercial use only
     - Eclipse/GCC (Linux 64bit)<br>
     - Eclipse/GCC (ARM64 64bit)<br>
     - Eclipse/GCC (ARM32 32bit)<br><br>    
-    other programming languages via Foreign function interface (FFI)<br>
+    <b>[other programming languages](https://paceval.com/api/#any_programming_language) via Foreign function interface (FFI)<br></b>
     - .NET<br>
     - ABAP<br>
     - C<br>
