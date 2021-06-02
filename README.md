@@ -70,7 +70,8 @@ developer version – non-commercial use only
     - Eclipse/GCC+Mingw-w64 (Windows 64bit)<br>
     - Eclipse/GCC (Linux 64bit)<br>
     - Eclipse/GCC (ARM64 64bit)<br>
-    - Eclipse/GCC (ARM32 32bit)<br><br>    
+    - Eclipse/GCC (ARM32 32bit)<br>
+    
     <b>[other programming languages](https://paceval.com/api/#any_programming_language) via Foreign function interface (FFI)<br></b>
     - .NET<br>
     - ABAP<br>
