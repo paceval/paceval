@@ -6,12 +6,12 @@ $paceval_ffi = FFI::cdef("
      bool pacevalLibrary_Initialize(const char* initString_in);
      bool pacevalLibrary_Free();
      void* pacevalLibrary_CreateComputation(const char* functionString_in,
-     unsigned long numberOfVariables_in, const char* variables_in, bool useInterval_in, void* paceval_callbackStatus_in);
+         unsigned long numberOfVariables_in, const char* variables_in, bool useInterval_in, void* paceval_callbackStatus_in);
      bool pacevalLibrary_dGetComputationResultExt(void* handle_pacevalComputation_in, double values_in[],
-     unsigned long numberOfCalculations_in, double* results_out, double* trustedMinResults_out,
+         unsigned long numberOfCalculations_in, double* results_out, double* trustedMinResults_out,
      double* trustedMaxResults_out, int* errorTypes_out);
      double pacevalLibrary_dmathv(void* handle_pacevalComputation_out_in, int *errorType_out,
-     const char* functionString_in, unsigned long numberOfVariables_in, const char* variables_in, double values_in[]);
+         const char* functionString_in, unsigned long numberOfVariables_in, const char* variables_in, double values_in[]);
      bool pacevalLibrary_DeleteComputation(void* handle_pacevalComputation_in);
      ",
      "/usr/bin/libpacevalARM64_sharedLIB.so");

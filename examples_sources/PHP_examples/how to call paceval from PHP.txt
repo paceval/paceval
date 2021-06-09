@@ -28,10 +28,10 @@ $paceval_ffi = FFI::cdef("
 bool pacevalLibrary_Initialize(const char* initString_in);
 bool pacevalLibrary_Free();
 void* pacevalLibrary_CreateComputation(const char* functionString_in, unsigned long numberOfVariables_in,
-const char* variables_in, bool useInterval_in, void* paceval_callbackStatus_in);
+    const char* variables_in, bool useInterval_in, void* paceval_callbackStatus_in);
 double pacevalLibrary_dGetComputationResult(void* handle_pacevalComputation_in, double values_in[],
 double* trustedMinResult_out, double* trustedMaxResult_out);
-bool pacevalLibrary_DeleteComputation(void* handle_pacevalComputation_in);
+    bool pacevalLibrary_DeleteComputation(void* handle_pacevalComputation_in);
 ",
 "/usr/bin/libpacevalARM64_sharedLIB.so"); // you can exchange the ARM64-library, e.g. to the x64-library
 
@@ -67,12 +67,12 @@ $paceval_ffi = FFI::cdef("
 bool pacevalLibrary_Initialize(const char* initString_in);
 bool pacevalLibrary_Free();
 void* pacevalLibrary_CreateComputation(const char* functionString_in,
-unsigned long numberOfVariables_in, const char* variables_in, bool useInterval_in, void* paceval_callbackStatus_in);
+    unsigned long numberOfVariables_in, const char* variables_in, bool useInterval_in, void* paceval_callbackStatus_in);
 bool pacevalLibrary_dGetComputationResultExt(void* handle_pacevalComputation_in, double values_in[],
-unsigned long numberOfCalculations_in, double* results_out, double* trustedMinResults_out,
+    unsigned long numberOfCalculations_in, double* results_out, double* trustedMinResults_out,
 double* trustedMaxResults_out, int* errorTypes_out);
 double pacevalLibrary_dmathv(void* handle_pacevalComputation_out_in, int *errorType_out,
-const char* functionString_in, unsigned long numberOfVariables_in, const char* variables_in, double values_in[]);
+    const char* functionString_in, unsigned long numberOfVariables_in, const char* variables_in, double values_in[]);
 bool pacevalLibrary_DeleteComputation(void* handle_pacevalComputation_in);
 ",
 "/usr/bin/libpacevalARM64_sharedLIB.so");
@@ -107,7 +107,7 @@ var_dump($results[999999]); //-2.287287969116
 $success = (bool) $paceval_ffi->pacevalLibrary_DeleteComputation($handle_pacevalComputation);
 
 $threadUsages = $paceval_ffi->pacevalLibrary_dmathv(null, FFI::addr($errorType), "paceval_NumberThreadUsages",
-0, "", null);
+    0, "", null);
 var_dump($threadUsages); //e.g. 12 threads
 
 $success = (bool) $paceval_ffi->pacevalLibrary_Free();

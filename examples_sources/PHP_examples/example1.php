@@ -6,9 +6,9 @@ $paceval_ffi = FFI::cdef("
      bool pacevalLibrary_Initialize(const char* initString_in);
      bool pacevalLibrary_Free();
      void* pacevalLibrary_CreateComputation(const char* functionString_in, unsigned long numberOfVariables_in,
-     const char* variables_in, bool useInterval_in, void* paceval_callbackStatus_in);
+         const char* variables_in, bool useInterval_in, void* paceval_callbackStatus_in);
      double pacevalLibrary_dGetComputationResult(void* handle_pacevalComputation_in, double values_in[],
-     double* trustedMinResult_out, double* trustedMaxResult_out);
+         double* trustedMinResult_out, double* trustedMaxResult_out);
      bool pacevalLibrary_DeleteComputation(void* handle_pacevalComputation_in);
      ",
      "/usr/bin/libpacevalARM64_sharedLIB.so"); // you can exchange the ARM64-library, e.g. to the x64-library
