@@ -1,6 +1,6 @@
 <?php
 
-// PHP example a simple mathematical engine, e.g. to relieve battery-operated IoT devices 
+// PHP example a simple mathematical engine, e.g. to offload battery-operated IoT devices 
 
 //EXAMPLE URL
 // standard:  
@@ -98,8 +98,8 @@ if ($call_str == "paceval")
         $return_arr["number-of-thread-usages"] = $threadUsages;
         $cacheHitsACC = $paceval_ffi->pacevalLibrary_dmathv(null, FFI::addr($errorType), "paceval_NumberCacheHitsACC", 0, "", null);
         $return_arr["number-of-cache-hits"] = $cacheHitsACC;
-        $return_arr["time-create"] = number_format($timeCreate, 6, ".", ",") . "s"; //round($timeCreate, 9) . "s";
-        $return_arr["time-calculate"] = number_format($timeCalculate, 6, ".", ",") . "s"; // = round($timeCalculate, 9) . "s"; 
+        $return_arr["time-create"] = number_format($timeCreate, 6, ".", ",") . "s"; 
+        $return_arr["time-calculate"] = number_format($timeCalculate, 6, ".", ",") . "s"; 
         $return_arr["error-message"] = $errorMessage;
         $handle_pacevalComputation_ret = FFI::cast("unsigned long", $handle_pacevalComputation);
         $return_arr["handle-pacevalComputation"] = $handle_pacevalComputation_ret->cdata;
