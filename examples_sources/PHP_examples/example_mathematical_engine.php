@@ -46,7 +46,7 @@ $success = (bool) $paceval_ffi->pacevalLibrary_Initialize(null);
 
 if ($numberOfVariables > 0)
 {
-     $valuesVariablesArray = FFI::new("double[2]");
+     $valuesVariablesArray = FFI::new("double[$numberOfVariables]");
      for($iCount = 0; $iCount < $numberOfVariables; $iCount = $iCount + 1)
      {
           $valuesVariablesArray[$iCount] = $values_ar[$iCount];
@@ -108,5 +108,13 @@ if ($call_str == "paceval")
 
         $success = (bool)$paceval_ffi->pacevalLibrary_DeleteComputation($handle_pacevalComputation);
         $success = (bool)$paceval_ffi->pacevalLibrary_Free();
+}
+else
+{
+        echo "EXAMPLE</br>";
+        echo "[1] standard: <a href='https://paceval.dyndns.org/?call=paceval&functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2'>https://<b>paceval</b>.dyndns.org/?<b>call</b>=paceval&<b>functionString</b>=-sin(x*cos(x))^(1/y)&<b>numberOfVariables</b>=2&<b>variables</b>=x;y&<b>values</b>=0.5;2</a></br>";
+        echo "[2] interval: <a href='https://paceval.dyndns.org/?call=paceval&functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes'>https://<b>paceval</b>.dyndns.org/?<b>call</b>=paceval&<b>functionString</b>=-sin(x*cos(x))^(1/y)&<b>numberOfVariables</b>=2&<b>variables</b>=x;y&<b>values</b>=0.5;2&<b>interval</b>=yes</a></br>";
+        echo "REFERENCE</br>";
+        echo "[3] interval: <a href='https://paceval.com/product-brief/'>https://<b>paceval</b>.com/product-brief/</a></br>";
 }
 ?>
