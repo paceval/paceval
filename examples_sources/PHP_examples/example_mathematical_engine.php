@@ -9,7 +9,7 @@
 //   https://paceval.dyndns.org/?call=paceval&functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes
 
 // calculates the function with the specified variables and values and 
-// returns its result (optionally with upper and lower limit) in a json-coded format 
+// returns its result (optionally with upper and lower limit) in a JSON format 
 
 $call_str = $_GET["call"];
 $numberOfVariables = $_GET["numberOfVariables"];
