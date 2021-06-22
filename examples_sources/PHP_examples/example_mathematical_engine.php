@@ -39,11 +39,6 @@ $paceval_ffi = FFI::cdef("
      ",
      "/usr/bin/libpaceval_linux_sharedLIB.so");
 
-$result = FFI::new("double");
-$errorType = FFI::new("int");
-
-$success = (bool) $paceval_ffi->pacevalLibrary_Initialize(null);
-
 if ($numberOfVariables > 0)
 {
      $valuesVariablesArray = FFI::new("double[$numberOfVariables]");
@@ -59,6 +54,10 @@ if ($call_str == "paceval")
 {
         $trustedMinResult = FFI::new("double");
         $trustedMaxResult = FFI::new("double");
+        $result = FFI::new("double");
+        $errorType = FFI::new("int");
+
+        $success = (bool) $paceval_ffi->pacevalLibrary_Initialize(null);
 
         $timeCreate = microtime(true);
         $handle_pacevalComputation = $paceval_ffi->pacevalLibrary_CreateComputation($function_str, $numberOfVariables, $variables_str, $interval, null);

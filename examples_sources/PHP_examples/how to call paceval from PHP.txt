@@ -18,6 +18,7 @@ please contact us at info@paceval.com.
 example-code sniplets for ARM64 which you can easily adopt:
  https://github.com/paceval/paceval/blob/main/examples_sources/PHP_examples/example1.php
  https://github.com/paceval/paceval/blob/main/examples_sources/PHP_examples/example2.php
+ https://github.com/paceval/paceval/blob/main/examples_sources/PHP_examples/example_mathematical_engine.php
 ----------------------------------------------------------------------------------------
 
 <?php
@@ -126,7 +127,7 @@ $success = (bool) $paceval_ffi->pacevalLibrary_Free();
 //   https://paceval.dyndns.org/?call=paceval&functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes
 
 // calculates the function with the specified variables and values and 
-// returns its result (optionally with upper and lower limit) in a JSON format
+// returns its result (optionally with upper and lower limit) in a JSON format 
 
 $call_str = $_GET["call"];
 $numberOfVariables = $_GET["numberOfVariables"];
@@ -156,11 +157,6 @@ $paceval_ffi = FFI::cdef("
      ",
      "/usr/bin/libpaceval_linux_sharedLIB.so");
 
-$result = FFI::new("double");
-$errorType = FFI::new("int");
-
-$success = (bool) $paceval_ffi->pacevalLibrary_Initialize(null);
-
 if ($numberOfVariables > 0)
 {
      $valuesVariablesArray = FFI::new("double[$numberOfVariables]");
@@ -176,6 +172,10 @@ if ($call_str == "paceval")
 {
         $trustedMinResult = FFI::new("double");
         $trustedMaxResult = FFI::new("double");
+        $result = FFI::new("double");
+        $errorType = FFI::new("int");
+
+        $success = (bool) $paceval_ffi->pacevalLibrary_Initialize(null);
 
         $timeCreate = microtime(true);
         $handle_pacevalComputation = $paceval_ffi->pacevalLibrary_CreateComputation($function_str, $numberOfVariables, $variables_str, $interval, null);
