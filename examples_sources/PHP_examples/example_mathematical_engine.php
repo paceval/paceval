@@ -114,6 +114,6 @@ else
         echo "[1] standard: <a href='https://paceval.dyndns.org/?call=paceval&functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2'>https://<b>paceval</b>.dyndns.org/?<b>call</b>=paceval&<b>functionString</b>=-sin(x*cos(x))^(1/y)&<b>numberOfVariables</b>=2&<b>variables</b>=x;y&<b>values</b>=0.5;2</a></br>";
         echo "[2] interval: <a href='https://paceval.dyndns.org/?call=paceval&functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes'>https://<b>paceval</b>.dyndns.org/?<b>call</b>=paceval&<b>functionString</b>=-sin(x*cos(x))^(1/y)&<b>numberOfVariables</b>=2&<b>variables</b>=x;y&<b>values</b>=0.5;2&<b>interval</b>=yes</a></br>";
         echo "REFERENCE</br>";
-        echo "[3] interval: <a href='https://paceval.com/product-brief/'>https://<b>paceval</b>.com/product-brief/</a></br>";
+        echo "[3] paceval.: <a href='https://paceval.com/product-brief/'>https://<b>paceval</b>.com/product-brief/</a></br>";
 }
 ?>
