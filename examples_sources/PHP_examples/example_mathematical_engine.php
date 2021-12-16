@@ -1,21 +1,4 @@
 <?php
-session_start([
-                  //  'cookie_lifetime' => 86400,
-                  'cookie_lifetime' => 0,
-              ]);
-//echo session_id();
-
-if (!isset($_SESSION['count']))
-{
-    $_SESSION['count'] = 1;
-}
-else
-{
-    $_SESSION['count'] = 2;
-}
-
-//echo $_SESSION['count'];
-
 // PHP example a simple mathematical engine, e.g. to offload battery-operated IoT devices
 
 //EXAMPLE URL
