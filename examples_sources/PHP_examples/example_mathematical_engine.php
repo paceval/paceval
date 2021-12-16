@@ -1,4 +1,20 @@
 <?php
+session_start([
+                  //  'cookie_lifetime' => 86400,
+                  'cookie_lifetime' => 0,
+              ]);
+//echo session_id();
+
+if (!isset($_SESSION['count']))
+{
+    $_SESSION['count'] = 1;
+}
+else
+{
+    $_SESSION['count'] = 2;
+}
+
+//echo $_SESSION['count'];
 
 // PHP example a simple mathematical engine, e.g. to offload battery-operated IoT devices
 
@@ -41,15 +57,14 @@ $paceval_ffi = FFI::cdef("
                          bool pacevalLibrary_Initialize(const char* initString_in);
                          bool pacevalLibrary_Free();
                          void* pacevalLibrary_CreateComputation(const char* functionString_in,
-                         unsigned long numberOfVariables_in, const char* variables_in, bool useInterval_in, void* paceval_callbackStatus_in);
+                             unsigned long numberOfVariables_in, const char* variables_in, bool useInterval_in, void* paceval_callbackStatus_in);
                          double pacevalLibrary_dmathv(void* handle_pacevalComputation_out_in, int *errorType_out,
-                         const char* functionString_in, unsigned long numberOfVariables_in, const char* variables_in, double values_in[]);
-                         bool pacevalLibrary_DeleteComputation(void* handle_pacevalComputation_in);
+                             const char* functionString_in, unsigned long numberOfVariables_in, const char* variables_in, double values_in[]);
                          int pacevalLibrary_CreateErrorInformationText(void* handle_pacevalComputation_in, char* lastError_strMessage_out,
-                         char* lastError_strDetails_out);
+                             char* lastError_strDetails_out);
                          double pacevalLibrary_dGetComputationResult(void* handle_pacevalComputation_in, double values_in[],
                          double* trustedMinResult_out, double* trustedMaxResult_out);
-                         bool pacevalLibrary_DeleteComputation(void* handle_pacevalComputation_in);
+                             bool pacevalLibrary_DeleteComputation(void* handle_pacevalComputation_in);
                          ",
                          "/usr/bin/libpaceval_linux_sharedLIB.so");
 
@@ -71,10 +86,13 @@ if ($call_str == "paceval")
     $result = FFI::new("double");
     $errorType = FFI::new("int");
 
+    $handle_pacevalComputation_ptr = FFI::new("void*", true, true);
+
     $success = (bool) $paceval_ffi->pacevalLibrary_Initialize(null);
 
     $timeCreate = microtime(true);
-    $handle_pacevalComputation = $paceval_ffi->pacevalLibrary_CreateComputation($function_str, $numberOfVariables, $variables_str, $interval, null);
+    $handle_pacevalComputation_ptr = $paceval_ffi->pacevalLibrary_CreateComputation($function_str, $numberOfVariables, $variables_str, $interval, null);
+    $handle_pacevalComputation = $handle_pacevalComputation_ptr;
     $timeCreate = microtime(true) - $timeCreate;
 
     $timeCalculate = microtime(true);
@@ -115,7 +133,7 @@ if ($call_str == "paceval")
     $return_arr["time-calculate"] = number_format($timeCalculate, 6, ".", ",") . "s";
     $return_arr["error-message"] = $errorMessage;
     $handle_pacevalComputation_ret = FFI::cast("unsigned long", $handle_pacevalComputation);
-    $return_arr["handle-pacevalComputation"] = $handle_pacevalComputation_ret->cdata;
+    $return_arr["handle_pacevalComputation"] = $handle_pacevalComputation_ret->cdata;
 
     echo json_encode($return_arr);
 
