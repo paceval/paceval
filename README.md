@@ -5,7 +5,7 @@
 https://www.paceval.com<br>
 [paceval-Mathematical Engine-Motivation.pdf](https://github.com/paceval/paceval/files/6521237/paceval-Mathematical.Engine-Motivation.pdf) and
 [paceval-Mathematical Engine-Our solution.pdf](https://github.com/paceval/paceval/files/6521239/paceval-Mathematical.Engine-Our.solution.pdf)<br>
-Download Installer Software Development Kit, https://paceval.com/product-demo/<br>
+Download Installer Software Development Kit, https://paceval.com/product-demo/ or via Github [paceval-Software_Development_Kit.exe](https://github.com/paceval/paceval/raw/main/_released/_Installer%20Software%20Development%20Kit%204.01/paceval-Software_Development_Kit.exe)<br>
 
 “<b>Our goal</b> was to create<br>
 • [fast parallel calculation](https://paceval.com/developers/#fast_parallel_calculation) of mathematical functions<br>
