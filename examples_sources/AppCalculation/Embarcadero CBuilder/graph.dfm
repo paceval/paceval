@@ -849,6 +849,7 @@ object FormGraphForVariable: TFormGraphForVariable
     Align = alLeft
     BevelOuter = bvNone
     Color = clWindow
+    ParentBackground = False
     TabOrder = 0
     OnMouseMove = PaintBoxAreaMouseMove
     DesignSize = (
@@ -893,6 +894,7 @@ object FormGraphForVariable: TFormGraphForVariable
     Align = alTop
     BevelOuter = bvNone
     Color = clWindow
+    ParentBackground = False
     TabOrder = 1
     OnMouseMove = PaintBoxAreaMouseMove
     DesignSize = (
@@ -933,7 +935,7 @@ object FormGraphForVariable: TFormGraphForVariable
       Width = 128
       Height = 13
       Anchors = [akLeft, akTop, akBottom]
-      Caption = 'Copyright 2021. paceval'#174
+      Caption = 'Copyright 2022. paceval'#174
       Color = clWindow
       Font.Charset = ARABIC_CHARSET
       Font.Color = 12874052
@@ -961,6 +963,7 @@ object FormGraphForVariable: TFormGraphForVariable
     Align = alRight
     BevelOuter = bvNone
     Color = clWindow
+    ParentBackground = False
     TabOrder = 3
     OnMouseMove = PaintBoxAreaMouseMove
     DesignSize = (
@@ -1019,27 +1022,14 @@ object FormGraphForVariable: TFormGraphForVariable
       ParentFont = False
     end
     object LabelCalculationTime: TLabel
-      Left = 123
+      Left = 114
       Top = 205
       Width = 19
       Height = 13
       Caption = '0ms'
     end
-    object LabelHintThreadsUsages: TLabel
-      Left = 174
-      Top = 205
-      Width = 92
-      Height = 13
-      Caption = 'Threads usages:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
     object LabelThreadsUsages: TLabel
-      Left = 299
+      Left = 261
       Top = 205
       Width = 6
       Height = 13
@@ -1078,6 +1068,71 @@ object FormGraphForVariable: TFormGraphForVariable
       Font.Style = [fsBold]
       ParentFont = False
       WordWrap = True
+    end
+    object LabelHintThreadsUsages: TLabel
+      Left = 163
+      Top = 205
+      Width = 92
+      Height = 13
+      Caption = 'Threads usages:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LabelHintSystemCores: TLabel
+      Left = 314
+      Top = 205
+      Width = 80
+      Height = 13
+      Caption = 'System cores:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LabelSystemCores: TLabel
+      Left = 400
+      Top = 205
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LabelHintCacheHits: TLabel
+      Left = 451
+      Top = 205
+      Width = 61
+      Height = 13
+      Caption = 'Cache hits:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LabelCacheHits: TLabel
+      Left = 518
+      Top = 205
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object EditMaxFX: TEdit
       Left = 76
@@ -1170,7 +1225,7 @@ object FormGraphForVariable: TFormGraphForVariable
         Transparent = True
       end
       object Label2: TLabel
-        Left = 11
+        Left = 13
         Top = 26
         Width = 68
         Height = 26
@@ -1179,7 +1234,7 @@ object FormGraphForVariable: TFormGraphForVariable
       end
       object LabelErrorMessage: TLabel
         Left = 8
-        Top = 65
+        Top = 62
         Width = 108
         Height = 13
         Caption = 'LabelErrorMessage'
@@ -1409,6 +1464,7 @@ object FormGraphForVariable: TFormGraphForVariable
     Align = alBottom
     BevelOuter = bvNone
     Color = clWindow
+    ParentBackground = False
     TabOrder = 5
     OnMouseMove = PaintBoxAreaMouseMove
     DesignSize = (
@@ -1510,10 +1566,6 @@ object FormGraphForVariable: TFormGraphForVariable
       ParentColor = False
       OnMouseMove = PaintBoxAreaMouseMove
       OnPaint = PaintBoxAreaPaint
-      ExplicitLeft = 104
-      ExplicitTop = 118
-      ExplicitWidth = 409
-      ExplicitHeight = 301
     end
   end
   object TimerPaintBoxAreaRefresh: TTimer

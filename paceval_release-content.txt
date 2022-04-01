@@ -1,5 +1,5 @@
 
-Release-content – paceval.-Software Development Kit [SDK] 4.01
+Release-content – paceval.-Software Development Kit [SDK] 4.04
 developer version – non-commercial use only 
 
 •   "demo and examples" folder
@@ -54,6 +54,9 @@ developer version – non-commercial use only
     - Eclipse/GCC (ARM64 64bit)
     - Eclipse/GCC (ARM32 32bit)
 
+    for Node.js - paceval-service-a Linux server for ARM64, Intel and AMD processors
+    for PHP - a simple mathematical engine, e.g. to offload battery-operated IoT devices and other examples
+
     other programming languages via Foreign function interface (FFI) 
     - .NET
     - ABAP
@@ -66,15 +69,24 @@ developer version – non-commercial use only
     - Go
     - Java
     - Julia
+    - Kotlin (new)
+    - Lua (new)
+    - Maple (new)
     - Mathematica
     - MATLAB
-    - Node.js
+    - Mendix (new)
+    - Node.js (see above)
+    - Octave (new)
     - Pascal
     - Perl
-    - PHP (incl. paceval. example)
+    - PHP (see above)
     - Python
+    - R (new)
     - Ruby
     - Rust
+    - Scratch (new)
+    - Swift (new)
+    - TypeScript (new)
     - Visual Basic
 
-Copyright © 2015-2021 paceval.® All rights reserved.
+Copyright © 2015-2022 paceval.® All rights reserved.

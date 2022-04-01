@@ -1,4 +1,7 @@
 //---------------------------------------------------------------------------
+// Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
+// Copyright 2015-2022. Version 2.x, 3.x, 4.x 2015-2022 paceval.[Registered Trade Mark]
+//                                            All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_example3.cpp
 //---------------------------------------------------------------------------
@@ -13,6 +16,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <time.h>
+
+#if (defined(_WIN32) || defined(_WIN64))
+#include <windows.h>
+#endif
 
 #include "../../system-independent/source_public/inc/paceval_main.h" //We include the paceval header
 
@@ -20,6 +28,7 @@ const char* CreateErrorMessage(char* messageBuffer, int pacevalErrorType, int le
 void CalculateAndPresentFloatExample3();
 void CalculateAndPresentDoubleExample3();
 void CalculateAndPresentLongDoubleExample3();
+unsigned long GetOSCurrentTime();
 
 char functionStr[] = "-sin(x*cos(x))^(1/y)";
 //---------------------------------------------------------------------------
@@ -65,10 +74,14 @@ int main(int argc, char* argv[])
         printf("\nExcerpt from the MSDN : 'Previous(...) versions of Microsoft C / C++ and Microsoft Visual C++ supported");
         printf("\nthe long double, 80-bit precision data type. (...), however, the long double data type");
         printf("\nmaps to the double, 64-bit precision data type.'");
-    }
+    } 
 
     if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL) > 0)
         printf("\n\n[Threads usages: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL));
+    if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL) > 0)
+        printf("\n[Cache hits: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL));
+    printf("\n[Number of cores: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberOfCores", 0, "", NULL));
+    printf("\n[paceval. Version number: %1.3g]", paceval_fmathv(NULL, &errType, "paceval_VersionNumber", 0, "", NULL));
 
     paceval_FreeLibrary();
 
@@ -89,10 +102,11 @@ void CalculateAndPresentFloatExample3()
     float fFastIntegral;
     float fminFastIntegralInterval;
     float fmaxFastIntegralInterval;
-
     int* errorTypes = new int[2*100000];
     bool hasError;
     int errType;
+    unsigned long startTime;
+    unsigned long endTime;
 
     PACEVAL_HANDLE handle_pacevalComputation;
     PACEVAL_HANDLE handle_pacevalComputationi;
@@ -115,9 +129,11 @@ void CalculateAndPresentFloatExample3()
                                  2, "x y", true, NULL);
 
     //Calculate float results
+    startTime = GetOSCurrentTime();
     hasError = paceval_fGetComputationResultExt(handle_pacevalComputation,
                &fvaluesVariablesArrayExt[0], 100000, &fResults[0],
                NULL, NULL, &errorTypes[0]);
+    endTime = GetOSCurrentTime();
 
     fFastIntegral = 0;
     for (unsigned long iCount = 0; iCount < 100000; iCount++)
@@ -126,12 +142,14 @@ void CalculateAndPresentFloatExample3()
             fFastIntegral = fFastIntegral + (fResults[iCount] * fareaDiff);
     }
     paceval_fConvertFloatToString(charBuffer500, fFastIntegral);
-    printf("\n\nfloat: Fast integral is %s (paceval_fGetComputationResultExt)", charBuffer500);
+    printf("\n\nfloat: Fast integral is %s (paceval_fGetComputationResultExt)\n[Time needed: %d ms]", charBuffer500, endTime - startTime);
 
     //Calculate float interval results
+    startTime = GetOSCurrentTime();
     hasError = paceval_fGetComputationResultExt(handle_pacevalComputationi,
                &fvaluesVariablesArrayExt[0], 100000, &fResults[0],
                &fminResultIntervals[0], &fmaxResultIntervals[0], &errorTypes[0]);
+    endTime = GetOSCurrentTime();
 
     fFastIntegral = 0;
     fminFastIntegralInterval = 0;
@@ -150,7 +168,7 @@ void CalculateAndPresentFloatExample3()
     paceval_fConvertFloatToString(charBuffer500, fminFastIntegralInterval);
     printf("\nfloat: Interval min. fast integral is %s (paceval_fGetComputationResultExt with TINC)", charBuffer500);
     paceval_fConvertFloatToString(charBuffer500, fmaxFastIntegralInterval);
-    printf("\nfloat: Interval max. fast integral is %s (paceval_fGetComputationResultExt with TINC)", charBuffer500);
+    printf("\nfloat: Interval max. fast integral is %s (paceval_fGetComputationResultExt with TINC)\n[Time needed: %d ms]", charBuffer500, endTime - startTime);
 
     //Delete the paceval-Computation objects
     paceval_DeleteComputation(handle_pacevalComputation);
@@ -173,10 +191,11 @@ void CalculateAndPresentDoubleExample3()
     double dFastIntegral;
     double dminFastIntegralInterval;
     double dmaxFastIntegralInterval;
-
     int* errorTypes = new int[2*100000];
     bool hasError;
     int errType;
+    unsigned long startTime;
+    unsigned long endTime;
 
     PACEVAL_HANDLE handle_pacevalComputation;
     PACEVAL_HANDLE handle_pacevalComputationi;
@@ -199,9 +218,11 @@ void CalculateAndPresentDoubleExample3()
                                  2, "x y", true, NULL);
 
     //Calculate double results
+    startTime = GetOSCurrentTime();
     hasError = paceval_dGetComputationResultExt(handle_pacevalComputation,
                &dvaluesVariablesArrayExt[0], 100000, &dResults[0],
                NULL, NULL, &errorTypes[0]);
+    endTime = GetOSCurrentTime();
 
     dFastIntegral = 0;
     for (unsigned long iCount = 0; iCount < 100000; iCount++)
@@ -210,12 +231,14 @@ void CalculateAndPresentDoubleExample3()
             dFastIntegral = dFastIntegral + (dResults[iCount] * dareaDiff);
     }
     paceval_dConvertFloatToString(charBuffer500, dFastIntegral);
-    printf("\n\ndouble: Fast integral is %s (paceval_dGetComputationResultExt)", charBuffer500);
+    printf("\n\ndouble: Fast integral is %s (paceval_dGetComputationResultExt)\n[Time needed: %d ms]", charBuffer500, endTime - startTime);
 
     //Calculate double interval results
+    startTime = GetOSCurrentTime();
     hasError = paceval_dGetComputationResultExt(handle_pacevalComputationi,
                &dvaluesVariablesArrayExt[0], 100000, &dResults[0],
                &dminResultIntervals[0], &dmaxResultIntervals[0], &errorTypes[0]);
+    endTime = GetOSCurrentTime();
 
     dFastIntegral = 0;
     dminFastIntegralInterval = 0;
@@ -234,7 +257,7 @@ void CalculateAndPresentDoubleExample3()
     paceval_dConvertFloatToString(charBuffer500, dminFastIntegralInterval);
     printf("\ndouble: Interval min. fast integral is %s (paceval_dGetComputationResultExt with TINC)", charBuffer500);
     paceval_dConvertFloatToString(charBuffer500, dmaxFastIntegralInterval);
-    printf("\ndouble: Interval max. fast integral is %s (paceval_dGetComputationResultExt with TINC)", charBuffer500);
+    printf("\ndouble: Interval max. fast integral is %s (paceval_dGetComputationResultExt with TINC)\n[Time needed: %d ms]", charBuffer500, endTime - startTime);
 
     //Delete the paceval-Computation objects
     paceval_DeleteComputation(handle_pacevalComputation);
@@ -257,10 +280,11 @@ void CalculateAndPresentLongDoubleExample3()
     long double ldFastIntegral;
     long double ldminFastIntegralInterval;
     long double ldmaxFastIntegralInterval;
-
     int* errorTypes = new int[2*100000];
     bool hasError;
     int errType;
+    unsigned long startTime;
+    unsigned long endTime;
 
     PACEVAL_HANDLE handle_pacevalComputation;
     PACEVAL_HANDLE handle_pacevalComputationi;
@@ -283,9 +307,11 @@ void CalculateAndPresentLongDoubleExample3()
                                  2, "x y", true, NULL);
 
     //Calculate long double results
+    startTime = GetOSCurrentTime();
     hasError = paceval_ldGetComputationResultExt(handle_pacevalComputation,
                &ldvaluesVariablesArrayExt[0], 100000, &ldResults[0],
                NULL, NULL, &errorTypes[0]);
+    endTime = GetOSCurrentTime();
 
     ldFastIntegral = 0;
     for (unsigned long iCount = 0; iCount < 100000; iCount++)
@@ -294,12 +320,14 @@ void CalculateAndPresentLongDoubleExample3()
             ldFastIntegral = ldFastIntegral + (ldResults[iCount] * ldareaDiff);
     }
     paceval_ldConvertFloatToString(charBuffer500, ldFastIntegral);
-    printf("\n\nlong double: Fast integral is %s (paceval_ldGetComputationResultExt)", charBuffer500);
+    printf("\n\nlong double: Fast integral is %s (paceval_ldGetComputationResultExt)\n[Time needed: %d ms]", charBuffer500, endTime - startTime);
 
     //Calculate long double interval results
+    startTime = GetOSCurrentTime();
     hasError = paceval_ldGetComputationResultExt(handle_pacevalComputationi,
                &ldvaluesVariablesArrayExt[0], 100000, &ldResults[0],
                &ldminResultIntervals[0], &ldmaxResultIntervals[0], &errorTypes[0]);
+    endTime = GetOSCurrentTime();
 
     ldFastIntegral = 0;
     ldminFastIntegralInterval = 0;
@@ -318,7 +346,7 @@ void CalculateAndPresentLongDoubleExample3()
     paceval_ldConvertFloatToString(charBuffer500, ldminFastIntegralInterval);
     printf("\nlong double: Interval min. fast integral is %s (paceval_ldGetComputationResultExt with TINC)", charBuffer500);
     paceval_ldConvertFloatToString(charBuffer500, ldmaxFastIntegralInterval);
-    printf("\nlong double: Interval max. fast integral is %s (paceval_ldGetComputationResultExt with TINC)", charBuffer500);
+    printf("\nlong double: Interval max. fast integral is %s (paceval_ldGetComputationResultExt with TINC)\n[Time needed: %d ms]", charBuffer500, endTime - startTime);
 
     //Delete the paceval-Computation objects
     paceval_DeleteComputation(handle_pacevalComputation);
@@ -329,6 +357,22 @@ void CalculateAndPresentLongDoubleExample3()
     delete[] ldminResultIntervals;
     delete[] ldmaxResultIntervals;
     delete[] errorTypes;
+}
+
+unsigned long GetOSCurrentTime()
+{
+    unsigned long currentTime;
+
+#if (defined(_WIN32) || defined(_WIN64))
+    currentTime = GetTickCount();
+#else
+    struct timespec struct_timeSpec;
+
+    clock_gettime(CLOCK_REALTIME, &struct_timeSpec);
+    currentTime = struct_timeSpec.tv_sec * 1000 + lround(struct_timeSpec.tv_nsec/1.0e6);
+#endif
+
+    return currentTime;
 }
 
 const char* CreateErrorMessage(char* messageBuffer, int pacevalErrorType, int lengthBuffer)

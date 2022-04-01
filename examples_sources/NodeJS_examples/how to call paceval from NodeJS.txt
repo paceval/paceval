@@ -1,0 +1,27 @@
+How to call paceval.-library functions from NodeJS
+--------------------------------------------------
+
+node-ffi-napi is a Node.js addon for loading and calling dynamic libraries (.DLL or .so) using pure 
+JavaScript. It can be used to create bindings to native libraries without writing any C++ code.
+
+Potentially you will have to change the php.ini to enable FFI
+and to copy the correct library (.DLL or .so) to your file system, 
+e.g. "/usr/bin/libpacevalARM64_sharedLIB.so", see below.
+
+Links & Literature
+[1] https://en.wikipedia.org/wiki/Foreign_function_interface
+[2] https://www.npmjs.com/package/ffi-napi
+
+In case the following example-code does not work for you,
+please contact us at info@paceval.com.
+
+example-code for Windows, Linux and ARM64 which you can easily adopt:
+
+/paceval-service/paceval-server.js - paceval-service is a Linux server for ARM64, Intel and AMD processors 
+to perform mathematical calculations on a remote computer or server. paceval-service is based on the 
+mathematical engine paceval., which is fully described on the homepage https://paceval.com.
+
+... also on Docker:
+1. https://hub.docker.com/repository/docker/paceval/paceval-service
+2. https://hub.docker.com/repository/docker/paceval/paceval-service-arm64
+----------------------------------------------------------------------------------------

@@ -1,4 +1,7 @@
 //---------------------------------------------------------------------------
+// Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
+// Copyright 2015-2022. Version 2.x, 3.x, 4.x 2015-2022 paceval.[Registered Trade Mark]
+//                                            All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_example4.cpp
 //---------------------------------------------------------------------------
@@ -71,9 +74,13 @@ int main(int argc, char* argv[])
         printf("\nthe long double, 80-bit precision data type. (...), however, the long double data type");
         printf("\nmaps to the double, 64-bit precision data type.'");
     }
-
+ 
     if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL) > 0)
         printf("\n\n[Threads usages: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL));
+    if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL) > 0)
+        printf("\n[Cache hits: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL));
+    printf("\n[Number of cores: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberOfCores", 0, "", NULL));
+    printf("\n[paceval. Version number: %1.3g]", paceval_fmathv(NULL, &errType, "paceval_VersionNumber", 0, "", NULL));
 
     paceval_FreeLibrary();
 

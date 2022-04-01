@@ -924,7 +924,7 @@ object FormGraphForVariable: TFormGraphForVariable
       Width = 128
       Height = 13
       Anchors = [akLeft, akTop, akBottom]
-      Caption = 'Copyright 2021. paceval®'
+      Caption = 'Copyright 2022. paceval®'
       Font.Charset = ARABIC_CHARSET
       Font.Color = 12874052
       Font.Height = -11
@@ -1004,27 +1004,14 @@ object FormGraphForVariable: TFormGraphForVariable
       ParentFont = False
     end
     object LabelCalculationTime: TLabel
-      Left = 123
+      Left = 114
       Top = 205
       Width = 19
       Height = 13
       Caption = '0ms'
     end
-    object LabelHintThreadsUsages: TLabel
-      Left = 174
-      Top = 205
-      Width = 92
-      Height = 13
-      Caption = 'Threads usages:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
     object LabelThreadsUsages: TLabel
-      Left = 299
+      Left = 261
       Top = 205
       Width = 6
       Height = 13
@@ -1063,6 +1050,71 @@ object FormGraphForVariable: TFormGraphForVariable
       Font.Style = [fsBold]
       ParentFont = False
       WordWrap = True
+    end
+    object LabelHintThreadsUsages: TLabel
+      Left = 163
+      Top = 205
+      Width = 92
+      Height = 13
+      Caption = 'Threads usages:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LabelHintSystemCores: TLabel
+      Left = 314
+      Top = 205
+      Width = 80
+      Height = 13
+      Caption = 'System cores:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LabelSystemCores: TLabel
+      Left = 400
+      Top = 205
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LabelHintCacheHits: TLabel
+      Left = 451
+      Top = 205
+      Width = 61
+      Height = 13
+      Caption = 'Cache hits:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LabelCacheHits: TLabel
+      Left = 518
+      Top = 205
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object EditMaxFX: TEdit
       Left = 76

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
-// Copyright 2015-2021. Version 2.x, 3.x, 4.x 2015-2021 paceval.[Registered Trade Mark]
+// Copyright 2015-2022. Version 2.x, 3.x, 4.x 2015-2022 paceval.[Registered Trade Mark]
 //                                            All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_main.h
@@ -11,7 +11,7 @@
 #define paceval_mainH
 
 #define paceval_mainVersionString   "4"
-#define paceval_subVersionString    "01"
+#define paceval_subVersionString    "04" //"01"
 
 #define PACEVAL_MAXVER	255
 #define PACEVAL_MAXERR	255
@@ -59,6 +59,8 @@ enum paceval_eErrorTypes
     PACEVAL_ERR_ANALYSIS_UNKNOWN_OBJECT_TYPE = 124,
     PACEVAL_ERR_ANALYSIS_MEMORY_CLEANUP = 126,
     PACEVAL_ERR_ANALYSIS_USER_ABORT = 127,
+    PACEVAL_ERR_ANALYSIS_MATH_OS_NOT_SUPPORTED = 128,
+    PACEVAL_ERR_ANALYSIS_NO_COMMUNITY_FEATURE = 130,
     PACEVAL_ERR_ANALYSIS_END,
     PACEVAL_ERR_COMPUTATION_BEGIN,
     PACEVAL_ERR_COMPUTATION_HANDLE_INVALID = 140,

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
-// Copyright 2015-2021. Version 2.x, 3.x, 4.x 2015-2021 paceval.[Registered Trade Mark]
+// Copyright 2015-2022. Version 2.x, 3.x, 4.x 2015-2022 paceval.[Registered Trade Mark]
 //                                            All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_main.cpp
@@ -837,7 +837,12 @@ extern "C" bool paceval_FreeLibrary()
     else
         return false;
 #else
-    return true;
+    {
+        bool retVal;
+
+        retVal = pacevalLibrary_Free();
+        return retVal;
+    }
 #endif //defined(paceval_use_dll)
 }
 

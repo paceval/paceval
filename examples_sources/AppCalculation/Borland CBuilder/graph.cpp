@@ -10,10 +10,10 @@
 
 #include <Grids.hpp>
 
-#if (__BORLANDC__ <= 0x650)
+#if (__BORLANDC__ == 0x550)
 #else
 #include <Vcl.Controls.hpp>
-#endif //#if (__BORLANDC__)
+#endif //#if (__BORLANDC__ == 0x520)
 
 #include "graph.h"
 
@@ -292,6 +292,12 @@ void __fastcall TFormGraphForVariable::FormShow(TObject *Sender)
 
     LabelThreadsUsages->Caption = String((long)(paceval_dmathv(NULL, &errType,
                                          "paceval_NumberThreadUsages", 0, "", NULL)));
+
+    LabelSystemCores->Caption = String((long)(paceval_dmathv(NULL, &errType,
+                                       "paceval_NumberOfCores", 0, "", NULL)));
+
+    LabelCacheHits->Caption = String((long)(paceval_dmathv(NULL, &errType,
+                                            "paceval_NumberCacheHitsACC", 0, "", NULL)));
 }
 //---------------------------------------------------------------------------
 
@@ -822,6 +828,12 @@ void __fastcall TFormGraphForVariable::TimerPaintBoxAreaRefreshTimer(
 
     LabelThreadsUsages->Caption = String((long)(paceval_dmathv(NULL, &errType,
                                          "paceval_NumberThreadUsages", 0, "", NULL)));
+
+    LabelSystemCores->Caption = String((long)(paceval_dmathv(NULL, &errType,
+                                       "paceval_NumberOfCores", 0, "", NULL)));
+
+    LabelCacheHits->Caption = String((long)(paceval_dmathv(NULL, &errType,
+                                            "paceval_NumberCacheHitsACC", 0, "", NULL)));
 }
 //---------------------------------------------------------------------------
 
@@ -832,6 +844,8 @@ void __fastcall TFormGraphForVariable::PaintBoxAreaPaint(TObject *Sender)
     TimerPaintBoxAreaRefresh->Enabled = true;
 
     LabelCalculationTime->Caption = "updating";
+    LabelThreadsUsages->Caption = "updating";
+    LabelCacheHits->Caption = "updating";
 }
 //---------------------------------------------------------------------------
 

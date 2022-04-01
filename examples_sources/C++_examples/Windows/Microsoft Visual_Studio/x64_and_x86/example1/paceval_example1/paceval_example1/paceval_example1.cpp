@@ -1,4 +1,7 @@
 //---------------------------------------------------------------------------
+// Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
+// Copyright 2015-2022. Version 2.x, 3.x, 4.x 2015-2022 paceval.[Registered Trade Mark]
+//                                            All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_example1.cpp
 //---------------------------------------------------------------------------
@@ -38,13 +41,13 @@ int main(int argc, char* argv[])
         return 0;
     }
 
-    printf("\n| This demo application shows the capabilities of paceval. in terms of |");
-    printf("\n| its computational excellence. Please examine its calculation power   |");
-    printf("\n| and speed for a formula without limitations in length and number of  |");
-    printf("\n| variables and use standard mathematical notations.                   |");
-    printf("\n| In addition, it demonstrates how precise and reliable paceval.       |");
-    printf("\n| works. The trusted interval computation 'TINC' shows an interval     |");
-    printf("\n| within the true results can be found.                                |");
+    printf("\n| This demo application shows the capabilities of paceval. with        |");
+    printf("\n| with reference to its computational excellence. Please check its     |");
+    printf("\n| its computing power and speed for a mathematical function with no    |");
+    printf("\n| limitations in length and in the number of Variables. Use standard   |");
+    printf("\n| mathematical notations. In addition, In addition, it shows how       |");
+    printf("\n| precise and reliable paceval. is. The trusted interval computation   |");
+    printf("\n| 'TINC' shows an interval within the true results are.                |");
     printf("\n|                                                                      |");
     printf("\n| see http://paceval.com/product-brief for the supported terms - e.g.  |");
     printf("\n| sin(x)*y+4.356                                                       |");
@@ -162,6 +165,9 @@ int main(int argc, char* argv[])
 
     if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL) > 0)
         printf("\n\n[Threads usages: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL));
+    if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL) > 0)
+        printf("\n[Cache hits: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL));
+    printf("\n[Number of cores: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberOfCores", 0, "", NULL));
 
     paceval_FreeLibrary();
 

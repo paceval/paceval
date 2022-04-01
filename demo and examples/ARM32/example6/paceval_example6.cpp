@@ -1,4 +1,7 @@
 //---------------------------------------------------------------------------
+// Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
+// Copyright 2015-2022. Version 2.x, 3.x, 4.x 2015-2022 paceval.[Registered Trade Mark]
+//                                            All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_example6.cpp
 //---------------------------------------------------------------------------
@@ -12,9 +15,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include <iostream>
 #include <fstream>
+
+#if (defined(_WIN32) || defined(_WIN64))
+#include <windows.h>
+#endif
 
 #include "../../system-independent/source_public/inc/paceval_main.h" //We include the paceval header
 
@@ -30,6 +38,7 @@ void CalculateAndPresentDoubleExample6(PACEVAL_HANDLE handle_pacevalComputations
                                        const char* fileForInference, unsigned long numberOfVariables_in);
 void CalculateAndPresentLongDoubleExample6(PACEVAL_HANDLE handle_pacevalComputations_in[],
         const char* fileForInference, unsigned long numberOfVariables_in);
+unsigned long paceval_getOSCurrentTime();
 bool paceval_callbackStatus(const PACEVAL_HANDLE handle_pacevalComputation_in,
                             const paceval_eStatusTypes paceval_eStatus_in, const int percentageDone_in);
 
@@ -63,11 +72,14 @@ int main(int argc, char* argv[])
     }
 
     printf("\n| This demo application shows the capabilities of paceval. in terms of |");
-    printf("\n| its features for simultaneous calculations and neural networks.      |");
+    printf("\n| its functionality for simultaneous calculations and artificial       |");
+    printf("\n| neural networks.                                                     |");
     printf("\n| Please open the source code file paceval_example6.cpp.               |");
 
-    printf("\n\nFor 10 functions identifying handwritten numbers 0-9.");
-    printf("\nEach function is >920.000 characters and uses 784 variables.\n");
+    printf("\n\nThe handwritten numbers 0-9 are identified with 10 functions that");
+    printf("\n\ndescribe the artificial neural network.");
+    printf("\nEach function is> 770,000 characters long and uses 784 variables that ");
+    printf("\nrepresent 28x28 pixels in the image.\n");
 
     std::ofstream fileToWrite;
     fileToWrite.open("paceval_example6 reads and writes here.txt");
@@ -111,7 +123,7 @@ int main(int argc, char* argv[])
 
                 if (paceval_GetIsError(handle_pacevalComputationsArray[iCount]) == true)
                 {
-                    printf("\n -- error in creating paceval-Computation objects");
+                    PrintErrorMessage(handle_pacevalComputationsArray[iCount]);
                     success = false;
                 }
 
@@ -192,6 +204,11 @@ int main(int argc, char* argv[])
 
     if (success == true)
     {
+        printf("\n\nClick RETURN twice to start inferences for 3 images each with float, double and long double.");
+
+        while ((getchar()) != '\n') {}
+        while ((getchar()) != '\n') {}
+
         printf("\n\n_____________________________________________");
         printf("\nStart inference on the picture 'image01'");
         printf("\nwith float, double and long double precision:");
@@ -256,6 +273,7 @@ int main(int argc, char* argv[])
             printf("\n\n[Threads usages: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL));
         if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL) > 0)
             printf("\n[Cache hits: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL));
+        printf("\n[Number of cores: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberOfCores", 0, "", NULL));
 
         for (unsigned int iCount = 0; iCount < 10; iCount++)
         {
@@ -288,6 +306,8 @@ void CalculateAndPresentFloatExample6(PACEVAL_HANDLE handle_pacevalComputations_
         unsigned int cCount;
         unsigned int fCount;
         long errPosition;
+        unsigned long startTime;
+        unsigned long endTime;
 
         float* fvaluesVariablesArray = new float[numberOfVariables_in];
         float* fResults = new float[10];
@@ -322,10 +342,12 @@ void CalculateAndPresentFloatExample6(PACEVAL_HANDLE handle_pacevalComputations_
         delete[] readValuesStr;
 
         //Calculate float results
+        startTime = paceval_getOSCurrentTime();
         hasError = paceval_fGetMultipleComputationsResults(handle_pacevalComputations_in,
                    10, &fvaluesVariablesArray[0],
                    &fResults[0], NULL, NULL,
                    &errorTypes[0]);
+        endTime = paceval_getOSCurrentTime();
 
         for (unsigned int iCount = 0; iCount < 10; iCount++)
         {
@@ -339,9 +361,9 @@ void CalculateAndPresentFloatExample6(PACEVAL_HANDLE handle_pacevalComputations_
                                            fResults[5], fResults[6], fResults[7], fResults[8], fResults[9]);
 
         if (imageIdentifiedAs > 0)
-            printf("\n   Picture identified as number '%d'.", imageIdentifiedAs - 1);
+            printf("\n   Picture identified as number '%d'. [Time needed: %d ms]", imageIdentifiedAs - 1, endTime - startTime);
         else
-            printf("\n   No number identified in the picture.");
+            printf("\n   No number identified in the picture. [Time needed: %d ms]", endTime - startTime);
 
         delete[] fvaluesVariablesArray;
         delete[] fResults;
@@ -373,6 +395,8 @@ void CalculateAndPresentDoubleExample6(PACEVAL_HANDLE handle_pacevalComputations
         unsigned int cCount;
         unsigned int fCount;
         long errPosition;
+        unsigned long startTime;
+        unsigned long endTime;
 
         double* dvaluesVariablesArray = new double[numberOfVariables_in];
         double* dResults = new double[10];
@@ -407,10 +431,12 @@ void CalculateAndPresentDoubleExample6(PACEVAL_HANDLE handle_pacevalComputations
         delete[] readValuesStr;
 
         //Calculate double results
+        startTime = paceval_getOSCurrentTime();
         hasError = paceval_dGetMultipleComputationsResults(handle_pacevalComputations_in,
                    10, &dvaluesVariablesArray[0],
                    &dResults[0], NULL, NULL,
                    &errorTypes[0]);
+        endTime = paceval_getOSCurrentTime();
 
         for (unsigned int iCount = 0; iCount < 10; iCount++)
         {
@@ -424,9 +450,9 @@ void CalculateAndPresentDoubleExample6(PACEVAL_HANDLE handle_pacevalComputations
                                            dResults[5], dResults[6], dResults[7], dResults[8], dResults[9]);
 
         if (imageIdentifiedAs > 0)
-            printf("\n   Picture identified as number '%d'.", imageIdentifiedAs - 1);
+            printf("\n   Picture identified as number '%d'. [Time needed: %d ms]", imageIdentifiedAs - 1, endTime - startTime);
         else
-            printf("\n   No number identified in the picture.");
+            printf("\n   No number identified in the picture. [Time needed: %d ms]", endTime - startTime);
 
         delete[] dvaluesVariablesArray;
         delete[] dResults;
@@ -458,6 +484,8 @@ void CalculateAndPresentLongDoubleExample6(PACEVAL_HANDLE handle_pacevalComputat
         unsigned int fCount;
         int errType;
         long errPosition;
+        unsigned long startTime;
+        unsigned long endTime;
 
         long double* ldvaluesVariablesArray = new long double[numberOfVariables_in];
         long double* ldResults = new long double[10];
@@ -492,10 +520,12 @@ void CalculateAndPresentLongDoubleExample6(PACEVAL_HANDLE handle_pacevalComputat
         delete[] readValuesStr;
 
         //Calculate long double results
+        startTime = paceval_getOSCurrentTime();
         hasError = paceval_ldGetMultipleComputationsResults(handle_pacevalComputations_in,
                    10, &ldvaluesVariablesArray[0],
                    &ldResults[0], NULL, NULL,
                    &errorTypes[0]);
+        endTime = paceval_getOSCurrentTime();
 
         for (unsigned int iCount = 0; iCount < 10; iCount++)
         {
@@ -509,9 +539,9 @@ void CalculateAndPresentLongDoubleExample6(PACEVAL_HANDLE handle_pacevalComputat
                                             ldResults[5], ldResults[6], ldResults[7], ldResults[8], ldResults[9]);
 
         if (imageIdentifiedAs > 0)
-            printf("\n   Picture identified as number '%d'.", imageIdentifiedAs - 1);
+            printf("\n   Picture identified as number '%d'. [Time needed: %d ms]", imageIdentifiedAs - 1, endTime - startTime);
         else
-            printf("\n   No number identified in the picture.");
+            printf("\n   No number identified in the picture. [Time needed: %d ms]", endTime - startTime);
 
         delete[] ldvaluesVariablesArray;
         delete[] ldResults;
@@ -646,6 +676,22 @@ const char* CreateErrorMessage(char* messageBuffer, int pacevalErrorType, int le
     delete[] errMessage;
 
     return messageBuffer;
+}
+
+unsigned long paceval_getOSCurrentTime()
+{
+    unsigned long currentTime;
+
+#if (defined(_WIN32) || defined(_WIN64))
+    currentTime = GetTickCount();
+#else
+    struct timespec struct_timeSpec;
+
+    clock_gettime(CLOCK_REALTIME, &struct_timeSpec);
+    currentTime = struct_timeSpec.tv_sec * 1000 + lround(struct_timeSpec.tv_nsec/1.0e6);
+#endif
+
+    return currentTime;
 }
 
 bool paceval_callbackStatus(const PACEVAL_HANDLE handle_pacevalComputation_in,

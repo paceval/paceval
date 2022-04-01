@@ -41,7 +41,6 @@ __published:	// IDE-managed Components
     TLabel *LabelHintCalculationTime;
     TLabel *LabelCalculationTime;
     TEdit *EditPaintBoxAreaPrecision;
-    TLabel *LabelHintThreadsUsages;
     TLabel *LabelThreadsUsages;
     TLabel *Label3;
     TLabel *Label4;
@@ -64,6 +63,11 @@ __published:	// IDE-managed Components
     TLabel *LabelErrorMessage;
     TLabel *Label7;
     TLabel *LabelStatusTINC;
+    TLabel *LabelHintThreadsUsages;
+    TLabel *LabelHintSystemCores;
+    TLabel *LabelSystemCores;
+    TLabel *LabelHintCacheHits;
+    TLabel *LabelCacheHits;
     void __fastcall ButtonExitClick(TObject *Sender);
     void __fastcall ButtonUpClick(TObject *Sender);
     void __fastcall ButtonDownClick(TObject *Sender);

@@ -90,6 +90,8 @@ void TpacevalFormMainCalculation::DataChangedForCalculation()
     LabelLength->Caption = String(RichEditFunction->Text.Length());
     LabelCreationTime->Caption = "0ms";
     LabelThreadsUsages->Caption = "0";
+    LabelSystemCores->Caption = "0";
+    LabelCacheHits->Caption = "0";
     LabelCalculationTime->Caption = "0ms";
     RichEditInformation->Clear();
 }
@@ -132,6 +134,82 @@ bool paceval_callbackUserFunction1(const int useCalculationPrecision_in,
     {
         *resultAsFloat =
             sin(*valueFieldAsFloat) * cos(*valueFieldAsFloat);
+
+        return true;
+    }
+    }
+
+    return false;
+}
+
+bool paceval_callbackUserFunction2(const int useCalculationPrecision_in,
+                                   const long double* valueFieldAsLongDouble,
+                                   long double* resultAsLongDouble,
+                                   const double* valueFieldAsDouble,
+                                   double* resultAsDouble,
+                                   const float* valueFieldAsFloat,
+                                   float* resultAsFloat)
+{
+    switch (useCalculationPrecision_in)
+    {
+    case PACEVAL_CALCULATION_PRECISION_LONG_DOUBLE:
+    {
+        *resultAsLongDouble =
+            sinl(*valueFieldAsLongDouble) * cosl(*valueFieldAsLongDouble) + 1;
+
+        return true;
+    }
+    break;
+    case PACEVAL_CALCULATION_PRECISION_DOUBLE:
+    {
+        *resultAsDouble =
+            sin(*valueFieldAsDouble) * cos(*valueFieldAsDouble) + 1;
+
+        return true;
+    }
+    break;
+    case PACEVAL_CALCULATION_PRECISION_FLOAT:
+    {
+        *resultAsFloat =
+            sin(*valueFieldAsFloat) * cos(*valueFieldAsFloat) + 1;
+
+        return true;
+    }
+    }
+
+    return false;
+}
+
+bool paceval_callbackUserFunction3(const int useCalculationPrecision_in,
+                                   const long double* valueFieldAsLongDouble,
+                                   long double* resultAsLongDouble,
+                                   const double* valueFieldAsDouble,
+                                   double* resultAsDouble,
+                                   const float* valueFieldAsFloat,
+                                   float* resultAsFloat)
+{
+    switch (useCalculationPrecision_in)
+    {
+    case PACEVAL_CALCULATION_PRECISION_LONG_DOUBLE:
+    {
+        *resultAsLongDouble =
+            sinl(*valueFieldAsLongDouble) * cosl(*valueFieldAsLongDouble) + 2;
+
+        return true;
+    }
+    break;
+    case PACEVAL_CALCULATION_PRECISION_DOUBLE:
+    {
+        *resultAsDouble =
+            sin(*valueFieldAsDouble) * cos(*valueFieldAsDouble) + 2;
+
+        return true;
+    }
+    break;
+    case PACEVAL_CALCULATION_PRECISION_FLOAT:
+    {
+        *resultAsFloat =
+            sin(*valueFieldAsFloat) * cos(*valueFieldAsFloat) + 2;
 
         return true;
     }
@@ -257,7 +335,7 @@ void __fastcall TpacevalFormMainCalculation::doCreate_pacevalCalculation()
     }
 }
 
-void __fastcall TpacevalFormMainCalculation::doCalculate_pacevalCalculation()
+void __fastcall TpacevalFormMainCalculation::doCalculate_pacevalCalculation(bool creationIncluded)
 {
     long double ldResult;
     double dResult;
@@ -367,6 +445,8 @@ void __fastcall TpacevalFormMainCalculation::doCalculate_pacevalCalculation()
     if (ctime == 0)
         ctime = ctime + 1;
     LabelCalculationTime->Caption = "<" + String(ctime) + "ms";
+    if (creationIncluded == false)
+        LabelCreationTime->Caption = "0 ms (because not needed)";
 
     if (paceval_GetIsError(handle_pacevalComputation))
     {
@@ -435,6 +515,8 @@ void __fastcall TpacevalFormMainCalculation::doCalculate_pacevalCalculation()
 void __fastcall TpacevalFormMainCalculation::ButtonCreateCalculateClick(
     TObject *Sender)
 {
+    bool creationIncluded = false;
+
     RichEditInformation->Lines->Clear();
 
     if (CBEnableLogging->Checked)
@@ -451,6 +533,7 @@ void __fastcall TpacevalFormMainCalculation::ButtonCreateCalculateClick(
         if (paceval_GetIsError(handle_pacevalComputation) == false)
         {
             ButtonCreateCalculate->Caption = "Calculate - computation object is created";
+            creationIncluded = true;
         }
     }
 
@@ -468,7 +551,7 @@ void __fastcall TpacevalFormMainCalculation::ButtonCreateCalculateClick(
         if ((paceval_GetIsError(handle_pacevalComputation) == false) ||
                 ((errType >= PACEVAL_ERR_COMPUTATION_BEGIN) && (errType <= PACEVAL_ERR_COMPUTATION_END)))
         {
-            doCalculate_pacevalCalculation();
+            doCalculate_pacevalCalculation(creationIncluded);
         }
 
         lengthXML = paceval_GetComputationInformationXML(handle_pacevalComputation,
@@ -979,12 +1062,16 @@ void __fastcall TpacevalFormMainCalculation::FormShow(TObject *Sender)
         RadioButtonFloat->Checked = false;
     }
 
-    RichEditIntroduction->Text = "This demo application shows the capabilities of paceval. in terms of its computational excellence. Please, examine its calculation power and speed for a formula without limitations in length and number of variables and use standard mathematical notations.\r";
+    RichEditIntroduction->Text = "This demo application shows the possibilities of paceval. in terms of its computational excellence. Please check the computing power and speed for a mathematical function. There are no restrictions on the length and number of variables in paceval. Use standard mathematical notations to enter the function.";
     RichEditIntroduction->Text = RichEditIntroduction->Text
-                                 + "In addition, it demonstrates how precise and reliable paceval. works. The trusted interval computation \"TINC\" shows an interval within the true results can be found. And, finally, you can draw the function for a selected variable.";
+                                 + "\r\nIn addition, it shows how precise and reliable paceval. is. The trusted interval computation \"TINC\" shows an interval in which the true result is. And finally you can plot the function for a selected variable.";
 
     success = paceval_SetCallbackUserFunction(1, "my_function1",
               paceval_callbackUserFunction1);
+    success = paceval_SetCallbackUserFunction(2, "my_function2",
+              paceval_callbackUserFunction2);
+    success = paceval_SetCallbackUserFunction(3, "my_function3",
+              paceval_callbackUserFunction3);
 
     handle_pacevalVersionComputation = NULL;
     pacevalVersionNumber = paceval_fmathv(&handle_pacevalVersionComputation, &errType,
@@ -1004,6 +1091,15 @@ void __fastcall TpacevalFormMainCalculation::FormShow(TObject *Sender)
     {
         strcpy(pacevalVersionString, "[Error in detecting version.]");
     }
+
+    if (errType != PACEVAL_ERR_NO_ERROR)
+    {
+        char charBuffer500[500];
+
+        CreateErrorMessage(charBuffer500, errType, 500);
+        MessageBox(Handle, charBuffer500, "Error during creation", MB_ICONINFORMATION);
+    }
+
     LabelVersionString->Caption = pacevalVersionString;
     delete[] pacevalVersionString;
 
@@ -1139,6 +1235,9 @@ void __fastcall TpacevalFormMainCalculation::PageControlMainChanging(
 
     LabelSystemCores->Caption = String((long)(paceval_dmathv(NULL, &errType,
                                        "paceval_NumberOfCores", 0, "", NULL)));
+
+    LabelCacheHits->Caption = String((long)(paceval_dmathv(NULL, &errType,
+                                            "paceval_NumberCacheHitsACC", 0, "", NULL)));
 }
 //---------------------------------------------------------------------------
 
@@ -1259,6 +1358,29 @@ void __fastcall TpacevalFormMainCalculation::RichEditInformationChange(
 
         startPos = RichEditInformation->FindTextA("<", endPos,
                    RichEditInformation->Text.Length(), searchType);
+    }
+
+    if (RichEditInformation->FindTextA("[Error #", 0,
+                                       RichEditInformation->Text.Length(), searchType) > -1)
+    {
+        LabelHintInformation->Font->Color = clRed;
+
+        startPos = RichEditInformation->FindTextA("<errorMessage>", 0,
+                   RichEditInformation->Text.Length(), searchType);
+        endPos = RichEditInformation->FindTextA("</errorDetails>", 0,
+                                                RichEditInformation->Text.Length(), searchType);
+
+        if ((startPos > -1) && (endPos > -1))
+        {
+            endPos = endPos + strlen("</errorDetails>");;
+            RichEditInformation->SelStart = startPos;
+            RichEditInformation->SelLength = endPos - startPos;
+            RichEditInformation->SelAttributes->Color = clRed;
+        }
+    }
+    else
+    {
+        LabelHintInformation->Font->Color = clBlack;
     }
 
     startPos = RichEditInformation->FindTextA("<function50Characters>", 0,

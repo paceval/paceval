@@ -12,14 +12,11 @@
 #include <jpeg.hpp>
 #include <Dialogs.hpp>
 #include <OleCtrls.hpp>
-#include <Buttons.hpp>
-#include <Graphics.hpp>
-#include <Grids.hpp>
-#include <Menus.hpp>
-#if (__BORLANDC__ <= 0x650)
 #include <vcfi.hpp>
-#else
-#endif //#if (__BORLANDC__)
+#include <Menus.hpp>
+#include <Grids.hpp>
+#include <Graphics.hpp>
+#include <Buttons.hpp>
 //---------------------------------------------------------------------------
 
 class TpacevalFormMainCalculation : public TForm
@@ -121,6 +118,8 @@ __published:
     TLabel *Label7;
     TLabel *LabelNumberOfVariables;
     TLabel *Label14;
+    TLabel *LabelHintCacheHits;
+    TLabel *LabelCacheHits;
     void __fastcall ButtonExitClick(TObject *Sender);
     void __fastcall RichEditFunctionChange(TObject *Sender);
     void __fastcall FormCreate(TObject *Sender);
@@ -160,7 +159,7 @@ private:
     paceval_eCalculationPrecisionTypes precisionType;
 
     void __fastcall doCreate_pacevalCalculation();
-    void __fastcall doCalculate_pacevalCalculation();
+    void __fastcall doCalculate_pacevalCalculation(bool creationHandled);
     bool OpenFilename(const char* fileName);
     void ResetVariablesAndValuesGrid();
 
