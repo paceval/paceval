@@ -105,8 +105,8 @@ developer version – non-commercial use only
     - Swift<br>
     - Visual Basic<br>
 
-![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2021/06/mathematical_model.jpg)<br>
-![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2021/06/mathematical_engine.jpg)
+![10019436_l-e1442994613885 2](http://paceval.com/wp-content/uploads/2022/04/mathematical_model.jpg)<br>
+![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2022/04/mathematical_engine.jpg)
 
 Copyright © 2015-2022 paceval.® All rights reserved.<br>
 mailto:info@paceval.com
