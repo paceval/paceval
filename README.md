@@ -74,7 +74,6 @@ developer version – non-commercial use only
     - Eclipse/GCC (Linux 64bit)<br>
     - Eclipse/GCC (ARM64 64bit)<br>
     - Eclipse/GCC (ARM32 32bit)<br>
-    
     for Node.js - paceval-service-a Linux server for ARM64, Intel and AMD processors<br>
     for PHP - a simple mathematical engine, e.g. to offload battery-operated IoT devices and other examples<br>
     
