@@ -17,7 +17,7 @@ Download Installer Software Development Kit, https://paceval.com/product-demo/ o
 • with [any programming language](https://paceval.com/api/#any_programming_language)<br>
 to compute [all financial, stochastic, engineering, and scientific functions](https://paceval.com/product-brief/#all_functions), as well as [all machine learning models](https://paceval.com/product-brief/#all_functions).”<br>
 
-<b>Release-content – paceval.-Software Development Kit [SDK] 4.01</b><br>
+<b>Release-content – paceval.-Software Development Kit [SDK] 4.04</b><br>
 developer version – non-commercial use only 
 
 •   <b>["demo and examples"](https://github.com/paceval/paceval/tree/main/demo%20and%20examples) folder<br></b>
@@ -37,6 +37,9 @@ developer version – non-commercial use only
     includes the presentations<br>
     - "Mathematical Engine - Motivation"<br>
     - "Mathematical Engine - Our solution"<br>
+    - "paceval-service - a Linux server for ARM64 processors (includes Raspberry Pi)"<br>
+    - "paceval-service - a Linux server for x86 processors (Intel and AMD)"<br>
+    - "Vision Paper - Add capabilities of complex and precise mathematical functions to a database"<br>
 
 •   <b>["paceval libraries"](https://github.com/paceval/paceval/tree/main/paceval%20libraries) folder<br></b>
     includes the system-independent C++ header and C++ file<br>
