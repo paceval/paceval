@@ -143,16 +143,16 @@ function handleGETandPOST(req, res)
         {
             var function_str = req.query.functionString;
             numberOfVariables = parseInt(req.query.numberOfVariables);
-            var variables_str = req.query.variables.replace(';', ' ');
-            values_ar = JSON.parse("[" + req.query.values.replace(';', ',') + "]");
+            var variables_str = req.query.variables.replace(/;/g, ' ');
+            values_ar = JSON.parse("[" + req.query.values.replace(/;/g, ',') + "]");
             var interval_str = req.query.interval;
         }
         else if (req.body.call != null) //POST
         {
             var function_str = req.body.functionString;
             numberOfVariables = parseInt(req.body.numberOfVariables);
-            var variables_str = req.body.variables.replace(';', ' ');
-            values_ar = JSON.parse("[" + req.body.values.replace(';', ',') + "]");
+            var variables_str = req.body.variables.replace(/;/g, ' ');
+            values_ar = JSON.parse("[" + req.body.values.replace(/;/g, ',') + "]");
             var interval_str = req.body.interval;
         }
 
@@ -162,9 +162,9 @@ function handleGETandPOST(req, res)
     else
     {
         if (req.query.call != null) //GET
-            values_ar = JSON.parse("[" + req.query.values.replace(';', ',') + "]");
+            values_ar = JSON.parse("[" + req.query.values.replace(/;/g, ',') + "]");
         else if (req.body.call != null) //POST
-            values_ar = JSON.parse("[" + req.body.values.replace(';', ',') + "]");
+            values_ar = JSON.parse("[" + req.body.values.replace(/;/g, ',') + "]");
     }
 
     var ArrayType = require('ref-array-napi');
