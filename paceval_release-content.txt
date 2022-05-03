@@ -19,6 +19,9 @@ developer version – non-commercial use only
     includes the presentations
     - "Mathematical Engine - Motivation"
     - "Mathematical Engine - Our solution"
+    - "paceval-service - a Linux server for ARM64 processors (includes Raspberry Pi)"
+    - "paceval-service - a Linux server for x86 processors (Intel and AMD)"
+    - "Vision Paper - Add capabilities of complex and precise mathematical functions to a database"
 
 •   "paceval libraries" folder
     includes the system-independent C++ header and C++ file
@@ -54,7 +57,7 @@ developer version – non-commercial use only
     - Eclipse/GCC (ARM64 64bit)
     - Eclipse/GCC (ARM32 32bit)
 
-    for Node.js - paceval-service-a Linux server for ARM64, Intel and AMD processors
+    for Node.js - paceval-service-a Linux and Windows server for ARM64, Intel and AMD processors
     for PHP - a simple mathematical engine, e.g. to offload battery-operated IoT devices and other examples
 
     other programming languages via Foreign function interface (FFI) 
