@@ -19,13 +19,12 @@ example-code for Linux which you can easily adopt:
 paceval-service is a Linux server for ARM64, Intel and AMD processors 
 to perform mathematical calculations on a remote computer or server. paceval-service is based on the 
 mathematical engine paceval., which is fully described on the homepage https://paceval.com.
-1. /Linux/paceval-service_Linux_x64 - Linux server for Intel and AMD (64bit)
-2. /Linux/paceval-service_Linux_arm64 - Linux server for ARM64 (64bit)
-3. /Windows/paceval-service_Windows_x64 - Windows server for Intel and AMD (64bit)
+1. /Linux/paceval-service_Linux_x64 - Linux server for Intel and AMD
+2. /Linux/paceval-service_Linux_arm64 - Linux server for ARM64
 Annotation: You can easily run the server in the directory with "npm start", see https://docs.npmjs.com/cli/v7/commands/npm-start 
 You need node version 12 and higher, see https://computingforgeeks.com/how-to-install-nodejs-on-ubuntu-debian-linux-mint/
 
 ... also on Docker:
-1. https://hub.docker.com/repository/docker/paceval/paceval-service (Linux server for Intel and AMD)
-2. https://hub.docker.com/repository/docker/paceval/paceval-service-arm64 (Linux server for ARM64)
+1. https://hub.docker.com/repository/docker/paceval/paceval-service_linux_x64 - Linux server for Intel and AMD
+2. https://hub.docker.com/repository/docker/paceval/paceval-service_linux_arm64 - Linux server for ARM64
 ----------------------------------------------------------------------------------------
