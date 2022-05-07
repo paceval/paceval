@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
         printf("\nExcerpt from the MSDN : 'Previous(...) versions of Microsoft C / C++ and Microsoft Visual C++ supported");
         printf("\nthe long double, 80-bit precision data type. (...), however, the long double data type");
         printf("\nmaps to the double, 64-bit precision data type.'");
-    } 
+    }
 
     if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL) > 0)
         printf("\n\n[Threads usages: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL));
