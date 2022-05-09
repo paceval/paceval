@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require('express');
 const app = express();
 const ffi = require('ffi-napi');
@@ -11,6 +13,17 @@ var pacevalComputations_arr = [];
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+function logHeapUsed()
+{
+    const field = "heapUsed";
+    const mu = process.memoryUsage();
+    //number of bytes / KB
+    const kbNow = mu[field] / 1024;
+    const kbRounded = Math.round(kbNow * 100) / 100;
+ 
+    console.log(`Heap allocated ${kbRounded} KB`);
+}
 
 function pacevalLibraryName()
 {
@@ -145,7 +158,7 @@ function handleGETandPOST(req, res)
             var function_str = req.query.functionString;
             numberOfVariables = parseInt(req.query.numberOfVariables);
             var variables_str = req.query.variables.replace(/;/g, ' ');
-            values_ar = JSON.parse("[" + req.query.values.replace(/;/g, ',') + "]");
+            var values_ar = JSON.parse("[" + req.query.values.replace(/;/g, ',') + "]");
             var interval_str = req.query.interval;
         }
         else if (req.body.call != null) //POST
@@ -153,7 +166,7 @@ function handleGETandPOST(req, res)
             var function_str = req.body.functionString;
             numberOfVariables = parseInt(req.body.numberOfVariables);
             var variables_str = req.body.variables.replace(/;/g, ' ');
-            values_ar = JSON.parse("[" + req.body.values.replace(/;/g, ',') + "]");
+            var values_ar = JSON.parse("[" + req.body.values.replace(/;/g, ',') + "]");
             var interval_str = req.body.interval;
         }
 
@@ -202,8 +215,8 @@ function handleGETandPOST(req, res)
         }
     }
 
-    valuesVariablesArray = new doubleArray(numberOfVariables);
-    for (iCount = 0; iCount < numberOfVariables; iCount++)
+    var valuesVariablesArray = new doubleArray(numberOfVariables);
+    for (var iCount = 0; iCount < numberOfVariables; iCount++)
     {
         valuesVariablesArray[iCount] = values_ar[iCount];
     }
@@ -307,6 +320,8 @@ function handleGETandPOST(req, res)
    
         console.log(`deletion timer prolonged by 1 hour for paceval. computation handle_pacevalComputation: ${handle_pacevalComputation.address()}`);
     }
+
+    logHeapUsed();
 };
 
 app.get('/', (req, res) =>
@@ -324,5 +339,6 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () =>
 {
     console.log(`paceval. server listening on port ${PORT}...`);
+    logHeapUsed();
 });
 
