@@ -115,6 +115,7 @@ function handleGETandPOST(req, res)
     var numberOfVariables = 0;
     var function10chars = '';
     var functionLength = 0;
+    var interval = false;
 
     if (handle_pacevalComputation_str != null)
     {
@@ -157,7 +158,7 @@ function handleGETandPOST(req, res)
         }
 
         if ((interval_str == "yes") || (interval_str == "true"))
-            var interval = true;
+            interval = true;
     }
     else
     {
@@ -186,8 +187,10 @@ function handleGETandPOST(req, res)
         'pacevalLibrary_CreateComputation': [ 'pointer', [ 'string', 'uint32', 'string', 'int', 'pointer' ] ],
         'pacevalLibrary_GetIsError': [ 'bool', [ 'pointer' ] ],
         'pacevalLibrary_dmathv': [ 'double', [ 'pointer', intPtr , 'string', 'uint32', 'string', doubleArray ] ],
+
         'pacevalLibrary_CreateErrorInformationText': [ 'int', [ 'pointer', 'char*', 'char*' ] ],
         'pacevalLibrary_dGetComputationResult': [ 'double', [ 'pointer', doubleArray , doublePtr , doublePtr ] ],
+        'pacevalLibrary_dConvertFloatToString': [ 'int', [ 'pointer', double ] ],
         'pacevalLibrary_DeleteComputation': [ 'bool', [ 'pointer' ] ]
     });
 
@@ -208,6 +211,9 @@ function handleGETandPOST(req, res)
     var trustedMinResult = ref.alloc('double');
     var trustedMaxResult = ref.alloc('double');
     var timeCreate = 0;
+    var result_str = Buffer.alloc(25, 0, "ascii");
+    var trustedMinResult_str = Buffer.alloc(25, 0, "ascii");
+    var trustedMaxResult_str = Buffer.alloc(25, 0, "ascii");
 
     if (existingComputation == false)
     {
@@ -229,8 +235,15 @@ function handleGETandPOST(req, res)
         var result = paceval_ffi.pacevalLibrary_dGetComputationResult(handle_pacevalComputation,
                      valuesVariablesArray, trustedMinResult, trustedMaxResult);
         timeCalculate = (now() - timeCalculate) / 1000;
-
+      
         isError = paceval_ffi.pacevalLibrary_GetIsError(handle_pacevalComputation);
+        var success = paceval_ffi.pacevalLibrary_dConvertFloatToString(result_str, result);
+
+        if (interval == true)
+        {
+            success = paceval_ffi.pacevalLibrary_dConvertFloatToString(trustedMinResult_str, trustedMinResult.deref());
+            success = paceval_ffi.pacevalLibrary_dConvertFloatToString(trustedMaxResult_str, trustedMaxResult.deref());
+        }
     }
     else
         var timeCalculate = 0;
@@ -255,12 +268,13 @@ function handleGETandPOST(req, res)
     var threadUsages = paceval_ffi.pacevalLibrary_dmathv(null, errorType, 'paceval_NumberThreadUsages', 0, "", null);
     var cacheHitsACC = paceval_ffi.pacevalLibrary_dmathv(null, errorType, "paceval_NumberCacheHitsACC", 0, "", null);
     var numberOfCores = paceval_ffi.pacevalLibrary_dmathv(null, errorType, "paceval_NumberOfCores", 0, "", null);
+    var versionNumber = paceval_ffi.pacevalLibrary_dmathv(null, errorType, "paceval_VersionNumber", 0, "", null);
 
     var return_arr =
     {
-        "result": result,
-        "interval-min-result": trustedMinResult.deref(),
-        "interval-max-result": trustedMaxResult.deref(),
+        "result": result_str.toString().replace(/\0/g, ''),
+        "interval-min-result": trustedMinResult_str.toString().replace(/\0/g, ''),
+        "interval-max-result": trustedMaxResult_str.toString().replace(/\0/g, ''),
         "function-10chars": function10chars,
         "function-length": functionLength,
         "error-type": errorDetails_str.toString().replace(/\0/g, ''),
@@ -271,7 +285,8 @@ function handleGETandPOST(req, res)
         "time-create": timeCreate.toFixed(6) + "s",
         "time-calculate": timeCalculate.toFixed(6) + "s",
         "error-message": errorMessage_str.toString().replace(/\0/g, ''),
-        "handle_pacevalComputation": handle_pacevalComputation_addr
+        "handle_pacevalComputation": handle_pacevalComputation_addr,
+        "version-number": versionNumber
     };
 
     res.setHeader('Content-Type', 'application/json');

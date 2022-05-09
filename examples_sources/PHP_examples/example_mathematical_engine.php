@@ -35,6 +35,7 @@ $paceval_ffi = FFI::cdef("
     	  char* lastError_strDetails_out);
      double pacevalLibrary_dGetComputationResult(void* handle_pacevalComputation_in, double values_in[],
           double* trustedMinResult_out, double* trustedMaxResult_out);
+     int pacevalLibrary_dConvertFloatToString(char* destinationString_in, double float_in);
      bool pacevalLibrary_DeleteComputation(void* handle_pacevalComputation_in);
      ",
      "/usr/bin/libpaceval_linux_sharedLIB.so");
@@ -56,6 +57,7 @@ if ($call_str == "paceval")
         $trustedMaxResult = FFI::new("double");
         $result = FFI::new("double");
         $errorType = FFI::new("int");
+        $value_str = FFI::new("char[25]");
 
         $success = (bool) $paceval_ffi->pacevalLibrary_Initialize(null);
 
@@ -67,12 +69,17 @@ if ($call_str == "paceval")
 	$result = $paceval_ffi->pacevalLibrary_dGetComputationResult($handle_pacevalComputation, $valuesVariablesArray,
      		FFI::addr($trustedMinResult), FFI::addr($trustedMaxResult));
         $timeCalculate = microtime(true) - $timeCalculate; 
-        $return_arr["result"] = $result;
+
+        $success = (int) $paceval_ffi->pacevalLibrary_dConvertFloatToString(FFI::addr($value_str[0]), $result);
+        $return_arr["result"] = FFI::string($value_str);
 
         if ($interval == true)
         {
-            	$return_arr["interval-min-result"] = $trustedMinResult->cdata;
-		$return_arr["interval-max-result"] = $trustedMaxResult->cdata;
+                $success = (int) $paceval_ffi->pacevalLibrary_dConvertFloatToString(FFI::addr($value_str[0]), $trustedMinResult->cdata);
+                $return_arr["interval-min-result"] = FFI::string($value_str);
+		
+                $success = (int) $paceval_ffi->pacevalLibrary_dConvertFloatToString(FFI::addr($value_str[0]), $trustedMaxResult->cdata);
+                $return_arr["interval-max-result"] = FFI::string($value_str);
         }
 
         $functionLength = strlen($function_str);
@@ -102,6 +109,9 @@ if ($call_str == "paceval")
         $return_arr["error-message"] = $errorMessage;
         $handle_pacevalComputation_ret = FFI::cast("unsigned long", $handle_pacevalComputation);
         $return_arr["handle-pacevalComputation"] = $handle_pacevalComputation_ret->cdata;
+
+        $versionNumber = $paceval_ffi->pacevalLibrary_dmathv(null, FFI::addr($errorType), "paceval_VersionNumber", 0, "", null);
+        $return_arr["version-number"] = $versionNumber;
 
         echo json_encode($return_arr);
 
