@@ -41,19 +41,17 @@ int main(int argc, char* argv[])
         return 0;
     }
 
-    printf("\n| This demo application shows the capabilities of paceval. with        |");
-    printf("\n| with reference to its computational excellence. Please check its     |");
-    printf("\n| its computing power and speed for a mathematical function with no    |");
-    printf("\n| limitations in length and in the number of Variables. Use standard   |");
-    printf("\n| mathematical notations. In addition, In addition, it shows how       |");
-    printf("\n| precise and reliable paceval. is. The trusted interval computation   |");
-    printf("\n| 'TINC' shows an interval within the true results are.                |");
+    printf("\n| This very simple demo application shows the possibilities of         |");
+    printf("\n| paceval. in terms of its computational excellence. Use the simple    |");
+    printf("\n| mathematical notation and only a few lines of source code. The       |");
+    printf("\n| trusted interval computation 'TINC' shows the interval in which the  |");
+    printf("\n| true result is.                                                      |");
     printf("\n|                                                                      |");
     printf("\n| see http://paceval.com/product-brief for the supported terms - e.g.  |");
     printf("\n| sin(x)*y+4.356                                                       |");
 
     printf("\n\nEnter a function to solve: f(x,y)=");
-    scanf("%500s", functionStr);
+    scanf("%500s", functionStr);    //There is no function length limit in paceval., you could extend the 500 characters
 
     printf("\n\nDo you want to use Interval arithmetic [y/n]?");
     answerChar = getchar();

@@ -17,7 +17,7 @@ Download Installer Software Development Kit, https://paceval.com/product-demo/ o
 • with [any programming language](https://paceval.com/api/#any_programming_language)<br>
 to compute [all financial, stochastic, engineering, and scientific functions](https://paceval.com/product-brief/#all_functions), as well as [all machine learning models](https://paceval.com/product-brief/#all_functions).”<br>
 
-<b>Release-content – paceval.-Software Development Kit [SDK] 4.04</b><br>
+<b>Release-content – paceval.-Software Development Kit [SDK] 4.04a</b><br>
 developer version – non-commercial use only 
 
 •   <b>["demo and examples"](https://github.com/paceval/paceval/tree/main/demo%20and%20examples) folder<br></b>
