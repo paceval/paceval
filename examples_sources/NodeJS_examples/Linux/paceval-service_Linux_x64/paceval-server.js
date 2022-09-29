@@ -374,7 +374,7 @@ function handleCreateComputation(req, res, senddata_in)
     {
         console.log(`1 hour deletion timer created for computation handle_pacevalComputation: ${handle_pacevalComputation.address()}`);
         console.log(`number of active computations: ${numberOfActiveComputations}`);
-        console.log(`array size: ${position}`);
+        console.log(`array size: ${pacevalComputations_arr.length}`);
     }
     
     logMemoryUsed();
