@@ -660,10 +660,10 @@ function handleGetComputationResultExt(req, res)
     if (versionNumber == 0)
         versionNumber = pacevalLibrary_ffi.pacevalLibrary_dmathv(null, errorType, 'paceval_VersionNumber', 0, '', null);
 
-    let resultsArray_ar = [];
-    let trustedMinResultsArray_ar = [];
-    let trustedMaxResultsArray_ar = [];
-    let errorTypesArray_ar = [];
+    let resultsArray_ar = new Array(numberOfCalculations);
+    let trustedMinResultsArray_ar = new Array(numberOfCalculations);
+    let trustedMaxResultsArray_ar = new Array(numberOfCalculations);
+    let errorTypesArray_ar = new Array(numberOfCalculations);
     let result_str = Buffer.alloc(25, 0, 'ascii');
     let trustedMinResult_str = Buffer.alloc(25, 0, 'ascii');
     let trustedMaxResult_str = Buffer.alloc(25, 0, 'ascii');
@@ -675,35 +675,35 @@ function handleGetComputationResultExt(req, res)
     for (iCount = 0; iCount < numberOfCalculations; iCount++)
     {       
         errorTypeInt = errorTypesArray.readInt32LE(iCount * 4 /*int 4 bytes*/);
-        errorTypesArray_ar.push( errorTypeInt );
+        errorTypesArray_ar[iCount] = errorTypeInt;
 
         if (errorTypeInt == 0) //no error
         {
             success = pacevalLibrary_ffi.pacevalLibrary_dConvertFloatToString(result_str, resultsArray.readDoubleLE(iCount * 8 /*double 8 bytes*/)); 
             stringToAdd = result_str.toString().replace(/\0/g, ''); 
-            resultsArray_ar.push( stringToAdd );
+            resultsArray_ar[iCount] = stringToAdd;
             result_str.fill(0);
 
             if (interval == true)
             {
                 success = pacevalLibrary_ffi.pacevalLibrary_dConvertFloatToString(trustedMinResult_str, trustedMinResultsArray.readDoubleLE(iCount * 8 /*double 8 bytes*/));   
                 stringToAdd = trustedMinResult_str.toString().replace(/\0/g, ''); 
-                trustedMinResultsArray_ar.push( stringToAdd );
+                trustedMinResultsArray_ar[iCount] = stringToAdd;
                 trustedMinResult_str.fill(0);
 
                 success = pacevalLibrary_ffi.pacevalLibrary_dConvertFloatToString(trustedMaxResult_str, trustedMaxResultsArray.readDoubleLE(iCount * 8 /*double 8 bytes*/));   
                 stringToAdd = trustedMaxResult_str.toString().replace(/\0/g, ''); 
-                trustedMaxResultsArray_ar.push( stringToAdd );
+                trustedMaxResultsArray_ar[iCount] = stringToAdd;
                 trustedMaxResult_str.fill(0);
             }
         }
         else
         {
-            resultsArray_ar.push('');
+            resultsArray_ar[iCount] = '';
             if (interval == true)
             {
-                trustedMinResultsArray_ar.push('');
-                trustedMaxResultsArray_ar.push('');
+                trustedMinResultsArray_ar[iCount] = '';
+                trustedMaxResultsArray_ar[iCount] = '';
             }
         }
     }
