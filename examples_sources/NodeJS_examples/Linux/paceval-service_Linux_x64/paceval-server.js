@@ -1131,7 +1131,7 @@ function handleGetErrorInformation(req, res)
         'error-type-number': errorTypeNumer,
         'error-position': errorPositionLong,
         'error-operator': errorOperator_str.toString().replace(/\0/g, ''),
-        'error-details': errorDetails_str.toString().replace(/\0/g, ''),
+        'error-type': errorDetails_str.toString().replace(/\0/g, ''),
         'error-message': errorMessage_str.toString().replace(/\0/g, ''),
         'version-number': versionNumber
     }; 
