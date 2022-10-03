@@ -421,7 +421,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":115649680,\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-details\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.04}"
+                    "value" : "{\"handle_pacevalComputation\":115649680,\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -455,7 +455,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":119406224,\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-details\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.04}"
+                    "value" : "{\"handle_pacevalComputation\":119406224,\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -868,7 +868,7 @@
           "error-message" : {
             "type" : "string"
           },
-          "error-details" : {
+          "error-type" : {
             "type" : "string"
           },
           "hasError" : {
