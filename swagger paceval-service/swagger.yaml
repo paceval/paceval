@@ -637,7 +637,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"number-of-multiple-computations\":2,\"handle_pacevalComputations\":[117867040,118054176],\"results\":[\"-44.384908\",\"-90.372854\"],\"interval-min-results\":[\"-44.384908\",\"-90.372854\"],\"interval-max-results\":[\"-44.384908\",\"-90.372854\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000676s\",\"version-number\":4.04}"
+                    "value" : "{\"number-of-multiple-computations\":2,\"handle_pacevalComputations\":[117867040,118054176],\"hasError\":false,\"results\":[\"-44.384908\",\"-90.372854\"],\"interval-min-results\":[\"-44.384908\",\"-90.372854\"],\"interval-max-results\":[\"-44.384908\",\"-90.372854\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000676s\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -701,7 +701,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"number-of-multiple-computations\":2,\"handle_pacevalComputations\":[117867040,118054176],\"results\":[\"-44.384908\",\"-90.372854\"],\"interval-min-results\":[\"-44.384908\",\"-90.372854\"],\"interval-max-results\":[\"-44.384908\",\"-90.372854\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000360s\",\"version-number\":4.04}"
+                    "value" : "{\"number-of-multiple-computations\":2,\"handle_pacevalComputations\":[117867040,118054176],\"hasError\":false,\"results\":[\"-44.384908\",\"-90.372854\"],\"interval-min-results\":[\"-44.384908\",\"-90.372854\"],\"interval-max-results\":[\"-44.384908\",\"-90.372854\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000360s\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -952,6 +952,9 @@
             "items" : {
               "type" : "integer"
             }
+          },
+          "hasError" : {
+            "type" : "boolean"
           },
           "error-type-numbers" : {
             "type" : "array",
