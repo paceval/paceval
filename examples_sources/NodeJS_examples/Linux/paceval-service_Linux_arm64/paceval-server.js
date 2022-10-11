@@ -743,6 +743,7 @@ function handleGetComputationResultExt(req, res)
 function handleGetMultipleComputationsResults(req, res)
 {
     let existingComputation = false;
+    let hasError = false;
     let isError = false;
     let numberOfComputations = 0; 
     let numberOfVariables = 0;
@@ -866,12 +867,12 @@ function handleGetMultipleComputationsResults(req, res)
     let timeCalculate = now(true);
     if (interval == false)
     {
-        success = pacevalLibrary_ffi.pacevalLibrary_dGetMultipleComputationsResults(handle_pacevalComputationsArray, numberOfComputations,
+        hasError = pacevalLibrary_ffi.pacevalLibrary_dGetMultipleComputationsResults(handle_pacevalComputationsArray, numberOfComputations,
             valuesVariablesArray, resultsArray, null, null, errorTypesArray);
     }
     else
     {
-        success = pacevalLibrary_ffi.pacevalLibrary_dGetMultipleComputationsResults(handle_pacevalComputationsArray, numberOfComputations,
+        hasError = pacevalLibrary_ffi.pacevalLibrary_dGetMultipleComputationsResults(handle_pacevalComputationsArray, numberOfComputations,
             valuesVariablesArray, resultsArray, trustedMinResultsArray, trustedMaxResultsArray, errorTypesArray);
     }
     timeCalculate = (now() - timeCalculate) / 1000;
@@ -930,6 +931,7 @@ function handleGetMultipleComputationsResults(req, res)
     { 
         'number-of-multiple-computations': numberOfComputations, 
         'handle_pacevalComputations': handle_pacevalComputation_str_ar,
+        'hasError': hasError,
         'results': resultsArray_ar,
         'interval-min-results': trustedMinResultsArray_ar,
         'interval-max-results': trustedMaxResultsArray_ar,
