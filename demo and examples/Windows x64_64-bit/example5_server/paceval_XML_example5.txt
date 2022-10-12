@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<paceval.-Data>
+<version>4.04</version>
+
+<function>
+-sin(x*cos(x))^(1/y)</function>
+
+<numberOfVariables>2</numberOfVariables>
+<useInterval>true</useInterval>
+
+<variable number="1">
+<name>x</name>
+<value>0.5 2</value>
+</variable>
+<variable number="2">
+<name>y</name>
+<value></value>
+</variable>
+</paceval.-Data>
