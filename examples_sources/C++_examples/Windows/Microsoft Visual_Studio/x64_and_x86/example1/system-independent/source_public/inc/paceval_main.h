@@ -298,7 +298,7 @@ bool paceval_ldGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_
                                        long double* results_out,
                                        long double* trustedMinResults_out,
                                        long double* trustedMaxResults_out,
-                                       int* errorType_out);
+                                       int* errorTypes_out);
 
 //---------------------------------------------------------------------------
 //  paceval_dGetComputationResultExt
@@ -310,7 +310,7 @@ bool paceval_dGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_i
                                       double* results_out,
                                       double* trustedMinResults_out,
                                       double* trustedMaxResults_out,
-                                      int* errorType_out);
+                                      int* errorTypes_out);
 
 //---------------------------------------------------------------------------
 //  paceval_fGetComputationResultExt
@@ -322,7 +322,7 @@ bool paceval_fGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_i
                                       float* results_out,
                                       float* trustedMinResults_out,
                                       float* trustedMaxResults_out,
-                                      int* errorType_out);
+                                      int* errorTypes_out);
 
 //---------------------------------------------------------------------------
 //  paceval_ldGetMultipleComputationsResults

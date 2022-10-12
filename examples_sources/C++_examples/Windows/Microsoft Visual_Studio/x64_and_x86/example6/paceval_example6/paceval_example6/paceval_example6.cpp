@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
     printf("\n| Please open the source code file paceval_example6.cpp.               |");
 
     printf("\n\nThe handwritten numbers 0-9 are identified with 10 functions that");
-    printf("\n\ndescribe the artificial neural network.");
+    printf("\ndescribe the artificial neural network.");
     printf("\nEach function is> 770,000 characters long and uses 784 variables that ");
     printf("\nrepresent 28x28 pixels in the image.\n");
 
