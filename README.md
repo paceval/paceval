@@ -25,7 +25,7 @@ developer version – non-commercial use only
     - paceval. demo application “calculation” (folder "AppCalculation")<br>
     - 6 paceval examples (folder "example1" to "example6")<br>
     for <br>
-    - Windows 64bit<br>
+    - Windows 64bit (including paceval_server)<br>
     - Windows 32bit<br>
     - macOS 64bit<br>
     - Linux 64bit<br>
@@ -67,7 +67,7 @@ developer version – non-commercial use only
     examples (see "demo and examples" folder)<br>
     for C++ and compilers<br>
     - Apple Xcode (64bit)<br>
-    - Microsoft Visual Studio (Windows 64bit and 32bit)<br>
+    - Microsoft Visual Studio (Windows 64bit and 32bit) (including paceval_server)<br>
     - Embarcadero CBuilder (Windows 64bit and 32bit)<br>
     - Borland CBuilder (Windows 32bit)<br>
     - Eclipse/GCC+Mingw-w64 (Windows 64bit)<br>
