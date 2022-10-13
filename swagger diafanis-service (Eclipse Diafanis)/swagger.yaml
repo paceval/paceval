@@ -1,26 +1,26 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "paceval-service - the Mathematical Engine as a Service (e.g. for multi-party computations)",
-    "description" : "# WHY DO I NEED A MATHEMATICAL ENGINE?\n\nMany IoT solutions require **complex mathematical calculations to work correctly or make decisions**. This can be a self-flying drone or a car that evaluates objects in recorded videos or images **in real time during flight**. \nThese IoT devices do not have the computing power to perform such mathematical calculations themselves. Or these IoT solutions, because they are battery powered, can't even do the **intensive math calculations because that consumes battery time**.\n\n**This Mathematical Engine as a Service** provides a powerful and fast **remote math coprocessor service for IoT devices** based on a Linux server for x86 (Intel and AMD) or ARM64 (e.g. Raspberry Pi or APPLE M1/M2) processors.\nEquipped with a simple interface, it will allow IoT devices to perform complex mathematical operations remotely and very quickly, thus **avoiding increasing electrical consumption in IoT devices**.\n\n\n# HOW CAN I USE CALCULATIONS WITH THIS MATHEMATICAL ENGINE?\n\nTo create a calculation the IoT device simply calls the following URL:\n\n<a href=\"http://paceval-service.com/Demo/?functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes\">http://paceval-service.com/Demo/?functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes</a> \n\nThis creates a calculation object for the function \"-sin(x*cos(x))^(1/y)\" and immediately performs the calculation with the \"2\" variables \"x; y\" for the values \"0.5; 2\". Variables and values are always separated by a \";\". With \"interval=yes\" it is indicated that **in addition to the computer-precise calculation, the upper and lower interval of the calculation is also given**. The exact value of the calculation is then in this interval.\n\nOf course you can specify any mathematical function and any number of variables and also other and longer variable names. :)\n\nIn addition, with the calculation you receive a reference to the generated calculation object for the function. From now on you can simply use this reference to get calculations for further values. **References are valid for 1 hour**, which is extended to 1 hour from the time of access each time a reference is accessed. If only the reference to a calculation object is used, the sometimes very long function does not have to be passed every time. **That saves time and computing power.**\nFor example, if you have received a reference \"handle_Computation: **115626720**\", simply call up the following URL for a further calculation with the values 0.46577 for x and 2.61 for y:\n<br><a href=\"http://paceval-service.com/GetComputationResult/?handle_pacevalComputation=115626720&values=0.46577;2.61\">http://paceval-service.com/GetComputationResult/?handle_pacevalComputation=<b>115626720</b>&values=0.46577;2.61</a> \n\nYou can also run cUrl instructions with your command line or your IoT device directly on our test server (paceval-service.com), like the following:\n\n**GET –**\n\ncurl -X GET -k \"http://paceval-service.com:80/Demo/?functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes\"\n\nor **POST –**\n\ncurl --data \"functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes\" -X POST http://paceval-service.com:80/Demo/\n\n**Note:** Use the correct encoding in the functionString in the URL (GET) and data (POST) (e.g. replace the ‘+’ character with ‘%2B’).\n\n\nThis allows you to **perform complex calculations of any length and with any number of variables on the server**. Please note that this is our test server. :) This test server is a 4-core ARM64 Linux server with only 4GB of memory, although it's pretty fast.\n\n# HOW CAN I GET THIS MATHEMATICAL ENGINE ON MY DEVICE?\n\nJust run this command line in the terminal to get and start the service with Docker:\n\n- LINUX FOR x86 PROCESSORS (Intel and AMD)\n\n**sudo docker pull paceval/paceval-service_linux_x64:latest**\n\n**sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_x64**\n\n- LINUX FOR ARM64 PROCESSORS (e.g. Raspberry Pi or APPLE M1/M2)\n\n**sudo docker pull paceval/paceval-service_linux_arm64:latest**  \n\n**sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_arm64**",
+    "title" : "Eclipse Diafanis - the Mathematical Engine as a Service (e.g. for multi-party computations)",
+    "description" : "# WHY DO I NEED A MATHEMATICAL ENGINE?\n\nMany IoT solutions require **complex mathematical calculations to work correctly or make decisions**. This can be a self-flying drone or a car that evaluates objects in recorded videos or images **in real time during flight**. \nThese IoT devices do not have the computing power to perform such mathematical calculations themselves. Or these IoT solutions, because they are battery powered, can't even do the **intensive math calculations because that consumes battery time**.\n\n**This Mathematical Engine as a Service** provides a powerful and fast **remote math coprocessor service for IoT devices** based on a Linux server for x86 (Intel and AMD) or ARM64 processors.\nEquipped with a simple interface, it will allow IoT devices to perform complex mathematical operations remotely and very quickly, thus **avoiding increasing electrical consumption in IoT devices**.\n\n\n# HOW CAN I USE CALCULATIONS WITH THIS MATHEMATICAL ENGINE?\n\nTo create a calculation the IoT device simply calls the following URL:\n\n<a href=\"http://diafanis.cloud/Demo/?functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes\">http://diafanis.cloud/Demo/?functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes</a> \n\nThis creates a calculation object for the function \"-sin(x*cos(x))^(1/y)\" and immediately performs the calculation with the \"2\" variables \"x; y\" for the values \"0.5; 2\". Variables and values are always separated by a \";\". With \"interval=yes\" it is indicated that **in addition to the computer-precise calculation, the upper and lower interval of the calculation is also given**. The exact value of the calculation is then in this interval.\n\nOf course you can specify any mathematical function and any number of variables and also other and longer variable names. :)\n\nIn addition, with the calculation you receive a reference to the generated calculation object for the function. From now on you can simply use this reference to get calculations for further values. **References are valid for 1 hour**, which is extended to 1 hour from the time of access each time a reference is accessed. If only the reference to a calculation object is used, the sometimes very long function does not have to be passed every time. **That saves time and computing power.**\nFor example, if you have received a reference \"handle_Computation: **115626720**\", simply call up the following URL for a further calculation with the values 0.46577 for x and 2.61 for y:\n<br><a href=\"http://diafanis.cloud/GetComputationResult/?handle_diafanisComputation=115626720&values=0.46577;2.61\">http://diafanis.cloud/GetComputationResult/?handle_diafanisComputation=<b>115626720</b>&values=0.46577;2.61</a> \n\nYou can also run cUrl instructions with your command line or your IoT device directly on our test server (http://diafanis.cloud), like the following:\n\n**GET –**\n\ncurl -X GET -k \"http://diafanis.cloud:80/Demo/?functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes\"\n\nor **POST –**\n\ncurl --data \"functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes\" -X POST http://diafanis.cloud:80/Demo/\n\n**Note:** Use the correct encoding in the functionString in the URL (GET) and data (POST) (e.g. replace the ‘+’ character with ‘%2B’).\n\n\nThis allows you to **perform complex calculations of any length and with any number of variables on the server**. Please note that this is our test server. :) This test server is a 4-core ARM64 Linux server with only 4GB of memory, although it's pretty fast.\n\n# HOW CAN I GET THIS MATHEMATICAL ENGINE ON MY DEVICE?\n\nJust run this command line in the terminal to get and start the service with Docker:\n\n- LINUX FOR x86 PROCESSORS (Intel and AMD)\n\n**sudo docker pull diafanis/diafanis-service_linux_x64:latest**\n\n**sudo docker run -p 8080:8080 -d diafanis/diafanis-service_linux_x64**\n\n- LINUX FOR ARM64 PROCESSORS (e.g. Raspberry Pi or APPLE M1/M2)\n\n**sudo docker pull diafanis/diafanis-service_linux_arm64:latest**  \n\n**sudo docker run -p 8080:8080 -d diafanis/diafanis-service_linux_arm64**",
     "contact" : {
-      "name" : "paceval.",
-      "url" : "https://paceval.com",
-      "email" : "info@paceval.com"
+      "name" : "diafanis",
+      "url" : "https://app.swaggerhub.com/apis/diafanis/mathematical-engine_as_a_service/4.04",
+      "email" : "info@diafanis.cloud"
     },
     "version" : "4.04"
   },
   "externalDocs" : {
-    "description" : "https://paceval.com/api/",
-    "url" : "https://paceval.com/product-demo/"
+    "description" : "https://projects.eclipse.org/projects/iot.diafanis/developer",
+    "url" : "https://projects.eclipse.org/projects/iot.diafanis"
   },
   "servers" : [ {
-    "url" : "http://paceval-service.com"
+    "url" : "http://diafanis.cloud"
   } ],
   "paths" : {
     "/Demo/" : {
       "get" : {
-        "description" : "<b>This function call is for demo purposes only. It creates a remote calculation and if the creation was successful, this function returns the calculation result.</b> <br>I.e., it calls /paceval_CreateComputation and /GetComputationResult in one step, see Info above and the <b>Example</b>.",
+        "description" : "<b>This function call is for demo purposes only. It creates a remote calculation and if the creation was successful, this function returns the calculation result.</b> <br>I.e., it calls /diafanis_CreateComputation and /GetComputationResult in one step, see Info above and the <b>Example</b>.",
         "parameters" : [ {
           "name" : "functionString",
           "in" : "query",
@@ -74,7 +74,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -82,7 +81,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":117867040,\"result\":\"-44.384908\",\"interval-min-result\":\"-44.384908\",\"interval-max-result\":\"-44.384908\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000326s\",\"version-number\":4.04}"
+                    "value" : "{\"handle_diafanisComputation\":117867040,\"result\":\"-44.384908\",\"interval-min-result\":\"-44.384908\",\"interval-max-result\":\"-44.384908\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000326s\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -90,11 +89,11 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "post" : {
-        "description" : "<b>This function call is for demo purposes only. It creates a remote calculation and if the creation was successful, this function returns the calculation result.</b> <br>I.e., it calls /paceval_CreateComputation and /GetComputationResult in one step, see Info above and the <b>Example</b>.",
+        "description" : "<b>This function call is for demo purposes only. It creates a remote calculation and if the creation was successful, this function returns the calculation result.</b> <br>I.e., it calls /diafanis_CreateComputation and /GetComputationResult in one step, see Info above and the <b>Example</b>.",
         "parameters" : [ {
           "name" : "functionString",
           "in" : "query",
@@ -148,7 +147,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -156,7 +154,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":118054176,\"result\":\"-90.372854\",\"interval-min-result\":\"-90.372854\",\"interval-max-result\":\"-90.372854\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000322s\",\"version-number\":4.04}"
+                    "value" : "{\"handle_diafanisComputation\":118054176,\"result\":\"-90.372854\",\"interval-min-result\":\"-90.372854\",\"interval-max-result\":\"-90.372854\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000322s\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -164,11 +162,11 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "servers" : [ {
-        "url" : "http://paceval-service.com"
+        "url" : "http://diafanis.cloud"
       } ]
     },
     "/CreateComputation/" : {
@@ -217,7 +215,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -225,7 +222,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":115649680,\"function-10chars\":\"-sin(x*cos(...)\",\"function-length\":20,\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-create\":\"0.000440s\",\"version-number\":4.04}"
+                    "value" : "{\"handle_diafanisComputation\":115649680,\"function-10chars\":\"-sin(x*cos(...)\",\"function-length\":20,\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-create\":\"0.000440s\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -233,7 +230,7 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "post" : {
@@ -281,7 +278,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -289,7 +285,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":119406224,\"function-10chars\":\"-sin(x*cos(...)\",\"function-length\":20,\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-create\":\"0.000276s\",\"version-number\":4.04}"
+                    "value" : "{\"handle_diafanisComputation\":119406224,\"function-10chars\":\"-sin(x*cos(...)\",\"function-length\":20,\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-create\":\"0.000276s\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -297,11 +293,11 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "servers" : [ {
-        "url" : "http://paceval-service.com"
+        "url" : "http://diafanis.cloud"
       } ]
     },
     "/GetComputationResult/" : {
@@ -318,7 +314,7 @@
           },
           "example" : "0.5;2"
         }, {
-          "name" : "handle_pacevalComputation",
+          "name" : "handle_diafanisComputation",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -330,7 +326,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -338,7 +333,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":115649680,\"result\":\"-0.651801782452278\",\"interval-min-result\":\"-0.651801782452306\",\"interval-max-result\":\"-0.65180178245225\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000690s\",\"version-number\":4.04}"
+                    "value" : "{\"handle_diafanisComputation\":115649680,\"result\":\"-0.651801782452278\",\"interval-min-result\":\"-0.651801782452306\",\"interval-max-result\":\"-0.65180178245225\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000690s\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -346,7 +341,7 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "post" : {
@@ -362,7 +357,7 @@
           },
           "example" : "0.5;2"
         }, {
-          "name" : "handle_pacevalComputation",
+          "name" : "handle_diafanisComputation",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -374,7 +369,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -382,7 +376,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":119406224,\"result\":\"-0.651801782452278\",\"interval-min-result\":\"-0.651801782452306\",\"interval-max-result\":\"-0.65180178245225\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000808s\",\"version-number\":4.04}"
+                    "value" : "{\"handle_diafanisComputation\":119406224,\"result\":\"-0.651801782452278\",\"interval-min-result\":\"-0.651801782452306\",\"interval-max-result\":\"-0.65180178245225\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000808s\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -390,18 +384,18 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "servers" : [ {
-        "url" : "http://paceval-service.com"
+        "url" : "http://diafanis.cloud"
       } ]
     },
     "/GetErrorInformation/" : {
       "get" : {
         "description" : "<b>Returns the computation object error type value.</b> <br>Possible errors are analysis and computation errors. <br>Errors during the analysis should be checked after creation of the object like /CreateComputation. <br>Errors during the computation should be checked after /GetComputationResult.",
         "parameters" : [ {
-          "name" : "handle_pacevalComputation",
+          "name" : "handle_diafanisComputation",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -413,7 +407,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -421,7 +414,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":115649680,\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.04}"
+                    "value" : "{\"handle_diafanisComputation\":115649680,\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -429,13 +422,13 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "post" : {
         "description" : "<b>Returns the computation object error type value.</b> <br>Possible errors are analysis and computation errors. <br>Errors during the analysis should be checked after creation of the object like /CreateComputation. <br>Errors during the computation should be checked after /GetComputationResult.",
         "parameters" : [ {
-          "name" : "handle_pacevalComputation",
+          "name" : "handle_diafanisComputation",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -447,7 +440,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -455,7 +447,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":119406224,\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.04}"
+                    "value" : "{\"handle_diafanisComputation\":119406224,\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -463,16 +455,16 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "servers" : [ {
-        "url" : "http://paceval-service.com"
+        "url" : "http://diafanis.cloud"
       } ]
     },
     "/GetComputationResultExt/" : {
       "get" : {
-        "description" : "<b>Solves the computation with multiple values for the variables declared by /paceval_CreateComputation.</b> <br>You should use /GetComputationResultExt to get many results for a single computaton at once. This is useful, for example, when you need to analyze many different values very fast.",
+        "description" : "<b>Solves the computation with multiple values for the variables declared by /diafanis_CreateComputation.</b> <br>You should use /GetComputationResultExt to get many results for a single computaton at once. This is useful, for example, when you need to analyze many different values very fast.",
         "parameters" : [ {
           "name" : "values",
           "in" : "query",
@@ -494,7 +486,7 @@
           },
           "example" : "2"
         }, {
-          "name" : "handle_pacevalComputation",
+          "name" : "handle_diafanisComputation",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -506,7 +498,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -514,7 +505,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"number-of-multiple-values\":2,\"handle_pacevalComputation\":115649680,\"hasError\":false,\"results\":[\"-0.651801782452278\",\"-0.807342419579374\"],\"interval-min-results\":[\"-0.651801782452306\",\"-0.807342419579395\"],\"interval-max-results\":[\"-0.65180178245225\",\"-0.807342419579352\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000846s\",\"version-number\":4.04}"
+                    "value" : "{\"number-of-multiple-values\":2,\"handle_diafanisComputation\":115649680,\"hasError\":false,\"results\":[\"-0.651801782452278\",\"-0.807342419579374\"],\"interval-min-results\":[\"-0.651801782452306\",\"-0.807342419579395\"],\"interval-max-results\":[\"-0.65180178245225\",\"-0.807342419579352\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000846s\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -522,11 +513,11 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "post" : {
-        "description" : "<b>Solves the computation with multiple values for the variables declared by /paceval_CreateComputation.</b> <br>You should use /GetComputationResultExt to get many results for a single computaton at once. This is useful, for example, when you need to analyze many different values very fast.",
+        "description" : "<b>Solves the computation with multiple values for the variables declared by /diafanis_CreateComputation.</b> <br>You should use /GetComputationResultExt to get many results for a single computaton at once. This is useful, for example, when you need to analyze many different values very fast.",
         "parameters" : [ {
           "name" : "values",
           "in" : "query",
@@ -548,7 +539,7 @@
           },
           "example" : "2"
         }, {
-          "name" : "handle_pacevalComputation",
+          "name" : "handle_diafanisComputation",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -560,7 +551,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -568,7 +558,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"number-of-multiple-values\":2,\"handle_pacevalComputation\":119406224,\"hasError\":false,\"results\":[\"-0.651801782452278\",\"-0.807342419579374\"],\"interval-min-results\":[\"-0.651801782452306\",\"-0.807342419579395\"],\"interval-max-results\":[\"-0.65180178245225\",\"-0.807342419579352\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000881s\",\"version-number\":4.04}"
+                    "value" : "{\"number-of-multiple-values\":2,\"handle_diafanisComputation\":119406224,\"hasError\":false,\"results\":[\"-0.651801782452278\",\"-0.807342419579374\"],\"interval-min-results\":[\"-0.651801782452306\",\"-0.807342419579395\"],\"interval-max-results\":[\"-0.65180178245225\",\"-0.807342419579352\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000881s\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -576,16 +566,16 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "servers" : [ {
-        "url" : "http://paceval-service.com"
+        "url" : "http://diafanis.cloud"
       } ]
     },
     "/GetMultipleComputationsResults" : {
       "get" : {
-        "description" : "<b>Solves multiple computations with values for the variables declared by /paceval_CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations at once (e.g. for Artificial neural network functions or Decision trees).<br><b>Annotation</b> You must use the same number of variables and the same declared variables. To do so you can simply declare all variables in each of the the calls for /CreateComputation. There is no performance issue in case a variable is declared but not used by a computation object.",
+        "description" : "<b>Solves multiple computations with values for the variables declared by /diafanis_CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations at once (e.g. for Artificial neural network functions or Decision trees).<br><b>Annotation</b> You must use the same number of variables and the same declared variables. To do so you can simply declare all variables in each of the the calls for /CreateComputation. There is no performance issue in case a variable is declared but not used by a computation object.",
         "parameters" : [ {
           "name" : "call",
           "in" : "query",
@@ -595,7 +585,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "paceval_GetMultipleComputationsResults"
+          "example" : "diafanis_GetMultipleComputationsResults"
         }, {
           "name" : "values",
           "in" : "query",
@@ -607,7 +597,7 @@
           },
           "example" : "0.534346;2;45.4536"
         }, {
-          "name" : "handle_pacevalComputations",
+          "name" : "handle_diafanisComputations",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -617,7 +607,7 @@
           },
           "example" : "117867040;118054176"
         }, {
-          "name" : "numberOfpacevalComputations",
+          "name" : "numberOfdiafanisComputations",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -629,7 +619,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -637,7 +626,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"number-of-multiple-computations\":2,\"handle_pacevalComputations\":[117867040,118054176],\"hasError\":false,\"results\":[\"-44.384908\",\"-90.372854\"],\"interval-min-results\":[\"-44.384908\",\"-90.372854\"],\"interval-max-results\":[\"-44.384908\",\"-90.372854\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000676s\",\"version-number\":4.04}"
+                    "value" : "{\"number-of-multiple-computations\":2,\"handle_diafanisComputations\":[117867040,118054176],\"hasError\":false,\"results\":[\"-44.384908\",\"-90.372854\"],\"interval-min-results\":[\"-44.384908\",\"-90.372854\"],\"interval-max-results\":[\"-44.384908\",\"-90.372854\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000676s\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -645,11 +634,11 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "post" : {
-        "description" : "<b>Solves multiple computations with values for the variables declared by /paceval_CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations at once (e.g. for Artificial neural network functions or Decision trees).<br><b>Annotation</b> You must use the same number of variables and the same declared variables. To do so you can simply declare all variables in each of the the calls for /CreateComputation. There is no performance issue in case a variable is declared but not used by a computation object.",
+        "description" : "<b>Solves multiple computations with values for the variables declared by /diafanis_CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations at once (e.g. for Artificial neural network functions or Decision trees).<br><b>Annotation</b> You must use the same number of variables and the same declared variables. To do so you can simply declare all variables in each of the the calls for /CreateComputation. There is no performance issue in case a variable is declared but not used by a computation object.",
         "parameters" : [ {
           "name" : "call",
           "in" : "query",
@@ -659,7 +648,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "paceval_GetMultipleComputationsResults"
+          "example" : "diafanis_GetMultipleComputationsResults"
         }, {
           "name" : "values",
           "in" : "query",
@@ -671,7 +660,7 @@
           },
           "example" : "0.534346;2;45.4536"
         }, {
-          "name" : "handle_pacevalComputations",
+          "name" : "handle_diafanisComputations",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -681,7 +670,7 @@
           },
           "example" : "117867040;118054176"
         }, {
-          "name" : "numberOfpacevalComputations",
+          "name" : "numberOfdiafanisComputations",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -693,7 +682,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -701,7 +689,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"number-of-multiple-computations\":2,\"handle_pacevalComputations\":[117867040,118054176],\"hasError\":false,\"results\":[\"-44.384908\",\"-90.372854\"],\"interval-min-results\":[\"-44.384908\",\"-90.372854\"],\"interval-max-results\":[\"-44.384908\",\"-90.372854\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000360s\",\"version-number\":4.04}"
+                    "value" : "{\"number-of-multiple-computations\":2,\"handle_diafanisComputations\":[117867040,118054176],\"hasError\":false,\"results\":[\"-44.384908\",\"-90.372854\"],\"interval-min-results\":[\"-44.384908\",\"-90.372854\"],\"interval-max-results\":[\"-44.384908\",\"-90.372854\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000360s\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -709,18 +697,18 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "servers" : [ {
-        "url" : "http://paceval-service.com"
+        "url" : "http://diafanis.cloud"
       } ]
     },
     "/GetComputationInformationXML" : {
       "get" : {
         "description" : "<b>A helper function for getting data from a computation object</b>, such as the number of cores in the system, the number of threads used or the cache hits in the computations with that particular computation object.",
         "parameters" : [ {
-          "name" : "handle_pacevalComputation",
+          "name" : "handle_diafanisComputation",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -732,7 +720,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -740,7 +727,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":115649680,\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>46</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.04}"
+                    "value" : "{\"handle_diafanisComputation\":115649680,\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>46</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -748,13 +735,13 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "post" : {
         "description" : "<b>A helper function for getting data from a computation object</b>, such as the number of cores in the system, the number of threads used or the cache hits in the computations with that particular computation object.",
         "parameters" : [ {
-          "name" : "handle_pacevalComputation",
+          "name" : "handle_diafanisComputation",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -766,7 +753,6 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -774,7 +760,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":119406224,\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>38</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.04}"
+                    "value" : "{\"handle_diafanisComputation\":119406224,\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>38</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -782,11 +768,11 @@
           }
         },
         "servers" : [ {
-          "url" : "http://paceval-service.com"
+          "url" : "http://diafanis.cloud"
         } ]
       },
       "servers" : [ {
-        "url" : "http://paceval-service.com"
+        "url" : "http://diafanis.cloud"
       } ]
     }
   },
@@ -816,7 +802,7 @@
           "error-type-number" : {
             "type" : "integer"
           },
-          "handle_pacevalComputation" : {
+          "handle_diafanisComputation" : {
             "type" : "integer"
           },
           "version-number" : {
@@ -851,7 +837,7 @@
           "error-type-number" : {
             "type" : "integer"
           },
-          "handle_pacevalComputation" : {
+          "handle_diafanisComputation" : {
             "type" : "integer"
           },
           "version-number" : {
@@ -877,7 +863,7 @@
           "error-type-number" : {
             "type" : "integer"
           },
-          "handle_pacevalComputation" : {
+          "handle_diafanisComputation" : {
             "type" : "integer"
           },
           "version-number" : {
@@ -912,7 +898,7 @@
               "type" : "integer"
             }
           },
-          "handle_pacevalComputation" : {
+          "handle_diafanisComputation" : {
             "type" : "integer"
           },
           "interval-min-results" : {
@@ -947,7 +933,7 @@
           "number-of-multiple-computations" : {
             "type" : "integer"
           },
-          "handle_pacevalComputations" : {
+          "handle_diafanisComputations" : {
             "type" : "array",
             "items" : {
               "type" : "integer"
@@ -988,7 +974,7 @@
           "version-details" : {
             "type" : "string"
           },
-          "handle_pacevalComputation" : {
+          "handle_diafanisComputation" : {
             "type" : "integer"
           },
           "version-number" : {
