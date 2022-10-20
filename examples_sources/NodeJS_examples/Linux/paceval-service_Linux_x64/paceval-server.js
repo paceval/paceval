@@ -233,6 +233,13 @@ function deleteComputationTimer()
     setTimeout(deleteComputationTimer, deleteTimeout); 
 }
 
+//---------------------------------------------------------------------------
+//  handleCreateComputation
+//  Creates a remote computation object with the specified attributes and returns its HANDLE: 
+//  example http://paceval-service.com/CreateComputation/?functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&interval=yes
+//
+//  see  https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04
+//---------------------------------------------------------------------------
 function handleCreateComputation(req, res, senddata_in)
 {
     let handle_pacevalComputation = null;
@@ -384,6 +391,13 @@ function handleCreateComputation(req, res, senddata_in)
     return handle_pacevalComputation_addr;
 }
 
+//---------------------------------------------------------------------------
+//  handleGetComputationResult
+//  Solves the computation with the variables declared by /CreateComputation and with the given values: 
+//  example http://paceval-service.com/GetComputationResult/?handle_pacevalComputation=140523460713760&values=0.5;2
+//
+//  see  https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04
+//---------------------------------------------------------------------------
 function handleGetComputationResult(req, res, handle_pacevalComputation_str_in)
 {
     let handle_pacevalComputation_str = handle_pacevalComputation_str_in;
@@ -558,6 +572,13 @@ function handleGetComputationResult(req, res, handle_pacevalComputation_str_in)
         console.log(``);
 }
 
+//---------------------------------------------------------------------------
+//  handleGetComputationResultExt
+//  Solves the computation with multiple values for the variables declared by /CreateComputation: 
+//  example http://paceval-service.com/GetComputationResultExt/?handle_pacevalComputation=140523460713760&numberOfCalculations=2&values=0.5;2;0.5;4
+//
+//  see  https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04
+//---------------------------------------------------------------------------
 function handleGetComputationResultExt(req, res)
 {
     let numberOfCalculations = 0; 
@@ -740,6 +761,13 @@ function handleGetComputationResultExt(req, res)
         console.log(``);
 }
 
+//---------------------------------------------------------------------------
+//  handleGetMultipleComputationsResults
+//  Solves multiple computations with values for the variables declared by /CreateComputation: 
+//  example http://paceval-service.com/GetMultipleComputationsResults?call=paceval_GetMultipleComputationsResults&values=0.534346%3B2%3B45.4536&handle_pacevalComputations=140523141407504%3B140523460713760&numberOfpacevalComputations=2
+//
+//  see  https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04
+//---------------------------------------------------------------------------
 function handleGetMultipleComputationsResults(req, res)
 {
     let existingComputation = false;
@@ -971,6 +999,13 @@ function handleGetMultipleComputationsResults(req, res)
         console.log(``);
 }
 
+//---------------------------------------------------------------------------
+//  handleGetComputationInformationXML
+//  A helper function for getting data from a computation object, such as the number of cores in the system, the number of threads used or the cache hits in the computations with that particular computation object: 
+//  example http://paceval-service.com/GetComputationInformationXML?handle_pacevalComputation=140523460713760
+//
+//  see  https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04
+//---------------------------------------------------------------------------
 function handleGetComputationInformationXML(req, res)
 {
     let handle_pacevalComputation_str;
@@ -1055,6 +1090,13 @@ function handleGetComputationInformationXML(req, res)
         console.log(``);
 }
 
+//---------------------------------------------------------------------------
+//  handleGetErrorInformation
+//  Returns the computation object error type value: 
+//  example http://paceval-service.com/GetErrorInformation/?handle_pacevalComputation=140523460713760
+//
+//  see  https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04
+//---------------------------------------------------------------------------
 function handleGetErrorInformation(req, res)
 {
     let handle_pacevalComputation_str;
