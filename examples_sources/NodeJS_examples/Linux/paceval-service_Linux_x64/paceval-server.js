@@ -764,7 +764,7 @@ function handleGetComputationResultExt(req, res)
 //---------------------------------------------------------------------------
 //  handleGetMultipleComputationsResults
 //  Solves multiple computations with values for the variables declared by /CreateComputation: 
-//  example http://paceval-service.com/GetMultipleComputationsResults?call=paceval_GetMultipleComputationsResults&values=0.534346%3B2%3B45.4536&handle_pacevalComputations=140523141407504%3B140523460713760&numberOfpacevalComputations=2
+//  example http://paceval-service.com/GetMultipleComputationsResults/?handle_pacevalComputations=1050804320;1050476416&numberOfpacevalComputations=2&values=0.534346;2;45.4536
 //
 //  see  https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04
 //---------------------------------------------------------------------------
@@ -1094,7 +1094,7 @@ function handleGetComputationInformationXML(req, res)
 //  handleGetErrorInformation
 //  Returns the computation object error type value: 
 //  example http://paceval-service.com/GetErrorInformation/?handle_pacevalComputation=140523460713760
-//
+// 
 //  see  https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04
 //---------------------------------------------------------------------------
 function handleGetErrorInformation(req, res)
