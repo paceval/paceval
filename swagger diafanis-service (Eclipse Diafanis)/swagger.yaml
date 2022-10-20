@@ -20,7 +20,7 @@
   "paths" : {
     "/Demo/" : {
       "get" : {
-        "description" : "<b>This function call is for demo purposes only. It creates a remote calculation and if the creation was successful, this function returns the calculation result.</b> <br>I.e., it calls /diafanis_CreateComputation and /GetComputationResult in one step, see Info above and the <b>Example</b>.",
+        "description" : "<b>This function call is for demo purposes only. It creates a remote calculation and if the creation was successful, this function returns its HANDLE and the calculation result.</b> <br>I.e., it calls /diafanis_CreateComputation and /GetComputationResult in one step, see Info above and the <b>Example</b>.",
         "parameters" : [ {
           "name" : "functionString",
           "in" : "query",
@@ -93,7 +93,7 @@
         } ]
       },
       "post" : {
-        "description" : "<b>This function call is for demo purposes only. It creates a remote calculation and if the creation was successful, this function returns the calculation result.</b> <br>I.e., it calls /diafanis_CreateComputation and /GetComputationResult in one step, see Info above and the <b>Example</b>.",
+        "description" : "<b>This function call is for demo purposes only. It creates a remote calculation and if the creation was successful, this function returns its HANDLE and the calculation result.</b> <br>I.e., it calls /diafanis_CreateComputation and /GetComputationResult in one step, see Info above and the <b>Example</b>.",
         "parameters" : [ {
           "name" : "functionString",
           "in" : "query",
