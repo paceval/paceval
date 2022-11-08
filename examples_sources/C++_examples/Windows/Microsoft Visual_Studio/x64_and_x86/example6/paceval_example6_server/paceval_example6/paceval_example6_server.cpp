@@ -81,7 +81,7 @@ int main(int argc, char* argv[])
     printf("\n| This demo application shows the capabilities of paceval. in terms of |");
     printf("\n| its functionality for simultaneous calculations and artificial       |");
     printf("\n| neural networks (GetMultipleComputationsResults). This example uses  |");
-    printf("\n| a remote server for the calculations.                                                        |");
+    printf("\n| a remote server for the calculations.                                |");
 	printf("\n| Just open the file 'paceval_example6_server.cpp' to see its source   |");
 	printf("\n| code (~450 lines).                                                   |");
 	printf("\n|                                                                      |");
