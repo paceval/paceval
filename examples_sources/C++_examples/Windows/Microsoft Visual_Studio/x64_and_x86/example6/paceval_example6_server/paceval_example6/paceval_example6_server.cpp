@@ -44,7 +44,7 @@ bool ReadCreationDataFromFiles(const char* mainFilename, unsigned int mainFilena
                                unsigned long* numberOfVariables_out,
                                char* functionString_out, char* variablesString_out);
 void CalculateAndPresentDoubleExample6(char* pacevalServerStr_in, const char* handle_pacevalComputationsArrayAsString_in,
-	const char* fileForInference, unsigned long numberOfVariables_in);
+	const char* fileForInference, unsigned long numberOfVariables_in, bool useInterval_in);
 
 //this function retrieves the variable out of 1..10 which holds the maximum value
 #define function_maxFrom10 "1*((x1>x2) AND (x1>x3) AND (x1>x4) AND (x1>x5) AND (x1>x6) AND (x1>x7) AND (x1>x8) AND (x1>x9) AND (x1>x10)) + \
@@ -70,6 +70,8 @@ int main(int argc, char* argv[])
     unsigned long numberOfVariables = 0;
 	char handle_pacevalComputationAsString[50];
 	char handle_pacevalComputationsArrayAsString[10 * 50];
+	int answerChar;
+	bool useInterval;
 
     if (paceval_InitializeLibrary(NULL) != true)
     {
@@ -92,6 +94,16 @@ int main(int argc, char* argv[])
     printf("\ndescribe the artificial neural network.");
     printf("\nEach function is >770,000 characters long and uses 784 variables that ");
     printf("\nrepresent 28x28 pixels in the image.\n");
+
+	printf("\n\nDo you want to use Interval arithmetic [y/n]?");
+	answerChar = getchar();
+	while ((answerChar != 'y') && (answerChar != 'n'))
+		answerChar = getchar();
+
+	if (answerChar == 'n')
+		useInterval = false;
+	else
+		useInterval = true;
 
 	ReadServerString(pacevalServerStr);
 
@@ -150,7 +162,7 @@ int main(int argc, char* argv[])
             {
                 //Creates the paceval-Computation objects
 				success = paceval_Remote_CreateComputation(pacevalServerStr, handle_pacevalComputationAsString,
-					functionString, numberOfVariables, variablesString, false, &errType, &errTypeString[0], &errMessageString[0]);
+					functionString, numberOfVariables, variablesString, useInterval, &errType, &errTypeString[0], &errMessageString[0]);
 
                 if (success == false)
                 {
@@ -188,7 +200,7 @@ int main(int argc, char* argv[])
 			printf("\n_____________________________________________");
 
 			printf("\n\n\n --- double -------- (remote paceval_dGetMultipleComputationsResults)");
-			CalculateAndPresentDoubleExample6(pacevalServerStr, handle_pacevalComputationsArrayAsString, "image01ValuesAsText.txt", numberOfVariables);
+			CalculateAndPresentDoubleExample6(pacevalServerStr, handle_pacevalComputationsArrayAsString, "image01ValuesAsText.txt", numberOfVariables, useInterval);
 
 			printf("\n\n_____________________________________________");
 			printf("\nStart inference on the picture 'image02'");
@@ -196,7 +208,7 @@ int main(int argc, char* argv[])
 			printf("\n_____________________________________________");
 
 			printf("\n\n\n --- double -------- (remote paceval_dGetMultipleComputationsResults)");
-			CalculateAndPresentDoubleExample6(pacevalServerStr, handle_pacevalComputationsArrayAsString, "image02ValuesAsText.txt", numberOfVariables);
+			CalculateAndPresentDoubleExample6(pacevalServerStr, handle_pacevalComputationsArrayAsString, "image02ValuesAsText.txt", numberOfVariables, useInterval);
 
 			printf("\n\n_____________________________________________");
 			printf("\nStart inference on the picture 'image03'");
@@ -204,7 +216,7 @@ int main(int argc, char* argv[])
 			printf("\n_____________________________________________");
 
 			printf("\n\n\n --- double -------- (remote paceval_dGetMultipleComputationsResults)");
-			CalculateAndPresentDoubleExample6(pacevalServerStr, handle_pacevalComputationsArrayAsString, "image03ValuesAsText.txt", numberOfVariables);
+			CalculateAndPresentDoubleExample6(pacevalServerStr, handle_pacevalComputationsArrayAsString, "image03ValuesAsText.txt", numberOfVariables, useInterval);
 		}
 
 		printf("\n\n[Threads usages remote ACC: %d]", (int)paceval_dRemote_mathv(pacevalServerStr, NULL, "paceval_NumberThreadUsages", 0, "", false, &errType, NULL, NULL, NULL));
@@ -226,7 +238,7 @@ int main(int argc, char* argv[])
 }
 
 void CalculateAndPresentDoubleExample6(char* pacevalServerStr_in, const char* handle_pacevalComputationsArrayAsString_in,
-                                       const char* fileForInference, unsigned long numberOfVariables_in)
+                                       const char* fileForInference, unsigned long numberOfVariables_in, bool useInterval_in)
 {
     //Initializes double variables-array from file
     std::ifstream fileValuesToRead(fileForInference, std::ios::in | std::ios::binary | std::ios::ate);
@@ -245,6 +257,8 @@ void CalculateAndPresentDoubleExample6(char* pacevalServerStr_in, const char* ha
 
         double* dvaluesVariablesArray = new double[numberOfVariables_in];
         double* dResults = new double[10];
+		double* dminResultsInterval = new double[10];
+		double* dmaxResultsInterval = new double[10];
         int* errorTypes = new int[10];
 		bool success = true;
 
@@ -280,7 +294,7 @@ void CalculateAndPresentDoubleExample6(char* pacevalServerStr_in, const char* ha
 		success = paceval_dRemote_GetMultipleComputationsResults(pacevalServerStr_in,
 			handle_pacevalComputationsArrayAsString_in,
 			10,	numberOfVariables_in, &dvaluesVariablesArray[0],
-			&dResults[0], NULL, NULL,
+			&dResults[0], &dminResultsInterval[0], &dmaxResultsInterval[0],
 			&hasError, &errorTypes[0],
 			&timeComputeRemote);
 
@@ -288,6 +302,15 @@ void CalculateAndPresentDoubleExample6(char* pacevalServerStr_in, const char* ha
         {
             paceval_dConvertFloatToString(charBuffer500, dResults[iCount]);
             printf("\nFor function '%d' double: Result is %s", iCount, charBuffer500);
+
+			if (useInterval_in)
+			{
+				paceval_dConvertFloatToString(charBuffer500, dminResultsInterval[iCount]);
+				printf(" : Interval [%s; ", charBuffer500);
+
+				paceval_dConvertFloatToString(charBuffer500, dmaxResultsInterval[iCount]);
+				printf("%s]", charBuffer500);
+			}
         }
 
         imageIdentifiedAs = paceval_dmathv(NULL, &errType, function_maxFrom10,
@@ -302,6 +325,8 @@ void CalculateAndPresentDoubleExample6(char* pacevalServerStr_in, const char* ha
 
         delete[] dvaluesVariablesArray;
         delete[] dResults;
+		delete[] dminResultsInterval;
+		delete[] dmaxResultsInterval;
         delete[] errorTypes;
     }
     else
