@@ -304,16 +304,6 @@
       "get" : {
         "description" : "<b>Solves the computation with the variables declared by /CreateComputation and with the given values.</b>",
         "parameters" : [ {
-          "name" : "values",
-          "in" : "query",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : "0.5;2"
-        }, {
           "name" : "handle_diafanisComputation",
           "in" : "query",
           "required" : false,
@@ -323,6 +313,16 @@
             "type" : "string"
           },
           "example" : "115649680"
+        }, {
+          "name" : "values",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "0.5;2"
         } ],
         "responses" : {
           "200" : {
@@ -347,16 +347,6 @@
       "post" : {
         "description" : "<b>Solves the computation with the variables declared by /CreateComputation and with the given values.</b>",
         "parameters" : [ {
-          "name" : "values",
-          "in" : "query",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : "0.5;2"
-        }, {
           "name" : "handle_diafanisComputation",
           "in" : "query",
           "required" : false,
@@ -366,6 +356,16 @@
             "type" : "string"
           },
           "example" : "119406224"
+        }, {
+          "name" : "values",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "0.5;2"
         } ],
         "responses" : {
           "200" : {
@@ -466,7 +466,7 @@
       "get" : {
         "description" : "<b>Solves the computation with multiple values for the variables declared by /diafanis_CreateComputation.</b> <br>You should use /GetComputationResultExt to get many results for a single computaton at once. This is useful, for example, when you need to analyze many different values very fast.",
         "parameters" : [ {
-          "name" : "values",
+          "name" : "handle_diafanisComputation",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -474,7 +474,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "0.5;2;0.5;4"
+          "example" : "115649680"
         }, {
           "name" : "numberOfCalculations",
           "in" : "query",
@@ -486,7 +486,7 @@
           },
           "example" : "2"
         }, {
-          "name" : "handle_diafanisComputation",
+          "name" : "values",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -494,7 +494,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "115649680"
+          "example" : "0.5;2;0.5;4"
         } ],
         "responses" : {
           "200" : {
@@ -519,7 +519,7 @@
       "post" : {
         "description" : "<b>Solves the computation with multiple values for the variables declared by /diafanis_CreateComputation.</b> <br>You should use /GetComputationResultExt to get many results for a single computaton at once. This is useful, for example, when you need to analyze many different values very fast.",
         "parameters" : [ {
-          "name" : "values",
+          "name" : "handle_diafanisComputation",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -527,7 +527,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "0.5;2;0.5;4"
+          "example" : "119406224"
         }, {
           "name" : "numberOfCalculations",
           "in" : "query",
@@ -539,7 +539,7 @@
           },
           "example" : "2"
         }, {
-          "name" : "handle_diafanisComputation",
+          "name" : "values",
           "in" : "query",
           "required" : false,
           "style" : "form",
@@ -547,7 +547,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "119406224"
+          "example" : "0.5;2;0.5;4"
         } ],
         "responses" : {
           "200" : {
@@ -577,26 +577,6 @@
       "get" : {
         "description" : "<b>Solves multiple computations with values for the variables declared by /diafanis_CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations at once (e.g. for Artificial neural network functions or Decision trees).<br><b>Annotation</b> You must use the same number of variables and the same declared variables. To do so you can simply declare all variables in each of the the calls for /CreateComputation. There is no performance issue in case a variable is declared but not used by a computation object.",
         "parameters" : [ {
-          "name" : "call",
-          "in" : "query",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : "diafanis_GetMultipleComputationsResults"
-        }, {
-          "name" : "values",
-          "in" : "query",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : "0.534346;2;45.4536"
-        }, {
           "name" : "handle_diafanisComputations",
           "in" : "query",
           "required" : false,
@@ -616,6 +596,16 @@
             "type" : "string"
           },
           "example" : "2"
+        }, {
+          "name" : "values",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "0.534346;2;45.4536"
         } ],
         "responses" : {
           "200" : {
@@ -640,26 +630,6 @@
       "post" : {
         "description" : "<b>Solves multiple computations with values for the variables declared by /diafanis_CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations at once (e.g. for Artificial neural network functions or Decision trees).<br><b>Annotation</b> You must use the same number of variables and the same declared variables. To do so you can simply declare all variables in each of the the calls for /CreateComputation. There is no performance issue in case a variable is declared but not used by a computation object.",
         "parameters" : [ {
-          "name" : "call",
-          "in" : "query",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : "diafanis_GetMultipleComputationsResults"
-        }, {
-          "name" : "values",
-          "in" : "query",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : "0.534346;2;45.4536"
-        }, {
           "name" : "handle_diafanisComputations",
           "in" : "query",
           "required" : false,
@@ -679,6 +649,16 @@
             "type" : "string"
           },
           "example" : "2"
+        }, {
+          "name" : "values",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "0.534346;2;45.4536"
         } ],
         "responses" : {
           "200" : {
