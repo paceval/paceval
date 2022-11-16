@@ -20,7 +20,7 @@
   "paths" : {
     "/Demo/" : {
       "get" : {
-        "description" : "<b>This function call is for demo purposes only. It creates a remote calculation and if the creation was successful, this function returns the calculation result.</b> <br>I.e., it calls /paceval_CreateComputation and /GetComputationResult in one step, see Info above and the <b>Example</b>.",
+        "description" : "<b>This function call is for demo purposes only. It creates a remote calculation and if the creation was successful, this function returns the calculation result.</b> <br>I.e., it calls /paceval_CreateComputation and /GetComputationResult in one step, see Info above and the <b>Example</b>.<br> <b>Special case -</b> if you only want to perform a calculation without variables, you must set 'numberOfVariables' to 0 and enter a space (' ') for 'variables' and 'values'.",
         "parameters" : [ {
           "name" : "functionString",
           "in" : "query",
@@ -94,7 +94,7 @@
         } ]
       },
       "post" : {
-        "description" : "<b>This function call is for demo purposes only. It creates a remote calculation and if the creation was successful, this function returns the calculation result.</b> <br>I.e., it calls /paceval_CreateComputation and /GetComputationResult in one step, see Info above and the <b>Example</b>.",
+        "description" : "<b>This function call is for demo purposes only. It creates a remote calculation and if the creation was successful, this function returns the calculation result.</b> <br>I.e., it calls /paceval_CreateComputation and /GetComputationResult in one step, see Info above and the <b>Example</b>.<br> <b>Special case -</b> if you only want to perform a calculation without variables, you must set 'numberOfVariables' to 0 and enter a space (' ') for 'variables' and 'values'.",
         "parameters" : [ {
           "name" : "functionString",
           "in" : "query",
