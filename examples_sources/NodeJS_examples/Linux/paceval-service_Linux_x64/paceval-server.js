@@ -60,6 +60,10 @@ function pacevalLibraryName()
     {
         pacevalLibrary_str = './libpacevalARM64_sharedLIB.so';
     }
+    else if ((platform === 'darwin') && (architecture === 'arm64'))
+    {
+        pacevalLibrary_str = './libpaceval_macOS_dynamicLIB.dylib';
+    }
     else
     {
         throw new Error('unsupported platform and architecture for pacevalLibrary : '
