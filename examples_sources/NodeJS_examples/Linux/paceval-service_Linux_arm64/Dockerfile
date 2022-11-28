@@ -2,7 +2,7 @@
 
 FROM arm64v8/node:18.7.0
 
-run apt-get -y update && apt-get install -y git-core
+RUN apt-get -y update && apt-get install -y git-core
 
 WORKDIR /app
 
@@ -19,4 +19,4 @@ COPY . .
 EXPOSE 8080
 
 # CMD [ "node", "paceval-server.js" ]
-CMD ["pm2-runtime", "paceval-server.js", "--expose-gc --max-old-space-size=6144"]
+CMD ["pm2-runtime", "paceval-server.js", "--expose-gc","--max-old-space-size=6144"]

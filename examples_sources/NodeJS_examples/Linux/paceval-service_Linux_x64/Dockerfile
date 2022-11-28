@@ -2,7 +2,7 @@
 
 FROM node:18.7.0
 
-run apt-get -y update && apt-get install -y git-core
+RUN apt-get -y update && apt-get install -y git-core
 
 WORKDIR /app
 
