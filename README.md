@@ -27,7 +27,8 @@ developer version – non-commercial use only
     for <br>
     - Windows 64bit (including paceval_server)<br>
     - Windows 32bit<br>
-    - macOS 64bit<br>
+    - macOS 64bit ARM64 (APPLE silicon)<br>
+    - macOS 64bit x64<br>
     - Linux 64bit<br>
     - ARM64 64bit<br>
     - ARM32 32bit<br>
