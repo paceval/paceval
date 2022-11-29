@@ -53,8 +53,8 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@v3
         with:
-          context: ./examples_sources/NodeJS_examples/Multi-OS-Arch
+          context: ./examples_sources/NodeJS_examples/paceval-service_Linux_x64_and_arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          dockerfile: ./examples_sources/NodeJS_examples/Multi-OS-Arch/Dockerfile
+          dockerfile: ./examples_sources/NodeJS_examples/paceval-service_Linux_x64_and_arm64/Dockerfile
