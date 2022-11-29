@@ -51,7 +51,7 @@ developer version – non-commercial use only
     - Windows 32bit      - "paceval_win32.dll" (shared library)<br>
     - Windows 64bit      - "paceval_win64i.dll" (shared library)<br>
     - macOS 64bit        - "libpaceval_macos_staticLIB.a" (static library)<br>
-    - macOS 64bit        - "libpaceval_macOS_dynamicLIB.dylib" (shared library)<br>
+    - macOS 64bit        - "libpaceval_macos_dynamicLIB.dylib" (shared library)<br>
     - iOS+simulator      - "libpaceval_ios_staticLIB.a" (static library)<br>
     - Linux 64bit        - "libpaceval_linux_staticLIB.a" (static library)<br>
     - Linux 64bit        - "libpaceval_linux_sharedLIB.so" (shared library)<br>
