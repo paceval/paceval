@@ -5,6 +5,8 @@ on:
     branches:
       - 'main'
       - 'rico/review_improve'
+    tags:
+      - v[0-9].[0-9].[0-9]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -46,7 +48,9 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: type=semver,pattern={{version}}
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
           flavor: latest=auto
 
       # Build and push Docker image with Buildx (don't push on PR)
