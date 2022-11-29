@@ -62,7 +62,7 @@ function pacevalLibraryName()
     }
     else if ((platform === 'darwin') && (architecture === 'arm64'))
     {
-        pacevalLibrary_str = './libpaceval_macOS_dynamicLIB.dylib';
+        pacevalLibrary_str = './libpaceval_macos_dynamicLIB.dylib';
     }
     else
     {
