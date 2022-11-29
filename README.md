@@ -39,7 +39,7 @@ developer version – non-commercial use only
     - "Mathematical Engine - Motivation"<br>
     - "Mathematical Engine - Our solution"<br>
     - "paceval-service - a Linux server for ARM64 processors (includes Raspberry Pi)"<br>
-    - "paceval-service - a Linux server for x86 processors (Intel and AMD)"<br>
+    - "paceval-service - a Linux server for x64 processors (Intel and AMD)"<br>
     - "Vision Paper - Add capabilities of complex and precise mathematical functions to a database"<br>
 
 •   <b>["paceval libraries"](https://github.com/paceval/paceval/tree/main/paceval%20libraries) folder<br></b>
@@ -51,6 +51,7 @@ developer version – non-commercial use only
     - Windows 32bit      - "paceval_win32.dll" (shared library)<br>
     - Windows 64bit      - "paceval_win64i.dll" (shared library)<br>
     - macOS 64bit        - "libpaceval_macos_staticLIB.a" (static library)<br>
+    - macOS 64bit        - "libpaceval_macOS_dynamicLIB.dylib" (shared library)<br>
     - iOS+simulator      - "libpaceval_ios_staticLIB.a" (static library)<br>
     - Linux 64bit        - "libpaceval_linux_staticLIB.a" (static library)<br>
     - Linux 64bit        - "libpaceval_linux_sharedLIB.so" (shared library)<br>
