@@ -1,0 +1,8 @@
+LICENSE
+setup.py
+paceval/src/paceval.py
+paceval/src/paceval.egg-info/PKG-INFO
+paceval/src/paceval.egg-info/SOURCES.txt
+paceval/src/paceval.egg-info/dependency_links.txt
+paceval/src/paceval.egg-info/requires.txt
+paceval/src/paceval.egg-info/top_level.txt
