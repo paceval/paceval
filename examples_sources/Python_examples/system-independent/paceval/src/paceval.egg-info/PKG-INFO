@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: paceval
-Version: 4.4.0
+Version: 4.4.2
 Summary: paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)
 Author: paceval
 Classifier: Programming Language :: Python :: 3
@@ -11,9 +11,12 @@ Description-Content-Type: text/markdown
 License-File: LICENSE
 
 ## paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)
+[paceval at PyPI](https://pypi.org/project/paceval/4.4.2)\
+[paceval at SwaggerHub](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04)
 # WHY DO I NEED A MATHEMATICAL ENGINE?
-Many connected devices or so-called IoT solutions require complex mathematical calculations to work correctly or make decisions. This can be, for example, a smartphone or a remote device that performs predictive analysis or a self-flying drone that evaluates objects in recorded videos or images in real time during flight. These devices do not have the computing power to perform such mathematical calculations themselves. Or these devices, because they are battery powered, can't even do the intensive math calculations because that consumes battery time.
-This Mathematical Engine as a Service provides a powerful and fast remote math coprocessor service for IoT solutions based on a Linux server for x64 (Intel and AMD) or ARM64 (e.g. Raspberry Pi or APPLE M1/M2) processors. Equipped with a simple interface, it will allow battery-powered devices to perform complex mathematical operations remotely and very quickly, avoiding increasing power consumption of the device itself.\
+Many connected devices or so-called IoT solutions require **complex mathematical calculations to work correctly or make decisions**. This can be, for example, a smartphone or a remote device that performs predictive analysis or a self-flying drone that evaluates objects in recorded videos or images in real time during flight. These devices do not have the computing power to perform such mathematical calculations themselves. Or these devices, because they are battery powered, can't even do the **intensive math calculations because that consumes battery time**.
+
+**This Mathematical Engine as a Service** provides a powerful and fast **remote math coprocessor service for IoT solutions** based on a Linux server for x64 (Intel and AMD) or ARM64 (e.g. Raspberry Pi or APPLE M1/M2) processors. Equipped with a simple interface, it will allow battery-powered devices to perform complex mathematical operations remotely and very quickly, **avoiding increasing power consumption of the device itself**.
 
 # HOW CAN I USE CALCULATIONS WITH THIS MATHEMATICAL ENGINE?
 
@@ -21,21 +24,24 @@ To create a calculation the device simply calls the following function:
 ```
 paceval.Demo("http://paceval-service.com", "-sin(x\*cos(x))^(1/y)", "2", "x;y","0.5;2", "yes")
 ```
-This creates a calculation object for the function "-sin(x\*cos(x))^(1/y)" and immediately performs the calculation with the "2" variables "x; y" for the values "0.5; 2". Variables and values are always separated by a ";". With "interval=yes" it is indicated that in addition to the computer-precise calculation, the upper and lower interval of the calculation is also given. The exact value of the calculation is then in this interval.\
-Of course you can specify any mathematical function and any number of variables and also other and longer variable names. \: \)\
-In addition, with the calculation you receive a reference to the generated calculation object for the function. From now on you can simply use this reference to get calculations for further values. References are valid for 1 hour, which is extended to 1 hour from the time of access each time a reference is accessed. If only the reference to a calculation object is used, the sometimes very long function does not have to be passed every time. That saves time and computing power. For example, if you have received a reference "handle_Computation: 115626720", simply call up the following function for a further calculation with the values 0.46577 for x and 2.61 for y.\
+This creates a calculation object for the function "-sin(x\*cos(x))^(1/y)" and immediately performs the calculation with the "2" variables "x; y" for the values "0.5; 2". Variables and values are always separated by a ";". With "interval=yes" it is indicated that **in addition to the computer-precise calculation, the upper and lower interval of the calculation is also given**. The exact value of the calculation is then in this interval.
+
+Of course you can specify any mathematical function and any number of variables and also other and longer variable names. \: \)
+In addition, with the calculation you receive a reference to the generated calculation object for the function. From now on you can simply use this reference to get calculations for further values. **References are valid for 1 hour**, which is extended to 1 hour from the time of access each time a reference is accessed. If only the reference to a calculation object is used, the sometimes very long function does not have to be passed every time. **That saves time and computing power.** For example, if you have received a reference "handle_Computation: 115626720", simply call up the following function for a further calculation with the values 0.46577 for x and 2.61 for y.
 ```
 paceval.GetComputationResult(http://paceval-service.com, "115626720", "0.46577;2.61")
 ```
-This allows you to perform complex calculations of any length and with any number of variables on the server. Please note that this is our test server. : )\
+This allows you to **perform complex calculations of any length and with any number of variables on the server**. Please note that this is our test server. : )\
 This test server is a 4-core ARM64 Linux server with only 4GB of memory, although it's pretty fast.
 # HOW CAN I GET THIS MATHEMATICAL ENGINE ON MY OWN SERVER?
 Just run this command line in the terminal to get and start the service with Docker:
+
 >LINUX FOR x64 PROCESSORS (Intel and AMD)
 >```
->sudo docker pull paceval/paceval-service_linux_x64:latest\
->sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_x64\
+>sudo docker pull paceval/paceval-service_linux_x64:latest
+>sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_x64
 >```
+
 
 >LINUX FOR ARM64 PROCESSORS (e.g. Raspberry Pi or APPLE M1/M2)
 >```
@@ -45,7 +51,6 @@ Just run this command line in the terminal to get and start the service with Doc
 
 [paceval. - website](https://paceval.com)\
 [Send email to paceval](mailto:info@paceval.com)\
-[http://paceval/api](https://paceval.com/product-demo/)
 
 ## Code example
 

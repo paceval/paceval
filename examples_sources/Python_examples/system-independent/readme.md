@@ -1,6 +1,6 @@
 ## paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)
-[paceval at PyPI](https://pypi.org/project/paceval/4.4.0)\
-[paceval at SwaggerHub](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04)\
+[paceval at PyPI](https://pypi.org/project/paceval/4.4.2)\
+[paceval at SwaggerHub](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04)
 # WHY DO I NEED A MATHEMATICAL ENGINE?
 Many connected devices or so-called IoT solutions require **complex mathematical calculations to work correctly or make decisions**. This can be, for example, a smartphone or a remote device that performs predictive analysis or a self-flying drone that evaluates objects in recorded videos or images in real time during flight. These devices do not have the computing power to perform such mathematical calculations themselves. Or these devices, because they are battery powered, can't even do the **intensive math calculations because that consumes battery time**.
 
@@ -15,7 +15,7 @@ paceval.Demo("http://paceval-service.com", "-sin(x\*cos(x))^(1/y)", "2", "x;y","
 This creates a calculation object for the function "-sin(x\*cos(x))^(1/y)" and immediately performs the calculation with the "2" variables "x; y" for the values "0.5; 2". Variables and values are always separated by a ";". With "interval=yes" it is indicated that **in addition to the computer-precise calculation, the upper and lower interval of the calculation is also given**. The exact value of the calculation is then in this interval.
 
 Of course you can specify any mathematical function and any number of variables and also other and longer variable names. \: \)
-In addition, with the calculation you receive a reference to the generated calculation object for the function. From now on you can simply use this reference to get calculations for further values. **References are valid for 1 hour**, which is extended to 1 hour from the time of access each time a reference is accessed. If only the reference to a calculation object is used, the sometimes very long function does not have to be passed every time. **That saves time and computing power.** For example, if you have received a reference "handle_Computation: 115626720", simply call up the following function for a further calculation with the values 0.46577 for x and 2.61 for y.\
+In addition, with the calculation you receive a reference to the generated calculation object for the function. From now on you can simply use this reference to get calculations for further values. **References are valid for 1 hour**, which is extended to 1 hour from the time of access each time a reference is accessed. If only the reference to a calculation object is used, the sometimes very long function does not have to be passed every time. **That saves time and computing power.** For example, if you have received a reference "handle_Computation: 115626720", simply call up the following function for a further calculation with the values 0.46577 for x and 2.61 for y.
 ```
 paceval.GetComputationResult(http://paceval-service.com, "115626720", "0.46577;2.61")
 ```
@@ -26,8 +26,8 @@ Just run this command line in the terminal to get and start the service with Doc
 
 >LINUX FOR x64 PROCESSORS (Intel and AMD)
 >```
->sudo docker pull paceval/paceval-service_linux_x64:latest\
->sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_x64\
+>sudo docker pull paceval/paceval-service_linux_x64:latest
+>sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_x64
 >```
 
 
