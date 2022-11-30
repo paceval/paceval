@@ -38,14 +38,14 @@ Just run this command line in the terminal to get and start the service with Doc
 >```
 
 [paceval. - website](https://paceval.com)\
-[Send email to paceval](mailto:info@paceval.com)\
+[Send email to paceval](mailto:info@paceval.com)
 
 ## Code example
 
 ```
 import paceval
 
-paceval.Demo("http://paceval-service.com", "-sin(x*cos(x))^(1/y)", "2", "x;y","0.5;2", "yes")
+demoReturn = paceval.Demo("http://paceval-service.com", "-sin(x*cos(x))^(1/y)", "2", "x;y","0.5;2", "yes")
 ```
 >Return:\
 >{\
@@ -61,7 +61,7 @@ paceval.Demo("http://paceval-service.com", "-sin(x*cos(x))^(1/y)", "2", "x;y","0
 >	"version-number":4.04\
 >}
 ```
-paceval.CreateComputation("http://paceval-service.com", "-sin(x*cos(x))^(1/y)", "2", "x;y","0.5;2", "yes")
+CreateComputationReturn = paceval.CreateComputation("http://paceval-service.com", "-sin(x*cos(x))^(1/y)", "2", "x;y","0.5;2", "yes")
 ```
 >Return:\
 {\
@@ -75,7 +75,7 @@ paceval.CreateComputation("http://paceval-service.com", "-sin(x*cos(x))^(1/y)", 
 	"version-number":4.04\
 }
 ```
-paceval.GetComputationResult("http://paceval-service.com", "140660720254832", "0.5;2")
+GetComputationResultReturn = paceval.GetComputationResult("http://paceval-service.com", "140660720254832", "0.5;2")
 ```
 >Return:\
 {\
@@ -91,7 +91,7 @@ paceval.GetComputationResult("http://paceval-service.com", "140660720254832", "0
 	"version-number":4.04\
 }
 ```
-paceval.GetErrorInformation("http://paceval-service.com", "140660720254832")
+GetErrorInformationReturn = paceval.GetErrorInformation("http://paceval-service.com", "140660720254832")
 ```
 >Return:\
 {\
@@ -105,7 +105,7 @@ paceval.GetErrorInformation("http://paceval-service.com", "140660720254832")
    "version-number":4.04\
 }
 ```
-paceval.GetComputationResultExt("http://paceval-service.com", "140660720254832", "3", "0.5;2;0.4;2;0.3;2")
+GetComputationResultExtReturn = paceval.GetComputationResultExt("http://paceval-service.com", "140660720254832", "3", "0.5;2;0.4;2;0.3;2")
 ```
 >Return:\
 {\
@@ -136,7 +136,7 @@ paceval.GetComputationResultExt("http://paceval-service.com", "140660720254832",
    "version-number":4.04\
 }
 ```
-paceval.GetComputationInformationXML("http://paceval-service.com", "140660720254832")
+GetComputationInformationXMLReturn = paceval.GetComputationInformationXML("http://paceval-service.com", "140660720254832")
 ```
 >Return:\
 >{\
