@@ -1,5 +1,5 @@
 ## paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)
-[paceval at PyPI](https://pypi.org/project/paceval/4.4.2)\
+[paceval at PyPI](https://pypi.org/project/paceval/4.4.6)\
 [paceval at SwaggerHub](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04)
 # WHY DO I NEED A MATHEMATICAL ENGINE?
 Many connected devices or so-called IoT solutions require **complex mathematical calculations to work correctly or make decisions**. This can be, for example, a smartphone or a remote device that performs predictive analysis or a self-flying drone that evaluates objects in recorded videos or images in real time during flight. These devices do not have the computing power to perform such mathematical calculations themselves. Or these devices, because they are battery powered, can't even do the **intensive math calculations because that consumes battery time**.
