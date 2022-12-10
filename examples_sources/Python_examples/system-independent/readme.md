@@ -145,3 +145,35 @@ paceval.GetComputationInformationXML("http://paceval-service.com", "140660720254
    "version-details":"[libpaceval_linux_staticLIB.a] and [libpaceval_linux_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])",\
    "version-number":4.04
 }
+
+```
+GetMultipleComputationResultReturn = paceval.GetMultipleComputationsResult("http://paceval-service.com", "989554800;988662768", "2", "0.5;2;0.4;2")
+```
+
+>Return:\
+{\
+   "number-of-multiple-computations":2,\
+   "handle_pacevalComputations":[
+      989554800,
+      988662768
+   ],\
+   "hasError":false,\
+   "results":[
+      "-0.651801782452278",
+      "-0.651801782452278"
+   ],\
+   "interval-min-results":[
+      "-0.651801782452306",
+      "-0.651801782452306"
+   ],\
+   "interval-max-results":[
+      "-0.65180178245225",
+      "-0.65180178245225"
+   ],\
+   "error-type-numbers":[
+      0,
+      0
+   ],\
+   "time-calculate":"0.000675s",\
+   "version-number":4.04\
+}
