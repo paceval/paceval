@@ -76,3 +76,14 @@ def GetComputationInformationXML(mainUrl, handle_pacevalComputation):
 
     return response
 
+def GetMultipleComputationsResult(mainUrl, handle_pacevalComputations, numberOfpacevalComputations, values):
+
+    urlSchema = mainUrl + "/GetMultipleComputationsResults/?handle_pacevalComputations={}&numberOfpacevalComputations={}&values={}"
+    url = urlSchema.format(handle_pacevalComputations, numberOfpacevalComputations, values)
+
+    payload={}
+
+    response = requests.request("POST", url, data=payload)
+
+    return response
+
