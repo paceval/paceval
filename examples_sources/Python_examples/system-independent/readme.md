@@ -143,7 +143,7 @@ GetComputationInformationXMLReturn = paceval.GetComputationInformationXML("http:
 >   "handle_pacevalComputation":140660720254832,\
 >   "information-XML":"<?xml version=\"1.0\" encoding=\"ISO-8859-1\" standalone=\"yes\"?>\<br>\<br>\<paceval.-Computation>\<br>\<br>\ \<version>4.04\</version>\<br>\<br> \<function50Characters>-sin(x*cos(x))^(1/y)\</function50Characters>\<br>\<br> \<functionLength>20\</functionLength>\<br>\<br> \<numberOfVariables>2\</numberOfVariables>\<br>\<br> \<useInterval>true\</useInterval>\<br>\<br> \<errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\</errorMessage>\<br>\<br> \<errorDetails>[NO ERROR]\</errorDetails>\<br>\<br> \<maxPrecisionType>long double\</maxPrecisionType>\<br>\<br> \<numberOfNodes>11\</numberOfNodes>\<br>\<br> \<numberOfCores>20\</numberOfCores>\<br>\<br> \<numberOfThreads>1\</numberOfThreads>\<br>\<br> \<numberOfThreadsFailure>0\</numberOfThreadsFailure>\<br>\<br> \<cacheTypes>Inner Caching, Outer Caching, Lookahead Caching\</cacheTypes>\<br>\<br> \<cacheHitsACC>3\</cacheHitsACC>\<br>\<br></paceval.-Computation>\<br>\<br>",\
    "version-details":"[libpaceval_linux_staticLIB.a] and [libpaceval_linux_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])",\
-   "version-number":4.04
+   "version-number":4.04\
 }
 
 ```
