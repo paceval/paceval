@@ -19,8 +19,6 @@ def Demo(mainUrl, functionString, numberOfVariables, variables, values, interval
 
     response = requests.request("POST", url, data=payload)
 
-    print(response.text)
-
     return response
 
 def CreateComputation(mainUrl, functionString, numberOfVariables, variables, values, interval):
@@ -31,8 +29,6 @@ def CreateComputation(mainUrl, functionString, numberOfVariables, variables, val
     payload={}
 
     response = requests.request("POST", url, data=payload)
-
-    print(response.text)
 
     return response
 
@@ -45,8 +41,6 @@ def GetComputationResult(mainUrl, handle_pacevalComputation, values,):
 
     response = requests.request("POST", url, data=payload)
 
-    print(response.text)
-
     return response
 
 def GetErrorInformation(mainUrl, handle_pacevalComputation):
@@ -57,8 +51,6 @@ def GetErrorInformation(mainUrl, handle_pacevalComputation):
     payload={}
 
     response = requests.request("POST", url, data=payload)
-
-    print(response.text)
 
     return response
 
@@ -71,8 +63,6 @@ def GetComputationResultExt(mainUrl, handle_pacevalComputation, numberOfCalculat
 
     response = requests.request("POST", url, data=payload)
 
-    print(response.text)
-
     return response
 
 def GetComputationInformationXML(mainUrl, handle_pacevalComputation):
@@ -83,8 +73,6 @@ def GetComputationInformationXML(mainUrl, handle_pacevalComputation):
     payload={}
 
     response = requests.request("POST", url, data=payload)
-
-    print(response.text)
 
     return response
 
