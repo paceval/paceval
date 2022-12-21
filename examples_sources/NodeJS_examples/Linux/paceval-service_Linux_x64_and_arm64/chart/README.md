@@ -24,6 +24,7 @@ in directory ingress-ngix/
 
 run the following:
 ```shell
+helm dep update
 helm upgrade nginx-ingress . --install --debug
 ```
 
@@ -36,6 +37,7 @@ in directory chart/paceval
 
 run the following:
 ```shell
+helm dep update
 helm upgrade paceval . --install --debug
 ```
 
