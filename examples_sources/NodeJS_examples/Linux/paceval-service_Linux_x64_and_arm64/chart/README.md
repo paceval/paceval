@@ -16,9 +16,9 @@ For any k8s cluster you can access the cluster using [kubeconfig](https://kubern
 For connecting to a GKE cluster specifically, check [here](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl).
 
 
-### install helm chart nginx ingress controller
+### Install helm chart nginx ingress controller
 
-[nginx ingress controller](https://docs.nginx.com/nginx-ingress-controller/) is the tools helps to route traffic coming into k8s ingress into internal services.
+[nginx ingress controller](https://docs.nginx.com/nginx-ingress-controller/) is the tools helps to route incoming traffics into internal services.
 
 in directory ingress-ngix/
 
@@ -30,18 +30,28 @@ helm upgrade nginx-ingress . --install --debug
 
 and wait until the helm chart is installed
 
-### install paceval helm chart
+### Install paceval helm chart
 
 Now we can install the actual pavcval helm chart 
 in directory chart/paceval
 
-run the following:
+run the following,use your own [subdomain](#use-a-subdomain):
 ```shell
 helm dep update
-helm upgrade paceval . --install --debug
+helm upgrade paceval . --install --debug \
+    --set 'ingress.hosts[0].host=<your subdomain>' \
+    --set 'ingress.hosts[0].paths[0].path=/' \
+    --set 'ingress.hosts[0].paths[0].pathType=Prefix'
 ```
 
-## setup DNS
+
+## Use a subdomain
+
+If you want to use a DNS domain instead of IP address, please make sure you purchased and owning a domain (e.g. paceval.cloud)
+You can use a subdomain to access the paceval service (e.g. `service.paceval.cloud`). Remember you should just use one level of subdomain,
+subdomain such as `example.service.paceval.cloud` does not work. Now refer to [DNS guide](#setup-dns) for how to add the corresponding IP address to your DNS routing table.
+
+## Setup DNS
 
 Wait until the k8s ingress of paceval has been assigned an IP address. You can check it with following command
 ```shell
