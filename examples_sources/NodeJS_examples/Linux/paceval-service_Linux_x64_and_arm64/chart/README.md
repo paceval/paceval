@@ -13,7 +13,7 @@ Please make sure you have followings before you start the installation steps
 ### Connect to your kubernetes cluster
 For any k8s cluster you can access the cluster using [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file with kubectl, there is also UI based tool called [lens](https://k8slens.dev/).
 
-For connecting to a GKE cluster specifically, check [here](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl).
+For connecting to a GKE cluster specifically, check [here](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl) ("Install kubectl and configure cluster access").
 
 
 ### Install helm chart nginx ingress controller
