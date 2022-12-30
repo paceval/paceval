@@ -2,7 +2,7 @@
 
 ## Prerequisite
 
-Please make sure you have followings before ypu start the installation steps
+Please make sure you have followings before you start the installation steps
 - kube control CLI ( i.e. [kubectl](https://kubernetes.io/docs/tasks/tools/))
 - [helm cli](https://helm.sh/docs/intro/install/)
 - access to a running kubernetes cluster with [cluster-admin](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) role (in GCP this also means you account need to have [Kubernetes Engine Admin](https://cloud.google.com/kubernetes-engine/docs/how-to/iam) role in IAM)
