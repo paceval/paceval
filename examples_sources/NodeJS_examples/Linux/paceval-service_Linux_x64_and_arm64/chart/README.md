@@ -32,8 +32,8 @@ and wait until the helm chart is installed
 
 ### Install paceval helm chart
 
-Now we can install the actual pavcval helm chart 
-in directory chart/paceval
+Now we can install the actual paceval helm chart 
+in directory /paceval/examples_sources/NodeJS_examples/Linux/paceval-service_Linux_x64_and_arm64/chart/paceval/
 
 run the following,use your own [subdomain](#use-a-subdomain):
 ```shell
