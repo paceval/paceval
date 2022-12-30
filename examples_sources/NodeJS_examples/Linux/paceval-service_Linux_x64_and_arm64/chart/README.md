@@ -47,7 +47,7 @@ helm upgrade paceval . --install --debug \
 
 ## Use a subdomain
 
-If you want to use a DNS domain instead of IP address, please make sure you purchased and owning a domain (e.g. paceval.cloud)
+If you want to use a DNS domain instead of IP address, please make sure you purchased and owning a domain (e.g. paceval.cloud).
 You can use a subdomain to access the paceval service (e.g. `service.paceval.cloud`). Remember you should just use one level of subdomain,
 subdomain such as `example.service.paceval.cloud` does not work. Now refer to [DNS guide](#setup-dns) for how to add the corresponding IP address to your DNS routing table.
 
