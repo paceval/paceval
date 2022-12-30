@@ -20,7 +20,7 @@ For connecting to a GKE cluster specifically, check [here](https://cloud.google.
 
 [nginx ingress controller](https://docs.nginx.com/nginx-ingress-controller/) is the tools helps to route incoming traffics into internal services.
 
-in directory /examples_sources/NodeJS_examples/Linux/paceval-service_Linux_x64_and_arm64/chart/ingress-nginx/
+in directory /paceval/examples_sources/NodeJS_examples/Linux/paceval-service_Linux_x64_and_arm64/chart/ingress-nginx/
 
 run the following:
 ```shell
