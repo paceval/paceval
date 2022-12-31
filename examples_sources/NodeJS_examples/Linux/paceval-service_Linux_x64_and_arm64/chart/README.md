@@ -29,7 +29,7 @@ helm upgrade paceval . --install --debug
 ```
 
 ### Wait for IP Address Allocation
-run the waiting command and wait until an external IP (it is in initially pending), once you see an external ip is available, use ctrl-c to exit the command.
+run the waiting command and wait until an external IP (it is in initially pending) is available, use ctrl-c to exit the command.
 ```shell
 kubectl get --namespace default svc -w paceval
 NAME      TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
