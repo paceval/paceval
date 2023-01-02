@@ -70,7 +70,7 @@ paceval   LoadBalancer   10.49.0.238   34.116.196.28   80:30632/TCP   7m28s
 ## Call the paceval-service endpoint
 
 Note down your LoadBalancer's external IP address (see EXTERNAL-IP above). 
-Now the paceval-service is deployed on your Kubernetes cluster and you can make a test call as follows (replace <EXTERNAL-IP> with your LoadBalancer's external IP address):
+Now the paceval-service is deployed on your Kubernetes cluster and you can make a test call as follows (use your LoadBalancer's external IP address):
 
 ```shell
 curl --data "functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes" -X POST http://<EXTERNAL-IP>/Demo/
@@ -81,3 +81,5 @@ You will get a response similar to this from your paceval-service:
 ```shell
 {"handle_pacevalComputation":139698524825392,"result":"-0.651801782452278","interval-min-result":"-0.651801782452306","interval-max-result":"-0.65180178245225","error-type-number":0,"error-position":"","error-type":"[NO ERROR]","error-message":"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).","time-calculate":"0.056092s","version-number":4.04}
 ```
+
+(see [paceval at SwaggerHub](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04) for more information)
