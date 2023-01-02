@@ -42,7 +42,7 @@ kubectl get namespaces
 
 ### Install paceval. Helm Chart
 
-Now we can install the actual paceval. Helm Chart. In directory /paceval/examples_sources/NodeJS_examples/Linux/paceval-service_Linux_x64_and_arm64/chart/paceval/ run the following commands: 
+Now you can install the actual paceval. Helm Chart. In directory /paceval/examples_sources/NodeJS_examples/Linux/paceval-service_Linux_x64_and_arm64/chart/paceval/ run the following commands: 
 
 ```shell
 helm dep update
