@@ -83,3 +83,6 @@ You will get a response similar to this from your paceval-service:
 ```
 
 (see [paceval at SwaggerHub](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04) for more information)
+
+Copyright © 2015-2023 paceval.® All rights reserved.<br>
+mailto:info@paceval.com
