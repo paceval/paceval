@@ -11,38 +11,67 @@ In short, you will need this:
 
 ## Installation steps
 
+As a first step, create an empty project and enable the Kubernets Engine APIs. 
+
+In GCP, creating an empty project is done through the [Google Cloud console](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiAsPaz-qj8AhUGm_0HHV_4AjcQFnoECA0QAQ&url=https%3A%2F%2Fcloud.google.com%2Fresource-manager%2Fdocs%2Fcreating-managing-projects&usg=AOvVaw2rNNmaoita-LBuwPL3xncu). Click the Project dropdown menu, then click "NEW PROJECT".
+Then select the project and [enable the Kubernetes Engine APIs](https://console.cloud.google.com/marketplace/product/google/container.googleapis.com) from the Google Cloud console.
+
 ### Connect to your kubernetes cluster
-For any k8s cluster you can access the cluster using [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file with kubectl, there is also UI based tool called [lens](https://k8slens.dev/).
 
-For connecting to a GKE cluster specifically, check [here](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl) ("Install kubectl and configure cluster access").
-and wait until the helm chart is installed
+For any Kubernetes cluster, you can access the cluster from the [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file using kubectl, there is also a UI-based tool called [Lens](https://k8slens.dev/).
 
-### Install paceval helm chart
+To connect to a cluster in GCP, specifically install the [Google Cloud CLI (gcloud CLI)](https://cloud.google.com/sdk/docs/install). Start the Google Cloud CLI and [install kubectl](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl) (the gke-gcloud-auth-plugin will also be installed):
+```shell
+gcloud components install kubectl
+```
 
-Now we can install the actual paceval helm chart 
+To generate the kubeconfig entry, run this:
+```shell
+gcloud container clusters get-credentials <cluster-name> --region=<region-name>
+```
 
-in directory /paceval/examples_sources/NodeJS_examples/Linux/paceval-service_Linux_x64_and_arm64/chart/paceval/
+For example:
+```shell
+gcloud container clusters get-credentials autopilot-cluster-1 --region=europe-central2
+```
 
-run the following command: 
+You can test the configuration with this:
+```shell
+kubectl get namespaces
+```
+
+### Install paceval. Helm Chart
+
+Now we can install the actual paceval. Helm Chart. In directory /paceval/examples_sources/NodeJS_examples/Linux/paceval-service_Linux_x64_and_arm64/chart/paceval/ run the following commands: 
 
 ```shell
 helm dep update
 helm upgrade paceval . --install --debug 
 ```
 
+In the GCP you stay in the Google Cloud CLI, change to the directory for the paceval. Helm chart. From there, run the commands in the Google Cloud CLI.
+
 ### Wait for IP Address Allocation
-run the waiting command and wait until an external IP (it is in initially pending) is available, use ctrl-c to exit the command.
+
+It may take a few minutes for the LoadBalancer's external IP address to be available.
+You can view the status with this command (use Ctrl + C to end the command):
 
 ```shell
 kubectl get --namespace default svc -w paceval
-NAME      TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-paceval   LoadBalancer   10.49.0.238   <pending>     80:30955/TCP   11d
-paceval   LoadBalancer   10.49.0.238   34.116.196.28   80:30955/TCP   11d
 ```
 
+You will get an output similar to this:
 
-## Call the service endpoint
-Now your service is deployed on k8s cluster, you can make a test call like follows:
 ```shell
-curl "http://<external-ip>/Demo/?functionString=x%2Ay-z&numberOfVariables=3&variables=x%3By%3Bz&values=0.534346%3B2%3B45.4536&interval=yes"
+NAME      TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)        AGE
+paceval   LoadBalancer   10.49.0.238   34.116.196.28   80:30632/TCP   7m28s
+```
+
+## Call the paceval-service endpoint
+
+Note down your LoadBalancer's external IP address (see EXTERNAL-IP above). 
+Now the paceval-service is deployed on your Kubernetes cluster and you can make a test call as follows:
+
+```shell
+curl "http://<EXTERNAL-IP>/Demo/?functionString=x%2Ay-z&numberOfVariables=3&variables=x%3By%3Bz&values=0.534346%3B2%3B45.4536&interval=yes"
 ```
