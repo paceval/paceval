@@ -1,12 +1,13 @@
-# Guide for deploy paceval service to any k8s cluster
+# Guide for deploying the paceval-service on any Kubernetes (K8s) cluster
 
 ## Prerequisite
 
-Please make sure you have followings before you start the installation steps
-- kube control CLI ( i.e. [kubectl](https://kubernetes.io/docs/tasks/tools/))
-- [helm cli](https://helm.sh/docs/intro/install/)
-- access to a running kubernetes cluster with [cluster-admin](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) role (in GCP this also means you account need to have [Kubernetes Engine Admin](https://cloud.google.com/kubernetes-engine/docs/how-to/iam) role in IAM)
+This guide describes how to easily set up your own Paceval service on Kubernetes using [Google Cloud Platform (GCP)](https://cloud.google.com/) with easy-to-follow steps. However, you can adopt it for any hyperscalar such as [Amazon Web Services (AWS)](https://aws.amazon.com/) or [Microsoft Azure](http://azure.microsoft.com/).
 
+In short, you will need this:
+- Kubernetes command-line tool, [kubectl](https://kubernetes.io/docs/tasks/tools/), allows you to run commands against Kubernetes clusters.
+- [Helm CLI](https://helm.sh/docs/intro/install/) is a tool that streamlines installing and managing Kubernetes applications.
+- Access to a running Kubernetes cluster with the Cluster Administrator role [cluster-admin](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) (in GCP, this also means your account must have the [Kubernetes Engine Admin](https://cloud.google.com/kubernetes-engine/docs/how-to/iam) role in IAM).
 
 ## Installation steps
 
