@@ -14,7 +14,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="paceval",                     # This is the name of the package
-    version="4.4.6",                        # The initial release version
+    version="4.4.8",                        # The initial release version
     author="paceval",                     # Full name of the author
     description="paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)",
     long_description=long_description,      # Long description read from the the readme file
