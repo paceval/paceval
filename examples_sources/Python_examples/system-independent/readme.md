@@ -10,7 +10,7 @@ Many connected devices or so-called IoT solutions require **complex mathematical
 
 To create a calculation the device simply calls the following function:
 ```
-paceval.Demo("http://paceval-service.com", "-sin(x\*cos(x))^(1/y)", "2", "x;y","0.5;2", "yes")
+paceval.Demo("http://paceval-service.com", "-sin(x*cos(x))^(1/y)", "2", "x;y","0.5;2", "yes")
 ```
 This creates a calculation object for the function "-sin(x\*cos(x))^(1/y)" and immediately performs the calculation with the "2" variables "x; y" for the values "0.5; 2". Variables and values are always separated by a ";". With "interval=yes" it is indicated that **in addition to the computer-precise calculation, the upper and lower interval of the calculation is also given**. The exact value of the calculation is then in this interval.
 
