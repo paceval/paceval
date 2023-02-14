@@ -597,7 +597,6 @@ function handleGetComputationInformationXML(req, res)
 //---------------------------------------------------------------------------
 function handleGetErrorInformation(req, res)
 {
-    let existingComputation = false;
     let hasError = false;
 
 
