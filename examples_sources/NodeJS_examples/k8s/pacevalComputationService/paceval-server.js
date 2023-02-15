@@ -164,7 +164,7 @@ function logMemoryUsed()
 function initCreateComputation()
 {
 
-    if( !process.env.FUNTION_STR || !process.env.NUM_VARS || !process.env.VARS || !process.env.INTERVAL){
+    if( !process.env.FUNCTION_STR || !process.env.NUM_VARS || !process.env.VARS || !process.env.INTERVAL){
         console.log("Missing environment variables");
         process.exit(1);
     }
