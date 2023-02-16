@@ -52,7 +52,7 @@ function pacevalLibraryName()
     }
     else if ((platform === 'darwin') && (architecture === 'arm64'))
     {
-        pacevalLibrary_str = './libpaceval_macos_dynamicLIB.dylib';
+        pacevalLibrary_str = './libpaceval_macOS_dynamicLIB.dylib';
     }
     else
     {
@@ -175,7 +175,7 @@ function initCreateComputation()
     let function10chars = '';
     let functionLength = 0;
     let interval = (process.env.INTERVAL === "true");
-    const function_str = process.env.FUNTION_STR;
+    const function_str = process.env.FUNCTION_STR;
     const variables_str = process.env.VARS.replace(/;/g, ' ');
 
 
