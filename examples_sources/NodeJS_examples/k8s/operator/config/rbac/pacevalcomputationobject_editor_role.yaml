@@ -1,0 +1,31 @@
+# permissions for end users to edit pacevalcomputationobjects.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: pacevalcomputationobject-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: operator
+    app.kubernetes.io/part-of: operator
+    app.kubernetes.io/managed-by: kustomize
+  name: pacevalcomputationobject-editor-role
+rules:
+- apiGroups:
+  - paceval.paceval.com
+  resources:
+  - pacevalcomputationobjects
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - paceval.paceval.com
+  resources:
+  - pacevalcomputationobjects/status
+  verbs:
+  - get

@@ -1,0 +1,12 @@
+apiVersion: paceval.paceval.com/v1alpha1
+kind: PacevalComputationObject
+metadata:
+  labels:
+    app.kubernetes.io/name: pacevalcomputationobject
+    app.kubernetes.io/instance: pacevalcomputationobject-sample
+    app.kubernetes.io/part-of: operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: operator
+  name: pacevalcomputationobject-sample
+spec:
+  # TODO(user): Add fields here

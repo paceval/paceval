@@ -2,7 +2,9 @@ package controllers
 
 import (
 	"context"
+	"fmt"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/operator/api/v1alpha1"
+	"github.com/rs/zerolog/log"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
@@ -10,7 +12,6 @@ import (
 	"k8s.io/apimachinery/pkg/types"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
-	"strconv"
 )
 
 func labels(v *v1alpha1.PacevalComputationObject, tier string) map[string]string {
@@ -28,7 +29,6 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 	instance *v1alpha1.PacevalComputationObject,
 	dep *appsv1.Deployment,
 ) (*reconcile.Result, error) {
-
 	// See if deployment already exists and create if it doesn't
 	found := &appsv1.Deployment{}
 	err := r.Get(context.TODO(), types.NamespacedName{
@@ -38,17 +38,17 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 	if err != nil && errors.IsNotFound(err) {
 
 		// Create the deployment
+		log.Info().Msgf("create deployment %s", dep.Name)
 		err = r.Create(context.TODO(), dep)
 
 		if err != nil {
 			// Deployment failed
+			log.Error().Msgf("deployment %s failed due to: %s", dep.Name, err.Error())
 			return &reconcile.Result{}, err
-		} else {
-			// Deployment was successful
-			return nil, nil
 		}
 	} else if err != nil {
 		// Error that isn't due to the deployment not existing
+		log.Error().Msg(err.Error())
 		return &reconcile.Result{}, err
 	}
 
@@ -61,7 +61,7 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 	size := int32(1)
 	dep := &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
-			Name:      "hello-pod",
+			Name:      fmt.Sprintf("paceval-computation-%s", v.Spec.FunctionId),
 			Namespace: v.Namespace,
 		},
 		Spec: appsv1.DeploymentSpec{
@@ -94,11 +94,11 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 							},
 							{
 								Name:  "NUM_VARS",
-								Value: string(v.Spec.NumOfVars),
+								Value: v.Spec.NumOfVars,
 							},
 							{
 								Name:  "INTERVAL",
-								Value: strconv.FormatBool(v.Spec.Interval),
+								Value: v.Spec.Interval,
 							},
 						}},
 					}},

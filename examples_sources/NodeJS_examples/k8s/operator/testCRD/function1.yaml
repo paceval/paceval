@@ -1,0 +1,10 @@
+apiVersion: paceval.com/v1alpha1
+kind: PacevalComputationObject
+metadata:
+  name: my-function
+spec:
+  functionId: "1"
+  functionStr: "-sin(x*cos(x))^(1/y)"
+  Vars: "x y"
+  NumOfVars: "2"
+  Internal: "true"
