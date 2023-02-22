@@ -50,12 +50,19 @@ type PacevalComputationObjectStatus struct {
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// +optional
+	// Endpoint Indicates the service DNS endpoint to call the function
+	Endpoint string `json:"endpoint,omitempty" protobuf:"bytes,1,opt,name=endpoint"`
+
+	// +optional
 	// Ready Indicates whether custom resource object is ready for usage.
-	Ready metav1.ConditionStatus `json:"ready,omitempty" protobuf:"bytes,3,opt,name=ready"`
+	//+kubebuilder:default:="False"
+	Ready metav1.ConditionStatus `json:"ready,omitempty" protobuf:"bytes,2,opt,name=ready"`
 }
 
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
+//+kubebuilder:printcolumn:name="Ready",type=string,JSONPath=`.status.ready`
+//+kubebuilder:printcolumn:name="Endpoint",type=string,JSONPath=`.status.endpoint`
 
 // PacevalComputationObject is the Schema for the pacevalcomputationobjects API
 type PacevalComputationObject struct {

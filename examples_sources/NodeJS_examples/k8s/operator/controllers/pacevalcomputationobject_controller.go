@@ -57,7 +57,6 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 	log.Info().Msg("Start reconciling...")
 
 	instance := &pacevalv1alpha1.PacevalComputationObject{}
-	r.Status().Update(context.TODO(), instance)
 
 	err := r.Get(context.TODO(), req.NamespacedName, instance)
 	if err != nil {
@@ -71,8 +70,6 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 		// Error reading the object - requeue the request.
 		return reconcile.Result{}, err
 	}
-
-	instance.Status.Ready = v1.ConditionFalse
 
 	var result *reconcile.Result
 	result, err = r.ensureDeployment(req, instance, r.backendDeployment(instance))

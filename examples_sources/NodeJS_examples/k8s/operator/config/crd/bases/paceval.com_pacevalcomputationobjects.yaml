@@ -15,7 +15,14 @@ spec:
     singular: pacevalcomputationobject
   scope: Namespaced
   versions:
-  - name: v1alpha1
+  - additionalPrinterColumns:
+    - jsonPath: .status.ready
+      name: Ready
+      type: string
+    - jsonPath: .status.endpoint
+      name: Endpoint
+      type: string
+    name: v1alpha1
     schema:
       openAPIV3Schema:
         description: PacevalComputationObject is the Schema for the pacevalcomputationobjects
@@ -53,7 +60,12 @@ spec:
             description: PacevalComputationObjectStatus defines the observed state
               of PacevalComputationObject
             properties:
+              endpoint:
+                description: Endpoint Indicates the service DNS endpoint to call the
+                  function
+                type: string
               ready:
+                default: "False"
                 description: Ready Indicates whether custom resource object is ready
                   for usage.
                 type: string

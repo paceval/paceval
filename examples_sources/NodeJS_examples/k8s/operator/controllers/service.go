@@ -32,6 +32,7 @@ func (r *PacevalComputationObjectReconciler) ensureService(request reconcile.Req
 
 		// Create the service
 		err = r.Create(context.TODO(), service)
+		instance.Status.Endpoint = fmt.Sprintf("%s.%s.svc.cluster.local", service.Name, service.Namespace)
 
 		if err != nil {
 			// Service creation failed
