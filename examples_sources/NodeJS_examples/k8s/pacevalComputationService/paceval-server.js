@@ -30,6 +30,7 @@ var versionNumber = 0;
 
 var debugEnabled = true;//false;
 let computationObject;
+let ready = false;
 
 
 function pacevalLibraryName()
@@ -251,6 +252,7 @@ function initCreateComputation()
     if (debugEnabled == true)
         console.log(``);
 
+    ready = true;
     return handle_pacevalComputation;
 }
 
@@ -778,6 +780,19 @@ app.get('/GetComputationInformationXML/', (req, res) =>
 app.post('/GetComputationInformationXML/', (req, res) =>
 {
     handleGETandPOST(req, res, null, 'GetComputationInformationXML');
+});
+
+app.get('/health',(req,res)=> {
+    res.send ("Healthiness check passed");
+});
+
+app.get('/ready',(req,res)=> {
+    if (ready){
+        res.send ("Readiness check passed");
+    }
+    else{
+        res.status(500).send("Service not ready");
+    }
 });
 
 // Listen to the App Engine-specified port, or 8080 otherwise
