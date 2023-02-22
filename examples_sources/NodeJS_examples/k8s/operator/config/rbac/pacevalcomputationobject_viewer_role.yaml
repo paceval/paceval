@@ -12,7 +12,7 @@ metadata:
   name: pacevalcomputationobject-viewer-role
 rules:
 - apiGroups:
-  - paceval.paceval.com
+  - paceval.com
   resources:
   - pacevalcomputationobjects
   verbs:
@@ -20,7 +20,7 @@ rules:
   - list
   - watch
 - apiGroups:
-  - paceval.paceval.com
+  - paceval.com
   resources:
   - pacevalcomputationobjects/status
   verbs:

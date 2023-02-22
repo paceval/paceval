@@ -6,7 +6,37 @@ metadata:
   name: manager-role
 rules:
 - apiGroups:
-  - .paceval.com
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - watch
+- apiGroups:
+  - autoscaling
+  resources:
+  - horizontalpodautoscalers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - services
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - watch
+- apiGroups:
+  - paceval.com
   resources:
   - pacevalcomputationobjects
   verbs:
@@ -18,13 +48,13 @@ rules:
   - update
   - watch
 - apiGroups:
-  - .paceval.com
+  - paceval.com
   resources:
   - pacevalcomputationobjects/finalizers
   verbs:
   - update
 - apiGroups:
-  - .paceval.com
+  - paceval.com
   resources:
   - pacevalcomputationobjects/status
   verbs:

@@ -36,9 +36,12 @@ type PacevalComputationObjectReconciler struct {
 	Scheme *runtime.Scheme
 }
 
-//+kubebuilder:rbac:groups=.paceval.com,resources=pacevalcomputationobjects,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=.paceval.com,resources=pacevalcomputationobjects/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=.paceval.com,resources=pacevalcomputationobjects/finalizers,verbs=update
+//+kubebuilder:rbac:groups=paceval.com,resources=pacevalcomputationobjects,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=paceval.com,resources=pacevalcomputationobjects/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=paceval.com,resources=pacevalcomputationobjects/finalizers,verbs=update
+//+kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;delete
+//+kubebuilder:rbac:groups=core,resources=services,verbs=get;list;watch;create;delete
+//+kubebuilder:rbac:groups=autoscaling,resources=horizontalpodautoscalers,verbs=get;list;watch;create;delete
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.

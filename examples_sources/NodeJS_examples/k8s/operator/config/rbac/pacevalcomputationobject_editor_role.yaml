@@ -12,7 +12,7 @@ metadata:
   name: pacevalcomputationobject-editor-role
 rules:
 - apiGroups:
-  - paceval.paceval.com
+  - paceval.com
   resources:
   - pacevalcomputationobjects
   verbs:
@@ -24,7 +24,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - paceval.paceval.com
+  - paceval.com
   resources:
   - pacevalcomputationobjects/status
   verbs:
