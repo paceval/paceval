@@ -8,6 +8,7 @@ import (
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
+	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/apimachinery/pkg/util/intstr"
@@ -15,7 +16,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 )
 
-func labels(v *v1alpha1.PacevalComputationObject, tier string) map[string]string {
+func labels(v *v1alpha1.PacevalComputationObject) map[string]string {
 	// Fetches and sets labels
 
 	return map[string]string{
@@ -30,6 +31,7 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 	instance *v1alpha1.PacevalComputationObject,
 	dep *appsv1.Deployment,
 ) (*reconcile.Result, error) {
+
 	// See if deployment already exists and create if it doesn't
 	found := &appsv1.Deployment{}
 	err := r.Get(context.TODO(), types.NamespacedName{
@@ -58,7 +60,7 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 
 func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.PacevalComputationObject) *appsv1.Deployment {
 
-	labels := labels(v, "backend")
+	labels := labels(v)
 	size := int32(1)
 	dep := &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
@@ -84,6 +86,16 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 							Name:          "http",
 							Protocol:      "TCP",
 						}},
+						Resources: corev1.ResourceRequirements{
+							Limits: corev1.ResourceList{
+								corev1.ResourceCPU:    resource.MustParse("500m"),
+								corev1.ResourceMemory: resource.MustParse("2Gi"),
+							},
+							Requests: corev1.ResourceList{
+								corev1.ResourceCPU:    resource.MustParse("200m"),
+								corev1.ResourceMemory: resource.MustParse("1Gi"),
+							},
+						},
 						Env: []corev1.EnvVar{
 							{
 								Name:  "FUNCTION_STR",
@@ -109,7 +121,7 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 									Port: intstr.FromInt(8080),
 								},
 							},
-							InitialDelaySeconds: 2,
+							InitialDelaySeconds: 5,
 							PeriodSeconds:       5,
 							FailureThreshold:    2,
 						},

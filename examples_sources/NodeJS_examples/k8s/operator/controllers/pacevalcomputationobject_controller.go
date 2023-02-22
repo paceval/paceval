@@ -70,13 +70,23 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 	}
 
 	instance.Status.Ready = v1.ConditionFalse
-	// Check if this Deployment already exists
-	//found := &appsv1.Deployment{}
-	//err = r.Get(context.TODO(), types.NamespacedName{Name: instance.Name, Namespace: instance.Namespace}, found)
+
 	var result *reconcile.Result
 	result, err = r.ensureDeployment(req, instance, r.backendDeployment(instance))
 	if result != nil {
 		log.Error().Msgf("Deployment Not ready, error: %s", err.Error())
+		return *result, err
+	}
+
+	result, err = r.ensureService(req, instance, r.backendService(instance))
+	if result != nil {
+		log.Error().Msgf("Service Not ready, error: %s", err.Error())
+		return *result, err
+	}
+
+	result, err = r.ensureHPA(req, instance, r.backendHpa(instance))
+	if result != nil {
+		log.Error().Msgf("HPA Not ready, error: %s", err.Error())
 		return *result, err
 	}
 
