@@ -15,5 +15,5 @@ roleRef:
   name: proxy-role
 subjects:
 - kind: ServiceAccount
-  name: controller-k8s
+  name: controller-manager
   namespace: system
