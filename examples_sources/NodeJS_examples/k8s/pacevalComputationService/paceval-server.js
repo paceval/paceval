@@ -379,6 +379,7 @@ function handleGetComputationResult(req, res)
 
     let return_arr =
     {
+        'handle_pacevalComputation': functionId,
         'result': result_str.toString().replace(/\0/g, ''),
         'interval-min-result': trustedMinResult_str.toString().replace(/\0/g, ''),
         'interval-max-result': trustedMaxResult_str.toString().replace(/\0/g, ''),
@@ -530,7 +531,8 @@ function handleGetComputationResultExt(req, res)
     }
 
     let return_arr = 
-    { 
+    {
+        'handle_pacevalComputation': functionId,
         'number-of-multiple-values': numberOfCalculations,
         'hasError': hasError,
         'results': resultsArray_ar,
