@@ -279,8 +279,8 @@ roleRef:
   name: operator-leader-election-role
 subjects:
 - kind: ServiceAccount
-  name: controller-k8s
-  namespace: system
+  name: operator-controller-manager
+  namespace: operator-system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -296,11 +296,11 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: k8s-role
+  name: operator-manager-role
 subjects:
 - kind: ServiceAccount
-  name: controller-k8s
-  namespace: system
+  name: operator-controller-manager
+  namespace: operator-system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -319,8 +319,8 @@ roleRef:
   name: operator-proxy-role
 subjects:
 - kind: ServiceAccount
-  name: controller-k8s
-  namespace: system
+  name: operator-controller-manager
+  namespace: operator-system
 ---
 apiVersion: v1
 kind: Service
@@ -365,7 +365,7 @@ spec:
   template:
     metadata:
       annotations:
-        kubectl.kubernetes.io/default-container: k8s
+        kubectl.kubernetes.io/default-container: manager
       labels:
         control-plane: controller-manager
     spec:
@@ -414,7 +414,7 @@ spec:
         - --metrics-bind-address=127.0.0.1:8080
         - --leader-elect
         command:
-        - /k8s
+        - /manager
         image: paceval/paceval-operator
         livenessProbe:
           httpGet:
@@ -422,7 +422,7 @@ spec:
             port: 8081
           initialDelaySeconds: 15
           periodSeconds: 20
-        name: k8s
+        name: manager
         readinessProbe:
           httpGet:
             path: /readyz
@@ -443,5 +443,5 @@ spec:
             - ALL
       securityContext:
         runAsNonRoot: true
-      serviceAccountName: controller-k8s
+      serviceAccountName: operator-controller-manager
       terminationGracePeriodSeconds: 10
