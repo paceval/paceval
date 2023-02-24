@@ -130,6 +130,10 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 								Name:  "INTERVAL",
 								Value: v.Spec.Interval,
 							},
+							{
+								Name:  "FUNCTION_ID",
+								Value: v.Spec.FunctionId,
+							},
 						},
 						LivenessProbe: &corev1.Probe{
 							ProbeHandler: corev1.ProbeHandler{

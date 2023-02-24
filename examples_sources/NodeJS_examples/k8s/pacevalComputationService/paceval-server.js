@@ -73,6 +73,8 @@ var doublePtr_ffi = ref.refType('double');
 var double_ffi = ref.types.double;
 var longPtr_ffi = ref.refType('long');
 
+let functionId
+
 var pacevalLibrary_ffi = ffi.Library(pacevalLibraryName(),
 {
     'pacevalLibrary_Initialize': [ 'bool', [ 'string' ] ],
@@ -166,10 +168,12 @@ function logMemoryUsed()
 function initCreateComputation()
 {
 
-    if( !process.env.FUNCTION_STR || !process.env.NUM_VARS || !process.env.VARS || !process.env.INTERVAL){
+    if( !process.env.FUNCTION_STR || !process.env.NUM_VARS || !process.env.VARS || !process.env.INTERVAL || !process.env.FUNCTION_ID){
         console.log("Missing environment variables");
         process.exit(1);
     }
+
+    functionId = process.env.FUNCTION_ID;
 
     let handle_pacevalComputation;
     let isError;
@@ -258,6 +262,7 @@ function initCreateComputation()
 
     ready = !Boolean(isError);
     computationInfo = {
+        'handle_pacevalComputation': functionId,
         'function-10chars': function10chars,
         'function-length': functionLength,
         'error-type-number': errorType,
