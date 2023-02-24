@@ -1,6 +1,6 @@
-FROM golang:1.19 AS backendBuilder
+FROM golang:1.19 AS builder
 
-WORKDIR /go/src/github.com/catena-x/gh-org-checks
+WORKDIR /go/src/github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService
 
 COPY . .
 
@@ -14,7 +14,7 @@ RUN apk add --no-cache tzdata
 
 WORKDIR /home/appuser
 
-COPY --from=backendBuilder /go/bin/main .
+COPY --from=builder /go/bin/main .
 
 EXPOSE 8080
 ENTRYPOINT ["./main"]
