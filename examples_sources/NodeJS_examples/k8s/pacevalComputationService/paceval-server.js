@@ -800,10 +800,11 @@ app.get('/ready',(req,res)=> {
 
 // Listen to the App Engine-specified port, or 8080 otherwise
 const PORT = process.env.PORT || 8080;
-computationObject = initCreateComputation();
+
 app.listen(PORT, () =>
 {
     console.log(`paceval-service listening on port ${PORT}...`);
+    computationObject = initCreateComputation();
     logMemoryUsed();
     if (debugEnabled == true)
         console.log(``);
