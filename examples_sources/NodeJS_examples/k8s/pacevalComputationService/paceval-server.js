@@ -180,7 +180,7 @@ function initCreateComputation()
     const numberOfVariables = Number(process.env.NUM_VARS);
     let function10chars = '';
     let functionLength = 0;
-    let interval = (process.env.INTERVAL === "true");
+    let interval = (process.env.INTERVAL.toLowerCase() === "true" || process.env.INTERVAL.toLowerCase() === "yes");
     const function_str = process.env.FUNCTION_STR;
     const variables_str = process.env.VARS.replace(/;/g, ' ');
 
