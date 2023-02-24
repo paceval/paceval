@@ -32,14 +32,14 @@ spec:
   template:
     metadata:
       annotations:
-        kubectl.kubernetes.io/default-container: manager
+        kubectl.kubernetes.io/default-container: k8s
       labels:
         control-plane: controller-manager
     spec:
       # TODO(user): Uncomment the following code to configure the nodeAffinity expression
       # according to the platforms which are supported by your solution. 
       # It is considered best practice to support multiple architectures. You can
-      # build your manager image using the makefile target docker-buildx.
+      # build your k8s image using the makefile target docker-buildx.
       # affinity:
       #   nodeAffinity:
       #     requiredDuringSchedulingIgnoredDuringExecution:
@@ -67,11 +67,11 @@ spec:
         #   type: RuntimeDefault
       containers:
       - command:
-        - /manager
+        - /k8s
         args:
         - --leader-elect
         image: paceval/paceval-operator
-        name: manager
+        name: k8s
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -98,5 +98,5 @@ spec:
           requests:
             cpu: 10m
             memory: 64Mi
-      serviceAccountName: controller-manager
+      serviceAccountName: controller-k8s
       terminationGracePeriodSeconds: 10

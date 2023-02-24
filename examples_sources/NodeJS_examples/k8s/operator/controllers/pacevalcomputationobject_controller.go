@@ -41,6 +41,7 @@ type PacevalComputationObjectReconciler struct {
 //+kubebuilder:rbac:groups=paceval.com,resources=pacevalcomputationobjects/finalizers,verbs=update
 //+kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;delete
 //+kubebuilder:rbac:groups=core,resources=services,verbs=get;list;watch;create;delete
+//+kubebuilder:rbac:groups=core,resources=endpoints,verbs=get;list;watch;create;delete
 //+kubebuilder:rbac:groups=autoscaling,resources=horizontalpodautoscalers,verbs=get;list;watch;create;delete
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
@@ -74,24 +75,32 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 	var result *reconcile.Result
 	result, err = r.ensureDeployment(req, instance, r.backendDeployment(instance))
 	if result != nil {
-		log.Error().Msgf("Deployment Not ready, error: %s", err.Error())
-		return *result, err
+		return *result, nil
+	} else if err != nil {
+		log.Error().Msgf("Deployment failed, error: %s", err.Error())
+		return ctrl.Result{}, nil
 	}
 
 	result, err = r.ensureService(req, instance, r.backendService(instance))
 	if result != nil {
-		log.Error().Msgf("Service Not ready, error: %s", err.Error())
-		return *result, err
+		return *result, nil
+	} else if err != nil {
+		log.Error().Msgf("service failed, error: %s", err.Error())
+		return ctrl.Result{}, nil
 	}
 
 	result, err = r.ensureHPA(req, instance, r.backendHpa(instance))
 	if result != nil {
-		log.Error().Msgf("HPA Not ready, error: %s", err.Error())
-		return *result, err
+		return *result, nil
+	} else if err != nil {
+		log.Error().Msgf("service failed, error: %s", err.Error())
+		return ctrl.Result{}, nil
 	}
 
+	// set the instance status to true
 	instance.Status.Ready = v1.ConditionTrue
 	r.Status().Update(context.TODO(), instance)
+
 	return ctrl.Result{}, nil
 }
 

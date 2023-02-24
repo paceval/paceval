@@ -55,8 +55,8 @@ func main() {
 	flag.StringVar(&metricsAddr, "metrics-bind-address", ":8080", "The address the metric endpoint binds to.")
 	flag.StringVar(&probeAddr, "health-probe-bind-address", ":8081", "The address the probe endpoint binds to.")
 	flag.BoolVar(&enableLeaderElection, "leader-elect", false,
-		"Enable leader election for controller manager. "+
-			"Enabling this will ensure there is only one active controller manager.")
+		"Enable leader election for controller k8s. "+
+			"Enabling this will ensure there is only one active controller k8s.")
 	opts := zap.Options{
 		Development: true,
 	}
@@ -79,13 +79,13 @@ func main() {
 		// LeaseDuration time first.
 		//
 		// In the default scaffold provided, the program ends immediately after
-		// the manager stops, so would be fine to enable this option. However,
+		// the k8s stops, so would be fine to enable this option. However,
 		// if you are doing or is intended to do any operation such as perform cleanups
-		// after the manager stops then its usage might be unsafe.
+		// after the k8s stops then its usage might be unsafe.
 		// LeaderElectionReleaseOnCancel: true,
 	})
 	if err != nil {
-		setupLog.Error(err, "unable to start manager")
+		setupLog.Error(err, "unable to start k8s")
 		os.Exit(1)
 	}
 
@@ -107,9 +107,9 @@ func main() {
 		os.Exit(1)
 	}
 
-	setupLog.Info("starting manager")
+	setupLog.Info("starting k8s")
 	if err := mgr.Start(ctrl.SetupSignalHandler()); err != nil {
-		setupLog.Error(err, "problem running manager")
+		setupLog.Error(err, "problem running k8s")
 		os.Exit(1)
 	}
 }

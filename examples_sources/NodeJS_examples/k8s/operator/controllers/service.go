@@ -12,6 +12,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
+	"time"
 )
 
 // ensureService ensures Service is Running in a namespace.
@@ -33,18 +34,47 @@ func (r *PacevalComputationObjectReconciler) ensureService(request reconcile.Req
 		// Create the service
 		err = r.Create(context.TODO(), service)
 		instance.Status.Endpoint = fmt.Sprintf("%s.%s.svc.cluster.local", service.Name, service.Namespace)
+		log.Info().Msgf("wait for service %s ready, requeue...", found.Name)
 
 		if err != nil {
 			// Service creation failed
+			log.Error().Msgf("service %s failed due to: %s", service.Name, err)
 			return &reconcile.Result{}, err
-		} else {
-			// Service creation was successful
-			return nil, nil
 		}
+
+		return &reconcile.Result{
+			RequeueAfter: 100 * time.Millisecond,
+		}, nil
+
 	} else if err != nil {
 		// Error that isn't due to the service not existing
+		log.Error().Msg(err.Error())
 		return &reconcile.Result{}, err
 	}
+
+	endpoint := &corev1.Endpoints{}
+	err = r.Get(context.TODO(), types.NamespacedName{
+		Name:      found.Name,
+		Namespace: found.Namespace,
+	}, endpoint)
+
+	if err != nil && errors.IsNotFound(err) {
+		log.Info().Msgf("endpoint %s not found, requeue...", found.Name)
+	} else if err != nil {
+		log.Error().Msg(err.Error())
+		return &reconcile.Result{}, err
+	}
+
+	if len(endpoint.Subsets) == 0 || len(endpoint.Subsets[0].Addresses) == 0 {
+		log.Info().Msgf("wait for service %s ready, requeue...", found.Name)
+		return &reconcile.Result{
+			RequeueAfter: 100 * time.Millisecond,
+		}, nil
+	}
+
+	instance.Status.Endpoint = fmt.Sprintf("%s.%s.svc.cluster.local", service.Name, service.Namespace)
+
+	r.Status().Update(context.TODO(), instance)
 
 	return nil, nil
 }

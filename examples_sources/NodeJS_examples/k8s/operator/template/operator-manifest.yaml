@@ -175,6 +175,16 @@ rules:
 - apiGroups:
   - ""
   resources:
+  - endpoints
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
   - services
   verbs:
   - create
@@ -269,8 +279,8 @@ roleRef:
   name: operator-leader-election-role
 subjects:
 - kind: ServiceAccount
-  name: operator-controller-manager
-  namespace: operator-system
+  name: controller-k8s
+  namespace: system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -286,11 +296,11 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: operator-manager-role
+  name: k8s-role
 subjects:
 - kind: ServiceAccount
-  name: operator-controller-manager
-  namespace: operator-system
+  name: controller-k8s
+  namespace: system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -309,8 +319,8 @@ roleRef:
   name: operator-proxy-role
 subjects:
 - kind: ServiceAccount
-  name: operator-controller-manager
-  namespace: operator-system
+  name: controller-k8s
+  namespace: system
 ---
 apiVersion: v1
 kind: Service
@@ -355,7 +365,7 @@ spec:
   template:
     metadata:
       annotations:
-        kubectl.kubernetes.io/default-container: manager
+        kubectl.kubernetes.io/default-container: k8s
       labels:
         control-plane: controller-manager
     spec:
@@ -404,7 +414,7 @@ spec:
         - --metrics-bind-address=127.0.0.1:8080
         - --leader-elect
         command:
-        - /manager
+        - /k8s
         image: paceval/paceval-operator
         livenessProbe:
           httpGet:
@@ -412,7 +422,7 @@ spec:
             port: 8081
           initialDelaySeconds: 15
           periodSeconds: 20
-        name: manager
+        name: k8s
         readinessProbe:
           httpGet:
             path: /readyz
@@ -433,5 +443,5 @@ spec:
             - ALL
       securityContext:
         runAsNonRoot: true
-      serviceAccountName: operator-controller-manager
+      serviceAccountName: controller-k8s
       terminationGracePeriodSeconds: 10

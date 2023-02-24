@@ -14,6 +14,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
+	"time"
 )
 
 func labels(v *v1alpha1.PacevalComputationObject) map[string]string {
@@ -49,11 +50,27 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 			log.Error().Msgf("deployment %s failed due to: %s", dep.Name, err.Error())
 			return &reconcile.Result{}, err
 		}
+
+		log.Info().Msgf("wait for deployment %s ready, requeue...", dep.Name)
+		return &reconcile.Result{
+			RequeueAfter: 500 * time.Millisecond,
+		}, nil
+
 	} else if err != nil {
 		// Error that isn't due to the deployment not existing
 		log.Error().Msg(err.Error())
 		return &reconcile.Result{}, err
 	}
+
+	// deployment is available, we need to check if it is ready
+	if found.Status.ReadyReplicas != found.Status.AvailableReplicas || found.Status.AvailableReplicas < 1 {
+		log.Info().Msgf("wait for deployment %s ready, requeue...", dep.Name)
+		return &reconcile.Result{
+			RequeueAfter: 500 * time.Millisecond,
+		}, nil
+	}
+
+	r.Status().Update(context.TODO(), instance)
 
 	return nil, nil
 }

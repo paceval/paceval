@@ -239,11 +239,14 @@ function initCreateComputation()
     {
         console.log('function10chars:' + function10chars);
         console.log('errorType:' + errorType);
+        console.log('error-position:' + errorPositionLong);
+        console.log('error-type' + errorDetails_str.toString().replace(/\0/g, ''));
+        console.log('error-message' + errorMessage_str.toString().replace(/\0/g, ''));
+        console.log('time-create:' + timeCreate.toFixed(6) + 's');
+        console.log('version-number:' + versionNumber );
+
         console.log('maxLengthStr:' + maxLengthStr);
         console.log('isError:' + isError);
-        console.log('errorPositionLong:' + errorPositionLong);
-
-        console.log(`time to create: ${timeCreate.toFixed(6) + 's'}`);
         console.log(`number of active computations: ${numberOfActiveComputations}`);
 
     }

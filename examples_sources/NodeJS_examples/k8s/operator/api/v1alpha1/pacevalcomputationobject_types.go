@@ -59,6 +59,9 @@ type PacevalComputationObjectStatus struct {
 	Ready metav1.ConditionStatus `json:"ready,omitempty" protobuf:"bytes,2,opt,name=ready"`
 }
 
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
 //+kubebuilder:printcolumn:name="Ready",type=string,JSONPath=`.status.ready`
@@ -74,6 +77,7 @@ type PacevalComputationObject struct {
 }
 
 //+kubebuilder:object:root=true
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // PacevalComputationObjectList contains a list of PacevalComputationObject
 type PacevalComputationObjectList struct {
