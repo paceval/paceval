@@ -22,6 +22,11 @@ func main() {
 	http.HandleFunc("/GetComputationResultExt/", handleComputationProcess(manager))
 	http.HandleFunc("/GetComputationInformationXML/", handleComputationProcess(manager))
 	http.HandleFunc("/GetErrorInformation/", handleComputationProcess(manager))
+	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Cache-Control", "no-cache, no-store, no-transform, must-revalidate, private, max-age=0")
+		w.WriteHeader(http.StatusNoContent)
+	})
+
 	log.Fatal().Msg(http.ListenAndServe(":8080", nil).Error())
 }
 
