@@ -255,7 +255,7 @@ function initCreateComputation()
     if (debugEnabled == true)
         console.log(``);
 
-    ready = true;
+    ready = !Boolean(isError);
     return handle_pacevalComputation;
 }
 
