@@ -31,6 +31,7 @@ var versionNumber = 0;
 var debugEnabled = true;//false;
 let computationObject;
 let ready = false;
+let computationInfo = {}
 
 
 function pacevalLibraryName()
@@ -256,6 +257,17 @@ function initCreateComputation()
         console.log(``);
 
     ready = !Boolean(isError);
+    computationInfo = {
+        'function-10chars': function10chars,
+        'function-length': functionLength,
+        'error-type-number': errorType,
+        'error-position': errorPositionLong,
+        'error-type': errorDetails_str.toString().replace(/\0/g, ''),
+        'error-message': errorMessage_str.toString().replace(/\0/g, ''),
+        'time-create': timeCreate.toFixed(6) + 's',
+        'version-number': versionNumber
+
+    }
     return handle_pacevalComputation;
 }
 
@@ -742,6 +754,12 @@ app.get('/', (req, res) =>
 app.post('/', (req, res) =>
 {
     handleGETandPOST(req, res, null, null);
+});
+
+app.get("/GetComputation/", (req, res) =>
+{
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(computationInfo));
 });
 
 
