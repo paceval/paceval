@@ -691,12 +691,21 @@ function handleGETandPOST(req, res, urlGET, urlPOST)
     {
         if ((req.query.call == 'paceval_GetComputationResult') || (urlGET == 'GetComputationResult'))
         {
+            if (req.query.values == null) {
+                res.status(500).json({ error: 'missing parameters' });
+                return;
+            }
 
             handleGetComputationResult(req, res);
             return;
         }
         else if ((req.query.call == 'paceval_GetComputationResultExt') || (urlGET === 'GetComputationResultExt'))
         {
+            if ((req.query.numberOfCalculations == null) || (req.query.values == null))
+            {
+                res.status(500).json({ error: 'missing parameters' });
+                return;
+            }
 
             handleGetComputationResultExt(req, res);
             return;
@@ -722,11 +731,21 @@ function handleGETandPOST(req, res, urlGET, urlPOST)
     {
        if ((req.body.call == 'paceval_GetComputationResult') || (urlPOST == 'GetComputationResult'))
         {
+            if (req.body.values == null)
+            {
+                res.status(500).json({ error: 'missing parameters' });
+                return;
+            }
             handleGetComputationResult(req, res);
             return;
         }
         else if ((req.body.call == 'paceval_GetComputationResultExt') || (urlPOST == 'GetComputationResultExt'))  
         {
+            if ((req.body.numberOfCalculations == null) || (req.body.values == null))
+            {
+                res.status(500).json({ error: 'missing parameters' });
+                return;
+            }
             handleGetComputationResultExt(req, res);
             return;
         }
