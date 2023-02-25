@@ -17,11 +17,11 @@ func main() {
 	log.Info().Msg("starting service...")
 
 	http.HandleFunc("/CreateComputation/", handleCreatePacevalComputation(manager))
-	http.HandleFunc("/GetComputation/", handleComputationProcess(manager))
-	http.HandleFunc("/GetComputationResult/", handleComputationProcess(manager))
-	http.HandleFunc("/GetComputationResultExt/", handleComputationProcess(manager))
-	http.HandleFunc("/GetComputationInformationXML/", handleComputationProcess(manager))
-	http.HandleFunc("/GetErrorInformation/", handleComputationProcess(manager))
+	http.HandleFunc("/GetComputation/", handleSingleComputationProcess(manager))
+	http.HandleFunc("/GetComputationResult/", handleSingleComputationProcess(manager))
+	http.HandleFunc("/GetComputationResultExt/", handleSingleComputationProcess(manager))
+	http.HandleFunc("/GetComputationInformationXML/", handleSingleComputationProcess(manager))
+	http.HandleFunc("/GetErrorInformation/", handleSingleComputationProcess(manager))
 	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Cache-Control", "no-cache, no-store, no-transform, must-revalidate, private, max-age=0")
 		w.WriteHeader(http.StatusNoContent)
@@ -78,7 +78,7 @@ func handleCreatePacevalComputation(manager k8s.Manager) http.HandlerFunc {
 	}
 }
 
-func handleComputationProcess(manager k8s.Manager) http.HandlerFunc {
+func handleSingleComputationProcess(manager k8s.Manager) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		log.Info().Msg("handle request to get computation result")
 		w.Header().Set("Content-Type", "application/json")
@@ -119,7 +119,7 @@ func forwardRequestToComputationObject(w http.ResponseWriter, r *http.Request, m
 
 	//https://stackoverflow.com/questions/34724160/go-http-send-incoming-http-request-to-an-other-server-using-client-do
 	url := r.URL
-	url.Host = endpoint + ":9000"
+	url.Host = endpoint
 	url.Scheme = "http"
 
 	proxyReq, err := http.NewRequest(r.Method, url.String(), r.Body)
