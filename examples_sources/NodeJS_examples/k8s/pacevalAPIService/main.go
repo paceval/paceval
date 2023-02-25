@@ -119,7 +119,7 @@ func forwardRequestToComputationObject(w http.ResponseWriter, r *http.Request, m
 
 	//https://stackoverflow.com/questions/34724160/go-http-send-incoming-http-request-to-an-other-server-using-client-do
 	url := r.URL
-	url.Host = endpoint + ":9000"
+	url.Host = endpoint
 	url.Scheme = "http"
 
 	proxyReq, err := http.NewRequest(r.Method, url.String(), r.Body)
