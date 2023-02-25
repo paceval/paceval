@@ -8,6 +8,7 @@ import (
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
 	"github.com/rs/zerolog/log"
 	"io"
+	errorpkg "k8s.io/apimachinery/pkg/api/errors"
 	"net/http"
 )
 
@@ -84,10 +85,8 @@ func handleSingleComputationProcess(manager k8s.Manager) http.HandlerFunc {
 		w.Header().Set("Content-Type", "application/json")
 
 		switch r.Method {
-		case http.MethodGet:
+		case http.MethodGet, http.MethodPost:
 			forwardRequestToComputationObject(w, r, manager)
-			break
-
 		default:
 			log.Info().Msg("method not allowed")
 			w.WriteHeader(http.StatusMethodNotAllowed)
@@ -109,13 +108,18 @@ func forwardRequestToComputationObject(w http.ResponseWriter, r *http.Request, m
 
 	endpoint, err := manager.GetEndpoint(id)
 
-	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
+	//'handle_pacevalComputation does not exist'
+	if err != nil && errorpkg.IsNotFound(err) {
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte("{ \"error\": \"handle_pacevalComputation does not exist\" }"))
+		return
+	} else if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
 		return
 	}
 
-	log.Info().Msgf("conmputation object endpoint: %s", endpoint)
+	log.Info().Msgf("computation object endpoint: %s", endpoint)
 
 	//https://stackoverflow.com/questions/34724160/go-http-send-incoming-http-request-to-an-other-server-using-client-do
 	url := r.URL
@@ -123,6 +127,7 @@ func forwardRequestToComputationObject(w http.ResponseWriter, r *http.Request, m
 	url.Scheme = "http"
 
 	proxyReq, err := http.NewRequest(r.Method, url.String(), r.Body)
+	defer r.Body.Close()
 
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -149,6 +154,7 @@ func forwardRequestToComputationObject(w http.ResponseWriter, r *http.Request, m
 	}
 
 	respBody, err := io.ReadAll(proxyRes.Body)
+	defer proxyRes.Body.Close()
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
