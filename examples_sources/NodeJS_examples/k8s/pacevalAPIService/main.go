@@ -86,6 +86,7 @@ func handleSingleComputationProcess(manager k8s.Manager) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		log.Info().Msg("handle request to get computation result")
 		w.Header().Set("Content-Type", "application/json")
+		log.Info().Msgf("incoming %s request", r.Method)
 
 		switch r.Method {
 		case http.MethodGet, http.MethodPost:
