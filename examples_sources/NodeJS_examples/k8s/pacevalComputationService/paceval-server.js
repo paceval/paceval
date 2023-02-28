@@ -788,6 +788,11 @@ app.get("/GetComputation/", (req, res) =>
     res.end(JSON.stringify(computationInfo));
 });
 
+app.post("/GetComputation/", (req, res) =>
+{
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(computationInfo));
+});
 
 app.get('/GetComputationResult/', (req, res) =>
 {
