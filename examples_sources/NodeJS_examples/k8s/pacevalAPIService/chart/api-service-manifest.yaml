@@ -115,7 +115,7 @@ spec:
           securityContext:
             {}
           image: "paceval/api-service:latest"
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 8080
