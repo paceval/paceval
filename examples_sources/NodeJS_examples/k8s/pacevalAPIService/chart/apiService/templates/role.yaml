@@ -21,3 +21,4 @@ rules:
       - pacevalcomputationobjects/status
     verbs:
       - get
+      - update

@@ -39,6 +39,7 @@ rules:
       - pacevalcomputationobjects/status
     verbs:
       - get
+      - update
 ---
 # Source: apiservice/templates/rolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1

@@ -51,7 +51,7 @@ func (p SingleHostProxyHandler) forwardRequestToComputationObject(w http.Respons
 
 	endpoint, err := p.manager.GetEndpoint(id)
 
-	//handle_pacevalComputation does not exist'
+	//handle_pacevalComputation does not exist
 	if err != nil && errorpkg.IsNotFound(err) {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte("{ \"error\": \"handle_pacevalComputation does not exist\" }"))
