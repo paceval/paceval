@@ -127,7 +127,7 @@ func (r Manager) GetEndpoint(id string) (string, error) {
 }
 
 func (r Manager) updateLastActiveTimeStamp(instance *unstructured.Unstructured) error {
-	instance.Object["status"].(map[string]interface{})["lastActiveTime"] = metav1.Now().String()
+	instance.Object["status"].(map[string]interface{})["lastActiveTime"] = metav1.Now()
 	_, err := r.client.Resource(gvr).Namespace(data.DEFAULTNAMESPACE).UpdateStatus(context.TODO(), &unstructured.Unstructured{Object: instance.Object}, metav1.UpdateOptions{})
 	return err
 }
