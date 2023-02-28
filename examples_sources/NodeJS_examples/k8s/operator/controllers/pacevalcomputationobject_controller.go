@@ -18,14 +18,13 @@ package controllers
 
 import (
 	"context"
+	"github.com/rs/zerolog/log"
 	"k8s.io/apimachinery/pkg/api/errors"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"sigs.k8s.io/controller-runtime/pkg/reconcile"
-
-	"github.com/rs/zerolog/log"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
+	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 
 	pacevalv1alpha1 "github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/operator/api/v1alpha1"
 )
@@ -99,6 +98,7 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 
 	// set the instance status to true
 	instance.Status.Ready = v1.ConditionTrue
+	instance.Status.LastActiveTime = v1.Now()
 	r.Status().Update(context.TODO(), instance)
 
 	return ctrl.Result{}, nil

@@ -22,6 +22,9 @@ spec:
     - jsonPath: .status.endpoint
       name: Endpoint
       type: string
+    - jsonPath: .status.lastActiveTime
+      name: LastActiveTime
+      type: string
     name: v1alpha1
     schema:
       openAPIV3Schema:
@@ -63,6 +66,11 @@ spec:
               endpoint:
                 description: Endpoint Indicates the service DNS endpoint to call the
                   function
+                type: string
+              lastActiveTime:
+                description: LastActiveTime Indicates the timestamp where the object
+                  was active the last time.
+                format: date-time
                 type: string
               ready:
                 default: "False"

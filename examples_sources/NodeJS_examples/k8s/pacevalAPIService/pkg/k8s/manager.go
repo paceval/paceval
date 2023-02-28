@@ -116,8 +116,20 @@ func (r Manager) GetEndpoint(id string) (string, error) {
 		return "", err
 	}
 
+	err = r.updateLastActiveTimeStamp(instance)
+
+	if err != nil {
+		return "", err
+	}
+
 	return endpoint, nil
 
+}
+
+func (r Manager) updateLastActiveTimeStamp(instance *unstructured.Unstructured) error {
+	instance.Object["status"].(map[string]interface{})["lastActiveTime"] = metav1.Now().String()
+	_, err := r.client.Resource(gvr).Namespace(data.DEFAULTNAMESPACE).UpdateStatus(context.TODO(), &unstructured.Unstructured{Object: instance.Object}, metav1.UpdateOptions{})
+	return err
 }
 
 func (r Manager) checkServiceReady(instance *unstructured.Unstructured) (bool, error) {

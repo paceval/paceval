@@ -57,12 +57,17 @@ type PacevalComputationObjectStatus struct {
 	// Ready Indicates whether custom resource object is ready for usage.
 	//+kubebuilder:default:="False"
 	Ready metav1.ConditionStatus `json:"ready,omitempty" protobuf:"bytes,2,opt,name=ready"`
+
+	// +optional
+	// LastActiveTime Indicates the timestamp where the object was active the last time.
+	LastActiveTime metav1.Time `json:"lastActiveTime,omitempty" protobuf:"bytes,3,opt,name=lastActiveTime"`
 }
 
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
 //+kubebuilder:printcolumn:name="Ready",type=string,JSONPath=`.status.ready`
 //+kubebuilder:printcolumn:name="Endpoint",type=string,JSONPath=`.status.endpoint`
+//+kubebuilder:printcolumn:name="LastActiveTime",type=string,JSONPath=`.status.lastActiveTime`
 
 // PacevalComputationObject is the Schema for the pacevalcomputationobjects API
 type PacevalComputationObject struct {
