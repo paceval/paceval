@@ -19,10 +19,13 @@ spec:
                   now=$(date +%s)
                   for obj in $(kubectl get pacevalcomputationobjects.paceval.com -o=jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}'); do
                     last_active_time=$(kubectl get pacevalcomputationobjects.paceval.com $obj -o=jsonpath='{.status.lastActiveTime}')
+                    if [ -z "$last_active_time" ]; then
+                      continue
+                    fi
                     last_active_timestamp=$(date +%s -d "$last_active_time")
-                  age=$((now-last_active_timestamp))
-                  if [ $age -gt 3600 ]; then
-                    kubectl delete pacevalcomputationobjects.paceval.com $obj
-                  fi
+                    age=$((now-last_active_timestamp))
+                    if [ $age -gt 3600 ]; then
+                      kubectl delete pacevalcomputationobjects.paceval.com $obj
+                    fi
                   done
           restartPolicy: OnFailure
