@@ -2,6 +2,7 @@
 # Source: apiservice/templates/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
+automountServiceAccountToken: true
 metadata:
   name: api-service-apiservice
   labels:
@@ -164,3 +165,33 @@ spec:
       resource:
         name: memory
         targetAverageUtilization: 80
+---
+# Source: apiservice/templates/cronjob.yaml
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: delete-old-paceval-computation-objects
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccount: api-service-apiservice
+          containers:
+            - name: delete-old-paceval-computation-objects
+              image: bitnami/kubectl:1.25.7
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  now=$(date +%s)
+                  for obj in $(kubectl get pacevalcomputationobjects.paceval.com -o=jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}'); do
+                    last_active_time=$(kubectl get pacevalcomputationobjects.paceval.com $obj -o=jsonpath='{.status.lastActiveTime}')
+                    last_active_timestamp=$(date +%s -d "$last_active_time")
+                  age=$((now-last_active_timestamp))
+                  if [ $age -gt 3600 ]; then
+                    kubectl delete pacevalcomputationobjects.paceval.com $obj
+                  fi
+                  done
+          restartPolicy: OnFailure
