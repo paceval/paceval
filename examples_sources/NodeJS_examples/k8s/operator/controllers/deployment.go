@@ -105,12 +105,12 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 						}},
 						Resources: corev1.ResourceRequirements{
 							Limits: corev1.ResourceList{
-								corev1.ResourceCPU:    resource.MustParse("500m"),
-								corev1.ResourceMemory: resource.MustParse("2Gi"),
+								corev1.ResourceCPU:    resource.MustParse("300m"),
+								corev1.ResourceMemory: resource.MustParse("1Gi"),
 							},
 							Requests: corev1.ResourceList{
-								corev1.ResourceCPU:    resource.MustParse("200m"),
-								corev1.ResourceMemory: resource.MustParse("1Gi"),
+								corev1.ResourceCPU:    resource.MustParse("100m"),
+								corev1.ResourceMemory: resource.MustParse("500Mi"),
 							},
 						},
 						Env: []corev1.EnvVar{
