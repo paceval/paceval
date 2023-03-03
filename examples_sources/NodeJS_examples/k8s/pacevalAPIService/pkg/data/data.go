@@ -1,12 +1,18 @@
 package data
 
 const (
-	FUNCTIONSTR              = "functionString"
-	NUMOFVARIABLES           = "numberOfVariables"
-	VARAIBLES                = "variables"
-	INTERVAL                 = "interval"
-	HANDLEPACEVALCOMPUTATION = "handle_pacevalComputation"
-	DEFAULTNAMESPACE         = "default"
+	FUNCTIONSTR               = "functionString"
+	NUMOFVARIABLES            = "numberOfVariables"
+	VARAIBLES                 = "variables"
+	INTERVAL                  = "interval"
+	HANDLEPACEVALCOMPUTATION  = "handle_pacevalComputation"
+	HANDLEPACEVALCOMPUTATIONS = "handle_pacevalComputations"
+
+	NUMOFCOMPUTATIONS = "numberOfpacevalComputations"
+
+	VALUES = "values"
+
+	DEFAULTNAMESPACE = "default"
 )
 
 type ParameterSet struct {

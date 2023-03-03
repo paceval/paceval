@@ -93,6 +93,14 @@ func (r Manager) CreateComputation(params *data.ParameterSet) (string, error) {
 }
 
 func (r Manager) GetEndpoint(id string) (string, error) {
+	return r.getInstanceProperty(id, "status", "endpoint")
+}
+
+func (r Manager) GetNumOfVariables(id string) (string, error) {
+	return r.getInstanceProperty(id, "spec", "NumOfVars")
+}
+
+func (r Manager) getInstanceProperty(id string, path string, property string) (string, error) {
 	instanceName := fmt.Sprintf("paceval-computation-%s", id)
 	instance, err := r.client.Resource(gvr).Namespace(data.DEFAULTNAMESPACE).Get(context.TODO(), instanceName, metav1.GetOptions{})
 
@@ -110,7 +118,7 @@ func (r Manager) GetEndpoint(id string) (string, error) {
 		return "", errors.New("computation is not ready")
 	}
 
-	endpoint, _, err := unstructured.NestedString(instance.Object, "status", "endpoint")
+	endpoint, _, err := unstructured.NestedString(instance.Object, path, property)
 
 	if err != nil {
 		return "", err
@@ -121,6 +129,8 @@ func (r Manager) GetEndpoint(id string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+
+	log.Info().Msgf("endpoint: %s", endpoint)
 
 	return endpoint, nil
 

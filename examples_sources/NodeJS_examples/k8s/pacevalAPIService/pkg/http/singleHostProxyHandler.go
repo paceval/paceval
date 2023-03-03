@@ -53,7 +53,7 @@ func (p SingleHostProxyHandler) forwardRequestToComputationObject(w http.Respons
 
 	//handle_pacevalComputation does not exist
 	if err != nil && errorpkg.IsNotFound(err) {
-		w.WriteHeader(http.StatusInternalServerError)
+		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("{ \"error\": \"handle_pacevalComputation does not exist\" }"))
 		return
 	} else if err != nil {
@@ -74,49 +74,6 @@ func (p SingleHostProxyHandler) forwardRequestToComputationObject(w http.Respons
 
 	proxy := httputil.NewSingleHostReverseProxy(targetURL)
 	proxy.ServeHTTP(w, r)
-
-	//https://stackoverflow.com/questions/34724160/go-http-send-incoming-http-request-to-an-other-server-using-client-do
-	//url := r.Clone(context.Background()).URL
-	//url.Host = endpoint + ":9000"
-	//url.Scheme = "http"
-	//
-	//proxyReq, err := http.NewRequest(r.Method, url.String(), r.Clone(context.Background()).Body)
-	//
-	//if err != nil {
-	//	w.WriteHeader(http.StatusInternalServerError)
-	//	w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
-	//	return
-	//}
-	//
-	//proxyReq.Header.Set("Host", r.Host)
-	//proxyReq.Header.Set("X-Forwarded-For", r.RemoteAddr)
-	//
-	//// add all original request header to proxy request
-	//for header, values := range r.Header {
-	//	for _, value := range values {
-	//		proxyReq.Header.Add(header, value)
-	//	}
-	//}
-	//
-	//client := &http.Client{}
-	//proxyRes, err := client.Do(proxyReq)
-	//if err != nil {
-	//	w.WriteHeader(http.StatusInternalServerError)
-	//	w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
-	//	return
-	//}
-	//
-	//respBody, err := io.ReadAll(proxyRes.Body)
-	//defer proxyRes.Body.Close()
-	//if err != nil {
-	//	w.WriteHeader(http.StatusInternalServerError)
-	//	w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
-	//	return
-	//}
-	//
-	//log.Info().Msg("received response from target")
-	//w.WriteHeader(proxyRes.StatusCode)
-	//w.Write(respBody)
 }
 
 func (p SingleHostProxyHandler) getComputationId(r *http.Request) (string, error) {

@@ -17,6 +17,7 @@ func main() {
 	log.Info().Msg("starting service...")
 
 	singleProxyHandler := http2.NewSingleHostProxyHandler(manager)
+	multiRequestsHander := http2.NewMultiHostProxyHandler(manager)
 
 	http.HandleFunc("/CreateComputation/", handleCreatePacevalComputation(manager))
 	http.Handle("/GetComputation/", singleProxyHandler)
@@ -24,6 +25,7 @@ func main() {
 	http.Handle("/GetComputationResultExt/", singleProxyHandler)
 	http.Handle("/GetComputationInformationXML/", singleProxyHandler)
 	http.Handle("/GetErrorInformation/", singleProxyHandler)
+	http.Handle("/GetMultipleComputationsResults/", multiRequestsHander)
 	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Cache-Control", "no-cache, no-store, no-transform, must-revalidate, private, max-age=0")
 		w.WriteHeader(http.StatusNoContent)
