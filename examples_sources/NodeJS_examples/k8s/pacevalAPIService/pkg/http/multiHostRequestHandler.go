@@ -119,13 +119,12 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 			// Create a new HTTP client
 			client := &http.Client{}
 
-			proxyReq, err := http.NewRequest(http.MethodGet, endpoint+"/GetComputationResult/", r.Body)
+			proxyReq, err := http.NewRequest(http.MethodGet, "http://"+endpoint+"/GetComputationResult/", r.Body)
 			//proxyReq, err := http.NewRequest(http.MethodGet, "http://localhost:9000/GetComputationResult/", r.Body)
 			param := proxyReq.URL.Query()
 
 			param.Add(data.VALUES, strings.Join(organizedValues[index], ";"))
 			proxyReq.URL.RawQuery = param.Encode()
-			proxyReq.URL.Scheme = "http"
 
 			if err != nil {
 				log.Info().Msgf("endpoint: %s , issue creating new request due to : %s", endpoint, err)
