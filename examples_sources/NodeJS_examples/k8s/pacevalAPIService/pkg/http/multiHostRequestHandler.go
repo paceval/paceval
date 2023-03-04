@@ -46,7 +46,8 @@ func (p MultiHostRequestHandler) organizeValues(numOfVariablesArr []int, allValu
 	sum, err := math.Sum(numOfVariablesArr)
 
 	if err != nil {
-		return nil, err
+		log.Error().Msgf("error calculating sum of variables: %s", err)
+		return nil, errors.New("problem verifying functions")
 	}
 
 	if sum != len(allValues) {
@@ -65,6 +66,20 @@ func (p MultiHostRequestHandler) organizeValues(numOfVariablesArr []int, allValu
 	return organizedValuesArr, nil
 }
 
+func (p MultiHostRequestHandler) containsDuplicatedId(ids []string) bool {
+	m := make(map[string]struct{})
+
+	for _, id := range ids {
+		m[id] = struct{}{}
+	}
+
+	if len(m) != len(ids) {
+		return true
+	}
+
+	return false
+}
+
 func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request) {
 	ids, err := p.getComputationIds(r)
 	if err != nil {
@@ -73,11 +88,18 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 		return
 	}
 
+	if p.containsDuplicatedId(ids) {
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("{ \"error\": \"duplicate handle_pacevalComputation\" }"))
+		return
+	}
+
 	endpoints, numOfVariables, err := p.getEndpointsWithNumOfVariables(ids)
 
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
+		log.Error().Msgf("Error: %s", err)
+		w.Write([]byte("{ \"error\": \"internal error, please contact service admin\" }"))
 		return
 	}
 
@@ -87,7 +109,8 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 	if err != nil {
 		// handle error: failed to parse query string
 		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
+		log.Error().Msgf("Error: %s", err)
+		w.Write([]byte("{ \"error\": \"internal error, please contact service admin\" }"))
 		return
 	}
 
@@ -109,7 +132,8 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 	for index, endpoint := range endpoints {
 		if endpoint == "" {
 			w.WriteHeader(http.StatusNotFound)
-			w.Write([]byte("{ \"error\": \"endpoint not found\" }"))
+			log.Error().Msg("Error: endpoint not found: %s")
+			w.Write([]byte(fmt.Sprintf("{ \"error\": \"not able to call the %dth computation object\" }", index)))
 			return
 		}
 
@@ -185,7 +209,8 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 	}
 
 	w.WriteHeader(http.StatusInternalServerError)
-	w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", combinedError)))
+	log.Error().Msgf("error calling functions: %s", combinedError)
+	w.Write([]byte("{ \"error\": \"internal error, please contact service admin\" }"))
 
 }
 
