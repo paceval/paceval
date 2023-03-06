@@ -98,9 +98,9 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 	endpoints, numOfVariables, err := p.getEndpointsWithNumOfVariables(ids)
 
 	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
+		w.WriteHeader(http.StatusBadRequest)
 		log.Error().Msgf("Error: %s", err)
-		w.Write([]byte("{ \"error\": \"internal error, please contact service admin\" }"))
+		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
 		return
 	}
 

@@ -65,9 +65,8 @@ func getClientSet() (dynamic.Interface, error) {
 	return client, nil
 }
 
-func (r Manager) CreateComputation(params *data.ParameterSet) (string, error) {
+func (r Manager) CreateComputation(id uuid.UUID, params *data.ParameterSet) (string, error) {
 	log.Info().Msgf("create computation on parameters %v", params)
-	id := uuid.New()
 	instanceName := fmt.Sprintf("paceval-computation-%s", id.String())
 	obj := unstructured.Unstructured{}
 	obj.SetGroupVersionKind(gvk)

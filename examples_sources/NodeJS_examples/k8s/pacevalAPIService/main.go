@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/google/uuid"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
 	http2 "github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/http"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
@@ -66,7 +67,7 @@ func handleCreatePacevalComputation(manager k8s.Manager) http.HandlerFunc {
 			return
 		}
 
-		functionId, err := manager.CreateComputation(params)
+		functionId, err := manager.CreateComputation(uuid.New(), params)
 
 		if err != nil {
 			w.WriteHeader(http.StatusMethodNotAllowed)
