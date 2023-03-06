@@ -1,6 +1,7 @@
 package http
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -31,7 +32,7 @@ func (p MultiHostRequestHandler) ServeHTTP(w http.ResponseWriter, r *http.Reques
 	log.Info().Msgf("incoming %s request", r.Method)
 
 	switch r.Method {
-	case http.MethodGet:
+	case http.MethodGet, http.MethodPost:
 		p.forwardRequestToComputationObjects(w, r)
 
 	default:
@@ -81,7 +82,7 @@ func (p MultiHostRequestHandler) containsDuplicatedId(ids []string) bool {
 }
 
 func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request) {
-	ids, err := p.getComputationIds(r)
+	ids, allValues, err := p.getComputationIds(r)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("{ \"error\": \"missing parameters\" }"))
@@ -102,19 +103,6 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 		w.Write([]byte("{ \"error\": \"internal error, please contact service admin\" }"))
 		return
 	}
-
-	rawQuery := strings.ReplaceAll(r.URL.RawQuery, ";", "#")
-
-	queryValues, err := url.ParseQuery(rawQuery)
-	if err != nil {
-		// handle error: failed to parse query string
-		w.WriteHeader(http.StatusInternalServerError)
-		log.Error().Msgf("Error: %s", err)
-		w.Write([]byte("{ \"error\": \"internal error, please contact service admin\" }"))
-		return
-	}
-
-	allValues := strings.Split(queryValues.Get(data.VALUES), "#")
 
 	organizedValues, err := p.organizeValues(numOfVariables, allValues)
 	if err != nil {
@@ -274,7 +262,7 @@ func (p MultiHostRequestHandler) getEndpointsWithNumOfVariables(ids []string) ([
 
 }
 
-func (p MultiHostRequestHandler) getComputationIds(r *http.Request) ([]string, error) {
+func (p MultiHostRequestHandler) getComputationIds(r *http.Request) ([]string, []string, error) {
 	log.Info().Msg("trying to search for computation object id")
 	switch r.Method {
 	case http.MethodGet:
@@ -283,35 +271,44 @@ func (p MultiHostRequestHandler) getComputationIds(r *http.Request) ([]string, e
 		values, err := url.ParseQuery(rawQuery)
 		if err != nil {
 			// handle error: failed to parse query string
-			return nil, err
+			return nil, nil, err
 		}
+
 		if !values.Has(data.HANDLEPACEVALCOMPUTATIONS) || !values.Has(data.VALUES) {
-			return nil, errors.New("missing parameters")
+			return nil, nil, errors.New("missing parameters")
 		}
+
+		computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), "#")
+		allValues := strings.Split(values.Get(data.VALUES), "#")
 		log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
-		return strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), "#"), nil
-	//case http.MethodPost:
-	//	requestObj := data.HandlePacevalComputationObject{}
-	//	data, err := io.ReadAll(r.Body)
-	//
-	//	if err != nil {
-	//		return "", err
-	//	}
-	//
-	//	r.Body = io.NopCloser(bytes.NewBuffer(data))
-	//	err = json.NewDecoder(bytes.NewReader(data)).Decode(&requestObj)
-	//
-	//	if err != nil {
-	//		return "", err
-	//	}
-	//
-	//	if len(requestObj.HandleCreateComputation) == 0 {
-	//		return "", errors.New("missing parameters")
-	//	}
-	//	log.Info().Msgf("computation object id %s", requestObj.HandleCreateComputation)
-	//	return requestObj.HandleCreateComputation, nil
+		return computationIds, allValues, nil
+	case http.MethodPost:
+		requestObject := make(map[string]string)
+		body, err := io.ReadAll(r.Body)
+
+		if err != nil {
+			return nil, nil, err
+		}
+
+		r.Body = io.NopCloser(bytes.NewBuffer(body))
+
+		if err = json.Unmarshal(body, &requestObject); err != nil {
+			return nil, nil, err
+		}
+
+		computationHandles, hasComputationHandles := requestObject[data.HANDLEPACEVALCOMPUTATIONS]
+		values, hasValues := requestObject[data.VALUES]
+
+		if !hasComputationHandles || !hasValues {
+			return nil, nil, errors.New("missing parameters")
+		}
+
+		computationIds := strings.Split(computationHandles, ";")
+		allValues := strings.Split(values, ";")
+
+		return computationIds, allValues, nil
 	default:
-		return nil, errors.New("method not allowed")
+		return nil, nil, errors.New("method not allowed")
 	}
 
 }
