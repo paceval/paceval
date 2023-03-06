@@ -668,7 +668,7 @@ app.get('/health',(req,res)=> {
 });
 
 app.get('/ready',(req,res)=> {
-    res.status(500).send("Service not ready");
+    res.send ("Readiness check passed");
 });
 
 // Listen to the App Engine-specified port, or 8080 otherwise
