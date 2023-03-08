@@ -328,11 +328,13 @@ function handleGetComputationResult(req, res)
     let timeCalculate = now();
     if (interval == false)
     {
+        console.log("interval: false")
         result = pacevalLibrary_ffi.pacevalLibrary_dGetComputationResult(handle_pacevalComputation,
             valuesVariablesArray, null, null);
     }
     else
     {
+        console.log("interval: true")
         result = pacevalLibrary_ffi.pacevalLibrary_dGetComputationResult(handle_pacevalComputation,
             valuesVariablesArray, trustedMinResult, trustedMaxResult);
     }
