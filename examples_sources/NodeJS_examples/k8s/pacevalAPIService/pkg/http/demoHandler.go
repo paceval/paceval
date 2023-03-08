@@ -3,7 +3,11 @@ package http
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
+	"fmt"
 	"github.com/google/uuid"
+	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
+	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
 	"github.com/rs/zerolog/log"
 	"io"
 	"net/http"
@@ -13,11 +17,14 @@ import (
 
 const demoEndpoint = "http://demo-service-demoservice.default.svc.cluster.local"
 
+//const demoEndpoint = "http://localhost:9000"
+
 type DemoHandler struct {
+	manager k8s.Manager
 }
 
-func NewDemoHandler() DemoHandler {
-	return DemoHandler{}
+func NewDemoHandler(manager k8s.Manager) DemoHandler {
+	return DemoHandler{manager: manager}
 }
 
 func (d DemoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -33,7 +40,17 @@ func (d DemoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	uid, err := uuid.NewUUID()
+	uid, _ := uuid.NewUUID()
+	param, err := d.getParameters(r)
+
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		log.Error().Msgf("error parsing URL to forward request: %s", err)
+		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
+		return
+	}
+
+	d.manager.CreateComputation(uid, &param.ParameterSet)
 
 	proxy := httputil.NewSingleHostReverseProxy(targetURL)
 
@@ -64,4 +81,46 @@ func (d DemoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	proxy.ServeHTTP(w, r)
 
+}
+
+func (d DemoHandler) getParameters(r *http.Request) (*data.DemoParameterSet, error) {
+	switch r.Method {
+	case http.MethodGet:
+		values := r.URL.Query()
+		if !values.Has(data.FUNCTIONSTR) || !values.Has(data.NUMOFVARIABLES) || !values.Has(data.VARAIBLES) || !values.Has(data.VALUES) || !values.Has(data.INTERVAL) {
+			return nil, errors.New("missing parameters")
+		}
+		log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
+		return &data.DemoParameterSet{
+			ParameterSet: data.ParameterSet{
+				FunctionStr:    values.Get(data.FUNCTIONSTR),
+				NumOfVariables: values.Get(data.NUMOFVARIABLES),
+				Variables:      values.Get(data.VARAIBLES),
+				Interval:       values.Get(data.INTERVAL),
+			},
+			Values: values.Get(data.VALUES),
+		}, nil
+
+	case http.MethodPost:
+		requestObj := data.DemoParameterSet{}
+		data, err := io.ReadAll(r.Body)
+
+		if err != nil {
+			return nil, err
+		}
+
+		r.Body = io.NopCloser(bytes.NewBuffer(data))
+		err = json.NewDecoder(bytes.NewReader(data)).Decode(&requestObj)
+
+		if err != nil {
+			return nil, err
+		}
+
+		if len(requestObj.Values) == 0 || len(requestObj.FunctionStr) == 0 || len(requestObj.Variables) == 0 || len(requestObj.NumOfVariables) == 0 || len(requestObj.Interval) == 0 {
+			return nil, errors.New("missing parameters")
+		}
+		return &requestObj, nil
+	default:
+		return nil, errors.New("method not allowed")
+	}
 }

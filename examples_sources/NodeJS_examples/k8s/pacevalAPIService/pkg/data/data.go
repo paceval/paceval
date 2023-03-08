@@ -22,6 +22,11 @@ type ParameterSet struct {
 	Interval       string `json:"interval,omitempty"`
 }
 
+type DemoParameterSet struct {
+	ParameterSet
+	Values string `json:"values,omitempty"`
+}
+
 type HandlePacevalComputationObject struct {
 	HandleCreateComputation string `json:"handle_pacevalComputation,omitempty"`
 }
