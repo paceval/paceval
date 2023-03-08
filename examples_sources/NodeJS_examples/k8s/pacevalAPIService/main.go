@@ -19,7 +19,9 @@ func main() {
 
 	singleProxyHandler := http2.NewSingleHostProxyHandler(manager)
 	multiRequestsHandler := http2.NewMultiHostProxyHandler(manager)
+	demoHandler := http2.NewDemoHandler()
 
+	http.Handle("/Demo/", demoHandler)
 	http.HandleFunc("/CreateComputation/", handleCreatePacevalComputation(manager))
 	http.Handle("/GetComputation/", singleProxyHandler)
 	http.Handle("/GetComputationResult/", singleProxyHandler)
