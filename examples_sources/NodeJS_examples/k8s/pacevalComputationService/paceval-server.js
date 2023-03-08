@@ -288,7 +288,7 @@ function handleGetComputationResult(req, res)
 
     let isError = false;
     let numberOfVariables = Number(process.env.NUM_VARS);;
-    let interval = (process.env.INTERVAL === "true");
+    let interval = (process.env.INTERVAL.toLowerCase() === "true" || process.env.INTERVAL.toLowerCase() === "yes");
     let values_ar = [];
 
 
@@ -415,7 +415,7 @@ function handleGetComputationResultExt(req, res)
     let numberOfCalculations = 0;
     let hasError = false;
     let numberOfVariables = Number(process.env.NUM_VARS);;
-    let interval = (process.env.INTERVAL === "true");
+    let interval = (process.env.INTERVAL.toLowerCase() === "true" || process.env.INTERVAL.toLowerCase() === "yes");
     let values_str = '';
     let values_ar = [];
 
