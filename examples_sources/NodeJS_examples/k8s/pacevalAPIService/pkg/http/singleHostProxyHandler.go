@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
 	"github.com/rs/zerolog/log"
@@ -58,7 +59,7 @@ func (p SingleHostProxyHandler) forwardRequestToComputationObject(w http.Respons
 	} else if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		log.Error().Msgf("Error: %s", err)
-		w.Write([]byte("{ \"error\": \"internal error, please contact service admin\" }"))
+		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
 		return
 	}
 
