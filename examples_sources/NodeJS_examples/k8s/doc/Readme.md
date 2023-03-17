@@ -82,6 +82,10 @@ kubectl get deployment operator-controller-manager -n operator-system
 NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
 operator-controller-manager   1/1     1            1           99s
 ```
+To uninstall, run the following command
+```shell
+kubectl delete -f examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
+```
 
 If `Ready` is 1/1 then it is ready
 
@@ -96,6 +100,10 @@ kubectl get deployment api-service-apiservice
 NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
 api-service-apiservice   1/1     1            1           20s
 ```
+To uninstall, run the following command
+```shell
+kubectl delete -f examples_sources/NodeJS_examples/k8s/pacevalAPIService/chart/api-service-manifest.yaml
+```
 
 ### Install paceval demo service
 To install, run the following command
@@ -107,6 +115,10 @@ and wait for deployment to be complete
 kubectl get deployment demo-service-demoservice
 NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
 demo-service-demoservice   1/1     1            1           100s
+```
+To uninstall, run the following command
+```shell
+kubectl delete -f examples_sources/NodeJS_examples/k8s/demoService/chart/demo-service-manifest.yaml
 ```
 
 ### Wait/Check for API Service external IP Address Allocation
