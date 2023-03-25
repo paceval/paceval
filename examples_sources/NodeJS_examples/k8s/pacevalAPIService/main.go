@@ -95,15 +95,11 @@ func fillCreateComputationQueryParam(r *http.Request) (*data.ParameterSet, error
 		// handle error: failed to parse query string
 		return nil, err
 	}
-	if !values.Has(data.FUNCTIONSTR) || !values.Has(data.NUMOFVARIABLES) || !values.Has(data.VARAIBLES) || !values.Has(data.VALUES) || !values.Has(data.INTERVAL) {
+	if !values.Has(data.FUNCTIONSTR) || !values.Has(data.NUMOFVARIABLES) || !values.Has(data.VARAIBLES) || !values.Has(data.INTERVAL) {
 		return nil, errors.New("missing parameters")
 	}
 
 	values.Set(data.VARAIBLES, strings.ReplaceAll(values.Get(data.VARAIBLES), "#", ";"))
-
-	if !values.Has(data.FUNCTIONSTR) || !values.Has(data.NUMOFVARIABLES) || !values.Has(data.VARAIBLES) || !values.Has(data.INTERVAL) {
-		return nil, errors.New("missing parameters")
-	}
 
 	return &data.ParameterSet{
 		FunctionStr:    values.Get(data.FUNCTIONSTR),
