@@ -75,7 +75,7 @@ kubectl get namespaces
 ### Install paceval operator
 To install, run the following command
 ```shell
-kubectl apply -f examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
+kubectl apply -f https://github.com/paceval/paceval/tree/main/examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
 ```
 and wait for deployment to be complete
 ```shell
