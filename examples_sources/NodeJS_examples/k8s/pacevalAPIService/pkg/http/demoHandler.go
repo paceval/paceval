@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"strings"
 )
 
 const demoEndpoint = "http://demo-service-demoservice.default.svc.cluster.local"
@@ -86,10 +87,20 @@ func (d DemoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func (d DemoHandler) getParameters(r *http.Request) (*data.DemoParameterSet, error) {
 	switch r.Method {
 	case http.MethodGet:
-		values := r.URL.Query()
+		rawQuery := strings.ReplaceAll(r.URL.RawQuery, ";", "#")
+
+		values, err := url.ParseQuery(rawQuery)
+		if err != nil {
+			// handle error: failed to parse query string
+			return nil, err
+		}
 		if !values.Has(data.FUNCTIONSTR) || !values.Has(data.NUMOFVARIABLES) || !values.Has(data.VARAIBLES) || !values.Has(data.VALUES) || !values.Has(data.INTERVAL) {
 			return nil, errors.New("missing parameters")
 		}
+
+		values.Set(data.VARAIBLES, strings.ReplaceAll(values.Get(data.VARAIBLES), "#", ";"))
+		values.Set(data.VALUES, strings.ReplaceAll(values.Get(data.VALUES), "#", ";"))
+
 		log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
 		return &data.DemoParameterSet{
 			ParameterSet: data.ParameterSet{

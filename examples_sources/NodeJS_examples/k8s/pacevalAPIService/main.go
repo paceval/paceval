@@ -10,6 +10,8 @@ import (
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
 	"github.com/rs/zerolog/log"
 	"net/http"
+	"net/url"
+	"strings"
 )
 
 func main() {
@@ -86,10 +88,18 @@ func handleCreatePacevalComputation(manager k8s.Manager) http.HandlerFunc {
 }
 
 func fillCreateComputationQueryParam(r *http.Request) (*data.ParameterSet, error) {
-	values := r.URL.Query()
+	rawQuery := strings.ReplaceAll(r.URL.RawQuery, ";", "#")
+
+	values, err := url.ParseQuery(rawQuery)
+	if err != nil {
+		// handle error: failed to parse query string
+		return nil, err
+	}
 	if !values.Has(data.FUNCTIONSTR) || !values.Has(data.NUMOFVARIABLES) || !values.Has(data.VARAIBLES) || !values.Has(data.INTERVAL) {
 		return nil, errors.New("missing parameters")
 	}
+
+	values.Set(data.VARAIBLES, strings.ReplaceAll(values.Get(data.VARAIBLES), "#", ";"))
 
 	return &data.ParameterSet{
 		FunctionStr:    values.Get(data.FUNCTIONSTR),

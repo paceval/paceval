@@ -150,7 +150,7 @@ Note down your LoadBalancer's external IP address (see EXTERNAL-IP above).
 Now the paceval-service is deployed on your Kubernetes cluster and you can make a test call as follows (use your LoadBalancer's external IP address):
 
 ```shell
-curl --location --request GET '<EXTERNAL-IP>/Demo/?functionString=x%2Ay-z&numberOfVariables=3&variables=x%3By%3Bz&values=0.534346%3B2%3B45.4536&interval=yes'
+curl --location --request GET 'http://<EXTERNAL-IP>/Demo/?functionString=x%2Ay-z&numberOfVariables=3&variables=x%3By%3Bz&values=0.534346%3B2%3B45.4536&interval=yes'
 ```
 
 You will get a response similar to this from your paceval-service:
