@@ -77,7 +77,7 @@ To install, run the following command
 ```shell
 kubectl apply -f paceval/examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
 ```
-Potentially you will have to change the path
+Potentially you will have to change the path to your local GitHub
 
 and wait for deployment to be complete
 ```shell
