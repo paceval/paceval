@@ -65,6 +65,7 @@ For example:
 ```shell
 gcloud container clusters get-credentials autopilot-cluster-1 --region=europe-central2
 ```
+If you get an error, please check this page https://cloud.google.com/kubernetes-engine/docs/how-to/creating-an-autopilot-cluster
 
 You can test the configuration with this:
 ```shell
