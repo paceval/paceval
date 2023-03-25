@@ -1,0 +1,101 @@
+---
+# Source: demoservice/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-service-demoservice
+  labels:
+    helm.sh/chart: demoservice-0.1.0
+    app.kubernetes.io/name: demoservice
+    app.kubernetes.io/instance: demo-service
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: demoservice
+    app.kubernetes.io/instance: demo-service
+---
+# Source: demoservice/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-service-demoservice
+  labels:
+    helm.sh/chart: demoservice-0.1.0
+    app.kubernetes.io/name: demoservice
+    app.kubernetes.io/instance: demo-service
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: demoservice
+      app.kubernetes.io/instance: demo-service
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: demoservice
+        app.kubernetes.io/instance: demo-service
+    spec:
+      serviceAccountName: default
+      securityContext:
+        {}
+      containers:
+        - name: demoservice
+          securityContext:
+            {}
+          image: "paceval/demo-service:latest"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+          resources:
+            limits:
+              cpu: 100m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+---
+# Source: demoservice/templates/hpa.yaml
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: demo-service-demoservice
+  labels:
+    helm.sh/chart: demoservice-0.1.0
+    app.kubernetes.io/name: demoservice
+    app.kubernetes.io/instance: demo-service
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: demo-service-demoservice
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 80
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: 80
