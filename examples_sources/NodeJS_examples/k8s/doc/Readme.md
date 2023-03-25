@@ -30,6 +30,10 @@ The Paceval service in k8s consist of the following components
 5. Delete old paceval object
    This is a k8s cronjob that triggered every 5 mins. It detect CRDs that has not been active in one hours and delete the CRD.
 
+Remarks:
+
+If you want to replace the paceval library, please make sure to replace them in both components: [Paceval computation Object](https://github.com/paceval/paceval/tree/main/examples_sources/NodeJS_examples/k8s/pacevalComputationService) & [Paceval Demo service](https://github.com/paceval/paceval/tree/main/examples_sources/NodeJS_examples/k8s/demoService)
+
 ## Installation Step
 
 ### Prerequisite
