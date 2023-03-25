@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "apiservice.fullname" . }}
+  labels:
+     {{- include "apiservice.labels" . | nindent 4 }}
+rules:
+  - apiGroups:
+      - paceval.com
+    resources:
+      - pacevalcomputationobjects
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - paceval.com
+    resources:
+      - pacevalcomputationobjects/status
+    verbs:
+      - get
+      - update

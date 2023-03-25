@@ -491,7 +491,7 @@ function handleGetComputationResult(req, res, handle_pacevalComputation_str_in)
     let handle_pacevalComputation_addr = handle_pacevalComputation.address();
     let result = 0;
 
-    let timeCalculate = now(true);
+    let timeCalculate = now();
     if (interval == false)
     {
         result = pacevalLibrary_ffi.pacevalLibrary_dGetComputationResult(handle_pacevalComputation,

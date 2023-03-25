@@ -1,0 +1,31 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: delete-old-paceval-computation-objects
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccount: {{ include "apiservice.fullname" . }}
+          containers:
+            - name: delete-old-paceval-computation-objects
+              image: bitnami/kubectl:1.25.7
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  now=$(date +%s)
+                  for obj in $(kubectl get pacevalcomputationobjects.paceval.com -o=jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}'); do
+                    last_active_time=$(kubectl get pacevalcomputationobjects.paceval.com $obj -o=jsonpath='{.status.lastActiveTime}')
+                    if [ -z "$last_active_time" ]; then
+                      continue
+                    fi
+                    last_active_timestamp=$(date +%s -d "$last_active_time")
+                    age=$((now-last_active_timestamp))
+                    if [ $age -gt 3600 ]; then
+                      kubectl delete pacevalcomputationobjects.paceval.com $obj
+                    fi
+                  done
+          restartPolicy: OnFailure
