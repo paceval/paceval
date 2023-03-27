@@ -88,7 +88,12 @@ func handleCreatePacevalComputation(manager k8s.Manager) http.HandlerFunc {
 }
 
 func fillCreateComputationQueryParam(r *http.Request) (*data.ParameterSet, error) {
-	rawQuery := strings.ReplaceAll(r.URL.RawQuery, ";", "#")
+	decodeRawQuery, err := url.QueryUnescape(r.URL.RawQuery)
+	if err != nil {
+		// handle error: failed to parse query string
+		return nil, err
+	}
+	rawQuery := strings.ReplaceAll(decodeRawQuery, ";", "#")
 
 	values, err := url.ParseQuery(rawQuery)
 	if err != nil {

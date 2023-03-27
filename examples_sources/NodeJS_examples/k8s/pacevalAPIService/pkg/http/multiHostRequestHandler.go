@@ -106,8 +106,9 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 
 	organizedValues, err := p.organizeValues(numOfVariables, allValues)
 	if err != nil {
+		log.Error().Msgf("error: %s", err)
 		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
+		w.Write([]byte("{ \"error\": \"handle_pacevalComputation does not exist\" }"))
 		return
 	}
 
@@ -266,7 +267,12 @@ func (p MultiHostRequestHandler) getComputationIds(r *http.Request) ([]string, [
 	log.Info().Msg("trying to search for computation object id")
 	switch r.Method {
 	case http.MethodGet:
-		rawQuery := strings.ReplaceAll(r.URL.RawQuery, ";", "#")
+		decodeRawQuery, err := url.QueryUnescape(r.URL.RawQuery)
+		if err != nil {
+			// handle error: failed to parse query string
+			return nil, nil, err
+		}
+		rawQuery := strings.ReplaceAll(decodeRawQuery, ";", "#")
 
 		values, err := url.ParseQuery(rawQuery)
 		if err != nil {
