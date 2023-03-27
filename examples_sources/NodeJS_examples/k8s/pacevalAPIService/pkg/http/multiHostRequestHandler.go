@@ -100,7 +100,7 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		log.Error().Msgf("Error: %s", err)
-		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
+		w.Write([]byte("{ \"error\": \"handle_pacevalComputation does not exist\" }"))
 		return
 	}
 
@@ -108,7 +108,7 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 	if err != nil {
 		log.Error().Msgf("error: %s", err)
 		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("{ \"error\": \"handle_pacevalComputation does not exist\" }"))
+		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
 		return
 	}
 
