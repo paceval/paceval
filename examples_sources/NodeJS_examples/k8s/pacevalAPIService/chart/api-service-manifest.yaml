@@ -171,7 +171,7 @@ spec:
           averageUtilization: 80
 ---
 # Source: apiservice/templates/cronjob.yaml
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: delete-old-paceval-computation-objects
@@ -181,7 +181,7 @@ spec:
     spec:
       template:
         spec:
-          serviceAccount: api-service-apiservice
+          serviceAccountName: api-service-apiservice
           containers:
             - name: delete-old-paceval-computation-objects
               image: bitnami/kubectl:1.25.7
