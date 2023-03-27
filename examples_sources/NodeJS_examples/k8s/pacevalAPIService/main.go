@@ -20,7 +20,8 @@ func main() {
 	log.Info().Msg("starting service...")
 
 	singleProxyHandler := http2.NewSingleHostProxyHandler(manager)
-	multiRequestsHandler := http2.NewMultiHostProxyHandler(manager)
+	multiRequestHandler := http2.NewMultiHostRequestHandler(manager)
+	multiRequestsExtHandler := http2.NewMultiHostRequestExtHandler(manager)
 	demoHandler := http2.NewDemoHandler(manager)
 
 	http.Handle("/Demo/", demoHandler)
@@ -30,7 +31,8 @@ func main() {
 	http.Handle("/GetComputationResultExt/", singleProxyHandler)
 	http.Handle("/GetComputationInformationXML/", singleProxyHandler)
 	http.Handle("/GetErrorInformation/", singleProxyHandler)
-	http.Handle("/GetMultipleComputationsResults/", multiRequestsHandler)
+	http.Handle("/GetMultipleComputationsResults/", multiRequestHandler)
+	http.Handle("/GetMultipleComputationsResultsExt/", multiRequestsExtHandler)
 	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Cache-Control", "no-cache, no-store, no-transform, must-revalidate, private, max-age=0")
 		w.WriteHeader(http.StatusNoContent)
@@ -88,7 +90,12 @@ func handleCreatePacevalComputation(manager k8s.Manager) http.HandlerFunc {
 }
 
 func fillCreateComputationQueryParam(r *http.Request) (*data.ParameterSet, error) {
-	rawQuery := strings.ReplaceAll(r.URL.RawQuery, ";", "#")
+	decodeRawQuery, err := url.QueryUnescape(r.URL.RawQuery)
+	if err != nil {
+		// handle error: failed to parse query string
+		return nil, err
+	}
+	rawQuery := strings.ReplaceAll(decodeRawQuery, ";", "#")
 
 	values, err := url.ParseQuery(rawQuery)
 	if err != nil {

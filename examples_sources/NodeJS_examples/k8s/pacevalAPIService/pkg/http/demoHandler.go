@@ -87,7 +87,12 @@ func (d DemoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func (d DemoHandler) getParameters(r *http.Request) (*data.DemoParameterSet, error) {
 	switch r.Method {
 	case http.MethodGet:
-		rawQuery := strings.ReplaceAll(r.URL.RawQuery, ";", "#")
+		decodeRawQuery, err := url.QueryUnescape(r.URL.RawQuery)
+		if err != nil {
+			// handle error: failed to parse query string
+			return nil, err
+		}
+		rawQuery := strings.ReplaceAll(decodeRawQuery, ";", "#")
 
 		values, err := url.ParseQuery(rawQuery)
 		if err != nil {

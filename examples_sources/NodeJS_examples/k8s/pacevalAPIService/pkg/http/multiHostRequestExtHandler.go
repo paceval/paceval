@@ -2,27 +2,29 @@ package http
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/hashicorp/go-multierror"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
 	"github.com/rs/zerolog/log"
+	math "github.com/spatialcurrent/go-math/pkg/math"
 	"io"
 	"net/http"
 	"strings"
 	"sync"
 )
 
-type MultiHostRequestHandler struct {
+type MultiHostRequestExtHandler struct {
 	manager     k8s.Manager
 	baseHandler MultiHostBaseHandler
 }
 
-func NewMultiHostRequestHandler(manager k8s.Manager) MultiHostRequestHandler {
-	return MultiHostRequestHandler{manager: manager}
+func NewMultiHostRequestExtHandler(manager k8s.Manager) MultiHostRequestExtHandler {
+	return MultiHostRequestExtHandler{manager: manager}
 }
 
-func (p MultiHostRequestHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (p MultiHostRequestExtHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	log.Info().Msg("handle request to get multiple computation result")
 	w.Header().Set("Content-Type", "application/json")
 	log.Info().Msgf("incoming %s request", r.Method)
@@ -39,8 +41,32 @@ func (p MultiHostRequestHandler) ServeHTTP(w http.ResponseWriter, r *http.Reques
 
 }
 
-func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request) {
-	ids, values, err := p.baseHandler.getComputationIds(r)
+func (p MultiHostRequestExtHandler) organizeValues(numOfVariablesArr []int, allValues []string) ([][]string, error) {
+	sum, err := math.Sum(numOfVariablesArr)
+
+	if err != nil {
+		log.Error().Msgf("error calculating sum of variables: %s", err)
+		return nil, errors.New("problem verifying functions")
+	}
+
+	if sum != len(allValues) {
+		return nil, errors.New("variables sent does not match expectations")
+	}
+
+	var organizedValuesArr [][]string
+
+	i := 0
+	for _, numOfVariables := range numOfVariablesArr {
+		organizedValues := allValues[i : i+numOfVariables]
+		organizedValuesArr = append(organizedValuesArr, organizedValues)
+		i = i + numOfVariables
+	}
+
+	return organizedValuesArr, nil
+}
+
+func (p MultiHostRequestExtHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request) {
+	ids, allValues, err := p.baseHandler.getComputationIds(r)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("{ \"error\": \"missing parameters\" }"))
@@ -53,12 +79,20 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 		return
 	}
 
-	endpoints, _, err := p.baseHandler.getEndpointsWithNumOfVariables(ids, p.manager)
+	endpoints, numOfVariables, err := p.baseHandler.getEndpointsWithNumOfVariables(ids, p.manager)
 
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		log.Error().Msgf("Error: %s", err)
 		w.Write([]byte("{ \"error\": \"handle_pacevalComputation does not exist\" }"))
+		return
+	}
+
+	organizedValues, err := p.organizeValues(numOfVariables, allValues)
+	if err != nil {
+		log.Error().Msgf("error: %s", err)
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
 		return
 	}
 
@@ -86,7 +120,7 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 			//proxyReq, err := http.NewRequest(http.MethodGet, "http://localhost:9000/GetComputationResult/", r.Body)
 			param := proxyReq.URL.Query()
 
-			param.Add(data.VALUES, strings.Join(values, ";"))
+			param.Add(data.VALUES, strings.Join(organizedValues[index], ";"))
 			proxyReq.URL.RawQuery = param.Encode()
 
 			if err != nil {
