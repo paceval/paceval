@@ -585,7 +585,7 @@
     },
     "/GetMultipleComputationsResults" : {
       "get" : {
-        "description" : "<b>Solves multiple computations with values for the variables declared by /CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations at once (e.g. for Artificial neural network functions or Decision trees).<br><b>Annotation</b> You must use the same number of variables and the same declared variables. To do so you can simply declare all variables in each of the the calls for /CreateComputation. There is no performance issue in case a variable is declared but not used by a computation object.",
+        "description" : "<b>Solves multiple computations with values for the variables declared by /CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations with the same variables at once (e.g. for Artificial neural network functions or Decision trees).<br><b>Annotation</b> You must use the same number of variables and the same declared variables. To do so you can simply declare all variables in each of the the calls for /CreateComputation. There is no performance issue in case a variable is declared but not used by a computation object.",
         "parameters" : [ {
           "name" : "handle_pacevalComputations",
           "in" : "query",
@@ -639,7 +639,7 @@
         } ]
       },
       "post" : {
-        "description" : "<b>Solves multiple computations with values for the variables declared by /CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations at once (e.g. for Artificial neural network functions or Decision trees).<br><b>Annotation</b> You must use the same number of variables and the same declared variables. To do so you can simply declare all variables in each of the the calls for /CreateComputation. There is no performance issue in case a variable is declared but not used by a computation object.",
+        "description" : "<b>Solves multiple computations with values for the variables declared by /CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations with the same variables at once (e.g. for Artificial neural network functions or Decision trees).<br><b>Annotation</b> You must use the same number of variables and the same declared variables. To do so you can simply declare all variables in each of the the calls for /CreateComputation. There is no performance issue in case a variable is declared but not used by a computation object.",
         "parameters" : [ {
           "name" : "handle_pacevalComputations",
           "in" : "query",
@@ -682,6 +682,119 @@
                 "examples" : {
                   "0" : {
                     "value" : "[\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"f451dc23-ccaa-11ed-b2e4-0678bc4b7b99\",\n    \"interval-max-result\": \"-44.384908\",\n    \"interval-min-result\": \"-44.384908\",\n    \"result\": \"-44.384908\",\n    \"time-calculate\": \"0.000342s\",\n    \"version-number\": 4.04\n  },\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"bb2f2902-cc75-11ed-a0a8-be45bc2aafcd\",\n    \"interval-max-result\": \"-90.372854\",\n    \"interval-min-result\": \"-90.372854\",\n    \"result\": \"-90.372854\",\n    \"time-calculate\": \"0.000315s\",\n    \"version-number\": 4.04\n  }\n]"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://paceval-service.cloud"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "http://paceval-service.cloud"
+      } ]
+    },
+    "/GetMultipleComputationsResultsExt" : {
+      "get" : {
+        "description" : "<b>Solves multiple computations with multiple values for the variables declared by /CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations with different variables at once (e.g. for sets of Artificial neural network functions or Decision trees).",
+        "parameters" : [ {
+          "name" : "handle_pacevalComputations",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "f451dc23-ccaa-11ed-b2e4-0678bc4b7b99;bb2f2902-cc75-11ed-a0a8-be45bc2aafcd"
+        }, {
+          "name" : "numberOfpacevalComputations",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "2"
+        }, {
+          "name" : "values",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "0.534346;2;45.4536;0.672689;3;53.2752"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_4"
+                },
+                "examples" : {
+                  "0" : {
+                    "value" : "[\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"f451dc23-ccaa-11ed-b2e4-0678bc4b7b99\",\n    \"interval-max-result\": \"-44.384908\",\n    \"interval-min-result\": \"-44.384908\",\n    \"result\": \"-44.384908\",\n    \"time-calculate\": \"0.000320s\",\n    \"version-number\": 4.04\n  },\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"bb2f2902-cc75-11ed-a0a8-be45bc2aafcd\",\n    \"interval-max-result\": \"-159.152911\",\n    \"interval-min-result\": \"-159.152911\",\n    \"result\": \"-159.152911\",\n    \"time-calculate\": \"0.000372s\",\n    \"version-number\": 4.04\n  }\n]"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://paceval-service.cloud"
+        } ]
+      },
+      "post" : {
+        "description" : "<b>Solves multiple computations with multiple values for the variables declared by /CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations with different variables at once (e.g. for sets of Artificial neural network functions or Decision trees).",
+        "parameters" : [ {
+          "name" : "handle_pacevalComputations",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "f451dc23-ccaa-11ed-b2e4-0678bc4b7b99;bb2f2902-cc75-11ed-a0a8-be45bc2aafcd"
+        }, {
+          "name" : "numberOfpacevalComputations",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "2"
+        }, {
+          "name" : "values",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "0.534346;2;45.4536;0.672689;3;53.2752"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "see <a href=\"https://paceval.com/api/\">https://paceval.com/api/</a>",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_4"
+                },
+                "examples" : {
+                  "0" : {
+                    "value" : "[\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"f451dc23-ccaa-11ed-b2e4-0678bc4b7b99\",\n    \"interval-max-result\": \"-44.384908\",\n    \"interval-min-result\": \"-44.384908\",\n    \"result\": \"-44.384908\",\n    \"time-calculate\": \"0.000320s\",\n    \"version-number\": 4.04\n  },\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"bb2f2902-cc75-11ed-a0a8-be45bc2aafcd\",\n    \"interval-max-result\": \"-159.152911\",\n    \"interval-min-result\": \"-159.152911\",\n    \"result\": \"-159.152911\",\n    \"time-calculate\": \"0.000372s\",\n    \"version-number\": 4.04\n  }\n]"
                   }
                 }
               }
