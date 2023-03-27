@@ -2,7 +2,7 @@
   "openapi" : "3.0.1",
   "info" : {
     "title" : "paceval-service-cloud - the Mathematical Engine as a Service in the cloud (e.g. for multi-party computations)",
-    "description" : "# WHY DO I NEED A MATHEMATICAL ENGINE?\n\nMany connected devices or so-called IoT solutions require **complex mathematical calculations to work correctly or make decisions**. This can be, for example, a smartphone or a remote device that performs predictive analysis or a self-flying drone that evaluates objects in recorded videos or images **in real time during flight**. \nThese devices do not have the computing power to perform such mathematical calculations themselves. Or these devices, because they are battery powered, can't even do the **intensive math calculations because that consumes battery time**.\n\n**This Mathematical Engine as a Service in the cloud** provides a powerful and fast **remote math coprocessor service for IoT solutions** and is hosted on Google Cloud Platform.\nEquipped with a simple interface, it will allow battery-powered devices to perform complex mathematical operations remotely and very quickly, **avoiding increasing power consumption of the device itself**.\n\n\n# HOW CAN I USE CALCULATIONS WITH THIS MATHEMATICAL ENGINE?\n\nTo create a calculation the device simply calls the following URL:\n\n<a href=\"http://paceval-service.cloud/Demo/?functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes\">http://paceval-service.cloud/Demo/?functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes</a> \n\nThis creates a calculation object for the function \"-sin(x*cos(x))^(1/y)\" and immediately performs the calculation with the \"2\" variables \"x; y\" for the values \"0.5; 2\". Variables and values are always separated by a \";\". With \"interval=yes\" it is indicated that **in addition to the computer-precise calculation, the upper and lower interval of the calculation is also given**. The exact value of the calculation is then in this interval.\n\nOf course you can specify any mathematical function and any number of variables and also other and longer variable names. :)\n\nIn addition, with the calculation you receive a reference to the generated calculation object for the function. From now on you can simply use this reference to get calculations for further values. **References are valid for 1 hour**, which is extended to 1 hour from the time of access each time a reference is accessed. If only the reference to a calculation object is used, the sometimes very long function does not have to be passed every time. **That saves time and computing power.**\nFor example, if you have received a reference \"handle_Computation: **115626720**\", simply call up the following URL for a further calculation with the values 0.46577 for x and 2.61 for y:\n<br><a href=\"http://paceval-service.cloud/GetComputationResult/?handle_pacevalComputation=115626720&values=0.46577;2.61\">http://paceval-service.cloud/GetComputationResult/?handle_pacevalComputation=<b>115626720</b>&values=0.46577;2.61</a> \n\nYou can also run cUrl instructions with your command line or your device directly on our test server (paceval-service.com), like the following:\n\n**GET –**\n\ncurl -X GET -k \"http://paceval-service.cloud:80/Demo/?functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes\"\n\nor **POST –**\n\ncurl --data \"functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes\" -X POST http://paceval-service.cloud:80/Demo/\n\n**Note:** Use the correct encoding in the functionString in the URL (GET) and data (POST) (e.g. replace the ‘+’ character with ‘%2B’).\n\n\nThis allows you to **perform complex calculations of any length and with any number of variables on the server**. Please note that this service runs on Kubernetes in autopilot mode. :) The creation of computation objects can therefore be slow the first time before Google increases the resources.\n\n# HOW CAN I GET THIS MATHEMATICAL ENGINE ON MY OWN CLOUD?\n\n<to be updated>\n\nJust run this command line in the terminal to get and start the service with Docker:\n\n- LINUX FOR x64 PROCESSORS (Intel and AMD)\n\n**sudo docker pull paceval/paceval-service_linux_x64:latest**\n\n**sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_x64**\n\n- LINUX FOR ARM64 PROCESSORS (e.g. Raspberry Pi or APPLE M1/M2)\n\n**sudo docker pull paceval/paceval-service_linux_arm64:latest**  \n\n**sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_arm64**",
+    "description" : "# WHY DO I NEED A MATHEMATICAL ENGINE?\n\nMany connected devices or so-called IoT solutions require **complex mathematical calculations to work correctly or make decisions**. This can be, for example, a smartphone or a remote device that performs predictive analysis or a self-flying drone that evaluates objects in recorded videos or images **in real time during flight**. \nThese devices do not have the computing power to perform such mathematical calculations themselves. Or these devices, because they are battery powered, can't even do the **intensive math calculations because that consumes battery time**.\n\n**This Mathematical Engine as a Service in the cloud** provides a powerful and fast **remote math coprocessor service for IoT solutions** and is hosted on Google Cloud Platform.\nEquipped with a simple interface, it will allow battery-powered devices to perform complex mathematical operations remotely and very quickly, **avoiding increasing power consumption of the device itself**.\n\n\n# HOW CAN I USE CALCULATIONS WITH THIS MATHEMATICAL ENGINE?\n\nTo create a calculation the device simply calls the following URL:\n\n<a href=\"http://paceval-service.cloud/Demo/?functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes\">http://paceval-service.cloud/Demo/?functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes</a> \n\nThis creates a calculation object for the function \"-sin(x*cos(x))^(1/y)\" and immediately performs the calculation with the \"2\" variables \"x; y\" for the values \"0.5; 2\". Variables and values are always separated by a \";\". With \"interval=yes\" it is indicated that **in addition to the computer-precise calculation, the upper and lower interval of the calculation is also given**. The exact value of the calculation is then in this interval.\n\nOf course you can specify any mathematical function and any number of variables and also other and longer variable names. :)\n\nIn addition, with the calculation you receive a reference to the generated calculation object for the function. From now on you can simply use this reference to get calculations for further values. **References are valid for 1 hour**, which is extended to 1 hour from the time of access each time a reference is accessed. If only the reference to a calculation object is used, the sometimes very long function does not have to be passed every time. **That saves time and computing power.**\nFor example, if you have received a reference \"handle_Computation: **115626720**\", simply call up the following URL for a further calculation with the values 0.46577 for x and 2.61 for y:\n<br><a href=\"http://paceval-service.cloud/GetComputationResult/?handle_pacevalComputation=115626720&values=0.46577;2.61\">http://paceval-service.cloud/GetComputationResult/?handle_pacevalComputation=<b>115626720</b>&values=0.46577;2.61</a> \n\nYou can also run cUrl instructions with your command line or your device directly on our test server (paceval-service.com), like the following:\n\n**GET –**\n\ncurl -X GET -k \"http://paceval-service.cloud:80/Demo/?functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes\"\n\nor **POST –**\n\ncurl --data \"functionString=-sin(x*cos(x))^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes\" -X POST http://paceval-service.cloud:80/Demo/\n\n**Note:** Use the correct encoding in the functionString in the URL (GET) and data (POST) (e.g. replace the ‘+’ character with ‘%2B’).\n\n\nThis allows you to **perform complex calculations of any length and with any number of variables on the server**. Please note that this service runs on Kubernetes in autopilot mode. :) The creation of computation objects can therefore be slow the first time before Google increases the resources.\n\n# HOW CAN I GET THIS MATHEMATICAL ENGINE ON MY OWN CLOUD?\n\n**!!to be updated!!**\n\nJust run this command line in the terminal to get and start the service with Docker:\n\n- LINUX FOR x64 PROCESSORS (Intel and AMD)\n\n**sudo docker pull paceval/paceval-service_linux_x64:latest**\n\n**sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_x64**\n\n- LINUX FOR ARM64 PROCESSORS (e.g. Raspberry Pi or APPLE M1/M2)\n\n**sudo docker pull paceval/paceval-service_linux_arm64:latest**  \n\n**sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_arm64**",
     "contact" : {
       "name" : "paceval.",
       "url" : "https://paceval.com",
@@ -82,7 +82,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":117867040,\"result\":\"-44.384908\",\"interval-min-result\":\"-44.384908\",\"interval-max-result\":\"-44.384908\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000326s\",\"version-number\":4.04}"
+                    "value" : "{\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"error-position\": \"\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-type-number\": 0,\n  \"handle_pacevalComputation\": \"ae0e6c4e-cc75-11ed-a0a8-be45bc2aafcd\",\n  \"interval-max-result\": \"-44.384908\",\n  \"interval-min-result\": \"-44.384908\",\n  \"result\": \"-44.384908\",\n  \"time-calculate\": \"0.000153s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -156,7 +156,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":118054176,\"result\":\"-90.372854\",\"interval-min-result\":\"-90.372854\",\"interval-max-result\":\"-90.372854\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000322s\",\"version-number\":4.04}"
+                    "value" : "{\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"error-position\": \"\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-type-number\": 0,\n  \"handle_pacevalComputation\": \"bb2f2902-cc75-11ed-a0a8-be45bc2aafcd\",\n  \"interval-max-result\": \"-90.372854\",\n  \"interval-min-result\": \"-90.372854\",\n  \"result\": \"-90.372854\",\n  \"time-calculate\": \"0.000153s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -225,7 +225,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":115649680,\"function-10chars\":\"-sin(x*cos(...)\",\"function-length\":20,\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-create\":\"0.000440s\",\"version-number\":4.04}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"d7205132-06af-4bcc-9f39-a4de13017ed7\"\n}"
                   }
                 }
               }
@@ -289,7 +289,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":119406224,\"function-10chars\":\"-sin(x*cos(...)\",\"function-length\":20,\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-create\":\"0.000276s\",\"version-number\":4.04}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"d7205132-06af-4bcc-9f39-a4de13017ed7\"\n}"
                   }
                 }
               }
@@ -316,7 +316,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "115649680"
+          "example" : "c3754a48-86e3-481b-8716-fc91b433302d"
         }, {
           "name" : "values",
           "in" : "query",
@@ -338,7 +338,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":115649680,\"result\":\"-0.651801782452278\",\"interval-min-result\":\"-0.651801782452306\",\"interval-max-result\":\"-0.65180178245225\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000690s\",\"version-number\":4.04}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"c3754a48-86e3-481b-8716-fc91b433302d\",\n  \"result\": \"-0.651801782452278\",\n  \"interval-min-result\": \"-0.651801782452306\",\n  \"interval-max-result\": \"-0.65180178245225\",\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"time-calculate\": \"0.001541s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -360,7 +360,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "119406224"
+          "example" : "c3754a48-86e3-481b-8716-fc91b433302d"
         }, {
           "name" : "values",
           "in" : "query",
@@ -382,7 +382,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":119406224,\"result\":\"-0.651801782452278\",\"interval-min-result\":\"-0.651801782452306\",\"interval-max-result\":\"-0.65180178245225\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000808s\",\"version-number\":4.04}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"c3754a48-86e3-481b-8716-fc91b433302d\",\n  \"result\": \"-0.651801782452278\",\n  \"interval-min-result\": \"-0.651801782452306\",\n  \"interval-max-result\": \"-0.65180178245225\",\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"time-calculate\": \"0.000388s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -409,7 +409,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "115649680"
+          "example" : "d7205132-06af-4bcc-9f39-a4de13017ed7"
         } ],
         "responses" : {
           "200" : {
@@ -421,7 +421,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":115649680,\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.04}"
+                    "value" : "{\n  \"hasError\": false,\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-operator\": \"(not defined)\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -443,7 +443,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "119406224"
+          "example" : "d7205132-06af-4bcc-9f39-a4de13017ed7"
         } ],
         "responses" : {
           "200" : {
@@ -455,7 +455,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":119406224,\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.04}"
+                    "value" : "{\n  \"hasError\": false,\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-operator\": \"(not defined)\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -482,7 +482,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "115649680"
+          "example" : "d7205132-06af-4bcc-9f39-a4de13017ed7"
         }, {
           "name" : "numberOfCalculations",
           "in" : "query",
@@ -514,7 +514,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"number-of-multiple-values\":2,\"handle_pacevalComputation\":115649680,\"hasError\":false,\"results\":[\"-0.651801782452278\",\"-0.807342419579374\"],\"interval-min-results\":[\"-0.651801782452306\",\"-0.807342419579395\"],\"interval-max-results\":[\"-0.65180178245225\",\"-0.807342419579352\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000846s\",\"version-number\":4.04}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"d7205132-06af-4bcc-9f39-a4de13017ed7\",\n  \"number-of-multiple-values\": 2,\n  \"hasError\": false,\n  \"results\": [\n    \"-0.651801782452278\",\n    \"-0.807342419579374\"\n  ],\n  \"interval-min-results\": [\n    \"-0.651801782452306\",\n    \"-0.807342419579395\"\n  ],\n  \"interval-max-results\": [\n    \"-0.65180178245225\",\n    \"-0.807342419579352\"\n  ],\n  \"error-type-numbers\": [\n    0,\n    0\n  ],\n  \"time-calculate\": \"0.000527s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -536,7 +536,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "119406224"
+          "example" : "d7205132-06af-4bcc-9f39-a4de13017ed7"
         }, {
           "name" : "numberOfCalculations",
           "in" : "query",
@@ -568,7 +568,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"number-of-multiple-values\":2,\"handle_pacevalComputation\":119406224,\"hasError\":false,\"results\":[\"-0.651801782452278\",\"-0.807342419579374\"],\"interval-min-results\":[\"-0.651801782452306\",\"-0.807342419579395\"],\"interval-max-results\":[\"-0.65180178245225\",\"-0.807342419579352\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000881s\",\"version-number\":4.04}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"d7205132-06af-4bcc-9f39-a4de13017ed7\",\n  \"number-of-multiple-values\": 2,\n  \"hasError\": false,\n  \"results\": [\n    \"-0.651801782452278\",\n    \"-0.807342419579374\"\n  ],\n  \"interval-min-results\": [\n    \"-0.651801782452306\",\n    \"-0.807342419579395\"\n  ],\n  \"interval-max-results\": [\n    \"-0.65180178245225\",\n    \"-0.807342419579352\"\n  ],\n  \"error-type-numbers\": [\n    0,\n    0\n  ],\n  \"time-calculate\": \"0.000527s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -595,7 +595,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "117867040;118054176"
+          "example" : "75927a95-a9aa-4b7c-bc14-b1c95087c6d3;a2269064-9c8b-4d47-8718-0f03a9eac058"
         }, {
           "name" : "numberOfpacevalComputations",
           "in" : "query",
@@ -649,7 +649,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "117867040;118054176"
+          "example" : "ae0e6c4e-cc75-11ed-a0a8-be45bc2aafcd;bb2f2902-cc75-11ed-a0a8-be45bc2aafcd"
         }, {
           "name" : "numberOfpacevalComputations",
           "in" : "query",
@@ -708,7 +708,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "115649680"
+          "example" : "d7205132-06af-4bcc-9f39-a4de13017ed7"
         } ],
         "responses" : {
           "200" : {
@@ -720,7 +720,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":115649680,\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>46</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.04}"
+                    "value" : "{\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>46</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.04}"
                   }
                 }
               }
@@ -742,7 +742,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "119406224"
+          "example" : "d7205132-06af-4bcc-9f39-a4de13017ed7"
         } ],
         "responses" : {
           "200" : {
@@ -754,7 +754,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":119406224,\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>38</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.04}"
+                    "value" : "{\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>38</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.04}"
                   }
                 }
               }
