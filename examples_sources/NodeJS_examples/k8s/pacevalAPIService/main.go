@@ -20,7 +20,7 @@ func main() {
 	log.Info().Msg("starting service...")
 
 	singleProxyHandler := http2.NewSingleHostProxyHandler(manager)
-	multiRequestHandler := http2.NewMultiHostRequestExtHandler(manager)
+	multiRequestHandler := http2.NewMultiHostRequestHandler(manager)
 	multiRequestsExtHandler := http2.NewMultiHostRequestExtHandler(manager)
 	demoHandler := http2.NewDemoHandler(manager)
 
