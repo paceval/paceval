@@ -98,7 +98,10 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 
 	// set the instance status to true
 	instance.Status.Ready = v1.ConditionTrue
-	instance.Status.LastActiveTime = v1.Now()
+	if instance.Status.LastActiveTime.IsZero() {
+		instance.Status.LastActiveTime = v1.Now()
+	}
+
 	r.Status().Update(context.TODO(), instance)
 
 	return ctrl.Result{}, nil
