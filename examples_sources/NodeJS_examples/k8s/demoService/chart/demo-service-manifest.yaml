@@ -73,7 +73,7 @@ spec:
               memory: 128Mi
 ---
 # Source: demoservice/templates/hpa.yaml
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: demo-service-demoservice
@@ -94,8 +94,12 @@ spec:
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: 80
+        target:
+          type: Utilization
+          averageUtilization: 80
     - type: Resource
       resource:
         name: memory
-        targetAverageUtilization: 80
+        target:
+          type: Utilization
+          averageUtilization: 80
