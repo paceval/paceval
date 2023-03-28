@@ -70,7 +70,7 @@ spec:
         - /manager
         args:
         - --leader-elect
-        image: paceval/paceval-operator:5.0.0
+        image: paceval/paceval-operator
         name: manager
         securityContext:
           allowPrivilegeEscalation: false

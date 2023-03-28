@@ -423,7 +423,7 @@ spec:
         - --leader-elect
         command:
         - /manager
-        image: paceval/paceval-operator:5.0.0
+        image: paceval/paceval-operator
         livenessProbe:
           httpGet:
             path: /healthz
