@@ -76,7 +76,7 @@ func handleCreatePacevalComputation(manager k8s.Manager) http.HandlerFunc {
 		functionId, err := manager.CreateComputation(uuid.New(), params)
 
 		if err != nil {
-			w.WriteHeader(http.StatusMethodNotAllowed)
+			w.WriteHeader(http.StatusInternalServerError)
 			w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
 			return
 		}

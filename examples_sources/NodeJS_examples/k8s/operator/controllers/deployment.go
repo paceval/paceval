@@ -105,7 +105,7 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 				},
 				Spec: corev1.PodSpec{
 					Containers: []corev1.Container{{
-						Image:           "paceval/paceval-computation",
+						Image:           "paceval/paceval-computation:5.0.0",
 						ImagePullPolicy: corev1.PullAlways,
 						Name:            "paceval-computation-object",
 						Ports: []corev1.ContainerPort{{

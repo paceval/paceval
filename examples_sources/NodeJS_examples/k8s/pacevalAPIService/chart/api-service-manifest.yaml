@@ -116,7 +116,7 @@ spec:
         - name: apiservice
           securityContext:
             {}
-          image: "paceval/api-service:latest"
+          image: "paceval/api-service:5.0.0"
           imagePullPolicy: Always
           ports:
             - name: http
