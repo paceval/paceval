@@ -72,6 +72,15 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 	}
 
 	var result *reconcile.Result
+
+	result, err = r.ensureConfigMap(req, instance, r.backendConfigMap(instance))
+	if result != nil {
+		return *result, nil
+	} else if err != nil {
+		log.Error().Msgf("Configmap failed, error: %s", err.Error())
+		return ctrl.Result{}, nil
+	}
+
 	result, err = r.ensureDeployment(req, instance, r.backendDeployment(instance))
 	if result != nil {
 		return *result, nil

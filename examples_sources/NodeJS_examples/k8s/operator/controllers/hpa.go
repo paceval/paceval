@@ -34,7 +34,8 @@ func (r *PacevalComputationObjectReconciler) ensureHPA(request reconcile.Request
 		err = r.Create(context.TODO(), hpa)
 
 		if err != nil {
-			// Service creation failed
+			// HPA creation failed
+			log.Error().Msgf("HPA %s failed due to: %s", hpa.Name, err)
 			return &reconcile.Result{}, err
 		} else {
 			// Service creation was successful
@@ -71,7 +72,7 @@ func (r *PacevalComputationObjectReconciler) backendHpa(v *v1alpha1.PacevalCompu
 						Name: corev1.ResourceCPU,
 						Target: v2.MetricTarget{
 							Type:               v2.UtilizationMetricType,
-							AverageUtilization: pointer.Int32(50),
+							AverageUtilization: pointer.Int32(80),
 						},
 					},
 				},
@@ -81,7 +82,7 @@ func (r *PacevalComputationObjectReconciler) backendHpa(v *v1alpha1.PacevalCompu
 						Name: corev1.ResourceMemory,
 						Target: v2.MetricTarget{
 							Type:               v2.UtilizationMetricType,
-							AverageUtilization: pointer.Int32(50),
+							AverageUtilization: pointer.Int32(80),
 						},
 					},
 				},

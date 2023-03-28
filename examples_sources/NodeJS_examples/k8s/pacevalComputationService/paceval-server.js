@@ -8,6 +8,7 @@ const app = express();
 app.use(compression());
 const ffi = require('ffi-napi');
 const ref = require('ref-napi');
+const fs = require('fs');
 
 const child_process = require("child_process");
 
@@ -181,8 +182,16 @@ function initCreateComputation()
     let function10chars = '';
     let functionLength = 0;
     let interval = (process.env.INTERVAL.toLowerCase() === "true" || process.env.INTERVAL.toLowerCase() === "yes");
-    const function_str = process.env.FUNCTION_STR;
+    const function_str_path = process.env.FUNCTION_STR;
     const variables_str = process.env.VARS.replace(/;/g, ' ');
+
+    let function_str
+    try {
+        function_str = fs.readFileSync(function_str_path, 'utf8')
+    }catch (err){
+        console.log("Loading function failed");
+        process.exit(1);
+    }
 
 
     let now = require('performance-now');

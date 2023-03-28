@@ -104,8 +104,24 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 					Labels: labels,
 				},
 				Spec: corev1.PodSpec{
+					Volumes: []corev1.Volume{{
+						Name: "functionStr-config",
+						VolumeSource: corev1.VolumeSource{
+							ConfigMap: &corev1.ConfigMapVolumeSource{
+								LocalObjectReference: corev1.LocalObjectReference{
+									Name: fmt.Sprintf("paceval-computation-%s", v.Spec.FunctionId),
+								},
+								Items: []corev1.KeyToPath{
+									{
+										Key:  "functionStr",
+										Path: "functionDefinition",
+									},
+								},
+							},
+						},
+					}},
 					Containers: []corev1.Container{{
-						Image:           "paceval/paceval-computation:5.0.0",
+						Image:           "paceval/paceval-computation",
 						ImagePullPolicy: corev1.PullAlways,
 						Name:            "paceval-computation-object",
 						Ports: []corev1.ContainerPort{{
@@ -125,10 +141,16 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 								corev1.ResourceEphemeralStorage: resourceMap.StorageRequest,
 							},
 						},
+						VolumeMounts: []corev1.VolumeMount{
+							{
+								Name:      "functionStr-config",
+								MountPath: "app/",
+							},
+						},
 						Env: []corev1.EnvVar{
 							{
 								Name:  "FUNCTION_STR",
-								Value: v.Spec.FunctionStr,
+								Value: "app/functionDefinition",
 							},
 							{
 								Name:  "VARS",
