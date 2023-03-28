@@ -41,6 +41,7 @@ type PacevalComputationObjectReconciler struct {
 //+kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;delete
 //+kubebuilder:rbac:groups=core,resources=services,verbs=get;list;watch;create;delete
 //+kubebuilder:rbac:groups=core,resources=endpoints,verbs=get;list;watch;create;delete
+//+kubebuilder:rbac:groups=core,resources=configmaps,verbs=get;list;watch;create;delete
 //+kubebuilder:rbac:groups=autoscaling,resources=horizontalpodautoscalers,verbs=get;list;watch;create;delete
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
