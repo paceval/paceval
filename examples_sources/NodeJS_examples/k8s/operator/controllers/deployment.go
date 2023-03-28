@@ -17,6 +17,15 @@ import (
 	"time"
 )
 
+type ResourceQuantity struct {
+	CPURequest     resource.Quantity
+	CPULimit       resource.Quantity
+	MemoryRequest  resource.Quantity
+	MemoryLimit    resource.Quantity
+	StorageRequest resource.Quantity
+	StorageLimit   resource.Quantity
+}
+
 func labels(v *v1alpha1.PacevalComputationObject) map[string]string {
 	// Fetches and sets labels
 
@@ -79,6 +88,7 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 
 	labels := labels(v)
 	size := int32(1)
+	resourceMap := getResourceQuantityFromFunctionStr(v.Spec.FunctionStr)
 	dep := &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      fmt.Sprintf("paceval-computation-%s", v.Spec.FunctionId),
@@ -105,12 +115,14 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 						}},
 						Resources: corev1.ResourceRequirements{
 							Limits: corev1.ResourceList{
-								corev1.ResourceCPU:    resource.MustParse("300m"),
-								corev1.ResourceMemory: resource.MustParse("1Gi"),
+								corev1.ResourceCPU:              resourceMap.CPULimit,
+								corev1.ResourceMemory:           resourceMap.MemoryLimit,
+								corev1.ResourceEphemeralStorage: resourceMap.StorageLimit,
 							},
 							Requests: corev1.ResourceList{
-								corev1.ResourceCPU:    resource.MustParse("100m"),
-								corev1.ResourceMemory: resource.MustParse("500Mi"),
+								corev1.ResourceCPU:              resourceMap.CPURequest,
+								corev1.ResourceMemory:           resourceMap.MemoryRequest,
+								corev1.ResourceEphemeralStorage: resourceMap.StorageRequest,
 							},
 						},
 						Env: []corev1.EnvVar{
@@ -165,4 +177,37 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 
 	controllerutil.SetControllerReference(v, dep, r.Scheme)
 	return dep
+}
+
+func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
+	l := len(functionStr)
+
+	if l < 1000000 {
+		return ResourceQuantity{
+			CPURequest:     resource.MustParse("250m"),
+			CPULimit:       resource.MustParse("365m"),
+			MemoryRequest:  resource.MustParse("0.5Gi"),
+			MemoryLimit:    resource.MustParse("1Gi"),
+			StorageRequest: resource.MustParse("200Mi"),
+			StorageLimit:   resource.MustParse("250Mi"),
+		}
+	} else if l < 10000000 {
+		return ResourceQuantity{
+			CPURequest:     resource.MustParse("1"),
+			CPULimit:       resource.MustParse("1.5"),
+			MemoryRequest:  resource.MustParse("1Gi"),
+			MemoryLimit:    resource.MustParse("1.5Gi"),
+			StorageRequest: resource.MustParse("200Mi"),
+			StorageLimit:   resource.MustParse("250Mi"),
+		}
+	} else {
+		return ResourceQuantity{
+			CPURequest:     resource.MustParse("2"),
+			CPULimit:       resource.MustParse("3"),
+			MemoryRequest:  resource.MustParse("10Gi"),
+			MemoryLimit:    resource.MustParse("15Gi"),
+			StorageRequest: resource.MustParse("200Mi"),
+			StorageLimit:   resource.MustParse("250Mi"),
+		}
+	}
 }

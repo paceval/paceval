@@ -139,7 +139,7 @@ spec:
               memory: 32Mi
 ---
 # Source: apiservice/templates/hpa.yaml
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: api-service-apiservice
@@ -160,14 +160,18 @@ spec:
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: 80
+        target:
+          type: Utilization
+          averageUtilization: 80
     - type: Resource
       resource:
         name: memory
-        targetAverageUtilization: 80
+        target:
+          type: Utilization
+          averageUtilization: 80
 ---
 # Source: apiservice/templates/cronjob.yaml
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: delete-old-paceval-computation-objects
@@ -177,7 +181,7 @@ spec:
     spec:
       template:
         spec:
-          serviceAccount: api-service-apiservice
+          serviceAccountName: api-service-apiservice
           containers:
             - name: delete-old-paceval-computation-objects
               image: bitnami/kubectl:1.25.7
