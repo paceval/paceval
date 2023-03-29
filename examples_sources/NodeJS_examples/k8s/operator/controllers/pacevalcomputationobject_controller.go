@@ -18,21 +18,33 @@ package controllers
 
 import (
 	"context"
+	pacevalv1alpha1 "github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/operator/api/v1alpha1"
 	"github.com/rs/zerolog/log"
 	"k8s.io/apimachinery/pkg/api/errors"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+	"os"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
-
-	pacevalv1alpha1 "github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/operator/api/v1alpha1"
+	"strings"
+	"time"
 )
+
+const finalizerName = "paceval-controller.finalizer.paceval.com"
 
 // PacevalComputationObjectReconciler reconciles a PacevalComputationObject object
 type PacevalComputationObjectReconciler struct {
 	client.Client
 	Scheme *runtime.Scheme
+}
+
+func init() {
+	_, present := os.LookupEnv("REDIS_ADDRESS")
+	if !present {
+		log.Fatal().Msg("fatal error: env var REDIS_ADDRESS not set")
+		panic("fail to get the redis client")
+	}
 }
 
 //+kubebuilder:rbac:groups=paceval.com,resources=pacevalcomputationobjects,verbs=get;list;watch;create;update;patch;delete
@@ -56,6 +68,13 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 
 	log.Info().Msg("Start reconciling...")
 
+	address := os.Getenv("REDIS_ADDRESS")
+	redis := NewRedis(address)
+
+	log.Info().Msgf("Redis at %s connected", address)
+
+	defer redis.CloseConnection()
+
 	instance := &pacevalv1alpha1.PacevalComputationObject{}
 
 	err := r.Get(context.TODO(), req.NamespacedName, instance)
@@ -71,8 +90,49 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 		return reconcile.Result{}, err
 	}
 
+	//clean up cache in redis upon deletion of CRD
+	if !instance.GetDeletionTimestamp().IsZero() {
+		redisKey := instance.Spec.FunctionStr
+
+		if strings.HasPrefix(redisKey, "redis") {
+			if redis.Exist(redisKey) {
+				err := redis.Delete(redisKey)
+
+				if err != nil {
+					log.Error().Msgf("unable to delete redis value: %s , requeue for 500ms", err)
+					return reconcile.Result{
+						RequeueAfter: 500 * time.Millisecond,
+					}, nil
+				}
+			}
+		}
+
+		removeFinalizer(instance)
+
+		err = r.Client.Update(context.TODO(), instance)
+
+		if err != nil {
+			log.Error().Msgf("unable to remove finalizer : %s , requeue for 500ms", err)
+			return reconcile.Result{
+				RequeueAfter: 500 * time.Millisecond,
+			}, nil
+		}
+
+	}
+
 	var result *reconcile.Result
-	result, err = r.ensureDeployment(req, instance, r.backendDeployment(instance))
+	dep, err := r.backendDeployment(instance, redis)
+
+	if err != nil {
+		log.Error().Msgf("Deployment failed, error: %s", err)
+		log.Info().Msgf("requeue in 500ms")
+		return reconcile.Result{
+			RequeueAfter: 500 * time.Millisecond,
+		}, nil
+
+	}
+
+	result, err = r.ensureDeployment(req, instance, dep)
 	if result != nil {
 		return *result, nil
 	} else if err != nil {
@@ -105,6 +165,18 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 	r.Status().Update(context.TODO(), instance)
 
 	return ctrl.Result{}, nil
+}
+
+func removeFinalizer(instance *pacevalv1alpha1.PacevalComputationObject) {
+	var finalizers []string
+
+	for _, finalizer := range instance.GetFinalizers() {
+		if finalizer != finalizerName {
+			finalizers = append(finalizers, finalizer)
+		}
+	}
+
+	instance.SetFinalizers(finalizers)
 }
 
 // SetupWithManager sets up the controller with the Manager.

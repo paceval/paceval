@@ -1,4 +1,4 @@
-package data
+package controllers
 
 import (
 	"context"
@@ -21,8 +21,22 @@ func NewRedis(address string) Redis {
 	}
 }
 
-func (r Redis) Set(key, val string) error {
-	return r.redisClient.Set(r.ctx, key, val, 0).Err()
+func (r Redis) Get(key string) (string, error) {
+	return r.redisClient.Get(r.ctx, key).Result()
+}
+
+func (r Redis) Exist(key string) bool {
+	exist := r.redisClient.Exists(r.ctx, key).Val()
+
+	if exist == 1 {
+		return true
+	}
+
+	return false
+}
+
+func (r Redis) Delete(key string) error {
+	return r.redisClient.Del(r.ctx, key).Err()
 }
 
 func (r Redis) CloseConnection() error {

@@ -14,6 +14,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
+	"strings"
 	"time"
 )
 
@@ -84,11 +85,28 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 	return nil, nil
 }
 
-func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.PacevalComputationObject) *appsv1.Deployment {
+func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.PacevalComputationObject, redis Redis) (*appsv1.Deployment, error) {
 
 	labels := labels(v)
 	size := int32(1)
-	resourceMap := getResourceQuantityFromFunctionStr(v.Spec.FunctionStr)
+
+	var actualFunction string
+	if strings.HasPrefix(v.Spec.FunctionStr, "redis") {
+		key := v.Spec.FunctionStr
+		val, err := redis.Get(key)
+
+		if err != nil {
+			log.Error().Msgf("error get value from redis : %s", err)
+			return nil, err
+		}
+
+		actualFunction = val
+
+	} else {
+		actualFunction = v.Spec.FunctionStr
+	}
+
+	resourceMap := getResourceQuantityFromFunctionStr(actualFunction)
 	dep := &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      fmt.Sprintf("paceval-computation-%s", v.Spec.FunctionId),
@@ -176,7 +194,7 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 	}
 
 	controllerutil.SetControllerReference(v, dep, r.Scheme)
-	return dep
+	return dep, nil
 }
 
 func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {

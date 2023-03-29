@@ -30,9 +30,10 @@ var (
 	}
 )
 
+const finalizerName = "paceval-controller.finalizer.paceval.com"
+
 type Manager struct {
 	client dynamic.Interface
-	redis  data.Redis
 }
 
 func NewK8sManager() Manager {
@@ -43,18 +44,14 @@ func NewK8sManager() Manager {
 		panic("fail to get the clientset")
 	}
 
-	address, present := os.LookupEnv("REDIS-ADDRESS")
-
+	_, present := os.LookupEnv("REDIS_ADDRESS")
 	if !present {
-		log.Fatal().Msg("fatal error: env var REDIS-ADDRESS not set")
+		log.Fatal().Msg("fatal error: env var REDIS_ADDRESS not set")
 		panic("fail to get the redis client")
 	}
 
-	redisClient := data.NewRedis(address)
-
 	return Manager{
 		client: clientset,
-		redis:  redisClient,
 	}
 
 }
@@ -85,6 +82,7 @@ func (r Manager) CreateComputation(id uuid.UUID, params *data.ParameterSet) (str
 	obj.SetGroupVersionKind(gvk)
 	obj.SetName(instanceName)
 	obj.SetNamespace(data.DEFAULTNAMESPACE)
+	obj.SetFinalizers([]string{finalizerName})
 
 	spec := make(map[string]interface{})
 	spec["Internal"] = params.Interval
@@ -95,9 +93,16 @@ func (r Manager) CreateComputation(id uuid.UUID, params *data.ParameterSet) (str
 	if len(params.FunctionStr) < 10000 {
 		spec["functionStr"] = params.FunctionStr
 	} else {
+
+		address := os.Getenv("REDIS_ADDRESS")
+
+		redisClient := data.NewRedis(address)
+
 		key := "redis-" + id.String()
-		r.redis.Set(key, params.FunctionStr)
+		redisClient.Set(key, params.FunctionStr)
 		spec["functionStr"] = key
+
+		defer redisClient.CloseConnection()
 	}
 
 	obj.Object["spec"] = spec

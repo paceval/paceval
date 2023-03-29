@@ -202,8 +202,15 @@ async function initCreateComputation()
 
     if (function_str.startsWith("redis")){
         const addr = function_str
-        function_str = await redisClient.get(function_str)
+        try {
+            function_str = await redisClient.get(function_str)
+        }catch (e){
+            console.log("unable to get functionstr from redis, error:", e)
+            process.exit(1);
+        }
     }
+
+    await redisClient.quit()
 
 
     let now = require('performance-now');
