@@ -105,7 +105,7 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 				},
 				Spec: corev1.PodSpec{
 					Volumes: []corev1.Volume{{
-						Name: "functionStr-config",
+						Name: "functionstr-config",
 						VolumeSource: corev1.VolumeSource{
 							ConfigMap: &corev1.ConfigMapVolumeSource{
 								LocalObjectReference: corev1.LocalObjectReference{
@@ -114,7 +114,7 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 								Items: []corev1.KeyToPath{
 									{
 										Key:  "functionStr",
-										Path: "functionDefinition",
+										Path: "function-definition",
 									},
 								},
 							},
@@ -143,14 +143,15 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 						},
 						VolumeMounts: []corev1.VolumeMount{
 							{
-								Name:      "functionStr-config",
-								MountPath: "app/",
+								Name:      "functionstr-config",
+								MountPath: "/app/function-definition",
+								SubPath:   "function-definition",
 							},
 						},
 						Env: []corev1.EnvVar{
 							{
 								Name:  "FUNCTION_STR",
-								Value: "app/functionDefinition",
+								Value: "/app/function-definition",
 							},
 							{
 								Name:  "VARS",
