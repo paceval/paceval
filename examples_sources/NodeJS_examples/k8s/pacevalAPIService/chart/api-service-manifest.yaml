@@ -120,7 +120,7 @@ spec:
           imagePullPolicy: Always
           env:
             - name: REDIS_ADDRESS
-              value: redis-headless.redis.svc.cluster.local:6379
+              value: redis-master.redis.svc.cluster.local:6379
           ports:
             - name: http
               containerPort: 8080
