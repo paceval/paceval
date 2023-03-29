@@ -32,6 +32,7 @@ var (
 
 type Manager struct {
 	client dynamic.Interface
+	redis  data.Redis
 }
 
 func NewK8sManager() Manager {
@@ -42,7 +43,19 @@ func NewK8sManager() Manager {
 		panic("fail to get the clientset")
 	}
 
-	return Manager{client: clientset}
+	address, present := os.LookupEnv("REDIS-ADDRESS")
+
+	if !present {
+		log.Fatal().Msg("fatal error: env var REDIS-ADDRESS not set")
+		panic("fail to get the redis client")
+	}
+
+	redisClient := data.NewRedis(address)
+
+	return Manager{
+		client: clientset,
+		redis:  redisClient,
+	}
 
 }
 
@@ -66,7 +79,7 @@ func getClientSet() (dynamic.Interface, error) {
 }
 
 func (r Manager) CreateComputation(id uuid.UUID, params *data.ParameterSet) (string, error) {
-	log.Info().Msgf("create computation on parameters %v", params)
+	log.Info().Msgf("create computation on function id %s", id.String())
 	instanceName := fmt.Sprintf("paceval-computation-%s", id.String())
 	obj := unstructured.Unstructured{}
 	obj.SetGroupVersionKind(gvk)
@@ -78,7 +91,15 @@ func (r Manager) CreateComputation(id uuid.UUID, params *data.ParameterSet) (str
 	spec["NumOfVars"] = params.NumOfVariables
 	spec["Vars"] = params.Variables
 	spec["functionId"] = id.String()
-	spec["functionStr"] = params.FunctionStr
+
+	if len(params.FunctionStr) < 10000 {
+		spec["functionStr"] = params.FunctionStr
+	} else {
+		key := "redis-" + id.String()
+		r.redis.Set(key, params.FunctionStr)
+		spec["functionStr"] = key
+	}
+
 	obj.Object["spec"] = spec
 
 	_, err := r.client.Resource(gvr).Namespace(data.DEFAULTNAMESPACE).Create(context.TODO(), &obj, metav1.CreateOptions{})

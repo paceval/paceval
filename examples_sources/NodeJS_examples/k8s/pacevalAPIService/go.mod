@@ -5,6 +5,7 @@ go 1.19
 require (
 	github.com/google/uuid v1.1.2
 	github.com/hashicorp/go-multierror v1.1.1
+	github.com/redis/go-redis/v9 v9.0.2
 	github.com/rs/zerolog v1.29.0
 	github.com/spatialcurrent/go-math v0.0.0-20211120210754-b3872f7000fe
 	k8s.io/api v0.26.1
@@ -13,7 +14,9 @@ require (
 )
 
 require (
+	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect

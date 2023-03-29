@@ -5,6 +5,7 @@
 const compression = require('compression');
 const express = require('express');
 const app = express();
+const redis = require('redis');
 app.use(compression());
 const ffi = require('ffi-napi');
 const ref = require('ref-napi');
@@ -156,7 +157,21 @@ function logMemoryUsed()
 
 
 
+async function initRedis() {
+    if (!process.env.REDIS_ADDRESS) {
+        console.log("Missing redis address");
+        process.exit(1);
+    }
 
+    const redisClient = redis.createClient({
+        url: "redis://" + process.env.REDIS_ADDRESS
+    })
+
+    redisClient.on('error', err => console.log('Redis Client Error', err));
+
+    await redisClient.connect();
+    return redisClient
+}
 
 //---------------------------------------------------------------------------
 //  handleCreateComputation
@@ -165,11 +180,12 @@ function logMemoryUsed()
 //
 //  see  https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04
 //---------------------------------------------------------------------------
-function initCreateComputation()
+async function initCreateComputation()
 {
+    const redisClient = await initRedis()
 
     if( !process.env.FUNCTION_STR || !process.env.NUM_VARS || !process.env.VARS || !process.env.INTERVAL || !process.env.FUNCTION_ID){
-        console.log("Missing environment variables");
+        console.log("Missing environment variables on functions");
         process.exit(1);
     }
 
@@ -181,8 +197,13 @@ function initCreateComputation()
     let function10chars = '';
     let functionLength = 0;
     let interval = (process.env.INTERVAL.toLowerCase() === "true" || process.env.INTERVAL.toLowerCase() === "yes");
-    const function_str = process.env.FUNCTION_STR;
+    let function_str = process.env.FUNCTION_STR;
     const variables_str = process.env.VARS.replace(/;/g, ' ');
+
+    if (function_str.startsWith("redis")){
+        const addr = function_str
+        function_str = await redisClient.get(function_str)
+    }
 
 
     let now = require('performance-now');
@@ -244,9 +265,9 @@ function initCreateComputation()
     {
         console.log('function10chars:' + function10chars);
         console.log('errorType:' + errorType);
-        console.log('error-position:' + errorPositionLong);
-        console.log('error-type' + errorDetails_str.toString().replace(/\0/g, ''));
-        console.log('error-message' + errorMessage_str.toString().replace(/\0/g, ''));
+        console.log('error-position::' + errorPositionLong);
+        console.log('error-type:' + errorDetails_str.toString().replace(/\0/g, ''));
+        console.log('error-message:' + errorMessage_str.toString().replace(/\0/g, ''));
         console.log('time-create:' + timeCreate.toFixed(6) + 's');
         console.log('version-number:' + versionNumber );
 
@@ -852,11 +873,19 @@ app.get('/ready',(req,res)=> {
 // Listen to the App Engine-specified port, or 8080 otherwise
 const PORT = process.env.PORT || 8080;
 
-app.listen(PORT, () =>
-{
-    console.log(`paceval-service listening on port ${PORT}...`);
-    computationObject = initCreateComputation();
-    logMemoryUsed();
-    if (debugEnabled == true)
-        console.log(``);
-});
+initCreateComputation().then(
+    obj => {
+        app.listen(PORT, () =>
+        {
+            console.log(`paceval-service listening on port ${PORT}...`);
+            computationObject = obj;
+            logMemoryUsed();
+            if (debugEnabled == true)
+                console.log(``);
+        });
+
+    }
+
+)
+
+
