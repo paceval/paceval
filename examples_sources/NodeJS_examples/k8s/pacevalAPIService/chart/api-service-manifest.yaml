@@ -118,6 +118,9 @@ spec:
             {}
           image: "paceval/api-service:5.0.0"
           imagePullPolicy: Always
+          env:
+            - name: REDIS_ADDRESS
+              value: redis-headless.redis.svc.cluster.local
           ports:
             - name: http
               containerPort: 8080

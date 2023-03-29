@@ -76,6 +76,8 @@ You can test the configuration with this:
 kubectl get namespaces
 ```
 
+### Install Redius cluster
+
 ### Install paceval operator
 To install, run the following command
 ```shell

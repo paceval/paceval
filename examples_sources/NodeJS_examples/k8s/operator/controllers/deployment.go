@@ -164,6 +164,10 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 								Name:  "FUNCTION_ID",
 								Value: v.Spec.FunctionId,
 							},
+							{
+								Name:  "REDIS_ADDRESS",
+								Value: "redis-headless.redis.svc.cluster.local",
+							},
 						},
 						LivenessProbe: &corev1.Probe{
 							ProbeHandler: corev1.ProbeHandler{
