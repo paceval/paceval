@@ -425,7 +425,7 @@ spec:
         - /manager
         env:
         - name: REDIS_ADDRESS
-          value: redis-headless.redis.svc.cluster.local
+          value: redis-headless.redis.svc.cluster.local::6379
         image: paceval/paceval-operator
         livenessProbe:
           httpGet:

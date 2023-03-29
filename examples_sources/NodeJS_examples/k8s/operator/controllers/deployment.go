@@ -166,7 +166,7 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 							},
 							{
 								Name:  "REDIS_ADDRESS",
-								Value: "redis-headless.redis.svc.cluster.local",
+								Value: "redis-headless.redis.svc.cluster.local:6379",
 							},
 						},
 						LivenessProbe: &corev1.Probe{

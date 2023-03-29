@@ -99,7 +99,13 @@ func (r Manager) CreateComputation(id uuid.UUID, params *data.ParameterSet) (str
 		redisClient := data.NewRedis(address)
 
 		key := "redis-" + id.String()
-		redisClient.Set(key, params.FunctionStr)
+		err := redisClient.Set(key, params.FunctionStr)
+
+		if err != nil {
+			log.Error().Msgf("error saving value in redis: %s", err)
+			return "", nil
+		}
+
 		spec["functionStr"] = key
 
 		defer redisClient.CloseConnection()

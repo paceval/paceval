@@ -116,11 +116,11 @@ spec:
         - name: apiservice
           securityContext:
             {}
-          image: "paceval/api-service:5.0.0"
+          image: "paceval/api-service:latest"
           imagePullPolicy: Always
           env:
             - name: REDIS_ADDRESS
-              value: redis-headless.redis.svc.cluster.local
+              value: redis-headless.redis.svc.cluster.local:6379
           ports:
             - name: http
               containerPort: 8080
