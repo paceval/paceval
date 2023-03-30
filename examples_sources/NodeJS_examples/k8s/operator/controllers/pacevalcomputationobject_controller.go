@@ -71,10 +71,7 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 	address := os.Getenv("REDIS_ADDRESS")
 	redis := NewRedis(address)
 
-	log.Info().Msgf("Redis at %s connected", address)
-
 	defer redis.CloseConnection()
-
 	instance := &pacevalv1alpha1.PacevalComputationObject{}
 
 	err := r.Get(context.TODO(), req.NamespacedName, instance)
@@ -95,7 +92,9 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 		redisKey := instance.Spec.FunctionStr
 
 		if strings.HasPrefix(redisKey, "redis") {
+			log.Info().Msgf("check redis value with key %s", redisKey)
 			if redis.Exist(redisKey) {
+				log.Info().Msgf("delete redis value with key %s", redisKey)
 				err := redis.Delete(redisKey)
 
 				if err != nil {
@@ -107,6 +106,7 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 			}
 		}
 
+		log.Info().Msgf("remove finalizer from CRD %s", instance.Name)
 		removeFinalizer(instance)
 
 		err = r.Client.Update(context.TODO(), instance)

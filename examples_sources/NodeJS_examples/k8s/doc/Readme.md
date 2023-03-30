@@ -78,6 +78,23 @@ kubectl get namespaces
 
 ### Install Redius cluster
 
+To install redis cluster
+```shell
+kubectl create ns redis
+kubectl apply -f paceval/examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
+```
+
+and wait for deployment to be complete
+```shell
+
+```
+
+To uninstall, run the following command
+```shell
+kubectl delete -f paceval/examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
+kubectl delete ns redis
+```
+
 ### Install paceval operator
 To install, run the following command
 ```shell
