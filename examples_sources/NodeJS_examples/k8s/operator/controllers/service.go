@@ -6,7 +6,6 @@ import (
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/operator/api/v1alpha1"
 	"github.com/rs/zerolog/log"
 	corev1 "k8s.io/api/core/v1"
-	"k8s.io/apimachinery/pkg/api/equality"
 	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
@@ -51,14 +50,6 @@ func (r *PacevalComputationObjectReconciler) ensureService(request reconcile.Req
 		// Error that isn't due to the service not existing
 		log.Error().Msg(err.Error())
 		return &reconcile.Result{}, err
-	}
-
-	if equality.Semantic.DeepEqual(service.Spec, found.Spec) {
-		log.Info().Msgf("updating service %s", service.Name)
-		if err = r.Update(context.TODO(), service); err != nil {
-			log.Error().Msgf("service %s updating failed due to: %s", service.Name, err)
-			return nil, err
-		}
 	}
 
 	endpoint := &corev1.Endpoints{}

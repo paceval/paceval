@@ -3,6 +3,7 @@ module github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/operator
 go 1.19
 
 require (
+	github.com/mitchellh/hashstructure/v2 v2.0.2
 	github.com/onsi/ginkgo/v2 v2.6.0
 	github.com/onsi/gomega v1.24.1
 	github.com/redis/go-redis/v9 v9.0.2

@@ -7,7 +7,6 @@ import (
 	"github.com/rs/zerolog/log"
 	v2 "k8s.io/api/autoscaling/v2"
 	corev1 "k8s.io/api/core/v1"
-	"k8s.io/apimachinery/pkg/api/equality"
 	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
@@ -43,14 +42,6 @@ func (r *PacevalComputationObjectReconciler) ensureHPA(request reconcile.Request
 		// Error that isn't due to the hpa not existing
 		log.Error().Msg(err.Error())
 		return nil, err
-	}
-
-	if equality.Semantic.DeepEqual(hpa.Spec, found.Spec) {
-		log.Info()
-		if err = r.Update(context.TODO(), hpa); err != nil {
-			log.Error().Msgf("hpa %s updating failed due to: %s", hpa.Name, err)
-			return &reconcile.Result{}, err
-		}
 	}
 
 	return nil, nil

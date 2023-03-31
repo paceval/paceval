@@ -3,11 +3,11 @@ package controllers
 import (
 	"context"
 	"fmt"
+	"github.com/mitchellh/hashstructure/v2"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/operator/api/v1alpha1"
 	"github.com/rs/zerolog/log"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
-	"k8s.io/apimachinery/pkg/api/equality"
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -27,6 +27,8 @@ type ResourceQuantity struct {
 	StorageRequest resource.Quantity
 	StorageLimit   resource.Quantity
 }
+
+const hashAnnotaionName = "paceval/last-applied-config-hash"
 
 func labels(v *v1alpha1.PacevalComputationObject) map[string]string {
 	// Fetches and sets labels
@@ -52,6 +54,23 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 	}, found)
 	if err != nil && errors.IsNotFound(err) {
 
+		//calculate hash of deployment object
+		hash, err := hashstructure.Hash(dep.Spec, hashstructure.FormatV2, nil)
+		if err != nil {
+			// Deployment failed
+			log.Error().Msgf("hash fails for deployment %s failed due to: %s", dep.Name, err)
+			return nil, err
+		}
+
+		instance.SetAnnotations(map[string]string{
+			hashAnnotaionName: string(hash),
+		})
+
+		if err = r.Update(context.TODO(), instance); err != nil {
+			log.Error().Msgf("updating hash annotation for deployment %s failed due to: %s", dep.Name, err)
+			return nil, err
+		}
+
 		// Create the deployment
 		log.Info().Msgf("create deployment %s", dep.Name)
 		err = r.Create(context.TODO(), dep)
@@ -59,7 +78,7 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 		if err != nil {
 			// Deployment failed
 			log.Error().Msgf("deployment %s creation failed due to: %s", dep.Name, err)
-			return &reconcile.Result{}, err
+			return nil, err
 		}
 
 		log.Info().Msgf("wait for deployment %s ready, requeue...", dep.Name)
@@ -71,13 +90,29 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 		// Error that isn't due to the deployment not existing
 		log.Error().Msgf("deployment %s failed due to: %s", dep.Name, err)
 		log.Error().Msg(err.Error())
-		return &reconcile.Result{}, err
+		return nil, err
 	}
 
-	if !equality.Semantic.DeepEqual(dep.Spec, found.Spec) {
+	hash, err := hashstructure.Hash(dep.Spec, hashstructure.FormatV2, nil)
+	if err != nil {
+		// Deployment failed
+		log.Error().Msgf("hash fails for deployment %s failed due to: %s", dep.Name, err)
+		return nil, err
+	}
+
+	if string(hash) != instance.GetAnnotations()[hashAnnotaionName] {
 		log.Info().Msgf("update deployment %s", dep.Name)
 		if err = r.Update(context.TODO(), dep); err != nil {
 			log.Error().Msgf("deployment %s updating failed due to: %s", dep.Name, err)
+			return nil, err
+		}
+
+		instance.SetAnnotations(map[string]string{
+			hashAnnotaionName: string(hash),
+		})
+
+		if err = r.Update(context.TODO(), instance); err != nil {
+			log.Error().Msgf("updating hash annotation for deployment %s failed due to: %s", dep.Name, err)
 			return nil, err
 		}
 	}
