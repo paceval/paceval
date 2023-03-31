@@ -76,7 +76,7 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 
 	if !equality.Semantic.DeepEqual(dep.Spec, found.Spec) {
 		if err = r.Update(context.TODO(), dep); err != nil {
-			log.Error().Msgf("deployment  %s updating failed due to: %s", dep.Name, err)
+			log.Error().Msgf("deployment %s updating failed due to: %s", dep.Name, err)
 			return &reconcile.Result{}, err
 		}
 	}
