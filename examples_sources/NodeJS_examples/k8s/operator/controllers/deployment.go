@@ -216,41 +216,41 @@ func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 
 	if l < 10000 {
 		return ResourceQuantity{
-			CPURequest:     resource.MustParse("100m"),
-			CPULimit:       resource.MustParse("150m"),
-			MemoryRequest:  resource.MustParse("500Mi"),
-			MemoryLimit:    resource.MustParse("500Mi"),
-			StorageRequest: resource.MustParse("200Mi"),
-			StorageLimit:   resource.MustParse("300Mi"),
+			CPURequest:     resource.MustParse("200m"),
+			CPULimit:       resource.MustParse("300m"),
+			MemoryRequest:  resource.MustParse("50Mi"),
+			MemoryLimit:    resource.MustParse("100Mi"),
+			StorageRequest: resource.MustParse("100Mi"),
+			StorageLimit:   resource.MustParse("200Mi"),
 		}
 
 	} else if l < 100000 {
 		return ResourceQuantity{
-			CPURequest:     resource.MustParse("250m"),
-			CPULimit:       resource.MustParse("375m"),
-			MemoryRequest:  resource.MustParse("300Mi"),
-			MemoryLimit:    resource.MustParse("700Mi"),
-			StorageRequest: resource.MustParse("200Mi"),
-			StorageLimit:   resource.MustParse("300Mi"),
+			CPURequest:     resource.MustParse("500m"),
+			CPULimit:       resource.MustParse("750m"),
+			MemoryRequest:  resource.MustParse("100Mi"),
+			MemoryLimit:    resource.MustParse("200Mi"),
+			StorageRequest: resource.MustParse("100Mi"),
+			StorageLimit:   resource.MustParse("200Mi"),
 		}
 
 	} else if l < 1000000 {
 		return ResourceQuantity{
-			CPURequest:     resource.MustParse("500m"),
-			CPULimit:       resource.MustParse("750m"),
-			MemoryRequest:  resource.MustParse("0.5Gi"),
+			CPURequest:     resource.MustParse("750m"),
+			CPULimit:       resource.MustParse("1.2"),
+			MemoryRequest:  resource.MustParse("500Mi"),
 			MemoryLimit:    resource.MustParse("1Gi"),
-			StorageRequest: resource.MustParse("200Mi"),
-			StorageLimit:   resource.MustParse("300Mi"),
+			StorageRequest: resource.MustParse("100Mi"),
+			StorageLimit:   resource.MustParse("200Mi"),
 		}
 	} else if l < 10000000 {
 		return ResourceQuantity{
 			CPURequest:     resource.MustParse("1"),
 			CPULimit:       resource.MustParse("1.5"),
 			MemoryRequest:  resource.MustParse("1Gi"),
-			MemoryLimit:    resource.MustParse("2Gi"),
-			StorageRequest: resource.MustParse("200Mi"),
-			StorageLimit:   resource.MustParse("300Mi"),
+			MemoryLimit:    resource.MustParse("1.5Gi"),
+			StorageRequest: resource.MustParse("100Mi"),
+			StorageLimit:   resource.MustParse("200Mi"),
 		}
 	} else {
 		return ResourceQuantity{
@@ -258,8 +258,8 @@ func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 			CPULimit:       resource.MustParse("2"),
 			MemoryRequest:  resource.MustParse("10Gi"),
 			MemoryLimit:    resource.MustParse("10Gi"),
-			StorageRequest: resource.MustParse("200Mi"),
-			StorageLimit:   resource.MustParse("300Mi"),
+			StorageRequest: resource.MustParse("100Mi"),
+			StorageLimit:   resource.MustParse("200Mi"),
 		}
 	}
 }
