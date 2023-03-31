@@ -78,7 +78,7 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 		log.Info().Msgf("update deployment %s", dep.Name)
 		if err = r.Update(context.TODO(), dep); err != nil {
 			log.Error().Msgf("deployment %s updating failed due to: %s", dep.Name, err)
-			return &reconcile.Result{}, err
+			return nil, err
 		}
 	}
 

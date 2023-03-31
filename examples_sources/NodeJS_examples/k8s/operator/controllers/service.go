@@ -57,7 +57,7 @@ func (r *PacevalComputationObjectReconciler) ensureService(request reconcile.Req
 		log.Info().Msgf("updating service %s", service.Name)
 		if err = r.Update(context.TODO(), service); err != nil {
 			log.Error().Msgf("service %s updating failed due to: %s", service.Name, err)
-			return &reconcile.Result{}, err
+			return nil, err
 		}
 	}
 

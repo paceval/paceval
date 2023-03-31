@@ -42,7 +42,7 @@ func (r *PacevalComputationObjectReconciler) ensureHPA(request reconcile.Request
 	} else if err != nil {
 		// Error that isn't due to the hpa not existing
 		log.Error().Msg(err.Error())
-		return &reconcile.Result{}, err
+		return nil, err
 	}
 
 	if equality.Semantic.DeepEqual(hpa.Spec, found.Spec) {

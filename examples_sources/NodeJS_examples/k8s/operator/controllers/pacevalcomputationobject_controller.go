@@ -126,27 +126,27 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 	}
 
 	result, err = r.ensureDeployment(req, instance, dep)
-	if err != nil {
+	if result != nil {
+		return *result, nil
+	} else if err != nil {
 		log.Error().Msgf("Deployment failed, error: %s", err)
 		return ctrl.Result{}, err
-	} else if result != nil {
-		return *result, nil
 	}
 
 	result, err = r.ensureService(req, instance, r.backendService(instance))
-	if err != nil {
+	if result != nil {
+		return *result, nil
+	} else if err != nil {
 		log.Error().Msgf("service failed, error: %s", err)
 		return ctrl.Result{}, err
-	} else if result != nil {
-		return *result, nil
 	}
 
 	result, err = r.ensureHPA(req, instance, r.backendHpa(instance))
-	if err != nil {
+	if result != nil {
+		return *result, nil
+	} else if err != nil {
 		log.Error().Msgf("service failed, error: %s", err)
 		return ctrl.Result{}, err
-	} else if result != nil {
-		return *result, nil
 	}
 
 	// set the instance status to true
