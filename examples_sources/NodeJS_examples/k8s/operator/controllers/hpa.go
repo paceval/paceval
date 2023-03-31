@@ -46,6 +46,7 @@ func (r *PacevalComputationObjectReconciler) ensureHPA(request reconcile.Request
 	}
 
 	if equality.Semantic.DeepEqual(hpa.Spec, found.Spec) {
+		log.Info()
 		if err = r.Update(context.TODO(), hpa); err != nil {
 			log.Error().Msgf("hpa %s updating failed due to: %s", hpa.Name, err)
 			return &reconcile.Result{}, err

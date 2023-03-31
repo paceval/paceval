@@ -201,7 +201,7 @@ spec:
                       echo "no active time"
                       creation_timestamp=$(date +%s -d "$creation_time")
                       age=$((now-creation_timestamp))
-                      if [ $age -gt 1200 ]; then
+                      if [ $age -gt 600 ]; then
                         echo "age:$age"
                         kubectl delete pacevalcomputationobjects.paceval.com $obj
                       fi

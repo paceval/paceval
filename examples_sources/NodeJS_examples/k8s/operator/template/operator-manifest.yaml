@@ -451,10 +451,10 @@ spec:
         resources:
           limits:
             cpu: 200m
-            memory: 256Mi
+            memory: 1Gi
           requests:
             cpu: 100m
-            memory: 128Mi
+            memory: 500Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:

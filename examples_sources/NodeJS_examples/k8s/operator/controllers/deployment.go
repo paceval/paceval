@@ -75,6 +75,7 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 	}
 
 	if !equality.Semantic.DeepEqual(dep.Spec, found.Spec) {
+		log.Info().Msgf("update deployment %s", dep.Name)
 		if err = r.Update(context.TODO(), dep); err != nil {
 			log.Error().Msgf("deployment %s updating failed due to: %s", dep.Name, err)
 			return &reconcile.Result{}, err
@@ -219,8 +220,8 @@ func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 			CPULimit:       resource.MustParse("75m"),
 			MemoryRequest:  resource.MustParse("50Mi"),
 			MemoryLimit:    resource.MustParse("100Mi"),
-			StorageRequest: resource.MustParse("100Mi"),
-			StorageLimit:   resource.MustParse("200Mi"),
+			StorageRequest: resource.MustParse("200Mi"),
+			StorageLimit:   resource.MustParse("300Mi"),
 		}
 
 	} else if l < 100000 {
@@ -229,8 +230,8 @@ func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 			CPULimit:       resource.MustParse("375m"),
 			MemoryRequest:  resource.MustParse("200Mi"),
 			MemoryLimit:    resource.MustParse("500Mi"),
-			StorageRequest: resource.MustParse("100Mi"),
-			StorageLimit:   resource.MustParse("200Mi"),
+			StorageRequest: resource.MustParse("200Mi"),
+			StorageLimit:   resource.MustParse("300Mi"),
 		}
 
 	} else if l < 1000000 {
@@ -240,7 +241,7 @@ func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 			MemoryRequest:  resource.MustParse("0.5Gi"),
 			MemoryLimit:    resource.MustParse("1Gi"),
 			StorageRequest: resource.MustParse("200Mi"),
-			StorageLimit:   resource.MustParse("250Mi"),
+			StorageLimit:   resource.MustParse("300Mi"),
 		}
 	} else if l < 10000000 {
 		return ResourceQuantity{
@@ -249,7 +250,7 @@ func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 			MemoryRequest:  resource.MustParse("1Gi"),
 			MemoryLimit:    resource.MustParse("2Gi"),
 			StorageRequest: resource.MustParse("200Mi"),
-			StorageLimit:   resource.MustParse("250Mi"),
+			StorageLimit:   resource.MustParse("300Mi"),
 		}
 	} else {
 		return ResourceQuantity{
@@ -258,7 +259,7 @@ func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 			MemoryRequest:  resource.MustParse("10Gi"),
 			MemoryLimit:    resource.MustParse("10Gi"),
 			StorageRequest: resource.MustParse("200Mi"),
-			StorageLimit:   resource.MustParse("250Mi"),
+			StorageLimit:   resource.MustParse("300Mi"),
 		}
 	}
 }

@@ -129,7 +129,7 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 	if err != nil {
 		log.Error().Msgf("Deployment failed, error: %s", err)
 		return ctrl.Result{}, err
-	} else {
+	} else if result != nil {
 		return *result, nil
 	}
 
@@ -137,7 +137,7 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 	if err != nil {
 		log.Error().Msgf("service failed, error: %s", err)
 		return ctrl.Result{}, err
-	} else {
+	} else if result != nil {
 		return *result, nil
 	}
 
@@ -145,7 +145,7 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 	if err != nil {
 		log.Error().Msgf("service failed, error: %s", err)
 		return ctrl.Result{}, err
-	} else {
+	} else if result != nil {
 		return *result, nil
 	}
 
