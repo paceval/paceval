@@ -204,10 +204,30 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 	l := len(functionStr)
 
-	if l < 1000000 {
+	if l < 10000 {
+		return ResourceQuantity{
+			CPURequest:     resource.MustParse("50m"),
+			CPULimit:       resource.MustParse("7.5m"),
+			MemoryRequest:  resource.MustParse("1Mi"),
+			MemoryLimit:    resource.MustParse("5Mi"),
+			StorageRequest: resource.MustParse("100Mi"),
+			StorageLimit:   resource.MustParse("200Mi"),
+		}
+
+	} else if l < 100000 {
 		return ResourceQuantity{
 			CPURequest:     resource.MustParse("250m"),
-			CPULimit:       resource.MustParse("365m"),
+			CPULimit:       resource.MustParse("375m"),
+			MemoryRequest:  resource.MustParse("10Mi"),
+			MemoryLimit:    resource.MustParse("50Mi"),
+			StorageRequest: resource.MustParse("100Mi"),
+			StorageLimit:   resource.MustParse("200Mi"),
+		}
+
+	} else if l < 1000000 {
+		return ResourceQuantity{
+			CPURequest:     resource.MustParse("500m"),
+			CPULimit:       resource.MustParse("750m"),
 			MemoryRequest:  resource.MustParse("0.5Gi"),
 			MemoryLimit:    resource.MustParse("1Gi"),
 			StorageRequest: resource.MustParse("200Mi"),
