@@ -81,24 +81,28 @@ kubectl get namespaces
 To install redis cluster
 ```shell
 kubectl create ns redis
-kubectl apply -f paceval/examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
+kubectl apply -f examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
 ```
 
-and wait for deployment to be complete
+and wait all stateful sets to be ready, master has one pods and slave has three pods 
 ```shell
-
+kubectl get statefulsets -n redis
+NAME             READY   AGE
+redis-master     1/1     8m29s
+redis-replicas   3/3     8m28s
 ```
+this process will be ready long in GKW autopilot cluster because lots of VM has to be added into the node pool
 
 To uninstall, run the following command
 ```shell
-kubectl delete -f paceval/examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
+kubectl delete -f examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
 kubectl delete ns redis
 ```
 
 ### Install paceval operator
 To install, run the following command
 ```shell
-kubectl apply -f paceval/examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
+kubectl apply -f examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
 ```
 Potentially you will have to change the path to your local GitHub
 
