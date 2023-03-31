@@ -7,6 +7,7 @@ import (
 	"github.com/rs/zerolog/log"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
+	"k8s.io/apimachinery/pkg/api/equality"
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -57,7 +58,7 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 
 		if err != nil {
 			// Deployment failed
-			log.Error().Msgf("deployment %s failed due to: %s", dep.Name, err)
+			log.Error().Msgf("deployment %s creation failed due to: %s", dep.Name, err)
 			return &reconcile.Result{}, err
 		}
 
@@ -71,6 +72,13 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 		log.Error().Msgf("deployment %s failed due to: %s", dep.Name, err)
 		log.Error().Msg(err.Error())
 		return &reconcile.Result{}, err
+	}
+
+	if !equality.Semantic.DeepEqual(dep.Spec, found.Spec) {
+		if err = r.Update(context.TODO(), dep); err != nil {
+			log.Error().Msgf("deployment  %s updating failed due to: %s", dep.Name, err)
+			return &reconcile.Result{}, err
+		}
 	}
 
 	// deployment is available, we need to check if it is ready
