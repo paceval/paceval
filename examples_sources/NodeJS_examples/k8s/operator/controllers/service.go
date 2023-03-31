@@ -60,6 +60,9 @@ func (r *PacevalComputationObjectReconciler) ensureService(request reconcile.Req
 
 	if err != nil && errors.IsNotFound(err) {
 		log.Info().Msgf("endpoint %s not found, requeue...", found.Name)
+		return &reconcile.Result{
+			RequeueAfter: 100 * time.Millisecond,
+		}, nil
 	} else if err != nil {
 		log.Error().Msg(err.Error())
 		return &reconcile.Result{}, err

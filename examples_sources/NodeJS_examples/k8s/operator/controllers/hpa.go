@@ -36,10 +36,8 @@ func (r *PacevalComputationObjectReconciler) ensureHPA(request reconcile.Request
 		if err != nil {
 			// Service creation failed
 			return &reconcile.Result{}, err
-		} else {
-			// Service creation was successful
-			return nil, nil
 		}
+
 	} else if err != nil {
 		// Error that isn't due to the hpa not existing
 		log.Error().Msg(err.Error())

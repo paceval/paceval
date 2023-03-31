@@ -57,7 +57,7 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 
 		if err != nil {
 			// Deployment failed
-			log.Error().Msgf("deployment %s failed due to: %s", dep.Name, err.Error())
+			log.Error().Msgf("deployment %s failed due to: %s", dep.Name, err)
 			return &reconcile.Result{}, err
 		}
 
@@ -68,6 +68,7 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 
 	} else if err != nil {
 		// Error that isn't due to the deployment not existing
+		log.Error().Msgf("deployment %s failed due to: %s", dep.Name, err)
 		log.Error().Msg(err.Error())
 		return &reconcile.Result{}, err
 	}
@@ -207,7 +208,7 @@ func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 	if l < 10000 {
 		return ResourceQuantity{
 			CPURequest:     resource.MustParse("50m"),
-			CPULimit:       resource.MustParse("7.5m"),
+			CPULimit:       resource.MustParse("75m"),
 			MemoryRequest:  resource.MustParse("1Mi"),
 			MemoryLimit:    resource.MustParse("5Mi"),
 			StorageRequest: resource.MustParse("100Mi"),

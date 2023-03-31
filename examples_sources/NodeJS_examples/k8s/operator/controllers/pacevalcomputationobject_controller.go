@@ -28,7 +28,6 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 	"strings"
-	"time"
 )
 
 const finalizerName = "paceval-controller.finalizer.paceval.com"
@@ -98,10 +97,8 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 				err := redis.Delete(redisKey)
 
 				if err != nil {
-					log.Error().Msgf("unable to delete redis value: %s , requeue for 500ms", err)
-					return reconcile.Result{
-						RequeueAfter: 500 * time.Millisecond,
-					}, nil
+					log.Error().Msgf("unable to delete redis value: %s , requeue...", err)
+					return reconcile.Result{}, err
 				}
 			}
 		}
@@ -112,11 +109,11 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 		err = r.Client.Update(context.TODO(), instance)
 
 		if err != nil {
-			log.Error().Msgf("unable to remove finalizer : %s , requeue for 500ms", err)
-			return reconcile.Result{
-				RequeueAfter: 500 * time.Millisecond,
-			}, nil
+			log.Error().Msgf("unable to remove finalizer : %s , requeue...", err)
+			return reconcile.Result{}, err
 		}
+
+		return reconcile.Result{}, nil
 
 	}
 
@@ -124,36 +121,32 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 	dep, err := r.backendDeployment(instance, redis)
 
 	if err != nil {
-		log.Error().Msgf("Deployment failed, error: %s", err)
-		log.Info().Msgf("requeue in 500ms")
-		return reconcile.Result{
-			RequeueAfter: 500 * time.Millisecond,
-		}, nil
-
+		log.Error().Msgf("Deployment failed, error: %s, requeue...", err)
+		return reconcile.Result{}, err
 	}
 
 	result, err = r.ensureDeployment(req, instance, dep)
 	if result != nil {
 		return *result, nil
 	} else if err != nil {
-		log.Error().Msgf("Deployment failed, error: %s", err.Error())
-		return ctrl.Result{}, nil
+		log.Error().Msgf("Deployment failed, error: %s", err)
+		return ctrl.Result{}, err
 	}
 
 	result, err = r.ensureService(req, instance, r.backendService(instance))
 	if result != nil {
 		return *result, nil
 	} else if err != nil {
-		log.Error().Msgf("service failed, error: %s", err.Error())
-		return ctrl.Result{}, nil
+		log.Error().Msgf("service failed, error: %s", err)
+		return ctrl.Result{}, err
 	}
 
 	result, err = r.ensureHPA(req, instance, r.backendHpa(instance))
 	if result != nil {
 		return *result, nil
 	} else if err != nil {
-		log.Error().Msgf("service failed, error: %s", err.Error())
-		return ctrl.Result{}, nil
+		log.Error().Msgf("service failed, error: %s", err)
+		return ctrl.Result{}, err
 	}
 
 	// set the instance status to true
