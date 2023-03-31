@@ -217,8 +217,8 @@ func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 		return ResourceQuantity{
 			CPURequest:     resource.MustParse("50m"),
 			CPULimit:       resource.MustParse("75m"),
-			MemoryRequest:  resource.MustParse("10Mi"),
-			MemoryLimit:    resource.MustParse("50Mi"),
+			MemoryRequest:  resource.MustParse("50Mi"),
+			MemoryLimit:    resource.MustParse("100Mi"),
 			StorageRequest: resource.MustParse("100Mi"),
 			StorageLimit:   resource.MustParse("200Mi"),
 		}
@@ -227,8 +227,8 @@ func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 		return ResourceQuantity{
 			CPURequest:     resource.MustParse("250m"),
 			CPULimit:       resource.MustParse("375m"),
-			MemoryRequest:  resource.MustParse("10Mi"),
-			MemoryLimit:    resource.MustParse("50Mi"),
+			MemoryRequest:  resource.MustParse("100Mi"),
+			MemoryLimit:    resource.MustParse("300Mi"),
 			StorageRequest: resource.MustParse("100Mi"),
 			StorageLimit:   resource.MustParse("200Mi"),
 		}
