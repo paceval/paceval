@@ -246,9 +246,9 @@ func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 	} else {
 		return ResourceQuantity{
 			CPURequest:     resource.MustParse("2"),
-			CPULimit:       resource.MustParse("3"),
+			CPULimit:       resource.MustParse("2"),
 			MemoryRequest:  resource.MustParse("10Gi"),
-			MemoryLimit:    resource.MustParse("15Gi"),
+			MemoryLimit:    resource.MustParse("10Gi"),
 			StorageRequest: resource.MustParse("200Mi"),
 			StorageLimit:   resource.MustParse("250Mi"),
 		}
