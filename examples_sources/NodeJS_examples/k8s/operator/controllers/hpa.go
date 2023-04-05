@@ -69,7 +69,7 @@ func (r *PacevalComputationObjectReconciler) backendHpa(v *v1alpha1.PacevalCompu
 						Name: corev1.ResourceCPU,
 						Target: v2.MetricTarget{
 							Type:               v2.UtilizationMetricType,
-							AverageUtilization: pointer.Int32(50),
+							AverageUtilization: pointer.Int32(90),
 						},
 					},
 				},
@@ -79,7 +79,7 @@ func (r *PacevalComputationObjectReconciler) backendHpa(v *v1alpha1.PacevalCompu
 						Name: corev1.ResourceMemory,
 						Target: v2.MetricTarget{
 							Type:               v2.UtilizationMetricType,
-							AverageUtilization: pointer.Int32(50),
+							AverageUtilization: pointer.Int32(90),
 						},
 					},
 				},
