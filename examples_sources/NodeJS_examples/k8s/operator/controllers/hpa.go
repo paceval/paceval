@@ -61,7 +61,7 @@ func (r *PacevalComputationObjectReconciler) backendHpa(v *v1alpha1.PacevalCompu
 				Name:       fmt.Sprintf("paceval-computation-%s", v.Spec.FunctionId),
 			},
 			MinReplicas: pointer.Int32(1),
-			MaxReplicas: 10,
+			MaxReplicas: 4,
 			Metrics: []v2.MetricSpec{
 				{
 					Type: v2.ResourceMetricSourceType,
