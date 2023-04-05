@@ -146,16 +146,18 @@ function logMemoryUsed()
     {       
         numberOfRequestslastGC = 0;
         numberOfGCs++;
+
+        runGarbageCollection();
         
-        if (global.gc) 
-        {
-            runGarbageCollection();
-        } 
-        else 
-        {
-            if (debugEnabled == true)
-                console.warn('No GC hook for memory cleanup! Start your program as `node --expose-gc ./paceval-server.js --max-old-space-size=6000`.');
-        }
+        // if (global.gc)
+        // {
+        //     runGarbageCollection();
+        // }
+        // else
+        // {
+        //     if (debugEnabled == true)
+        //         console.warn('No GC hook for memory cleanup! Start your program as `node --expose-gc ./paceval-server.js --max-old-space-size=6000`.');
+        // }
     }
 }
 
