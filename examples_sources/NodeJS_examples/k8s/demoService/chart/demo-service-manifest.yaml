@@ -50,7 +50,7 @@ spec:
         - name: demoservice
           securityContext:
             {}
-          image: "paceval/demo-service:5.0.0"
+          image: "paceval/demo-service:latest"
           imagePullPolicy: Always
           ports:
             - name: http

@@ -142,7 +142,7 @@ function logMemoryUsed()
         console.log(`----------------------------------------------`);
     }
 
-    if (numberOfRequestslastGC >= 250) //after 250 computations we will run a garbage collection
+    if (numberOfRequestslastGC >= 2) //after 250 computations we will run a garbage collection
     {       
         numberOfRequestslastGC = 0;
         numberOfGCs++;
