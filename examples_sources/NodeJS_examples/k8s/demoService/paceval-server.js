@@ -221,7 +221,7 @@ function deleteComputationTimer()
                     //pacevalComputations_arr[iCount][0] the address of 'pointer' returned from pacevalLibrary_ffi.pacevalLibrary_CreateComputation()
                     console.log(`deleted computation handle_pacevalComputation: ${pacevalComputations_arr[iCount][1].address()}`);
                 }
-
+                pacevalComputations_arr[iCount][1] = null;
                 pacevalComputations_arr[iCount][5] = 0; //[5] valid/not deleted 0:false 1:true
                 numberOfActiveComputations--;
 
