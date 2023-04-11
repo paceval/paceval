@@ -104,17 +104,36 @@ function sleepTime(ms)
 
 async function runGarbageCollection()
 {
-    if (debugEnabled == true)
+    if (debugEnabled == true) {
+        let kbHeap = process.memoryUsage().heapUsed / 1024;
+        let kbRoundedHeap = Math.round(kbHeap * 100) / 100;
+        let kbExternal = process.memoryUsage().external / 1024;
+        let kbRoundedExternal = Math.round(kbExternal * 100) / 100;
         console.log(`start garbage collection - timestamp: ${new Date().toISOString()}`);
+        console.log('memory before cleanup:')
+        console.log(`Resident Set Size: ${process.memoryUsage().rss / 1024}K`);
+        console.log(`Total Heap Size: ${process.memoryUsage().heapTotal / 1024}K`);
+        console.log(`Heap allocated: ${kbRoundedHeap}K`);
+        console.log(`External: ${kbRoundedExternal}K`);
+    }
     
     await sleepTime(1000)
-    child_process.execSync("sleep 1");
+    //child_process.execSync("sleep 1");
     await global.gc();
+    //global.gc()
     
     if (debugEnabled == true)
     {
+        let kbHeap = process.memoryUsage().heapUsed / 1024;
+        let kbRoundedHeap = Math.round(kbHeap * 100) / 100;
+        let kbExternal = process.memoryUsage().external / 1024;
+        let kbRoundedExternal = Math.round(kbExternal * 100) / 100;
         console.log(`finished garbage collection - timestamp: ${new Date().toISOString()}`);
-        console.log(``);
+        console.log(`memory after cleanup:`)
+        console.log(`Resident Set Size: ${process.memoryUsage().rss / 1024}K`);
+        console.log(`Total Heap Size: ${process.memoryUsage().heapTotal / 1024}K`);
+        console.log(`Heap allocated: ${kbRoundedHeap}K`);
+        console.log(`External: ${kbRoundedExternal}K`);
     }
 }
 
