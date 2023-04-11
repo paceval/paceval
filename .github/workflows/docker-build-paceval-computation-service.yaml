@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - 'main'
-      - 'feature/redis'
     tags:
       - v[0-9].[0-9].[0-9]
 
@@ -47,7 +46,7 @@ jobs:
           images: ${{ env.IMAGE_NAME }}
           tags: |
             type=semver,pattern={{version}}
-            type=raw,value=latest
+            type=raw,value=latest,enable={{is_default_branch}}
           flavor: latest=auto
 
       # Build and push Docker image with Buildx (don't push on PR)
