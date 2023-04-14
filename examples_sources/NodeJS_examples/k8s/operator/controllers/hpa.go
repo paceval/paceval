@@ -36,14 +36,12 @@ func (r *PacevalComputationObjectReconciler) ensureHPA(request reconcile.Request
 		if err != nil {
 			// Service creation failed
 			return &reconcile.Result{}, err
-		} else {
-			// Service creation was successful
-			return nil, nil
 		}
+
 	} else if err != nil {
 		// Error that isn't due to the hpa not existing
 		log.Error().Msg(err.Error())
-		return &reconcile.Result{}, err
+		return nil, err
 	}
 
 	return nil, nil
@@ -63,7 +61,7 @@ func (r *PacevalComputationObjectReconciler) backendHpa(v *v1alpha1.PacevalCompu
 				Name:       fmt.Sprintf("paceval-computation-%s", v.Spec.FunctionId),
 			},
 			MinReplicas: pointer.Int32(1),
-			MaxReplicas: 10,
+			MaxReplicas: 4,
 			Metrics: []v2.MetricSpec{
 				{
 					Type: v2.ResourceMetricSourceType,
@@ -71,7 +69,7 @@ func (r *PacevalComputationObjectReconciler) backendHpa(v *v1alpha1.PacevalCompu
 						Name: corev1.ResourceCPU,
 						Target: v2.MetricTarget{
 							Type:               v2.UtilizationMetricType,
-							AverageUtilization: pointer.Int32(50),
+							AverageUtilization: pointer.Int32(90),
 						},
 					},
 				},
@@ -81,7 +79,7 @@ func (r *PacevalComputationObjectReconciler) backendHpa(v *v1alpha1.PacevalCompu
 						Name: corev1.ResourceMemory,
 						Target: v2.MetricTarget{
 							Type:               v2.UtilizationMetricType,
-							AverageUtilization: pointer.Int32(50),
+							AverageUtilization: pointer.Int32(90),
 						},
 					},
 				},

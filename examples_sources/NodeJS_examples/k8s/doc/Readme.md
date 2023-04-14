@@ -51,6 +51,20 @@ As a first step, create an empty project and enable the Kubernets Engine APIs.
 In GCP, creating an empty project is done through the [Google Cloud console](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiAsPaz-qj8AhUGm_0HHV_4AjcQFnoECA0QAQ&url=https%3A%2F%2Fcloud.google.com%2Fresource-manager%2Fdocs%2Fcreating-managing-projects&usg=AOvVaw2rNNmaoita-LBuwPL3xncu). Click the Project dropdown menu, then click "NEW PROJECT".
 Then select the project and [enable the Kubernetes Engine APIs](https://console.cloud.google.com/marketplace/product/google/container.googleapis.com) from the Google Cloud console.
 
+### Create a k8s cluster
+
+To create GKE cluster, run the following command (please replace the with your own GCP project name at `<gcp-project-name>` and cluster name at `<cluster-name>`):
+
+```shell
+gcloud beta container --project <gcp-project-name> clusters create <cluster-name> --zone "europe-central2-a" --no-enable-basic-auth --cluster-version "1.25.6-gke.1000" --release-channel "regular" --machine-type "e2-medium" --image-type "COS_CONTAINERD" \
+ --disk-type "pd-balanced" --disk-size "100" --metadata disable-legacy-endpoints=true \
+ --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" \
+ --max-pods-per-node "110" --num-nodes "3" --logging=SYSTEM,WORKLOAD --monitoring=SYSTEM --enable-ip-alias --network "projects/optimal-buffer-368615/global/networks/default" --subnetwork "projects/optimal-buffer-368615/regions/europe-central2/subnetworks/default" \
+ --no-enable-intra-node-visibility --default-max-pods-per-node "110" --no-enable-master-authorized-networks --addons HorizontalPodAutoscaling,HttpLoadBalancing,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --max-surge-upgrade 1 \
+ --max-unavailable-upgrade 0 --enable-autoprovisioning --min-cpu 1 --max-cpu 20 --min-memory 1 --max-memory 1000 --autoprovisioning-locations=europe-central2-a --enable-autoprovisioning-autorepair --enable-autoprovisioning-autoupgrade --autoprovisioning-max-surge-upgrade 1 \
+ --autoprovisioning-max-unavailable-upgrade 0 --enable-shielded-nodes --node-locations "europe-central2-a"
+```
+
 ### Connect to your kubernetes cluster
 
 For any Kubernetes cluster, you can access the cluster from the [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file using kubectl, there is also a UI-based tool called [Lens](https://k8slens.dev/).
@@ -67,7 +81,7 @@ gcloud container clusters get-credentials <cluster-name> --region=<region-name>
 
 For example:
 ```shell
-gcloud container clusters get-credentials autopilot-cluster-1 --region=europe-central2
+gcloud container clusters get-credentials paceval-dev --region=europe-central2 --project optimal-buffer-368615
 ```
 If you get an error, please check this page https://cloud.google.com/kubernetes-engine/docs/how-to/creating-an-autopilot-cluster
 
@@ -76,10 +90,33 @@ You can test the configuration with this:
 kubectl get namespaces
 ```
 
+### Install Redius cluster
+
+To install redis cluster
+```shell
+kubectl create ns redis
+kubectl apply -f examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
+```
+
+and wait all stateful sets to be ready, master has one pods and slave has three pods 
+```shell
+kubectl get statefulsets -n redis
+NAME             READY   AGE
+redis-master     1/1     8m29s
+redis-replicas   3/3     8m28s
+```
+this process will be ready long in GKW autopilot cluster because lots of VM has to be added into the node pool
+
+To uninstall, run the following command
+```shell
+kubectl delete -f examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
+kubectl delete ns redis
+```
+
 ### Install paceval operator
 To install, run the following command
 ```shell
-kubectl apply -f paceval/examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
+kubectl apply -f examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
 ```
 Potentially you will have to change the path to your local GitHub
 

@@ -143,13 +143,14 @@ function logMemoryUsed()
         console.log(`----------------------------------------------`);
     }
 
-    if (numberOfRequestslastGC >= 250) //after 250 computations we will run a garbage collection
+    if (numberOfRequestslastGC >= 5) //after 250 computations we will run a garbage collection
     {       
         numberOfRequestslastGC = 0;
         numberOfGCs++;
         
         if (global.gc) 
         {
+            console.log("running gc...")
             runGarbageCollection();
         } 
         else 
@@ -221,7 +222,8 @@ function deleteComputationTimer()
                     //pacevalComputations_arr[iCount][0] the address of 'pointer' returned from pacevalLibrary_ffi.pacevalLibrary_CreateComputation()
                     console.log(`deleted computation handle_pacevalComputation: ${pacevalComputations_arr[iCount][1].address()}`);
                 }
-                
+
+                pacevalComputations_arr[iCount][1] = null;
                 pacevalComputations_arr[iCount][5] = 0; //[5] valid/not deleted 0:false 1:true
                 numberOfActiveComputations--;
                 

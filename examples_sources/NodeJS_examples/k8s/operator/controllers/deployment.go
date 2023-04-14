@@ -3,6 +3,7 @@ package controllers
 import (
 	"context"
 	"fmt"
+	"github.com/mitchellh/hashstructure/v2"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/operator/api/v1alpha1"
 	"github.com/rs/zerolog/log"
 	appsv1 "k8s.io/api/apps/v1"
@@ -14,6 +15,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
+	"strings"
 	"time"
 )
 
@@ -25,6 +27,8 @@ type ResourceQuantity struct {
 	StorageRequest resource.Quantity
 	StorageLimit   resource.Quantity
 }
+
+const hashAnnotaionName = "paceval/last-applied-config-hash"
 
 func labels(v *v1alpha1.PacevalComputationObject) map[string]string {
 	// Fetches and sets labels
@@ -50,14 +54,31 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 	}, found)
 	if err != nil && errors.IsNotFound(err) {
 
+		//calculate hash of deployment object
+		hash, err := hashstructure.Hash(dep.Spec, hashstructure.FormatV2, nil)
+		if err != nil {
+			// Deployment failed
+			log.Error().Msgf("hash fails for deployment %s failed due to: %s", dep.Name, err)
+			return nil, err
+		}
+
+		instance.SetAnnotations(map[string]string{
+			hashAnnotaionName: string(hash),
+		})
+
+		if err = r.Update(context.TODO(), instance); err != nil {
+			log.Error().Msgf("updating hash annotation for deployment %s failed due to: %s", dep.Name, err)
+			return nil, err
+		}
+
 		// Create the deployment
 		log.Info().Msgf("create deployment %s", dep.Name)
 		err = r.Create(context.TODO(), dep)
 
 		if err != nil {
 			// Deployment failed
-			log.Error().Msgf("deployment %s failed due to: %s", dep.Name, err.Error())
-			return &reconcile.Result{}, err
+			log.Error().Msgf("deployment %s creation failed due to: %s", dep.Name, err)
+			return nil, err
 		}
 
 		log.Info().Msgf("wait for deployment %s ready, requeue...", dep.Name)
@@ -67,8 +88,33 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 
 	} else if err != nil {
 		// Error that isn't due to the deployment not existing
+		log.Error().Msgf("deployment %s failed due to: %s", dep.Name, err)
 		log.Error().Msg(err.Error())
-		return &reconcile.Result{}, err
+		return nil, err
+	}
+
+	hash, err := hashstructure.Hash(dep.Spec, hashstructure.FormatV2, nil)
+	if err != nil {
+		// Deployment failed
+		log.Error().Msgf("hash fails for deployment %s failed due to: %s", dep.Name, err)
+		return nil, err
+	}
+
+	if string(hash) != instance.GetAnnotations()[hashAnnotaionName] {
+		log.Info().Msgf("update deployment %s", dep.Name)
+		if err = r.Update(context.TODO(), dep); err != nil {
+			log.Error().Msgf("deployment %s updating failed due to: %s", dep.Name, err)
+			return nil, err
+		}
+
+		instance.SetAnnotations(map[string]string{
+			hashAnnotaionName: string(hash),
+		})
+
+		if err = r.Update(context.TODO(), instance); err != nil {
+			log.Error().Msgf("updating hash annotation for deployment %s failed due to: %s", dep.Name, err)
+			return nil, err
+		}
 	}
 
 	// deployment is available, we need to check if it is ready
@@ -84,11 +130,28 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 	return nil, nil
 }
 
-func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.PacevalComputationObject) *appsv1.Deployment {
+func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.PacevalComputationObject, redis Redis) (*appsv1.Deployment, error) {
 
 	labels := labels(v)
 	size := int32(1)
-	resourceMap := getResourceQuantityFromFunctionStr(v.Spec.FunctionStr)
+
+	var actualFunction string
+	if strings.HasPrefix(v.Spec.FunctionStr, "redis") {
+		key := v.Spec.FunctionStr
+		val, err := redis.Get(key)
+
+		if err != nil {
+			log.Error().Msgf("error get value from redis : %s", err)
+			return nil, err
+		}
+
+		actualFunction = val
+
+	} else {
+		actualFunction = v.Spec.FunctionStr
+	}
+
+	resourceMap := getResourceQuantityFromFunctionStr(actualFunction)
 	dep := &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      fmt.Sprintf("paceval-computation-%s", v.Spec.FunctionId),
@@ -105,7 +168,7 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 				},
 				Spec: corev1.PodSpec{
 					Containers: []corev1.Container{{
-						Image:           "paceval/paceval-computation:5.0.0",
+						Image:           "paceval/paceval-computation",
 						ImagePullPolicy: corev1.PullAlways,
 						Name:            "paceval-computation-object",
 						Ports: []corev1.ContainerPort{{
@@ -146,6 +209,10 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 								Name:  "FUNCTION_ID",
 								Value: v.Spec.FunctionId,
 							},
+							{
+								Name:  "REDIS_ADDRESS",
+								Value: "redis-headless.redis.svc.cluster.local:6379",
+							},
 						},
 						LivenessProbe: &corev1.Probe{
 							ProbeHandler: corev1.ProbeHandler{
@@ -176,20 +243,40 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 	}
 
 	controllerutil.SetControllerReference(v, dep, r.Scheme)
-	return dep
+	return dep, nil
 }
 
 func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 	l := len(functionStr)
 
-	if l < 1000000 {
+	if l < 10000 {
 		return ResourceQuantity{
-			CPURequest:     resource.MustParse("250m"),
-			CPULimit:       resource.MustParse("365m"),
-			MemoryRequest:  resource.MustParse("0.5Gi"),
+			CPURequest:     resource.MustParse("200m"),
+			CPULimit:       resource.MustParse("300m"),
+			MemoryRequest:  resource.MustParse("70Mi"),
+			MemoryLimit:    resource.MustParse("200Mi"),
+			StorageRequest: resource.MustParse("100Mi"),
+			StorageLimit:   resource.MustParse("200Mi"),
+		}
+
+	} else if l < 100000 {
+		return ResourceQuantity{
+			CPURequest:     resource.MustParse("500m"),
+			CPULimit:       resource.MustParse("750m"),
+			MemoryRequest:  resource.MustParse("100Mi"),
+			MemoryLimit:    resource.MustParse("400Mi"),
+			StorageRequest: resource.MustParse("100Mi"),
+			StorageLimit:   resource.MustParse("200Mi"),
+		}
+
+	} else if l < 1000000 {
+		return ResourceQuantity{
+			CPURequest:     resource.MustParse("750m"),
+			CPULimit:       resource.MustParse("1.2"),
+			MemoryRequest:  resource.MustParse("500Mi"),
 			MemoryLimit:    resource.MustParse("1Gi"),
-			StorageRequest: resource.MustParse("200Mi"),
-			StorageLimit:   resource.MustParse("250Mi"),
+			StorageRequest: resource.MustParse("100Mi"),
+			StorageLimit:   resource.MustParse("200Mi"),
 		}
 	} else if l < 10000000 {
 		return ResourceQuantity{
@@ -197,17 +284,17 @@ func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 			CPULimit:       resource.MustParse("1.5"),
 			MemoryRequest:  resource.MustParse("1Gi"),
 			MemoryLimit:    resource.MustParse("1.5Gi"),
-			StorageRequest: resource.MustParse("200Mi"),
-			StorageLimit:   resource.MustParse("250Mi"),
+			StorageRequest: resource.MustParse("100Mi"),
+			StorageLimit:   resource.MustParse("200Mi"),
 		}
 	} else {
 		return ResourceQuantity{
 			CPURequest:     resource.MustParse("2"),
-			CPULimit:       resource.MustParse("3"),
+			CPULimit:       resource.MustParse("2"),
 			MemoryRequest:  resource.MustParse("10Gi"),
-			MemoryLimit:    resource.MustParse("15Gi"),
-			StorageRequest: resource.MustParse("200Mi"),
-			StorageLimit:   resource.MustParse("250Mi"),
+			MemoryLimit:    resource.MustParse("10Gi"),
+			StorageRequest: resource.MustParse("100Mi"),
+			StorageLimit:   resource.MustParse("200Mi"),
 		}
 	}
 }

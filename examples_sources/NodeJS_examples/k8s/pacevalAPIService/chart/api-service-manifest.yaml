@@ -116,8 +116,11 @@ spec:
         - name: apiservice
           securityContext:
             {}
-          image: "paceval/api-service:5.0.0"
+          image: "paceval/api-service:latest"
           imagePullPolicy: Always
+          env:
+            - name: REDIS_ADDRESS
+              value: redis-master.redis.svc.cluster.local:6379
           ports:
             - name: http
               containerPort: 8080
@@ -132,8 +135,8 @@ spec:
               port: http
           resources:
             limits:
-              cpu: 50m
-              memory: 32Mi
+              cpu: 200m
+              memory: 128Mi
             requests:
               cpu: 50m
               memory: 32Mi
@@ -155,7 +158,7 @@ spec:
     kind: Deployment
     name: api-service-apiservice
   minReplicas: 1
-  maxReplicas: 20
+  maxReplicas: 5
   metrics:
     - type: Resource
       resource:
@@ -191,13 +194,24 @@ spec:
                 - |
                   now=$(date +%s)
                   for obj in $(kubectl get pacevalcomputationobjects.paceval.com -o=jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}'); do
+                    echo "object:$obj"
                     last_active_time=$(kubectl get pacevalcomputationobjects.paceval.com $obj -o=jsonpath='{.status.lastActiveTime}')
+                    creation_time=$(kubectl get pacevalcomputationobjects.paceval.com $obj -o=jsonpath='{.metadata.creationTimestamp}')
                     if [ -z "$last_active_time" ]; then
+                      echo "no active time"
+                      creation_timestamp=$(date +%s -d "$creation_time")
+                      age=$((now-creation_timestamp))
+                      if [ $age -gt 600 ]; then
+                        echo "age:$age"
+                        kubectl delete pacevalcomputationobjects.paceval.com $obj
+                      fi
                       continue
                     fi
+                    echo "with active time"
                     last_active_timestamp=$(date +%s -d "$last_active_time")
-                    age=$((now-last_active_timestamp))
-                    if [ $age -gt 3600 ]; then
+                    active_age=$((now-last_active_timestamp))
+                    if [ $active_age -gt 3600 ]; then
+                      echo "active_age:$active_age"
                       kubectl delete pacevalcomputationobjects.paceval.com $obj
                     fi
                   done

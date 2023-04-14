@@ -113,6 +113,7 @@ build: generate fmt vet ## Build manager binary.
 
 .PHONY: run
 run: manifests generate fmt vet ## Run a controller from your host.
+	export REDIS_ADDRESS=localhost:6379 ; \
 	go run ./main.go
 
 # If you wish built the manager image targeting other platforms you can use the --platform flag.

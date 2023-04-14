@@ -18,16 +18,19 @@ package controllers
 
 import (
 	"context"
+	pacevalv1alpha1 "github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/operator/api/v1alpha1"
 	"github.com/rs/zerolog/log"
 	"k8s.io/apimachinery/pkg/api/errors"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+	"os"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
-
-	pacevalv1alpha1 "github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/operator/api/v1alpha1"
+	"strings"
 )
+
+const finalizerName = "paceval-controller.finalizer.paceval.com"
 
 // PacevalComputationObjectReconciler reconciles a PacevalComputationObject object
 type PacevalComputationObjectReconciler struct {
@@ -35,13 +38,21 @@ type PacevalComputationObjectReconciler struct {
 	Scheme *runtime.Scheme
 }
 
+func init() {
+	_, present := os.LookupEnv("REDIS_ADDRESS")
+	if !present {
+		log.Fatal().Msg("fatal error: env var REDIS_ADDRESS not set")
+		panic("fail to get the redis client")
+	}
+}
+
 //+kubebuilder:rbac:groups=paceval.com,resources=pacevalcomputationobjects,verbs=get;list;watch;create;update;patch;delete
 //+kubebuilder:rbac:groups=paceval.com,resources=pacevalcomputationobjects/status,verbs=get;update;patch
 //+kubebuilder:rbac:groups=paceval.com,resources=pacevalcomputationobjects/finalizers,verbs=update
-//+kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;delete
-//+kubebuilder:rbac:groups=core,resources=services,verbs=get;list;watch;create;delete
-//+kubebuilder:rbac:groups=core,resources=endpoints,verbs=get;list;watch;create;delete
-//+kubebuilder:rbac:groups=autoscaling,resources=horizontalpodautoscalers,verbs=get;list;watch;create;delete
+//+kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=core,resources=services,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=core,resources=endpoints,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=autoscaling,resources=horizontalpodautoscalers,verbs=get;list;watch;create;update;patch;delete
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
@@ -56,6 +67,10 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 
 	log.Info().Msg("Start reconciling...")
 
+	address := os.Getenv("REDIS_ADDRESS")
+	redis := NewRedis(address)
+
+	defer redis.CloseConnection()
 	instance := &pacevalv1alpha1.PacevalComputationObject{}
 
 	err := r.Get(context.TODO(), req.NamespacedName, instance)
@@ -71,29 +86,67 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 		return reconcile.Result{}, err
 	}
 
+	//clean up cache in redis upon deletion of CRD
+	if !instance.GetDeletionTimestamp().IsZero() {
+		redisKey := instance.Spec.FunctionStr
+
+		if strings.HasPrefix(redisKey, "redis") {
+			log.Info().Msgf("check redis value with key %s", redisKey)
+			if redis.Exist(redisKey) {
+				log.Info().Msgf("delete redis value with key %s", redisKey)
+				err := redis.Delete(redisKey)
+
+				if err != nil {
+					log.Error().Msgf("unable to delete redis value: %s , requeue...", err)
+					return reconcile.Result{}, err
+				}
+			}
+		}
+
+		log.Info().Msgf("remove finalizer from CRD %s", instance.Name)
+		removeFinalizer(instance)
+
+		err = r.Client.Update(context.TODO(), instance)
+
+		if err != nil {
+			log.Error().Msgf("unable to remove finalizer : %s , requeue...", err)
+			return reconcile.Result{}, err
+		}
+
+		return reconcile.Result{}, nil
+
+	}
+
 	var result *reconcile.Result
-	result, err = r.ensureDeployment(req, instance, r.backendDeployment(instance))
+	dep, err := r.backendDeployment(instance, redis)
+
+	if err != nil {
+		log.Error().Msgf("Deployment failed, error: %s, requeue...", err)
+		return reconcile.Result{}, err
+	}
+
+	result, err = r.ensureDeployment(req, instance, dep)
 	if result != nil {
 		return *result, nil
 	} else if err != nil {
-		log.Error().Msgf("Deployment failed, error: %s", err.Error())
-		return ctrl.Result{}, nil
+		log.Error().Msgf("Deployment failed, error: %s", err)
+		return ctrl.Result{}, err
 	}
 
 	result, err = r.ensureService(req, instance, r.backendService(instance))
 	if result != nil {
 		return *result, nil
 	} else if err != nil {
-		log.Error().Msgf("service failed, error: %s", err.Error())
-		return ctrl.Result{}, nil
+		log.Error().Msgf("service failed, error: %s", err)
+		return ctrl.Result{}, err
 	}
 
 	result, err = r.ensureHPA(req, instance, r.backendHpa(instance))
 	if result != nil {
 		return *result, nil
 	} else if err != nil {
-		log.Error().Msgf("service failed, error: %s", err.Error())
-		return ctrl.Result{}, nil
+		log.Error().Msgf("service failed, error: %s", err)
+		return ctrl.Result{}, err
 	}
 
 	// set the instance status to true
@@ -105,6 +158,18 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 	r.Status().Update(context.TODO(), instance)
 
 	return ctrl.Result{}, nil
+}
+
+func removeFinalizer(instance *pacevalv1alpha1.PacevalComputationObject) {
+	var finalizers []string
+
+	for _, finalizer := range instance.GetFinalizers() {
+		if finalizer != finalizerName {
+			finalizers = append(finalizers, finalizer)
+		}
+	}
+
+	instance.SetFinalizers(finalizers)
 }
 
 // SetupWithManager sets up the controller with the Manager.

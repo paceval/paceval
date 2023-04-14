@@ -169,6 +169,8 @@ rules:
   - delete
   - get
   - list
+  - patch
+  - update
   - watch
 - apiGroups:
   - autoscaling
@@ -179,6 +181,8 @@ rules:
   - delete
   - get
   - list
+  - patch
+  - update
   - watch
 - apiGroups:
   - ""
@@ -189,6 +193,8 @@ rules:
   - delete
   - get
   - list
+  - patch
+  - update
   - watch
 - apiGroups:
   - ""
@@ -199,6 +205,8 @@ rules:
   - delete
   - get
   - list
+  - patch
+  - update
   - watch
 - apiGroups:
   - paceval.com
@@ -423,7 +431,10 @@ spec:
         - --leader-elect
         command:
         - /manager
-        image: paceval/paceval-operator:5.0.0
+        env:
+        - name: REDIS_ADDRESS
+          value: redis-master.redis.svc.cluster.local:6379
+        image: paceval/paceval-operator
         livenessProbe:
           httpGet:
             path: /healthz
@@ -439,11 +450,11 @@ spec:
           periodSeconds: 10
         resources:
           limits:
-            cpu: 500m
-            memory: 128Mi
+            cpu: 200m
+            memory: 1Gi
           requests:
-            cpu: 10m
-            memory: 64Mi
+            cpu: 100m
+            memory: 500Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:

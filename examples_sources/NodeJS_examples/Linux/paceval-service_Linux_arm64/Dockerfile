@@ -19,4 +19,4 @@ COPY . .
 EXPOSE 8080
 
 # CMD [ "node", "paceval-server.js" ]
-CMD ["pm2-runtime", "paceval-server.js", "--expose-gc --max-old-space-size=6144"]
+CMD ["pm2-runtime", "paceval-server.js", "--node-args=\"--expose-gc\"", "--max-old-space-size=6144"]

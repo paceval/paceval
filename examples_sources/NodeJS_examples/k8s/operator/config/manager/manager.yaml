@@ -70,8 +70,11 @@ spec:
         - /manager
         args:
         - --leader-elect
-        image: paceval/paceval-operator:5.0.0
+        image: paceval/paceval-operator
         name: manager
+        env:
+          - name: REDIS_ADDRESS
+            value: redis-master.redis.svc.cluster.local:6379
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -93,10 +96,10 @@ spec:
         # More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
         resources:
           limits:
-            cpu: 500m
-            memory: 128Mi
+            cpu: 200m
+            memory: 256Mi
           requests:
-            cpu: 10m
+            cpu: 100m
             memory: 64Mi
       serviceAccountName: controller-manager
       terminationGracePeriodSeconds: 10

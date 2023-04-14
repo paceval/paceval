@@ -104,17 +104,36 @@ function sleepTime(ms)
 
 async function runGarbageCollection()
 {
-    if (debugEnabled == true)
+    if (debugEnabled == true) {
+        let kbHeap = process.memoryUsage().heapUsed / 1024;
+        let kbRoundedHeap = Math.round(kbHeap * 100) / 100;
+        let kbExternal = process.memoryUsage().external / 1024;
+        let kbRoundedExternal = Math.round(kbExternal * 100) / 100;
         console.log(`start garbage collection - timestamp: ${new Date().toISOString()}`);
+        console.log('memory before cleanup:')
+        console.log(`Resident Set Size: ${process.memoryUsage().rss / 1024}K`);
+        console.log(`Total Heap Size: ${process.memoryUsage().heapTotal / 1024}K`);
+        console.log(`Heap allocated: ${kbRoundedHeap}K`);
+        console.log(`External: ${kbRoundedExternal}K`);
+    }
     
     await sleepTime(1000)
-    child_process.execSync("sleep 1");
+    //child_process.execSync("sleep 1");
     await global.gc();
+    //global.gc()
     
     if (debugEnabled == true)
     {
+        let kbHeap = process.memoryUsage().heapUsed / 1024;
+        let kbRoundedHeap = Math.round(kbHeap * 100) / 100;
+        let kbExternal = process.memoryUsage().external / 1024;
+        let kbRoundedExternal = Math.round(kbExternal * 100) / 100;
         console.log(`finished garbage collection - timestamp: ${new Date().toISOString()}`);
-        console.log(``);
+        console.log(`memory after cleanup:`)
+        console.log(`Resident Set Size: ${process.memoryUsage().rss / 1024}K`);
+        console.log(`Total Heap Size: ${process.memoryUsage().heapTotal / 1024}K`);
+        console.log(`Heap allocated: ${kbRoundedHeap}K`);
+        console.log(`External: ${kbRoundedExternal}K`);
     }
 }
 
@@ -142,16 +161,16 @@ function logMemoryUsed()
         console.log(`----------------------------------------------`);
     }
 
-    if (numberOfRequestslastGC >= 250) //after 250 computations we will run a garbage collection
+    if (numberOfRequestslastGC >= 1) //after 250 computations we will run a garbage collection
     {       
         numberOfRequestslastGC = 0;
         numberOfGCs++;
         
-        if (global.gc) 
+        if (global.gc)
         {
             runGarbageCollection();
-        } 
-        else 
+        }
+        else
         {
             if (debugEnabled == true)
                 console.warn('No GC hook for memory cleanup! Start your program as `node --expose-gc ./paceval-server.js --max-old-space-size=6000`.');
@@ -221,7 +240,7 @@ function deleteComputationTimer()
                     //pacevalComputations_arr[iCount][0] the address of 'pointer' returned from pacevalLibrary_ffi.pacevalLibrary_CreateComputation()
                     console.log(`deleted computation handle_pacevalComputation: ${pacevalComputations_arr[iCount][1].address()}`);
                 }
-
+                pacevalComputations_arr[iCount][1] = null;
                 pacevalComputations_arr[iCount][5] = 0; //[5] valid/not deleted 0:false 1:true
                 numberOfActiveComputations--;
 

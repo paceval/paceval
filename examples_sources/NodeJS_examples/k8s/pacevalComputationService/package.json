@@ -25,6 +25,7 @@
     "js-gc": "^1.0.1",
     "performance-now": "^2.1.0",
     "pm2": "^5.2.0",
+    "redis": "^4.6.5",
     "ref-array-napi": "^1.2.2",
     "ref-napi": "^3.0.3"
   }
