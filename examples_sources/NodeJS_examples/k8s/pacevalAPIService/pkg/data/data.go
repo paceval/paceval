@@ -1,5 +1,7 @@
 package data
 
+// constants and struct used by another packages
+
 const (
 	FUNCTIONSTR               = "functionString"
 	NUMOFVARIABLES            = "numberOfVariables"

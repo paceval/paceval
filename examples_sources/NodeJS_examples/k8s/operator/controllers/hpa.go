@@ -15,6 +15,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 )
 
+// ensureHPA ensures HPA is present
 func (r *PacevalComputationObjectReconciler) ensureHPA(request reconcile.Request,
 	instance *v1alpha1.PacevalComputationObject,
 	hpa *v2.HorizontalPodAutoscaler,
@@ -30,11 +31,11 @@ func (r *PacevalComputationObjectReconciler) ensureHPA(request reconcile.Request
 
 		log.Info().Msgf("create HPA %s", hpa.Name)
 
-		// Create the service
+		// Create the HPA
 		err = r.Create(context.TODO(), hpa)
 
 		if err != nil {
-			// Service creation failed
+			// HPA creation failed
 			return &reconcile.Result{}, err
 		}
 
@@ -47,8 +48,10 @@ func (r *PacevalComputationObjectReconciler) ensureHPA(request reconcile.Request
 	return nil, nil
 }
 
+// backendHpa is a code for creating a HPA based on CRD
 func (r *PacevalComputationObjectReconciler) backendHpa(v *v1alpha1.PacevalComputationObject) *v2.HorizontalPodAutoscaler {
 
+	// return a new HPA manifest
 	hpa := &v2.HorizontalPodAutoscaler{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      fmt.Sprintf("paceval-computation-%s", v.Spec.FunctionId),

@@ -38,6 +38,7 @@ type PacevalComputationObjectReconciler struct {
 	Scheme *runtime.Scheme
 }
 
+// check if env var REDIS_ADDRESS is set
 func init() {
 	_, present := os.LookupEnv("REDIS_ADDRESS")
 	if !present {
@@ -67,12 +68,15 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 
 	log.Info().Msg("Start reconciling...")
 
+	//connect to redis cache
 	address := os.Getenv("REDIS_ADDRESS")
 	redis := NewRedis(address)
 
+	// close the connection at the end of loop
 	defer redis.CloseConnection()
-	instance := &pacevalv1alpha1.PacevalComputationObject{}
 
+	//check if CRD request object can be found
+	instance := &pacevalv1alpha1.PacevalComputationObject{}
 	err := r.Get(context.TODO(), req.NamespacedName, instance)
 	if err != nil {
 		if errors.IsNotFound(err) {
@@ -86,10 +90,11 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 		return reconcile.Result{}, err
 	}
 
-	//clean up cache in redis upon deletion of CRD
+	// clean up cache in redis upon deletion of CRD
 	if !instance.GetDeletionTimestamp().IsZero() {
 		redisKey := instance.Spec.FunctionStr
 
+		// check if the key start with "redis", hence it indicate a redis key
 		if strings.HasPrefix(redisKey, "redis") {
 			log.Info().Msgf("check redis value with key %s", redisKey)
 			if redis.Exist(redisKey) {
@@ -103,6 +108,7 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 			}
 		}
 
+		// remove finalizer so that k8s wull delete CRD from ectd
 		log.Info().Msgf("remove finalizer from CRD %s", instance.Name)
 		removeFinalizer(instance)
 
@@ -113,10 +119,12 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 			return reconcile.Result{}, err
 		}
 
+		// end reconciliation loop when finalizer are removed
 		return reconcile.Result{}, nil
 
 	}
 
+	// make sure the deployment of computation service as part of CRD is created & updated
 	var result *reconcile.Result
 	dep, err := r.backendDeployment(instance, redis)
 
@@ -133,6 +141,7 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 		return ctrl.Result{}, err
 	}
 
+	// make sure the service of computation service as part of CRD is created
 	result, err = r.ensureService(req, instance, r.backendService(instance))
 	if result != nil {
 		return *result, nil
@@ -141,6 +150,7 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 		return ctrl.Result{}, err
 	}
 
+	// make sure the HPA of computation service as part of CRD is created
 	result, err = r.ensureHPA(req, instance, r.backendHpa(instance))
 	if result != nil {
 		return *result, nil
@@ -151,6 +161,8 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 
 	// set the instance status to true
 	instance.Status.Ready = v1.ConditionTrue
+
+	// set the last active last if it is not set
 	if instance.Status.LastActiveTime.IsZero() {
 		instance.Status.LastActiveTime = v1.Now()
 	}
@@ -160,6 +172,7 @@ func (r *PacevalComputationObjectReconciler) Reconcile(ctx context.Context, req 
 	return ctrl.Result{}, nil
 }
 
+// removeFinalizer remove the finalizer finalizerName from given CRD
 func removeFinalizer(instance *pacevalv1alpha1.PacevalComputationObject) {
 	var finalizers []string
 

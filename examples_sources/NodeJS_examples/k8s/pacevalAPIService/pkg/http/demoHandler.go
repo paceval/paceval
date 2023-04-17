@@ -20,6 +20,7 @@ const demoEndpoint = "http://demo-service-demoservice.default.svc.cluster.local"
 
 //const demoEndpoint = "http://localhost:9000"
 
+// DemoHandler take cares of the request to demo service
 type DemoHandler struct {
 	manager k8s.Manager
 }
@@ -28,11 +29,13 @@ func NewDemoHandler(manager k8s.Manager) DemoHandler {
 	return DemoHandler{manager: manager}
 }
 
+// ServeHTTP serve the incoming request to demo endpoint
 func (d DemoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	log.Info().Msg("handle request to demo request")
 	w.Header().Set("Content-Type", "application/json")
 	log.Info().Msgf("incoming %s request", r.Method)
 
+	// prepare the internal request to demo service
 	targetURL, err := url.Parse(demoEndpoint)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -41,7 +44,10 @@ func (d DemoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// generating UUID for the new computation object
 	uid, _ := uuid.NewUUID()
+
+	// take input from incoming request
 	param, err := d.getParameters(r)
 
 	if err != nil {
@@ -51,11 +57,14 @@ func (d DemoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// create the computation CRD
 	d.manager.CreateComputation(uid, &param.ParameterSet)
 
+	// forward request to demo service
 	proxy := httputil.NewSingleHostReverseProxy(targetURL)
 
 	proxy.ModifyResponse = func(response *http.Response) error {
+		// make sure to modify the response from demo service and replace the field `handle_pacevalComputation` with above generated uuid
 		respObject := make(map[string]interface{})
 		body, err := io.ReadAll(response.Body)
 
@@ -80,13 +89,16 @@ func (d DemoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	}
 
+	// start request proxying
 	proxy.ServeHTTP(w, r)
 
 }
 
+// getParameters retrieves the input from incoming request and transform them into data.DemoParameterSet
 func (d DemoHandler) getParameters(r *http.Request) (*data.DemoParameterSet, error) {
 	switch r.Method {
 	case http.MethodGet:
+		// in case of GET request, we need to take input from query parameters
 		decodeRawQuery, err := url.QueryUnescape(r.URL.RawQuery)
 		if err != nil {
 			// handle error: failed to parse query string
@@ -118,6 +130,7 @@ func (d DemoHandler) getParameters(r *http.Request) (*data.DemoParameterSet, err
 		}, nil
 
 	case http.MethodPost:
+		// in case of GET request, we need to take input from request body
 		requestObj := data.DemoParameterSet{}
 		data, err := io.ReadAll(r.Body)
 
