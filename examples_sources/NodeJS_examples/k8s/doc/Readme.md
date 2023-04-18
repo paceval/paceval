@@ -55,9 +55,9 @@ Then select the project and [enable the Kubernetes Engine APIs](https://console.
 
 In general, you have two options in [Google Cloud Platform (GCP)](https://cloud.google.com/) to create a new Kubernetes cluster.
 
-Option 1. The easiest way to create a new Kubernetes cluster with GCP is the so-called [autopilot mode](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters). Just follow these steps for autopilot mode: [Create an Autopilot cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-an-autopilot-cluster)
+Option 1. The easiest way to create a new Kubernetes cluster with GCP is the so-called [Autopilot mode](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters). Just follow these steps for Autopilot mode: [Create an Autopilot cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-an-autopilot-cluster)
 
-Option 2. If you are more experienced with configuring Kubernetes and specifically want to benefit from performance, you should use the [standard method](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters) in GCP. To create a new standard cluster using Google Kubernetes Engine (GKE), run the following command (please replace  `<gcp-project-name>` with your own GCP project name and `<cluster-name>` with your own cluster name):
+Option 2. If you are more experienced with configuring Kubernetes and specifically want to benefit from performance, you should use the [Standard mode](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters) in GCP. To create a new cluster in Standard mode using Google Kubernetes Engine (GKE), run the following command (please replace  `<gcp-project-name>` with your own GCP project name and `<cluster-name>` with your own cluster name):
 
 ```shell
 gcloud beta container --project <gcp-project-name> clusters create <cluster-name> --zone "europe-central2-a" --no-enable-basic-auth --cluster-version "1.25.6-gke.1000" --release-channel "regular" --machine-type "e2-medium" --image-type "COS_CONTAINERD" \
