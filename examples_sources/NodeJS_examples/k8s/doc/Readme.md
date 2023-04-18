@@ -26,16 +26,10 @@ In general, you have two options in [Google Cloud Platform (GCP)](https://cloud.
 
 Option 1. The easiest way to create a new Kubernetes cluster with GCP is the so-called [Autopilot mode](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters). Just follow these steps for Autopilot mode: [Create an Autopilot cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-an-autopilot-cluster)
 
-Option 2. If you are more experienced with configuring Kubernetes and specifically want to benefit from performance, you should use the [Standard mode](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters) in GCP. To create a new cluster in Standard mode using Google Kubernetes Engine (GKE), run the following command (please replace  `<gcp-project-name>` with your own GCP project name and `<cluster-name>` with your own cluster name):
+Option 2. If you are more experienced with configuring Kubernetes and specifically want to benefit from performance, you should use the [Standard mode](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters) in GCP. To create a new cluster in Standard mode using Google Kubernetes Engine (GKE), run the following command (please replace  `paceval-cluster-01` with your own cluster name):
 
 ```shell
-gcloud beta container --project <gcp-project-name> clusters create <cluster-name> --zone "europe-central2-a" --no-enable-basic-auth --cluster-version "1.25.6-gke.1000" --release-channel "regular" --machine-type "e2-medium" --image-type "COS_CONTAINERD" \
- --disk-type "pd-balanced" --disk-size "100" --metadata disable-legacy-endpoints=true \
- --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" \
- --max-pods-per-node "110" --num-nodes "3" --logging=SYSTEM,WORKLOAD --monitoring=SYSTEM --enable-ip-alias --network "projects/optimal-buffer-368615/global/networks/default" --subnetwork "projects/optimal-buffer-368615/regions/europe-central2/subnetworks/default" \
- --no-enable-intra-node-visibility --default-max-pods-per-node "110" --no-enable-master-authorized-networks --addons HorizontalPodAutoscaling,HttpLoadBalancing,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --max-surge-upgrade 1 \
- --max-unavailable-upgrade 0 --enable-autoprovisioning --min-cpu 1 --max-cpu 20 --min-memory 1 --max-memory 1000 --autoprovisioning-locations=europe-central2-a --enable-autoprovisioning-autorepair --enable-autoprovisioning-autoupgrade --autoprovisioning-max-surge-upgrade 1 \
- --autoprovisioning-max-unavailable-upgrade 0 --enable-shielded-nodes --node-locations "europe-central2-a"
+gcloud beta container clusters create paceval-cluster-01 --zone "europe-central2-a" --no-enable-basic-auth --machine-type "e2-medium" --image-type "COS_CONTAINERD" --disk-type "pd-balanced" --disk-size "100" --metadata disable-legacy-endpoints=true --addons HorizontalPodAutoscaling,HttpLoadBalancing,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --enable-autoprovisioning --min-cpu 1 --max-cpu 20 --min-memory 1 --max-memory 1000
 ```
 
 ### Connect to your kubernetes cluster
@@ -54,7 +48,7 @@ gcloud container clusters get-credentials <cluster-name> --region=<region-name>
 
 For example:
 ```shell
-gcloud container clusters get-credentials paceval-cluster-1 --region=europe-central2 --project optimal-buffer-368615
+gcloud container clusters get-credentials paceval-cluster-01 --region=europe-central2 --project optimal-buffer-368615
 ```
 
 You can test the configuration with this:
