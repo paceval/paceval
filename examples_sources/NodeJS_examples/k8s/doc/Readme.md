@@ -1,4 +1,4 @@
-# Kubernetes Native Paceval Computation Service
+# Guide for deploying the Kubernetes native paceval-service on any cluster
 
 ## Introduction
 
