@@ -43,12 +43,12 @@ gcloud components install kubectl
 
 To generate the kubeconfig entry, run this:
 ```shell
-gcloud container clusters get-credentials <cluster-name> --region=<region-name>
+gcloud container clusters get-credentials <cluster-name> --region=<region-name> --project <project-id>
 ```
 
 For example:
 ```shell
-gcloud container clusters get-credentials paceval-cluster-01 --region=europe-central2 --project optimal-buffer-368615
+gcloud container clusters get-credentials paceval-cluster-01 --region=europe-central2-a --project norse-blade-384115
 ```
 
 You can test the configuration with this:
