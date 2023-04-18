@@ -95,7 +95,7 @@ kubectl get namespaces
 
 ### Install Redis cluster
 
-This Kubernetes native paceval-service uses Redis as the in-memory database. Run the following commands to install the Redis cluster:
+This Kubernetes native paceval-service uses Redis as the in-memory cache. Run the following commands to install the Redis cluster:
 ```shell
 kubectl create ns redis
 kubectl apply -f examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
