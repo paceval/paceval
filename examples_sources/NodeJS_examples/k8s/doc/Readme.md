@@ -123,7 +123,7 @@ kubectl delete -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPI
 Finally you install the paceval Demo Service, which will handle fast creation of mathematical functions for demo or test purpose. 
 Run the following command to install the paceval Demo Service:
 ```shell
-kubectl apply -f examples_sources/NodeJS_examples/k8s/demoService/chart/demo-service-manifest.yaml
+kubectl apply -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/demoService/chart/demo-service-manifest.yaml
 ```
 Please wait for the deployment to complete:
 ```shell
@@ -133,7 +133,7 @@ demo-service-demoservice   1/1     1            1           100s
 ```
 To uninstall the paceval Demo Service, run the following command
 ```shell
-kubectl delete -f examples_sources/NodeJS_examples/k8s/demoService/chart/demo-service-manifest.yaml
+kubectl delete -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/demoService/chart/demo-service-manifest.yaml
 ```
 
 ### Wait/Check for API Service external IP Address Allocation
