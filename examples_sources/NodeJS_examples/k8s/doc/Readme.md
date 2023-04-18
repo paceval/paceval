@@ -85,7 +85,7 @@ kubectl apply -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/operator/te
 ```
 You may need to change the path to your local paceval. GitHub.
 
-Please wait for the deployment to complete (this can take up to 1 minute):
+Please wait for the deployment to complete (this can take up to 2 minutes):
 ```shell
 kubectl get deployment operator-controller-manager -n operator-system        
 NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
@@ -119,7 +119,7 @@ Run the following command to install the paceval Demo Service:
 ```shell
 kubectl apply -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/demoService/chart/demo-service-manifest.yaml
 ```
-Please wait for the deployment to complete:
+Please wait for the deployment to complete (this can take up to 2 minutes):
 ```shell
 kubectl get deployment demo-service-demoservice
 NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
