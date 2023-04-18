@@ -83,7 +83,6 @@ For example:
 ```shell
 gcloud container clusters get-credentials paceval-dev --region=europe-central2 --project optimal-buffer-368615
 ```
-If you get an error, please check this page https://cloud.google.com/kubernetes-engine/docs/how-to/creating-an-autopilot-cluster
 
 You can test the configuration with this:
 ```shell
