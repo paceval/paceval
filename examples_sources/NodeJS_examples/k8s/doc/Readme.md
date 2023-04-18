@@ -93,24 +93,23 @@ You can test the configuration with this:
 kubectl get namespaces
 ```
 
-### Install Redius cluster
+### Install Redis cluster
 
-To install redis cluster
+This Kubernetes native paceval-service uses Redis as the in-memory database. Run the following commands to install the Redis cluster:
 ```shell
 kubectl create ns redis
 kubectl apply -f examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
 ```
 
-and wait all stateful sets to be ready, master has one pods and slave has three pods 
+Please wait until all stateful sets are ready and redis-master has one pod and the redis-replicas has three pods: 
 ```shell
 kubectl get statefulsets -n redis
 NAME             READY   AGE
 redis-master     1/1     8m29s
 redis-replicas   3/3     8m28s
 ```
-this process will be ready long in GKW autopilot cluster because lots of VM has to be added into the node pool
 
-To uninstall, run the following command
+To uninstall the Redis cluster, run the following command:
 ```shell
 kubectl delete -f examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
 kubectl delete ns redis
