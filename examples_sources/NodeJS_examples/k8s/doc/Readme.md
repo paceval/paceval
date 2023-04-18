@@ -102,7 +102,7 @@ Run the following command to install the paceval API Service:
 ```shell
 kubectl apply -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/chart/api-service-manifest.yaml
 ```
-Please, wait again for the deployment to complete:
+Please, wait again for the deployment to complete (this can take up to 1 minute):
 ```shell
 kubectl get deployment api-service-apiservice                                                          
 NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
