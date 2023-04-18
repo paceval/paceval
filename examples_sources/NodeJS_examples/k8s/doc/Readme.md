@@ -67,7 +67,7 @@ kubectl get namespaces
 This Kubernetes native paceval-service uses Redis as the in-memory cache. Run the following commands to install the Redis cluster:
 ```shell
 kubectl create ns redis
-kubectl apply -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
+kubectl apply -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/redis/redis-template.yaml
 ```
 
 Please wait until all stateful sets are ready and redis-master has one pod and the redis-replicas has three pods: 
@@ -80,7 +80,7 @@ redis-replicas   3/3     8m28s
 
 To uninstall the Redis cluster, run the following command:
 ```shell
-kubectl delete -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
+kubectl delete -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/redis/redis-template.yaml
 kubectl delete ns redis
 ```
 
