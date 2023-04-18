@@ -64,7 +64,7 @@ kubectl create ns redis
 kubectl apply -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/redis/redis-template.yaml
 ```
 
-Please wait until all stateful sets are ready and redis-master has one pod and the redis-replicas has three pods: 
+Please wait until all stateful sets are ready and redis-master has one pod and the redis-replicas has three pods (this can take up to 3 minutes): 
 ```shell
 kubectl get statefulsets -n redis
 NAME             READY   AGE
@@ -85,7 +85,7 @@ kubectl apply -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/operator/te
 ```
 You may need to change the path to your local paceval. GitHub.
 
-Please wait for the deployment to complete:
+Please wait for the deployment to complete (this can take up to 10 minutes):
 ```shell
 kubectl get deployment operator-controller-manager -n operator-system        
 NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
