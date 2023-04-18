@@ -1,3 +1,5 @@
+!!! This version is obsolete. Please use the new version [Guide for deploying the Kubernetes native paceval-service on any cluster](https://github.com/paceval/paceval/blob/main/examples_sources/NodeJS_examples/k8s/doc/Readme.md) !!!
+
 # Guide for deploying the paceval-service on any Kubernetes (K8s) cluster
 
 ## Prerequisite
