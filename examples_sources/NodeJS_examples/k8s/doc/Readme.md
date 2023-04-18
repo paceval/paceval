@@ -80,14 +80,14 @@ redis-replicas   3/3     8m28s
 
 To uninstall the Redis cluster, run the following command:
 ```shell
-kubectl delete -f examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
+kubectl delete -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
 kubectl delete ns redis
 ```
 
 ### Install paceval Operator
 The next step is to install the paceval Operator, which controls and manages Kubernetes. You install the paceval Operator with the following command:
 ```shell
-kubectl apply -f examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
+kubectl apply -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
 ```
 You may need to change the path to your local paceval. GitHub.
 
@@ -99,7 +99,7 @@ operator-controller-manager   1/1     1            1           99s
 ```
 To uninstall the paceval Operator, run the following command:
 ```shell
-kubectl delete -f examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
+kubectl delete -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
 ```
 
 ### Install paceval API Service
