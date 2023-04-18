@@ -134,7 +134,7 @@ kubectl delete -f examples_sources/NodeJS_examples/k8s/operator/template/operato
 ```
 
 ### Install paceval API Service
-Now you can install the paceval API Service, which will handle external requests from the user to calculate mathematical functions.
+Now you install the paceval API Service, which will handle external requests from the user to calculate mathematical functions.
 Run the following command to install the paceval API Service:
 ```shell
 kubectl apply -f examples_sources/NodeJS_examples/k8s/pacevalAPIService/chart/api-service-manifest.yaml
@@ -150,18 +150,19 @@ To uninstall the paceval API Service, run the following command:
 kubectl delete -f examples_sources/NodeJS_examples/k8s/pacevalAPIService/chart/api-service-manifest.yaml
 ```
 
-### Install paceval demo service
-To install, run the following command
+### Install paceval Demo Service
+Finally you install the paceval Demo Service, which will handle fast creation of mathematical functions for demo or test purpose. 
+Run the following command to install the paceval Demo Service:
 ```shell
 kubectl apply -f examples_sources/NodeJS_examples/k8s/demoService/chart/demo-service-manifest.yaml
 ```
-and wait for deployment to be complete
+Please wait for the deployment to complete:
 ```shell
 kubectl get deployment demo-service-demoservice
 NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
 demo-service-demoservice   1/1     1            1           100s
 ```
-To uninstall, run the following command
+To uninstall the paceval Demo Service, run the following command
 ```shell
 kubectl delete -f examples_sources/NodeJS_examples/k8s/demoService/chart/demo-service-manifest.yaml
 ```
@@ -197,13 +198,12 @@ You will get a response similar to this from your paceval-service:
 {"error-message":"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).","error-position":"","error-type":"[NO ERROR]","error-type-number":0,"handle_pacevalComputation":"6dd3ac29-beb3-11ed-989c-a2a45b63c3f5","interval-max-result":"-44.384908","interval-min-result":"-44.384908","result":"-44.384908","time-calculate":"0.000203s","version-number":4.04}
 ```
 
-## Limitation for GCP Autopilot K8s cluster
-1. When cluster resource (e.g. vCPU, memory) is not sufficient when installing/use service. GCP automatically trys to add more VM into the cluster (i.e. scale out). The process take time. So you can find occasionally your computation object take mins to be ready.
-2. There is a quota limit in GCP where your cluster are not allowed to scale up beyond the limit. In this case, please request to Google to increase the quotas.
-![quotas.png](quotas.png)
-For details, see reference [here](https://cloud.google.com/compute/resource-usage?_ga=2.58764011.-75868254.1678303802&_gac=1.156671177.1678389429.Cj0KCQiApKagBhC1ARIsAFc7Mc6pL5xk0PfPUtgXTWQmokAHkssCS_WzA087GiRw3Miou6V4LuUZ7zQaAuvjEALw_wcB#requesting_additional_quota)
+## Limitation of the Autopilot mode of a Kubernetes cluster in Google Cloud Platform (GCP)
+1. If a cluster resource (e.g. vCPU, memory) is insufficient when installing/using the service, GCP will automatically try to add more VMs to the cluster (i.e. scale out). This process takes time. So it can occasionally happen that your paceval. computation object needs minutes to be ready.
+2. There is a quota limit in GCP where your cluster cannot be scaled beyond the limit. In this case, please request a quota increase from Google.
+see the reference [here](https://cloud.google.com/compute/resource-usage?_ga=2.58764011.-75868254.1678303802&_gac=1.156671177.1678389429.Cj0KCQiApKagBhC1ARIsAFc7Mc6pL5xk0PfPUtgXTWQmokAHkssCS_WzA087GiRw3Miou6V4LuUZ7zQaAuvjEALw_wcB#requesting_additional_quota) for more details
 
 
 
 ## API Definition
-Refer to the new [openAPI definition](swagger.yaml) for the APIs.
+For information about the APIs, see the new  [openAPI definition](swagger.yaml).
