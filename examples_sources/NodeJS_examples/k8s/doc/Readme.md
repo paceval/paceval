@@ -85,7 +85,7 @@ kubectl apply -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/operator/te
 ```
 You may need to change the path to your local paceval. GitHub.
 
-Please wait for the deployment to complete (this can take up to 10 minutes):
+Please wait for the deployment to complete (this can take up to 1 minute):
 ```shell
 kubectl get deployment operator-controller-manager -n operator-system        
 NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
