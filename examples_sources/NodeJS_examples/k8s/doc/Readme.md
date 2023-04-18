@@ -53,7 +53,7 @@ Then select the project and [enable the Kubernetes Engine APIs](https://console.
 
 ### Create a kubernetes cluster
 
-To create GKE cluster, run the following command (please replace the with your own GCP project name at `<gcp-project-name>` and cluster name at `<cluster-name>`):
+To create a new cluster using Google Kubernetes Engine (GKE), run the following command (please replace  `<gcp-project-name>` with your own GCP project name and `<cluster-name>` with your own cluster name):
 
 ```shell
 gcloud beta container --project <gcp-project-name> clusters create <cluster-name> --zone "europe-central2-a" --no-enable-basic-auth --cluster-version "1.25.6-gke.1000" --release-channel "regular" --machine-type "e2-medium" --image-type "COS_CONTAINERD" \
