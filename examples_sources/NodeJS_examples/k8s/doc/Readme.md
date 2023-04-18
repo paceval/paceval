@@ -116,7 +116,7 @@ kubectl delete ns redis
 ```
 
 ### Install paceval Operator
-The next step is to install the Paceval operator, which controls and manages Kubernetes. You install the paceval Operator with the following command:
+The next step is to install the paceval Operator, which controls and manages Kubernetes. You install the paceval Operator with the following command:
 ```shell
 kubectl apply -f examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
 ```
@@ -128,23 +128,24 @@ kubectl get deployment operator-controller-manager -n operator-system
 NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
 operator-controller-manager   1/1     1            1           99s
 ```
-To uninstall the paceval Operator, run the following command
+To uninstall the paceval Operator, run the following command:
 ```shell
 kubectl delete -f examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
 ```
 
-### Install paceval API service
-To install, run the following command
+### Install paceval API Service
+Now you can install the paceval API Service, which will handle external requests from the user to calculate mathematical functions.
+Run the following command to install the paceval API Service:
 ```shell
 kubectl apply -f examples_sources/NodeJS_examples/k8s/pacevalAPIService/chart/api-service-manifest.yaml
 ```
-and wait for deployment to be complete
+Please, wait again for the deployment to complete:
 ```shell
 kubectl get deployment api-service-apiservice                                                          
 NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
 api-service-apiservice   1/1     1            1           20s
 ```
-To uninstall, run the following command
+To uninstall the paceval API Service, run the following command:
 ```shell
 kubectl delete -f examples_sources/NodeJS_examples/k8s/pacevalAPIService/chart/api-service-manifest.yaml
 ```
