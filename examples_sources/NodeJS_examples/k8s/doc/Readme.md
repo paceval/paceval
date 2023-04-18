@@ -6,34 +6,6 @@
 
 ![paceval_system_diagram.png](paceval_system_diagram.png)
 
-The Paceval service in k8s consist of the following components
-
-1. Paceval API Service handle external request from user
-   1. request **createComputation**: create CRD `pacevalcomputationobject` when creating computation
-   2. requests **getComputation**, **getComputationResult** , **getComputationResult**, **GetComputationResultExt**,**GetComputationInformationXML**,**GetErrorInformation**:
-   reserve proxy user request to respective computation object
-   3. request **Demo**: forward request to demo service and create a CRD `pacevalcomputationobject` based on the request (noted that the creating of computation take some time)
-   4. request **GetMultipleComputationsResults**: forward request to multiple computation object in parallel and return an array of ordered results
-   5. It has healthiness and readiness endpoint for k8s to know it health status
-2. Paceval computation Object
-   1. This is a version of nodejs paceval-server when the function parameter (in environment variables) loaded upon started up, it is owned by CRD `pacevalcomputationobject`
-   2. It has healthiness and readiness endpoint for k8s to know it health status
-
-3. Paceval K8S operator
-   1. The operator create/delete the k8s deployment, service as well as HPA (horizontal pod autoscaler) of Paceval computation Object based on the existence of  CRD `pacevalcomputationobject`
-   2. It has healthiness and readiness endpoint for k8s to know it health status
-
-4. Paceval Demo service
-   1. This is a version of nodejs paceval-server when the function parameter is loaded using endpoint `createComputation`. It allow faster return of result. The function created will be delete in 2 seconds
-   2. It has healthiness and readiness endpoint for k8s to know it health status
-
-5. Delete old paceval object
-   This is a k8s cronjob that triggered every 5 mins. It detect CRDs that has not been active in one hours and delete the CRD.
-
-Remarks:
-
-If you want to replace the paceval library, please make sure to replace them in both components: [Paceval computation Object](https://github.com/paceval/paceval/tree/main/examples_sources/NodeJS_examples/k8s/pacevalComputationService) & [Paceval Demo service](https://github.com/paceval/paceval/tree/main/examples_sources/NodeJS_examples/k8s/demoService)
-
 ## Installation Step
 
 ### Prerequisite
@@ -207,3 +179,32 @@ see the reference [here](https://cloud.google.com/compute/resource-usage?_ga=2.5
 
 ## API Definition
 For information about the APIs, see the new  [openAPI definition](swagger.yaml).
+
+## paceval-service components
+The paceval-service in Kubernetes consists of the following components and [CustomResourceDefinitions (CRD)](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/):
+
+1. paceval API Service handles external requests from the user
+   1. request **createComputation**: creates CRD `pacevalcomputationobject` when creating computation
+   2. requests **getComputation**, **getComputationResult** , **getComputationResult**, **GetComputationResultExt**,**GetComputationInformationXML**,**GetErrorInformation**:
+   reserves proxy user request to the respective paceval. computation object
+   3. request **Demo**: forwards request to demo service and creates a CRD `pacevalcomputationobject` based on the request (note that creating calculations takes some time, depending on the length of the mathematical function)
+   4. requests **GetMultipleComputationsResults**, **GetMultipleComputationsResultsExt**: forwards request to multiple paceval. computation objects in parallel and returns an array of results
+   5. has healthiness and readiness endpoints for Kubernetes to determine its health status
+2. paceval Computation Object
+   1. is a version of the paceval-server and it is owned by CRD `pacevalcomputationobject`
+   2. has healthiness and readiness endpoints for Kubernetes to know it health status
+
+3. paceval Operator for Kubernetes
+   1. creates/deletes the Kubernetes deployment, service as well as HPA (horizontal pod autoscaler) of paceval Computation Object based on the existence of CRD `pacevalcomputationobject`
+   2. has healthiness and readiness endpoints for Kubernetes to know it health status
+
+4. paceval Demo Service
+   1. is a version of the paceval-server. It allows returning results more easily mainly for demo and testing purposes.
+   2. has healthiness and readiness endpoints for Kubernetes to know it health status
+
+5. Delete old paceval Computation Object
+   This is a Kubernetes cron job that is triggered every 5 minutes. It detects CRDs that have not been active for an hour and deletes the CRD.
+
+Remarks:
+
+If you want to replace the paceval. library with a different version, please make sure to replace it in both components: [paceval Computation Object](https://github.com/paceval/paceval/tree/main/examples_sources/NodeJS_examples/k8s/pacevalComputationService) & [paceval Demo Service](https://github.com/paceval/paceval/tree/main/examples_sources/NodeJS_examples/k8s/demoService)
