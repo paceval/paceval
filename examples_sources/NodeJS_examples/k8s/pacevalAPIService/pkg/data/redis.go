@@ -5,11 +5,13 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
+// Redis a struct for exposing redis client for save/load operation
 type Redis struct {
 	redisClient *redis.Client
 	ctx         context.Context
 }
 
+// NewRedis return a new redis client
 func NewRedis(address string) Redis {
 	client := redis.NewClient(&redis.Options{
 		Addr: address,
@@ -21,10 +23,12 @@ func NewRedis(address string) Redis {
 	}
 }
 
+// Set save a new key/value pair into redis
 func (r Redis) Set(key, val string) error {
 	return r.redisClient.Set(r.ctx, key, val, 0).Err()
 }
 
+// CloseConnection terminate the connection to redis
 func (r Redis) CloseConnection() error {
 	return r.redisClient.Close()
 }

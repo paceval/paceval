@@ -13,15 +13,18 @@ import (
 	"sync"
 )
 
+// MultiHostRequestHandler is the handler for getMultipleComputationResult
 type MultiHostRequestHandler struct {
 	manager     k8s.Manager
 	baseHandler MultiHostBaseHandler
 }
 
+// NewMultiHostRequestHandler return new instance of handler
 func NewMultiHostRequestHandler(manager k8s.Manager) MultiHostRequestHandler {
 	return MultiHostRequestHandler{manager: manager}
 }
 
+// ServeHTTP proxy the requests to multiple computation services with a single value set
 func (p MultiHostRequestHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	log.Info().Msg("handle request to get multiple computation result")
 	w.Header().Set("Content-Type", "application/json")
@@ -39,7 +42,9 @@ func (p MultiHostRequestHandler) ServeHTTP(w http.ResponseWriter, r *http.Reques
 
 }
 
+// forwardRequestToComputationObjects send the computation request to multiple computation services and combine their response into a single slice
 func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request) {
+	// get all IDs of computation service to call
 	ids, values, err := p.baseHandler.getComputationIds(r)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
@@ -47,12 +52,14 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 		return
 	}
 
+	// do not allow duplicated computation service in the call
 	if p.baseHandler.containsDuplicatedId(ids) {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("{ \"error\": \"duplicate handle_pacevalComputation\" }"))
 		return
 	}
 
+	// get all endpoints to call
 	endpoints, _, err := p.baseHandler.getEndpointsWithNumOfVariables(ids, p.manager)
 
 	if err != nil {
@@ -76,6 +83,7 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 			return
 		}
 
+		// call each endpoint in a go routine
 		go func(index int, endpoint string) {
 			defer wg.Done()
 
@@ -126,6 +134,7 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 
 	if len(errorChan) == 0 {
 
+		// combine the response from all calls into a single slice
 		var responseArray []map[string]interface{}
 		for _, body := range aggregatedResponse {
 			var response map[string]interface{}

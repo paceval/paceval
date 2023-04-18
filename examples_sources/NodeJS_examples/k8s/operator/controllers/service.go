@@ -15,7 +15,7 @@ import (
 	"time"
 )
 
-// ensureService ensures Service is Running in a namespace.
+// ensureService ensures Service is Running
 func (r *PacevalComputationObjectReconciler) ensureService(request reconcile.Request,
 	instance *v1alpha1.PacevalComputationObject,
 	service *corev1.Service,
@@ -52,6 +52,7 @@ func (r *PacevalComputationObjectReconciler) ensureService(request reconcile.Req
 		return &reconcile.Result{}, err
 	}
 
+	// make sure the service is running by checking if the endpoint has been created
 	endpoint := &corev1.Endpoints{}
 	err = r.Get(context.TODO(), types.NamespacedName{
 		Name:      found.Name,
@@ -68,6 +69,7 @@ func (r *PacevalComputationObjectReconciler) ensureService(request reconcile.Req
 		return &reconcile.Result{}, err
 	}
 
+	// make sure the service is running by checking if the above checked endpoint at least 1 subset / address
 	if len(endpoint.Subsets) == 0 || len(endpoint.Subsets[0].Addresses) == 0 {
 		log.Info().Msgf("wait for service %s ready, requeue...", found.Name)
 		return &reconcile.Result{
@@ -75,6 +77,7 @@ func (r *PacevalComputationObjectReconciler) ensureService(request reconcile.Req
 		}, nil
 	}
 
+	// save the in cluster dns name into the CRD
 	instance.Status.Endpoint = fmt.Sprintf("%s.%s.svc.cluster.local", service.Name, service.Namespace)
 
 	r.Status().Update(context.TODO(), instance)
@@ -82,10 +85,11 @@ func (r *PacevalComputationObjectReconciler) ensureService(request reconcile.Req
 	return nil, nil
 }
 
-// backendService is a code for creating a Service
+// backendService is a code for creating a Service based on CRD
 func (r *PacevalComputationObjectReconciler) backendService(v *v1alpha1.PacevalComputationObject) *corev1.Service {
 	labels := labels(v)
 
+	// return a new manifest for service of computation service
 	service := &corev1.Service{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      fmt.Sprintf("paceval-computation-%s", v.Spec.FunctionId),

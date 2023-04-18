@@ -32,10 +32,12 @@ var (
 
 const finalizerName = "paceval-controller.finalizer.paceval.com"
 
+// Manager is a struct to access k8s client
 type Manager struct {
 	client dynamic.Interface
 }
 
+// NewK8sManager create a new k8s manager
 func NewK8sManager() Manager {
 	clientset, err := getClientSet()
 
@@ -56,6 +58,7 @@ func NewK8sManager() Manager {
 
 }
 
+// getClientSet return the k8s dynamic clientset dynamic.Interface
 func getClientSet() (dynamic.Interface, error) {
 	config, err := rest.InClusterConfig()
 	if err != nil {
@@ -75,6 +78,7 @@ func getClientSet() (dynamic.Interface, error) {
 	return client, nil
 }
 
+// CreateComputation create the computation CRD according to the configuration given in params
 func (r Manager) CreateComputation(id uuid.UUID, params *data.ParameterSet) (string, error) {
 	log.Info().Msgf("create computation on function id %s", id.String())
 	instanceName := fmt.Sprintf("paceval-computation-%s", id.String())
@@ -91,13 +95,15 @@ func (r Manager) CreateComputation(id uuid.UUID, params *data.ParameterSet) (str
 	spec["functionId"] = id.String()
 
 	if len(params.FunctionStr) < 10000 {
+		// if the length of params is short, then save the functionStr into CRD directly
 		spec["functionStr"] = params.FunctionStr
 	} else {
-
+		// if the length of params is too long, then save the functionStr into redis and save the redis key into CRD
 		address := os.Getenv("REDIS_ADDRESS")
 
 		redisClient := data.NewRedis(address)
 
+		// the redis key starts with string "redis-"
 		key := "redis-" + id.String()
 		err := redisClient.Set(key, params.FunctionStr)
 
@@ -106,6 +112,7 @@ func (r Manager) CreateComputation(id uuid.UUID, params *data.ParameterSet) (str
 			return "", nil
 		}
 
+		// save the redis key into CRD
 		spec["functionStr"] = key
 
 		defer redisClient.CloseConnection()
@@ -123,14 +130,17 @@ func (r Manager) CreateComputation(id uuid.UUID, params *data.ParameterSet) (str
 	return id.String(), nil
 }
 
+// GetEndpoint get endpoint from CRD instance
 func (r Manager) GetEndpoint(id string) (string, error) {
 	return r.getInstanceProperty(id, "status", "endpoint")
 }
 
+// GetNumOfVariables get numbers of variables from CRD instance
 func (r Manager) GetNumOfVariables(id string) (string, error) {
 	return r.getInstanceProperty(id, "spec", "NumOfVars")
 }
 
+// getInstanceProperty get a property from CRD instance
 func (r Manager) getInstanceProperty(id string, path string, property string) (string, error) {
 	instanceName := fmt.Sprintf("paceval-computation-%s", id)
 	instance, err := r.client.Resource(gvr).Namespace(data.DEFAULTNAMESPACE).Get(context.TODO(), instanceName, metav1.GetOptions{})
@@ -167,12 +177,14 @@ func (r Manager) getInstanceProperty(id string, path string, property string) (s
 
 }
 
+// updateLastActiveTimeStamp update the CRD.status.lastActiveTime to current timestamp
 func (r Manager) updateLastActiveTimeStamp(instance *unstructured.Unstructured) error {
 	instance.Object["status"].(map[string]interface{})["lastActiveTime"] = metav1.Now()
 	_, err := r.client.Resource(gvr).Namespace(data.DEFAULTNAMESPACE).UpdateStatus(context.TODO(), &unstructured.Unstructured{Object: instance.Object}, metav1.UpdateOptions{})
 	return err
 }
 
+// check if the CRD.status.ready is true, which mean the computation service is ready to use
 func (r Manager) checkServiceReady(instance *unstructured.Unstructured) (bool, error) {
 	ready, _, err := unstructured.NestedString(instance.Object, "status", "ready")
 
@@ -187,6 +199,7 @@ func (r Manager) checkServiceReady(instance *unstructured.Unstructured) (bool, e
 	return true, nil
 }
 
+// DeleteComputation delete the CRD by id
 func (r Manager) DeleteComputation(id string) error {
 	instanceName := fmt.Sprintf("paceval-computation-%s", id)
 	return r.client.Resource(gvr).Namespace(data.DEFAULTNAMESPACE).Delete(context.TODO(), instanceName, metav1.DeleteOptions{})

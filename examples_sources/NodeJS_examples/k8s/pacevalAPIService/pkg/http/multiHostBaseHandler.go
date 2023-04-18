@@ -16,9 +16,11 @@ import (
 	"sync"
 )
 
+// MultiHostBaseHandler is a base handler that has the common functions shared by multiple host request handlers
 type MultiHostBaseHandler struct {
 }
 
+// getComputationIds returns computation IDs from incoming request
 func (p MultiHostBaseHandler) getComputationIds(r *http.Request) ([]string, []string, error) {
 	log.Info().Msg("trying to search for computation object id")
 	switch r.Method {
@@ -75,6 +77,10 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request) ([]string, []st
 
 }
 
+// getEndpointsWithNumOfVariables return endpoints and number of variables from multiple CRDs
+// the request will be running in parallel, the output slices of string is the slice of endpoints
+// and output slices of integers is the slice of numOfVariables
+// the order of data in the slice is the order of ids from the input
 func (p MultiHostBaseHandler) getEndpointsWithNumOfVariables(ids []string, manager k8s.Manager) ([]string, []int, error) {
 
 	endpoints := make([]string, len(ids))
@@ -135,6 +141,7 @@ func (p MultiHostBaseHandler) getEndpointsWithNumOfVariables(ids []string, manag
 
 }
 
+// containsDuplicatedId check for duplicated id in slices of ID
 func (p MultiHostBaseHandler) containsDuplicatedId(ids []string) bool {
 	m := make(map[string]struct{})
 

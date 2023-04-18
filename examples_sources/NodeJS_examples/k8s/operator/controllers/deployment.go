@@ -40,7 +40,7 @@ func labels(v *v1alpha1.PacevalComputationObject) map[string]string {
 	}
 }
 
-// ensureDeployment ensures Deployment resource presence in given namespace.
+// ensureDeployment ensures Deployment resource presence
 func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.Request,
 	instance *v1alpha1.PacevalComputationObject,
 	dep *appsv1.Deployment,
@@ -130,11 +130,13 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 	return nil, nil
 }
 
+// backendDeployment create manifest for a new deployment based on CRD
 func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.PacevalComputationObject, redis Redis) (*appsv1.Deployment, error) {
 
 	labels := labels(v)
 	size := int32(1)
 
+	// if the v.Spec.FunctionStr is a redis key, then we will retrieve the actual function from redis
 	var actualFunction string
 	if strings.HasPrefix(v.Spec.FunctionStr, "redis") {
 		key := v.Spec.FunctionStr
@@ -151,6 +153,7 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 		actualFunction = v.Spec.FunctionStr
 	}
 
+	// return new manifest if a k8s depployment for computation service using the spec from CRD
 	resourceMap := getResourceQuantityFromFunctionStr(actualFunction)
 	dep := &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
@@ -214,6 +217,7 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 								Value: "redis-headless.redis.svc.cluster.local:6379",
 							},
 						},
+						// define the healthiness and readiness probe
 						LivenessProbe: &corev1.Probe{
 							ProbeHandler: corev1.ProbeHandler{
 								HTTPGet: &corev1.HTTPGetAction{
@@ -242,10 +246,12 @@ func (r *PacevalComputationObjectReconciler) backendDeployment(v *v1alpha1.Pacev
 		},
 	}
 
+	// set owner reference so the deployment will be removed when CRD are gone
 	controllerutil.SetControllerReference(v, dep, r.Scheme)
 	return dep, nil
 }
 
+// getResourceQuantityFromFunctionStr assign CPU and memory resources based on the length of actual functionStr
 func getResourceQuantityFromFunctionStr(functionStr string) ResourceQuantity {
 	l := len(functionStr)
 

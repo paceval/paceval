@@ -15,15 +15,18 @@ import (
 	"sync"
 )
 
+// MultiHostRequestExtHandler is the handler for getMultipleComputationResultExt
 type MultiHostRequestExtHandler struct {
 	manager     k8s.Manager
 	baseHandler MultiHostBaseHandler
 }
 
+// NewMultiHostRequestExtHandler return a new instance of handler
 func NewMultiHostRequestExtHandler(manager k8s.Manager) MultiHostRequestExtHandler {
 	return MultiHostRequestExtHandler{manager: manager}
 }
 
+// ServeHTTP proxy the requests to multiple computation services with different value sets
 func (p MultiHostRequestExtHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	log.Info().Msg("handle request to get multiple computation result")
 	w.Header().Set("Content-Type", "application/json")
@@ -41,6 +44,9 @@ func (p MultiHostRequestExtHandler) ServeHTTP(w http.ResponseWriter, r *http.Req
 
 }
 
+// organizeValues check if the number of value is correct according to numOfVariables from all computations
+// and the organize the values such into a 2d slice with first index indicated the nth functions
+// for example organizedValues[n] is the value array for nth computation
 func (p MultiHostRequestExtHandler) organizeValues(numOfVariablesArr []int, allValues []string) ([][]string, error) {
 	sum, err := math.Sum(numOfVariablesArr)
 
@@ -65,7 +71,9 @@ func (p MultiHostRequestExtHandler) organizeValues(numOfVariablesArr []int, allV
 	return organizedValuesArr, nil
 }
 
+// forwardRequestToComputationObjects proxy the request to multiple computation services and and combine their response into a single slice
 func (p MultiHostRequestExtHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request) {
+	// get all IDs of computation service to call
 	ids, allValues, err := p.baseHandler.getComputationIds(r)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
@@ -73,12 +81,14 @@ func (p MultiHostRequestExtHandler) forwardRequestToComputationObjects(w http.Re
 		return
 	}
 
+	// do not allow duplicated computation service in the call
 	if p.baseHandler.containsDuplicatedId(ids) {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("{ \"error\": \"duplicate handle_pacevalComputation\" }"))
 		return
 	}
 
+	// get all endpoints to call
 	endpoints, numOfVariables, err := p.baseHandler.getEndpointsWithNumOfVariables(ids, p.manager)
 
 	if err != nil {
@@ -110,6 +120,7 @@ func (p MultiHostRequestExtHandler) forwardRequestToComputationObjects(w http.Re
 			return
 		}
 
+		// call each endpoint in a go routine
 		go func(index int, endpoint string) {
 			defer wg.Done()
 
@@ -160,6 +171,7 @@ func (p MultiHostRequestExtHandler) forwardRequestToComputationObjects(w http.Re
 
 	if len(errorChan) == 0 {
 
+		// combine the response from all calls into a single slice
 		var responseArray []map[string]interface{}
 		for _, body := range aggregatedResponse {
 			var response map[string]interface{}

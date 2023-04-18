@@ -19,11 +19,13 @@ func main() {
 	manager := k8s.NewK8sManager()
 	log.Info().Msg("starting service...")
 
+	// init handlers
 	singleProxyHandler := http2.NewSingleHostProxyHandler(manager)
 	multiRequestHandler := http2.NewMultiHostRequestHandler(manager)
 	multiRequestsExtHandler := http2.NewMultiHostRequestExtHandler(manager)
 	demoHandler := http2.NewDemoHandler(manager)
 
+	// assign handlers to endpoints
 	http.Handle("/Demo/", demoHandler)
 	http.HandleFunc("/CreateComputation/", handleCreatePacevalComputation(manager))
 	http.Handle("/GetComputation/", singleProxyHandler)
@@ -41,6 +43,7 @@ func main() {
 	log.Fatal().Msg(http.ListenAndServe(":8080", nil).Error())
 }
 
+// handleCreatePacevalComputation create a CRD based on the incoming request
 func handleCreatePacevalComputation(manager k8s.Manager) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		log.Info().Msg("handle request to create computation")
@@ -89,12 +92,14 @@ func handleCreatePacevalComputation(manager k8s.Manager) http.HandlerFunc {
 	}
 }
 
+// fillCreateComputationQueryParam transforms the query parameters of incoming GET request into a data.ParameterSet
 func fillCreateComputationQueryParam(r *http.Request) (*data.ParameterSet, error) {
 	decodeRawQuery, err := url.QueryUnescape(r.URL.RawQuery)
 	if err != nil {
 		// handle error: failed to parse query string
 		return nil, err
 	}
+	// workaround step 1 for allowing ; by replace it with #
 	rawQuery := strings.ReplaceAll(decodeRawQuery, ";", "#")
 
 	values, err := url.ParseQuery(rawQuery)
@@ -106,6 +111,7 @@ func fillCreateComputationQueryParam(r *http.Request) (*data.ParameterSet, error
 		return nil, errors.New("missing parameters")
 	}
 
+	// workaround step 2 by replace it back
 	values.Set(data.VARAIBLES, strings.ReplaceAll(values.Get(data.VARAIBLES), "#", ";"))
 
 	return &data.ParameterSet{
@@ -116,6 +122,7 @@ func fillCreateComputationQueryParam(r *http.Request) (*data.ParameterSet, error
 	}, nil
 }
 
+// fillCreateComputationBodyParam transforms the request body of incoming POST request into a data.ParameterSet
 func fillCreateComputationBodyParam(r *http.Request) (*data.ParameterSet, error) {
 	params := data.ParameterSet{}
 	err := json.NewDecoder(r.Body).Decode(&params)

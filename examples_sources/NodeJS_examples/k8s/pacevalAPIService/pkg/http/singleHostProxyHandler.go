@@ -15,14 +15,17 @@ import (
 	"net/url"
 )
 
+// SingleHostProxyHandler handles a single proxy request to a computation service
 type SingleHostProxyHandler struct {
 	manager k8s.Manager
 }
 
+// NewSingleHostProxyHandler return a new instance of SingleHostProxyHandler
 func NewSingleHostProxyHandler(manager k8s.Manager) SingleHostProxyHandler {
 	return SingleHostProxyHandler{manager: manager}
 }
 
+// ServeHTTP handle the single proxy to a particular computation service
 func (p SingleHostProxyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	log.Info().Msg("handle request to get computation result")
 	w.Header().Set("Content-Type", "application/json")
@@ -38,6 +41,7 @@ func (p SingleHostProxyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request
 	}
 }
 
+// forwardRequestToComputationObject proxys the single request to a particular computation service
 func (p SingleHostProxyHandler) forwardRequestToComputationObject(w http.ResponseWriter, r *http.Request) {
 	id, err := p.getComputationId(r)
 
@@ -74,14 +78,17 @@ func (p SingleHostProxyHandler) forwardRequestToComputationObject(w http.Respons
 		return
 	}
 
+	// start the request proxy
 	proxy := httputil.NewSingleHostReverseProxy(targetURL)
 	proxy.ServeHTTP(w, r)
 }
 
+// getComputationId fetches the UUID of a computation specified in incoming request
 func (p SingleHostProxyHandler) getComputationId(r *http.Request) (string, error) {
 	log.Info().Msg("trying to search for computation object id")
 	switch r.Method {
 	case http.MethodGet:
+		// for GET request, the uuid should be found in query parameter
 		values := r.URL.Query()
 		if !values.Has(data.HANDLEPACEVALCOMPUTATION) {
 			return "", errors.New("missing parameters")
@@ -89,6 +96,7 @@ func (p SingleHostProxyHandler) getComputationId(r *http.Request) (string, error
 		log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
 		return values.Get(data.HANDLEPACEVALCOMPUTATION), nil
 	case http.MethodPost:
+		// for POST request, the uuid should be found in request body
 		requestObj := data.HandlePacevalComputationObject{}
 		data, err := io.ReadAll(r.Body)
 
@@ -96,6 +104,7 @@ func (p SingleHostProxyHandler) getComputationId(r *http.Request) (string, error
 			return "", err
 		}
 
+		// make sure to set the request body back to request, otherwise it will not be readable later
 		r.Body = io.NopCloser(bytes.NewBuffer(data))
 		err = json.NewDecoder(bytes.NewReader(data)).Decode(&requestObj)
 
