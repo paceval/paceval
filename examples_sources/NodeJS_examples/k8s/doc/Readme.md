@@ -3,7 +3,6 @@
 ## Introduction
 
 ### System diagram
-
 ![paceval_system_diagram.png](paceval_system_diagram.png)
 
 ## Installation Step
