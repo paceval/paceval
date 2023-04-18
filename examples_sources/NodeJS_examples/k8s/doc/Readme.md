@@ -1,8 +1,8 @@
-# Kubernetes Native Paceval Computation Service
+# Guide for deploying the Kubernetes native paceval-service on any cluster
 
 ## Introduction
 
-### System Diagram
+### System diagram
 
 ![paceval_system_diagram.png](paceval_system_diagram.png)
 
@@ -51,9 +51,13 @@ As a first step, create an empty project and enable the Kubernets Engine APIs.
 In GCP, creating an empty project is done through the [Google Cloud console](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiAsPaz-qj8AhUGm_0HHV_4AjcQFnoECA0QAQ&url=https%3A%2F%2Fcloud.google.com%2Fresource-manager%2Fdocs%2Fcreating-managing-projects&usg=AOvVaw2rNNmaoita-LBuwPL3xncu). Click the Project dropdown menu, then click "NEW PROJECT".
 Then select the project and [enable the Kubernetes Engine APIs](https://console.cloud.google.com/marketplace/product/google/container.googleapis.com) from the Google Cloud console.
 
-### Create a k8s cluster
+### Create a Kubernetes cluster
 
-To create GKE cluster, run the following command (please replace the with your own GCP project name at `<gcp-project-name>` and cluster name at `<cluster-name>`):
+In general, you have two options in [Google Cloud Platform (GCP)](https://cloud.google.com/) to create a new Kubernetes cluster.
+
+Option 1. The easiest way to create a new Kubernetes cluster with GCP is the so-called [Autopilot mode](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters). Just follow these steps for Autopilot mode: [Create an Autopilot cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-an-autopilot-cluster)
+
+Option 2. If you are more experienced with configuring Kubernetes and specifically want to benefit from performance, you should use the [Standard mode](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters) in GCP. To create a new cluster in Standard mode using Google Kubernetes Engine (GKE), run the following command (please replace  `<gcp-project-name>` with your own GCP project name and `<cluster-name>` with your own cluster name):
 
 ```shell
 gcloud beta container --project <gcp-project-name> clusters create <cluster-name> --zone "europe-central2-a" --no-enable-basic-auth --cluster-version "1.25.6-gke.1000" --release-channel "regular" --machine-type "e2-medium" --image-type "COS_CONTAINERD" \
@@ -83,31 +87,29 @@ For example:
 ```shell
 gcloud container clusters get-credentials paceval-dev --region=europe-central2 --project optimal-buffer-368615
 ```
-If you get an error, please check this page https://cloud.google.com/kubernetes-engine/docs/how-to/creating-an-autopilot-cluster
 
 You can test the configuration with this:
 ```shell
 kubectl get namespaces
 ```
 
-### Install Redius cluster
+### Install Redis cluster
 
-To install redis cluster
+This Kubernetes native paceval-service uses Redis as the in-memory database. Run the following commands to install the Redis cluster:
 ```shell
 kubectl create ns redis
 kubectl apply -f examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
 ```
 
-and wait all stateful sets to be ready, master has one pods and slave has three pods 
+Please wait until all stateful sets are ready and redis-master has one pod and the redis-replicas has three pods: 
 ```shell
 kubectl get statefulsets -n redis
 NAME             READY   AGE
 redis-master     1/1     8m29s
 redis-replicas   3/3     8m28s
 ```
-this process will be ready long in GKW autopilot cluster because lots of VM has to be added into the node pool
 
-To uninstall, run the following command
+To uninstall the Redis cluster, run the following command:
 ```shell
 kubectl delete -f examples_sources/NodeJS_examples/k8s/redis/redius-template.yaml
 kubectl delete ns redis
