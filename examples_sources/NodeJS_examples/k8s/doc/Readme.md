@@ -5,9 +5,7 @@
 ### System diagram
 ![paceval_system_diagram.png](paceval_system_diagram.png)
 
-## Installation Step
-
-### Prerequisite
+## Prerequisite
 
 This guide describes how to set up your own paceval-service on Kubernetes using [Google Cloud Platform (GCP)](https://cloud.google.com/) with easy-to-follow steps. However, you can adopt it for any hyperscalar such as [Amazon Web Services (AWS)](https://aws.amazon.com/) or [Microsoft Azure](http://azure.microsoft.com/).
 
