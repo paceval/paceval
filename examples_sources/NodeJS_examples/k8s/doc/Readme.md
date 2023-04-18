@@ -2,7 +2,7 @@
 
 ## Introduction
 
-### System Diagram
+### System diagram
 
 ![paceval_system_diagram.png](paceval_system_diagram.png)
 
