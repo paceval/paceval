@@ -51,7 +51,7 @@ As a first step, create an empty project and enable the Kubernets Engine APIs.
 In GCP, creating an empty project is done through the [Google Cloud console](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiAsPaz-qj8AhUGm_0HHV_4AjcQFnoECA0QAQ&url=https%3A%2F%2Fcloud.google.com%2Fresource-manager%2Fdocs%2Fcreating-managing-projects&usg=AOvVaw2rNNmaoita-LBuwPL3xncu). Click the Project dropdown menu, then click "NEW PROJECT".
 Then select the project and [enable the Kubernetes Engine APIs](https://console.cloud.google.com/marketplace/product/google/container.googleapis.com) from the Google Cloud console.
 
-### Create a k8s cluster
+### Create a kubernetes cluster
 
 To create GKE cluster, run the following command (please replace the with your own GCP project name at `<gcp-project-name>` and cluster name at `<cluster-name>`):
 
