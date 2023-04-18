@@ -202,5 +202,5 @@ The paceval-service in Kubernetes consists of the following components and [Cust
 5. Delete old paceval Computation Object
    This is a Kubernetes cron job that is triggered every 5 minutes. It detects CRDs that have not been active for an hour and deletes the CRD.
 
-*Remarks:*
+**Remarks:**
 If you want to replace the paceval. library with a different version, please make sure to replace it in both components: [paceval Computation Object](https://github.com/paceval/paceval/tree/main/examples_sources/NodeJS_examples/k8s/pacevalComputationService) & [paceval Demo Service](https://github.com/paceval/paceval/tree/main/examples_sources/NodeJS_examples/k8s/demoService)
