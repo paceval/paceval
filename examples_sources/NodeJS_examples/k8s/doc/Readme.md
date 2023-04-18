@@ -106,7 +106,7 @@ kubectl delete -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/operator/t
 Now you install the paceval API Service, which will handle external requests from the user to calculate mathematical functions.
 Run the following command to install the paceval API Service:
 ```shell
-kubectl apply -f examples_sources/NodeJS_examples/k8s/pacevalAPIService/chart/api-service-manifest.yaml
+kubectl apply -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/chart/api-service-manifest.yaml
 ```
 Please, wait again for the deployment to complete:
 ```shell
@@ -116,7 +116,7 @@ api-service-apiservice   1/1     1            1           20s
 ```
 To uninstall the paceval API Service, run the following command:
 ```shell
-kubectl delete -f examples_sources/NodeJS_examples/k8s/pacevalAPIService/chart/api-service-manifest.yaml
+kubectl delete -f GitHub/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/chart/api-service-manifest.yaml
 ```
 
 ### Install paceval Demo Service
