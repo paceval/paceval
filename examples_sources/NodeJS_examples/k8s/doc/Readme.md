@@ -115,25 +115,23 @@ kubectl delete -f examples_sources/NodeJS_examples/k8s/redis/redius-template.yam
 kubectl delete ns redis
 ```
 
-### Install paceval operator
-To install, run the following command
+### Install paceval Operator
+The next step is to install the Paceval operator, which controls and manages Kubernetes. You install the paceval Operator with the following command:
 ```shell
 kubectl apply -f examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
 ```
-Potentially you will have to change the path to your local GitHub
+You may need to change the path to your local paceval. GitHub.
 
-and wait for deployment to be complete
+Please wait for the deployment to complete:
 ```shell
 kubectl get deployment operator-controller-manager -n operator-system        
 NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
 operator-controller-manager   1/1     1            1           99s
 ```
-To uninstall, run the following command
+To uninstall the paceval Operator, run the following command
 ```shell
 kubectl delete -f examples_sources/NodeJS_examples/k8s/operator/template/operator-manifest.yaml
 ```
-
-If `Ready` is 1/1 then it is ready
 
 ### Install paceval API service
 To install, run the following command
