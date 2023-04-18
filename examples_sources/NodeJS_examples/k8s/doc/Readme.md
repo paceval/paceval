@@ -29,7 +29,7 @@ Option 1. (not recommended) The easiest way to create a new Kubernetes cluster w
 Option 2. If you want to benefit from performance, you should use the [Standard mode](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters) in GCP. To create a new cluster in Standard mode using Google Kubernetes Engine (GKE), run the following command (please replace  `paceval-cluster-01` with your own cluster name):
 
 ```shell
-gcloud beta container clusters create paceval-cluster-01 --zone "europe-central2-a" --no-enable-basic-auth --machine-type "e2-micro" --image-type "COS_CONTAINERD" --disk-type "pd-standard" --num-nodes "3" --logging=SYSTEM,WORKLOAD --monitoring=SYSTEM --enable-ip-alias --metadata disable-legacy-endpoints=true --addons HorizontalPodAutoscaling,HttpLoadBalancing,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --enable-autoprovisioning --min-cpu 1 --max-cpu 20 --min-memory 1 --max-memory 100
+gcloud beta container clusters create paceval-cluster-01 --zone "europe-central2-a" --no-enable-basic-auth --machine-type "e2-small" --image-type "COS_CONTAINERD" --disk-type "pd-standard" --num-nodes "3" --logging=SYSTEM,WORKLOAD --monitoring=SYSTEM --enable-ip-alias --metadata disable-legacy-endpoints=true --addons HorizontalPodAutoscaling,HttpLoadBalancing,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --enable-autoprovisioning --min-cpu 1 --max-cpu 20 --min-memory 1 --max-memory 100
 ```
 
 ### Connect to your kubernetes cluster
