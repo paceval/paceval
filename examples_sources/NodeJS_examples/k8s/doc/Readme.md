@@ -24,12 +24,12 @@ Then select the project and [enable the Kubernetes Engine APIs](https://console.
 
 In general, you have two options in [Google Cloud Platform (GCP)](https://cloud.google.com/) to create a new Kubernetes cluster.
 
-Option 1. The easiest way to create a new Kubernetes cluster with GCP is the so-called [Autopilot mode](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters). Just follow these steps for Autopilot mode: [Create an Autopilot cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-an-autopilot-cluster)
+Option 1. (not recommended) The easiest way to create a new Kubernetes cluster with GCP is the so-called [Autopilot mode](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters). Just follow these steps for Autopilot mode: [Create an Autopilot cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-an-autopilot-cluster)
 
-Option 2. If you are more experienced with configuring Kubernetes and specifically want to benefit from performance, you should use the [Standard mode](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters) in GCP. To create a new cluster in Standard mode using Google Kubernetes Engine (GKE), run the following command (please replace  `paceval-cluster-01` with your own cluster name):
+Option 2. If you want to benefit from performance, you should use the [Standard mode](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters) in GCP. To create a new cluster in Standard mode using Google Kubernetes Engine (GKE), run the following command (please replace  `paceval-cluster-01` with your own cluster name):
 
 ```shell
-gcloud beta container clusters create paceval-cluster-01 --zone "europe-central2-a" --no-enable-basic-auth --machine-type "e2-medium" --image-type "COS_CONTAINERD" --disk-type "pd-balanced" --disk-size "100" --metadata disable-legacy-endpoints=true --addons HorizontalPodAutoscaling,HttpLoadBalancing,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --enable-autoprovisioning --min-cpu 1 --max-cpu 20 --min-memory 1 --max-memory 1000
+gcloud beta container clusters create paceval-cluster-01 --zone "europe-central2-a" --no-enable-basic-auth --machine-type "e2-medium" --image-type "COS_CONTAINERD" --disk-type "pd-balanced" --disk-size "10" --metadata disable-legacy-endpoints=true --addons HorizontalPodAutoscaling,HttpLoadBalancing,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --enable-autoprovisioning --min-cpu 1 --max-cpu 20 --min-memory 1 --max-memory 1000
 ```
 
 ### Connect to your kubernetes cluster
