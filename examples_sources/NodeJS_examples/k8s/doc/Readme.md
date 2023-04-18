@@ -54,7 +54,7 @@ gcloud container clusters get-credentials <cluster-name> --region=<region-name>
 
 For example:
 ```shell
-gcloud container clusters get-credentials paceval-dev --region=europe-central2 --project optimal-buffer-368615
+gcloud container clusters get-credentials paceval-cluster-1 --region=europe-central2 --project optimal-buffer-368615
 ```
 
 You can test the configuration with this:
