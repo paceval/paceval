@@ -10,7 +10,6 @@ import (
 	"github.com/rs/zerolog/log"
 	"io"
 	"net/http"
-	"net/url"
 	"strconv"
 	"strings"
 	"sync"
@@ -25,14 +24,8 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request) ([]string, []st
 	log.Info().Msg("trying to search for computation object id")
 	switch r.Method {
 	case http.MethodGet:
-		decodeRawQuery, err := url.QueryUnescape(r.URL.RawQuery)
-		if err != nil {
-			// handle error: failed to parse query string
-			return nil, nil, err
-		}
-		rawQuery := strings.ReplaceAll(decodeRawQuery, ";", "#")
+		values, err := ParseQuery(r.URL.RawQuery)
 
-		values, err := url.ParseQuery(rawQuery)
 		if err != nil {
 			// handle error: failed to parse query string
 			return nil, nil, err
@@ -42,8 +35,8 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request) ([]string, []st
 			return nil, nil, errors.New("missing parameters")
 		}
 
-		computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), "#")
-		allValues := strings.Split(values.Get(data.VALUES), "#")
+		computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), ";")
+		allValues := strings.Split(values.Get(data.VALUES), ";")
 		log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
 		return computationIds, allValues, nil
 	case http.MethodPost:

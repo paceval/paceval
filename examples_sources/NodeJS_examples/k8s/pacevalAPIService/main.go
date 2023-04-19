@@ -10,8 +10,6 @@ import (
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
 	"github.com/rs/zerolog/log"
 	"net/http"
-	"net/url"
-	"strings"
 )
 
 func main() {
@@ -94,15 +92,8 @@ func handleCreatePacevalComputation(manager k8s.Manager) http.HandlerFunc {
 
 // fillCreateComputationQueryParam transforms the query parameters of incoming GET request into a data.ParameterSet
 func fillCreateComputationQueryParam(r *http.Request) (*data.ParameterSet, error) {
-	decodeRawQuery, err := url.QueryUnescape(r.URL.RawQuery)
-	if err != nil {
-		// handle error: failed to parse query string
-		return nil, err
-	}
-	// workaround step 1 for allowing ; by replace it with #
-	rawQuery := strings.ReplaceAll(decodeRawQuery, ";", "#")
 
-	values, err := url.ParseQuery(rawQuery)
+	values, err := http2.ParseQuery(r.URL.RawQuery)
 	if err != nil {
 		// handle error: failed to parse query string
 		return nil, err
@@ -110,9 +101,6 @@ func fillCreateComputationQueryParam(r *http.Request) (*data.ParameterSet, error
 	if !values.Has(data.FUNCTIONSTR) || !values.Has(data.NUMOFVARIABLES) || !values.Has(data.VARAIBLES) || !values.Has(data.INTERVAL) {
 		return nil, errors.New("missing parameters")
 	}
-
-	// workaround step 2 by replace it back
-	values.Set(data.VARAIBLES, strings.ReplaceAll(values.Get(data.VARAIBLES), "#", ";"))
 
 	return &data.ParameterSet{
 		FunctionStr:    values.Get(data.FUNCTIONSTR),
