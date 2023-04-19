@@ -101,6 +101,7 @@ func fillCreateComputationQueryParam(r *http.Request) (*data.ParameterSet, error
 	}
 	// workaround step 1 for allowing ; by replace it with #
 	rawQuery := strings.ReplaceAll(decodeRawQuery, ";", "#")
+	rawQuery = strings.ReplaceAll(rawQuery, "+", "@")
 
 	values, err := url.ParseQuery(rawQuery)
 	if err != nil {
@@ -113,6 +114,7 @@ func fillCreateComputationQueryParam(r *http.Request) (*data.ParameterSet, error
 
 	// workaround step 2 by replace it back
 	values.Set(data.VARAIBLES, strings.ReplaceAll(values.Get(data.VARAIBLES), "#", ";"))
+	values.Set(data.FUNCTIONSTR, strings.ReplaceAll(values.Get(data.FUNCTIONSTR), "@", "+"))
 
 	return &data.ParameterSet{
 		FunctionStr:    values.Get(data.FUNCTIONSTR),
