@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"strings"
 )
 
 const demoEndpoint = "http://demo-service-demoservice.default.svc.cluster.local"
@@ -132,6 +133,9 @@ func (d DemoHandler) getParameters(r *http.Request) (*data.DemoParameterSet, err
 			if !values.Has(data.FUNCTIONSTR) || !values.Has(data.NUMOFVARIABLES) || !values.Has(data.VARAIBLES) || !values.Has(data.VALUES) || !values.Has(data.INTERVAL) {
 				return nil, errors.New("missing parameters")
 			}
+
+			body := values.Encode()
+			r.Body = io.NopCloser(strings.NewReader(body))
 			log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
 			return &data.DemoParameterSet{
 				ParameterSet: data.ParameterSet{
