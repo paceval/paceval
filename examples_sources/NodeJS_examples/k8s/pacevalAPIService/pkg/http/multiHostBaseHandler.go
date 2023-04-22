@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"github.com/hashicorp/go-multierror"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
@@ -40,30 +41,53 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request) ([]string, []st
 		log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
 		return computationIds, allValues, nil
 	case http.MethodPost:
-		requestObject := make(map[string]string)
-		body, err := io.ReadAll(r.Body)
+		contentType := r.Header.Get("Content-Type")
 
-		if err != nil {
-			return nil, nil, err
+		switch contentType {
+		case "application/x-www-form-urlencoded":
+			if err := r.ParseForm(); err != nil {
+				return nil, nil, err
+			}
+			values := r.PostForm
+
+			if !values.Has(data.HANDLEPACEVALCOMPUTATIONS) || !values.Has(data.VALUES) {
+				return nil, nil, errors.New("missing parameters")
+			}
+
+			computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), ";")
+			allValues := strings.Split(values.Get(data.VALUES), ";")
+			log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
+			return computationIds, allValues, nil
+
+		case "application/json":
+			requestObject := make(map[string]string)
+			body, err := io.ReadAll(r.Body)
+
+			if err != nil {
+				return nil, nil, err
+			}
+
+			r.Body = io.NopCloser(bytes.NewBuffer(body))
+
+			if err = json.Unmarshal(body, &requestObject); err != nil {
+				return nil, nil, err
+			}
+
+			computationHandles, hasComputationHandles := requestObject[data.HANDLEPACEVALCOMPUTATIONS]
+			values, hasValues := requestObject[data.VALUES]
+
+			if !hasComputationHandles || !hasValues {
+				return nil, nil, errors.New("missing parameters")
+			}
+
+			computationIds := strings.Split(computationHandles, ";")
+			allValues := strings.Split(values, ";")
+
+			return computationIds, allValues, nil
+
+		default:
+			return nil, nil, errors.New(fmt.Sprintf("Content-type %s not allow", contentType))
 		}
-
-		r.Body = io.NopCloser(bytes.NewBuffer(body))
-
-		if err = json.Unmarshal(body, &requestObject); err != nil {
-			return nil, nil, err
-		}
-
-		computationHandles, hasComputationHandles := requestObject[data.HANDLEPACEVALCOMPUTATIONS]
-		values, hasValues := requestObject[data.VALUES]
-
-		if !hasComputationHandles || !hasValues {
-			return nil, nil, errors.New("missing parameters")
-		}
-
-		computationIds := strings.Split(computationHandles, ";")
-		allValues := strings.Split(values, ";")
-
-		return computationIds, allValues, nil
 	default:
 		return nil, nil, errors.New("method not allowed")
 	}

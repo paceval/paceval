@@ -96,27 +96,46 @@ func (p SingleHostProxyHandler) getComputationId(r *http.Request) (string, error
 		log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
 		return values.Get(data.HANDLEPACEVALCOMPUTATION), nil
 	case http.MethodPost:
-		// for POST request, the uuid should be found in request body
-		requestObj := data.HandlePacevalComputationObject{}
-		data, err := io.ReadAll(r.Body)
+		contentType := r.Header.Get("Content-Type")
 
-		if err != nil {
-			return "", err
+		switch contentType {
+		case "application/x-www-form-urlencoded":
+			if err := r.ParseForm(); err != nil {
+				return "", err
+			}
+			values := r.PostForm
+			if !values.Has(data.HANDLEPACEVALCOMPUTATION) {
+				return "", errors.New("missing parameters")
+			}
+			log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
+			return values.Get(data.HANDLEPACEVALCOMPUTATION), nil
+
+		case "application/json":
+			// for POST request, the uuid should be found in request body
+			requestObj := data.HandlePacevalComputationObject{}
+			data, err := io.ReadAll(r.Body)
+
+			if err != nil {
+				return "", err
+			}
+
+			// make sure to set the request body back to request, otherwise it will not be readable later
+			r.Body = io.NopCloser(bytes.NewBuffer(data))
+			err = json.NewDecoder(bytes.NewReader(data)).Decode(&requestObj)
+
+			if err != nil {
+				return "", err
+			}
+
+			if len(requestObj.HandleCreateComputation) == 0 {
+				return "", errors.New("missing parameters")
+			}
+			log.Info().Msgf("computation object id %s", requestObj.HandleCreateComputation)
+			return requestObj.HandleCreateComputation, nil
+
+		default:
+			return "", errors.New(fmt.Sprintf("Content-type %s not allow", contentType))
 		}
-
-		// make sure to set the request body back to request, otherwise it will not be readable later
-		r.Body = io.NopCloser(bytes.NewBuffer(data))
-		err = json.NewDecoder(bytes.NewReader(data)).Decode(&requestObj)
-
-		if err != nil {
-			return "", err
-		}
-
-		if len(requestObj.HandleCreateComputation) == 0 {
-			return "", errors.New("missing parameters")
-		}
-		log.Info().Msgf("computation object id %s", requestObj.HandleCreateComputation)
-		return requestObj.HandleCreateComputation, nil
 	default:
 		return "", errors.New("method not allowed")
 	}

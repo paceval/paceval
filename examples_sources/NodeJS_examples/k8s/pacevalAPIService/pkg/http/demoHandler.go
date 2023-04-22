@@ -121,25 +121,51 @@ func (d DemoHandler) getParameters(r *http.Request) (*data.DemoParameterSet, err
 		}, nil
 
 	case http.MethodPost:
-		// in case of GET request, we need to take input from request body
-		requestObj := data.DemoParameterSet{}
-		data, err := io.ReadAll(r.Body)
+		contentType := r.Header.Get("Content-Type")
 
-		if err != nil {
-			return nil, err
+		switch contentType {
+		case "application/x-www-form-urlencoded":
+			if err := r.ParseForm(); err != nil {
+				return nil, err
+			}
+			values := r.PostForm
+			if !values.Has(data.FUNCTIONSTR) || !values.Has(data.NUMOFVARIABLES) || !values.Has(data.VARAIBLES) || !values.Has(data.VALUES) || !values.Has(data.INTERVAL) {
+				return nil, errors.New("missing parameters")
+			}
+			log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
+			return &data.DemoParameterSet{
+				ParameterSet: data.ParameterSet{
+					FunctionStr:    values.Get(data.FUNCTIONSTR),
+					NumOfVariables: values.Get(data.NUMOFVARIABLES),
+					Variables:      values.Get(data.VARAIBLES),
+					Interval:       values.Get(data.INTERVAL),
+				},
+				Values: values.Get(data.VALUES),
+			}, nil
+
+		case "application/json":
+			requestObj := data.DemoParameterSet{}
+			data, err := io.ReadAll(r.Body)
+
+			if err != nil {
+				return nil, err
+			}
+
+			r.Body = io.NopCloser(bytes.NewBuffer(data))
+			err = json.NewDecoder(bytes.NewReader(data)).Decode(&requestObj)
+
+			if err != nil {
+				return nil, err
+			}
+
+			if len(requestObj.Values) == 0 || len(requestObj.FunctionStr) == 0 || len(requestObj.Variables) == 0 || len(requestObj.NumOfVariables) == 0 || len(requestObj.Interval) == 0 {
+				return nil, errors.New("missing parameters")
+			}
+			return &requestObj, nil
+
+		default:
+			return nil, errors.New(fmt.Sprintf("Content-type %s not allow", contentType))
 		}
-
-		r.Body = io.NopCloser(bytes.NewBuffer(data))
-		err = json.NewDecoder(bytes.NewReader(data)).Decode(&requestObj)
-
-		if err != nil {
-			return nil, err
-		}
-
-		if len(requestObj.Values) == 0 || len(requestObj.FunctionStr) == 0 || len(requestObj.Variables) == 0 || len(requestObj.NumOfVariables) == 0 || len(requestObj.Interval) == 0 {
-			return nil, errors.New("missing parameters")
-		}
-		return &requestObj, nil
 	default:
 		return nil, errors.New("method not allowed")
 	}
