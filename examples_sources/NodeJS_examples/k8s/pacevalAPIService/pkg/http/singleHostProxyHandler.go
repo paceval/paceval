@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"strings"
 )
 
 // SingleHostProxyHandler handles a single proxy request to a computation service
@@ -107,6 +108,8 @@ func (p SingleHostProxyHandler) getComputationId(r *http.Request) (string, error
 			if !values.Has(data.HANDLEPACEVALCOMPUTATION) {
 				return "", errors.New("missing parameters")
 			}
+
+			r.Body = io.NopCloser(strings.NewReader(values.Encode()))
 			log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
 			return values.Get(data.HANDLEPACEVALCOMPUTATION), nil
 

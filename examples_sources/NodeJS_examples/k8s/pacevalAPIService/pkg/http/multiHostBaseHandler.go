@@ -56,6 +56,8 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request) ([]string, []st
 
 			computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), ";")
 			allValues := strings.Split(values.Get(data.VALUES), ";")
+
+			r.Body = io.NopCloser(strings.NewReader(values.Encode()))
 			log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
 			return computationIds, allValues, nil
 

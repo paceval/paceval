@@ -134,8 +134,7 @@ func (d DemoHandler) getParameters(r *http.Request) (*data.DemoParameterSet, err
 				return nil, errors.New("missing parameters")
 			}
 
-			body := values.Encode()
-			r.Body = io.NopCloser(strings.NewReader(body))
+			r.Body = io.NopCloser(strings.NewReader(values.Encode()))
 			log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
 			return &data.DemoParameterSet{
 				ParameterSet: data.ParameterSet{
