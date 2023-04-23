@@ -337,7 +337,7 @@ function handleCreateComputation(req, res, senddata_in)
 
     let return_arr =
     {
-        'handle_pacevalComputation': handle_pacevalComputation_addr,
+        'handle_pacevalComputation': handle_pacevalComputation_addr.toString().replace(/\0/g, ''),
         'function-10chars': function10chars,
         'function-length': functionLength,
         'error-type-number': errorType,
@@ -550,7 +550,7 @@ function handleGetComputationResult(req, res, handle_pacevalComputation_str_in)
 
     let return_arr =
     {
-        'handle_pacevalComputation': handle_pacevalComputation_addr,
+        'handle_pacevalComputation': handle_pacevalComputation_addr.toString().replace(/\0/g, ''),
         'result': result_str.toString().replace(/\0/g, ''),
         'interval-min-result': trustedMinResult_str.toString().replace(/\0/g, ''),
         'interval-max-result': trustedMaxResult_str.toString().replace(/\0/g, ''),
@@ -741,7 +741,7 @@ function handleGetComputationResultExt(req, res)
     let return_arr = 
     { 
         'number-of-multiple-values': numberOfCalculations, 
-        'handle_pacevalComputation': handle_pacevalComputation_addr,
+        'handle_pacevalComputation': handle_pacevalComputation_addr.toString().replace(/\0/g, ''),
         'hasError': hasError,
         'results': resultsArray_ar,
         'interval-min-results': trustedMinResultsArray_ar,
@@ -932,6 +932,8 @@ function handleGetMultipleComputationsResults(req, res)
     {
         errorTypeInt = errorTypesArray.readInt32LE(iCount * 4 /*int 4 bytes*/);
         errorTypesArray_ar.push( errorTypeInt );
+
+        handle_pacevalComputation_str_ar[iCount] = handle_pacevalComputation_str_ar[iCount].toString().replace(/\0/g, ''); //changes it to a string with "" for the JSON return
         
         if (errorTypeInt == 0) //no error
         {
@@ -967,7 +969,7 @@ function handleGetMultipleComputationsResults(req, res)
     let return_arr = 
     { 
         'number-of-multiple-computations': numberOfComputations, 
-        'handle_pacevalComputations': handle_pacevalComputation_str_ar,
+        'handle_pacevalComputations': handle_pacevalComputation_str_ar,  
         'hasError': hasError,
         'results': resultsArray_ar,
         'interval-min-results': trustedMinResultsArray_ar,
@@ -1077,7 +1079,7 @@ function handleGetComputationInformationXML(req, res)
 
     let return_arr =
     {
-        'handle_pacevalComputation': handle_pacevalComputation_addr,
+        'handle_pacevalComputation': handle_pacevalComputation_addr.toString().replace(/\0/g, ''),
         'information-XML': informationXML_str.toString().replace(/(?:\\[rn]|[\r\n])/g,'<br>').replace(/\0/g, ''),
         'version-details': pacevalVersion_str.toString().replace(/\0/g, ''),
         'version-number': versionNumber
@@ -1179,7 +1181,7 @@ function handleGetErrorInformation(req, res)
 
     let return_arr =
     {
-        'handle_pacevalComputation': handle_pacevalComputation_addr,
+        'handle_pacevalComputation': handle_pacevalComputation_addr.toString().replace(/\0/g, ''),
         'hasError': hasError,
         'error-type-number': errorTypeNumer,
         'error-position': errorPositionLong,
