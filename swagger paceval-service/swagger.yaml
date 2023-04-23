@@ -82,7 +82,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":\"117867040\",\"result\":\"-44.384908\",\"interval-min-result\":\"-44.384908\",\"interval-max-result\":\"-44.384908\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000326s\",\"version-number\":4.04}"
+                    "value" : "{\"handle_pacevalComputation\":\"117867040\",\"result\":\"-44.384908\",\"interval-min-result\":\"-44.384908\",\"interval-max-result\":\"-44.384908\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000326s\",\"version-number\":4.23}"
                   }
                 }
               }
@@ -156,7 +156,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":\"118054176\",\"result\":\"-90.372854\",\"interval-min-result\":\"-90.372854\",\"interval-max-result\":\"-90.372854\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000322s\",\"version-number\":4.04}"
+                    "value" : "{\"handle_pacevalComputation\":\"118054176\",\"result\":\"-90.372854\",\"interval-min-result\":\"-90.372854\",\"interval-max-result\":\"-90.372854\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000322s\",\"version-number\":4.23}"
                   }
                 }
               }
@@ -225,7 +225,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":\"115649680\",\"function-10chars\":\"-sin(x*cos(...)\",\"function-length\":20,\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-create\":\"0.000440s\",\"version-number\":4.04}"
+                    "value" : "{\"handle_pacevalComputation\":\"115649680\",\"function-10chars\":\"-sin(x*cos(...)\",\"function-length\":20,\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-create\":\"0.000440s\",\"version-number\":4.23}"
                   }
                 }
               }
@@ -289,7 +289,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":\"119406224\",\"function-10chars\":\"-sin(x*cos(...)\",\"function-length\":20,\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-create\":\"0.000276s\",\"version-number\":4.04}"
+                    "value" : "{\"handle_pacevalComputation\":\"119406224\",\"function-10chars\":\"-sin(x*cos(...)\",\"function-length\":20,\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-create\":\"0.000276s\",\"version-number\":4.23}"
                   }
                 }
               }
@@ -338,7 +338,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":\"115649680\",\"result\":\"-0.651801782452278\",\"interval-min-result\":\"-0.651801782452306\",\"interval-max-result\":\"-0.65180178245225\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000690s\",\"version-number\":4.04}"
+                    "value" : "{\"handle_pacevalComputation\":\"115649680\",\"result\":\"-0.651801782452278\",\"interval-min-result\":\"-0.651801782452306\",\"interval-max-result\":\"-0.65180178245225\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000690s\",\"version-number\":4.23}"
                   }
                 }
               }
@@ -382,7 +382,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":\"119406224\",\"result\":\"-0.651801782452278\",\"interval-min-result\":\"-0.651801782452306\",\"interval-max-result\":\"-0.65180178245225\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000808s\",\"version-number\":4.04}"
+                    "value" : "{\"handle_pacevalComputation\":\"119406224\",\"result\":\"-0.651801782452278\",\"interval-min-result\":\"-0.651801782452306\",\"interval-max-result\":\"-0.65180178245225\",\"error-type-number\":0,\"error-position\":\"\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"time-calculate\":\"0.000808s\",\"version-number\":4.23}"
                   }
                 }
               }
@@ -421,7 +421,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":\"115649680\",\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.04}"
+                    "value" : "{\"handle_pacevalComputation\":\"115649680\",\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.23}"
                   }
                 }
               }
@@ -455,7 +455,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":\"119406224\",\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.04}"
+                    "value" : "{\"handle_pacevalComputation\":\"119406224\",\"hasError\":false,\"error-type-number\":0,\"error-position\":\"\",\"error-operator\":\"(not defined)\",\"error-type\":\"[NO ERROR]\",\"error-message\":\"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\"version-number\":4.23}"
                   }
                 }
               }
@@ -514,7 +514,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"number-of-multiple-values\":2,\"handle_pacevalComputation\":\"115649680\",\"hasError\":false,\"results\":[\"-0.651801782452278\",\"-0.807342419579374\"],\"interval-min-results\":[\"-0.651801782452306\",\"-0.807342419579395\"],\"interval-max-results\":[\"-0.65180178245225\",\"-0.807342419579352\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000846s\",\"version-number\":4.04}"
+                    "value" : "{\"number-of-multiple-values\":2,\"handle_pacevalComputation\":\"115649680\",\"hasError\":false,\"results\":[\"-0.651801782452278\",\"-0.807342419579374\"],\"interval-min-results\":[\"-0.651801782452306\",\"-0.807342419579395\"],\"interval-max-results\":[\"-0.65180178245225\",\"-0.807342419579352\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000846s\",\"version-number\":4.23}"
                   }
                 }
               }
@@ -568,7 +568,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"number-of-multiple-values\":2,\"handle_pacevalComputation\":\"119406224\",\"hasError\":false,\"results\":[\"-0.651801782452278\",\"-0.807342419579374\"],\"interval-min-results\":[\"-0.651801782452306\",\"-0.807342419579395\"],\"interval-max-results\":[\"-0.65180178245225\",\"-0.807342419579352\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000881s\",\"version-number\":4.04}"
+                    "value" : "{\"number-of-multiple-values\":2,\"handle_pacevalComputation\":\"119406224\",\"hasError\":false,\"results\":[\"-0.651801782452278\",\"-0.807342419579374\"],\"interval-min-results\":[\"-0.651801782452306\",\"-0.807342419579395\"],\"interval-max-results\":[\"-0.65180178245225\",\"-0.807342419579352\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000881s\",\"version-number\":4.23}"
                   }
                 }
               }
@@ -627,7 +627,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"number-of-multiple-computations\":2,\"handle_pacevalComputations\":[\"117867040\",\"118054176\"],\"hasError\":false,\"results\":[\"-44.384908\",\"-90.372854\"],\"interval-min-results\":[\"-44.384908\",\"-90.372854\"],\"interval-max-results\":[\"-44.384908\",\"-90.372854\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000676s\",\"version-number\":4.04}"
+                    "value" : "{\"number-of-multiple-computations\":2,\"handle_pacevalComputations\":[\"117867040\",\"118054176\"],\"hasError\":false,\"results\":[\"-44.384908\",\"-90.372854\"],\"interval-min-results\":[\"-44.384908\",\"-90.372854\"],\"interval-max-results\":[\"-44.384908\",\"-90.372854\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000676s\",\"version-number\":4.23}"
                   }
                 }
               }
@@ -681,7 +681,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"number-of-multiple-computations\":2,\"handle_pacevalComputations\":[\"117867040\",\"118054176\"],\"hasError\":false,\"results\":[\"-44.384908\",\"-90.372854\"],\"interval-min-results\":[\"-44.384908\",\"-90.372854\"],\"interval-max-results\":[\"-44.384908\",\"-90.372854\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000360s\",\"version-number\":4.04}"
+                    "value" : "{\"number-of-multiple-computations\":2,\"handle_pacevalComputations\":[\"117867040\",\"118054176\"],\"hasError\":false,\"results\":[\"-44.384908\",\"-90.372854\"],\"interval-min-results\":[\"-44.384908\",\"-90.372854\"],\"interval-max-results\":[\"-44.384908\",\"-90.372854\"],\"error-type-numbers\":[0,0],\"time-calculate\":\"0.000360s\",\"version-number\":4.23}"
                   }
                 }
               }
@@ -720,7 +720,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":\"115649680\",\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>46</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.04}"
+                    "value" : "{\"handle_pacevalComputation\":\"115649680\",\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>46</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.23, 64 bit] developer version (non-commercial use only) - Copyright 2015-2023. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.23}"
                   }
                 }
               }
@@ -754,7 +754,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"handle_pacevalComputation\":\"119406224\",\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>38</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.04}"
+                    "value" : "{\"handle_pacevalComputation\":\"119406224\",\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>38</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.23, 64 bit] developer version (non-commercial use only) - Copyright 2015-2023. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.23}"
                   }
                 }
               }
