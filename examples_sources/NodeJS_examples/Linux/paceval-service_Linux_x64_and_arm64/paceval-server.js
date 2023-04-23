@@ -60,9 +60,13 @@ function pacevalLibraryName()
     {
         pacevalLibrary_str = './libpacevalARM64_sharedLIB.so';
     }
+    else if ((platform === 'linux') && (architecture === 'arm'))
+    {
+        pacevalLibrary_str = './libpacevalARM32_sharedLIB.so';
+    }
     else if ((platform === 'darwin') && (architecture === 'arm64'))
     {
-        pacevalLibrary_str = './libpaceval_macos_dynamicLIB.dylib';
+        pacevalLibrary_str = './libpaceval_macOS_dynamicLIB.dylib';
     }
     else
     {
@@ -221,9 +225,9 @@ function deleteComputationTimer()
                     //pacevalComputations_arr[iCount][0] the address of 'pointer' returned from pacevalLibrary_ffi.pacevalLibrary_CreateComputation()
                     console.log(`deleted computation handle_pacevalComputation: ${pacevalComputations_arr[iCount][1].address()}`);
                 }
-
-                pacevalComputations_arr[iCount][1] = null;
-                pacevalComputations_arr[iCount][5] = 0; //[5] valid/not deleted 0:false 1:true
+                
+                pacevalComputations_arr[iCount][1] = null; //[0] the address of 'pointer' returned from pacevalLibrary_ffi.pacevalLibrary_CreateComputation()
+                pacevalComputations_arr[iCount][5] = 0;    //[5] valid/not deleted 0:false 1:true
                 numberOfActiveComputations--;
                 
                 if (debugEnabled == true)

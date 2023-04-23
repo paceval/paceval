@@ -60,6 +60,10 @@ function pacevalLibraryName()
     {
         pacevalLibrary_str = './libpacevalARM64_sharedLIB.so';
     }
+    else if ((platform === 'linux') && (architecture === 'arm'))
+    {
+        pacevalLibrary_str = './libpacevalARM32_sharedLIB.so';
+    }
     else if ((platform === 'darwin') && (architecture === 'arm64'))
     {
         pacevalLibrary_str = './libpaceval_macOS_dynamicLIB.dylib';
@@ -143,14 +147,13 @@ function logMemoryUsed()
         console.log(`----------------------------------------------`);
     }
 
-    if (numberOfRequestslastGC >= 5) //after 250 computations we will run a garbage collection
+    if (numberOfRequestslastGC >= 250) //after 250 computations we will run a garbage collection
     {       
         numberOfRequestslastGC = 0;
         numberOfGCs++;
         
         if (global.gc) 
         {
-            console.log("running gc...")
             runGarbageCollection();
         } 
         else 
@@ -222,9 +225,9 @@ function deleteComputationTimer()
                     //pacevalComputations_arr[iCount][0] the address of 'pointer' returned from pacevalLibrary_ffi.pacevalLibrary_CreateComputation()
                     console.log(`deleted computation handle_pacevalComputation: ${pacevalComputations_arr[iCount][1].address()}`);
                 }
-
-                pacevalComputations_arr[iCount][1] = null;
-                pacevalComputations_arr[iCount][5] = 0; //[5] valid/not deleted 0:false 1:true
+                
+                pacevalComputations_arr[iCount][1] = null; //[0] the address of 'pointer' returned from pacevalLibrary_ffi.pacevalLibrary_CreateComputation()
+                pacevalComputations_arr[iCount][5] = 0;    //[5] valid/not deleted 0:false 1:true
                 numberOfActiveComputations--;
                 
                 if (debugEnabled == true)
@@ -493,7 +496,7 @@ function handleGetComputationResult(req, res, handle_pacevalComputation_str_in)
     let handle_pacevalComputation_addr = handle_pacevalComputation.address();
     let result = 0;
 
-    let timeCalculate = now(true);
+    let timeCalculate = now();
     if (interval == false)
     {
         result = pacevalLibrary_ffi.pacevalLibrary_dGetComputationResult(handle_pacevalComputation,
