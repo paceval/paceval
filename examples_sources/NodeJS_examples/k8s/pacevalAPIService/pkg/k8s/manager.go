@@ -187,7 +187,7 @@ func (r Manager) getAndUpdateInstanceProperty(id string, path string, property s
 		return "", err
 	}
 
-	return r.getInstanceProperty()
+	return r.getInstanceProperty(id, path, property)
 }
 
 // updateLastActiveTimeStamp update the CRD.status.lastActiveTime to current timestamp
