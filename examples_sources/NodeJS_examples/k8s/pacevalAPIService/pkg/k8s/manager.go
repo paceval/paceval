@@ -2,7 +2,6 @@ package k8s
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"github.com/google/uuid"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
@@ -140,6 +139,10 @@ func (r Manager) GetNumOfVariables(id string) (string, error) {
 	return r.getInstanceProperty(id, "spec", "NumOfVars")
 }
 
+func (r Manager) GetFuntionStr(id string) (string, error) {
+	return r.getInstanceProperty(id, "spec", "functionStr")
+}
+
 // getInstanceProperty get a property from CRD instance
 func (r Manager) getInstanceProperty(id string, path string, property string) (string, error) {
 	instanceName := fmt.Sprintf("paceval-computation-%s", id)
@@ -156,7 +159,7 @@ func (r Manager) getInstanceProperty(id string, path string, property string) (s
 	}
 
 	if !ready {
-		return "", errors.New("computation is not ready")
+		return "", data.ServiceNotReadyError{}
 	}
 
 	endpoint, _, err := unstructured.NestedString(instance.Object, path, property)

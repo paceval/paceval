@@ -61,6 +61,32 @@ func (p SingleHostProxyHandler) forwardRequestToComputationObject(w http.Respons
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("{ \"error\": \"handle_pacevalComputation does not exist\" }"))
 		return
+	} else if errors.Is(err, data.ServiceNotReadyError{}) {
+
+		functionStr, err := p.manager.GetFuntionStr(id)
+
+		if err != nil {
+			log.Error().Msgf("Error get functionStr from id %s", id)
+		}
+
+		// computation is not ready
+		computationInfo := data.ComputationInfo{
+			FunctionId:      id,
+			FunctionTenChar: functionStr[:10],
+			FunctionLength:  len(functionStr),
+			ErrorTypeNum:    1,
+			ErrorPosition:   "",
+			ErrorType:       "[Busy #1, Operator '(not defined)', Position -1]",
+			ErrorMessage:    "The referenced computation object is busy while the creation is in progress. Please wait and make another request to GetErrorInformation for the status (PACEVAL_ERR_CREATION_NO_ERROR_BUT_BUSY).",
+			TimeCalculate:   "0s",
+			Version:         4.04,
+		}
+
+		responseJSON, _ := json.Marshal(computationInfo)
+
+		w.WriteHeader(http.StatusOK)
+		w.Write(responseJSON)
+
 	} else if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		log.Error().Msgf("Error: %s", err)

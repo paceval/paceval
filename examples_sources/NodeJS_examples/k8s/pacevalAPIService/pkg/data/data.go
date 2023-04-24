@@ -29,6 +29,18 @@ type DemoParameterSet struct {
 	Values string `json:"values,omitempty"`
 }
 
+type ComputationInfo struct {
+	FunctionId      string  `json:"handle_pacevalComputation"`
+	FunctionTenChar string  `json:"function-10chars"`
+	FunctionLength  int     `json:"function-length"`
+	ErrorTypeNum    int     `json:"error-type-number"`
+	ErrorPosition   string  `json:"error-position"`
+	ErrorType       string  `json:"error-type"`
+	ErrorMessage    string  `json:"error-message"`
+	TimeCalculate   string  `json:"time-calculate"`
+	Version         float32 `json:"version-number"`
+}
+
 type ComputationResult struct {
 	FunctionId    string  `json:"handle_pacevalComputation"`
 	Result        string  `json:"result"`
@@ -56,4 +68,11 @@ type MultipleComputationResult struct {
 
 type HandlePacevalComputationObject struct {
 	HandleCreateComputation string `json:"handle_pacevalComputation,omitempty"`
+}
+
+type ServiceNotReadyError struct {
+}
+
+func (e ServiceNotReadyError) Error() string {
+	return "computation is not ready"
 }
