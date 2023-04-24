@@ -65,6 +65,10 @@ func (p SingleHostProxyHandler) forwardRequestToComputationObject(w http.Respons
 
 		functionStr, err := p.manager.GetFunctionStr(id)
 
+		if len(functionStr) > 10 {
+			functionStr = functionStr[:10]
+		}
+
 		if err != nil {
 			log.Error().Msgf("Error get functionStr from id %s", id)
 		}
@@ -72,7 +76,7 @@ func (p SingleHostProxyHandler) forwardRequestToComputationObject(w http.Respons
 		// computation is not ready
 		computationInfo := data.ComputationInfo{
 			FunctionId:      id,
-			FunctionTenChar: functionStr[:10],
+			FunctionTenChar: functionStr,
 			FunctionLength:  len(functionStr),
 			ErrorTypeNum:    1,
 			ErrorPosition:   "",
