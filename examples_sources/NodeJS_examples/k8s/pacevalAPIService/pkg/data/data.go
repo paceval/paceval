@@ -30,16 +30,16 @@ type DemoParameterSet struct {
 }
 
 type DemoServiceResponse struct {
-	FunctionId    string  `json:"handle_pacevalComputation,omitempty"`
-	Result        string  `json:"result,omitempty"`
-	IntervalMin   string  `json:"interval-min-result,omitempty"`
-	IntervalMax   string  `json:"interval-max-result,omitempty"`
-	ErrorTypeNum  int     `json:"error-type-number,omitempty"`
-	ErrorPosition string  `json:"error-position,omitempty"`
-	ErrorType     string  `json:"error-type,omitempty"`
-	ErrorMessage  string  `json:"error-message,omitempty"`
-	TimeCalculate string  `json:"time-calculate,omitempty"`
-	Version       float32 `json:"version-number,omitempty"`
+	FunctionId    string  `json:"handle_pacevalComputation"`
+	Result        string  `json:"result"`
+	IntervalMin   string  `json:"interval-min-result"`
+	IntervalMax   string  `json:"interval-max-result"`
+	ErrorTypeNum  int     `json:"error-type-number"`
+	ErrorPosition string  `json:"error-position"`
+	ErrorType     string  `json:"error-type"`
+	ErrorMessage  string  `json:"error-message"`
+	TimeCalculate string  `json:"time-calculate"`
+	Version       float32 `json:"version-number"`
 }
 
 type HandlePacevalComputationObject struct {
