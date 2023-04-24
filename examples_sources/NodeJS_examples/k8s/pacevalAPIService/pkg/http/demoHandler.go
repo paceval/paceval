@@ -66,7 +66,7 @@ func (d DemoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	proxy.ModifyResponse = func(response *http.Response) error {
 		// make sure to modify the response from demo service and replace the field `handle_pacevalComputation` with above generated uuid
 
-		demoResponse := new(data.DemoServiceResponse)
+		demoResponse := new(data.ComputationResult)
 		body, err := io.ReadAll(response.Body)
 
 		if err != nil {

@@ -29,7 +29,7 @@ type DemoParameterSet struct {
 	Values string `json:"values,omitempty"`
 }
 
-type DemoServiceResponse struct {
+type ComputationResult struct {
 	FunctionId    string  `json:"handle_pacevalComputation"`
 	Result        string  `json:"result"`
 	IntervalMin   string  `json:"interval-min-result"`
@@ -40,6 +40,18 @@ type DemoServiceResponse struct {
 	ErrorMessage  string  `json:"error-message"`
 	TimeCalculate string  `json:"time-calculate"`
 	Version       float32 `json:"version-number"`
+}
+
+type MultipleComputationResult struct {
+	NumOfComputations int      `json:"number-of-multiple-computations"`
+	FunctionIds       []string `json:"handle_pacevalComputations"`
+	HasError          bool     `json:"hasError"`
+	Results           []string `json:"results"`
+	IntervalMins      []string `json:"interval-min-results"`
+	IntervalMaxs      []string `json:"interval-max-results"`
+	ErrorTypeNums     []int    `json:"error-type-numbers"`
+	TimeCalculate     string   `json:"time-calculate"`
+	Version           float32  `json:"version-number"`
 }
 
 type HandlePacevalComputationObject struct {

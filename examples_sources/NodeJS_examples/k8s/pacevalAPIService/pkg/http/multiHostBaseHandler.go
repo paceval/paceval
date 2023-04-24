@@ -10,6 +10,7 @@ import (
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
 	"github.com/rs/zerolog/log"
 	"io"
+	"math"
 	"net/http"
 	"strconv"
 	"strings"
@@ -18,6 +19,52 @@ import (
 
 // MultiHostBaseHandler is a base handler that has the common functions shared by multiple host request handlers
 type MultiHostBaseHandler struct {
+}
+
+func (p MultiHostBaseHandler) transformResponse(aggregatedResponse [][]byte) data.MultipleComputationResult {
+	log.Info().Msgf(" Transforming aggregatedResponse")
+	transformedResponse := data.MultipleComputationResult{
+		NumOfComputations: len(aggregatedResponse),
+		FunctionIds:       []string{},
+		HasError:          false,
+		Results:           []string{},
+		IntervalMins:      []string{},
+		IntervalMaxs:      []string{},
+		ErrorTypeNums:     []int{},
+	}
+
+	var maxTimeCalculate float64 = 0
+
+	for _, body := range aggregatedResponse {
+		var response data.ComputationResult
+		json.Unmarshal(body, &response)
+
+		log.Debug().Msgf("response : %v", response)
+
+		transformedResponse.FunctionIds = append(transformedResponse.FunctionIds, response.FunctionId)
+		transformedResponse.Results = append(transformedResponse.Results, response.Result)
+		transformedResponse.IntervalMins = append(transformedResponse.IntervalMins, response.IntervalMin)
+		transformedResponse.IntervalMaxs = append(transformedResponse.IntervalMaxs, response.IntervalMax)
+		transformedResponse.ErrorTypeNums = append(transformedResponse.ErrorTypeNums, response.ErrorTypeNum)
+
+		if response.ErrorTypeNum != 0 {
+			transformedResponse.HasError = true
+		}
+
+		timeCalculate, err := strconv.ParseFloat(strings.TrimSuffix(response.TimeCalculate, "s"), 64)
+
+		if err != nil {
+			log.Debug().Msgf(" Unable to parse time calculate, skipping...")
+			continue
+		}
+
+		maxTimeCalculate = math.Max(maxTimeCalculate, timeCalculate)
+
+		transformedResponse.Version = response.Version
+	}
+
+	return transformedResponse
+
 }
 
 // getComputationIds returns computation IDs from incoming request
