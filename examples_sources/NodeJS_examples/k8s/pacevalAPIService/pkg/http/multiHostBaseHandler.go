@@ -63,6 +63,8 @@ func (p MultiHostBaseHandler) transformResponse(aggregatedResponse [][]byte) dat
 		transformedResponse.Version = response.Version
 	}
 
+	transformedResponse.TimeCalculate = fmt.Sprintf("%fs", maxTimeCalculate)
+
 	return transformedResponse
 
 }
