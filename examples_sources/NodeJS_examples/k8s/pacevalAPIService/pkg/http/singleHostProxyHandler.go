@@ -63,7 +63,7 @@ func (p SingleHostProxyHandler) forwardRequestToComputationObject(w http.Respons
 		return
 	} else if errors.Is(err, data.ServiceNotReadyError{}) {
 
-		functionStr, err := p.manager.GetFuntionStr(id)
+		functionStr, err := p.manager.GetFunctionStr(id)
 
 		if err != nil {
 			log.Error().Msgf("Error get functionStr from id %s", id)

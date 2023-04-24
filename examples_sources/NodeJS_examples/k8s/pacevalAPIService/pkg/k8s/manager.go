@@ -139,7 +139,7 @@ func (r Manager) GetNumOfVariables(id string) (string, error) {
 	return r.getInstanceProperty(id, "spec", "NumOfVars")
 }
 
-func (r Manager) GetFuntionStr(id string) (string, error) {
+func (r Manager) GetFunctionStr(id string) (string, error) {
 	return r.getInstanceProperty(id, "spec", "functionStr")
 }
 

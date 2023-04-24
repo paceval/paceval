@@ -170,18 +170,6 @@ func (p MultiHostRequestExtHandler) forwardRequestToComputationObjects(w http.Re
 	close(errorChan)
 
 	if len(errorChan) == 0 {
-
-		// combine the response from all calls into a single slice
-		//var responseArray []map[string]interface{}
-		//for _, body := range aggregatedResponse {
-		//	var response map[string]interface{}
-		//	json.Unmarshal(body, &response)
-		//
-		//	responseArray = append(responseArray, response)
-		//}
-		//
-		//responseJSON, _ := json.Marshal(responseArray)
-
 		responseJSON, _ := json.Marshal(p.baseHandler.transformResponse(aggregatedResponse))
 
 		w.WriteHeader(http.StatusOK)
