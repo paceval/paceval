@@ -169,7 +169,11 @@ func (p MultiHostBaseHandler) getEndpointsWithNumOfVariables(ids []string, manag
 				return
 			}
 			numOfVariablesStr, err := manager.GetNumOfVariables(id)
-			if err != nil {
+
+			if err != nil && errors.Is(err, data.ServiceNotReadyError{}) {
+				endpoint = data.NOTREADY_ENDPOINT
+
+			} else if err != nil {
 				log.Info().Msgf("id: %s, issue receiving num of variable : %s", id, err)
 				errorChan <- err
 				return

@@ -15,6 +15,8 @@ const (
 	VALUES = "values"
 
 	DEFAULTNAMESPACE = "default"
+
+	NOTREADY_ENDPOINT = "NotReady"
 )
 
 type ParameterSet struct {

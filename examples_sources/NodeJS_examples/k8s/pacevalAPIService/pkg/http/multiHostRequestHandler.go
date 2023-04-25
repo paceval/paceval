@@ -87,6 +87,16 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 		go func(index int, endpoint string) {
 			defer wg.Done()
 
+			if endpoint == data.NOTREADY_ENDPOINT {
+				resp, err := json.Marshal(NewFunctionNotReadyResponse(ids[index], p.manager))
+
+				if err != nil {
+					errorChan <- err
+				}
+				aggregatedResponse[index] = resp
+				return
+			}
+
 			// Create a new HTTP client
 			client := &http.Client{}
 
