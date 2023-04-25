@@ -56,7 +56,6 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 		resp := p.baseHandler.createRespForInvalidReq(ids, data.PACEVAL_ERR_COMPUTATION_WRONGLY_USED_PARAMETERS)
 		json.NewEncoder(w).Encode(resp)
 		return
-
 	} else if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err.Error())))

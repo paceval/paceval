@@ -95,7 +95,7 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request, validateRequest
 		}
 
 		if !validateRequest(computationIds, numComputations) {
-			return nil, nil, data.InvalidRequestError{}
+			return computationIds, nil, data.InvalidRequestError{}
 		}
 
 		allValues := strings.Split(values.Get(data.VALUES), ";")
@@ -124,7 +124,7 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request, validateRequest
 			}
 
 			if !validateRequest(computationIds, numComputations) {
-				return nil, nil, data.InvalidRequestError{}
+				return computationIds, nil, data.InvalidRequestError{}
 			}
 
 			allValues := strings.Split(values.Get(data.VALUES), ";")
@@ -164,7 +164,7 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request, validateRequest
 			}
 
 			if !validateRequest(computationIds, numComputations) {
-				return nil, nil, data.InvalidRequestError{}
+				return computationIds, nil, data.InvalidRequestError{}
 			}
 
 			allValues := strings.Split(values, ";")
