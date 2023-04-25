@@ -70,16 +70,16 @@ func getFunctionStr10Char(manager k8s.Manager, id string) (string, int) {
 
 	log.Debug().Msgf("functionStr: %s", functionStr)
 
-	if functionLength > 10 {
-		functionStr = functionStr[:10]
-		log.Debug().Msgf("functionStr10Char: %s", functionStr)
-	} else if strings.HasPrefix(functionStr, "redis") {
+	if strings.HasPrefix(functionStr, "redis") {
 		log.Info().Msg("longer functionStr, retrieve it from redis")
 		address := os.Getenv("REDIS_ADDRESS")
 		redisClient := data.NewRedis(address)
 		functionStr, _ = redisClient.Get(functionStr)
 		log.Debug().Msgf("functionStr10Char: %s", functionStr)
 		defer redisClient.CloseConnection()
+	} else if functionLength > 10 {
+		functionStr = functionStr[:10]
+		log.Debug().Msgf("functionStr10Char: %s", functionStr)
 	}
 
 	if err != nil {
