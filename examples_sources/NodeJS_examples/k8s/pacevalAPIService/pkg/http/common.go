@@ -75,6 +75,7 @@ func getFunctionStr10Char(manager k8s.Manager, id string) (string, int) {
 		address := os.Getenv("REDIS_ADDRESS")
 		redisClient := data.NewRedis(address)
 		functionStr, _ = redisClient.Get(functionStr)
+		functionStr = functionStr[:10]
 		log.Debug().Msgf("functionStr10Char: %s", functionStr)
 		defer redisClient.CloseConnection()
 	} else if functionLength > 10 {
