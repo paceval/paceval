@@ -2,6 +2,7 @@ package http
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/hashicorp/go-multierror"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
@@ -42,20 +43,30 @@ func (p MultiHostRequestHandler) ServeHTTP(w http.ResponseWriter, r *http.Reques
 
 }
 
+func validateRequest(ids []string, numOfComputations int) bool {
+	return len(ids) == numOfComputations
+}
+
 // forwardRequestToComputationObjects send the computation request to multiple computation services and combine their response into a single slice
 func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request) {
 	// get all IDs of computation service to call
-	ids, values, err := p.baseHandler.getComputationIds(r)
-	if err != nil {
+	ids, values, err := p.baseHandler.getComputationIds(r, validateRequest)
+	if err != nil && errors.Is(err, data.InvalidRequestError{}) {
 		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("{ \"error\": \"missing parameters\" }"))
+		resp := p.baseHandler.createRespForInvalidReq(ids, data.PACEVAL_ERR_COMPUTATION_WRONGLY_USED_PARAMETERS)
+		json.NewEncoder(w).Encode(resp)
+		return
+
+	} else if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err.Error())))
 		return
 	}
 
 	// do not allow duplicated computation service in the call
 	if p.baseHandler.containsDuplicatedId(ids) {
 		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("{ \"error\": \"duplicate handle_pacevalComputation\" }"))
+		w.Write([]byte("{ \"error\": \"duplicated handle_pacevalComputation\" }"))
 		return
 	}
 

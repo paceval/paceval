@@ -21,6 +21,7 @@ import (
 type MultiHostBaseHandler struct {
 }
 
+// transformResponse transforms the aggregatedResponse in [][] into a data.MultipleComputationResult object
 func (p MultiHostBaseHandler) transformResponse(aggregatedResponse [][]byte) data.MultipleComputationResult {
 	log.Info().Msgf(" Transforming aggregatedResponse")
 	transformedResponse := data.MultipleComputationResult{
@@ -70,7 +71,7 @@ func (p MultiHostBaseHandler) transformResponse(aggregatedResponse [][]byte) dat
 }
 
 // getComputationIds returns computation IDs from incoming request
-func (p MultiHostBaseHandler) getComputationIds(r *http.Request) ([]string, []string, error) {
+func (p MultiHostBaseHandler) getComputationIds(r *http.Request, validateRequest func([]string, int) bool) ([]string, []string, error) {
 	log.Info().Msg("trying to search for computation object id")
 	switch r.Method {
 	case http.MethodGet:
@@ -81,11 +82,22 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request) ([]string, []st
 			return nil, nil, err
 		}
 
-		if !values.Has(data.HANDLEPACEVALCOMPUTATIONS) || !values.Has(data.VALUES) {
+		if !values.Has(data.HANDLEPACEVALCOMPUTATIONS) || !values.Has(data.NUMOFPACEVALCOMPUTATIONS) || !values.Has(data.VALUES) {
 			return nil, nil, errors.New("missing parameters")
 		}
 
 		computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), ";")
+
+		numComputations, err := strconv.Atoi(values.Get(data.NUMOFPACEVALCOMPUTATIONS))
+
+		if err != nil {
+			return nil, nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
+		}
+
+		if !validateRequest(computationIds, numComputations) {
+			return nil, nil, data.InvalidRequestError{}
+		}
+
 		allValues := strings.Split(values.Get(data.VALUES), ";")
 		log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
 		return computationIds, allValues, nil
@@ -99,11 +111,22 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request) ([]string, []st
 			}
 			values := r.PostForm
 
-			if !values.Has(data.HANDLEPACEVALCOMPUTATIONS) || !values.Has(data.VALUES) {
+			if !values.Has(data.HANDLEPACEVALCOMPUTATIONS) || !values.Has(data.NUMOFPACEVALCOMPUTATIONS) || !values.Has(data.VALUES) {
 				return nil, nil, errors.New("missing parameters")
 			}
 
 			computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), ";")
+
+			numComputations, err := strconv.Atoi(values.Get(data.NUMOFPACEVALCOMPUTATIONS))
+
+			if err != nil {
+				return nil, nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
+			}
+
+			if !validateRequest(computationIds, numComputations) {
+				return nil, nil, data.InvalidRequestError{}
+			}
+
 			allValues := strings.Split(values.Get(data.VALUES), ";")
 
 			r.Body = io.NopCloser(strings.NewReader(values.Encode()))
@@ -126,12 +149,24 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request) ([]string, []st
 
 			computationHandles, hasComputationHandles := requestObject[data.HANDLEPACEVALCOMPUTATIONS]
 			values, hasValues := requestObject[data.VALUES]
+			numOfComputations, hasNumOfComputations := requestObject[data.NUMOFPACEVALCOMPUTATIONS]
 
-			if !hasComputationHandles || !hasValues {
+			if !hasComputationHandles || !hasValues || hasNumOfComputations {
 				return nil, nil, errors.New("missing parameters")
 			}
 
 			computationIds := strings.Split(computationHandles, ";")
+
+			numComputations, err := strconv.Atoi(numOfComputations)
+
+			if err != nil {
+				return nil, nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
+			}
+
+			if !validateRequest(computationIds, numComputations) {
+				return nil, nil, data.InvalidRequestError{}
+			}
+
 			allValues := strings.Split(values, ";")
 
 			return computationIds, allValues, nil
@@ -141,6 +176,29 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request) ([]string, []st
 		}
 	default:
 		return nil, nil, errors.New("method not allowed")
+	}
+
+}
+
+// createRespForInvalidReq create response object of data.MultipleComputationResult when incoming request for GetMultipleComputationResult
+// is invalid
+func (p MultiHostBaseHandler) createRespForInvalidReq(ids []string, errorTypeNumber int) data.MultipleComputationResult {
+	errNumberArray := make([]int, len(ids))
+
+	for i := 0; i < len(errNumberArray); i++ {
+		errNumberArray[i] = errorTypeNumber
+	}
+
+	return data.MultipleComputationResult{
+		NumOfComputations: len(ids),
+		FunctionIds:       ids,
+		HasError:          true,
+		Results:           make([]string, len(ids)),
+		IntervalMins:      make([]string, len(ids)),
+		IntervalMaxs:      make([]string, len(ids)),
+		ErrorTypeNums:     errNumberArray,
+		TimeCalculate:     "0s",
+		Version:           data.PACEVAL_VERSION,
 	}
 
 }

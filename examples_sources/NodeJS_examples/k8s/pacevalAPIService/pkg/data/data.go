@@ -10,6 +10,8 @@ const (
 	HANDLEPACEVALCOMPUTATION  = "handle_pacevalComputation"
 	HANDLEPACEVALCOMPUTATIONS = "handle_pacevalComputations"
 
+	NUMOFPACEVALCOMPUTATIONS = "numberOfpacevalComputations"
+
 	NUMOFCOMPUTATIONS = "numberOfpacevalComputations"
 
 	VALUES = "values"
@@ -17,6 +19,10 @@ const (
 	DEFAULTNAMESPACE = "default"
 
 	NOTREADY_ENDPOINT = "NotReady"
+
+	PACEVAL_ERR_COMPUTATION_WRONGLY_USED_PARAMETERS = 155
+
+	PACEVAL_VERSION = 4.04
 )
 
 type ParameterSet struct {
@@ -77,4 +83,11 @@ type ServiceNotReadyError struct {
 
 func (e ServiceNotReadyError) Error() string {
 	return "computation is not ready"
+}
+
+type InvalidRequestError struct {
+}
+
+func (e InvalidRequestError) Error() string {
+	return "incoming request is invalid"
 }

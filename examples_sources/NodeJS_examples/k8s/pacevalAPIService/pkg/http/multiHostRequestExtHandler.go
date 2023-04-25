@@ -71,10 +71,14 @@ func (p MultiHostRequestExtHandler) organizeValues(numOfVariablesArr []int, allV
 	return organizedValuesArr, nil
 }
 
+func validateRequestExt(ids []string, numOfComputations int) bool {
+	return true
+}
+
 // forwardRequestToComputationObjects proxy the request to multiple computation services and and combine their response into a single slice
 func (p MultiHostRequestExtHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request) {
 	// get all IDs of computation service to call
-	ids, allValues, err := p.baseHandler.getComputationIds(r)
+	ids, allValues, err := p.baseHandler.getComputationIds(r, validateRequestExt)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("{ \"error\": \"missing parameters\" }"))
