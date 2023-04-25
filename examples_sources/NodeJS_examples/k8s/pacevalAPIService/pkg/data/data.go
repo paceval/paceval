@@ -29,7 +29,7 @@ type DemoParameterSet struct {
 	Values string `json:"values,omitempty"`
 }
 
-type ComputationInfo struct {
+type FunctionNotReadyResponse struct {
 	FunctionId      string  `json:"handle_pacevalComputation"`
 	FunctionTenChar string  `json:"function-10chars"`
 	FunctionLength  int     `json:"function-length"`

@@ -83,11 +83,13 @@ func handleCreatePacevalComputation(manager k8s.Manager) http.HandlerFunc {
 			return
 		}
 
-		resp := data.HandlePacevalComputationObject{
-			HandleCreateComputation: functionId,
-		}
+		//resp :=
+
+		//resp := data.HandlePacevalComputationObject{
+		//	HandleCreateComputation: functionId,
+		//}
 		w.WriteHeader(http.StatusOK)
-		json.NewEncoder(w).Encode(resp)
+		json.NewEncoder(w).Encode(http2.NewFunctionNotReadyResponse(functionId, manager))
 	}
 }
 
