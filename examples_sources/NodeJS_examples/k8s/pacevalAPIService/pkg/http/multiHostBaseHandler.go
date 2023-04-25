@@ -151,7 +151,7 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request, validateRequest
 			values, hasValues := requestObject[data.VALUES]
 			numOfComputations, hasNumOfComputations := requestObject[data.NUMOFPACEVALCOMPUTATIONS]
 
-			if !hasComputationHandles || !hasValues || hasNumOfComputations {
+			if !hasComputationHandles || !hasValues || !hasNumOfComputations {
 				return nil, nil, errors.New("missing parameters")
 			}
 
