@@ -1,6 +1,7 @@
 package http
 
 import (
+	"fmt"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
 	"github.com/rs/zerolog/log"
@@ -76,10 +77,12 @@ func getFunctionStr10Char(manager k8s.Manager, id string) (string, int) {
 		redisClient := data.NewRedis(address)
 		functionStr, _ = redisClient.Get(functionStr)
 		functionStr = functionStr[:10]
+		functionStr = fmt.Sprintf("%s(...)", functionStr)
 		log.Debug().Msgf("functionStr10Char: %s", functionStr)
 		defer redisClient.CloseConnection()
 	} else if functionLength > 10 {
 		functionStr = functionStr[:10]
+		functionStr = fmt.Sprintf("%s(...)", functionStr)
 		log.Debug().Msgf("functionStr10Char: %s", functionStr)
 	}
 
