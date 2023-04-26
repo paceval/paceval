@@ -53,7 +53,7 @@ func NewFunctionNotReadyResponse(id string, manager k8s.Manager) data.FunctionNo
 		FunctionLength:  functionLength,
 		ErrorTypeNum:    1,
 		ErrorPosition:   "",
-		ErrorType:       "[Busy #1, Operator '(not defined)', Position -1]",
+		ErrorType:       "[PACEVAL_ERR_CREATION_NO_ERROR_BUT_BUSY]",
 		ErrorMessage:    "The referenced computation object is busy while the creation is in progress. Please wait and make another request to GetErrorInformation for the status (PACEVAL_ERR_CREATION_NO_ERROR_BUT_BUSY).",
 		TimeCalculate:   "0s",
 		Version:         data.PACEVAL_VERSION,
