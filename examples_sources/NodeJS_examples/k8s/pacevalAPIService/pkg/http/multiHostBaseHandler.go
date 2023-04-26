@@ -182,7 +182,7 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request, validateRequest
 
 // createRespForInvalidReq create response object of data.MultipleComputationResult when incoming request for GetMultipleComputationResult
 // is invalid
-func (p MultiHostBaseHandler) createRespForInvalidReq(ids []string, errorTypeNumber int) data.MultipleComputationResult {
+func createRespForInvalidReq(ids []string, errorTypeNumber int) data.MultipleComputationResult {
 	errNumberArray := make([]int, len(ids))
 
 	for i := 0; i < len(errNumberArray); i++ {
@@ -283,4 +283,24 @@ func (p MultiHostBaseHandler) containsDuplicatedId(ids []string) bool {
 	}
 
 	return false
+}
+
+func (p MultiHostBaseHandler) buildResponseForInvalidReq(ids []string, w http.ResponseWriter) {
+	w.WriteHeader(http.StatusBadRequest)
+	resp := createRespForInvalidReq(ids, data.PACEVAL_ERR_COMPUTATION_WRONGLY_USED_PARAMETERS)
+	json.NewEncoder(w).Encode(resp)
+}
+
+func (p MultiHostBaseHandler) validateFunctionsFromRequest(numOfVariables []int) bool {
+
+	if len(numOfVariables) < 2 {
+		return true
+	}
+
+	for i := 1; i < len(numOfVariables); i++ {
+		if numOfVariables[i] != numOfVariables[i-1] {
+			return false
+		}
+	}
+	return true
 }

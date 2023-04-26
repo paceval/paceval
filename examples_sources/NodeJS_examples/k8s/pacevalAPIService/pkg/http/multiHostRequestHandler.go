@@ -52,9 +52,7 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 	// get all IDs of computation service to call
 	ids, values, err := p.baseHandler.getComputationIds(r, validateRequest)
 	if err != nil && errors.Is(err, data.InvalidRequestError{}) {
-		w.WriteHeader(http.StatusBadRequest)
-		resp := p.baseHandler.createRespForInvalidReq(ids, data.PACEVAL_ERR_COMPUTATION_WRONGLY_USED_PARAMETERS)
-		json.NewEncoder(w).Encode(resp)
+		p.baseHandler.buildResponseForInvalidReq(ids, w)
 		return
 	} else if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
@@ -70,7 +68,12 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 	}
 
 	// get all endpoints to call
-	endpoints, _, err := p.baseHandler.getEndpointsWithNumOfVariables(ids, p.manager)
+	endpoints, numOfVariables, err := p.baseHandler.getEndpointsWithNumOfVariables(ids, p.manager)
+
+	if !p.baseHandler.validateFunctionsFromRequest(numOfVariables) {
+		p.baseHandler.buildResponseForInvalidReq(ids, w)
+		return
+	}
 
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
@@ -86,18 +89,12 @@ func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.Respo
 	aggregatedResponse := make([][]byte, len(endpoints))
 
 	for index, endpoint := range endpoints {
-		if endpoint == "" {
-			w.WriteHeader(http.StatusNotFound)
-			log.Error().Msg("Error: endpoint not found: %s")
-			w.Write([]byte(fmt.Sprintf("{ \"error\": \"not able to call the %dth computation object\" }", index)))
-			return
-		}
 
 		// call each endpoint in a go routine
 		go func(index int, endpoint string) {
 			defer wg.Done()
 
-			if endpoint == data.NOTREADY_ENDPOINT {
+			if endpoint == data.NOTREADY_ENDPOINT || endpoint == "" {
 				resp, err := json.Marshal(NewFunctionNotReadyResponse(ids[index], p.manager))
 
 				if err != nil {

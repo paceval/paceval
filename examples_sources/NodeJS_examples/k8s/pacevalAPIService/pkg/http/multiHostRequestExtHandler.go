@@ -28,7 +28,7 @@ func NewMultiHostRequestExtHandler(manager k8s.Manager) MultiHostRequestExtHandl
 
 // ServeHTTP proxy the requests to multiple computation services with different value sets
 func (p MultiHostRequestExtHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	log.Info().Msg("handle request to get multiple computation result")
+	log.Info().Msg("handle request to get multiple computation ext result")
 	w.Header().Set("Content-Type", "application/json")
 	log.Info().Msgf("incoming %s request", r.Method)
 
@@ -78,7 +78,7 @@ func validateRequestExt(ids []string, numOfComputations int) bool {
 // forwardRequestToComputationObjects proxy the request to multiple computation services and and combine their response into a single slice
 func (p MultiHostRequestExtHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request) {
 	// get all IDs of computation service to call
-	ids, allValues, err := p.baseHandler.getComputationIds(r, validateRequestExt)
+	ids, values, err := p.baseHandler.getComputationIds(r, validateRequestExt)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("{ \"error\": \"missing parameters\" }"))
@@ -88,7 +88,7 @@ func (p MultiHostRequestExtHandler) forwardRequestToComputationObjects(w http.Re
 	// do not allow duplicated computation service in the call
 	if p.baseHandler.containsDuplicatedId(ids) {
 		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("{ \"error\": \"duplicate handle_pacevalComputation\" }"))
+		w.Write([]byte("{ \"error\": \"duplicated handle_pacevalComputation\" }"))
 		return
 	}
 
@@ -102,7 +102,7 @@ func (p MultiHostRequestExtHandler) forwardRequestToComputationObjects(w http.Re
 		return
 	}
 
-	organizedValues, err := p.organizeValues(numOfVariables, allValues)
+	organizedValues, err := p.organizeValues(numOfVariables, values)
 	if err != nil {
 		log.Error().Msgf("error: %s", err)
 		w.WriteHeader(http.StatusBadRequest)
@@ -117,16 +117,20 @@ func (p MultiHostRequestExtHandler) forwardRequestToComputationObjects(w http.Re
 	aggregatedResponse := make([][]byte, len(endpoints))
 
 	for index, endpoint := range endpoints {
-		if endpoint == "" {
-			w.WriteHeader(http.StatusNotFound)
-			log.Error().Msg("Error: endpoint not found: %s")
-			w.Write([]byte(fmt.Sprintf("{ \"error\": \"not able to call the %dth computation object\" }", index)))
-			return
-		}
 
 		// call each endpoint in a go routine
 		go func(index int, endpoint string) {
 			defer wg.Done()
+
+			if endpoint == data.NOTREADY_ENDPOINT || endpoint == "" {
+				resp, err := json.Marshal(NewFunctionNotReadyResponse(ids[index], p.manager))
+
+				if err != nil {
+					errorChan <- err
+				}
+				aggregatedResponse[index] = resp
+				return
+			}
 
 			// Create a new HTTP client
 			client := &http.Client{}
