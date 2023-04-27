@@ -238,8 +238,7 @@ func (p MultiHostBaseHandler) forwardRequestToComputationObjects(w http.Response
 			param := proxyReq.URL.Query()
 
 			param.Add(data.VALUES, strings.Join(reqParam.Values, ";"))
-			//if numCalculations
-			//param.Add(data.NUMOFCALCULATIONS)
+			p.extraReqParam(param, reqParam)
 			proxyReq.URL.RawQuery = param.Encode()
 
 			if err != nil {
