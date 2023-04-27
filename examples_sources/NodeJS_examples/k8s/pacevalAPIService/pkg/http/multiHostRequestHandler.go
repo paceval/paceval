@@ -2,12 +2,15 @@ package http
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
 	"github.com/rs/zerolog/log"
+	"k8s.io/utils/pointer"
 	"math"
 	"net/http"
+	"net/url"
 	"strconv"
 	"strings"
 )
@@ -23,6 +26,11 @@ func NewMultiHostRequestHandler(manager k8s.Manager) MultiHostRequestHandler {
 		baseHandler: MultiHostBaseHandler{
 			requestPath: "GetComputationResult",
 			manager:     manager,
+			extraReqParam: func(_ url.Values, _ *data.MultipleComputationRequestParam) {
+				return
+			},
+			paramFromRequestValues: paramFromRequestValues,
+			transformResponse:      transformMultipleComputationResultResponse,
 		},
 	}
 }
@@ -35,7 +43,7 @@ func (p MultiHostRequestHandler) ServeHTTP(w http.ResponseWriter, r *http.Reques
 
 	switch r.Method {
 	case http.MethodGet, http.MethodPost:
-		p.baseHandler.forwardRequestToComputationObjects(w, r, validateRequest, transformMultipleComputationResultResponse)
+		p.baseHandler.forwardRequestToComputationObjects(w, r)
 
 	default:
 		log.Info().Msg("method not allowed")
@@ -45,11 +53,35 @@ func (p MultiHostRequestHandler) ServeHTTP(w http.ResponseWriter, r *http.Reques
 
 }
 
-func validateRequest(ids []string, _ []string, numOfComputations int, _ *k8s.Manager) bool {
-	if len(ids) >= 1 {
-		return len(ids) == numOfComputations
+func paramFromRequestValues(values url.Values, _ *k8s.Manager) (*data.MultipleComputationRequestParam, error) {
+
+	if !values.Has(data.HANDLEPACEVALCOMPUTATIONS) || !values.Has(data.NUMOFPACEVALCOMPUTATIONS) || !values.Has(data.VALUES) {
+		return nil, errors.New("missing parameters")
 	}
-	return false
+
+	computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), ";")
+	allValues := strings.Split(values.Get(data.VALUES), ";")
+
+	numComputations, err := strconv.Atoi(values.Get(data.NUMOFPACEVALCOMPUTATIONS))
+	if err != nil {
+		return nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
+	}
+
+	if len(computationIds) < 1 || len(allValues) < 1 {
+		return nil, errors.New("parameter's length less than 1")
+	}
+
+	if len(computationIds) != numComputations {
+		log.Debug().Msg("computationsIds & numComputation mismatch")
+		return &data.MultipleComputationRequestParam{ComputationIds: computationIds}, data.InvalidRequestError{}
+	}
+
+	return &data.MultipleComputationRequestParam{
+		ComputationIds:    computationIds,
+		Values:            allValues,
+		NumOfComputations: pointer.Int(numComputations),
+		NumOfCalculations: nil,
+	}, nil
 }
 
 func transformMultipleComputationResultResponse(aggregatedResponse [][]byte) interface{} {

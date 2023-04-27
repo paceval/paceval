@@ -11,6 +11,7 @@ import (
 	"github.com/rs/zerolog/log"
 	"io"
 	"net/http"
+	"net/url"
 	"strconv"
 	"strings"
 	"sync"
@@ -18,12 +19,15 @@ import (
 
 // MultiHostBaseHandler is a base handler that has the common functions shared by multiple host request handlers
 type MultiHostBaseHandler struct {
-	requestPath string
-	manager     k8s.Manager
+	requestPath            string
+	manager                k8s.Manager
+	extraReqParam          func(url.Values, *data.MultipleComputationRequestParam)
+	paramFromRequestValues func(url.Values, *k8s.Manager) (*data.MultipleComputationRequestParam, error)
+	transformResponse      func([][]byte) interface{}
 }
 
 // getRequestParams returns computation IDs from incoming request
-func getRequestParams(r *http.Request, manager *k8s.Manager, validateRequest func([]string, []string, int, *k8s.Manager) bool) ([]string, []string, error) {
+func (p MultiHostBaseHandler) getRequestParams(r *http.Request) (*data.MultipleComputationRequestParam, error) {
 	log.Info().Msg("trying to search for computation object id")
 	switch r.Method {
 	case http.MethodGet:
@@ -31,104 +35,72 @@ func getRequestParams(r *http.Request, manager *k8s.Manager, validateRequest fun
 
 		if err != nil {
 			// handle error: failed to parse query string
-			return nil, nil, err
+			return nil, err
 		}
 
-		if !values.Has(data.HANDLEPACEVALCOMPUTATIONS) || !values.Has(data.NUMOFPACEVALCOMPUTATIONS) || !values.Has(data.VALUES) {
-			return nil, nil, errors.New("missing parameters")
-		}
-
-		computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), ";")
-
-		numComputations, err := strconv.Atoi(values.Get(data.NUMOFPACEVALCOMPUTATIONS))
+		reqParam, err := p.paramFromRequestValues(values, &p.manager)
 
 		if err != nil {
-			return nil, nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
-		}
-
-		allValues := strings.Split(values.Get(data.VALUES), ";")
-
-		if !validateRequest(computationIds, allValues, numComputations, manager) {
-			return computationIds, nil, data.InvalidRequestError{}
+			log.Debug().Msgf("req error: %s", err)
+			return reqParam, err
 		}
 
 		log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
-		return computationIds, allValues, nil
+		return reqParam, nil
 	case http.MethodPost:
 		contentType := r.Header.Get("Content-Type")
 
 		switch contentType {
 		case "application/x-www-form-urlencoded":
 			if err := r.ParseForm(); err != nil {
-				return nil, nil, err
+				return nil, err
 			}
 			values := r.PostForm
 
-			if !values.Has(data.HANDLEPACEVALCOMPUTATIONS) || !values.Has(data.NUMOFPACEVALCOMPUTATIONS) || !values.Has(data.VALUES) {
-				return nil, nil, errors.New("missing parameters")
-			}
-
-			computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), ";")
-
-			numComputations, err := strconv.Atoi(values.Get(data.NUMOFPACEVALCOMPUTATIONS))
+			reqParam, err := p.paramFromRequestValues(values, &p.manager)
 
 			if err != nil {
-				return nil, nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
-			}
-
-			allValues := strings.Split(values.Get(data.VALUES), ";")
-
-			if !validateRequest(computationIds, allValues, numComputations, manager) {
-				return computationIds, nil, data.InvalidRequestError{}
+				log.Debug().Msgf("req error: %s", err)
+				return reqParam, err
 			}
 
 			r.Body = io.NopCloser(strings.NewReader(values.Encode()))
 			log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
-			return computationIds, allValues, nil
+			return reqParam, nil
 
 		case "application/json":
 			requestObject := make(map[string]string)
 			body, err := io.ReadAll(r.Body)
 
 			if err != nil {
-				return nil, nil, err
+				return nil, err
 			}
 
 			r.Body = io.NopCloser(bytes.NewBuffer(body))
 
 			if err = json.Unmarshal(body, &requestObject); err != nil {
-				return nil, nil, err
+				return nil, err
 			}
 
-			computationHandles, hasComputationHandles := requestObject[data.HANDLEPACEVALCOMPUTATIONS]
-			values, hasValues := requestObject[data.VALUES]
-			numOfComputations, hasNumOfComputations := requestObject[data.NUMOFPACEVALCOMPUTATIONS]
-
-			if !hasComputationHandles || !hasValues || !hasNumOfComputations {
-				return nil, nil, errors.New("missing parameters")
+			values := make(url.Values)
+			for k, v := range requestObject {
+				values.Set(k, v)
 			}
 
-			computationIds := strings.Split(computationHandles, ";")
-
-			numComputations, err := strconv.Atoi(numOfComputations)
+			reqParam, err := p.paramFromRequestValues(values, &p.manager)
 
 			if err != nil {
-				return nil, nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
+				log.Debug().Msgf("req error: %s", err)
+				return reqParam, err
 			}
 
-			allValues := strings.Split(values, ";")
-
-			if !validateRequest(computationIds, allValues, numComputations, manager) {
-				return computationIds, nil, data.InvalidRequestError{}
-			}
-
-			return computationIds, allValues, nil
+			return reqParam, nil
 
 		default:
-			return nil, nil, errors.New(fmt.Sprintf("Content-type %s not allow", contentType))
+			return nil, errors.New(fmt.Sprintf("Content-type %s not allow", contentType))
 		}
 	default:
-		return nil, nil, errors.New("method not allowed")
+		return nil, errors.New("method not allowed")
 	}
 
 }
@@ -201,11 +173,12 @@ func getEndpointsWithNumOfVariables(ids []string, manager k8s.Manager) ([]string
 }
 
 // forwardRequestToComputationObjects send the computation request to multiple computation services and combine their response into a single slice
-func (p MultiHostBaseHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request, validateRequest func([]string, []string, int, *k8s.Manager) bool, transformResponse func(aggregatedResponse [][]byte) interface{}) {
-	// get all IDs of computation service to call
-	ids, values, err := getRequestParams(r, &p.manager, validateRequest)
+func (p MultiHostBaseHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request) {
+	// get all parameters from request
+	//ids, values, numCalculations, err := p.getRequestParams(r, &p.manager, validateRequest)
+	reqParam, err := p.getRequestParams(r)
 	if err != nil && errors.Is(err, data.InvalidRequestError{}) {
-		buildResponseForInvalidReq(ids, w)
+		buildResponseForInvalidReq(reqParam.ComputationIds, w)
 		return
 	} else if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
@@ -214,17 +187,17 @@ func (p MultiHostBaseHandler) forwardRequestToComputationObjects(w http.Response
 	}
 
 	// do not allow duplicated computation service in the call
-	if containsDuplicatedId(ids) {
+	if containsDuplicatedId(reqParam.ComputationIds) {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("{ \"error\": \"duplicated handle_pacevalComputation\" }"))
 		return
 	}
 
 	// get all endpoints to call
-	endpoints, numOfVariables, err := getEndpointsWithNumOfVariables(ids, p.manager)
+	endpoints, numOfVariables, err := getEndpointsWithNumOfVariables(reqParam.ComputationIds, p.manager)
 
 	if !validateFunctionsFromRequest(numOfVariables) {
-		buildResponseForInvalidReq(ids, w)
+		buildResponseForInvalidReq(reqParam.ComputationIds, w)
 		return
 	}
 
@@ -248,7 +221,7 @@ func (p MultiHostBaseHandler) forwardRequestToComputationObjects(w http.Response
 			defer wg.Done()
 
 			if endpoint == data.NOTREADY_ENDPOINT || endpoint == "" {
-				resp, err := json.Marshal(NewFunctionNotReadyResponse(ids[index], p.manager))
+				resp, err := json.Marshal(NewFunctionNotReadyResponse(reqParam.ComputationIds[index], p.manager))
 
 				if err != nil {
 					errorChan <- err
@@ -264,7 +237,9 @@ func (p MultiHostBaseHandler) forwardRequestToComputationObjects(w http.Response
 			//proxyReq, err := http.NewRequest(http.MethodGet, "http://localhost:9000/"+p.requestPath+"/", r.Body)
 			param := proxyReq.URL.Query()
 
-			param.Add(data.VALUES, strings.Join(values, ";"))
+			param.Add(data.VALUES, strings.Join(reqParam.Values, ";"))
+			//if numCalculations
+			//param.Add(data.NUMOFCALCULATIONS)
 			proxyReq.URL.RawQuery = param.Encode()
 
 			if err != nil {
@@ -304,7 +279,7 @@ func (p MultiHostBaseHandler) forwardRequestToComputationObjects(w http.Response
 
 	if len(errorChan) == 0 {
 
-		responseJSON, _ := json.Marshal(transformResponse(aggregatedResponse))
+		responseJSON, _ := json.Marshal(p.transformResponse(aggregatedResponse))
 
 		w.WriteHeader(http.StatusOK)
 		w.Write(responseJSON)

@@ -94,8 +94,8 @@ type MultipleComputationExtResult struct {
 type MultipleComputationRequestParam struct {
 	ComputationIds    []string
 	Values            []string
-	NumOfComputations int
-	NumOfCalculations int
+	NumOfComputations *int
+	NumOfCalculations *int
 }
 
 type HandlePacevalComputationObject struct {
