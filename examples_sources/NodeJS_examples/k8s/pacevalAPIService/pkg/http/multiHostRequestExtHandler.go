@@ -93,7 +93,7 @@ func paramFromRequestExtValues(values url.Values, manager *k8s.Manager) (*data.M
 		ComputationIds:    computationIds,
 		Values:            allValues,
 		NumOfComputations: pointer.Int(numComputations),
-		NumOfCalculations: nil,
+		NumOfCalculations: pointer.Int(numCalculations),
 	}, nil
 }
 
