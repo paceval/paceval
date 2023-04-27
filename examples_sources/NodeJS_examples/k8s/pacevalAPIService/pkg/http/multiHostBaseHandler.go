@@ -10,7 +10,6 @@ import (
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
 	"github.com/rs/zerolog/log"
 	"io"
-	"math"
 	"net/http"
 	"strconv"
 	"strings"
@@ -19,59 +18,12 @@ import (
 
 // MultiHostBaseHandler is a base handler that has the common functions shared by multiple host request handlers
 type MultiHostBaseHandler struct {
+	requestPath string
+	manager     k8s.Manager
 }
 
-// transformResponse transforms the aggregatedResponse in [][] into a data.MultipleComputationResult object
-func (p MultiHostBaseHandler) transformResponse(aggregatedResponse [][]byte) data.MultipleComputationResult {
-	log.Info().Msgf(" Transforming aggregatedResponse")
-	transformedResponse := data.MultipleComputationResult{
-		NumOfComputations: len(aggregatedResponse),
-		FunctionIds:       []string{},
-		HasError:          false,
-		Results:           []string{},
-		IntervalMins:      []string{},
-		IntervalMaxs:      []string{},
-		ErrorTypeNums:     []int{},
-	}
-
-	var maxTimeCalculate float64 = 0
-
-	for _, body := range aggregatedResponse {
-		var response data.ComputationResult
-		json.Unmarshal(body, &response)
-
-		log.Debug().Msgf("response : %v", response)
-
-		transformedResponse.FunctionIds = append(transformedResponse.FunctionIds, response.FunctionId)
-		transformedResponse.Results = append(transformedResponse.Results, response.Result)
-		transformedResponse.IntervalMins = append(transformedResponse.IntervalMins, response.IntervalMin)
-		transformedResponse.IntervalMaxs = append(transformedResponse.IntervalMaxs, response.IntervalMax)
-		transformedResponse.ErrorTypeNums = append(transformedResponse.ErrorTypeNums, response.ErrorTypeNum)
-
-		if response.ErrorTypeNum != 0 {
-			transformedResponse.HasError = true
-		}
-
-		timeCalculate, err := strconv.ParseFloat(strings.TrimSuffix(response.TimeCalculate, "s"), 64)
-
-		if err != nil {
-			log.Debug().Msgf(" Unable to parse time calculate, skipping...")
-			continue
-		}
-
-		maxTimeCalculate = math.Max(maxTimeCalculate, timeCalculate)
-
-		transformedResponse.Version = response.Version
-	}
-
-	transformedResponse.TimeCalculate = fmt.Sprintf("%fs", maxTimeCalculate)
-
-	return transformedResponse
-
-}
-
-// getComputationIds returns computation IDs from incoming request
-func (p MultiHostBaseHandler) getComputationIds(r *http.Request, validateRequest func([]string, int) bool) ([]string, []string, error) {
+// getRequestParams returns computation IDs from incoming request
+func getRequestParams(r *http.Request, manager *k8s.Manager, validateRequest func([]string, []string, int, *k8s.Manager) bool) ([]string, []string, error) {
 	log.Info().Msg("trying to search for computation object id")
 	switch r.Method {
 	case http.MethodGet:
@@ -94,11 +46,12 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request, validateRequest
 			return nil, nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
 		}
 
-		if !validateRequest(computationIds, numComputations) {
+		allValues := strings.Split(values.Get(data.VALUES), ";")
+
+		if !validateRequest(computationIds, allValues, numComputations, manager) {
 			return computationIds, nil, data.InvalidRequestError{}
 		}
 
-		allValues := strings.Split(values.Get(data.VALUES), ";")
 		log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
 		return computationIds, allValues, nil
 	case http.MethodPost:
@@ -123,11 +76,11 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request, validateRequest
 				return nil, nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
 			}
 
-			if !validateRequest(computationIds, numComputations) {
+			allValues := strings.Split(values.Get(data.VALUES), ";")
+
+			if !validateRequest(computationIds, allValues, numComputations, manager) {
 				return computationIds, nil, data.InvalidRequestError{}
 			}
-
-			allValues := strings.Split(values.Get(data.VALUES), ";")
 
 			r.Body = io.NopCloser(strings.NewReader(values.Encode()))
 			log.Info().Msgf("computation object id %s", values.Get(data.HANDLEPACEVALCOMPUTATION))
@@ -163,11 +116,11 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request, validateRequest
 				return nil, nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
 			}
 
-			if !validateRequest(computationIds, numComputations) {
+			allValues := strings.Split(values, ";")
+
+			if !validateRequest(computationIds, allValues, numComputations, manager) {
 				return computationIds, nil, data.InvalidRequestError{}
 			}
-
-			allValues := strings.Split(values, ";")
 
 			return computationIds, allValues, nil
 
@@ -180,34 +133,11 @@ func (p MultiHostBaseHandler) getComputationIds(r *http.Request, validateRequest
 
 }
 
-// createRespForInvalidReq create response object of data.MultipleComputationResult when incoming request for GetMultipleComputationResult
-// is invalid
-func createRespForInvalidReq(ids []string, errorTypeNumber int) data.MultipleComputationResult {
-	errNumberArray := make([]int, len(ids))
-
-	for i := 0; i < len(errNumberArray); i++ {
-		errNumberArray[i] = errorTypeNumber
-	}
-
-	return data.MultipleComputationResult{
-		NumOfComputations: len(ids),
-		FunctionIds:       ids,
-		HasError:          true,
-		Results:           make([]string, len(ids)),
-		IntervalMins:      make([]string, len(ids)),
-		IntervalMaxs:      make([]string, len(ids)),
-		ErrorTypeNums:     errNumberArray,
-		TimeCalculate:     "0s",
-		Version:           data.PACEVAL_VERSION,
-	}
-
-}
-
 // getEndpointsWithNumOfVariables return endpoints and number of variables from multiple CRDs
 // the request will be running in parallel, the output slices of string is the slice of endpoints
 // and output slices of integers is the slice of numOfVariables
 // the order of data in the slice is the order of ids from the input
-func (p MultiHostBaseHandler) getEndpointsWithNumOfVariables(ids []string, manager k8s.Manager) ([]string, []int, error) {
+func getEndpointsWithNumOfVariables(ids []string, manager k8s.Manager) ([]string, []int, error) {
 
 	endpoints := make([]string, len(ids))
 	numOfValues := make([]int, len(ids))
@@ -270,8 +200,131 @@ func (p MultiHostBaseHandler) getEndpointsWithNumOfVariables(ids []string, manag
 
 }
 
+// forwardRequestToComputationObjects send the computation request to multiple computation services and combine their response into a single slice
+func (p MultiHostBaseHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request, validateRequest func([]string, []string, int, *k8s.Manager) bool, transformResponse func(aggregatedResponse [][]byte) interface{}) {
+	// get all IDs of computation service to call
+	ids, values, err := getRequestParams(r, &p.manager, validateRequest)
+	if err != nil && errors.Is(err, data.InvalidRequestError{}) {
+		buildResponseForInvalidReq(ids, w)
+		return
+	} else if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err.Error())))
+		return
+	}
+
+	// do not allow duplicated computation service in the call
+	if containsDuplicatedId(ids) {
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("{ \"error\": \"duplicated handle_pacevalComputation\" }"))
+		return
+	}
+
+	// get all endpoints to call
+	endpoints, numOfVariables, err := getEndpointsWithNumOfVariables(ids, p.manager)
+
+	if !validateFunctionsFromRequest(numOfVariables) {
+		buildResponseForInvalidReq(ids, w)
+		return
+	}
+
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		log.Error().Msgf("Error: %s", err)
+		w.Write([]byte("{ \"error\": \"handle_pacevalComputation does not exist\" }"))
+		return
+	}
+
+	resultLock := sync.Mutex{}
+	var wg sync.WaitGroup
+	wg.Add(len(endpoints))
+	errorChan := make(chan error, len(endpoints))
+	aggregatedResponse := make([][]byte, len(endpoints))
+
+	for index, endpoint := range endpoints {
+
+		// call each endpoint in a go routine
+		go func(index int, endpoint string) {
+			defer wg.Done()
+
+			if endpoint == data.NOTREADY_ENDPOINT || endpoint == "" {
+				resp, err := json.Marshal(NewFunctionNotReadyResponse(ids[index], p.manager))
+
+				if err != nil {
+					errorChan <- err
+				}
+				aggregatedResponse[index] = resp
+				return
+			}
+
+			// Create a new HTTP client
+			client := &http.Client{}
+
+			proxyReq, err := http.NewRequest(http.MethodGet, "http://"+endpoint+"/"+p.requestPath+"/", r.Body)
+			//proxyReq, err := http.NewRequest(http.MethodGet, "http://localhost:9000/"+p.requestPath+"/", r.Body)
+			param := proxyReq.URL.Query()
+
+			param.Add(data.VALUES, strings.Join(values, ";"))
+			proxyReq.URL.RawQuery = param.Encode()
+
+			if err != nil {
+				log.Info().Msgf("endpoint: %s , issue creating new request due to : %s", endpoint, err)
+				errorChan <- err
+				return
+			}
+
+			resp, err := client.Do(proxyReq)
+
+			if err != nil {
+				log.Info().Msgf("endpoint: %s ,issue sending new request due to : %s", endpoint, err)
+				errorChan <- err
+				return
+			}
+
+			defer resp.Body.Close()
+
+			// Read the response body into a byte slice
+			body, err := io.ReadAll(resp.Body)
+			if err != nil {
+				log.Info().Msgf("endpoint: %s ,issue reading response body : %s", endpoint, err)
+				errorChan <- err
+				return
+			}
+
+			resultLock.Lock()
+			defer resultLock.Unlock()
+
+			aggregatedResponse[index] = body
+
+		}(index, endpoint)
+	}
+
+	wg.Wait()
+	close(errorChan)
+
+	if len(errorChan) == 0 {
+
+		responseJSON, _ := json.Marshal(transformResponse(aggregatedResponse))
+
+		w.WriteHeader(http.StatusOK)
+		w.Write(responseJSON)
+		return
+	}
+
+	var combinedError error
+
+	for err := range errorChan {
+		combinedError = multierror.Append(combinedError, err)
+	}
+
+	w.WriteHeader(http.StatusInternalServerError)
+	log.Error().Msgf("error calling functions: %s", combinedError)
+	w.Write([]byte("{ \"error\": \"internal error, please contact service admin\" }"))
+
+}
+
 // containsDuplicatedId check for duplicated id in slices of ID
-func (p MultiHostBaseHandler) containsDuplicatedId(ids []string) bool {
+func containsDuplicatedId(ids []string) bool {
 	m := make(map[string]struct{})
 
 	for _, id := range ids {
@@ -285,13 +338,38 @@ func (p MultiHostBaseHandler) containsDuplicatedId(ids []string) bool {
 	return false
 }
 
-func (p MultiHostBaseHandler) buildResponseForInvalidReq(ids []string, w http.ResponseWriter) {
+// createRespForInvalidReq create response object of data.MultipleComputationResult when incoming request for GetMultipleComputationResult
+// is invalid
+func createRespForInvalidReq(ids []string, errorTypeNumber int) data.MultipleComputationResult {
+	errNumberArray := make([]int, len(ids))
+
+	for i := 0; i < len(errNumberArray); i++ {
+		errNumberArray[i] = errorTypeNumber
+	}
+
+	return data.MultipleComputationResult{
+		NumOfComputations: len(ids),
+		FunctionIds:       ids,
+		HasError:          true,
+		Results:           make([]string, len(ids)),
+		IntervalMins:      make([]string, len(ids)),
+		IntervalMaxs:      make([]string, len(ids)),
+		ErrorTypeNums:     errNumberArray,
+		TimeCalculate:     "0s",
+		Version:           data.PACEVAL_VERSION,
+	}
+
+}
+
+// buildResponseForInvalidReq write an error response when the request parameter is invalid
+func buildResponseForInvalidReq(ids []string, w http.ResponseWriter) {
 	w.WriteHeader(http.StatusBadRequest)
 	resp := createRespForInvalidReq(ids, data.PACEVAL_ERR_COMPUTATION_WRONGLY_USED_PARAMETERS)
 	json.NewEncoder(w).Encode(resp)
 }
 
-func (p MultiHostBaseHandler) validateFunctionsFromRequest(numOfVariables []int) bool {
+// validateFunctionsFromRequest validate if all functions from the request is having same number of variables
+func validateFunctionsFromRequest(numOfVariables []int) bool {
 
 	if len(numOfVariables) < 2 {
 		return true

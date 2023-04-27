@@ -11,6 +11,7 @@ const (
 	HANDLEPACEVALCOMPUTATIONS = "handle_pacevalComputations"
 
 	NUMOFPACEVALCOMPUTATIONS = "numberOfpacevalComputations"
+	NUMOFCALCULATIONS        = "numberOfCalculations"
 
 	NUMOFCOMPUTATIONS = "numberOfpacevalComputations"
 
@@ -62,6 +63,17 @@ type ComputationResult struct {
 	Version       float32 `json:"version-number"`
 }
 
+type ComputationResultExt struct {
+	NumOfCalculation int      `json:"number-of-multiple-values"`
+	FunctionId       string   `json:"handle_pacevalComputation"`
+	HasError         bool     `json:"hasError"`
+	Results          []string `json:"results"`
+	IntervalMins     []string `json:"interval-min-results"`
+	IntervalMaxs     []string `json:"interval-max-results"`
+	ErrorTypeNums    []int    `json:"error-type-numbers"`
+	TimeCalculate    string   `json:"time-calculate"`
+	Version          float32  `json:"version-number"`
+}
 type MultipleComputationResult struct {
 	NumOfComputations int      `json:"number-of-multiple-computations"`
 	FunctionIds       []string `json:"handle_pacevalComputations"`
@@ -72,6 +84,18 @@ type MultipleComputationResult struct {
 	ErrorTypeNums     []int    `json:"error-type-numbers"`
 	TimeCalculate     string   `json:"time-calculate"`
 	Version           float32  `json:"version-number"`
+}
+
+type MultipleComputationExtResult struct {
+	MultipleComputationResult
+	NumOfCalculation int `json:"number-of-multiple-values-per-computation"`
+}
+
+type MultipleComputationRequestParam struct {
+	ComputationIds    []string
+	Values            []string
+	NumOfComputations int
+	NumOfCalculations int
 }
 
 type HandlePacevalComputationObject struct {
