@@ -28,7 +28,7 @@ func NewMultiHostRequestExtHandler(manager k8s.Manager) MultiHostRequestExtHandl
 			requestPath: "GetComputationResultExt",
 			manager:     manager,
 			extraReqParam: func(values url.Values, reqParam *data.MultipleComputationRequestParam) {
-				values.Add(data.NUMOFCALCULATIONS, strconv.Itoa(*reqParam.NumOfComputations))
+				values.Add(data.NUMOFCALCULATIONS, strconv.Itoa(*reqParam.NumOfCalculations))
 			},
 			paramFromRequestValues: paramFromRequestExtValues,
 			transformResponse:      transformMultipleComputationResultExtResponse,
