@@ -59,16 +59,15 @@ func paramFromRequestValues(values url.Values, _ *k8s.Manager) (*data.MultipleCo
 		return nil, errors.New("missing parameters")
 	}
 
+	if values.Get(data.HANDLEPACEVALCOMPUTATIONS) == "" && values.Get(data.VALUES) == "" {
+		return nil, errors.New("parameter cannot be empty")
+	}
 	computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), ";")
 	allValues := strings.Split(values.Get(data.VALUES), ";")
 
 	numComputations, err := strconv.Atoi(values.Get(data.NUMOFPACEVALCOMPUTATIONS))
 	if err != nil {
 		return nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
-	}
-
-	if len(computationIds) < 1 || len(allValues) < 1 {
-		return nil, errors.New("parameter's length less than 1")
 	}
 
 	if len(computationIds) != numComputations {

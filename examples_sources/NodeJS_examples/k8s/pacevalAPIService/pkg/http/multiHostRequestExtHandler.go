@@ -60,6 +60,9 @@ func paramFromRequestExtValues(values url.Values, manager *k8s.Manager) (*data.M
 		return nil, errors.New("missing parameters")
 	}
 
+	if values.Get(data.HANDLEPACEVALCOMPUTATIONS) == "" && values.Get(data.VALUES) == "" {
+		return nil, errors.New("parameter cannot be empty")
+	}
 	computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), ";")
 	allValues := strings.Split(values.Get(data.VALUES), ";")
 
@@ -71,10 +74,6 @@ func paramFromRequestExtValues(values url.Values, manager *k8s.Manager) (*data.M
 	numCalculations, err := strconv.Atoi(values.Get(data.NUMOFCALCULATIONS))
 	if err != nil {
 		return nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFCALCULATIONS)
-	}
-
-	if len(computationIds) < 1 || len(allValues) < 1 {
-		return nil, errors.New("parameter's length less than 1")
 	}
 
 	numVariables, _ := manager.GetNumOfVariables(computationIds[0])
