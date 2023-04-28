@@ -59,7 +59,7 @@ func paramFromRequestValues(values url.Values, _ *k8s.Manager) (*data.MultipleCo
 		return nil, errors.New("missing parameters")
 	}
 
-	if values.Get(data.HANDLEPACEVALCOMPUTATIONS) == "" && values.Get(data.VALUES) == "" {
+	if values.Get(data.HANDLEPACEVALCOMPUTATIONS) == "" || values.Get(data.VALUES) == "" {
 		return nil, errors.New("parameter cannot be empty")
 	}
 	computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), ";")
