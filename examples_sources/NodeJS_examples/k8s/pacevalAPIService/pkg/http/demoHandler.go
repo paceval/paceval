@@ -65,19 +65,25 @@ func (d DemoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	proxy.ModifyResponse = func(response *http.Response) error {
 		// make sure to modify the response from demo service and replace the field `handle_pacevalComputation` with above generated uuid
-		respObject := make(map[string]interface{})
+
+		demoResponse := new(data.ComputationResult)
 		body, err := io.ReadAll(response.Body)
 
 		if err != nil {
 			return err
 		}
 
-		if err = json.Unmarshal(body, &respObject); err != nil {
+		if err = json.Unmarshal(body, &demoResponse); err != nil {
 			return err
 		}
 
-		respObject["handle_pacevalComputation"] = uid.String()
-		modifiedBody, err := json.Marshal(respObject)
+		demoResponse.FunctionId = uid.String()
+
+		if err != nil {
+			return err
+		}
+
+		modifiedBody, err := json.Marshal(demoResponse)
 
 		if err != nil {
 			return err

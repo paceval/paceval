@@ -4,15 +4,15 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/hashicorp/go-multierror"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
 	"github.com/rs/zerolog/log"
-	math "github.com/spatialcurrent/go-math/pkg/math"
-	"io"
+	"k8s.io/utils/pointer"
+	"math"
 	"net/http"
+	"net/url"
+	"strconv"
 	"strings"
-	"sync"
 )
 
 // MultiHostRequestExtHandler is the handler for getMultipleComputationResultExt
@@ -23,18 +23,28 @@ type MultiHostRequestExtHandler struct {
 
 // NewMultiHostRequestExtHandler return a new instance of handler
 func NewMultiHostRequestExtHandler(manager k8s.Manager) MultiHostRequestExtHandler {
-	return MultiHostRequestExtHandler{manager: manager}
+	return MultiHostRequestExtHandler{
+		baseHandler: MultiHostBaseHandler{
+			requestPath: "GetComputationResultExt",
+			manager:     manager,
+			extraReqParam: func(values url.Values, reqParam *data.MultipleComputationRequestParam) {
+				values.Add(data.NUMOFCALCULATIONS, strconv.Itoa(*reqParam.NumOfCalculations))
+			},
+			paramFromRequestValues: paramFromRequestExtValues,
+			transformResponse:      transformMultipleComputationResultExtResponse,
+		},
+	}
 }
 
 // ServeHTTP proxy the requests to multiple computation services with different value sets
 func (p MultiHostRequestExtHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	log.Info().Msg("handle request to get multiple computation result")
+	log.Info().Msg("handle request to get multiple computation ext result")
 	w.Header().Set("Content-Type", "application/json")
 	log.Info().Msgf("incoming %s request", r.Method)
 
 	switch r.Method {
 	case http.MethodGet, http.MethodPost:
-		p.forwardRequestToComputationObjects(w, r)
+		p.baseHandler.forwardRequestToComputationObjects(w, r)
 
 	default:
 		log.Info().Msg("method not allowed")
@@ -44,157 +54,97 @@ func (p MultiHostRequestExtHandler) ServeHTTP(w http.ResponseWriter, r *http.Req
 
 }
 
-// organizeValues check if the number of value is correct according to numOfVariables from all computations
-// and the organize the values such into a 2d slice with first index indicated the nth functions
-// for example organizedValues[n] is the value array for nth computation
-func (p MultiHostRequestExtHandler) organizeValues(numOfVariablesArr []int, allValues []string) ([][]string, error) {
-	sum, err := math.Sum(numOfVariablesArr)
+func paramFromRequestExtValues(values url.Values, manager *k8s.Manager) (*data.MultipleComputationRequestParam, error) {
+
+	if !values.Has(data.HANDLEPACEVALCOMPUTATIONS) || !values.Has(data.NUMOFPACEVALCOMPUTATIONS) || !values.Has(data.VALUES) || !values.Has(data.NUMOFCALCULATIONS) {
+		return nil, errors.New("missing parameters")
+	}
+
+	if values.Get(data.HANDLEPACEVALCOMPUTATIONS) == "" || values.Get(data.VALUES) == "" {
+		return nil, errors.New("parameter cannot be empty")
+	}
+	computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), ";")
+	allValues := strings.Split(values.Get(data.VALUES), ";")
+
+	numComputations, err := strconv.Atoi(values.Get(data.NUMOFPACEVALCOMPUTATIONS))
+	if err != nil {
+		return nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
+	}
+
+	numCalculations, err := strconv.Atoi(values.Get(data.NUMOFCALCULATIONS))
+	if err != nil {
+		return nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFCALCULATIONS)
+	}
+
+	numVariables, _ := manager.GetNumOfVariables(computationIds[0])
+	numberOfVariablePerFunction, err := strconv.Atoi(numVariables)
 
 	if err != nil {
-		log.Error().Msgf("error calculating sum of variables: %s", err)
-		return nil, errors.New("problem verifying functions")
+		return nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
 	}
 
-	if sum != len(allValues) {
-		return nil, errors.New("variables sent does not match expectations")
+	if len(computationIds) != numComputations || len(allValues) != numberOfVariablePerFunction*numCalculations {
+		log.Debug().Msg("computationsIds & numComputation mismatch")
+		return &data.MultipleComputationRequestParam{ComputationIds: computationIds}, data.InvalidRequestError{}
 	}
 
-	var organizedValuesArr [][]string
-
-	i := 0
-	for _, numOfVariables := range numOfVariablesArr {
-		organizedValues := allValues[i : i+numOfVariables]
-		organizedValuesArr = append(organizedValuesArr, organizedValues)
-		i = i + numOfVariables
-	}
-
-	return organizedValuesArr, nil
+	return &data.MultipleComputationRequestParam{
+		ComputationIds:    computationIds,
+		Values:            allValues,
+		NumOfComputations: pointer.Int(numComputations),
+		NumOfCalculations: pointer.Int(numCalculations),
+	}, nil
 }
 
-// forwardRequestToComputationObjects proxy the request to multiple computation services and and combine their response into a single slice
-func (p MultiHostRequestExtHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request) {
-	// get all IDs of computation service to call
-	ids, allValues, err := p.baseHandler.getComputationIds(r)
-	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("{ \"error\": \"missing parameters\" }"))
-		return
+func transformMultipleComputationResultExtResponse(aggregatedResponse [][]byte) interface{} {
+	log.Info().Msgf(" Transforming aggregatedResponse for MultipleComputationResult")
+	transformedResponse := data.MultipleComputationExtResult{
+		MultipleComputationResult: data.MultipleComputationResult{
+			NumOfComputations: len(aggregatedResponse),
+			FunctionIds:       []string{},
+			HasError:          false,
+			Results:           []string{},
+			IntervalMins:      []string{},
+			IntervalMaxs:      []string{},
+			ErrorTypeNums:     []int{},
+		},
 	}
 
-	// do not allow duplicated computation service in the call
-	if p.baseHandler.containsDuplicatedId(ids) {
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("{ \"error\": \"duplicate handle_pacevalComputation\" }"))
-		return
-	}
+	var maxTimeCalculate float64 = 0
+	var numOfCalculation int = 0
 
-	// get all endpoints to call
-	endpoints, numOfVariables, err := p.baseHandler.getEndpointsWithNumOfVariables(ids, p.manager)
+	for _, body := range aggregatedResponse {
+		var response data.ComputationResultExt
+		json.Unmarshal(body, &response)
 
-	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		log.Error().Msgf("Error: %s", err)
-		w.Write([]byte("{ \"error\": \"handle_pacevalComputation does not exist\" }"))
-		return
-	}
+		log.Debug().Msgf("response : %v", response)
 
-	organizedValues, err := p.organizeValues(numOfVariables, allValues)
-	if err != nil {
-		log.Error().Msgf("error: %s", err)
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte(fmt.Sprintf("{ \"error\": \"%s\" }", err)))
-		return
-	}
+		transformedResponse.FunctionIds = append(transformedResponse.FunctionIds, response.FunctionId)
+		transformedResponse.Results = append(transformedResponse.Results, response.Results...)
+		transformedResponse.IntervalMins = append(transformedResponse.IntervalMins, response.IntervalMins...)
+		transformedResponse.IntervalMaxs = append(transformedResponse.IntervalMaxs, response.IntervalMaxs...)
+		transformedResponse.ErrorTypeNums = append(transformedResponse.ErrorTypeNums, response.ErrorTypeNums...)
 
-	resultLock := sync.Mutex{}
-	var wg sync.WaitGroup
-	wg.Add(len(endpoints))
-	errorChan := make(chan error, len(endpoints))
-	aggregatedResponse := make([][]byte, len(endpoints))
-
-	for index, endpoint := range endpoints {
-		if endpoint == "" {
-			w.WriteHeader(http.StatusNotFound)
-			log.Error().Msg("Error: endpoint not found: %s")
-			w.Write([]byte(fmt.Sprintf("{ \"error\": \"not able to call the %dth computation object\" }", index)))
-			return
+		if response.HasError {
+			transformedResponse.HasError = true
 		}
 
-		// call each endpoint in a go routine
-		go func(index int, endpoint string) {
-			defer wg.Done()
-
-			// Create a new HTTP client
-			client := &http.Client{}
-
-			proxyReq, err := http.NewRequest(http.MethodGet, "http://"+endpoint+"/GetComputationResult/", r.Body)
-			//proxyReq, err := http.NewRequest(http.MethodGet, "http://localhost:9000/GetComputationResult/", r.Body)
-			param := proxyReq.URL.Query()
-
-			param.Add(data.VALUES, strings.Join(organizedValues[index], ";"))
-			proxyReq.URL.RawQuery = param.Encode()
-
-			if err != nil {
-				log.Info().Msgf("endpoint: %s , issue creating new request due to : %s", endpoint, err)
-				errorChan <- err
-				return
-			}
-
-			resp, err := client.Do(proxyReq)
-
-			if err != nil {
-				log.Info().Msgf("endpoint: %s ,issue sending new request due to : %s", endpoint, err)
-				errorChan <- err
-				return
-			}
-
-			defer resp.Body.Close()
-
-			// Read the response body into a byte slice
-			body, err := io.ReadAll(resp.Body)
-			if err != nil {
-				log.Info().Msgf("endpoint: %s ,issue reading response body : %s", endpoint, err)
-				errorChan <- err
-				return
-			}
-
-			resultLock.Lock()
-			defer resultLock.Unlock()
-
-			aggregatedResponse[index] = body
-
-		}(index, endpoint)
-	}
-
-	wg.Wait()
-	close(errorChan)
-
-	if len(errorChan) == 0 {
-
-		// combine the response from all calls into a single slice
-		var responseArray []map[string]interface{}
-		for _, body := range aggregatedResponse {
-			var response map[string]interface{}
-			json.Unmarshal(body, &response)
-
-			responseArray = append(responseArray, response)
+		timeCalculate, err := strconv.ParseFloat(strings.TrimSuffix(response.TimeCalculate, "s"), 64)
+		if err != nil {
+			log.Debug().Msgf(" Unable to parse time calculate, skipping...")
+			continue
 		}
 
-		responseJSON, _ := json.Marshal(responseArray)
+		maxTimeCalculate = math.Max(maxTimeCalculate, timeCalculate)
+		transformedResponse.Version = response.Version
 
-		w.WriteHeader(http.StatusOK)
-		w.Write(responseJSON)
-		return
+		numOfCalculation = response.NumOfCalculation
+
 	}
 
-	var combinedError error
+	transformedResponse.NumOfCalculation = numOfCalculation
+	transformedResponse.TimeCalculate = fmt.Sprintf("%fs", maxTimeCalculate)
 
-	for err := range errorChan {
-		combinedError = multierror.Append(combinedError, err)
-	}
-
-	w.WriteHeader(http.StatusInternalServerError)
-	log.Error().Msgf("error calling functions: %s", combinedError)
-	w.Write([]byte("{ \"error\": \"internal error, please contact service admin\" }"))
+	return transformedResponse
 
 }

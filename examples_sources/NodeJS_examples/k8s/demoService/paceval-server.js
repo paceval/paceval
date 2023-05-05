@@ -565,7 +565,7 @@ function handleGetComputationResult(req, res, handle_pacevalComputation_str_in)
 
     let return_arr =
         {
-            'handle_pacevalComputation': handle_pacevalComputation_addr,
+            'handle_pacevalComputation': "",
             'result': result_str.toString().replace(/\0/g, ''),
             'interval-min-result': trustedMinResult_str.toString().replace(/\0/g, ''),
             'interval-max-result': trustedMaxResult_str.toString().replace(/\0/g, ''),

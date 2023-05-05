@@ -2,26 +2,37 @@ package http
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
-	"github.com/hashicorp/go-multierror"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
 	"github.com/rs/zerolog/log"
-	"io"
+	"k8s.io/utils/pointer"
+	"math"
 	"net/http"
+	"net/url"
+	"strconv"
 	"strings"
-	"sync"
 )
 
 // MultiHostRequestHandler is the handler for getMultipleComputationResult
 type MultiHostRequestHandler struct {
-	manager     k8s.Manager
 	baseHandler MultiHostBaseHandler
 }
 
 // NewMultiHostRequestHandler return new instance of handler
 func NewMultiHostRequestHandler(manager k8s.Manager) MultiHostRequestHandler {
-	return MultiHostRequestHandler{manager: manager}
+	return MultiHostRequestHandler{
+		baseHandler: MultiHostBaseHandler{
+			requestPath: "GetComputationResult",
+			manager:     manager,
+			extraReqParam: func(_ url.Values, _ *data.MultipleComputationRequestParam) {
+				return
+			},
+			paramFromRequestValues: paramFromRequestValues,
+			transformResponse:      transformMultipleComputationResultResponse,
+		},
+	}
 }
 
 // ServeHTTP proxy the requests to multiple computation services with a single value set
@@ -32,7 +43,7 @@ func (p MultiHostRequestHandler) ServeHTTP(w http.ResponseWriter, r *http.Reques
 
 	switch r.Method {
 	case http.MethodGet, http.MethodPost:
-		p.forwardRequestToComputationObjects(w, r)
+		p.baseHandler.forwardRequestToComputationObjects(w, r)
 
 	default:
 		log.Info().Msg("method not allowed")
@@ -42,122 +53,79 @@ func (p MultiHostRequestHandler) ServeHTTP(w http.ResponseWriter, r *http.Reques
 
 }
 
-// forwardRequestToComputationObjects send the computation request to multiple computation services and combine their response into a single slice
-func (p MultiHostRequestHandler) forwardRequestToComputationObjects(w http.ResponseWriter, r *http.Request) {
-	// get all IDs of computation service to call
-	ids, values, err := p.baseHandler.getComputationIds(r)
+func paramFromRequestValues(values url.Values, _ *k8s.Manager) (*data.MultipleComputationRequestParam, error) {
+
+	if !values.Has(data.HANDLEPACEVALCOMPUTATIONS) || !values.Has(data.NUMOFPACEVALCOMPUTATIONS) || !values.Has(data.VALUES) {
+		return nil, errors.New("missing parameters")
+	}
+
+	if values.Get(data.HANDLEPACEVALCOMPUTATIONS) == "" || values.Get(data.VALUES) == "" {
+		return nil, errors.New("parameter cannot be empty")
+	}
+	computationIds := strings.Split(values.Get(data.HANDLEPACEVALCOMPUTATIONS), ";")
+	allValues := strings.Split(values.Get(data.VALUES), ";")
+
+	numComputations, err := strconv.Atoi(values.Get(data.NUMOFPACEVALCOMPUTATIONS))
 	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("{ \"error\": \"missing parameters\" }"))
-		return
+		return nil, fmt.Errorf("parameter %s must be a integer", data.NUMOFPACEVALCOMPUTATIONS)
 	}
 
-	// do not allow duplicated computation service in the call
-	if p.baseHandler.containsDuplicatedId(ids) {
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("{ \"error\": \"duplicate handle_pacevalComputation\" }"))
-		return
+	if len(computationIds) != numComputations {
+		log.Debug().Msg("computationsIds & numComputation mismatch")
+		return &data.MultipleComputationRequestParam{ComputationIds: computationIds}, data.InvalidRequestError{}
 	}
 
-	// get all endpoints to call
-	endpoints, _, err := p.baseHandler.getEndpointsWithNumOfVariables(ids, p.manager)
+	return &data.MultipleComputationRequestParam{
+		ComputationIds:    computationIds,
+		Values:            allValues,
+		NumOfComputations: pointer.Int(numComputations),
+		NumOfCalculations: nil,
+	}, nil
+}
 
-	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		log.Error().Msgf("Error: %s", err)
-		w.Write([]byte("{ \"error\": \"handle_pacevalComputation does not exist\" }"))
-		return
+func transformMultipleComputationResultResponse(aggregatedResponse [][]byte) interface{} {
+	log.Info().Msgf(" Transforming aggregatedResponse for MultipleComputationResult")
+	transformedResponse := data.MultipleComputationResult{
+		NumOfComputations: len(aggregatedResponse),
+		FunctionIds:       []string{},
+		HasError:          false,
+		Results:           []string{},
+		IntervalMins:      []string{},
+		IntervalMaxs:      []string{},
+		ErrorTypeNums:     []int{},
 	}
 
-	resultLock := sync.Mutex{}
-	var wg sync.WaitGroup
-	wg.Add(len(endpoints))
-	errorChan := make(chan error, len(endpoints))
-	aggregatedResponse := make([][]byte, len(endpoints))
+	var maxTimeCalculate float64 = 0
 
-	for index, endpoint := range endpoints {
-		if endpoint == "" {
-			w.WriteHeader(http.StatusNotFound)
-			log.Error().Msg("Error: endpoint not found: %s")
-			w.Write([]byte(fmt.Sprintf("{ \"error\": \"not able to call the %dth computation object\" }", index)))
-			return
+	for _, body := range aggregatedResponse {
+		var response data.ComputationResult
+		json.Unmarshal(body, &response)
+
+		log.Debug().Msgf("response : %v", response)
+
+		transformedResponse.FunctionIds = append(transformedResponse.FunctionIds, response.FunctionId)
+		transformedResponse.Results = append(transformedResponse.Results, response.Result)
+		transformedResponse.IntervalMins = append(transformedResponse.IntervalMins, response.IntervalMin)
+		transformedResponse.IntervalMaxs = append(transformedResponse.IntervalMaxs, response.IntervalMax)
+		transformedResponse.ErrorTypeNums = append(transformedResponse.ErrorTypeNums, response.ErrorTypeNum)
+
+		if response.ErrorTypeNum != 0 {
+			transformedResponse.HasError = true
 		}
 
-		// call each endpoint in a go routine
-		go func(index int, endpoint string) {
-			defer wg.Done()
+		timeCalculate, err := strconv.ParseFloat(strings.TrimSuffix(response.TimeCalculate, "s"), 64)
 
-			// Create a new HTTP client
-			client := &http.Client{}
-
-			proxyReq, err := http.NewRequest(http.MethodGet, "http://"+endpoint+"/GetComputationResult/", r.Body)
-			//proxyReq, err := http.NewRequest(http.MethodGet, "http://localhost:9000/GetComputationResult/", r.Body)
-			param := proxyReq.URL.Query()
-
-			param.Add(data.VALUES, strings.Join(values, ";"))
-			proxyReq.URL.RawQuery = param.Encode()
-
-			if err != nil {
-				log.Info().Msgf("endpoint: %s , issue creating new request due to : %s", endpoint, err)
-				errorChan <- err
-				return
-			}
-
-			resp, err := client.Do(proxyReq)
-
-			if err != nil {
-				log.Info().Msgf("endpoint: %s ,issue sending new request due to : %s", endpoint, err)
-				errorChan <- err
-				return
-			}
-
-			defer resp.Body.Close()
-
-			// Read the response body into a byte slice
-			body, err := io.ReadAll(resp.Body)
-			if err != nil {
-				log.Info().Msgf("endpoint: %s ,issue reading response body : %s", endpoint, err)
-				errorChan <- err
-				return
-			}
-
-			resultLock.Lock()
-			defer resultLock.Unlock()
-
-			aggregatedResponse[index] = body
-
-		}(index, endpoint)
-	}
-
-	wg.Wait()
-	close(errorChan)
-
-	if len(errorChan) == 0 {
-
-		// combine the response from all calls into a single slice
-		var responseArray []map[string]interface{}
-		for _, body := range aggregatedResponse {
-			var response map[string]interface{}
-			json.Unmarshal(body, &response)
-
-			responseArray = append(responseArray, response)
+		if err != nil {
+			log.Debug().Msgf(" Unable to parse time calculate, skipping...")
+			continue
 		}
 
-		responseJSON, _ := json.Marshal(responseArray)
+		maxTimeCalculate = math.Max(maxTimeCalculate, timeCalculate)
 
-		w.WriteHeader(http.StatusOK)
-		w.Write(responseJSON)
-		return
+		transformedResponse.Version = response.Version
 	}
 
-	var combinedError error
+	transformedResponse.TimeCalculate = fmt.Sprintf("%fs", maxTimeCalculate)
 
-	for err := range errorChan {
-		combinedError = multierror.Append(combinedError, err)
-	}
-
-	w.WriteHeader(http.StatusInternalServerError)
-	log.Error().Msgf("error calling functions: %s", combinedError)
-	w.Write([]byte("{ \"error\": \"internal error, please contact service admin\" }"))
-
+	return transformedResponse
 }

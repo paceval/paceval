@@ -28,6 +28,11 @@ func (r Redis) Set(key, val string) error {
 	return r.redisClient.Set(r.ctx, key, val, 0).Err()
 }
 
+// Get return the value in string given a redis key
+func (r Redis) Get(key string) (string, error) {
+	return r.redisClient.Get(r.ctx, key).Result()
+}
+
 // CloseConnection terminate the connection to redis
 func (r Redis) CloseConnection() error {
 	return r.redisClient.Close()

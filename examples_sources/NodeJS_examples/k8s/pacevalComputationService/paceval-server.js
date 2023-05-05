@@ -562,8 +562,8 @@ function handleGetComputationResultExt(req, res)
 
     let return_arr = 
     {
-        'handle_pacevalComputation': functionId,
         'number-of-multiple-values': numberOfCalculations,
+        'handle_pacevalComputation': functionId,
         'hasError': hasError,
         'results': resultsArray_ar,
         'interval-min-results': trustedMinResultsArray_ar,
@@ -622,6 +622,7 @@ function handleGetComputationInformationXML(req, res)
 
     let return_arr =
     {
+        'handle_pacevalComputation': functionId,
         'information-XML': informationXML_str.toString().replace(/(?:\\[rn]|[\r\n])/g,'<br>').replace(/\0/g, ''),
         'version-details': pacevalVersion_str.toString().replace(/\0/g, ''),
         'version-number': versionNumber
@@ -689,6 +690,7 @@ function handleGetErrorInformation(req, res)
 
     let return_arr =
     {
+        'handle_pacevalComputation': functionId,
         'hasError': hasError,
         'error-type-number': errorTypeNumer,
         'error-position': errorPositionLong,

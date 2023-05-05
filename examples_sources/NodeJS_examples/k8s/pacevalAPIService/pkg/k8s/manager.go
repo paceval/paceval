@@ -2,7 +2,6 @@ package k8s
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"github.com/google/uuid"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
@@ -132,7 +131,7 @@ func (r Manager) CreateComputation(id uuid.UUID, params *data.ParameterSet) (str
 
 // GetEndpoint get endpoint from CRD instance
 func (r Manager) GetEndpoint(id string) (string, error) {
-	return r.getInstanceProperty(id, "status", "endpoint")
+	return r.getAndUpdateInstanceProperty(id, "status", "endpoint")
 }
 
 // GetNumOfVariables get numbers of variables from CRD instance
@@ -140,8 +139,31 @@ func (r Manager) GetNumOfVariables(id string) (string, error) {
 	return r.getInstanceProperty(id, "spec", "NumOfVars")
 }
 
-// getInstanceProperty get a property from CRD instance
+func (r Manager) GetFunctionStr(id string) (string, error) {
+	return r.getInstanceProperty(id, "spec", "functionStr")
+}
+
 func (r Manager) getInstanceProperty(id string, path string, property string) (string, error) {
+	instanceName := fmt.Sprintf("paceval-computation-%s", id)
+	instance, err := r.client.Resource(gvr).Namespace(data.DEFAULTNAMESPACE).Get(context.TODO(), instanceName, metav1.GetOptions{})
+
+	if err != nil {
+		return "", err
+	}
+
+	attr, _, err := unstructured.NestedString(instance.Object, path, property)
+
+	if err != nil {
+		return "", err
+	}
+
+	log.Info().Msgf("property: %s", attr)
+
+	return attr, nil
+}
+
+// getAndUpdateInstanceProperty get a property from CRD instance and update the active timestamp
+func (r Manager) getAndUpdateInstanceProperty(id string, path string, property string) (string, error) {
 	instanceName := fmt.Sprintf("paceval-computation-%s", id)
 	instance, err := r.client.Resource(gvr).Namespace(data.DEFAULTNAMESPACE).Get(context.TODO(), instanceName, metav1.GetOptions{})
 
@@ -156,13 +178,7 @@ func (r Manager) getInstanceProperty(id string, path string, property string) (s
 	}
 
 	if !ready {
-		return "", errors.New("computation is not ready")
-	}
-
-	endpoint, _, err := unstructured.NestedString(instance.Object, path, property)
-
-	if err != nil {
-		return "", err
+		return "", data.ServiceNotReadyError{}
 	}
 
 	err = r.updateLastActiveTimeStamp(instance)
@@ -171,10 +187,7 @@ func (r Manager) getInstanceProperty(id string, path string, property string) (s
 		return "", err
 	}
 
-	log.Info().Msgf("endpoint: %s", endpoint)
-
-	return endpoint, nil
-
+	return r.getInstanceProperty(id, path, property)
 }
 
 // updateLastActiveTimeStamp update the CRD.status.lastActiveTime to current timestamp

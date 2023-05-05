@@ -44,7 +44,7 @@ func (p SingleHostProxyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request
 
 // forwardRequestToComputationObject proxys the single request to a particular computation service
 func (p SingleHostProxyHandler) forwardRequestToComputationObject(w http.ResponseWriter, r *http.Request) {
-	id, err := p.getComputationId(r)
+	id, err := getComputationId(r)
 
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
@@ -61,6 +61,14 @@ func (p SingleHostProxyHandler) forwardRequestToComputationObject(w http.Respons
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("{ \"error\": \"handle_pacevalComputation does not exist\" }"))
 		return
+	} else if errors.Is(err, data.ServiceNotReadyError{}) {
+		// computation is not ready
+		response := NewFunctionNotReadyResponse(id, p.manager)
+		responseJSON, _ := json.Marshal(response)
+
+		w.WriteHeader(http.StatusOK)
+		w.Write(responseJSON)
+
 	} else if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		log.Error().Msgf("Error: %s", err)
@@ -85,7 +93,7 @@ func (p SingleHostProxyHandler) forwardRequestToComputationObject(w http.Respons
 }
 
 // getComputationId fetches the UUID of a computation specified in incoming request
-func (p SingleHostProxyHandler) getComputationId(r *http.Request) (string, error) {
+func getComputationId(r *http.Request) (string, error) {
 	log.Info().Msg("trying to search for computation object id")
 	switch r.Method {
 	case http.MethodGet:

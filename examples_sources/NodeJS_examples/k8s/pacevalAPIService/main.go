@@ -8,12 +8,13 @@ import (
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
 	http2 "github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/http"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
+	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"net/http"
 )
 
 func main() {
-
+	zerolog.SetGlobalLevel(zerolog.DebugLevel)
 	manager := k8s.NewK8sManager()
 	log.Info().Msg("starting service...")
 
@@ -82,11 +83,8 @@ func handleCreatePacevalComputation(manager k8s.Manager) http.HandlerFunc {
 			return
 		}
 
-		resp := data.HandlePacevalComputationObject{
-			HandleCreateComputation: functionId,
-		}
 		w.WriteHeader(http.StatusOK)
-		json.NewEncoder(w).Encode(resp)
+		json.NewEncoder(w).Encode(http2.NewFunctionNotReadyResponse(functionId, manager))
 	}
 }
 
