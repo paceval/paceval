@@ -99,7 +99,8 @@ For the **Xilinx ZC706** please set the jumpers as follows:
 
 ![](media/2146f8bc1c06672fd8c2d5079c053689.png)
 
-**For the Xilinx ZCU104 please set the jumpers as follows:** ![Ein Bild, das Elektronik, Text, Schaltung, Elektronisches Bauteil enthält. Automatisch generierte Beschreibung](media/30e6aed4c49ef87d4233f5ed20558f77.png)
+**For the Xilinx ZCU104 please set the jumpers as follows:  
+**![Ein Bild, das Elektronik, Text, Schaltung, Elektronisches Bauteil enthält. Automatisch generierte Beschreibung](media/30e6aed4c49ef87d4233f5ed20558f77.png)
 
 ## Step 0 - Hardware Design
 
@@ -115,17 +116,12 @@ Then export the hardware including the bitstream in Vivado.
 
 We have put simple hardware designs for the Digilent Arty Z7-20, the Xilinx ZC706 and the Xilinx ZCU104 on our GitHub:
 
-**Digilent Arty Z7-20**
-
-<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20/manual%20setup> File “Vivado 2022.2 project-Digilent Arty Z7-20.zip”
-
-**Xilinx ZC706**
-
-<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZC706/manual%20setup> File “Vivado 2022.2 project-Xilinx ZC706.zip”
-
-**Xilinx ZCU104**
-
-<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104/manual%20setup> File “Vivado 2022.2 project-Xilinx ZCU104.zip”
+-   **Digilent Arty Z7-20  
+    **<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20/manual%20setup> File “Vivado 2022.2 project-Digilent Arty Z7-20.zip”
+-   **Xilinx ZC706  
+    **<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZC706/manual%20setup> File “Vivado 2022.2 project-Xilinx ZC706.zip”
+-   **Xilinx ZCU104  
+    **<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104/manual%20setup> File “Vivado 2022.2 project-Xilinx ZCU104.zip”
 
 ## Step 1 - Create the PetaLinux Project
 
@@ -176,7 +172,7 @@ This opens the user interface dialog for the configuration, where we will not ma
 
 For the Xilinx ZCU104, the MACHINE_NAME must be set to "zcu104_revc" in the user interface dialog:
 
-![Ein Bild, das Text, Schrift, Software, Reihe enthält. Automatisch generierte Beschreibung](media/aafad59146f99a096e2f901dacf1733e.png)
+![Ein Bild, das Text, Schrift, Zahl, Reihe enthält. Automatisch generierte Beschreibung](media/f3ee98321ea2ea524da0a751dcd86c4d.png)
 
 Then we create the PetaLinux for our development board:
 
@@ -214,11 +210,11 @@ After:
 
 Install the SD card into its slot (J9) on the bottom side of the Digilent Arty Z7-20 board:
 
-![Ein Bild, das Text, Elektronik, Schaltung, Elektronisches Bauteil enthält. Automatisch generierte Beschreibung](media/da746a53c9d589a8ea39977d855909ff.png)
+![Ein Bild, das Text, Schaltung, Elektronik, Elektronisches Bauteil enthält. Automatisch generierte Beschreibung](media/8f0b577edb4d90c2476cb5e13f69564c.png)
 
 Plug a micro USB cable to the JTAG/UART USB host port J14 of the Digilent Arty Z7-20 board:
 
-![Ein Bild, das Text, Kabel, Elektronik, Elektrische Leitungen enthält. Automatisch generierte Beschreibung](media/ee28ad5a8908dc9533949677e937465e.png)
+![Ein Bild, das Text, Kabel, Elektronik, Boden enthält. Automatisch generierte Beschreibung](media/e3ec00254ef021b66efa2f6b17dd5c30.png)
 
 Open your serial terminal application of choice (e.g. Tera Term) with a baud rate setting of 115200:
 
