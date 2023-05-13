@@ -72,7 +72,7 @@ We provide images for SD cards for the following developer boards on our GitHub.
 
 # Alternative Manual Setup
 
-The following sections show how to manually set up a paceval engine initially. This may be necessary if the SD card images that we provide do not meet your requirements. This can be the case, for example, if your hardware configuration is different or you need other software packages.
+The following sections show how to manually set up a paceval-engine initially. This may be necessary if the SD card images that we provide do not meet your requirements. This can be the case, for example, if your hardware configuration is different or you need other software packages.
 
 The following **description refers to the Digilent Arty Z7-20**, which is popular with makers, but which can easily be used for any other board with an SD card.
 
@@ -91,15 +91,15 @@ You can use alternatives for these programs:
 
 To boot from the SD card with the Digilent Arty Z7-20, jumper JP4 must be switched to SD as shown in the picture. This tells the ZYNC to look for bootloaders, kernel, filesystem, etc. on the SD card:
 
-![Ein Bild, das Text, Screenshot, Schaltung enthält. Automatisch generierte Beschreibung](media/45c367af04f5434d9b6d0db1e73d812b.png)
+![Ein Bild, das Text, Screenshot, Schrift enthält. Automatisch generierte Beschreibung](media/1deec3044f797f1caa682f3988bf9375.png)
 
 **A notice**
 
 For the **Xilinx ZC706** please set the jumpers as follows:
 
-![SW11 switch and pin positions on the ZCU106 board](media/7372c5127f3a09230a609ef168ea6d60.png)
+![](media/2146f8bc1c06672fd8c2d5079c053689.png)
 
-**For the Xilinx ZCU104 please set the jumpers as follows:**![Ein Bild, das Elektronik, Elektronisches Bauteil, Elektrisches Bauelement, Schaltung enthält. Automatisch generierte Beschreibung](media/5347a6f1a089bdb5b69e98af56fedce7.png)
+**For the Xilinx ZCU104 please set the jumpers as follows:** ![Ein Bild, das Elektronik, Text, Schaltung, Elektronisches Bauteil enthält. Automatisch generierte Beschreibung](media/30e6aed4c49ef87d4233f5ed20558f77.png)
 
 ## Step 0 - Hardware Design
 
@@ -200,7 +200,7 @@ We copy the generated image "petalinux-sdimage.wic" for the SD card from the dir
 
 Then we write the file "petalinux-sdimage.wic" to the SD card with the Win32 Disk Imager. In our case the SD card is in drive E:\\
 
-![3. Run the Prebuilt Image](media/a41f30f2dc0b6c254e6d5457a05536da.jpeg)
+![Ein Bild, das Text, Screenshot, Zahl, Software enthält. Automatisch generierte Beschreibung](media/5cfffd1097f203932571dfc68ecb03fa.png)
 
 Finally, we start the Paragon Partition Manager and increase the Linux root to the full free size of the SD card. This is necessary so that PetaLinux and our applications still have space to write on it. Ignore any warnings about increasing the Linux root.
 
@@ -222,14 +222,14 @@ Plug a micro USB cable to the JTAG/UART USB host port J14 of the Digilent Arty Z
 
 Open your serial terminal application of choice (e.g. Tera Term) with a baud rate setting of 115200:
 
-![Ein Bild, das Text, Screenshot, Display, Software enthält. Automatisch generierte Beschreibung](media/5f2afbefd320376bf82106ae5257b4ac.png)
+![Ein Bild, das Text, Screenshot, Display, Software enthält. Automatisch generierte Beschreibung](media/cd1dbef48d4590d08091812c9ac64ecd.png)
 
 And then you can watch the boot process.   
-Up to here everything should have worked successfully and you can now configure the paceval engine.
+Up to here everything should have worked successfully and you can now configure the paceval-engine.
 
 ## Step 2 - Configure the paceval-engine
 
-Now we configure the development board for paceval. In this way we get an engine that runs on the hardware and call it "paceval engine" accordingly. To do this, we enter the following command, which opens a user interface dialog:
+Now we configure the development board for paceval. In this way we get an engine that runs on the hardware and call it "paceval-engine" accordingly. To do this, we enter the following command, which opens a user interface dialog:
 
 ```
 petalinux-config -c rootfs
@@ -237,7 +237,7 @@ petalinux-config -c rootfs
 
 We set “paceval” as the user name and we also set “paceval” as the password. We also add the user "paceval" as a sudo user.
 
-![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/f6e35979a8816856696bb615b9f2383c.png)
+![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/4a728a8e4387f07ac9b7c7ea336bc4c0.png)
 
 Then we check whether
 
@@ -247,30 +247,30 @@ Then we check whether
 
 are set.
 
-![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/0682d6cf6f41698513105ca7b63192d0.png)
+![Ein Bild, das Text, Screenshot, Display, Software enthält. Automatisch generierte Beschreibung](media/20af418657762c2dfcb038dfee04cf02.png)
 
 For „Filessystem Packages/base“ we set
 
 -   util-linux
 -   util-linux-swaponoff
 
-![](media/6cb4c462a1220d831b04bb8e0030f3ff.png)
+![Ein Bild, das Text, Software, Webseite, Computersymbol enthält. Automatisch generierte Beschreibung](media/60ce4e2560747955380c026f3e6ac02d.png)
 
 For „Filessystem Packages/network“ we set
 
 -   ntp
 
-![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/13c427173c2e99b0c2ad5b52355e8229.png)
+![Ein Bild, das Text, Screenshot, Software, Display enthält. Automatisch generierte Beschreibung](media/9ed7baff43ad33aa8be97c697ed9990c.png)
 
 For „Filessystem Packages/base“ we set
 
 -   busybox
 -   busybox-hwclock
 
-![](media/006aa5d0c9cb2879becf210e8973376d.png)
+![Ein Bild, das Text, Software, Display, Computer enthält. Automatisch generierte Beschreibung](media/ff59178b962b25cffa53aef234d0bced.png)
 
 We now leave the settings via "Exit" and accept the configuration when the dialog appears with "Yes":  
-![Ein Bild, das Text, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung](media/728e148a792cff4075c88133757080c8.png)
+![Ein Bild, das Text, Schrift, Reihe, Rechteck enthält. Automatisch generierte Beschreibung](media/bd44dd2c790b40cd5396e536575a7f35.png)
 
 To check if everything worked, create the PetaLinux for our development board:
 
@@ -325,7 +325,7 @@ CONFIG_ntpdate
 CONFIG_packagegroup-core-buildessential
 ```
 
-![Ein Bild, das Text, Elektronik, Screenshot, Software enthält. Automatisch generierte Beschreibung](media/290b8fbc61209da65dc4df1a5c7e4717.png)
+![Ein Bild, das Text, Screenshot, Software, Display enthält. Automatisch generierte Beschreibung](media/6def3c4ba89867db60f367824aba1b03.png)
 
 With CTRL-X and then SHIFT-Y to save we exit the editor.
 
@@ -336,10 +336,10 @@ petalinux-config -c rootfs
 ```
 
 and we select all our required user packages:  
-![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/c49ddda40832cf99b398ef96e8b729d7.png)
+![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/ec0ee345f30ea8f82e928d45f97f2d14.png)
 
 We now leave the settings again via "Exit" and accept the configuration when the dialog appears with "Yes":  
-![Ein Bild, das Text, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung](media/728e148a792cff4075c88133757080c8.png)
+![Ein Bild, das Text, Schrift, Reihe, Rechteck enthält. Automatisch generierte Beschreibung](media/bd44dd2c790b40cd5396e536575a7f35.png)
 
 Since the following build process requires a lot of disk space, please make sure that at least 50 gigabytes are free. These are not all needed, but to be sure...
 
@@ -365,7 +365,7 @@ petalinux-package --wic
 
 However, we will not write the image to the SD card just yet.
 
-## Step 3 – Final configuration of the paceval engine
+## Step 3 – Final configuration of the paceval-engine
 
 We now finally configure the PetaLinux for the paceval-engine. To do this, we first call this command:
 
@@ -375,13 +375,13 @@ petalinux-config
 
 In the user interface dialog we set the host name and product name to "paceval-engine" under "Firmware Version Configuration". If you have several developer boards, it is advisable to assign different host names.
 
-![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/8c4d719b2df538cc4ab4585000f22c59.png)
+![Ein Bild, das Text, Screenshot, Software, Display enthält. Automatisch generierte Beschreibung](media/3c7c732034e3fffd197c4506d2dd33f5.png)
 
 In addition, we always set random MAC addresses in the "Ethernet settings":  
-![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/9de9fc061a27a8da26883feb93353191.png)
+![Ein Bild, das Text, Screenshot, Display, Software enthält. Automatisch generierte Beschreibung](media/a625ec7e227ff73297c269a9bed68313.png)
 
 We now leave the settings again via "Exit" and accept the configuration when the dialog appears with "Yes":  
-![Ein Bild, das Text, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung](media/728e148a792cff4075c88133757080c8.png)
+![Ein Bild, das Text, Schrift, Reihe, Rechteck enthält. Automatisch generierte Beschreibung](media/bd44dd2c790b40cd5396e536575a7f35.png)
 
 Then we create the app for our bootscripts that we need with
 
@@ -403,10 +403,10 @@ petalinux-config -c rootfs
 
 whether "bootscript" is now available in the apps and activate it if necessary:
 
-![Ein Bild, das Text, Screenshot, Software, Display enthält. Automatisch generierte Beschreibung](media/6b97ef26bcf8ea23185fe13a7aad48b0.png)
+![Ein Bild, das Text, Schrift, Reihe, Zahl enthält. Automatisch generierte Beschreibung](media/e0a0241037b726f4828f3437249bc2ed.png)
 
 We leave the settings again via "Exit" and accept the configuration if the dialog appears with "Yes":  
-![Ein Bild, das Text, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung](media/728e148a792cff4075c88133757080c8.png)
+![Ein Bild, das Text, Schrift, Reihe, Rechteck enthält. Automatisch generierte Beschreibung](media/bd44dd2c790b40cd5396e536575a7f35.png)
 
 Then we edit the "bootscript.bb" file for our start files or initial configuration of the paceval-engine:
 
@@ -472,7 +472,7 @@ do_install() {
 FILES_${PN} += "${sysconfdir}/*"
 ```
 
-![Ein Bild, das Text, Elektronik, Screenshot, Software enthält. Automatisch generierte Beschreibung](media/2881183d6f71f7b10da700d042f69519.png)
+![Ein Bild, das Text, Screenshot, Schrift, Software enthält. Automatisch generierte Beschreibung](media/f98a53b2ece8a185153e1b9d2cc8a331.png)
 
 With CTRL-X and then SHIFT-Y to save we exit the editor.
 
@@ -488,7 +488,7 @@ The previously existing default “bootscript” file will also be overwritten.
 
 The folder should then look like this (the sizes of the files themselves may be different):
 
-![Ein Bild, das Text, Screenshot, Software, Computersymbol enthält. Automatisch generierte Beschreibung](media/a2f2643c90ba5c4fa956d13b5a84abce.png)
+![Ein Bild, das Text, Screenshot, Software, Webseite enthält. Automatisch generierte Beschreibung](media/7622a90e4dc53d738855dc0a08342f71.png)
 
 Then for one last time, build PetaLinux for our development board:
 
@@ -512,7 +512,7 @@ Then, as described above, we write the SD card image "petalinux-image.wic" to th
 
 At the very first start, all required files are unpacked and installations are also downloaded from the Internet. Then you can log in with the user name "paceval" and the password "paceval".
 
-Congratulations! You have now successfully installed the paceval-engine in Harwdare manually.
+Congratulations! You have now successfully installed the paceval-engine in hardware manually.
 
 Copyright © 2015-2023 paceval.® All rights reserved.  
 <mailto:info@paceval.com>
