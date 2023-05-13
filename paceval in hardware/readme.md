@@ -12,7 +12,7 @@ But this vision of a connected world currently comes at a high price. If global 
 
 In order to implement our visions for the future - from autonomous driving to computer-aided drug development to intelligent control of countless renewable energy sources - fundamentally new computing concepts must therefore be found.”
 
-Source: https://www.sprind.org/en/challenges/newcomputing/
+Source: <https://www.sprind.org/en/challenges/newcomputing/>
 
 ## OUR TECHNOLOGY
 
@@ -27,8 +27,8 @@ The chosen interface to communicate with our reference design is Ethernet. Of co
 We are currently using the Zync-7000 platform from AMD Xilinx for our development of **pace***val.* in hardware with these three developer boards:
 
 -   Digilent Arty Z7-20, <https://digilent.com/reference/programmable-logic/arty-z7/reference-manual>
--   Xilinx ZC706, https://www.xilinx.com/publications/prod_mktg/Zynq_ZC706_Prod_Brief.pdf
--   Xilinx ZCU104, https://www.xilinx.com/products/boards-and-kits/zcu104.html
+-   Xilinx ZC706, <https://www.xilinx.com/publications/prod_mktg/Zynq_ZC706_Prod_Brief.pdf>
+-   Xilinx ZCU104, <https://www.xilinx.com/products/boards-and-kits/zcu104.html>
 
 These boards have been selected by us based on customers' specific needs for mathematical efficiency versus total hardware cost (such as bill of materials) and integration. The Digilent Arty Z7-20 makes sense for small and medium-sized mathematical functions, the Xilinx ZC706 for medium-sized and large mathematical functions and the Xilinx ZCU104 for large to very large mathematical functions and data centers (e.g. hyperscalers).
 
@@ -60,15 +60,15 @@ We provide images for SD cards for the following developer boards on our GitHub.
 
 **Digilent Arty Z7-20**
 
-https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20 File “32GB_sdimage_ArtyZ7-20_paceval-engine_petalinux.zip”
+<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20> File “32GB_sdimage_ArtyZ7-20_paceval-engine_petalinux.zip”
 
 **Xilinx ZC706**
 
-https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZC706 File “32GB_sdimage_ZC706_paceval-engine_petalinux.zip”
+<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZC706> File “32GB_sdimage_ZC706_paceval-engine_petalinux.zip”
 
 **Xilinx ZCU104**
 
-https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104 File “64GB_sdimage_ZCU104_paceval-engine_petalinux.zip”
+<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104> File “64GB_sdimage_ZCU104_paceval-engine_petalinux.zip”
 
 # Alternative Manual Setup
 
@@ -99,8 +99,8 @@ For the **Xilinx ZC706** please set the jumpers as follows:
 
 ![](media/2146f8bc1c06672fd8c2d5079c053689.png)
 
-**For the Xilinx ZCU104 please set the jumpers as follows:  
-**![Ein Bild, das Elektronik, Text, Schaltung, Elektronisches Bauteil enthält. Automatisch generierte Beschreibung](media/30e6aed4c49ef87d4233f5ed20558f77.png)
+For the **Xilinx ZCU104** please set the jumpers as follows:  
+![Ein Bild, das Elektronik, Text, Schaltung, Elektronisches Bauteil enthält. Automatisch generierte Beschreibung](media/30e6aed4c49ef87d4233f5ed20558f77.png)
 
 ## Step 0 - Hardware Design
 
@@ -108,7 +108,7 @@ If you already have a hardware design, you can skip this step.
 
 First you have to create a simple hardware design for the Digilent Arty Z7-20 under Vivago. This video is certainly useful for beginners:
 
-https://www.youtube.com/watch?v=i89v9T8Hdi0
+<https://www.youtube.com/watch?v=i89v9T8Hdi0>
 
 Then export the hardware including the bitstream in Vivado.
 
@@ -117,11 +117,11 @@ Then export the hardware including the bitstream in Vivado.
 We have put simple hardware designs for the Digilent Arty Z7-20, the Xilinx ZC706 and the Xilinx ZCU104 on our GitHub:
 
 -   Digilent Arty Z7-20  
-    https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20/manual%20setup File “Vivado 2022.2 project-Digilent Arty Z7-20.zip”
+    <https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20/manual%20setup> File “Vivado 2022.2 project-Digilent Arty Z7-20.zip”
 -   Xilinx ZC706  
-    https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZC706/manual%20setup File “Vivado 2022.2 project-Xilinx ZC706.zip”
+    <https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZC706/manual%20setup> File “Vivado 2022.2 project-Xilinx ZC706.zip”
 -   Xilinx ZCU104  
-    https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104/manual%20setup File “Vivado 2022.2 project-Xilinx ZCU104.zip”
+    <https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104/manual%20setup> File “Vivado 2022.2 project-Xilinx ZCU104.zip”
 
 ## Step 1 - Create the PetaLinux Project
 
@@ -474,7 +474,7 @@ With CTRL-X and then SHIFT-Y to save we exit the editor.
 
 You now need to download the compressed folder “recipes-apps_bootscript_files.zip” from our GitHub:
 
-https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20/manual%20setup File “recipes-apps_bootscript_files.zip”
+<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20/manual%20setup> File “recipes-apps_bootscript_files.zip”
 
 You must then unzip this compressed folder “recipes-apps_bootscript_files.zip” in the following folder:
 
