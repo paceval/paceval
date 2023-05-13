@@ -54,7 +54,25 @@ However, the current values already look very promising (especially when you com
 
 ![Ein Bild, das Text, Screenshot, Display, Zahl enthält. Automatisch generierte Beschreibung](media/3e855ffadc835f6c8e17a4d52b04f60d.png)
 
-# Setup
+# Easy Setup paceval-engine
+
+We provide images for SD cards for the following developer boards on our GitHub. You can use these images immediately to easily set up a paceval-engine in hardware:
+
+**Digilent Arty Z7-20**
+
+<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20> File “32GB_sdimage_ArtyZ7-20_paceval-engine_petalinux.zip”
+
+**Xilinx ZC706**
+
+<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZC706> File “32GB_sdimage_ZC706_paceval-engine_petalinux.zip”
+
+**Xilinx ZCU104**
+
+<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104> File “64GB_sdimage_ZCU104_paceval-engine_petalinux.zip”
+
+# Alternative Manual Setup
+
+The following sections show how to manually set up a paceval engine initially. This may be necessary if the SD card images that we provide do not meet your requirements. This can be the case, for example, if your hardware configuration is different or you need other software packages.
 
 The following **description refers to the Digilent Arty Z7-20**, which is popular with makers, but which can easily be used for any other board with an SD card.
 
@@ -184,7 +202,7 @@ Then we write the file "petalinux-sdimage.wic" to the SD card with the Win32 Dis
 
 ![3. Run the Prebuilt Image](media/a41f30f2dc0b6c254e6d5457a05536da.jpeg)
 
-Then we start the Paragon Partition Manager and increase the Linux root to the full free size of the SD card. This is necessary so that PetaLinux and our applications still have space to write on it. Ignore any warnings about increasing the Linux root.
+Finally, we start the Paragon Partition Manager and increase the Linux root to the full free size of the SD card. This is necessary so that PetaLinux and our applications still have space to write on it. Ignore any warnings about increasing the Linux root.
 
 Before:
 
@@ -209,7 +227,292 @@ Open your serial terminal application of choice (e.g. Tera Term) with a baud rat
 And then you can watch the boot process.   
 Up to here everything should have worked successfully and you can now configure the paceval engine.
 
-To be continued …
+## Step 2 - Configure the paceval-engine
+
+Now we configure the development board for paceval. In this way we get an engine that runs on the hardware and call it "paceval engine" accordingly. To do this, we enter the following command, which opens a user interface dialog:
+
+```
+petalinux-config -c rootfs
+```
+
+We set “paceval” as the user name and we also set “paceval” as the password. We also add the user "paceval" as a sudo user.
+
+![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/f6e35979a8816856696bb615b9f2383c.png)
+
+Then we check whether
+
+-   ssh-server-dropbear
+-   hwcodecs
+-   as Init-manager sysvinit
+
+are set.
+
+![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/0682d6cf6f41698513105ca7b63192d0.png)
+
+For „Filessystem Packages/base“ we set
+
+-   util-linux
+-   util-linux-swaponoff
+
+![](media/6cb4c462a1220d831b04bb8e0030f3ff.png)
+
+For „Filessystem Packages/network“ we set
+
+-   ntp
+
+![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/13c427173c2e99b0c2ad5b52355e8229.png)
+
+For „Filessystem Packages/base“ we set
+
+-   busybox
+-   busybox-hwclock
+
+![](media/006aa5d0c9cb2879becf210e8973376d.png)
+
+We now leave the settings via "Exit" and accept the configuration when the dialog appears with "Yes":  
+![Ein Bild, das Text, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung](media/728e148a792cff4075c88133757080c8.png)
+
+To check if everything worked, create the PetaLinux for our development board:
+
+```
+petalinux-build
+```
+
+Here, too, we create the required files for the SD card as a test
+
+```
+petalinux-package --force --boot --fsbl ./images/linux/zynq_fsbl.elf --fpga ./images/linux/system.bit --u-boot
+```
+
+and then create the image for the SD card:
+
+```
+petalinux-package --wic
+```
+
+But we will not write the image to the SD card yet.
+
+## Step 2 – Add required user packages for the paceval-engine
+
+We open the "user-rootfsconfig" file that defines the required user packages:
+
+```
+sudo nano ~/petalinux/2022.2/projects/xilinx-artyz720-2022.2/project-spec/meta-user/conf/user-rootfsconfig
+```
+
+Then we add the following lines to the "user-rootfsconfig" file for our required user packages:
+
+```
+#Note: Mention Each package in individual line
+#These packages will get added into rootfs menu entry
+
+CONFIG_nodejs
+CONFIG_nodejs-npm
+CONFIG_samba
+CONFIG_nano
+CONFIG_mc
+CONFIG_php
+CONFIG_php-cli
+CONFIG_php-cgi
+CONFIG_lighttpd
+CONFIG_curl
+CONFIG_inetutils-inetd
+CONFIG_unzip
+CONFIG_lighttpd-module-fastcgi
+CONFIG_php-fpm
+CONFIG_ntp
+CONFIG_ntpdate
+CONFIG_packagegroup-core-buildessential
+```
+
+![Ein Bild, das Text, Elektronik, Screenshot, Software enthält. Automatisch generierte Beschreibung](media/290b8fbc61209da65dc4df1a5c7e4717.png)
+
+With CTRL-X and then SHIFT-Y to save we exit the editor.
+
+Now we activate all previously defined user packages. For this we call this command
+
+```
+petalinux-config -c rootfs
+```
+
+and we select all our required user packages:  
+![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/c49ddda40832cf99b398ef96e8b729d7.png)
+
+We now leave the settings again via "Exit" and accept the configuration when the dialog appears with "Yes":  
+![Ein Bild, das Text, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung](media/728e148a792cff4075c88133757080c8.png)
+
+Since the following build process requires a lot of disk space, please make sure that at least 50 gigabytes are free. These are not all needed, but to be sure...
+
+The build process will also take a long time this time. So now it would be time for an extended lunch or dinner over several hours :) - in addition, many "warnings" are displayed during the build process - these can be ignored.
+
+To double check that everything worked, build the PetaLinux for our development board:
+
+```
+petalinux-build
+```
+
+Here, too, we create the required files for the SD card again as a test
+
+```
+petalinux-package --force --boot --fsbl ./images/linux/zynq_fsbl.elf --fpga ./images/linux/system.bit --u-boot
+```
+
+and then create the image for the SD card:
+
+```
+petalinux-package --wic
+```
+
+However, we will not write the image to the SD card just yet.
+
+## Step 3 – Final configuration of the paceval engine
+
+We now finally configure the PetaLinux for the paceval-engine. To do this, we first call this command:
+
+```
+petalinux-config
+```
+
+In the user interface dialog we set the host name and product name to "paceval-engine" under "Firmware Version Configuration". If you have several developer boards, it is advisable to assign different host names.
+
+![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/8c4d719b2df538cc4ab4585000f22c59.png)
+
+In addition, we always set random MAC addresses in the "Ethernet settings":  
+![Ein Bild, das Text, Elektronik, Screenshot, Display enthält. Automatisch generierte Beschreibung](media/9de9fc061a27a8da26883feb93353191.png)
+
+We now leave the settings again via "Exit" and accept the configuration when the dialog appears with "Yes":  
+![Ein Bild, das Text, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung](media/728e148a792cff4075c88133757080c8.png)
+
+Then we create the app for our bootscripts that we need with
+
+```
+petalinux-create -t apps --template install -n bootscript --enable
+```
+
+and
+
+```
+petalinux-build -c bootscript -x do_install -f
+```
+
+We check with
+
+```
+petalinux-config -c rootfs
+```
+
+whether "bootscript" is now available in the apps and activate it if necessary:
+
+![Ein Bild, das Text, Screenshot, Software, Display enthält. Automatisch generierte Beschreibung](media/6b97ef26bcf8ea23185fe13a7aad48b0.png)
+
+We leave the settings again via "Exit" and accept the configuration if the dialog appears with "Yes":  
+![Ein Bild, das Text, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung](media/728e148a792cff4075c88133757080c8.png)
+
+Then we edit the "bootscript.bb" file for our start files or initial configuration of the paceval-engine:
+
+```
+sudo nano ~/petalinux/2022.2/projects/xilinx-artyz720-2022.2/project-spec/meta-user/recipes-apps/bootscript/bootscript.bb
+```
+
+We delete the text from the "bootscript.bb" file and paste the following:
+
+```
+#
+# This file is the bootscript recipe.
+#
+
+SUMMARY = "Simple bootscript application"
+SECTION = "PETALINUX/apps"
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+
+SRC_URI = "file://bootscript \
+           file://bootscript_done \
+           file://smb.conf \
+           file://paceval-service_Linux_arm32_arm64.conf \ 
+           file://paceval-examples_Linux_arm32.conf \ 
+           file://paceval-examples_Linux_arm64.conf \
+           file://lighttpd.conf \ 
+           file://php.ini \ 
+           file://www_content.conf \ 
+	"
+
+S = "${WORKDIR}"
+
+inherit update-rc.d
+
+INITSCRIPT_NAME = "bootscript"
+#INITSCRIPT_PARAMS = "start 99 S ."
+do_install() {
+	     install -d ${D}${sysconfdir}/init.d
+	     install -m 0755 ${S}/bootscript ${D}/${sysconfdir}/init.d
+	     
+	     install -d ${D}${sysconfdir}/paceval-bootscript-files
+	     install -m 0755 ${S}/bootscript_done ${D}/${sysconfdir}/paceval-bootscript-files	 
+	
+	     install -d ${D}${sysconfdir}/paceval-bootscript-files
+	     install -m 0755 ${S}/smb.conf ${D}/${sysconfdir}/paceval-bootscript-files	
+	     
+	     install -d ${D}${sysconfdir}/paceval-bootscript-files
+	     install -m 0755 ${S}/paceval-service_Linux_arm32_arm64.conf ${D}/${sysconfdir}/paceval-bootscript-files
+	     
+	     install -d ${D}${sysconfdir}/paceval-bootscript-files
+	     install -m 0755 ${S}/paceval-examples_Linux_arm32.conf 
+	     install -m 0755 ${S}/paceval-examples_Linux_arm64.conf ${D}/${sysconfdir}/paceval-bootscript-files
+	     
+	     install -d ${D}${sysconfdir}/paceval-bootscript-files
+	     install -m 0755 ${S}/lighttpd.conf ${D}/${sysconfdir}/paceval-bootscript-files
+	     
+	     install -d ${D}${sysconfdir}/paceval-bootscript-files
+	     install -m 0755 ${S}/php.ini ${D}/${sysconfdir}/paceval-bootscript-files	   
+	     
+	     install -d ${D}${sysconfdir}/paceval-bootscript-files
+	     install -m 0755 ${S}/www_content.conf ${D}/${sysconfdir}/paceval-bootscript-files	  
+}
+FILES_${PN} += "${sysconfdir}/*"
+```
+
+![Ein Bild, das Text, Elektronik, Screenshot, Software enthält. Automatisch generierte Beschreibung](media/2881183d6f71f7b10da700d042f69519.png)
+
+With CTRL-X and then SHIFT-Y to save we exit the editor.
+
+You now need to download the compressed folder “recipes-apps_bootscript_files.zip” from our GitHub:
+
+<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20/manual%20setup> File “recipes-apps_bootscript_files.zip”
+
+You must then unzip this compressed folder “recipes-apps_bootscript_files.zip” in the following folder:
+
+\~/petalinux/2022.2/projects/xilinx-artyz720-2022.2/project-spec/meta-user/recipes-apps/bootscript/files/
+
+The previously existing default “bootscript” file will also be overwritten.
+
+The folder should then look like this (the sizes of the files themselves may be different):
+
+![Ein Bild, das Text, Screenshot, Software, Computersymbol enthält. Automatisch generierte Beschreibung](media/a2f2643c90ba5c4fa956d13b5a84abce.png)
+
+Then for one last time, build PetaLinux for our development board:
+
+```
+petalinux-build
+```
+
+We create the required files for the SD card
+
+```
+petalinux-package --force --boot --fsbl ./images/linux/zynq_fsbl.elf --fpga ./images/linux/system.bit --u-boot
+```
+
+and then create the image for the SD card:
+
+```
+petalinux-package --wic
+```
+
+Then, as described above, we write the SD card image "petalinux-image.wic" to the SD card. We enlarge the Linux root partition to the maximum. Connect the LAN cable with Internet to the Ethernet port. Then we boot the development board with the inserted SD card. Finally, you can observe the boot process in your serial terminal application.
+
+At the very first start, all required files are unpacked and installations are also downloaded from the Internet. Then you can log in with the user name "paceval" and the password "paceval".
+
+Congratulations! You have now successfully installed the paceval-engine in Harwdare manually.
 
 Copyright © 2015-2023 paceval.® All rights reserved.  
 <mailto:info@paceval.com>
