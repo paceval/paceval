@@ -288,7 +288,7 @@ petalinux-package --wic
 
 But we will not write the image to the SD card yet.
 
-## Step 2 – Add required user packages for the paceval-engine
+## Step 3 – Add required user packages for the paceval-engine
 
 We open the "user-rootfsconfig" file that defines the required user packages:
 
@@ -361,7 +361,7 @@ petalinux-package --wic
 
 However, we will not write the image to the SD card just yet.
 
-## Step 3 – Final configuration of the paceval-engine
+## Step 4 – Final configuration of the paceval-engine
 
 We now finally configure the PetaLinux for the paceval-engine. To do this, we first call this command:
 
@@ -508,7 +508,7 @@ Then, as described above, we write the SD card image "petalinux-image.wic" to th
 
 At the very first start, all required files are unpacked and installations are also downloaded from the Internet. Then you can log in with the user name "paceval" and the password "paceval".
 
-Congratulations! You have now successfully installed the paceval-engine in hardware manually.
+Congratulations! You have now **successfully installed the paceval-engine in hardware manually**.
 
 Copyright © 2015-2023 paceval.® All rights reserved.  
 <mailto:info@paceval.com>
