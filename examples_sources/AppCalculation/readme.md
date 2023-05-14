@@ -44,7 +44,7 @@ Simply zoom in and out and select left and right, up and down to explore the are
 
 ![Ein Bild, das Text, Screenshot, Diagramm, parallel enthält. Automatisch generierte Beschreibung](media/2b10b25070155cd21501e19772c70a1c.png)
 
-## 4. CHANGE THE SOURCE CODE VERSION DOWN FOR YOUR OWN NEEDS
+## 4. CHANGE THE SOURCE CODE VERSION FOR YOUR OWN NEEDS
 
 If you download the source code version of this demo application, you can easily adapt it to your needs or use the example code in your own application. For example, you could also draw 3D graphics.
 
