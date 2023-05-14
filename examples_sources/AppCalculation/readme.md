@@ -1,4 +1,4 @@
-# Quick start guide for the Paceval "Calculation" demo application
+# Quick start guide for the paceval "Calculation" demo application
 
 paceval application “Calculation” GitHub - https://github.com/paceval/paceval/tree/main/demo%20and%20examples/AppCalculation
 
