@@ -111,7 +111,8 @@ developer version – non-commercial use only
     - Swift<br>
     - Visual Basic<br>
 
-•   <b>[paceval in hardware](https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware) the Mathematical Engine as a Service with an FPGA (e.g. for efficient Artificial Intelligence inference or fast Zero-Knowledge-Proofs)<br></b> 
+•   <b>[paceval in hardware](https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware) the Mathematical Engine as a Service with an FPGA (e.g. for efficient Artificial Intelligence inference or fast Zero-Knowledge-Proofs)<br></b>
+    We have solutions for the Digilent Arty Z7-20, Xilinx ZC706 and Xilinx ZCU104 developer boards on our GitHub. And with our guide, you can easily create your own.
 
 ![10019436_l-e1442994613885 2](http://paceval.com/wp-content/uploads/2022/04/mathematical_model.jpg)<br>
 ![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2022/04/mathematical_engine.jpg)
