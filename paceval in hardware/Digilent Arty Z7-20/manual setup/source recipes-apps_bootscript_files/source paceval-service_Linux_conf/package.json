@@ -1,0 +1,30 @@
+{
+  "name": "paceval-service",
+  "description": "HTTP server for a mathematical engine as a service in the cloud, e.g. to offload battery-operated IoT devices from battery-consuming calculations.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node paceval-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paceval"
+  },
+  "keywords": [
+    "system",
+    "independent",
+    "mathematical",
+    "engine"
+  ],
+  "author": "paceval.",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "ffi-napi": "^4.0.3",
+    "js-gc": "^1.0.1",
+    "performance-now": "^2.1.0",
+    "pm2": "^5.2.0",
+    "ref-array-napi": "^1.2.2",
+    "ref-napi": "^3.0.3"
+  }
+}

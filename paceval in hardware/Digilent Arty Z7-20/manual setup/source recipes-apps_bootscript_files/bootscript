@@ -1,0 +1,85 @@
+#!/bin/sh
+
+# determine if the system is shutting down
+if pgrep "dropbear" >/dev/null
+then
+    echo "paceval-engine booting up"
+else
+    echo "paceval-engine shutting down"
+    # do nothing
+    exit 0  
+fi
+ 
+echo " "
+echo "--- paceval-engine bootscript start ---"
+
+wget -q --spider http://paceval.com
+if [ $? -eq 0 ]; then
+    echo "paceval-engine is connected to the internet for the initial configuration:"
+    echo " Initial configuration started!"
+    echo " "
+
+    echo "handle swapfile"
+    sudo swapoff -a
+    sudo fallocate -l 22G /swapfile
+    sudo chmod 600 /swapfile
+    sudo mkswap /swapfile
+    sudo swapon /swapfile
+
+    echo "handle ntpdate"
+    sudo /usr/sbin/ntpd start
+    sudo /usr/sbin/ntpdate -u pool.ntp.org
+    sudo hwclock --systohc
+
+    echo "handle samba"
+    mv /etc/samba/smb.conf /etc/samba/smb.conf.old
+    cp /etc/paceval-bootscript-files/smb.conf /etc/samba/
+    sudo /usr/sbin/smbd restart 
+
+    mkdir /home/paceval/sambashare
+ 
+    echo "handle paceval examples"
+    case $( uname -m ) in
+    aarch64) unzip /etc/paceval-bootscript-files/paceval-examples_Linux_arm64.conf -d /home/paceval/sambashare;;
+    armv7l)  unzip /etc/paceval-bootscript-files/paceval-examples_Linux_arm32.conf -d /home/paceval/sambashare;;
+	*)       unzip /etc/paceval-bootscript-files/paceval-examples_Linux_arm32.conf -d /home/paceval/sambashare;;
+    esac
+    sudo chmod -R 777 /home/paceval/sambashare
+
+    echo "handle paceval-service"
+    unzip /etc/paceval-bootscript-files/paceval-service_Linux_arm32_arm64.conf -d /home/paceval/sambashare
+    sudo chmod -R 777 /home/paceval/sambashare
+
+    sudo npm install pm2@latest -g
+
+    cd /home/paceval/sambashare/paceval-service_Linux/
+    echo "handle paceval-service install - please wait 2-3 minutes"
+    sudo npm install --production &>/dev/null
+    pm2 start paceval-server.js --max-memory-restart 1800M --node-args="--expose-gc --max-old-space-size=6144" -n paceval-service-staging
+
+    echo "handle web-service"
+    mv /etc/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf.old
+    cp /etc/paceval-bootscript-files/lighttpd.conf /etc/lighttpd/
+
+    mkdir /etc/php/
+    mkdir /etc/php/apache2-php7
+    cp /etc/paceval-bootscript-files/php.ini /etc/php/apache2-php7/
+    mv /www/pages/index.html /www/pages/index.html.old
+    unzip /etc/paceval-bootscript-files/www_content.conf -d /www/pages/
+
+    sudo killall lighttpd 
+    sudo /usr/sbin/lighttpd restart -f /etc/lighttpd/lighttpd.conf
+
+    echo "finalize paceval-engine bootscript"
+    mv /etc/init.d/bootscript /etc/init.d/bootscript.old
+    mv /etc/paceval-bootscript-files/bootscript_done /etc/init.d/bootscript
+
+else
+    echo "paceval-engine is NOT connected to the internet for the initial configuration:"
+    echo " Please, connect the paceval-engine to the internet and restart it."
+    echo " Initial configuration aborted!"
+fi
+
+echo "---  paceval-engine bootscript end  ---"
+echo " "
+

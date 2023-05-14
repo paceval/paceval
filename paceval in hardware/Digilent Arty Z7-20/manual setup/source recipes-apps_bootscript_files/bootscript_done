@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# determine if the system is shutting down
+if pgrep "dropbear" >/dev/null
+then
+    echo "paceval-engine booting up"
+else
+    echo "paceval-engine shutting down"
+    # do nothing
+    exit 0   
+fi
+
+echo " "
+echo "--- paceval-engine bootscript start ---"
+
+wget -q --spider http://paceval.com
+if [ $? -eq 0 ]; then
+    echo "paceval-engine is connected to the internet for the configuration:"
+    echo " Configuration started!"
+    echo " "
+    
+    echo "handle swapfile"
+    sudo swapon /swapfile
+
+    echo "handle ntpdate"
+    sudo /usr/sbin/ntpd start
+    sudo /usr/sbin/ntpdate -u pool.ntp.org
+    sudo hwclock --systohc
+ 
+    echo "handle paceval-service"
+    cd /home/paceval/sambashare/paceval-service_Linux/
+    pm2 start paceval-server.js --max-memory-restart 1800M --node-args="--expose-gc --max-old-space-size=6144" -n paceval-service-staging
+
+else
+    echo "paceval-engine is NOT connected to the internet for the configuration:"
+    echo " Please, connect the paceval-engine to the internet and restart it."
+    echo " Configuration aborted!"
+fi
+
+echo "---  paceval-engine bootscript end  ---"
+echo " "
