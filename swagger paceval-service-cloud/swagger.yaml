@@ -82,7 +82,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"error-position\": \"\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-type-number\": 0,\n  \"handle_pacevalComputation\": \"ae0e6c4e-cc75-11ed-a0a8-be45bc2aafcd\",\n  \"interval-max-result\": \"-44.384908\",\n  \"interval-min-result\": \"-44.384908\",\n  \"result\": \"-44.384908\",\n  \"time-calculate\": \"0.000153s\",\n  \"version-number\": 4.04\n}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"6a468d2f-f33b-11ed-a053-826b04c21b1b\",\n  \"result\": \"-44.384908\",\n  \"interval-min-result\": \"-44.384908\",\n  \"interval-max-result\": \"-44.384908\",\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"time-calculate\": \"0.000138s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -156,7 +156,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"error-position\": \"\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-type-number\": 0,\n  \"handle_pacevalComputation\": \"bb2f2902-cc75-11ed-a0a8-be45bc2aafcd\",\n  \"interval-max-result\": \"-90.372854\",\n  \"interval-min-result\": \"-90.372854\",\n  \"result\": \"-90.372854\",\n  \"time-calculate\": \"0.000153s\",\n  \"version-number\": 4.04\n}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"c0f68823-f33b-11ed-a053-826b04c21b1b\",\n  \"result\": \"-90.372854\",\n  \"interval-min-result\": \"-90.372854\",\n  \"interval-max-result\": \"-90.372854\",\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"time-calculate\": \"0.000165s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -225,7 +225,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\n  \"handle_pacevalComputation\": \"d7205132-06af-4bcc-9f39-a4de13017ed7\"\n}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"4e8667f8-0c6c-4a76-bb49-815090643769\",\n  \"function-10chars\": \"-sin(x*cos(...)\",\n  \"function-length\": 20,\n  \"error-type-number\": 1,\n  \"error-position\": \"\",\n  \"error-type\": \"[PACEVAL_ERR_CREATION_NO_ERROR_BUT_BUSY]\",\n  \"error-message\": \"The referenced computation object is busy while the creation is in progress. Please wait and make another request to GetErrorInformation for the status (PACEVAL_ERR_CREATION_NO_ERROR_BUT_BUSY).\",\n  \"time-calculate\": \"0s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -289,7 +289,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\n  \"handle_pacevalComputation\": \"d7205132-06af-4bcc-9f39-a4de13017ed7\"\n}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"7947e3d0-7df2-476a-bb25-ebab8dc6c7cf\",\n  \"function-10chars\": \"-sin(x*cos(...)\",\n  \"function-length\": 20,\n  \"error-type-number\": 1,\n  \"error-position\": \"\",\n  \"error-type\": \"[PACEVAL_ERR_CREATION_NO_ERROR_BUT_BUSY]\",\n  \"error-message\": \"The referenced computation object is busy while the creation is in progress. Please wait and make another request to GetErrorInformation for the status (PACEVAL_ERR_CREATION_NO_ERROR_BUT_BUSY).\",\n  \"time-calculate\": \"0s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -316,7 +316,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "c3754a48-86e3-481b-8716-fc91b433302d"
+          "example" : "2b87a6ec-8098-4bd7-820c-32eb79cd4d46"
         }, {
           "name" : "values",
           "in" : "query",
@@ -338,7 +338,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\n  \"handle_pacevalComputation\": \"c3754a48-86e3-481b-8716-fc91b433302d\",\n  \"result\": \"-0.651801782452278\",\n  \"interval-min-result\": \"-0.651801782452306\",\n  \"interval-max-result\": \"-0.65180178245225\",\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"time-calculate\": \"0.001541s\",\n  \"version-number\": 4.04\n}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"2b87a6ec-8098-4bd7-820c-32eb79cd4d46\",\n  \"result\": \"-0.651801782452278\",\n  \"interval-min-result\": \"-0.651801782452306\",\n  \"interval-max-result\": \"-0.65180178245225\",\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"time-calculate\": \"0.000526s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -360,7 +360,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "c3754a48-86e3-481b-8716-fc91b433302d"
+          "example" : "2b87a6ec-8098-4bd7-820c-32eb79cd4d46"
         }, {
           "name" : "values",
           "in" : "query",
@@ -382,7 +382,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\n  \"handle_pacevalComputation\": \"c3754a48-86e3-481b-8716-fc91b433302d\",\n  \"result\": \"-0.651801782452278\",\n  \"interval-min-result\": \"-0.651801782452306\",\n  \"interval-max-result\": \"-0.65180178245225\",\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"time-calculate\": \"0.000388s\",\n  \"version-number\": 4.04\n}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"2b87a6ec-8098-4bd7-820c-32eb79cd4d46\",\n  \"result\": \"-0.651801782452278\",\n  \"interval-min-result\": \"-0.651801782452306\",\n  \"interval-max-result\": \"-0.65180178245225\",\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"time-calculate\": \"0.000456s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -409,7 +409,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "d7205132-06af-4bcc-9f39-a4de13017ed7"
+          "example" : "2b87a6ec-8098-4bd7-820c-32eb79cd4d46"
         } ],
         "responses" : {
           "200" : {
@@ -421,7 +421,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\n  \"hasError\": false,\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-operator\": \"(not defined)\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"version-number\": 4.04\n}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"2b87a6ec-8098-4bd7-820c-32eb79cd4d46\",\n  \"hasError\": false,\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-operator\": \"(not defined)\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -443,7 +443,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "d7205132-06af-4bcc-9f39-a4de13017ed7"
+          "example" : "2b87a6ec-8098-4bd7-820c-32eb79cd4d46"
         } ],
         "responses" : {
           "200" : {
@@ -455,7 +455,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\n  \"hasError\": false,\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-operator\": \"(not defined)\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"version-number\": 4.04\n}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"2b87a6ec-8098-4bd7-820c-32eb79cd4d46\",\n  \"hasError\": false,\n  \"error-type-number\": 0,\n  \"error-position\": \"\",\n  \"error-operator\": \"(not defined)\",\n  \"error-type\": \"[NO ERROR]\",\n  \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -482,7 +482,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "ae0e6c4e-cc75-11ed-a0a8-be45bc2aafcd;bb2f2902-cc75-11ed-a0a8-be45bc2aafcd"
+          "example" : "2b87a6ec-8098-4bd7-820c-32eb79cd4d46"
         }, {
           "name" : "numberOfCalculations",
           "in" : "query",
@@ -514,7 +514,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "[\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"ae0e6c4e-cc75-11ed-a0a8-be45bc2aafcd\",\n    \"interval-max-result\": \"-44.384908\",\n    \"interval-min-result\": \"-44.384908\",\n    \"result\": \"-44.384908\",\n    \"time-calculate\": \"0.000342s\",\n    \"version-number\": 4.04\n  },\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"bb2f2902-cc75-11ed-a0a8-be45bc2aafcd\",\n    \"interval-max-result\": \"-90.372854\",\n    \"interval-min-result\": \"-90.372854\",\n    \"result\": \"-90.372854\",\n    \"time-calculate\": \"0.000315s\",\n    \"version-number\": 4.04\n  }\n]"
+                    "value" : "{\n  \"number-of-multiple-values\": 2,\n  \"handle_pacevalComputation\": \"2b87a6ec-8098-4bd7-820c-32eb79cd4d46\",\n  \"hasError\": false,\n  \"results\": [\n    \"-0.651801782452278\",\n    \"-0.807342419579374\"\n  ],\n  \"interval-min-results\": [\n    \"-0.651801782452306\",\n    \"-0.807342419579395\"\n  ],\n  \"interval-max-results\": [\n    \"-0.65180178245225\",\n    \"-0.807342419579352\"\n  ],\n  \"error-type-numbers\": [\n    0,\n    0\n  ],\n  \"time-calculate\": \"0.000675s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -536,7 +536,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "d7205132-06af-4bcc-9f39-a4de13017ed7"
+          "example" : "2b87a6ec-8098-4bd7-820c-32eb79cd4d46"
         }, {
           "name" : "numberOfCalculations",
           "in" : "query",
@@ -568,7 +568,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\n  \"handle_pacevalComputation\": \"d7205132-06af-4bcc-9f39-a4de13017ed7\",\n  \"number-of-multiple-values\": 2,\n  \"hasError\": false,\n  \"results\": [\n    \"-0.651801782452278\",\n    \"-0.807342419579374\"\n  ],\n  \"interval-min-results\": [\n    \"-0.651801782452306\",\n    \"-0.807342419579395\"\n  ],\n  \"interval-max-results\": [\n    \"-0.65180178245225\",\n    \"-0.807342419579352\"\n  ],\n  \"error-type-numbers\": [\n    0,\n    0\n  ],\n  \"time-calculate\": \"0.000527s\",\n  \"version-number\": 4.04\n}"
+                    "value" : "{\n  \"number-of-multiple-values\": 2,\n  \"handle_pacevalComputation\": \"2b87a6ec-8098-4bd7-820c-32eb79cd4d46\",\n  \"hasError\": false,\n  \"results\": [\n    \"-0.651801782452278\",\n    \"-0.807342419579374\"\n  ],\n  \"interval-min-results\": [\n    \"-0.651801782452306\",\n    \"-0.807342419579395\"\n  ],\n  \"interval-max-results\": [\n    \"-0.65180178245225\",\n    \"-0.807342419579352\"\n  ],\n  \"error-type-numbers\": [\n    0,\n    0\n  ],\n  \"time-calculate\": \"0.000964s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -595,7 +595,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "f451dc23-ccaa-11ed-b2e4-0678bc4b7b99;bb2f2902-cc75-11ed-a0a8-be45bc2aafcd"
+          "example" : "6a468d2f-f33b-11ed-a053-826b04c21b1b;fe8231ce-f33b-11ed-a053-826b04c21b1b"
         }, {
           "name" : "numberOfpacevalComputations",
           "in" : "query",
@@ -627,7 +627,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "[\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"f451dc23-ccaa-11ed-b2e4-0678bc4b7b99\",\n    \"interval-max-result\": \"-44.384908\",\n    \"interval-min-result\": \"-44.384908\",\n    \"result\": \"-44.384908\",\n    \"time-calculate\": \"0.000342s\",\n    \"version-number\": 4.04\n  },\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"bb2f2902-cc75-11ed-a0a8-be45bc2aafcd\",\n    \"interval-max-result\": \"-90.372854\",\n    \"interval-min-result\": \"-90.372854\",\n    \"result\": \"-90.372854\",\n    \"time-calculate\": \"0.000315s\",\n    \"version-number\": 4.04\n  }\n]"
+                    "value" : "{\n  \"number-of-multiple-computations\": 2,\n  \"handle_pacevalComputations\": [\n    \"6a468d2f-f33b-11ed-a053-826b04c21b1b\",\n    \"fe8231ce-f33b-11ed-a053-826b04c21b1b\"\n  ],\n  \"hasError\": false,\n  \"results\": [\n    \"-44.384908\",\n    \"-90.372854\"\n  ],\n  \"interval-min-results\": [\n    \"-44.384908\",\n    \"-90.372854\"\n  ],\n  \"interval-max-results\": [\n    \"-44.384908\",\n    \"-90.372854\"\n  ],\n  \"error-type-numbers\": [\n    0,\n    0\n  ],\n  \"time-calculate\": \"0.000731s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -649,7 +649,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "f451dc23-ccaa-11ed-b2e4-0678bc4b7b99;bb2f2902-cc75-11ed-a0a8-be45bc2aafcd"
+          "example" : "6a468d2f-f33b-11ed-a053-826b04c21b1b;fe8231ce-f33b-11ed-a053-826b04c21b1b"
         }, {
           "name" : "numberOfpacevalComputations",
           "in" : "query",
@@ -681,7 +681,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "[\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"f451dc23-ccaa-11ed-b2e4-0678bc4b7b99\",\n    \"interval-max-result\": \"-44.384908\",\n    \"interval-min-result\": \"-44.384908\",\n    \"result\": \"-44.384908\",\n    \"time-calculate\": \"0.000342s\",\n    \"version-number\": 4.04\n  },\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"bb2f2902-cc75-11ed-a0a8-be45bc2aafcd\",\n    \"interval-max-result\": \"-90.372854\",\n    \"interval-min-result\": \"-90.372854\",\n    \"result\": \"-90.372854\",\n    \"time-calculate\": \"0.000315s\",\n    \"version-number\": 4.04\n  }\n]"
+                    "value" : "{\n  \"number-of-multiple-computations\": 2,\n  \"handle_pacevalComputations\": [\n    \"6a468d2f-f33b-11ed-a053-826b04c21b1b\",\n    \"fe8231ce-f33b-11ed-a053-826b04c21b1b\"\n  ],\n  \"hasError\": false,\n  \"results\": [\n    \"-44.384908\",\n    \"-90.372854\"\n  ],\n  \"interval-min-results\": [\n    \"-44.384908\",\n    \"-90.372854\"\n  ],\n  \"interval-max-results\": [\n    \"-44.384908\",\n    \"-90.372854\"\n  ],\n  \"error-type-numbers\": [\n    0,\n    0\n  ],\n  \"time-calculate\": \"0.002270s\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -708,7 +708,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "f451dc23-ccaa-11ed-b2e4-0678bc4b7b99;bb2f2902-cc75-11ed-a0a8-be45bc2aafcd"
+          "example" : "6a468d2f-f33b-11ed-a053-826b04c21b1b;fe8231ce-f33b-11ed-a053-826b04c21b1b"
         }, {
           "name" : "numberOfpacevalComputations",
           "in" : "query",
@@ -720,6 +720,16 @@
           },
           "example" : "2"
         }, {
+          "name" : "numberOfCalculations",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "3"
+        }, {
           "name" : "values",
           "in" : "query",
           "required" : false,
@@ -728,7 +738,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "0.534346;2;45.4536;0.672689;3;53.2752"
+          "example" : "0.61;3.1;53.21;0.62;3.2;53.22;0.63;3.3;53.23"
         } ],
         "responses" : {
           "200" : {
@@ -740,7 +750,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "[\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"f451dc23-ccaa-11ed-b2e4-0678bc4b7b99\",\n    \"interval-max-result\": \"-44.384908\",\n    \"interval-min-result\": \"-44.384908\",\n    \"result\": \"-44.384908\",\n    \"time-calculate\": \"0.000320s\",\n    \"version-number\": 4.04\n  },\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"bb2f2902-cc75-11ed-a0a8-be45bc2aafcd\",\n    \"interval-max-result\": \"-159.152911\",\n    \"interval-min-result\": \"-159.152911\",\n    \"result\": \"-159.152911\",\n    \"time-calculate\": \"0.000372s\",\n    \"version-number\": 4.04\n  }\n]"
+                    "value" : "{\n  \"number-of-multiple-computations\": 2,\n  \"handle_pacevalComputations\": [\n    \"6a468d2f-f33b-11ed-a053-826b04c21b1b\",\n    \"fe8231ce-f33b-11ed-a053-826b04c21b1b\"\n  ],\n  \"hasError\": false,\n  \"results\": [\n    \"-51.319\",\n    \"-51.236\",\n    \"-51.151\",\n    \"-164.341\",\n    \"-169.684\",\n    \"-175.029\"\n  ],\n  \"interval-min-results\": [\n    \"-51.319\",\n    \"-51.236\",\n    \"-51.151\",\n    \"-164.341\",\n    \"-169.684\",\n    \"-175.029\"\n  ],\n  \"interval-max-results\": [\n    \"-51.319\",\n    \"-51.236\",\n    \"-51.151\",\n    \"-164.341\",\n    \"-169.684\",\n    \"-175.029\"\n  ],\n  \"error-type-numbers\": [\n    0,\n    0,\n    0,\n    0,\n    0,\n    0\n  ],\n  \"time-calculate\": \"0.000304s\",\n  \"version-number\": 4.04,\n  \"number-of-multiple-values-per-computation\": 3\n}"
                   }
                 }
               }
@@ -762,7 +772,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "f451dc23-ccaa-11ed-b2e4-0678bc4b7b99;bb2f2902-cc75-11ed-a0a8-be45bc2aafcd"
+          "example" : "6a468d2f-f33b-11ed-a053-826b04c21b1b;fe8231ce-f33b-11ed-a053-826b04c21b1b"
         }, {
           "name" : "numberOfpacevalComputations",
           "in" : "query",
@@ -774,6 +784,16 @@
           },
           "example" : "2"
         }, {
+          "name" : "numberOfCalculations",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "3"
+        }, {
           "name" : "values",
           "in" : "query",
           "required" : false,
@@ -782,7 +802,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "0.534346;2;45.4536;0.672689;3;53.2752"
+          "example" : "0.61;3.1;53.21;0.62;3.2;53.22;0.63;3.3;53.23"
         } ],
         "responses" : {
           "200" : {
@@ -794,7 +814,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "[\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"f451dc23-ccaa-11ed-b2e4-0678bc4b7b99\",\n    \"interval-max-result\": \"-44.384908\",\n    \"interval-min-result\": \"-44.384908\",\n    \"result\": \"-44.384908\",\n    \"time-calculate\": \"0.000320s\",\n    \"version-number\": 4.04\n  },\n  {\n    \"error-message\": \"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\",\n    \"error-position\": \"\",\n    \"error-type\": \"[NO ERROR]\",\n    \"error-type-number\": 0,\n    \"handle_pacevalComputation\": \"bb2f2902-cc75-11ed-a0a8-be45bc2aafcd\",\n    \"interval-max-result\": \"-159.152911\",\n    \"interval-min-result\": \"-159.152911\",\n    \"result\": \"-159.152911\",\n    \"time-calculate\": \"0.000372s\",\n    \"version-number\": 4.04\n  }\n]"
+                    "value" : "{\n  \"number-of-multiple-computations\": 2,\n  \"handle_pacevalComputations\": [\n    \"6a468d2f-f33b-11ed-a053-826b04c21b1b\",\n    \"fe8231ce-f33b-11ed-a053-826b04c21b1b\"\n  ],\n  \"hasError\": false,\n  \"results\": [\n    \"-51.319\",\n    \"-51.236\",\n    \"-51.151\",\n    \"-164.341\",\n    \"-169.684\",\n    \"-175.029\"\n  ],\n  \"interval-min-results\": [\n    \"-51.319\",\n    \"-51.236\",\n    \"-51.151\",\n    \"-164.341\",\n    \"-169.684\",\n    \"-175.029\"\n  ],\n  \"interval-max-results\": [\n    \"-51.319\",\n    \"-51.236\",\n    \"-51.151\",\n    \"-164.341\",\n    \"-169.684\",\n    \"-175.029\"\n  ],\n  \"error-type-numbers\": [\n    0,\n    0,\n    0,\n    0,\n    0,\n    0\n  ],\n  \"time-calculate\": \"0.000518s\",\n  \"version-number\": 4.04,\n  \"number-of-multiple-values-per-computation\": 3\n}"
                   }
                 }
               }
@@ -821,7 +841,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "d7205132-06af-4bcc-9f39-a4de13017ed7"
+          "example" : "6a468d2f-f33b-11ed-a053-826b04c21b1b"
         } ],
         "responses" : {
           "200" : {
@@ -833,7 +853,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>46</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.04}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"6a468d2f-f33b-11ed-a053-826b04c21b1b\",\n  \"information-XML\": \"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>x*y-z</function50Characters><br><br> <functionLength>5</functionLength><br><br> <numberOfVariables>3</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>5</numberOfNodes><br><br> <numberOfCores>2</numberOfCores><br><br> <numberOfThreads>0</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>0</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\n  \"version-details\": \"[libpaceval_linux_staticLIB.a] and [libpaceval_linux_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
@@ -855,7 +875,7 @@
           "schema" : {
             "type" : "string"
           },
-          "example" : "d7205132-06af-4bcc-9f39-a4de13017ed7"
+          "example" : "6a468d2f-f33b-11ed-a053-826b04c21b1b"
         } ],
         "responses" : {
           "200" : {
@@ -867,7 +887,7 @@
                 },
                 "examples" : {
                   "0" : {
-                    "value" : "{\"information-XML\":\"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>-sin(x*cos(x))^(1/y)</function50Characters><br><br> <functionLength>20</functionLength><br><br> <numberOfVariables>2</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>11</numberOfNodes><br><br> <numberOfCores>4</numberOfCores><br><br> <numberOfThreads>1</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>38</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\"version-details\":\"[libpaceval_ARM64_LIB.a] and [libpacevalARM64_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\"version-number\":4.04}"
+                    "value" : "{\n  \"handle_pacevalComputation\": \"6a468d2f-f33b-11ed-a053-826b04c21b1b\",\n  \"information-XML\": \"<?xml version=\\\"1.0\\\" encoding=\\\"ISO-8859-1\\\" standalone=\\\"yes\\\"?><br><br><paceval.-Computation><br><br> <version>4.04</version><br><br> <function50Characters>x*y-z</function50Characters><br><br> <functionLength>5</functionLength><br><br> <numberOfVariables>3</numberOfVariables><br><br> <useInterval>true</useInterval><br><br> <errorMessage>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).</errorMessage><br><br> <errorDetails>[NO ERROR]</errorDetails><br><br> <maxPrecisionType>long double</maxPrecisionType><br><br> <numberOfNodes>5</numberOfNodes><br><br> <numberOfCores>2</numberOfCores><br><br> <numberOfThreads>0</numberOfThreads><br><br> <numberOfThreadsFailure>0</numberOfThreadsFailure><br><br> <cacheTypes>Inner Caching, Outer Caching, Lookahead Caching</cacheTypes><br><br> <cacheHitsACC>0</cacheHitsACC><br><br></paceval.-Computation><br><br>\",\n  \"version-details\": \"[libpaceval_linux_staticLIB.a] and [libpaceval_linux_sharedLIB.so][4.04, 64 bit] developer version (non-commercial use only) - Copyright 2015-2022. - All rights reserved. (paceval.[Registered Trade Mark])\",\n  \"version-number\": 4.04\n}"
                   }
                 }
               }
