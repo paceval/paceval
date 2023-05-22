@@ -118,7 +118,7 @@ func fillCreateComputationBodyParam(r *http.Request) (*data.ParameterSet, error)
 			return nil, err
 		}
 		values := r.PostForm
-		http2.UrlDecode(values)
+		http2.UrlDecode(values, r)
 		if !values.Has(data.FUNCTIONSTR) || !values.Has(data.NUMOFVARIABLES) || !values.Has(data.VARAIBLES) || !values.Has(data.INTERVAL) {
 			return nil, errors.New("missing parameters")
 		}
