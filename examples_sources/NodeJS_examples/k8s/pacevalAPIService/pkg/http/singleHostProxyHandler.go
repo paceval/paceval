@@ -113,7 +113,7 @@ func getComputationId(r *http.Request) (string, error) {
 				return "", err
 			}
 			values := r.PostForm
-			UrlDecode(values)
+			UrlDecode(values, r)
 			if !values.Has(data.HANDLEPACEVALCOMPUTATION) {
 				return "", errors.New("missing parameters")
 			}

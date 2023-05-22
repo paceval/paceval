@@ -56,7 +56,7 @@ func (p MultiHostBaseHandler) getRequestParams(r *http.Request) (*data.MultipleC
 				return nil, err
 			}
 			values := r.PostForm
-			UrlDecode(values)
+			UrlDecode(values, r)
 
 			reqParam, err := p.paramFromRequestValues(values, &p.manager)
 

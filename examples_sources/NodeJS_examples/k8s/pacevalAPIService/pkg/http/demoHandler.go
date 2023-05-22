@@ -136,7 +136,7 @@ func (d DemoHandler) getParameters(r *http.Request) (*data.DemoParameterSet, err
 				return nil, err
 			}
 			values := r.PostForm
-			UrlDecode(values)
+			UrlDecode(values, r)
 			if !values.Has(data.FUNCTIONSTR) || !values.Has(data.NUMOFVARIABLES) || !values.Has(data.VARAIBLES) || !values.Has(data.VALUES) || !values.Has(data.INTERVAL) {
 				return nil, errors.New("missing parameters")
 			}
