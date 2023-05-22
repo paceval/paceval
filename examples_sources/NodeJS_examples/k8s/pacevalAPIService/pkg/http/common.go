@@ -44,11 +44,19 @@ func parseQuery(m url.Values, query string) (err error) {
 	return err
 }
 
+func UrlDecode(v url.Values) {
+	for k := range v {
+		value, _ := url.PathUnescape(v.Get(k))
+		v.Set(k, value)
+	}
+}
+
 func NewFunctionNotReadyResponse(id string, manager k8s.Manager) data.FunctionNotReadyResponse {
 	functionStrTenChar, functionLength := getFunctionStr10Char(manager, id)
 
 	return data.FunctionNotReadyResponse{
 		FunctionId:      id,
+		HasError:        false,
 		FunctionTenChar: functionStrTenChar,
 		FunctionLength:  functionLength,
 		ErrorTypeNum:    1,
