@@ -5,8 +5,10 @@ import (
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/data"
 	"github.com/paceval/paceval/examples_sources/NodeJS_examples/k8s/pacevalAPIService/pkg/k8s"
 	"github.com/rs/zerolog/log"
+	"net/http"
 	"net/url"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -44,11 +46,21 @@ func parseQuery(m url.Values, query string) (err error) {
 	return err
 }
 
+func UrlDecode(v url.Values, r *http.Request) {
+	for k := range v {
+		value, _ := url.PathUnescape(v.Get(k))
+		v.Set(k, value)
+	}
+	r.Header.Set("Content-Length", strconv.Itoa(len(v.Encode())))
+	r.ContentLength = int64(len(v.Encode()))
+}
+
 func NewFunctionNotReadyResponse(id string, manager k8s.Manager) data.FunctionNotReadyResponse {
 	functionStrTenChar, functionLength := getFunctionStr10Char(manager, id)
 
 	return data.FunctionNotReadyResponse{
 		FunctionId:      id,
+		HasError:        false,
 		FunctionTenChar: functionStrTenChar,
 		FunctionLength:  functionLength,
 		ErrorTypeNum:    1,

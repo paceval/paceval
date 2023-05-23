@@ -40,6 +40,7 @@ type DemoParameterSet struct {
 
 type FunctionNotReadyResponse struct {
 	FunctionId      string  `json:"handle_pacevalComputation"`
+	HasError        bool    `json:"hasError"`
 	FunctionTenChar string  `json:"function-10chars"`
 	FunctionLength  int     `json:"function-length"`
 	ErrorTypeNum    int     `json:"error-type-number"`
@@ -87,8 +88,16 @@ type MultipleComputationResult struct {
 }
 
 type MultipleComputationExtResult struct {
-	MultipleComputationResult
-	NumOfCalculation int `json:"number-of-multiple-values-per-computation"`
+	NumOfComputations int      `json:"number-of-multiple-computations"`
+	NumOfCalculation  int      `json:"number-of-multiple-values-per-computation"`
+	FunctionIds       []string `json:"handle_pacevalComputations"`
+	HasError          bool     `json:"hasError"`
+	Results           []string `json:"results"`
+	IntervalMins      []string `json:"interval-min-results"`
+	IntervalMaxs      []string `json:"interval-max-results"`
+	ErrorTypeNums     []int    `json:"error-type-numbers"`
+	TimeCalculate     string   `json:"time-calculate"`
+	Version           float32  `json:"version-number"`
 }
 
 type MultipleComputationRequestParam struct {

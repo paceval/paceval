@@ -99,15 +99,13 @@ func paramFromRequestExtValues(values url.Values, manager *k8s.Manager) (*data.M
 func transformMultipleComputationResultExtResponse(aggregatedResponse [][]byte) interface{} {
 	log.Info().Msgf(" Transforming aggregatedResponse for MultipleComputationResult")
 	transformedResponse := data.MultipleComputationExtResult{
-		MultipleComputationResult: data.MultipleComputationResult{
-			NumOfComputations: len(aggregatedResponse),
-			FunctionIds:       []string{},
-			HasError:          false,
-			Results:           []string{},
-			IntervalMins:      []string{},
-			IntervalMaxs:      []string{},
-			ErrorTypeNums:     []int{},
-		},
+		NumOfComputations: len(aggregatedResponse),
+		FunctionIds:       []string{},
+		HasError:          false,
+		Results:           []string{},
+		IntervalMins:      []string{},
+		IntervalMaxs:      []string{},
+		ErrorTypeNums:     []int{},
 	}
 
 	var maxTimeCalculate float64 = 0
