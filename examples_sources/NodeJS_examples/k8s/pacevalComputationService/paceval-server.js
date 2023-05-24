@@ -198,7 +198,14 @@ async function initCreateComputation()
     let functionLength = 0;
     let interval = (process.env.INTERVAL.toLowerCase() === "true" || process.env.INTERVAL.toLowerCase() === "yes");
     let function_str = process.env.FUNCTION_STR;
-    const variables_str = process.env.VARS.replace(/;/g, ' ');
+    let variables_str
+
+    if(process.env.VARS == "empty") {
+        variables_str = ""
+    }
+    else {
+        variables_str = process.env.VARS.replace(/;/g, ' ');
+    }
 
     if (function_str.startsWith("redis")){
         const addr = function_str
