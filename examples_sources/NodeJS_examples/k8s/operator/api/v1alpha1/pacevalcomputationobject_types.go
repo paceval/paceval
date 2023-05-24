@@ -35,7 +35,7 @@ type PacevalComputationObjectSpec struct {
 	// +kubebuilder:validation:Required
 	FunctionStr string `json:"functionStr,omitempty"`
 
-	// +kubebuilder:default:="empty"
+	// +kubebuilder:validation:Required
 	Vars string `json:"Vars,omitempty"`
 
 	// +kubebuilder:validation:Required

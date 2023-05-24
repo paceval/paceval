@@ -52,7 +52,6 @@ spec:
               NumOfVars:
                 type: string
               Vars:
-                default: empty
                 type: string
               functionId:
                 description: FunctionID uniquely identifies an function
