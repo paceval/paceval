@@ -87,16 +87,10 @@ func (r Manager) CreateComputation(id uuid.UUID, params *data.ParameterSet) (str
 	obj.SetNamespace(data.DEFAULTNAMESPACE)
 	obj.SetFinalizers([]string{finalizerName})
 
-	variables := params.Variables
-
-	if len(variables) == 0 {
-		variables = "empty"
-	}
-
 	spec := make(map[string]interface{})
 	spec["Internal"] = params.Interval
 	spec["NumOfVars"] = params.NumOfVariables
-	spec["Vars"] = variables
+	spec["Vars"] = params.Variables
 	spec["functionId"] = id.String()
 
 	if len(params.FunctionStr) < 10000 {

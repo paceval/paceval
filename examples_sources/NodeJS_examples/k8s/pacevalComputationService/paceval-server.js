@@ -184,7 +184,7 @@ async function initCreateComputation()
 {
     const redisClient = await initRedis()
 
-    if( !process.env.FUNCTION_STR || !process.env.NUM_VARS || !process.env.VARS || !process.env.INTERVAL || !process.env.FUNCTION_ID){
+    if( !process.env.FUNCTION_STR || !process.env.NUM_VARS || !process.env.INTERVAL || !process.env.FUNCTION_ID){
         console.log("Missing environment variables on functions");
         process.exit(1);
     }
@@ -200,7 +200,7 @@ async function initCreateComputation()
     let function_str = process.env.FUNCTION_STR;
     let variables_str
 
-    if(process.env.VARS == "empty") {
+    if(!process.env.VARS) {
         variables_str = ""
     }
     else {
