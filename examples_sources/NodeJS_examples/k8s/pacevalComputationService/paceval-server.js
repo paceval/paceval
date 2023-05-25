@@ -184,7 +184,7 @@ async function initCreateComputation()
 {
     const redisClient = await initRedis()
 
-    if( !process.env.FUNCTION_STR || !process.env.NUM_VARS || !process.env.VARS || !process.env.INTERVAL || !process.env.FUNCTION_ID){
+    if( !process.env.FUNCTION_STR || !process.env.NUM_VARS || !process.env.INTERVAL || !process.env.FUNCTION_ID){
         console.log("Missing environment variables on functions");
         process.exit(1);
     }
@@ -198,7 +198,14 @@ async function initCreateComputation()
     let functionLength = 0;
     let interval = (process.env.INTERVAL.toLowerCase() === "true" || process.env.INTERVAL.toLowerCase() === "yes");
     let function_str = process.env.FUNCTION_STR;
-    const variables_str = process.env.VARS.replace(/;/g, ' ');
+    let variables_str
+
+    if(!process.env.VARS) {
+        variables_str = ""
+    }
+    else {
+        variables_str = process.env.VARS.replace(/;/g, ' ');
+    }
 
     if (function_str.startsWith("redis")){
         const addr = function_str

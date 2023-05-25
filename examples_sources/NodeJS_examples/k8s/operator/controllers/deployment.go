@@ -15,6 +15,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -63,7 +64,7 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 		}
 
 		instance.SetAnnotations(map[string]string{
-			hashAnnotaionName: string(hash),
+			hashAnnotaionName: strconv.FormatUint(hash, 10),
 		})
 
 		if err = r.Update(context.TODO(), instance); err != nil {
@@ -100,7 +101,7 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 		return nil, err
 	}
 
-	if string(hash) != instance.GetAnnotations()[hashAnnotaionName] {
+	if strconv.FormatUint(hash, 10) != instance.GetAnnotations()[hashAnnotaionName] {
 		log.Info().Msgf("update deployment %s", dep.Name)
 		if err = r.Update(context.TODO(), dep); err != nil {
 			log.Error().Msgf("deployment %s updating failed due to: %s", dep.Name, err)
@@ -108,7 +109,7 @@ func (r *PacevalComputationObjectReconciler) ensureDeployment(request reconcile.
 		}
 
 		instance.SetAnnotations(map[string]string{
-			hashAnnotaionName: string(hash),
+			hashAnnotaionName: strconv.FormatUint(hash, 10),
 		})
 
 		if err = r.Update(context.TODO(), instance); err != nil {

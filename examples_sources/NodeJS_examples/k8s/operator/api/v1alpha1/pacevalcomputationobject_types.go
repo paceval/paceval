@@ -29,6 +29,7 @@ type PacevalComputationObjectSpec struct {
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// FunctionID uniquely identifies an function
+	// +kubebuilder:validation:Required:
 	FunctionId string `json:"functionId,omitempty"`
 
 	// +kubebuilder:validation:Required
