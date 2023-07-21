@@ -91,7 +91,7 @@ We can now wrap values in our data type, do arithmetic on them, get the result o
 
 ![Ein Bild, das Text, Schrift, Algebra, Screenshot enthält. Automatisch generierte Beschreibung](media/7122992a8833c385dcca23f70eff4826.png)![](media/94d051e4b90bfd2a629a9bb2787570f6.png)
 
-![Ein Bild, das Screenshot, Reihe, Schrift, parallel enthält. Automatisch generierte Beschreibung](media/d80d1d0242e9c01e331001525533a2e2.png)
+![Ein Bild, das Screenshot, Reihe, Design enthält. Automatisch generierte Beschreibung](media/96ff7e825e31a40e4ec9b1b40f9e0613.png)
 
 At this point we are able to define and train a neural network using Flux.jl as we would in any other DL framework. We take an example input tensor, wrap all of its values in a RecordFormula, send that RecordFormula tensor through the network, and retrieve the formulas from the output.
 
@@ -106,11 +106,11 @@ At this point we are able to define and train a neural network using Flux.jl as 
 7.  Get everything in the format that **pace***val.* expects and save it along with input examples etc.
 8.  Save example inputs and expected outputs in a format that can be used by **pace***val.*
 
-![Ein Bild, das Text, Screenshot enthält. Automatisch generierte Beschreibung](media/35a96784bc9a880ced5f73e547990013.png)
+![Ein Bild, das Text, Screenshot, Diagramm, Taschenrechner enthält. Automatisch generierte Beschreibung](media/adb70fc49b42918e1e7265bfba75ec32.png)
 
 ## IMPROVEMENTS AND SOLUTIONS
 
-This is a very simple example implementation that already works for most neural networks. There are potential improvements to the current dynamic method in generating formulas from neural networks that we have presented here. In this section these potential improvements and already implemented solutions are discussed. We will not discuss specific networks that use branching paths or nonlinear elements in this white paper, but we would like to mention that there are solutions for these networks as well (if they are needed at all).
+This is a very simple example implementation that already works for most neural networks, see “Fashion-small_net.ipynb”, “Skin_Cancer-mid_net.ipynb” and “Faces-large_net.ipynb”. There are potential improvements to the current dynamic method in generating formulas from neural networks that we have presented here. In this section these potential improvements and already implemented solutions are discussed. We will not discuss specific networks that use branching paths or nonlinear elements in this white paper, but we would like to mention that there are solutions for these networks as well (if they are needed at all).
 
 ### EXPONENTIAL GROWTH OF EXPORTED FORMULAS
 
