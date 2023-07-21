@@ -12,24 +12,22 @@ Not all software or hardware systems provide an interface capable of manipulatin
 
 Closed expressions for the outputs of a neural network can also offer several advantages, making them an attractive option for certain applications.
 
--   First, closed expressions with mathematical formulas can enable efficient computation because they directly represent the relationship between the input and output variables without requiring iterative processes. This can be particularly beneficial in scenarios where computational resources are limited or where low-latency predictions are critical, such as in real-time systems or embedded devices.
--   Second, closed expressions with mathematical formulas can simplify the integration of neural networks with other mathematical models or systems, and enable seamless communication and analysis between different components. Such closed expressions can be created by analyzing the architecture of a neural network and manually constructing formulas for that specific architecture.
+-   First, **closed expressions with mathematical formulas can enable efficient computation** because they directly represent the relationship between the input and output variables without requiring iterative processes. This can be particularly beneficial in scenarios where computational resources are limited or where low-latency predictions are critical, such as in real-time systems or embedded devices.
+-   Second, **closed expressions with mathematical formulas can simplify the integration of neural networks** with other mathematical models or systems, and enable seamless communication and analysis between different components. Such closed expressions can be created by analyzing the architecture of a neural network and manually constructing formulas for that specific architecture.
 -   Third, the industry standard expects 99.9% or better accuracy for decisions. Because neural networks are black boxes, there is no transparent methodology to optimize artificial intelligence decisions and avoid degradation. In particular, it should be avoided that decisions that were made successfully in the past are decided differently today. This black box for AI is generally tacitly accepted. However, as Tommi Jaakkola, Professor of Electrical Engineering and Computer Science at MIT, puts it succinctly: “Whether it’s an investment decision, a medical decision, or maybe a military decision, you don’t want to just rely on a ‚black box‘ method”.   
-    Closed text format mathematical functions can provide a way to achieve industry standards (e.g. when patching the mathematical functions).
+    **Closed text format mathematical functions can provide a way to achieve industry standards** (e.g. when patching the mathematical functions).
 -   Fourth, artificial intelligence decisions are often made with limited precision due to GPU technology. As an example, with bfloat16 with only 2-3 significant decimal places of accuracy, even with a simple neural network, a possible error would be suspected at the first decimal place. This can be fatal because it means that objects are potentially evaluated completely incorrectly without background knowledge in a black box.   
-    A mathematical engine that processes neural networks and supports the IEEE standard for floating-point arithmetic such as 32-bit (float), 64-bit (double), 80-bit (extended), or future 128-bit (quadruple) precision is evident much more precise and reliable in the mathematical calculations.
+    A mathematical engine that processes neural networks and supports the IEEE standard for floating-point arithmetic such as 32-bit (float), 64-bit (double), 80-bit (extended), or future 128-bit (quadruple) **precision is evident much more precise and reliable in the mathematical calculations**.
 
 This white paper describes the method to export each neural network into closed expressions with mathematical formulas.
 
-1\. Source: Norbert Wiener, an American mathematician and philosopher known as the founder of cybernetics: „I shall understand by a black box a piece of apparatus [...] which performs a definite operation [...], but for which we do not necessarily have any information of the structure by which this operation is performed.“, s. <https://uberty.org/wp-content/uploads/2015/07/Norbert_Wiener_Cybernetics.pdf>
+**1. Source:** Norbert Wiener, an American mathematician and philosopher known as the founder of cybernetics: „I shall understand by a black box a piece of apparatus [...] which performs a definite operation [...], but for which we do not necessarily have any information of the structure by which this operation is performed.“, s. <https://uberty.org/wp-content/uploads/2015/07/Norbert_Wiener_Cybernetics.pdf>
 
-2\. Source: <https://www.technologyreview.com/s/604087/the-dark-secret-at-the-heart-of-ai/>
+**2. Source:** <https://www.technologyreview.com/s/604087/the-dark-secret-at-the-heart-of-ai/>
 
-3\. Source: A Mathematical Engine is a part of a computer program or a piece of computer hardware, referred to as engine, responsible for efficient processing of mathematical models. A Mathematical Model is an abstraction of a real-life scenario, system or event that uses mathematical language to describe and predict the behavior, dynamics and evolution of said scenario, system or event.
+**3. Source:** A Mathematical Engine is a part of a computer program or a piece of computer hardware, referred to as engine, responsible for efficient processing of mathematical models. A Mathematical Model is an abstraction of a real-life scenario, system or event that uses mathematical language to describe and predict the behavior, dynamics and evolution of said scenario, system or event.
 
-4\. Source: The IEEE Standard for Floating-Point Arithmetic (IEEE 754) is a technical standard for floating-point arithmetic established in 1985 by the Institute of Electrical and Electronics Engineers (IEEE). The standard addressed many problems found in the diverse floating-point implementations that made them difficult to use reliably and portably.
-
-![Ein Bild, das Text, Screenshot, Diagramm, Taschenrechner enthält. Automatisch generierte Beschreibung](media/4bd3f6bd18013ac3f611c4bbed8f0860.png)
+**4. Source:** The IEEE Standard for Floating-Point Arithmetic (IEEE 754) is a technical standard for floating-point arithmetic established in 1985 by the Institute of Electrical and Electronics Engineers (IEEE). The standard addressed many problems found in the diverse floating-point implementations that made them difficult to use reliably and portably.
 
 ### TENSORS
 
@@ -56,6 +54,8 @@ Artificial neural networks are made up of a series of interconnected layers, eac
 Common types of hidden layers include fully connected layers, convolutional layers, pooling layers, and normalization layers. Fully connected layers consist of neurons connected to all neurons in neighboring layers, enabling complex pattern recognition through linear combinations and non-linear activations. Convolutional layers, which play a central role in the development of convolutional neural networks (CNN), use spatially local connections and shared weights to exploit local patterns and reduce the number of parameters, making them particularly suitable for image classification tasks. Pooling layers, often used in conjunction with convolutional layers, shrink the spatial dimensions of the input, reduce computational complexity, and provide a form of translation invariance. Normalization layers, like stack normalization, are used to stabilize and speed up training by normalizing the activations within a layer.
 
 CNNs are typically built by stacking multiple layers of convolution and pooling to form a hierarchical feature extractor, followed by one or more fully connected layers to perform the final classification. This architecture enables CNNs to effectively learn hierarchical features, from low-level patterns, such as edges and textures, to high-level abstractions, such as object parts and whole objects, ultimately resulting in robust and accurate classification performance.
+
+![Ein Bild, das Text, Screenshot enthält. Automatisch generierte Beschreibung](media/2df3633e1cd355a1ecb850b0e073d9b0.png)
 
 ## METHODS
 
@@ -106,7 +106,7 @@ At this point we are able to define and train a neural network using Flux.jl as 
 7.  Get everything in the format that **pace***val.* expects and save it along with input examples etc.
 8.  Save example inputs and expected outputs in a format that can be used by **pace***val.*
 
-![Ein Bild, das Text, Screenshot enthält. Automatisch generierte Beschreibung](media/2df3633e1cd355a1ecb850b0e073d9b0.png)
+![Ein Bild, das Text, Screenshot enthält. Automatisch generierte Beschreibung](media/35a96784bc9a880ced5f73e547990013.png)
 
 ## IMPROVEMENTS AND SOLUTIONS
 
