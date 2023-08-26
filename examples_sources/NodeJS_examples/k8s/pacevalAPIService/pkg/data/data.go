@@ -64,6 +64,11 @@ type ComputationResult struct {
 	Version       float32 `json:"version-number"`
 }
 
+type ComputationResultSpecial struct {
+	*ComputationResult
+	ErrorPosition int `json:"error-position"`
+}
+
 type ComputationResultExt struct {
 	NumOfCalculation int      `json:"number-of-multiple-values"`
 	FunctionId       string   `json:"handle_pacevalComputation"`

@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"strconv"
 	"strings"
 )
 
@@ -74,7 +75,18 @@ func (d DemoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if err = json.Unmarshal(body, &demoResponse); err != nil {
-			return err
+			// https://itskrig.com/kb/unmarshal-json-number-to-string-in-go
+			if errType, ok := err.(*json.UnmarshalTypeError); ok {
+				if errType.Field == "error-position" && errType.Value == "number" {
+					tempResponse := new(data.ComputationResultSpecial)
+					err = json.Unmarshal(body, &tempResponse)
+					if err != nil {
+						return err
+					}
+					tempResponse.ComputationResult.ErrorPosition = strconv.Itoa(tempResponse.ErrorPosition)
+					demoResponse = tempResponse.ComputationResult
+				}
+			}
 		}
 
 		demoResponse.FunctionId = uid.String()
