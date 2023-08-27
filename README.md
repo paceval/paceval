@@ -99,16 +99,18 @@ developer version – non-commercial use only
     - Mathematica<br>
     - MATLAB<br>
     - Mendix<br>
-    - Node.js<br>
+    - Node.js (incl. paceval-service)<br>
     - Octave<br>
     - Pascal<br>
     - Perl<br>
     - PHP (incl. paceval. example)<br>
     - Python<br>
+    - R<br>
     - Ruby<br>
     - Rust<br>
     - Scratch<br>
     - Swift<br>
+    - TypeScript<br>
     - Visual Basic<br>
 
 
