@@ -19,13 +19,16 @@ to compute [all financial, stochastic, engineering, and scientific functions](ht
 
 (see [paceval at SwaggerHub](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04) for more information)
 
-## Release-content – paceval.-Software Development Kit [SDK] 4.04a
+## Release-content – paceval.-Software Development Kit [SDK] 4.24
 developer version – non-commercial use only 
 
 •   <b>["demo and examples"](https://github.com/paceval/paceval/tree/main/demo%20and%20examples) folder<br></b>
     includes the executables<br>
     - paceval. demo application “calculation” (folder "AppCalculation")<br>
     - 6 paceval examples (folder "example1" to "example6")<br>
+    - example6 is our artificial intelligence example with the identification of handwritten numbers<br>
+      with a transparent (human readable) neural network<br>
+      , see paceval_CNN_functionStringforNumber_0.txt 
     for <br>
     - Windows 64bit (including paceval_server)<br>
     - Windows 32bit<br>
@@ -34,15 +37,20 @@ developer version – non-commercial use only
     - Linux 64bit<br>
     - ARM64 64bit<br>
     - ARM32 32bit<br>
-    - Android 64bit<br>
+    + additional libraries for iOS, RISC-V and Android<br>
+    + 6 paceval examples with our paceval-server at http://paceval-service.com<br>
 
 •   <b>["documentation mathematical engine"](https://github.com/paceval/paceval/tree/main/documentation%20mathematical%20engine) folder<br></b>
     includes the presentations<br>
     - "Mathematical Engine - Motivation"<br>
     - "Mathematical Engine - Our solution"<br>
-    - "paceval-service - a Linux server for ARM64 processors (includes Raspberry Pi)"<br>
+    - "paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)"<br>
+    - "paceval and artificial intelligence - Conversion of neural networks to (certifiable) closed-form expressions"<br>
+    - "paceval-service - a Linux server for ARM64 processors (includes Raspberry Pi and APPLE silicon)"<br>
     - "paceval-service - a Linux server for x64 processors (Intel and AMD)"<br>
     - "Vision Paper - Add capabilities of complex and precise mathematical functions to a database"<br>
+    - "paceval-Video 1 - What is a Mathematical Engine and how can it help me in my business"<br>
+    - "paceval-Video 2 - How does our mathematical engine work and what can you gain from it for your own development"<br>
 
 •   <b>["paceval libraries"](https://github.com/paceval/paceval/tree/main/paceval%20libraries) folder<br></b>
     includes the system-independent C++ header and C++ file<br>
@@ -54,6 +62,7 @@ developer version – non-commercial use only
     - Windows 64bit      - "paceval_win64i.dll" (shared library)<br>
     - macOS 64bit        - "libpaceval_macos_staticLIB.a" (static library)<br>
     - macOS 64bit        - "libpaceval_macos_dynamicLIB.dylib" (shared library)<br>
+    - macCatalyst 64bit  - "libpaceval_ios_staticLIB.a" (static library)<br>
     - iOS+simulator      - "libpaceval_ios_staticLIB.a" (static library)<br>
     - Linux 64bit        - "libpaceval_linux_staticLIB.a" (static library)<br>
     - Linux 64bit        - "libpaceval_linux_sharedLIB.so" (shared library)<br>
@@ -61,6 +70,8 @@ developer version – non-commercial use only
     - ARM 64bit          - "libpacevalARM64_sharedLIB.so" (shared library)<br>
     - ARM 32bit          - "libpaceval_ARM32_LIB.a" (static library)<br>
     - ARM 32bit          - "libpacevalARM32_sharedLIB.so" (shared library)<br>
+    - RISC-V 64bit       - "libpaceval_RISC-V_LIB.a" (static library)<br>
+    - RISC-V 64bit       - "libpacevalRISC-V_sharedLIB.so" (shared library)<br>
     - Android 64bit      - "libpaceval_android_staticLIB.a" (static library)<br>
     - Android+simulator  - "libpaceval_android_staticLIB.a" (static library)<br>
     - Android 64bit      - "libpaceval_android_sharedLIB.so" (shared library)<br>
