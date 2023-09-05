@@ -1022,83 +1022,90 @@ void TpacevalFormMainCalculation::ResetVariablesAndValuesGrid()
     {
         StringGridVariables->Rows[iCount]->Strings[0] = "variable" + AnsiString(iCount);
         StringGridVariables->Rows[iCount]->Strings[1] = "0.0";
-    }
+	}
 }
 
 void __fastcall TpacevalFormMainCalculation::FormShow(TObject *Sender)
 {
-    PACEVAL_HANDLE handle_pacevalVersionComputation;
-    char* pacevalVersionString;
-    float pacevalVersionNumber;
-    bool success = false;
-    int errType;
+	PACEVAL_HANDLE handle_pacevalVersionComputation;
+	char* pacevalVersionString;
+	float pacevalVersionNumber;
+	bool success = false;
+	int errType;
+	bool pacevalLibrarySupportsLongDouble = true;
 
-    if (paceval_available == false)
-    {
-        Close();
-        return;
-    }
+	if (paceval_available == false)
+	{
+		Close();
+		return;
+	}
 
-    if (sizeof(long double) == sizeof(double))
-    {
-        char charBuffer500[500];
+	if (paceval_fmathv(NULL, &errType, "paceval_LibrarySupportsLongDouble", 0, "", NULL) != 0)
+		pacevalLibrarySupportsLongDouble = true;
+	else
+		pacevalLibrarySupportsLongDouble = false;
 
-        CreateErrorMessage(charBuffer500, PACEVAL_ERR_COMPUTATION_USER_COMPILER_NOT_SUPPORTS_LONG_DOUBLE, 500);
+	if ((sizeof(long double) == sizeof(double))
+		|| (pacevalLibrarySupportsLongDouble == false))
+	{
+		char charBuffer500[500];
 
-        if (paceval_fmathv(NULL, &errType, "paceval_LibrarySupportsLongDouble", 0, "", NULL) != 0)
-            strcat(charBuffer500, "\n\nYour paceval. library supports long double.");
-        else
-            strcat(charBuffer500, "\n\nYour paceval. library not supports long double.");
+		CreateErrorMessage(charBuffer500, PACEVAL_ERR_COMPUTATION_USER_COMPILER_NOT_SUPPORTS_LONG_DOUBLE, 500);
 
-        strcat(charBuffer500, "\n\nE.g. Embarcadero 64-bit Windows does not support long double.");
-        strcat(charBuffer500, "\nExcerpt from 'Embarcadero 64-bit Windows Data Types Compared to 32-bit Windows Data Types' :");
-        strcat(charBuffer500, "\n'On Intel 64-bit Windows, the Extended type is an alias for a Double, or 8 bytes.'");
+		if (pacevalLibrarySupportsLongDouble == true)
+			strcat(charBuffer500, "\n\nYour paceval. library supports long double.");
+		else
+			strcat(charBuffer500, "\n\nYour paceval. library does not support long double.");
 
-        MessageBox(Handle, charBuffer500, "Information - long double", MB_ICONINFORMATION);
+		strcat(charBuffer500, "\n\nE.g. Embarcadero 64-bit Windows does not support long double.");
+		strcat(charBuffer500, "\nExcerpt from 'Embarcadero 64-bit Windows Data Types Compared to 32-bit Windows Data Types' :");
+		strcat(charBuffer500, "\n'On Intel 64-bit Windows, the Extended type is an alias for a Double, or 8 bytes.'");
 
-        RadioButtonLongDouble->Checked = false;
-        RadioButtonLongDouble->Enabled = false;
-        RadioButtonDouble->Checked = true;
-        RadioButtonFloat->Checked = false;
-    }
+		MessageBox(Handle, charBuffer500, "Information - long double", MB_ICONINFORMATION);
 
-    RichEditIntroduction->Text = "This demo application shows the possibilities of paceval. in terms of its computational excellence. Please check the computing power and speed for a mathematical function. There are no restrictions on the length and number of variables in paceval. Use standard mathematical notations to enter the function.";
-    RichEditIntroduction->Text = RichEditIntroduction->Text
-                                 + "\r\nIn addition, it shows how precise and reliable paceval. is. The trusted interval computation \"TINC\" shows an interval in which the true result is. And finally you can plot the function for a selected variable.";
+		RadioButtonLongDouble->Checked = false;
+		RadioButtonLongDouble->Enabled = false;
+		RadioButtonDouble->Checked = true;
+		RadioButtonFloat->Checked = false;
+	}
 
-    success = paceval_SetCallbackUserFunction(1, "my_function1",
-              paceval_callbackUserFunction1);
-    success = paceval_SetCallbackUserFunction(2, "my_function2",
-              paceval_callbackUserFunction2);
-    success = paceval_SetCallbackUserFunction(3, "my_function3",
-              paceval_callbackUserFunction3);
+	RichEditIntroduction->Text = "This demo application shows the possibilities of paceval. in terms of its computational excellence. Please check the computing power and speed for a mathematical function. There are no restrictions on the length and number of variables in paceval. Use standard mathematical notations to enter the function.";
+	RichEditIntroduction->Text = RichEditIntroduction->Text
+								 + "\r\nIn addition, it shows how precise and reliable paceval. is. The trusted interval computation \"TINC\" shows an interval in which the true result is. And finally you can plot the function for a selected variable.";
 
-    handle_pacevalVersionComputation = NULL;
-    pacevalVersionNumber = paceval_fmathv(&handle_pacevalVersionComputation, &errType,
-                                          "paceval_VersionNumber", 0, "");
+	success = paceval_SetCallbackUserFunction(1, "my_function1",
+			  paceval_callbackUserFunction1);
+	success = paceval_SetCallbackUserFunction(2, "my_function2",
+			  paceval_callbackUserFunction2);
+	success = paceval_SetCallbackUserFunction(3, "my_function3",
+			  paceval_callbackUserFunction3);
 
-    pacevalVersionString = new char[PACEVAL_MAXVER];
-    if (handle_pacevalVersionComputation != NULL)
-    {
+	handle_pacevalVersionComputation = NULL;
+	pacevalVersionNumber = paceval_fmathv(&handle_pacevalVersionComputation, &errType,
+										  "paceval_VersionNumber", 0, "");
+
+	pacevalVersionString = new char[PACEVAL_MAXVER];
+	if (handle_pacevalVersionComputation != NULL)
+	{
         this->Caption = this->Caption + " with paceval. Version "
                         + paceval_mainVersionString + "." + paceval_subVersionString;
 
-        paceval_GetComputationVersionString(handle_pacevalVersionComputation,
-                                            pacevalVersionString);
-        paceval_DeleteComputation(handle_pacevalVersionComputation);
-    }
-    else
-    {
-        strcpy(pacevalVersionString, "[Error in detecting version.]");
-    }
+		paceval_GetComputationVersionString(handle_pacevalVersionComputation,
+											pacevalVersionString);
+		paceval_DeleteComputation(handle_pacevalVersionComputation);
+	}
+	else
+	{
+		strcpy(pacevalVersionString, "[Error in detecting version.]");
+	}
 
-    if (errType != PACEVAL_ERR_NO_ERROR)
-    {
-        char charBuffer500[500];
+	if (errType != PACEVAL_ERR_NO_ERROR)
+	{
+		char charBuffer500[500];
 
-        CreateErrorMessage(charBuffer500, errType, 500);
-        MessageBox(Handle, charBuffer500, "Error during creation", MB_ICONINFORMATION);
-    }
+		CreateErrorMessage(charBuffer500, errType, 500);
+		MessageBox(Handle, charBuffer500, "Error during creation", MB_ICONINFORMATION);
+	}
 
     LabelVersionString->Caption = pacevalVersionString;
     delete[] pacevalVersionString;
@@ -1414,4 +1421,5 @@ const char* CreateErrorMessage(char* messageBuffer, int pacevalErrorType, int le
 
     return messageBuffer;
 }
+
 

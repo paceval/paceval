@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
-// Copyright 2015-2022. Version 2.x, 3.x, 4.x 2015-2022 paceval.[Registered Trade Mark]
+// Copyright 2015-2023. Version 2.x, 3.x, 4.x 2015-2023 paceval.[Registered Trade Mark]
 //                                            All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_main.h
@@ -11,7 +11,7 @@
 #define paceval_mainH
 
 #define paceval_mainVersionString   "4"
-#define paceval_subVersionString    "04" //"01"
+#define paceval_subVersionString    "24"
 
 #define PACEVAL_MAXVER	255
 #define PACEVAL_MAXERR	255
@@ -37,10 +37,14 @@ extern "C" {
 enum paceval_eErrorTypes
 {
     PACEVAL_ERR_NO_ERROR = 0,
+    PACEVAL_ERR_CREATION_NO_ERROR_BUT_BUSY = 1,
+    PACEVAL_ERR_CREATION_OUT_OF_MEMORY = 5,
     PACEVAL_ERR_BEGIN,
     PACEVAL_ERR_FATAL_BEGIN,
-    PACEVAL_ERR_FATAL_INITIALIZE_LIBRARY_NOT_CALLED,
-    PACEVAL_ERR_FATAL_NO_LICENSE,
+    PACEVAL_ERR_FATAL_INITIALIZE_LIBRARY_NOT_CALLED = 10,
+    PACEVAL_ERR_FATAL_NO_LICENSE = 11,
+    PACEVAL_ERR_FATAL_CONNECTING_SERVER = 15,  //This is a placeholder for the error codes when using an external library, e.g. like curl
+    PACEVAL_ERR_FATAL_PARAMETERS_SERVER = 16,  //This is a placeholder for the error codes when using an external library, e.g. like curl
     PACEVAL_ERR_FATAL_END,
     PACEVAL_ERR_ANALYSIS_BEGIN,
     PACEVAL_ERR_ANALYSIS_UNKNOWN_SIGN_OR_FUNCTION = 110,
@@ -298,7 +302,7 @@ bool paceval_ldGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_
                                        long double* results_out,
                                        long double* trustedMinResults_out,
                                        long double* trustedMaxResults_out,
-                                       int* errorType_out);
+                                       int* errorTypes_out);
 
 //---------------------------------------------------------------------------
 //  paceval_dGetComputationResultExt
@@ -310,7 +314,7 @@ bool paceval_dGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_i
                                       double* results_out,
                                       double* trustedMinResults_out,
                                       double* trustedMaxResults_out,
-                                      int* errorType_out);
+                                      int* errorTypes_out);
 
 //---------------------------------------------------------------------------
 //  paceval_fGetComputationResultExt
@@ -322,7 +326,7 @@ bool paceval_fGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_i
                                       float* results_out,
                                       float* trustedMinResults_out,
                                       float* trustedMaxResults_out,
-                                      int* errorType_out);
+                                      int* errorTypes_out);
 
 //---------------------------------------------------------------------------
 //  paceval_ldGetMultipleComputationsResults
@@ -355,6 +359,45 @@ bool paceval_dGetMultipleComputationsResults(PACEVAL_HANDLE handle_pacevalComput
 bool paceval_fGetMultipleComputationsResults(PACEVAL_HANDLE handle_pacevalComputations_in[],
         unsigned long numberOfpacevalComputations_in,
         float values_in[],
+        float* results_out,
+        float* trustedMinResults_out,
+        float* trustedMaxResults_out,
+        int* errorTypes_out);
+
+//---------------------------------------------------------------------------
+//  paceval_ldGetMultipleComputationsResultsExt
+//  see  https://paceval.com/api/#paceval_dGetMultipleComputationsResultsExt
+//---------------------------------------------------------------------------
+bool paceval_ldGetMultipleComputationsResultsExt(PACEVAL_HANDLE handle_pacevalComputations_in[],
+        unsigned long numberOfpacevalComputations_in,
+        long double values_in[],
+        unsigned long numberOfCalculations_in,
+        long double* results_out,
+        long double* trustedMinResults_out,
+        long double* trustedMaxResults_out,
+        int* errorTypes_out);
+
+//---------------------------------------------------------------------------
+//  paceval_dGetMultipleComputationsResultsExt
+//  see  https://paceval.com/api/#paceval_dGetMultipleComputationsResultsExt
+//---------------------------------------------------------------------------
+bool paceval_dGetMultipleComputationsResultsExt(PACEVAL_HANDLE handle_pacevalComputations_in[],
+        unsigned long numberOfpacevalComputations_in,
+        double values_in[],
+        unsigned long numberOfCalculations_in,
+        double* results_out,
+        double* trustedMinResults_out,
+        double* trustedMaxResults_out,
+        int* errorTypes_out);
+
+//---------------------------------------------------------------------------
+//  paceval_fGetMultipleComputationsResultsExt
+//  see  https://paceval.com/api/#paceval_dGetMultipleComputationsResultsExt
+//---------------------------------------------------------------------------
+bool paceval_fGetMultipleComputationsResultsExt(PACEVAL_HANDLE handle_pacevalComputations_in[],
+        unsigned long numberOfpacevalComputations_in,
+        float values_in[],
+        unsigned long numberOfCalculations_in,
         float* results_out,
         float* trustedMinResults_out,
         float* trustedMaxResults_out,

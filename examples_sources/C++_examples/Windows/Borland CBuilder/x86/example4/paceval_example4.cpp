@@ -40,9 +40,15 @@ int main(int argc, char* argv[])
         return 0;
     }
 
+    printf("\n|----------------------------------------------------------------------|");
     printf("\n| This demo application shows the capabilities of paceval. in terms of |");
-    printf("\n| its features for simultaneous calculations. Please open the source   |");
-    printf("\n| code file paceval_example4.cpp.                                      |");
+    printf("\n| its features for simultaneous calculations                           |");
+    printf("\n| (GetMultipleComputationsResults).                                    |");
+    printf("\n| Just open the file 'paceval_example4.cpp' to see its source          |");
+    printf("\n| code (~470 lines).                                                   |");
+    printf("\n|                                                                      |");
+    printf("\n| see https://paceval.com/api/ for the API                             |");
+    printf("\n|----------------------------------------------------------------------|");
 
     printf("\n\nFor these functions:");
     printf("\n f(x,y)=%s", functionStrSin);
@@ -78,7 +84,7 @@ int main(int argc, char* argv[])
     if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL) > 0)
         printf("\n\n[Threads usages: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL));
     if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL) > 0)
-        printf("\n[Cache hits: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL));
+        printf("\n[Cache hits ACC: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL));
     printf("\n[Number of cores: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberOfCores", 0, "", NULL));
     printf("\n[paceval. Version number: %1.3g]", paceval_fmathv(NULL, &errType, "paceval_VersionNumber", 0, "", NULL));
 
@@ -105,14 +111,14 @@ void CalculateAndPresentFloatExample4()
     fvaluesVariablesArray[0] = 2.5f;
     fvaluesVariablesArray[1] = 1.0f;
 
-    //Calculate float results
+    //Calculates float results
     {
         PACEVAL_HANDLE handle_pacevalComputationSin;
         PACEVAL_HANDLE handle_pacevalComputationCos;
         PACEVAL_HANDLE handle_pacevalComputationTan;
         PACEVAL_HANDLE* handle_pacevalComputationsArray = new PACEVAL_HANDLE[3];
 
-        //Create the paceval-Computation objects
+        //Creates the paceval-Computation objects
         handle_pacevalComputationSin = paceval_CreateComputation("sin(x)*y",
                                        2, "x y", false, NULL);
         handle_pacevalComputationCos = paceval_CreateComputation("cos(x)*y",
@@ -140,7 +146,7 @@ void CalculateAndPresentFloatExample4()
         paceval_fConvertFloatToString(charBuffer500, fResults[2]);
         printf("\nfloat: Result is %s (paceval_fGetMultipleComputationsResults)", charBuffer500);
 
-        //Delete the paceval-Computation objects
+        //Deletes the paceval-Computation objects
         paceval_DeleteComputation(handle_pacevalComputationSin);
         paceval_DeleteComputation(handle_pacevalComputationCos);
         paceval_DeleteComputation(handle_pacevalComputationTan);
@@ -148,14 +154,14 @@ void CalculateAndPresentFloatExample4()
         delete[] handle_pacevalComputationsArray;
     }
 
-    //Calculate float interval results
+    //Calculates float interval results
     {
         PACEVAL_HANDLE handle_pacevalComputationSin_i;
         PACEVAL_HANDLE handle_pacevalComputationCos_i;
         PACEVAL_HANDLE handle_pacevalComputationTan_i;
         PACEVAL_HANDLE* handle_pacevalComputationsArray_i = new PACEVAL_HANDLE[3];
 
-        //Create the paceval-Computation objects with trusted intervals (TINC)
+        //Creates the paceval-Computation objects with trusted intervals (TINC)
         handle_pacevalComputationSin_i = paceval_CreateComputation("sin(x)*y",
                                          2, "x y", true, NULL);
         handle_pacevalComputationCos_i = paceval_CreateComputation("cos(x)*y",
@@ -195,7 +201,7 @@ void CalculateAndPresentFloatExample4()
         paceval_fConvertFloatToString(charBuffer500, fmaxResultIntervals[2]);
         printf("\nfloat: Interval max. result is %s (paceval_fGetMultipleComputationsResults)", charBuffer500);
 
-        //Delete the paceval-Computation objects
+        //Deletes the paceval-Computation objects
         paceval_DeleteComputation(handle_pacevalComputationSin_i);
         paceval_DeleteComputation(handle_pacevalComputationCos_i);
         paceval_DeleteComputation(handle_pacevalComputationTan_i);
@@ -224,14 +230,14 @@ void CalculateAndPresentDoubleExample4()
     dvaluesVariablesArray[0] = 2.5;
     dvaluesVariablesArray[1] = 1.0;
 
-    //Calculate double results
+    //Calculates double results
     {
         PACEVAL_HANDLE handle_pacevalComputationSin;
         PACEVAL_HANDLE handle_pacevalComputationCos;
         PACEVAL_HANDLE handle_pacevalComputationTan;
         PACEVAL_HANDLE* handle_pacevalComputationsArray = new PACEVAL_HANDLE[3];
 
-        //Create the paceval-Computation objects
+        //Creates the paceval-Computation objects
         handle_pacevalComputationSin = paceval_CreateComputation("sin(x)*y",
                                        2, "x y", false, NULL);
         handle_pacevalComputationCos = paceval_CreateComputation("cos(x)*y",
@@ -259,7 +265,7 @@ void CalculateAndPresentDoubleExample4()
         paceval_dConvertFloatToString(charBuffer500, dResults[2]);
         printf("\ndouble: Result is %s (paceval_dGetMultipleComputationsResults)", charBuffer500);
 
-        //Delete the paceval-Computation objects
+        //Deletes the paceval-Computation objects
         paceval_DeleteComputation(handle_pacevalComputationSin);
         paceval_DeleteComputation(handle_pacevalComputationCos);
         paceval_DeleteComputation(handle_pacevalComputationTan);
@@ -267,14 +273,14 @@ void CalculateAndPresentDoubleExample4()
         delete[] handle_pacevalComputationsArray;
     }
 
-    //Calculate double interval results
+    //Calculates double interval results
     {
         PACEVAL_HANDLE handle_pacevalComputationSin_i;
         PACEVAL_HANDLE handle_pacevalComputationCos_i;
         PACEVAL_HANDLE handle_pacevalComputationTan_i;
         PACEVAL_HANDLE* handle_pacevalComputationsArray_i = new PACEVAL_HANDLE[3];
 
-        //Create the paceval-Computation objects with trusted intervals (TINC)
+        //Creates the paceval-Computation objects with trusted intervals (TINC)
         handle_pacevalComputationSin_i = paceval_CreateComputation("sin(x)*y",
                                          2, "x y", true, NULL);
         handle_pacevalComputationCos_i = paceval_CreateComputation("cos(x)*y",
@@ -314,7 +320,7 @@ void CalculateAndPresentDoubleExample4()
         paceval_dConvertFloatToString(charBuffer500, dmaxResultIntervals[2]);
         printf("\ndouble: Interval max. result is %s (paceval_dGetMultipleComputationsResults)", charBuffer500);
 
-        //Delete the paceval-Computation objects
+        //Deletes the paceval-Computation objects
         paceval_DeleteComputation(handle_pacevalComputationSin_i);
         paceval_DeleteComputation(handle_pacevalComputationCos_i);
         paceval_DeleteComputation(handle_pacevalComputationTan_i);
@@ -343,14 +349,14 @@ void CalculateAndPresentLongDoubleExample4()
     ldvaluesVariablesArray[0] = 2.5L;
     ldvaluesVariablesArray[1] = 1.0L;
 
-    //Calculate long double results
+    //Calculates long double results
     {
         PACEVAL_HANDLE handle_pacevalComputationSin;
         PACEVAL_HANDLE handle_pacevalComputationCos;
         PACEVAL_HANDLE handle_pacevalComputationTan;
         PACEVAL_HANDLE* handle_pacevalComputationsArray = new PACEVAL_HANDLE[3];
 
-        //Create the paceval-Computation objects
+        //Creates the paceval-Computation objects
         handle_pacevalComputationSin = paceval_CreateComputation("sin(x)*y",
                                        2, "x y", false, NULL);
         handle_pacevalComputationCos = paceval_CreateComputation("cos(x)*y",
@@ -378,7 +384,7 @@ void CalculateAndPresentLongDoubleExample4()
         paceval_ldConvertFloatToString(charBuffer500, ldResults[2]);
         printf("\nlong double: Result is %s (paceval_ldGetMultipleComputationsResults)", charBuffer500);
 
-        //Delete the paceval-Computation objects
+        //Deletes the paceval-Computation objects
         paceval_DeleteComputation(handle_pacevalComputationSin);
         paceval_DeleteComputation(handle_pacevalComputationCos);
         paceval_DeleteComputation(handle_pacevalComputationTan);
@@ -386,14 +392,14 @@ void CalculateAndPresentLongDoubleExample4()
         delete[] handle_pacevalComputationsArray;
     }
 
-    //Calculate long double interval results
+    //Calculates long double interval results
     {
         PACEVAL_HANDLE handle_pacevalComputationSin_i;
         PACEVAL_HANDLE handle_pacevalComputationCos_i;
         PACEVAL_HANDLE handle_pacevalComputationTan_i;
         PACEVAL_HANDLE* handle_pacevalComputationsArray_i = new PACEVAL_HANDLE[3];
 
-        //Create the paceval-Computation objects with trusted intervals (TINC)
+        //Creates the paceval-Computation objects with trusted intervals (TINC)
         handle_pacevalComputationSin_i = paceval_CreateComputation("sin(x)*y",
                                          2, "x y", true, NULL);
         handle_pacevalComputationCos_i = paceval_CreateComputation("cos(x)*y",
@@ -433,7 +439,7 @@ void CalculateAndPresentLongDoubleExample4()
         paceval_ldConvertFloatToString(charBuffer500, ldmaxResultIntervals[2]);
         printf("\nlong double: Interval max. result is %s (paceval_ldGetMultipleComputationsResults)", charBuffer500);
 
-        //Delete the paceval-Computation objects
+        //Deletes the paceval-Computation objects
         paceval_DeleteComputation(handle_pacevalComputationSin_i);
         paceval_DeleteComputation(handle_pacevalComputationCos_i);
         paceval_DeleteComputation(handle_pacevalComputationTan_i);

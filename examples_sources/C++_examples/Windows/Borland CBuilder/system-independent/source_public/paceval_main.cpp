@@ -1,11 +1,11 @@
 //---------------------------------------------------------------------------
 // Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
-// Copyright 2015-2022. Version 2.x, 3.x, 4.x 2015-2022 paceval.[Registered Trade Mark]
+// Copyright 2015-2023. Version 2.x, 3.x, 4.x 2015-2023 paceval.[Registered Trade Mark]
 //                                            All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_main.cpp
 //---------------------------------------------------------------------------
- 
+
 //---------------------------------------------------------------------------
 #if defined(_MSC_VER)
 #endif //#if defined(_MSC_VER)
@@ -407,6 +407,66 @@ extern "C" bool pacevalLibrary_fGetMultipleComputationsResults(PACEVAL_HANDLE ha
 #endif //defined(paceval_use_dll)
 
 #if defined(paceval_use_dll) && (paceval_use_dll == 1)
+bool(*pacevalLibrary_ldGetMultipleComputationsResultsExt)(PACEVAL_HANDLE handle_pacevalComputations_in[],
+        unsigned long numberOfpacevalComputations_in,
+        long double values_in[],
+        unsigned long numberOfCalculations_in,
+        long double* results_out,
+        long double* trustedMinResults_out,
+        long double* trustedMaxResults_out,
+        int* errorTypes_out);
+#else
+extern "C" bool pacevalLibrary_ldGetMultipleComputationsResultsExt(PACEVAL_HANDLE handle_pacevalComputations_in[],
+        unsigned long numberOfpacevalComputations_in,
+        long double values_in[],
+        unsigned long numberOfCalculations_in,
+        long double* results_out,
+        long double* trustedMinResults_out,
+        long double* trustedMaxResults_out,
+        int* errorTypes_out);
+#endif //defined(paceval_use_dll)
+
+#if defined(paceval_use_dll) && (paceval_use_dll == 1)
+bool(*pacevalLibrary_dGetMultipleComputationsResultsExt)(PACEVAL_HANDLE handle_pacevalComputations_in[],
+        unsigned long numberOfpacevalComputations_in,
+        double values_in[],
+        unsigned long numberOfCalculations_in,
+        double* results_out,
+        double* trustedMinResults_out,
+        double* trustedMaxResults_out,
+        int* errorTypes_out);
+#else
+extern "C" bool pacevalLibrary_dGetMultipleComputationsResultsExt(PACEVAL_HANDLE handle_pacevalComputations_in[],
+        unsigned long numberOfpacevalComputations_in,
+        double values_in[],
+        unsigned long numberOfCalculations_in,
+        double* results_out,
+        double* trustedMinResults_out,
+        double* trustedMaxResults_out,
+        int* errorTypes_out);
+#endif //defined(paceval_use_dll)
+
+#if defined(paceval_use_dll) && (paceval_use_dll == 1)
+bool(*pacevalLibrary_fGetMultipleComputationsResultsExt)(PACEVAL_HANDLE handle_pacevalComputations_in[],
+        unsigned long numberOfpacevalComputations_in,
+        float values_in[],
+        unsigned long numberOfCalculations_in,
+        float* results_out,
+        float* trustedMinResults_out,
+        float* trustedMaxResults_out,
+        int* errorTypes_out);
+#else
+extern "C" bool pacevalLibrary_fGetMultipleComputationsResultsExt(PACEVAL_HANDLE handle_pacevalComputations_in[],
+        unsigned long numberOfpacevalComputations_in,
+        float values_in[],
+        unsigned long numberOfCalculations_in,
+        float* results_out,
+        float* trustedMinResults_out,
+        float* trustedMaxResults_out,
+        int* errorTypes_out);
+#endif //defined(paceval_use_dll)
+
+#if defined(paceval_use_dll) && (paceval_use_dll == 1)
 bool (*pacevalLibrary_GetIsError)(PACEVAL_HANDLE handle_pacevalComputation_in);
 #else
 extern "C" bool pacevalLibrary_GetIsError(PACEVAL_HANDLE handle_pacevalComputation_in);
@@ -578,10 +638,10 @@ extern "C" bool paceval_InitializeLibrary(const char* initString_in)
                 GetProcAddress(handle_paceval_DLL, "pacevalLibrary_CreateMultipleComputations");
 
     pacevalLibrary_ExistComputation = (bool(*)(void *))
-                                       GetProcAddress(handle_paceval_DLL, "_pacevalLibrary_ExistComputation");
+                                      GetProcAddress(handle_paceval_DLL, "_pacevalLibrary_ExistComputation");
     if (pacevalLibrary_ExistComputation == NULL)
         pacevalLibrary_ExistComputation = (bool(*)(void *))
-                                           GetProcAddress(handle_paceval_DLL, "pacevalLibrary_ExistComputation");
+                                          GetProcAddress(handle_paceval_DLL, "pacevalLibrary_ExistComputation");
 
     pacevalLibrary_DeleteComputation = (bool(*)(void *))
                                        GetProcAddress(handle_paceval_DLL, "_pacevalLibrary_DeleteComputation");
@@ -701,6 +761,22 @@ extern "C" bool paceval_InitializeLibrary(const char* initString_in)
         pacevalLibrary_fGetMultipleComputationsResults = (bool(*)(void * *, unsigned long, float *, float *, float *, float *, int *))
                 GetProcAddress(handle_paceval_DLL, "pacevalLibrary_fGetMultipleComputationsResults");
 
+    pacevalLibrary_ldGetMultipleComputationsResultsExt = (bool(*)(void * *, unsigned long, long double *, unsigned long, long double *, long double *, long double *, int *))
+            GetProcAddress(handle_paceval_DLL, "_pacevalLibrary_ldGetMultipleComputationsResultsExt");
+    if (pacevalLibrary_ldGetMultipleComputationsResultsExt == NULL)
+        pacevalLibrary_ldGetMultipleComputationsResultsExt = (bool(*)(void * *, unsigned long, long double *, unsigned long, long double *, long double *, long double *, int *))
+                GetProcAddress(handle_paceval_DLL, "pacevalLibrary_ldGetMultipleComputationsResultsExt");
+    pacevalLibrary_dGetMultipleComputationsResultsExt = (bool(*)(void * *, unsigned long, double *, unsigned long, double *, double *, double *, int *))
+            GetProcAddress(handle_paceval_DLL, "_pacevalLibrary_dGetMultipleComputationsResultsExt");
+    if (pacevalLibrary_dGetMultipleComputationsResultsExt == NULL)
+        pacevalLibrary_dGetMultipleComputationsResultsExt = (bool(*)(void * *, unsigned long, double *, unsigned long, double *, double *, double *, int *))
+                GetProcAddress(handle_paceval_DLL, "pacevalLibrary_dGetMultipleComputationsResultsExt");
+    pacevalLibrary_fGetMultipleComputationsResultsExt = (bool(*)(void * *, unsigned long, float *, unsigned long, float *, float *, float *, int *))
+            GetProcAddress(handle_paceval_DLL, "_pacevalLibrary_fGetMultipleComputationsResultsExt");
+    if (pacevalLibrary_fGetMultipleComputationsResultsExt == NULL)
+        pacevalLibrary_fGetMultipleComputationsResultsExt = (bool(*)(void * *, unsigned long, float *, unsigned long, float *, float *, float *, int *))
+                GetProcAddress(handle_paceval_DLL, "pacevalLibrary_fGetMultipleComputationsResultsExt");
+
     pacevalLibrary_GetIsError = (bool(*)(void *))
                                 GetProcAddress(handle_paceval_DLL, "_pacevalLibrary_GetIsError");
     if (pacevalLibrary_GetIsError == NULL)
@@ -778,6 +854,9 @@ extern "C" bool paceval_InitializeLibrary(const char* initString_in)
             || (pacevalLibrary_ldGetMultipleComputationsResults == NULL)
             || (pacevalLibrary_dGetMultipleComputationsResults == NULL)
             || (pacevalLibrary_fGetMultipleComputationsResults == NULL)
+            || (pacevalLibrary_ldGetMultipleComputationsResultsExt == NULL)
+            || (pacevalLibrary_dGetMultipleComputationsResultsExt == NULL)
+            || (pacevalLibrary_fGetMultipleComputationsResultsExt == NULL)
             || (pacevalLibrary_GetIsError == NULL)
             || (pacevalLibrary_GetErrorInformation == NULL)
             || (pacevalLibrary_CreateErrorInformationText == NULL)
@@ -1108,7 +1187,7 @@ extern "C" float paceval_fmathvi(PACEVAL_HANDLE* handle_pacevalComputation_in,
 
     for (unsigned long iCount = 0; iCount < numberOfVariables_in; iCount++)
     {
-		valuesVariablesArray[iCount] = va_arg(argumentList, double); //e.g. GNUC:'float' is promoted to 'double' when passed through '...'
+        valuesVariablesArray[iCount] = va_arg(argumentList, double); //e.g. GNUC:'float' is promoted to 'double' when passed through '...'
     }
     va_end(argumentList);
 
@@ -1233,6 +1312,51 @@ extern "C" bool paceval_fGetMultipleComputationsResults(PACEVAL_HANDLE handle_pa
 {
     return pacevalLibrary_fGetMultipleComputationsResults(handle_pacevalComputations_in,
             numberOfpacevalComputations_in, values_in,
+            results_out, trustedMinResults_out, trustedMaxResults_out,
+            errorTypes_out);
+}
+
+extern "C" bool paceval_ldGetMultipleComputationsResultsExt(PACEVAL_HANDLE handle_pacevalComputations_in[],
+        unsigned long numberOfpacevalComputations_in,
+        long double values_in[],
+        unsigned long numberOfCalculations_in,
+        long double* results_out,
+        long double* trustedMinResults_out,
+        long double* trustedMaxResults_out,
+        int* errorTypes_out)
+{
+    return pacevalLibrary_ldGetMultipleComputationsResultsExt(handle_pacevalComputations_in,
+            numberOfpacevalComputations_in, values_in, numberOfCalculations_in,
+            results_out, trustedMinResults_out, trustedMaxResults_out,
+            errorTypes_out);
+}
+
+extern "C" bool paceval_dGetMultipleComputationsResultsExt(PACEVAL_HANDLE handle_pacevalComputations_in[],
+        unsigned long numberOfpacevalComputations_in,
+        double values_in[],
+        unsigned long numberOfCalculations_in,
+        double* results_out,
+        double* trustedMinResults_out,
+        double* trustedMaxResults_out,
+        int* errorTypes_out)
+{
+    return pacevalLibrary_dGetMultipleComputationsResultsExt(handle_pacevalComputations_in,
+            numberOfpacevalComputations_in, values_in, numberOfCalculations_in,
+            results_out, trustedMinResults_out, trustedMaxResults_out,
+            errorTypes_out);
+}
+
+extern "C" bool paceval_fGetMultipleComputationsResultsExt(PACEVAL_HANDLE handle_pacevalComputations_in[],
+        unsigned long numberOfpacevalComputations_in,
+        float values_in[],
+        unsigned long numberOfCalculations_in,
+        float* results_out,
+        float* trustedMinResults_out,
+        float* trustedMaxResults_out,
+        int* errorTypes_out)
+{
+    return pacevalLibrary_fGetMultipleComputationsResultsExt(handle_pacevalComputations_in,
+            numberOfpacevalComputations_in, values_in, numberOfCalculations_in,
             results_out, trustedMinResults_out, trustedMaxResults_out,
             errorTypes_out);
 }

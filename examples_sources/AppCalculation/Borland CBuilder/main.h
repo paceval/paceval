@@ -53,7 +53,6 @@ __published:
     TPanel *Panel7;
     TPanel *Panel8;
     TScrollBox *ScrollBox1;
-    TImage *Image5;
     TImage *Image4;
     TImage *Image3;
     TSaveDialog *SaveDialogPaceval;
@@ -97,7 +96,6 @@ __published:
     TLabel *Label11;
     TLabel *LabelStatus;
     TCheckBox *CBEnableLogging;
-    TImage *Image1;
     TBitBtn *ButtonCreateCalculate;
     TLabel *LabelHintThreadsUsages;
     TLabel *LabelThreadsUsages;
@@ -120,6 +118,7 @@ __published:
     TLabel *Label14;
     TLabel *LabelHintCacheHits;
     TLabel *LabelCacheHits;
+        TImage *Image1;
     void __fastcall ButtonExitClick(TObject *Sender);
     void __fastcall RichEditFunctionChange(TObject *Sender);
     void __fastcall FormCreate(TObject *Sender);

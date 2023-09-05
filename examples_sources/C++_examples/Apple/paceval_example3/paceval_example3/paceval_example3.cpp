@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
-// Copyright 2015-2022. Version 2.x, 3.x, 4.x 2015-2022 paceval.[Registered Trade Mark]
+// Copyright 2015-2023. Version 2.x, 3.x, 4.x 2015-2023 paceval.[Registered Trade Mark]
 //                                            All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_example3.cpp
@@ -44,12 +44,17 @@ int main(int argc, char* argv[])
         return 0;
     }
 
+    printf("\n|----------------------------------------------------------------------|");
     printf("\n| This demo application shows the capabilities of paceval. in terms of |");
-    printf("\n| its features for multiple calculations. Please open the source code  |");
-    printf("\n| file paceval_example3.cpp.                                           |");
+    printf("\n| its features for multiple calculations (CreateComputation and        |");
+    printf("\n| GetComputationResultExt, GetErrorInformation).                       |");
+    printf("\n| Just open the file 'paceval_example3.cpp' to see its source          |");
+    printf("\n| code (~400 lines).                                                   |");
+    printf("\n|----------------------------------------------------------------------|");
 
     printf("\n\nFor this function: f(x,y)=%s", functionStr);
-    printf("\neach time 100.000 calculations for the area x in [-10;10[.");
+    printf("\n100.000 calculations each are performed for the area x in [-10;10[.");
+    printf("\nAll 100,000 results are then summed up to get the numerical integral.");
 
     printf("\n\n --- float ---------");
     CalculateAndPresentFloatExample3();
@@ -79,7 +84,7 @@ int main(int argc, char* argv[])
     if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL) > 0)
         printf("\n\n[Threads usages: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL));
     if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL) > 0)
-        printf("\n[Cache hits: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL));
+        printf("\n[Cache hits ACC: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL));
     printf("\n[Number of cores: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberOfCores", 0, "", NULL));
     printf("\n[paceval. Version number: %1.3g]", paceval_fmathv(NULL, &errType, "paceval_VersionNumber", 0, "", NULL));
 
@@ -111,7 +116,7 @@ void CalculateAndPresentFloatExample3()
     PACEVAL_HANDLE handle_pacevalComputation;
     PACEVAL_HANDLE handle_pacevalComputationi;
 
-    //Create 2*100.000 values for the variables x and y
+    //Creates 2*100.000 values for the variables x and y
     float fareaDiff = (10.0f-(-10.0f)) / 100000.0f;
 
     for (unsigned long iCount = 0; iCount < 100000; iCount++)
@@ -120,15 +125,15 @@ void CalculateAndPresentFloatExample3()
         fvaluesVariablesArrayExt[iCount * 2 + 1] = 0.5f;
     }
 
-    //Create the paceval-Computation object
+    //Creates the paceval-Computation object
     handle_pacevalComputation = paceval_CreateComputation(functionStr,
                                 2, "x y", false, NULL);
 
-    //Create the paceval-Computation object with trusted intervals (TINC)
+    //Creates the paceval-Computation object with trusted intervals (TINC)
     handle_pacevalComputationi = paceval_CreateComputation(functionStr,
                                  2, "x y", true, NULL);
 
-    //Calculate float results
+    //Calculates float results
     startTime = GetOSCurrentTime();
     hasError = paceval_fGetComputationResultExt(handle_pacevalComputation,
                &fvaluesVariablesArrayExt[0], 100000, &fResults[0],
@@ -144,7 +149,7 @@ void CalculateAndPresentFloatExample3()
     paceval_fConvertFloatToString(charBuffer500, fFastIntegral);
     printf("\n\nfloat: Fast integral is %s (paceval_fGetComputationResultExt)\n[Time needed: %d ms]", charBuffer500, endTime - startTime);
 
-    //Calculate float interval results
+    //Calculates float interval results
     startTime = GetOSCurrentTime();
     hasError = paceval_fGetComputationResultExt(handle_pacevalComputationi,
                &fvaluesVariablesArrayExt[0], 100000, &fResults[0],
@@ -170,7 +175,7 @@ void CalculateAndPresentFloatExample3()
     paceval_fConvertFloatToString(charBuffer500, fmaxFastIntegralInterval);
     printf("\nfloat: Interval max. fast integral is %s (paceval_fGetComputationResultExt with TINC)\n[Time needed: %d ms]", charBuffer500, endTime - startTime);
 
-    //Delete the paceval-Computation objects
+    //Deletes the paceval-Computation objects
     paceval_DeleteComputation(handle_pacevalComputation);
     paceval_DeleteComputation(handle_pacevalComputationi);
 
@@ -200,7 +205,7 @@ void CalculateAndPresentDoubleExample3()
     PACEVAL_HANDLE handle_pacevalComputation;
     PACEVAL_HANDLE handle_pacevalComputationi;
 
-    //Create 2*100.000 values for the variables x and y
+    //Creates 2*100.000 values for the variables x and y
     double dareaDiff = (10.0-(-10.0)) / 100000.0;
 
     for (unsigned long iCount = 0; iCount < 100000; iCount++)
@@ -209,15 +214,15 @@ void CalculateAndPresentDoubleExample3()
         dvaluesVariablesArrayExt[iCount * 2 + 1] = 0.5;
     }
 
-    //Create the paceval-Computation object
+    //Creates the paceval-Computation object
     handle_pacevalComputation = paceval_CreateComputation(functionStr,
                                 2, "x y", false, NULL);
 
-    //Create the paceval-Computation object with trusted intervals (TINC)
+    //Creates the paceval-Computation object with trusted intervals (TINC)
     handle_pacevalComputationi = paceval_CreateComputation(functionStr,
                                  2, "x y", true, NULL);
 
-    //Calculate double results
+    //Calculates double results
     startTime = GetOSCurrentTime();
     hasError = paceval_dGetComputationResultExt(handle_pacevalComputation,
                &dvaluesVariablesArrayExt[0], 100000, &dResults[0],
@@ -259,7 +264,7 @@ void CalculateAndPresentDoubleExample3()
     paceval_dConvertFloatToString(charBuffer500, dmaxFastIntegralInterval);
     printf("\ndouble: Interval max. fast integral is %s (paceval_dGetComputationResultExt with TINC)\n[Time needed: %d ms]", charBuffer500, endTime - startTime);
 
-    //Delete the paceval-Computation objects
+    //Deletes the paceval-Computation objects
     paceval_DeleteComputation(handle_pacevalComputation);
     paceval_DeleteComputation(handle_pacevalComputationi);
 
@@ -289,7 +294,7 @@ void CalculateAndPresentLongDoubleExample3()
     PACEVAL_HANDLE handle_pacevalComputation;
     PACEVAL_HANDLE handle_pacevalComputationi;
 
-    //Create 2*100.000 values for the variables x and y
+    //Creates 2*100.000 values for the variables x and y
     long double ldareaDiff = (10.0L-(-10.0L)) / 100000.0L;
 
     for (unsigned long iCount = 0; iCount < 100000; iCount++)
@@ -298,11 +303,11 @@ void CalculateAndPresentLongDoubleExample3()
         ldvaluesVariablesArrayExt[iCount * 2 + 1] = 0.5L;
     }
 
-    //Create the paceval-Computation object
+    //Creates the paceval-Computation object
     handle_pacevalComputation = paceval_CreateComputation(functionStr,
                                 2, "x y", false, NULL);
 
-    //Create the paceval-Computation object with trusted intervals (TINC)
+    //Creates the paceval-Computation object with trusted intervals (TINC)
     handle_pacevalComputationi = paceval_CreateComputation(functionStr,
                                  2, "x y", true, NULL);
 
@@ -322,7 +327,7 @@ void CalculateAndPresentLongDoubleExample3()
     paceval_ldConvertFloatToString(charBuffer500, ldFastIntegral);
     printf("\n\nlong double: Fast integral is %s (paceval_ldGetComputationResultExt)\n[Time needed: %d ms]", charBuffer500, endTime - startTime);
 
-    //Calculate long double interval results
+    //Calculates long double interval results
     startTime = GetOSCurrentTime();
     hasError = paceval_ldGetComputationResultExt(handle_pacevalComputationi,
                &ldvaluesVariablesArrayExt[0], 100000, &ldResults[0],
@@ -348,7 +353,7 @@ void CalculateAndPresentLongDoubleExample3()
     paceval_ldConvertFloatToString(charBuffer500, ldmaxFastIntegralInterval);
     printf("\nlong double: Interval max. fast integral is %s (paceval_ldGetComputationResultExt with TINC)\n[Time needed: %d ms]", charBuffer500, endTime - startTime);
 
-    //Delete the paceval-Computation objects
+    //Deletes the paceval-Computation objects
     paceval_DeleteComputation(handle_pacevalComputation);
     paceval_DeleteComputation(handle_pacevalComputationi);
 

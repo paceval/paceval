@@ -4,7 +4,7 @@
         <ProjectType>CppVCLApplication</ProjectType>
         <MainSource>AppCalculationDemoProject.cpp</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <FrameworkType>VCL</FrameworkType>
         <ProjectVersion>18.8</ProjectVersion>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -102,10 +102,10 @@
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
-        <ILINK_StackCommitSize>0x01000000</ILINK_StackCommitSize>
-        <ILINK_StackReserveSize>0x01000000</ILINK_StackReserveSize>
-        <ILINK_HeapReserveSize>0x01000000</ILINK_HeapReserveSize>
-        <ILINK_HeapCommitSize>0x01000000</ILINK_HeapCommitSize>
+        <ILINK_StackCommitSize>0x10000000</ILINK_StackCommitSize>
+        <ILINK_StackReserveSize>0x10000000</ILINK_StackReserveSize>
+        <ILINK_HeapReserveSize>0x10000000</ILINK_HeapReserveSize>
+        <ILINK_HeapCommitSize>0x10000000</ILINK_HeapCommitSize>
         <TASM_Defines>USEPACKAGES;$(TASM_Defines)</TASM_Defines>
         <Icon_MainIcon>AppCalculationDemoProject_Icon.ico</Icon_MainIcon>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>

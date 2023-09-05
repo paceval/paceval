@@ -935,7 +935,7 @@ object FormGraphForVariable: TFormGraphForVariable
       Width = 128
       Height = 13
       Anchors = [akLeft, akTop, akBottom]
-      Caption = 'Copyright 2022. paceval'#174
+      Caption = 'Copyright 2023. paceval'#174
       Color = clWindow
       Font.Charset = ARABIC_CHARSET
       Font.Color = 12874052

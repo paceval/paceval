@@ -89,7 +89,6 @@ __published:
     TLabel *LabelLinkSpecification;
     TLabel *Label9;
     TImage *Image6;
-    TImage *Image7;
     TLabel *LabelHintCreationTime;
     TLabel *LabelCreationTime;
     TLabel *LabelLengthFunction;

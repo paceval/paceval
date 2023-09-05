@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
-// Copyright 2015-2022. Version 2.x, 3.x, 4.x 2015-2022 paceval.[Registered Trade Mark]
+// Copyright 2015-2023. Version 2.x, 3.x, 4.x 2015-2023 paceval.[Registered Trade Mark]
 //                                            All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_example2.cpp
@@ -42,6 +42,7 @@ int main(int argc, char* argv[])
     long double ldcompResult;
     long double ldminResultInterval;
     long double ldmaxResultInterval;
+    char versionString[500];
 
     char functionStr[] = "-sin(x*cos(x))^(1/y) + my_function1(y) \"<-user function\"";
 
@@ -54,9 +55,14 @@ int main(int argc, char* argv[])
     bool success = paceval_SetCallbackUserFunction(1, "my_function1",
                    paceval_callbackUserFunction1);
 
+    printf("\n|----------------------------------------------------------------------|");
     printf("\n| This demo application shows the capabilities of paceval. in terms of |");
-    printf("\n| its convenience functions. Please open the source code file          |");
-    printf("\n| paceval_example2.cpp.                                                |");
+    printf("\n| its convenience functions (mathv and mathvi).                        |");
+    printf("\n| Just open the file 'paceval_example2.cpp' to see its source          |");
+    printf("\n| code (~230 lines).                                                   |");
+    printf("\n|                                                                      |");
+    printf("\n| see https://paceval.com/api/ for the API                             |");
+    printf("\n|----------------------------------------------------------------------|");
 
     printf("\n\nFor this function: f(x,y)=%s", functionStr);
     printf("\nand the given variables x=0.5, y=2.0 we get these results.");
@@ -157,7 +163,7 @@ int main(int argc, char* argv[])
     if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL) > 0)
         printf("\n\n[Threads usages: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL));
     if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL) > 0)
-        printf("\n[Cache hits: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL));
+        printf("\n[Cache hits ACC: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL));
     printf("\n[Number of cores: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberOfCores", 0, "", NULL));
     printf("\n[paceval. Version number: %1.3g]", paceval_fmathv(NULL, &errType, "paceval_VersionNumber", 0, "", NULL));
 

@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------
-// Copyright 2022. Version 4.x 2022 paceval.[Registered Trade Mark]
+// Copyright 2023. Version 4.x 2023 paceval.[Registered Trade Mark]
 //                             All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_example5_server.cpp
@@ -33,7 +33,7 @@ bool WriteServerString(char* writeStr);
 
 int main(int argc, char* argv[])
 {
-	char pacevalServerStr[500];
+    char pacevalServerStr[500];
     int errType;
 
     if (paceval_InitializeLibrary(NULL) != true)
@@ -42,47 +42,47 @@ int main(int argc, char* argv[])
         return 0;
     }
 
-	printf("\n|----------------------------------------------------------------------|");
+    printf("\n|----------------------------------------------------------------------|");
     printf("\n| This demo application shows the capabilities of paceval. in terms of |");
     printf("\n| its features for text based calculations (ReadParametersFromXML).    |");
-	printf("\n| Just open the file 'paceval_example5_server.cpp' to see its source   |");
-	printf("\n| code (~250 lines).                                                   |");
-	printf("\n|                                                                      |");
-	printf("\n| see https://paceval.com/api/ for the API                             |");
-	printf("\n|----------------------------------------------------------------------|");
+    printf("\n| Just open the file 'paceval_example5_server.cpp' to see its source   |");
+    printf("\n| code (~250 lines).                                                   |");
+    printf("\n|                                                                      |");
+    printf("\n| see https://paceval.com/api/ for the API                             |");
+    printf("\n|----------------------------------------------------------------------|");
 
     printf("\n\nA calculation in a paceval.-specific XML format will be saved");
     printf("\nto a file, read from a file and created.");
 
-	ReadServerString(pacevalServerStr);
+    ReadServerString(pacevalServerStr);
 
-	printf("\n\nProvide the name or address/port of your paceval. server, ");
-	printf("\ne.g. http://localhost:8080 or http://paceval-service.com ");
-	if (strlen(pacevalServerStr) > 0)
-	{
-		printf("\n(Just press Y and RETURN if you want to use \nthis server - ");
-		printf(pacevalServerStr);
-		printf(")");
-	}
-	printf(": ");
-	scanf("%500s", pacevalServerStr);
+    printf("\n\nProvide the name or address/port of your paceval. server, ");
+    printf("\ne.g. http://localhost:8080 or http://paceval-service.com ");
+    if (strlen(pacevalServerStr) > 0)
+    {
+        printf("\n(Just press Y and RETURN if you want to use \nthis server - ");
+        printf(pacevalServerStr);
+        printf(")");
+    }
+    printf(": ");
+    scanf("%500s", pacevalServerStr);
 
-	if ((strcmp(pacevalServerStr, "y") == 0) || (strcmp(pacevalServerStr, "Y") == 0))
-		ReadServerString(pacevalServerStr);
-	else
-		WriteServerString(pacevalServerStr);
+    if ((strcmp(pacevalServerStr, "y") == 0) || (strcmp(pacevalServerStr, "Y") == 0))
+        ReadServerString(pacevalServerStr);
+    else
+        WriteServerString(pacevalServerStr);
 
     //Writes a calculation to the file paceval_XML_example5.txt
     {
         unsigned long lengthXML;
         char* writeXMLStr;
 
-        lengthXML = paceval_CreateXMLFromParameters(NULL, "-sin(x*cos(x))^(1/y)", 2, "x y",
+        lengthXML = paceval_CreateXMLFromParameters(NULL, "-sin(x*cos(x))^(1/y)", 2, "x;y",
                     "0.5 2", true);
         if (lengthXML > 0)
         {
             writeXMLStr = new char[lengthXML];
-            lengthXML = paceval_CreateXMLFromParameters(writeXMLStr, "-sin(x*cos(x))^(1/y)", 2, "x y",
+            lengthXML = paceval_CreateXMLFromParameters(writeXMLStr, "-sin(x*cos(x))^(1/y)", 2, "x;y",
                         "0.5 2", true);
 
             std::ofstream fileToWrite;
@@ -137,60 +137,66 @@ int main(int argc, char* argv[])
                                                       &useInterval) == 0)
                     {
                         //Creates the paceval-Computation object with the function from the file data
-						char handle_pacevalComputationAsString[50];
-						bool success;
-						int errType;
-						char errTypeString[PACEVAL_MAXERR];
-						char errMessageString[PACEVAL_MAXERR];
+                        char handle_pacevalComputationAsString[50];
+                        bool success;
+                        int errType;
+                        char errTypeString[PACEVAL_MAXERR];
+                        char errMessageString[PACEVAL_MAXERR];
 
-						success = paceval_Remote_CreateComputation(pacevalServerStr, handle_pacevalComputationAsString,
-							functionStr, numberOfVariables, variablesStr,
-							useInterval, &errType, &errTypeString[0], &errMessageString[0]);
+                        printf("\n\nYour paceval-server will now be contacted to create the remote");
+                        printf("\npaceval-computation object. Depending on the latency and");
+                        printf("\nperformance of your server or cluster, this may take a few seconds.");
+                        printf("\nPlease wait ...");
 
-                        printf("\n\nCalculation XML read from file paceval_XML_example5.txt with %d characters",
-                               functionStringLength);
+                        success = paceval_Remote_CreateComputation(pacevalServerStr, handle_pacevalComputationAsString,
+                                  functionStr, numberOfVariables, variablesStr,
+                                  useInterval, &errType, &errTypeString[0], &errMessageString[0]);
 
-						if (success == false)
-						{
-							printf(errMessageString);
-							printf(errTypeString);
-						}
-						else
-						{
-							unsigned long lengthInfoXML;
+                        if (success == false)
+                        {
+                            printf(errMessageString);
+                            printf(errTypeString);
+                        }
+                        else
+                        {
+                            unsigned long lengthInfoXML;
 
-							printf("\nand remote computation object creation successful for function");
-							printf("\n'%s' and variables '%s'.", functionStr, variablesStr);
+                            printf(" done!\n");
 
-							success = paceval_Remote_GetComputationInformationXML(pacevalServerStr, handle_pacevalComputationAsString, 
-								&lengthInfoXML, NULL);
-							if (lengthInfoXML > 0)
-							{
-								char* writeInfoXMLStr;
+                            printf("\n\nCalculation XML read from file paceval_XML_example5.txt with %d characters",
+                                   functionStringLength);
+                            printf("\nand remote computation object creation successful for function");
+                            printf("\n'%s' and variables '%s'.", functionStr, variablesStr);
 
-								writeInfoXMLStr = new char[lengthInfoXML];
-								success = paceval_Remote_GetComputationInformationXML(pacevalServerStr, handle_pacevalComputationAsString,
-									&lengthInfoXML, writeInfoXMLStr);
+                            success = paceval_Remote_GetComputationInformationXML(pacevalServerStr, handle_pacevalComputationAsString,
+                                      &lengthInfoXML, NULL);
+                            if (lengthInfoXML > 0)
+                            {
+                                char* writeInfoXMLStr;
 
-								std::ofstream fileToWrite;
-								fileToWrite.open("paceval_InformationXML_example5.txt");
-								if (fileToWrite.is_open())
-								{
-									fileToWrite << writeInfoXMLStr;
-									fileToWrite.close();
+                                writeInfoXMLStr = new char[lengthInfoXML];
+                                success = paceval_Remote_GetComputationInformationXML(pacevalServerStr, handle_pacevalComputationAsString,
+                                          &lengthInfoXML, writeInfoXMLStr);
 
-									printf("\n\nInformation XML of remote computation saved to file 'paceval_InformationXML_example5.txt'");
-								}
-								else
-								{
-									printf("\n\nError in writing to paceval_InformationXML_example5.txt - please, set the correct access rights in your operating system to the directory");
-								}
-								delete[] writeInfoXMLStr;
-							}
+                                std::ofstream fileToWrite;
+                                fileToWrite.open("paceval_InformationXML_example5.txt");
+                                if (fileToWrite.is_open())
+                                {
+                                    fileToWrite << writeInfoXMLStr;
+                                    fileToWrite.close();
 
-							//now we can do more cool stuff with the object
-							//...
-						}
+                                    printf("\n\nInformation XML of remote computation saved to file 'paceval_InformationXML_example5.txt'");
+                                }
+                                else
+                                {
+                                    printf("\n\nError in writing to paceval_InformationXML_example5.txt - please, set the correct access rights in your operating system to the directory");
+                                }
+                                delete[] writeInfoXMLStr;
+                            }
+
+                            //now we can do more cool stuff with the object
+                            //...
+                        }
                     }
 
                     delete[] functionStr;
@@ -201,13 +207,13 @@ int main(int argc, char* argv[])
         }
     }
 
-	printf("\n\n[Threads usages remote ACC: %d]", (int)paceval_dRemote_mathv(pacevalServerStr, NULL, "paceval_NumberThreadUsages", 0, "", false, &errType, NULL, NULL, NULL));
-	printf("\n[Cache hits remote ACC: %d]", (int)paceval_dRemote_mathv(pacevalServerStr, NULL, "paceval_NumberCacheHitsACC", 0, "", false, &errType, NULL, NULL, NULL));
-	printf("\n[Number of cores local: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberOfCores", 0, "", NULL));
-	printf("\n[Number of cores remote: %d]", (int)paceval_dRemote_mathv(pacevalServerStr, NULL, "paceval_NumberOfCores", 0, "", false, &errType, NULL, NULL, NULL));
+    printf("\n\n[Threads usages remote ACC: %d]", (int)paceval_dRemote_mathv(pacevalServerStr, NULL, "paceval_NumberThreadUsages", 0, "", false, &errType, NULL, NULL, NULL));
+    printf("\n[Cache hits remote ACC: %d]", (int)paceval_dRemote_mathv(pacevalServerStr, NULL, "paceval_NumberCacheHitsACC", 0, "", false, &errType, NULL, NULL, NULL));
+    printf("\n[Number of cores local: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberOfCores", 0, "", NULL));
+    printf("\n[Number of cores remote: %d]", (int)paceval_dRemote_mathv(pacevalServerStr, NULL, "paceval_NumberOfCores", 0, "", false, &errType, NULL, NULL, NULL));
 
-	printf("\n[paceval. Version number local: %1.3g]", paceval_fmathv(NULL, &errType, "paceval_VersionNumber", 0, "", NULL));
-	printf("\n[paceval. Version number remote: %1.3g]", paceval_dRemote_mathv(pacevalServerStr, NULL, "paceval_VersionNumber", 0, "", false, &errType, NULL, NULL, NULL));
+    printf("\n[paceval. Version number local: %1.3g]", paceval_fmathv(NULL, &errType, "paceval_VersionNumber", 0, "", NULL));
+    printf("\n[paceval. Version number remote: %1.3g]", paceval_dRemote_mathv(pacevalServerStr, NULL, "paceval_VersionNumber", 0, "", false, &errType, NULL, NULL, NULL));
 
     paceval_FreeLibrary();
 
@@ -220,34 +226,34 @@ int main(int argc, char* argv[])
 
 bool ReadServerString(char* readStr)
 {
-	strcpy(readStr, "");
+    strcpy(readStr, "");
 
-	std::ifstream fileToRead("paceval_server.ini", std::ios::in | std::ios::binary | std::ios::ate);
-	if (fileToRead.is_open())
-	{
-		std::streampos sizeFile;
+    std::ifstream fileToRead("paceval_server.ini", std::ios::in | std::ios::binary | std::ios::ate);
+    if (fileToRead.is_open())
+    {
+        std::streampos sizeFile;
 
-		sizeFile = fileToRead.tellg();
-		fileToRead.seekg(0, std::ios_base::beg);
-		fileToRead.read(readStr, sizeFile);
-		readStr[sizeFile] = '\0';
-		fileToRead.close();
+        sizeFile = fileToRead.tellg();
+        fileToRead.seekg(0, std::ios_base::beg);
+        fileToRead.read(readStr, sizeFile);
+        readStr[sizeFile] = '\0';
+        fileToRead.close();
 
-		return true;
-	}
-	return false;
+        return true;
+    }
+    return false;
 }
 
 bool WriteServerString(char* writeStr)
 {
-	std::ofstream fileToWrite;
-	fileToWrite.open("paceval_server.ini");
-	if (fileToWrite.is_open())
-	{
-		fileToWrite << writeStr;
-		fileToWrite.close();
+    std::ofstream fileToWrite;
+    fileToWrite.open("paceval_server.ini");
+    if (fileToWrite.is_open())
+    {
+        fileToWrite << writeStr;
+        fileToWrite.close();
 
-		return true;
-	}
-	return false;
+        return true;
+    }
+    return false;
 }
