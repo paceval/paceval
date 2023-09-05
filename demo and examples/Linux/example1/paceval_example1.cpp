@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
-// Copyright 2015-2022. Version 2.x, 3.x, 4.x 2015-2022 paceval.[Registered Trade Mark]
+// Copyright 2015-2023. Version 2.x, 3.x, 4.x 2015-2023 paceval.[Registered Trade Mark]
 //                                            All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_example1.cpp
@@ -41,17 +41,20 @@ int main(int argc, char* argv[])
         return 0;
     }
 
-    printf("\n| This very simple demo application shows the possibilities of         |");
-    printf("\n| paceval. in terms of its computational excellence. Use the simple    |");
-    printf("\n| mathematical notation and only a few lines of source code. The       |");
-    printf("\n| trusted interval computation 'TINC' shows the interval in which the  |");
-    printf("\n| true result is.                                                      |");
+    printf("\n|----------------------------------------------------------------------|");
+    printf("\n| This demo application shows the possibilities paceval. Use the       |");
+    printf("\n| simple mathematical notation and only a few lines of source code.    |");
+    printf("\n| The trusted interval computation 'TINC' shows the interval in which  |");
+    printf("\n| the true result is.                                                  |");
+    printf("\n| Just open the file 'paceval_example1.cpp' to see its source          |");
+    printf("\n| code (~200 lines).                                                   |");
     printf("\n|                                                                      |");
     printf("\n| see http://paceval.com/product-brief for the supported terms - e.g.  |");
     printf("\n| sin(x)*y+4.356                                                       |");
+    printf("\n|----------------------------------------------------------------------|");
 
     printf("\n\nEnter a function to solve: f(x,y)=");
-    scanf("%500s", functionStr);    //There is no function length limit in paceval., you could extend the 500 characters
+    scanf("%500s", functionStr);
 
     printf("\n\nDo you want to use Interval arithmetic [y/n]?");
     answerChar = getchar();
@@ -63,7 +66,7 @@ int main(int argc, char* argv[])
     else
         useInterval = true;
 
-    //Create the paceval-Computation object with the function from the user
+    //Creates the paceval-Computation object with the user's mathematical function
     PACEVAL_HANDLE handle_pacevalComputation;
 
     handle_pacevalComputation = paceval_CreateComputation(functionStr, 2, "x y",
@@ -87,9 +90,9 @@ int main(int argc, char* argv[])
             printf("Enter the y value: y=");
             scanf("%255s", yvalStr);
 
-            //Convert the strings of the variables to floating points
+            //Converts the strings of the variables to floating point numbers
             valuesVariablesArray[0] = paceval_dConvertStringToFloat(xvalStr, &errType, &errPosition,
-                                      true, &minValue, &maxValue);
+                                      useInterval, &minValue, &maxValue);
             if (errType != PACEVAL_ERR_NO_ERROR)
             {
                 printf("\nThe string of the variable x cannot be converted to a floating point number.");
@@ -97,7 +100,7 @@ int main(int argc, char* argv[])
             }
 
             valuesVariablesArray[1] = paceval_dConvertStringToFloat(yvalStr, &errType, &errPosition,
-                                      true, &minValue, &maxValue);
+                                      useInterval, &minValue, &maxValue);
             if (errType != PACEVAL_ERR_NO_ERROR)
             {
                 printf("\nThe string of the variable y cannot be converted to a floating point number.");
@@ -106,7 +109,7 @@ int main(int argc, char* argv[])
 
             if (err == false)
             {
-                //Get the result of the function for the varaibles of the user
+                //Gets the result of the function on the user's variables
                 if (useInterval == false)
                 {
                     compResult = paceval_dGetComputationResult(handle_pacevalComputation,
@@ -143,7 +146,7 @@ int main(int argc, char* argv[])
                 }
             }
 
-            printf("\n\nDo you want to calculate with other values for the variables [y/n]?");
+            printf("\n\nWould you like to calculate with other values for the variables [y/n]?");
             answerChar = getchar();
             while ((answerChar != 'y') && (answerChar != 'n'))
             {
@@ -164,7 +167,7 @@ int main(int argc, char* argv[])
     if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL) > 0)
         printf("\n\n[Threads usages: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberThreadUsages", 0, "", NULL));
     if ((int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL) > 0)
-        printf("\n[Cache hits: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL));
+        printf("\n[Cache hits ACC: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberCacheHitsACC", 0, "", NULL));
     printf("\n[Number of cores: %d]", (int)paceval_fmathv(NULL, &errType, "paceval_NumberOfCores", 0, "", NULL));
 
     paceval_FreeLibrary();
