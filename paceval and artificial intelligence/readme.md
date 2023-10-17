@@ -1,4 +1,4 @@
-# paceval and artificial intelligence - Conversion of neural networks to closed-form expressions
+# Conversion of neural networks to closed-form expressions as human-readable mathematical functions
 
 paceval and artificial intelligence GitHub - <https://github.com/paceval/paceval/tree/main/paceval%20and%20artificial%20intelligence>
 
