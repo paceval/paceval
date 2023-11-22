@@ -19,17 +19,15 @@ to compute [all financial, stochastic, engineering, and scientific functions](ht
 
 (see [paceval at SwaggerHub](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04) for more information)
 
-## Release-content – paceval.-Software Development Kit [SDK] 4.24
+## Release-content – paceval.-Software Development Kit [SDK] 4.24a
 developer version – non-commercial use only 
 
 •   <b>["demo and examples"](https://github.com/paceval/paceval/tree/main/demo%20and%20examples) folder<br></b>
     includes the executables<br>
     - paceval. demo application “calculation” (folder "AppCalculation")<br>
     - 6 paceval examples (folder "example1" to "example6")<br>
-    - example6 is our artificial intelligence example with the identification of handwritten numbers<br>
-      with a transparent (human readable) neural network<br>
-      , see paceval_CNN_functionStringforNumber_0.txt 
-    for <br>
+    - example6 is our artificial intelligence example with the identification of handwritten numbers with a transparent (human readable) neural network, see paceval_CNN_functionStringforNumber_0.txt 
+    <br>for <br>
     - Windows 64bit (including paceval_server)<br>
     - Windows 32bit<br>
     - macOS 64bit ARM64 (APPLE silicon)<br>
