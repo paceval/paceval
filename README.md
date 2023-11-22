@@ -19,7 +19,7 @@ to compute [all financial, stochastic, engineering, and scientific functions](ht
 
 (see [paceval at SwaggerHub](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04) for more information)
 
-## Release-content – paceval.-Software Development Kit [SDK] 4.24
+## Release-content – paceval.-Software Development Kit [SDK] 4.24a
 developer version – non-commercial use only 
 
 •   <b>["demo and examples"](https://github.com/paceval/paceval/tree/main/demo%20and%20examples) folder<br></b>
