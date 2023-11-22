@@ -1,11 +1,14 @@
 
-Release-content – paceval.-Software Development Kit [SDK] 4.04
+Release-content – paceval.-Software Development Kit [SDK] 4.24a
 developer version – non-commercial use only 
 
 •   "demo and examples" folder
     includes the executables
     - paceval. demo application “calculation” (folder "AppCalculation")
     - 6 paceval examples (folder "example1" to "example6")
+    - example6 is our artificial intelligence example with the identification of handwritten numbers
+      with a transparent (human readable) neural network
+      , see paceval_CNN_functionStringforNumber_0.txt 
     for 
     - Windows 64bit
     - Windows 32bit
@@ -13,15 +16,20 @@ developer version – non-commercial use only
     - Linux 64bit
     - ARM64 64bit
     - ARM32 32bit
-    - Android 64bit
+    + additional libraries for iOS, RISC-V and Android
+    + 6 paceval examples with our paceval-server at http://paceval-service.com
 
 •   "documentation mathematical engine" folder
     includes the presentations
     - "Mathematical Engine - Motivation"
     - "Mathematical Engine - Our solution"
-    - "paceval-service - a Linux server for ARM64 processors (includes Raspberry Pi)"
-    - "paceval-service - a Linux server for x86 processors (Intel and AMD)"
+    - "paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)"
+    - "paceval and artificial intelligence - Conversion of neural networks to (certifiable) closed-form expressions"
+    - "paceval-service - a Linux server for ARM64 processors (includes Raspberry Pi and APPLE silicon)"
+    - "paceval-service - a Linux server for x64 processors (Intel and AMD)"
     - "Vision Paper - Add capabilities of complex and precise mathematical functions to a database"
+    - "paceval-Video 1 - What is a Mathematical Engine and how can it help me in my business"
+    - "paceval-Video 2 - How does our mathematical engine work and what can you gain from it for your own development"
 
 •   "paceval libraries" folder
     includes the system-independent C++ header and C++ file
@@ -32,6 +40,8 @@ developer version – non-commercial use only
     - Windows 32bit      - "paceval_win32.dll" (shared library)
     - Windows 64bit      - "paceval_win64i.dll" (shared library)
     - macOS 64bit        - "libpaceval_macos_staticLIB.a" (static library)
+    - macOS 64bit        - "libpaceval_macOS_dynamicLIB.dylib" (shared library)
+    - macCatalyst 64bit  - "libpaceval_ios_staticLIB.a" (static library)
     - iOS+simulator      - "libpaceval_ios_staticLIB.a" (static library)
     - Linux 64bit        - "libpaceval_linux_staticLIB.a" (static library)
     - Linux 64bit        - "libpaceval_linux_sharedLIB.so" (shared library)
@@ -39,6 +49,8 @@ developer version – non-commercial use only
     - ARM 64bit          - "libpacevalARM64_sharedLIB.so" (shared library)
     - ARM 32bit          - "libpaceval_ARM32_LIB.a" (static library)
     - ARM 32bit          - "libpacevalARM32_sharedLIB.so" (shared library)
+    - RISC-V 64bit       - "libpaceval_RISC-V_LIB.a" (static library)
+    - RISC-V 64bit       - "libpacevalRISC-V_sharedLIB.so" (shared library)
     - Android 64bit      - "libpaceval_android_staticLIB.a" (static library)
     - Android+simulator  - "libpaceval_android_staticLIB.a" (static library)
     - Android 64bit      - "libpaceval_android_sharedLIB.so" (shared library)
@@ -92,4 +104,4 @@ developer version – non-commercial use only
     - TypeScript (new)
     - Visual Basic
 
-Copyright © 2015-2022 paceval.® All rights reserved.
+Copyright © 2015-2023 paceval.® All rights reserved.
