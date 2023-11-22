@@ -1,5 +1,5 @@
 
-Release-content – paceval.-Software Development Kit [SDK] 4.24
+Release-content – paceval.-Software Development Kit [SDK] 4.24a
 developer version – non-commercial use only 
 
 •   "demo and examples" folder
@@ -40,11 +40,11 @@ developer version – non-commercial use only
     - Windows 32bit      - "paceval_win32.dll" (shared library)
     - Windows 64bit      - "paceval_win64i.dll" (shared library)
     - macOS 64bit        - "libpaceval_macos_staticLIB.a" (static library)
-    - macOS 64bit        - "libpaceval_macos_staticLIB.a" (shared library)
+    - macOS 64bit        - "libpaceval_macOS_dynamicLIB.dylib" (shared library)
     - macCatalyst 64bit  - "libpaceval_ios_staticLIB.a" (static library)
     - iOS+simulator      - "libpaceval_ios_staticLIB.a" (static library)
     - Linux 64bit        - "libpaceval_linux_staticLIB.a" (static library)
-    - Linux 64bit        - "libpaceval_macOS_dynamicLIB.dylib" (shared library)
+    - Linux 64bit        - "libpaceval_linux_sharedLIB.so" (shared library)
     - ARM 64bit          - "libpaceval_ARM64_LIB.a" (static library)
     - ARM 64bit          - "libpacevalARM64_sharedLIB.so" (shared library)
     - ARM 32bit          - "libpaceval_ARM32_LIB.a" (static library)
