@@ -29,7 +29,7 @@ developer version – non-commercial use only
     - example6 is our artificial intelligence example with the identification of handwritten numbers<br>
       with a transparent (human readable) neural network<br>
       , see paceval_CNN_functionStringforNumber_0.txt 
-    for <br>
+    <br>for <br>
     - Windows 64bit (including paceval_server)<br>
     - Windows 32bit<br>
     - macOS 64bit ARM64 (APPLE silicon)<br>
