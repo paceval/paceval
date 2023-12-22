@@ -123,7 +123,7 @@ developer version – non-commercial use only
     - Visual Basic<br>
 
 
-•   <b>[paceval and artificial intelligence](https://github.com/paceval/paceval/tree/main/paceval%20and%20artificial%20intelligence) describes the method to export each neural network into closed expressions with mathematical formulas.<br></b>
+•   <b>[paceval and artificial intelligence](https://github.com/paceval/paceval/tree/main/paceval%20and%20artificial%20intelligence) describes the method to export any neural network into closed expressions with mathematical formulas.<br></b>
     Closed expressions for the outputs of a neural network can also offer several advantages, making them an attractive option for certain applications. 
     
 •   <b>[paceval in hardware](https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware) the Mathematical Engine as a Service with an FPGA (e.g. for efficient Artificial Intelligence inference or fast Zero-Knowledge-Proofs)<br></b>
