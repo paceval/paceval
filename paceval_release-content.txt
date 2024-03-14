@@ -4,7 +4,7 @@ developer version – non-commercial use only
 
 •   "demo and examples" folder
     includes the executables
-    - paceval. demo application “calculation” (folder "AppCalculation")
+    - paceval. demo application “calculation” (folder "AppCalculation") (Windows 64bit and 32bit)
     - 6 paceval examples (folder "example1" to "example6")
     - example6 is our artificial intelligence example with the identification of handwritten numbers
       with a transparent (human readable) neural network
@@ -25,7 +25,7 @@ developer version – non-commercial use only
     - "Mathematical Engine - Our solution"
     - "paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)"
     - "paceval and artificial intelligence - Conversion of neural networks to (certifiable) closed-form expressions"
-    - "paceval-service - a Linux server for ARM64 processors (includes Raspberry Pi and APPLE silicon)"
+    - "paceval-service - a Linux server for ARM64 processors (includes Raspberry Pi and Apple silicon)"
     - "paceval-service - a Linux server for x64 processors (Intel and AMD)"
     - "Vision Paper - Add capabilities of complex and precise mathematical functions to a database"
     - "paceval-Video 1 - What is a Mathematical Engine and how can it help me in my business"
@@ -69,7 +69,7 @@ developer version – non-commercial use only
     - Eclipse/GCC (ARM64 64bit)
     - Eclipse/GCC (ARM32 32bit)
 
-    for Node.js - paceval-service-a Linux and Windows server for ARM64, Intel and AMD processors
+    for Node.js - paceval-service an Apple Silicon-, Linux- and Windows-server for ARM64, Intel and AMD processors
     for PHP - a simple mathematical engine, e.g. to offload battery-operated IoT devices and other examples
 
     other programming languages via Foreign function interface (FFI) 
