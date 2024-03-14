@@ -1,4 +1,4 @@
-//Developed and tested with Node.js version 18.7.0 and paceval. 4.24
+//Developed and tested with Node.js version 20.11.1 and paceval. 4.24
 
 'use strict';
 
@@ -1481,8 +1481,8 @@ app.post('/GetComputationInformationXML/', (req, res) =>
     handleGETandPOST(req, res, null, 'GetComputationInformationXML');
 });
 
-// Listen to the App Engine-specified port, or 8081 otherwise
-const PORT = process.env.PORT || 8081;
+// Listen to the App Engine-specified port, or 8080 otherwise
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () =>
 {
     setTimeout(deleteComputationTimer, deleteTimeout); 
