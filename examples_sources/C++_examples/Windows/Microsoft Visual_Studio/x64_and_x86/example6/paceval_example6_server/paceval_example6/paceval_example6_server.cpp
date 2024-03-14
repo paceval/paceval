@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
-// Copyright 2015-2023. Version 2.x, 3.x, 4.x 2015-2023 paceval.[Registered Trade Mark]
+// Copyright 2015-2024. Version 2.x, 3.x, 4.x 2015-2024 paceval.[Registered Trade Mark]
 //                                            All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_example6_server.cpp
@@ -47,16 +47,30 @@ void CalculateAndPresentDoubleExample6(char* pacevalServerStr_in, const char* ha
                                        const char* fileForInference, unsigned long numberOfVariables_in, bool useInterval_in);
 
 //this function retrieves the variable out of 1..10 which holds the maximum value
+//old variant without max-operator
+/*
 #define function_maxFrom10 "1*((x1>x2) AND (x1>x3) AND (x1>x4) AND (x1>x5) AND (x1>x6) AND (x1>x7) AND (x1>x8) AND (x1>x9) AND (x1>x10)) + \
-                            2*((x2>x1) AND (x2>x3) AND (x2>x4) AND (x2>x5) AND (x2>x6) AND (x2>x7) AND (x2>x8) AND (x2>x9) AND (x2>x10)) + \
-                            3*((x3>x1) AND (x3>x2) AND (x3>x4) AND (x3>x5) AND (x3>x6) AND (x3>x7) AND (x3>x8) AND (x3>x9) AND (x3>x10)) + \
-                            4*((x4>x1) AND (x4>x2) AND (x4>x3) AND (x4>x5) AND (x4>x6) AND (x4>x7) AND (x4>x8) AND (x4>x9) AND (x4>x10)) + \
-                            5*((x5>x1) AND (x5>x2) AND (x5>x3) AND (x5>x4) AND (x5>x6) AND (x5>x7) AND (x5>x8) AND (x5>x9) AND (x5>x10)) + \
-                            6*((x6>x1) AND (x6>x2) AND (x6>x3) AND (x6>x4) AND (x6>x5) AND (x6>x7) AND (x6>x8) AND (x6>x9) AND (x6>x10)) + \
-                            7*((x7>x1) AND (x7>x2) AND (x7>x3) AND (x7>x4) AND (x7>x5) AND (x7>x6) AND (x7>x8) AND (x7>x9) AND (x7>x10)) + \
-                            8*((x8>x1) AND (x8>x2) AND (x8>x3) AND (x8>x4) AND (x8>x5) AND (x8>x6) AND (x8>x7) AND (x8>x9) AND (x8>x10)) + \
-                            9*((x9>x1) AND (x9>x2) AND (x9>x3) AND (x9>x4) AND (x9>x5) AND (x9>x6) AND (x9>x7) AND (x9>x8) AND (x9>x10)) + \
-                           10*((x10>x1) AND (x10>x2) AND (x10>x3) AND (x10>x4) AND (x10>x5) AND (x10>x6) AND (x10>x7) AND (x10>x8) AND (x10>x9))"
+							2*((x2>x1) AND (x2>x3) AND (x2>x4) AND (x2>x5) AND (x2>x6) AND (x2>x7) AND (x2>x8) AND (x2>x9) AND (x2>x10)) + \
+							3*((x3>x1) AND (x3>x2) AND (x3>x4) AND (x3>x5) AND (x3>x6) AND (x3>x7) AND (x3>x8) AND (x3>x9) AND (x3>x10)) + \
+							4*((x4>x1) AND (x4>x2) AND (x4>x3) AND (x4>x5) AND (x4>x6) AND (x4>x7) AND (x4>x8) AND (x4>x9) AND (x4>x10)) + \
+							5*((x5>x1) AND (x5>x2) AND (x5>x3) AND (x5>x4) AND (x5>x6) AND (x5>x7) AND (x5>x8) AND (x5>x9) AND (x5>x10)) + \
+							6*((x6>x1) AND (x6>x2) AND (x6>x3) AND (x6>x4) AND (x6>x5) AND (x6>x7) AND (x6>x8) AND (x6>x9) AND (x6>x10)) + \
+							7*((x7>x1) AND (x7>x2) AND (x7>x3) AND (x7>x4) AND (x7>x5) AND (x7>x6) AND (x7>x8) AND (x7>x9) AND (x7>x10)) + \
+							8*((x8>x1) AND (x8>x2) AND (x8>x3) AND (x8>x4) AND (x8>x5) AND (x8>x6) AND (x8>x7) AND (x8>x9) AND (x8>x10)) + \
+							9*((x9>x1) AND (x9>x2) AND (x9>x3) AND (x9>x4) AND (x9>x5) AND (x9>x6) AND (x9>x7) AND (x9>x8) AND (x9>x10)) + \
+						   10*((x10>x1) AND (x10>x2) AND (x10>x3) AND (x10>x4) AND (x10>x5) AND (x10>x6) AND (x10>x7) AND (x10>x8) AND (x10>x9))"   */
+
+//new variant with max-operator
+#define function_maxFrom10 "1*(x1 > (       x2 max x3 max x4 max x5 max x6 max x7 max x8 max x9 max x10)) + \
+                            2*(x2 > (x1 max        x3 max x4 max x5 max x6 max x7 max x8 max x9 max x10)) + \
+                            3*(x3 > (x1 max x2 max        x4 max x5 max x6 max x7 max x8 max x9 max x10)) + \
+                            4*(x4 > (x1 max x2 max x3 max        x5 max x6 max x7 max x8 max x9 max x10)) + \
+                            5*(x5 > (x1 max x2 max x3 max x4 max        x6 max x7 max x8 max x9 max x10)) + \
+                            6*(x6 > (x1 max x2 max x3 max x4 max x5        max x7 max x8 max x9 max x10)) + \
+                            7*(x7 > (x1 max x2 max x3 max x4 max x5 max x6 max        x8 max x9 max x10)) + \
+                            8*(x8 > (x1 max x2 max x3 max x4 max x5 max x6 max x7 max        x9 max x10)) + \
+                            9*(x9 > (x1 max x2 max x3 max x4 max x5 max x6 max x7 max x8 max        x10)) + \
+                           10*(x10> (x1 max x2 max x3 max x4 max x5 max x6 max x7 max x8 max x9        ))"
 
 //---------------------------------------------------------------------------
 
@@ -205,7 +219,10 @@ int main(int argc, char* argv[])
 
         //Starts the inference process for the three images
         //while (true) //endless-loop for tests only
+        //for (unsigned int iCount = 0; iCount < 1000; iCount++) //1000-loop for tests only
         {
+            //printf("\n\n[Inference: # %d]", (int)iCount);
+
             printf("\n\n_____________________________________________");
             printf("\nStart inference on the picture 'image01'");
             printf("\nwith double precision:");
@@ -259,7 +276,7 @@ void CalculateAndPresentDoubleExample6(char* pacevalServerStr_in, const char* ha
         char charBuffer500[500];
         bool hasError;
         int errType;
-        int imageIdentifiedAs;
+        int imageIdentifiedAs = 0;
         std::streampos sizeFile;
         char* readValuesStr;
         unsigned int cCount;
@@ -310,25 +327,35 @@ void CalculateAndPresentDoubleExample6(char* pacevalServerStr_in, const char* ha
                   &hasError, &errorTypes[0],
                   &timeComputeRemote);
 
-        for (unsigned int iCount = 0; iCount < 10; iCount++)
+        if (hasError)
         {
-            paceval_dConvertFloatToString(charBuffer500, dResults[iCount]);
-            printf("\nFor function '%d' double: Result is %s", iCount, charBuffer500);
-
-            if (useInterval_in)
+            for (unsigned int iCount = 0; iCount < 10; iCount++)
             {
-                paceval_dConvertFloatToString(charBuffer500, dminResultsInterval[iCount]);
-                printf(" : Interval [%s; ", charBuffer500);
-
-                paceval_dConvertFloatToString(charBuffer500, dmaxResultsInterval[iCount]);
-                printf("%s]", charBuffer500);
+                printf("\nFunction '%d' with double result cannot be trusted.", iCount);
             }
         }
+        else for (unsigned int iCount = 0; iCount < 10; iCount++)
+            {
+                paceval_dConvertFloatToString(charBuffer500, dResults[iCount]);
+                printf("\nFor function '%d' double: Result is %s", iCount, charBuffer500);
 
-        imageIdentifiedAs = paceval_dmathv(NULL, &errType, function_maxFrom10,
-                                           10, "x1 x2 x3 x4 x5 x6 x7 x8 x9 x10",
-                                           dResults[0], dResults[1], dResults[2], dResults[3], dResults[4],
-                                           dResults[5], dResults[6], dResults[7], dResults[8], dResults[9]);
+                if (useInterval_in)
+                {
+                    paceval_dConvertFloatToString(charBuffer500, dminResultsInterval[iCount]);
+                    printf(" : Interval [%s; ", charBuffer500);
+
+                    paceval_dConvertFloatToString(charBuffer500, dmaxResultsInterval[iCount]);
+                    printf("%s]", charBuffer500);
+                }
+            }
+
+        if (hasError == false)
+        {
+            imageIdentifiedAs = paceval_dmathv(NULL, &errType, function_maxFrom10,
+                                               10, "x1 x2 x3 x4 x5 x6 x7 x8 x9 x10",
+                                               dResults[0], dResults[1], dResults[2], dResults[3], dResults[4],
+                                               dResults[5], dResults[6], dResults[7], dResults[8], dResults[9]);
+        }
 
         if (imageIdentifiedAs > 0)
             printf("\n   Picture identified as number '%d'. [Time needed: %d ms]", imageIdentifiedAs - 1, (unsigned long)(timeComputeRemote * 1000));
