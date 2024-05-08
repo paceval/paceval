@@ -1,4 +1,4 @@
-//Developed and tested with Node.js version 18.7.0 and paceval. 4.24
+//Developed and tested with Node.js version 18.7.0, 20.11.1 and paceval. 4.24
 
 'use strict';
 
@@ -96,6 +96,7 @@ var pacevalLibrary_ffi = ffi.Library(pacevalLibraryName(),
     'pacevalLibrary_dGetComputationResult': [ 'double', [ 'pointer', doubleArray_ffi , doublePtr_ffi , doublePtr_ffi ] ],
     'pacevalLibrary_dGetComputationResultExt': [ 'bool', [ 'pointer', doubleArray_ffi , 'uint32', doublePtr_ffi , doublePtr_ffi , doublePtr_ffi, intPtr_ffi ] ],
     'pacevalLibrary_dGetMultipleComputationsResults': [ 'bool', [ pointerArray_ffi, 'uint32', doubleArray_ffi , doublePtr_ffi , doublePtr_ffi , doublePtr_ffi, intPtr_ffi ] ],
+    'pacevalLibrary_dGetMultipleComputationsResultsExt': [ 'bool', [ pointerArray_ffi, 'uint32', doubleArray_ffi , 'uint32', doublePtr_ffi , doublePtr_ffi , doublePtr_ffi, intPtr_ffi ] ],
     'pacevalLibrary_dConvertFloatToString': [ 'int', [ 'pointer', double_ffi ] ],
     'pacevalLibrary_GetComputationInformationXML': [ 'uint32', [ 'pointer', 'char*' ] ],
     'pacevalLibrary_GetComputationVersionString': [ 'int', [ 'pointer', 'char*' ] ],
@@ -740,7 +741,7 @@ function handleGetComputationResultExt(req, res)
 
     let return_arr = 
     { 
-        'number-of-multiple-values': numberOfCalculations, 
+        'number-of-multiple-calculations': numberOfCalculations, 
         'handle_pacevalComputation': handle_pacevalComputation_addr.toString().replace(/\0/g, ''),
         'hasError': hasError,
         'results': resultsArray_ar,
@@ -969,6 +970,251 @@ function handleGetMultipleComputationsResults(req, res)
     let return_arr = 
     { 
         'number-of-multiple-computations': numberOfComputations, 
+        'handle_pacevalComputations': handle_pacevalComputation_str_ar,  
+        'hasError': hasError,
+        'results': resultsArray_ar,
+        'interval-min-results': trustedMinResultsArray_ar,
+        'interval-max-results': trustedMaxResultsArray_ar,
+        'error-type-numbers': errorTypesArray_ar,
+        'time-calculate': timeCalculate.toFixed(6) + 's',
+        'version-number': versionNumber
+    };
+
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(return_arr));
+
+    if (debugEnabled == true)
+        console.log(`time to calculate: ${timeCalculate.toFixed(6) + 's'}`);
+
+    for (iCount = 0; iCount < numberOfComputations; iCount++)
+    {
+        position = findComputationPos(handle_pacevalComputation_str_ar[iCount]);
+        if (position >= 0)
+        {       
+            pacevalComputations_arr[position][2] = Date.now().valueOf() + deleteTimeout; //[2] milliseconds timeout to delete (0 means no timeout)
+   
+            if (debugEnabled == true)
+                console.log(`deletion timer prolonged by 1 hour for computation handle_pacevalComputation: ${handle_pacevalComputation_str_ar[iCount]}`);
+        }
+        else
+        {
+            if (debugEnabled == true)
+                console.log(`computation does not exist handle_pacevalComputation: ${handle_pacevalComputation_str_ar[iCount]}`);
+        } 
+    }
+
+    if (debugEnabled == true)
+        console.log(`number of active computations: ${numberOfActiveComputations}`);
+  
+    logMemoryUsed();
+    if (debugEnabled == true)
+        console.log(``);
+}
+
+//---------------------------------------------------------------------------
+//  handleGetMultipleComputationsResultsExt
+//  Solves multiple computations with multiple values for the variables declared by /CreateComputation: 
+//  example http://paceval-service.cloud/GetMultipleComputationsResultsExt/?handle_pacevalComputations=1050804320;105047641&numberOfpacevalComputations=2&numberOfCalculations=3&values=2.6;5.8;-1.2;6.9;-1.8;12.1
+//
+//  see  https://app.swaggerhub.com/apis-docs/paceval/paceval-service/
+//---------------------------------------------------------------------------
+function handleGetMultipleComputationsResultsExt(req, res)
+{
+    let numberOfCalculations = 0; 
+    let existingComputation = false;
+    let hasError = false;
+    let isError = false;
+    let numberOfComputations = 0; 
+    let numberOfVariables = 0;
+    let interval = -1;
+    let handle_pacevalComputation_str_ar = [];
+    let values_ar = [];
+    let position = 0;
+    let iCount = 0;
+    let jCount = 0;
+
+    if (req.query.numberOfpacevalComputations != null) //GET 
+    {
+        numberOfComputations = parseInt(req.query.numberOfpacevalComputations);
+        numberOfCalculations = parseInt(req.query.numberOfCalculations);
+        handle_pacevalComputation_str_ar = JSON.parse('[' + req.query.handle_pacevalComputations.replace(/;/g, ',') + ']');
+    }
+    else //POST  
+    { 
+        numberOfComputations = parseInt(req.body.numberOfpacevalComputations); 
+        numberOfCalculations = parseInt(req.body.numberOfCalculations); 
+        handle_pacevalComputation_str_ar = JSON.parse('[' + req.body.handle_pacevalComputations.replace(/;/g, ',') + ']');
+    }
+
+    if (debugEnabled == true)
+        console.log(`handle get results for multiple computations with multiple values for variables handle_pacevalComputations: ${handle_pacevalComputation_str_ar} - timestamp: ${new Date().toISOString()}`);
+
+    let handle_pacevalComputations_ar = [];
+
+    if (numberOfComputations > 0)
+    {
+        for (iCount = 0; iCount < numberOfComputations; iCount++)
+        {
+            position = findComputationPos(handle_pacevalComputation_str_ar[iCount]);
+            if (position >= 0)
+            {
+                if (debugEnabled == true)
+                    console.log(`reuse computation handle_pacevalComputation: ${handle_pacevalComputation_str_ar[iCount]}`);
+
+                handle_pacevalComputations_ar.push(pacevalComputations_arr[position][1]); //[1] 'pointer' returned from pacevalLibrary_ffi.pacevalLibrary_CreateComputation()
+                pacevalComputations_arr[position][2] = 0; //[2] milliseconds timeout to delete (0 means no timeout)
+                numberOfVariables = pacevalComputations_arr[position][3]; //[3] number of variables
+                
+                if (interval != -1)
+                {               
+                    if ((interval == false) && (pacevalComputations_arr[position][4] != 0)) //[4] interval 0:false 1:true
+                    {
+                        res.status(500).json({ error: 'mixing non-interval computations with interval computations' });
+                        return;
+                    }
+                    else if ((interval == true) && (pacevalComputations_arr[position][4] != 1)) //[4] interval 0:false 1:true
+                    {
+                        res.status(500).json({ error: 'mixing non-interval computations with interval computations' });
+                        return;
+                    }
+                }
+                if (pacevalComputations_arr[position][4] == 0) //[4] interval 0:false 1:true
+                    interval = false;
+                else
+                    interval = true;
+
+                existingComputation = true;
+            }
+            else
+            {
+                res.status(500).json({ error: 'handle_pacevalComputation does not exist' });
+                return;
+            }            
+        }
+    }
+    else 
+    {
+        res.status(500).json({ error: 'number of computations not valid' });
+        return;
+    }
+    
+    for (iCount = 0; iCount < numberOfComputations; iCount++)
+    {
+        for (jCount = iCount + 1; jCount < numberOfComputations; jCount++)
+        {
+            if (handle_pacevalComputations_ar[iCount] == handle_pacevalComputations_ar[jCount])
+            {
+                res.status(500).json({ error: 'duplicate handle_pacevalComputation' });
+                return;
+            }
+        }
+    }
+
+    if (req.query.values != null) //GET  
+        values_ar = JSON.parse('[' + req.query.values.replace(/;/g, ',') + ']');
+    else //POST   
+        values_ar = JSON.parse('[' + req.body.values.replace(/;/g, ',') + ']');
+
+    let now = require('performance-now');
+
+    let int = ref.types.int;
+    let intArray = ArrayType('int');
+
+    let handle_pacevalComputationsArray = new pointerArray_ffi(numberOfComputations);
+    for (iCount = 0; iCount < numberOfComputations; iCount++)
+    {
+        handle_pacevalComputationsArray[iCount] = handle_pacevalComputations_ar[iCount];
+    }
+
+    let valuesVariablesArray = new doubleArray_ffi(numberOfCalculations * numberOfVariables);
+    for (iCount = 0; iCount < numberOfCalculations * numberOfVariables; iCount++)
+    {
+        valuesVariablesArray[iCount] = values_ar[iCount];
+    }
+
+    let errorTypesArray_ar = [];
+    let resultsArray = Buffer.allocUnsafe(numberOfComputations * numberOfCalculations *8 /*double 8 bytes*/); 
+    resultsArray.fill(0);
+    let trustedMinResultsArray = Buffer.allocUnsafe(numberOfComputations * numberOfCalculations *8 /*double 8 bytes*/);
+    trustedMinResultsArray.fill(0);
+    let trustedMaxResultsArray = Buffer.allocUnsafe(numberOfComputations * numberOfCalculations *8 /*double 8 bytes*/);
+    trustedMaxResultsArray.fill(0);
+    let errorTypesArray = Buffer.allocUnsafe(numberOfComputations * numberOfCalculations *4 /*int 4 bytes*/);
+    errorTypesArray.fill(0);
+
+    let errorType = ref.alloc('int');
+    let success = false;
+    
+    let timeCalculate = now(true);
+    if (interval == false)
+    {
+        hasError = pacevalLibrary_ffi.pacevalLibrary_dGetMultipleComputationsResultsExt(handle_pacevalComputationsArray, numberOfComputations,
+            valuesVariablesArray, numberOfCalculations, resultsArray, null, null, errorTypesArray);
+    }
+    else
+    {
+        hasError = pacevalLibrary_ffi.pacevalLibrary_dGetMultipleComputationsResultsExt(handle_pacevalComputationsArray, numberOfComputations,
+            valuesVariablesArray, numberOfCalculations, resultsArray, trustedMinResultsArray, trustedMaxResultsArray, errorTypesArray);
+    }
+    timeCalculate = (now() - timeCalculate) / 1000;
+
+    if (versionNumber == 0)
+        versionNumber = pacevalLibrary_ffi.pacevalLibrary_dmathv(null, errorType, 'paceval_VersionNumber', 0, '', null);
+
+    let resultsArray_ar = [];
+    let trustedMinResultsArray_ar = [];
+    let trustedMaxResultsArray_ar = [];
+    let errorMessage_str_ar = [];
+    let errorDetails_str_ar = [];
+    let result_str = Buffer.alloc(25, 0, 'ascii');
+    let trustedMinResult_str = Buffer.alloc(25, 0, 'ascii');
+    let trustedMaxResult_str = Buffer.alloc(25, 0, 'ascii');
+    let stringToAdd;
+    let errorTypeInt;
+
+    for (iCount = 0; iCount < numberOfComputations * numberOfCalculations; iCount++)
+    {
+        errorTypeInt = errorTypesArray.readInt32LE(iCount * 4 /*int 4 bytes*/);
+        errorTypesArray_ar.push( errorTypeInt );
+
+        if (iCount < numberOfComputations)
+            handle_pacevalComputation_str_ar[iCount] = handle_pacevalComputation_str_ar[iCount].toString().replace(/\0/g, ''); //changes it to a string with "" for the JSON return
+        
+        if (errorTypeInt == 0) //no error
+        {
+            success = pacevalLibrary_ffi.pacevalLibrary_dConvertFloatToString(result_str, resultsArray.readDoubleLE(iCount * 8 /*double 8 bytes*/));   
+            stringToAdd = result_str.toString().replace(/\0/g, ''); 
+            resultsArray_ar.push( stringToAdd );
+            result_str.fill(0);
+
+            if (interval == true)
+            {
+                success = pacevalLibrary_ffi.pacevalLibrary_dConvertFloatToString(trustedMinResult_str, trustedMinResultsArray.readDoubleLE(iCount * 8 /*double 8 bytes*/));   
+                stringToAdd = trustedMinResult_str.toString().replace(/\0/g, ''); 
+                trustedMinResultsArray_ar.push( stringToAdd );
+                trustedMinResult_str.fill(0);
+
+                success = pacevalLibrary_ffi.pacevalLibrary_dConvertFloatToString(trustedMaxResult_str, trustedMaxResultsArray.readDoubleLE(iCount * 8 /*double 8 bytes*/));   
+                stringToAdd = trustedMaxResult_str.toString().replace(/\0/g, ''); 
+                trustedMaxResultsArray_ar.push( stringToAdd );
+                trustedMaxResult_str.fill(0);
+            }
+        }
+        else
+        {
+            resultsArray_ar.push('');
+            if (interval == true)
+            {
+                trustedMinResultsArray_ar.push('');
+                trustedMaxResultsArray_ar.push('');
+            }
+        }
+    }
+
+    let return_arr = 
+    { 
+        'number-of-multiple-computations': numberOfComputations, 
+        'number-of-multiple-calculations': numberOfCalculations, 
         'handle_pacevalComputations': handle_pacevalComputation_str_ar,  
         'hasError': hasError,
         'results': resultsArray_ar,
@@ -1258,6 +1504,17 @@ function handleGETandPOST(req, res, urlGET, urlPOST)
             handleGetMultipleComputationsResults(req, res);
             return;
         }
+        else if ((req.query.call == 'paceval_GetMultipleComputationsResultsExt') || (urlGET == 'GetMultipleComputationsResultsExt')) 
+        {
+            if ((req.query.handle_pacevalComputations == null) || (req.query.numberOfpacevalComputations == null) || (req.query.numberOfCalculations == null) || (req.query.values == null))  
+            {
+                res.status(500).json({ error: 'missing parameters' });
+                return;
+            }
+        
+            handleGetMultipleComputationsResultsExt(req, res);
+            return;
+        }
         else if ((req.query.call == 'paceval_GetErrorInformation') || (urlGET == 'GetErrorInformation')) 
         {
             if (req.query.handle_pacevalComputation == null)   
@@ -1348,6 +1605,17 @@ function handleGETandPOST(req, res, urlGET, urlPOST)
             }
             
             handleGetMultipleComputationsResults(req, res);
+            return;
+        }
+        else if ((req.body.call == 'paceval_GetMultipleComputationsResultsExt') || (urlPOST == 'GetMultipleComputationsResultsExt'))  
+        {
+            if ((req.body.handle_pacevalComputations == null) || (req.body.numberOfpacevalComputations == null) || (req.body.numberOfCalculations == null) || (req.body.values == null))  
+            {
+                res.status(500).json({ error: 'missing parameters' });
+                return;
+            }
+            
+            handleGetMultipleComputationsResultsExt(req, res);
             return;
         }
         else if ((req.body.call == 'paceval_GetErrorInformation') || (urlPOST == 'GetErrorInformation'))  
@@ -1459,6 +1727,16 @@ app.get('/GetMultipleComputationsResults/', (req, res) =>
 app.post('/GetMultipleComputationsResults/', (req, res) =>
 {
     handleGETandPOST(req, res, null, 'GetMultipleComputationsResults');
+});
+
+app.get('/GetMultipleComputationsResultsExt/', (req, res) =>
+{
+    handleGETandPOST(req, res, 'GetMultipleComputationsResultsExt', null);
+});
+
+app.post('/GetMultipleComputationsResultsExt/', (req, res) =>
+{
+    handleGETandPOST(req, res, null, 'GetMultipleComputationsResultsExt');
 });
 
 app.get('/GetErrorInformation/', (req, res) =>
