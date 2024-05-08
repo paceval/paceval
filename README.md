@@ -17,7 +17,7 @@ Download Installer Software Development Kit, https://paceval.com/product-demo/ o
 • with [any programming language](https://paceval.com/api/#any_programming_language)<br>
 to compute [all financial, stochastic, engineering, and scientific functions](https://paceval.com/product-brief/#all_functions), as well as [all machine learning models](https://paceval.com/product-brief/#all_functions).”<br>
 
-(see [paceval at SwaggerHub](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.04) for more information)
+(see SwaggerHub [paceval-service](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/) and  [paceval-service-cloud](https://app.swaggerhub.com/apis/paceval/paceval-service-cloud) for more information)
 
 ## Release-content – paceval.-Software Development Kit [SDK] 4.24a
 developer version – non-commercial use only 
