@@ -132,5 +132,5 @@ developer version – non-commercial use only
 ![10019436_l-e1442994613885 2](http://paceval.com/wp-content/uploads/2022/04/mathematical_model.jpg)<br>
 ![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2022/04/mathematical_engine.jpg)
 
-Copyright © 2015-2023 paceval.® All rights reserved.<br>
+Copyright © 2015-2024 paceval.® All rights reserved.<br>
 mailto:info@paceval.com
