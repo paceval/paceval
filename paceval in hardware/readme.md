@@ -2,7 +2,7 @@
 
 paceval in hardware GitHub - https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware
 
-paceval at SwaggerHub - https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.23
+paceval at SwaggerHub - https://app.swaggerhub.com/apis-docs/paceval/paceval-service/
 
 ## WHY DO I NEED A MATHEMATICAL ENGINE IN HARDWARE?
 
