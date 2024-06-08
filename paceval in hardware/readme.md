@@ -70,6 +70,12 @@ We provide images for SD cards for the following developer boards on our GitHub.
 
 <https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104> File “64GB_sdimage_ZCU104_paceval-engine_petalinux.zip”
 
+**Please note:** These images were created with paceval version 4.04. The version 4.04 libraries in the images have already expired. **To solve this, however, you simply need to copy the current paceval libraries for ARM 32bit and ARM 64bit into the /paceval/sambashare directory on your hardware. And if you want, the appropriate examples too.**
+
+All currently valid and executable libraries and examples can be found in our current paceval SDK on our homepage <https://paceval.com> and also on our paceval Github in these directories  
+<https://github.com/paceval/paceval/tree/main/paceval%20libraries>   
+<https://github.com/paceval/paceval/tree/main/demo%20and%20examples>
+
 # Alternative Manual Setup
 
 The following sections show how to manually set up a paceval-engine initially. This may be necessary if the SD card images that we provide do not meet your requirements. This can be the case, for example, if your hardware configuration is different or you need other software packages.
@@ -157,7 +163,7 @@ Then we switch to the newly created project directory:
 cd xilinx-artyz720-2022.2/
 ```
 
-We copy our complete hardware design to a suitable directory under our project directory. In our case to   
+We copy our complete hardware design to a suitable directory under our project directory. In our case to  
 \~/petalinux/2022.2/projects/xilinx-artyz720-2022.2/engine-202202
 
 Then we configure the project with our copied hardware design:
@@ -220,7 +226,7 @@ Open your serial terminal application of choice (e.g. Tera Term) with a baud rat
 
 ![Ein Bild, das Text, Screenshot, Display, Software enthält. Automatisch generierte Beschreibung](media/cd1dbef48d4590d08091812c9ac64ecd.png)
 
-And then you can watch the boot process.   
+And then you can watch the boot process.  
 Up to here everything should have worked successfully and you can now configure the paceval-engine.
 
 ## Step 2 - Configure the paceval-engine
