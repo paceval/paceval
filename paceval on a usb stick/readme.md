@@ -19,7 +19,7 @@ You can therefore implement customer-specific local intelligence that **runs as 
 
 **Example use case:** Local intelligence in the car with the information from the manual and additional information about the specific type of car
 
-![Ein Bild, das Text, Screenshot, Reklametafel, Beschilderung enthält. Automatisch generierte Beschreibung](media/4768fba041355c6a692cc9696e709e14.png)
+![](media/5dc684bfbd542edf23d61b7c3d170066.png)
 
 ## OUR TECHNOLOGY
 
@@ -27,18 +27,16 @@ Similar to the [paceval in hardware](https://github.com/paceval/paceval/tree/mai
 
 **USB Armory Mk II with a single ARM core**
 
-![Ein Bild, das Computer, computer, Text, Elektronisches Gerät enthält. Automatisch generierte Beschreibung](media/f205a9bcd1da487db51c11428057b2cc.png)
-
-![Ein Bild, das Elektronik, Elektronisches Gerät, Elektrisches Bauelement, passives Bauelement enthält. Automatisch generierte Beschreibung](media/fe3736bf0394acb0c0b0082d790bc903.jpeg)
+![Ein Bild, das Elektronik, Elektronisches Gerät, Fahren, Flashspeicher enthält. Automatisch generierte Beschreibung](media/0e9c8d1f9dba1d1a679607ed44fb4e8c.png)
 
 ## HOW CAN I SET UP A MATHEMATICAL ENGINE ON A VERY SMALL EFFICIENT HARDWARE SYSTEM?
 
-Simply download the image with these two files from <https://github.com/paceval/paceval/tree/main/paceval%20on%20a%20usb%20stick>:
+Simply download the image with these two files from <https://github.com/paceval/paceval/tree/main/paceval%20on%20a%20usb%20stick/USB%20armory%20Mk%20II>:
 
 1.  File “32GB_sdimage_ZC706_paceval-engine_usb_armory-mark-two.zip”
 2.  File “32GB_sdimage_ZC706_paceval-engine_usb_armory-mark-two.z01”
 
-Then unpack the image and write it to a 32 GB SD card for the Armory Mk II USB stick. You can use the Win32 Disk Imager for this, for example. Then plug the USB stick into a Windows laptop. After about 2 minutes, the paceval service will be available as a standalone separate coprocessor at the IP address 10.0.0.1 and port 8080. This coprocessor can then be queried in the same way as our description for the paceval-service for servers, as described here on SwaggerHub: <https://app.swaggerhub.com/apis-docs/paceval/paceval-service/>
+Then unpack the image and write it to a 32 GB SD card for the Armory Mk II USB stick. You can use the Win32 Disk Imager for this, for example. Then plug the USB stick into a Windows laptop. After a maximum of 90 seconds, the paceval service will be available as a standalone separate coprocessor at the IP address 10.0.0.1 and port 8080. This coprocessor can then be queried in the same way as our description for the paceval-service for servers, as described here on SwaggerHub: <https://app.swaggerhub.com/apis-docs/paceval/paceval-service/>
 
 **Example:**
 
@@ -64,5 +62,5 @@ What we use in addition to NodeJS and PM2 is a Linux swap file to be able to run
 Other useful links:
 
 <https://www.withsecure.com/de/solutions/innovative-security-hardware/usb-armory>  
-<https://wiki.elvis.science/index.php?title=USB_Armory>
+<https://wiki.elvis.science/index.php?title=USB_Armory>  
 <https://groups.google.com/g/usbarmory/c/LTqt_fgQY7w>
