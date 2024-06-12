@@ -65,3 +65,6 @@ Other useful links:
 <https://www.withsecure.com/de/solutions/innovative-security-hardware/usb-armory>  
 <https://wiki.elvis.science/index.php?title=USB_Armory>  
 <https://groups.google.com/g/usbarmory/c/LTqt_fgQY7w>
+
+Copyright © 2015-2024 paceval.® All rights reserved.<br>
+mailto:info@paceval.com
