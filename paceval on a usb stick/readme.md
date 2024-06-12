@@ -1,44 +1,68 @@
-# paceval on a USB stick - the Mathematical Engine as a Service with an FPGA (e.g. for efficient Artificial Intelligence inference or fast Zero-Knowledge-Proofs)
+# paceval on a USB stick - the Mathematical Engine as a Service on a very small efficient hardware system (e.g. for local intelligence with Artificial Intelligence algorithms)
 
-paceval in hardware GitHub - https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware
+paceval on a USB stick GitHub - <https://github.com/paceval/paceval/tree/main/paceval%20on%20a%20usb%20stick>
 
-paceval at SwaggerHub - https://app.swaggerhub.com/apis-docs/paceval/paceval-service/
+paceval at SwaggerHub - <https://app.swaggerhub.com/apis-docs/paceval/paceval-service/>
 
-## WHY DO I NEED A MATHEMATICAL ENGINE IN HARDWARE?
+## THE MAIN GOAL OF OUR SOLUTION WITH PACEVAL?
 
-“In a digital world of the future, everyday life and the working world around us will be permanently supported by artificial intelligence. Data from countless sensors and actuators are read out by the smallest computers, processed, merged via a network of data links into larger nodes with more computing power, interpreted, fed back. They change, control, support, move our lives. In between sit huge data centers that take on the big tasks, manage and direct data, train artificial brains and solve complex scientific problems.
+By making **pace***val.* available on the smallest efficient systems, local intelligence becomes possible on these systems too. This **enables completely new use** cases, as customer-specific requirements of artificial intelligence can be implemented without a permanent network connection to large, mostly cloud-based systems. There are many algorithms for artificial intelligence in addition to neural networks (see <https://github.com/paceval/paceval/tree/main/paceval%20and%20artificial%20intelligence>) that can thus be implemented locally, e.g. linear regression, logistic regression, decision trees, random forest, support vector machines, k-nearest neighbours, naive Bayes, k-means clustering, principal component analysis or gradient boosting machines. Of course, many other obvious examples can be found, such as weighted directed graphs, differential equations, scalar products, geometric transformations, matrix and vector operations, hidden Markov models for fast gesture recognition, transformations (DCT, FFT), Newton's method, singular value decomposition, polynomials, eigenvalues, cyclic redundancy checks, zero-knowledge proofs and generally almost all topics of numerical mathematics.
 
-But this vision of a connected world currently comes at a high price. If global energy consumption for computing and communications increases at the same rate as it has been, it will take up the entire, global capacity for energy production as early as 2040. Energy consumption has been falling for a long time - because chip structures have become smaller and smaller. But this is where developments are now reaching their physical limits.
+You can therefore implement customer-specific local intelligence that **runs as a standalone system independent of the main system** (e.g. a laptop). This standalone system can be protected from security. In particular, it cannot be manipulated by the user.
 
-In order to implement our visions for the future - from autonomous driving to computer-aided drug development to intelligent control of countless renewable energy sources - fundamentally new computing concepts must therefore be found.”
+**Such a new system is**
 
-Source: <https://www.sprind.org/en/challenges/newcomputing/>
+-   **energy** efficient
+-   minimally small in **size**
+-   extremely **scalable**
+-   very **cost**-effective
+
+**Example use case:** Local intelligence in the car with the information from the manual and additional information about the specific type of car
+
+![Ein Bild, das Text, Screenshot, Reklametafel, Beschilderung enthält. Automatisch generierte Beschreibung](media/4768fba041355c6a692cc9696e709e14.png)
 
 ## OUR TECHNOLOGY
 
-Using new and existing technologies, a first reference design was developed that maps **pace***val.* in hardware with the required functionalities. This reference design is hardware based on a programmable System-on-a-Chip (SoC) from the AMD Xilinx Zync 7000 platform. The possible certification and subsequent official approval of an end product on this hardware should not be a problem, since the SoC already meets the high requirements of the automotive industry AEC-Q100.
+Similar to the [paceval in hardware](https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware) systems already presented, we have implemented **the paceval-service as an example on the Armory Mk II USB stick**. The basic operating system on the USB stick is Debian Linux. The image can be downloaded from <https://github.com/usbarmory/usbarmory/wiki>. Our application on the USB stick is the well-known paceval-service. This is set up to respond to HTTP requests on port 8080. The API provided by this service allows for the efficient evaluation of closed mathematical functions of any length and any number of variables. This allows all financial, stochastic, technical and scientific functions and in particular all machine learning models to be executed. In addition, the usual standard mathematical notation can be used. Since the mathematical functions are available entirely in text form, there is a way to certify and then officially approve the software. In conjunction with the approval of the hardware, this results in an approved overall system, which is not possible per se for products based on neural networks today.
 
-The basic operating system on the SoC is PetaLinux as a so-called "Embedded Linux Distribution", as offered by Xilinx. Our application within PetaLinux is the paceval-service. This is set up to respond to HTTP requests on port 8080. The API provided by this service allows for the efficient evaluation of closed mathematical functions of any length and any number of variables. This allows all financial, stochastic, technical and scientific functions and in particular all machine learning models to be mapped. In addition, the usual standard mathematical notation can be used. Since the mathematical functions are available entirely in text form, there is a way to certify and then officially approve the software. In conjunction with the approval of the hardware, this results in an approved overall system, which is not possible per se for products based on neural networks today.
+**USB Armory Mk II with a single ARM core**
 
-The chosen interface to communicate with our reference design is Ethernet. Of course, this can be changed as the SOC offers PCI Express, USB, Ethernet, SPI, SD/SDIO, I2C, CAN, UART and GPIO for communication in its entirety (the Xilinx ZC706 below). The selected software solution could also be easily transferred to a significantly more powerful multiprocessor system-on-a-chip (MPSoC) like the Xilinx ZYNC UltraSCALE+ platform (the Xilinx ZCU104 below). This not only enables small, energy-saving IoT and IIoT variants (the Digilent Arty Z7-20 below), but also large variants for data centers and in particular the well-known hyperscalers such as Amazon Web Services (AWS), Microsoft Azure and the Google Cloud Platform.
+![Ein Bild, das Computer, computer, Text, Elektronisches Gerät enthält. Automatisch generierte Beschreibung](media/f205a9bcd1da487db51c11428057b2cc.png)
 
-## HOW CAN I SET UP A MATHEMATICAL ENGINE WITH MY OWN FPGA?
+![Ein Bild, das Elektronik, Elektronisches Gerät, Elektrisches Bauelement, passives Bauelement enthält. Automatisch generierte Beschreibung](media/fe3736bf0394acb0c0b0082d790bc903.jpeg)
 
-We are currently using the Zync-7000 platform from AMD Xilinx for our development of **pace***val.* in hardware with these three developer boards:
+## HOW CAN I SET UP A MATHEMATICAL ENGINE ON A VERY SMALL EFFICIENT HARDWARE SYSTEM?
 
--   Digilent Arty Z7-20, <https://digilent.com/reference/programmable-logic/arty-z7/reference-manual>
--   Xilinx ZC706, <https://www.xilinx.com/publications/prod_mktg/Zynq_ZC706_Prod_Brief.pdf>
--   Xilinx ZCU104, <https://www.xilinx.com/products/boards-and-kits/zcu104.html>
+Simply download the image with these two files from <https://github.com/paceval/paceval/tree/main/paceval%20on%20a%20usb%20stick>:
 
-These boards have been selected by us based on customers' specific needs for mathematical efficiency versus total hardware cost (such as bill of materials) and integration. The Digilent Arty Z7-20 makes sense for small and medium-sized mathematical functions, the Xilinx ZC706 for medium-sized and large mathematical functions and the Xilinx ZCU104 for large to very large mathematical functions and data centers (e.g. hyperscalers).
+1.  File “32GB_sdimage_ZC706_paceval-engine_usb_armory-mark-two.zip”
+2.  File “32GB_sdimage_ZC706_paceval-engine_usb_armory-mark-two.z01”
 
-Since the paceval-service itself running on the SOC only requires ARM32 or ARM64 support and no other specific requirements, the following description can also be applied to any other AMD Xilinx Zync-7000 platform development board.
+Then unpack the image and write it to a 32 GB SD card for the Armory Mk II USB stick. You can use the Win32 Disk Imager for this, for example. Then plug the USB stick into a Windows laptop. After about 2 minutes, the paceval service will be available as a standalone separate coprocessor at the IP address 10.0.0.1 and port 8080. This coprocessor can then be queried in the same way as our description for the paceval-service for servers, as described here on SwaggerHub: <https://app.swaggerhub.com/apis-docs/paceval/paceval-service/>
 
-Note: Currently, the paceval-service is implemented purely in software on the processing system (e.g. PetaLinux) and does not yet use the functions of the FPGA. We will use this GitHub to implement the FPGA functionalities in a timely manner.
+**Example:**
 
-This means that you can expect a lot more in the future in the following areas:
+[http://10.0.0.1:8080/Demo/?functionString=-sin(x\*cos(x))\^(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes](http://10.0.0.1:8080/Demo/?functionString=-sin(x*cos(x))%5e(1/y)&numberOfVariables=2&variables=x;y&values=0.5;2&interval=yes)
 
--   Speed
--   Efficiency (especially mathematics per watt)
+If you want to access Linux on the hardware,  
+the username is: **paceval**  
+and the password is: **paceval**
 
-However, the current values already look very promising (especially when you compare these values with those of a GPU that consumes a hundred times more power):
+**Please note:** These images were created with paceval version 4.24. If the version 4.24 libraries in the images have already expired, they cannot be executed. **To solve this, however, you simply need to copy the current paceval libraries for ARM 32bit into the /home/paceval/arm32 directory on your hardware. And if you want, the appropriate examples too.**
+
+All currently valid and executable libraries and examples can be found in our current paceval SDK on our homepage <https://paceval.com> and also on our paceval Github in these directories  
+<https://github.com/paceval/paceval/tree/main/paceval%20libraries>  
+<https://github.com/paceval/paceval/tree/main/demo%20and%20examples>
+
+# More information
+
+We used the Debian base image from USB armory as a base, see <https://github.com/usbarmory/usbarmory/wiki/Available-images>.  
+The paceval-service for 32-bit ARM that we use on the USB stick is located here: <https://github.com/paceval/paceval/tree/main/examples_sources/NodeJS_examples/Linux/paceval-service_Linux_arm32>
+
+What we use in addition to NodeJS and PM2 is a Linux swap file to be able to run larger mathematical logics or larger neural networks. The swap file is several gigabytes in size. Thanks to the swap file, we can easily run our MNIST example of a neural network for handwritten numbers multiple times in parallel.
+
+Other useful links:
+
+<https://www.withsecure.com/de/solutions/innovative-security-hardware/usb-armory>  
+<https://wiki.elvis.science/index.php?title=USB_Armory>
+<https://groups.google.com/g/usbarmory/c/LTqt_fgQY7w>

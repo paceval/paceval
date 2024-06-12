@@ -16,9 +16,9 @@ Source: <https://www.sprind.org/en/challenges/newcomputing/>
 
 ## OUR TECHNOLOGY
 
-Using new and existing technologies, a first reference design was developed that maps **pace***val.* in hardware with the required functionalities. This reference design is hardware based on a programmable System-on-a-Chip (SoC) from the AMD Xilinx Zync 7000 platform. The possible certification and subsequent official approval of an end product on this hardware should not be a problem, since the SoC already meets the high requirements of the automotive industry AEC-Q100.
+Using new and existing technologies, a first reference design was developed that maps **pace***val.* in hardware with the required functionalities. **This reference design is hardware based on a programmable System-on-a-Chip (SoC)** from the AMD Xilinx Zync 7000 platform. The possible certification and subsequent official approval of an end product on this hardware should not be a problem, since the SoC already meets the high requirements of the automotive industry AEC-Q100.
 
-The basic operating system on the SoC is PetaLinux as a so-called "Embedded Linux Distribution", as offered by Xilinx. Our application within PetaLinux is the paceval-service. This is set up to respond to HTTP requests on port 8080. The API provided by this service allows for the efficient evaluation of closed mathematical functions of any length and any number of variables. This allows all financial, stochastic, technical and scientific functions and in particular all machine learning models to be mapped. In addition, the usual standard mathematical notation can be used. Since the mathematical functions are available entirely in text form, there is a way to certify and then officially approve the software. In conjunction with the approval of the hardware, this results in an approved overall system, which is not possible per se for products based on neural networks today.
+The basic operating system on the SoC is PetaLinux as a so-called "Embedded Linux Distribution", as offered by Xilinx. Our application within PetaLinux is the paceval-service. This is set up to respond to HTTP requests on port 8080. The API provided by this service allows for the efficient evaluation of closed mathematical functions of any length and any number of variables. This allows all financial, stochastic, technical and scientific functions and in particular all machine learning models to be executed. In addition, the usual standard mathematical notation can be used. Since the mathematical functions are available entirely in text form, there is a way to certify and then officially approve the software. In conjunction with the approval of the hardware, this results in an approved overall system, which is not possible per se for products based on neural networks today.
 
 The chosen interface to communicate with our reference design is Ethernet. Of course, this can be changed as the SOC offers PCI Express, USB, Ethernet, SPI, SD/SDIO, I2C, CAN, UART and GPIO for communication in its entirety (the Xilinx ZC706 below). The selected software solution could also be easily transferred to a significantly more powerful multiprocessor system-on-a-chip (MPSoC) like the Xilinx ZYNC UltraSCALE+ platform (the Xilinx ZCU104 below). This not only enables small, energy-saving IoT and IIoT variants (the Digilent Arty Z7-20 below), but also large variants for data centers and in particular the well-known hyperscalers such as Amazon Web Services (AWS), Microsoft Azure and the Google Cloud Platform.
 
@@ -70,10 +70,14 @@ We provide images for SD cards for the following developer boards on our GitHub.
 
 <https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104> File “64GB_sdimage_ZCU104_paceval-engine_petalinux.zip”
 
-**Please note:** These images were created with paceval version 4.04. The version 4.04 libraries in the images have already expired. **To solve this, however, you simply need to copy the current paceval libraries for ARM 32bit and ARM 64bit into the /paceval/sambashare directory on your hardware. And if you want, the appropriate examples too.**
+If you want to access Linux on the hardware,   
+the username is: **paceval**   
+and the password is: **paceval**
+
+**Please note:** These images were created with paceval version 4.04. The version 4.04 libraries in the images have already expired. **To solve this, however, you simply need to copy the current paceval libraries for ARM 32bit and ARM 64bit into the /home/paceval/sambashare directory on your hardware. And if you want, the appropriate examples too.**
 
 All currently valid and executable libraries and examples can be found in our current paceval SDK on our homepage <https://paceval.com> and also on our paceval Github in these directories  
-<https://github.com/paceval/paceval/tree/main/paceval%20libraries>   
+<https://github.com/paceval/paceval/tree/main/paceval%20libraries>  
 <https://github.com/paceval/paceval/tree/main/demo%20and%20examples>
 
 # Alternative Manual Setup
