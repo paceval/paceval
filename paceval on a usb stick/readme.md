@@ -17,7 +17,7 @@ You can therefore implement customer-specific local intelligence that **runs as 
 -   extremely **scalable**
 -   very **cost**-effective
 
-**Example use case:** Local intelligence in the car with the information from the manual and additional information about the specific type of car
+**Example use case:** Local intelligence in the car with the information from the manual and additional information about the specific type of car.
 
 ![](media/5dc684bfbd542edf23d61b7c3d170066.png)
 
