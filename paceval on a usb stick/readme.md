@@ -16,6 +16,7 @@ You can therefore implement customer-specific local intelligence that **runs as 
 -   minimally small in **size**
 -   extremely **scalable**
 -   very **cost**-effective
+-   with maximum **security**
 
 **Example use case:** Local intelligence in the car with the information from the manual and additional information about the specific type of car.
 
