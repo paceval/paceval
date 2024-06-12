@@ -128,6 +128,10 @@ developer version – non-commercial use only
     
 •   <b>[paceval in hardware](https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware) the Mathematical Engine as a Service with an FPGA (e.g. for efficient Artificial Intelligence inference or fast Zero-Knowledge-Proofs)<br></b>
     We have solutions for the Digilent Arty Z7-20, Xilinx ZC706 and Xilinx ZCU104 developer boards on our GitHub. And with our guide, you can easily create your own.
+   
+•   <b>[paceval on a usb stick](https://github.com/paceval/paceval/tree/main/paceval%20on%20a%20usb%20stick) the Mathematical Engine as a Service on a very small efficient hardware system (e.g. for local intelligence with Artificial Intelligence algorithms)<br></b>
+    Enables completely new use cases, as customer-specific requirements of artificial intelligence can be implemented without a permanent network connection.
+
 <br><br><br>
 ![10019436_l-e1442994613885 2](http://paceval.com/wp-content/uploads/2022/04/mathematical_model.jpg)<br>
 ![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2022/04/mathematical_engine.jpg)
