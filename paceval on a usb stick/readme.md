@@ -4,6 +4,8 @@ paceval on a USB stick GitHub - <https://github.com/paceval/paceval/tree/main/pa
 
 paceval at SwaggerHub - <https://app.swaggerhub.com/apis-docs/paceval/paceval-service/>
 
+![Ein Bild, das Text, computer, Computer, Screenshot enthält. Automatisch generierte Beschreibung](media/bfb9f96533ef54bc0c3de25ac87e442a.png)
+
 ## THE MAIN GOAL OF OUR SOLUTION WITH PACEVAL?
 
 By making **pace***val.* available on the smallest efficient systems, local intelligence becomes possible on these systems too. This **enables completely new use cases**, as customer-specific requirements of artificial intelligence can be implemented without a permanent network connection to large, mostly cloud-based systems. There are many algorithms for artificial intelligence in addition to neural networks (see <https://github.com/paceval/paceval/tree/main/paceval%20and%20artificial%20intelligence>) that can thus be implemented locally, e.g. linear regression, logistic regression, decision trees, random forest, support vector machines, k-nearest neighbours, naive Bayes, k-means clustering, principal component analysis or gradient boosting machines. Of course, many other obvious examples can be found, such as weighted directed graphs, differential equations, scalar products, geometric transformations, matrix and vector operations, hidden Markov models for fast gesture recognition, transformations (DCT, FFT), Newton's method, singular value decomposition, polynomials, eigenvalues, cyclic redundancy checks, zero-knowledge proofs and generally almost all topics of numerical mathematics.
@@ -26,9 +28,17 @@ This allows you to implement customized local intelligence that **runs as a stan
 
 Similar to the [paceval in hardware](https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware) systems already presented, we have implemented **the paceval-service as an example on the Armory Mk II USB stick**. The basic operating system on the USB stick is Debian Linux. The image can be downloaded from <https://github.com/usbarmory/usbarmory/wiki>. Our application on the USB stick is the well-known paceval-service. This is set up to respond to HTTP requests on port 8080. The API provided by this service allows for the efficient evaluation of closed mathematical functions of any length and any number of variables. This allows all financial, stochastic, technical and scientific functions and in particular all machine learning models to be executed. In addition, the usual standard mathematical notation can be used. Since the mathematical functions are available entirely in text form, there is a way to certify and then officially approve the software. In conjunction with the approval of the hardware, this results in an approved overall system, which is not possible per se for products based on neural networks today.
 
-**USB Armory Mk II with a single ARM core**
+**USB stick with a single ARM core**
 
 ![Ein Bild, das Elektronik, Elektronisches Gerät, Fahren, Flashspeicher enthält. Automatisch generierte Beschreibung](media/0e9c8d1f9dba1d1a679607ed44fb4e8c.png)
+
+The following measurements provide reference figures for the USB stick with **pace***val.* power consumption:
+
+| Idle     | Medium CPU+I/O workload | High CPU+I/O workload |
+|----------|-------------------------|-----------------------|
+| 0.4 Watt | 0.9 Watt                | 1.2 Watt              |
+
+The neural network of our Example 6 for recognizing handwritten numbers is then **executed in less than 1 second on the USB stick** using the paceval-service. And all of this **at an average of around 1 Watt**:![Ein Bild, das Text, Screenshot, Rechteck, Design enthält. Automatisch generierte Beschreibung](media/f9a044f125170f7d39c350150c4c0892.png)
 
 ## HOW CAN I SET UP A MATHEMATICAL ENGINE ON A VERY SMALL EFFICIENT HARDWARE SYSTEM?
 
@@ -66,5 +76,4 @@ Other useful links:
 <https://wiki.elvis.science/index.php?title=USB_Armory>  
 <https://groups.google.com/g/usbarmory/c/LTqt_fgQY7w>
 
-Copyright © 2015-2024 paceval.® All rights reserved.<br>
-mailto:info@paceval.com
+Copyright © 2015-2024 paceval.® All rights reserved. mailto:info@paceval.com
