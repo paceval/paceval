@@ -4,7 +4,7 @@ paceval on a USB stick GitHub - <https://github.com/paceval/paceval/tree/main/pa
 
 paceval at SwaggerHub - <https://app.swaggerhub.com/apis-docs/paceval/paceval-service/>
 
-![Ein Bild, das Text, computer, Computer, Screenshot enthält. Automatisch generierte Beschreibung](media/bfb9f96533ef54bc0c3de25ac87e442a.png)
+![Ein Bild, das Computer, computer, Design enthält. Automatisch generierte Beschreibung](media/7bf48bcdbd6de0f73271887032b9d79b.png)
 
 ## THE MAIN GOAL OF OUR SOLUTION WITH PACEVAL?
 
