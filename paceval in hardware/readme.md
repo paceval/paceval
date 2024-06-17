@@ -2,7 +2,9 @@
 
 paceval in hardware GitHub - https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware
 
-paceval at SwaggerHub - https://app.swaggerhub.com/apis-docs/paceval/paceval-service/
+paceval at SwaggerHub - <https://app.swaggerhub.com/apis-docs/paceval/paceval-service/>
+
+![Ein Bild, das Schaltung, Karte, Elektronisches Bauteil, Elektronik enthält. Automatisch generierte Beschreibung](media/19bdc71c023a0d1bf9bd7009a8a487fc.png)
 
 ## WHY DO I NEED A MATHEMATICAL ENGINE IN HARDWARE?
 
@@ -70,8 +72,8 @@ We provide images for SD cards for the following developer boards on our GitHub.
 
 <https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104> File “64GB_sdimage_ZCU104_paceval-engine_petalinux.zip”
 
-If you want to access Linux on the hardware,   
-the username is: **paceval**   
+If you want to access Linux on the hardware,  
+the username is: **paceval**  
 and the password is: **paceval**
 
 **Please note:** These images were created with paceval version 4.04. The version 4.04 libraries in the images have already expired. **To solve this, however, you simply need to copy the current paceval libraries for ARM 32bit and ARM 64bit into the /home/paceval/sambashare directory on your hardware. And if you want, the appropriate examples too.**
