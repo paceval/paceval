@@ -62,15 +62,15 @@ We provide images for SD cards for the following developer boards on our GitHub.
 
 **Digilent Arty Z7-20**
 
-<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20> File “32GB_sdimage_ArtyZ7-20_paceval-engine_petalinux.zip”
+https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20 File “32GB_sdimage_ArtyZ7-20_paceval-engine_petalinux.zip”
 
 **Xilinx ZC706**
 
-<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZC706> File “32GB_sdimage_ZC706_paceval-engine_petalinux.zip”
+https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZC706 File “32GB_sdimage_ZC706_paceval-engine_petalinux.zip”
 
 **Xilinx ZCU104**
 
-<https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104> File “64GB_sdimage_ZCU104_paceval-engine_petalinux.zip”
+https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104 File “64GB_sdimage_ZCU104_paceval-engine_petalinux.zip”
 
 If you want to access Linux on the hardware,  
 the username is: **paceval**  
@@ -120,7 +120,7 @@ If you already have a hardware design, you can skip this step.
 
 First you have to create a simple hardware design for the Digilent Arty Z7-20 under Vivago. This video is certainly useful for beginners:
 
-<https://www.youtube.com/watch?v=i89v9T8Hdi0>
+https://www.youtube.com/watch?v=i89v9T8Hdi0
 
 Then export the hardware including the bitstream in Vivado.
 
@@ -230,7 +230,7 @@ Plug a micro USB cable to the JTAG/UART USB host port J14 of the Digilent Arty Z
 
 Open your serial terminal application of choice (e.g. Tera Term) with a baud rate setting of 115200:
 
-![Ein Bild, das Text, Screenshot, Display, Software enthält. Automatisch generierte Beschreibung](media/cd1dbef48d4590d08091812c9ac64ecd.png)
+![A screenshot of a computer Description automatically generated](media/cd506eb931fbc30d1735ea908cdb2fbf.png)
 
 And then you can watch the boot process.  
 Up to here everything should have worked successfully and you can now configure the paceval-engine.
