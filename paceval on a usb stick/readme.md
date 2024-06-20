@@ -59,6 +59,8 @@ If you want to access Linux on the hardware,
 the username is: **paceval**  
 and the password is: **paceval**
 
+**![A computer screen shot of a black screen Description automatically generated](media/f151b94534d68e20ac5b83d12955b6c3.png)**
+
 **Please note:** These images were created with paceval version 4.24. If the version 4.24 libraries in the images have already expired, they cannot be executed. **To solve this, however, you simply need to copy the current paceval libraries for ARM 32bit into the /home/paceval/arm32 directory on your hardware. And if you want, the appropriate examples too.**
 
 All currently valid and executable libraries and examples can be found in our current paceval SDK on our homepage <https://paceval.com> and also on our paceval Github in these directories  
