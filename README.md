@@ -20,8 +20,8 @@ to compute [all financial, stochastic, engineering, and scientific functions](ht
 (see SwaggerHub [paceval-service](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/) and  [paceval-service-cloud](https://app.swaggerhub.com/apis/paceval/paceval-service-cloud) for more information)
 
 ## Release-content – paceval.-Software Development Kit [SDK] 4.24a
-developer version – non-commercial use only 
-License - paceval source code GNU Affero General Public License (AGPL)
+developer version – non-commercial use only<br> 
+License - paceval source code GNU Affero General Public License (AGPL)<br>
 Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.
 
 •   <b>["demo and examples"](https://github.com/paceval/paceval/tree/main/demo%20and%20examples) folder<br></b>
