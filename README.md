@@ -21,7 +21,7 @@ to compute [all financial, stochastic, engineering, and scientific functions](ht
 
 ## Release-content – paceval.-Software Development Kit [SDK] 4.24a
 developer version – non-commercial use only<br> 
-License - paceval source code GNU Affero General Public License (AGPL) (see [paceval sources (external) documentation](./paceval_sources_documentation-external/html/index.html))<br>
+License - paceval source code GNU Affero General Public License (AGPL) (see [paceval sources (external) documentation](https://htmlpreview.github.io/?https://github.com/paceval/paceval/blob/main/Local%20paceval%20sources%20external%20documentation.html))<br>
 Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.
 
 •   <b>["demo and examples"](https://github.com/paceval/paceval/tree/main/demo%20and%20examples) folder<br></b>
