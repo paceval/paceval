@@ -21,7 +21,7 @@ to compute [all financial, stochastic, engineering, and scientific functions](ht
 
 ## Release-content – paceval.-Software Development Kit [SDK] 4.25
 developer version – non-commercial use only<br> 
-License - paceval source code GNU Affero General Public License (AGPL) (see [paceval sources (external) documentation](https://htmlpreview.github.io/?https://github.com/paceval/paceval/blob/main/Local%20paceval%20sources%20external%20documentation.html))<br>
+License - paceval source code GNU Affero General Public License (AGPL) (see [paceval sources (external) documentation](https://paceval.com/paceval_sources_documentation-external/html/index.html))<br>
 Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.
 
 •   <b>["demo and examples"](https://github.com/paceval/paceval/tree/main/demo%20and%20examples) folder<br></b>
@@ -89,7 +89,7 @@ Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.
     - Eclipse/GCC (Linux 64bit)<br>
     - Eclipse/GCC (ARM64 64bit)<br>
     - Eclipse/GCC (ARM32 32bit)<br><br>
-    for Node.js - paceval-service is the Linux mathematical server for ARM64, Intel and AMD processors<br>
+    for Node.js - paceval-service is the Linux mathematical server for APPLE, ARM64, ARM32, Intel and AMD processors<br>
      this includes the ["Guide for deploying the Kubernetes native paceval-service on any cluster"](https://github.com/paceval/paceval/blob/main/examples_sources/NodeJS_examples/k8s/doc/Readme.md)<br><br>
     for PHP - a simple mathematical engine, e.g. to offload battery-operated IoT devices and other examples<br>
     
