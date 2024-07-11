@@ -1,9 +1,0 @@
-<map id="paceval_cListOfVariables::identifyVariablePositionfromString" name="paceval_cListOfVariables::identifyVariablePositionfromString">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,195,89"/>
-<area shape="rect" id="Node000002" href="$classpaceval__c_list_of_variables.html#acb131838a64a3759c095b51aeeb80fad" title=" " alt="" coords="247,5,414,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,44,231,38,232,44,196,49"/>
-<area shape="rect" id="Node000004" href="$paceval__c_list_of_variables_8cpp.html#a9dfd09bad69332a91c0103d1e9a8c765" title=" " alt="" coords="243,72,418,115"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="196,71,228,76,227,81,195,76"/>
-<area shape="rect" id="Node000003" href="$classpaceval__c_list_of_pointer.html#a338e47a5fda16c4eb4becd32c5faa806" title=" " alt="" coords="466,5,619,48"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="414,24,450,24,450,29,414,29"/>
-</map>

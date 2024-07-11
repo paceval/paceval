@@ -1,7 +1,0 @@
-<map id="paceval_writeLoggingString" name="paceval_writeLoggingString">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,183,57"/>
-<area shape="rect" id="Node000002" href="$paceval__c_cleanup_handler_8cpp.html#aad285407cbade8ce903b2a7a4bc3e437" title=" " alt="" coords="242,5,401,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,31,226,27,227,32,183,37"/>
-<area shape="rect" id="Node000003" href="$paceval__c_computation_8cpp.html#aca6a6e91b9816392c0bbab78704fefcd" title=" " alt="" coords="231,56,412,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,51,215,55,215,60,183,57"/>
-</map>

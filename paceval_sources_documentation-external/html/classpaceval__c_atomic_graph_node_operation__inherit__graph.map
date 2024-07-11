@@ -1,7 +1,0 @@
-<map id="paceval_cAtomicGraphNodeOperation" name="paceval_cAtomicGraphNodeOperation">
-<area shape="rect" id="Node000001" title="The class paceval_cAtomicGraphNodeOperation is derived from paceval_cBaseAtomicGraphNode and encapsul..." alt="" coords="5,1445,387,2293"/>
-<area shape="rect" id="Node000002" href="$classpaceval__c_base_atomic_graph_node.html" title="The base class paceval_cBaseAtomicGraphNode encapsulates the handling of the mathematical subfunction..." alt="" coords="26,288,366,1397"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,1412,199,1445,193,1445,193,1412"/>
-<area shape="rect" id="Node000003" href="$classpaceval__c_registered_object.html" title="The base class paceval_cRegisteredObject encapsulates the management of the register position of the ..." alt="" coords="85,5,307,240"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="199,255,199,288,193,288,193,255"/>
-</map>

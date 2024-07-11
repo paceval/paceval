@@ -1,8 +1,0 @@
-<map id="G:/Onedrive/Development/paceval/system&#45;independent/source&#45;internal/inc/paceval_fMath.h" name="G:/Onedrive/Development/paceval/system&#45;independent/source&#45;internal/inc/paceval_fMath.h">
-<area shape="rect" id="Node000001" title="specification of the main interface of all non&#45;interval arithmetic mathematical methods used by the m..." alt="" coords="5,5,234,64"/>
-<area shape="rect" id="Node000002" href="$paceval__main_8h.html" title="the paceval. application programming interface &#45; for documentation please go to https://paceval...." alt="" coords="52,187,187,229"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,65,89,100,86,119,87,138,101,172,96,174,82,139,80,119,84,99,98,63"/>
-<area shape="rect" id="Node000003" href="$paceval__c_common_data_8h.html" title="specifies global, compiler&#45;specific definitions and data types for the supported mathematical functio..." alt="" coords="97,112,265,139"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,63,166,97,161,101,137,66"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="173,141,146,176,142,173,169,138"/>
-</map>

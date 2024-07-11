@@ -1,9 +1,0 @@
-<map id="paceval_setCallbackUserFunctionString" name="paceval_setCallbackUserFunctionString">
-<area shape="rect" id="Node000001" title=" " alt="" coords="500,23,716,65"/>
-<area shape="rect" id="Node000002" href="$paceval__c_syntactic_analysis_8cpp.html#a9eec32938832c121cbc5aad3e89059b8" title=" " alt="" coords="272,23,452,65"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="484,47,453,47,453,41,484,41"/>
-<area shape="rect" id="Node000003" href="$paceval__main_8cpp.html#aad60cbad108b9e96511355e605d6ffaa" title=" " alt="" coords="36,5,193,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="256,36,193,29,194,24,256,31"/>
-<area shape="rect" id="Node000004" href="$paceval__main_8cpp.html#a61afdee8752fab8e20c5982959ee9bcd" title=" " alt="" coords="5,56,224,83"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="256,57,224,61,224,55,256,52"/>
-</map>

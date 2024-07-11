@@ -1,8 +1,0 @@
-<map id="paceval_cListOfVariables::initializeData" name="paceval_cListOfVariables::initializeData">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,172,77"/>
-<area shape="rect" id="Node000002" href="$classpaceval__c_list_of_pointer.html#ac2fb8eb1463c782928e98f27b66717c8" title=" " alt="" coords="220,5,373,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,42,204,37,205,42,172,47"/>
-<area shape="rect" id="Node000003" href="$classpaceval__c_cleanup_handler.html#a05e45bff130a110951d6b8c1fb28e9a4" title=" " alt="" coords="421,35,590,77"/>
-<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="172,56,220,57,373,57,405,57,405,62,373,63,220,63,172,62"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="374,35,406,39,405,45,373,40"/>
-</map>

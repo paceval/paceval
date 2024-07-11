@@ -1,8 +1,0 @@
-<map id="G:/Onedrive/Development/paceval/system&#45;independent/source&#45;internal/inc/paceval_fFPGAHandling.h" name="G:/Onedrive/Development/paceval/system&#45;independent/source&#45;internal/inc/paceval_fFPGAHandling.h">
-<area shape="rect" id="Node000001" title="specification of the main routines for handling paceval in hardware, in particular via an FPGA implem..." alt="" coords="5,5,195,80"/>
-<area shape="rect" id="Node000002" href="$paceval__main_8h.html" title="the paceval. application programming interface &#45; for documentation please go to https://paceval...." alt="" coords="32,203,168,245"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,81,68,117,66,136,68,154,81,188,76,190,63,155,61,136,63,116,76,80"/>
-<area shape="rect" id="Node000003" href="$paceval__c_common_data_8h.html" title="specifies global, compiler&#45;specific definitions and data types for the supported mathematical functio..." alt="" coords="77,128,246,155"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="125,79,147,113,143,116,121,82"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="154,157,127,192,122,189,150,154"/>
-</map>

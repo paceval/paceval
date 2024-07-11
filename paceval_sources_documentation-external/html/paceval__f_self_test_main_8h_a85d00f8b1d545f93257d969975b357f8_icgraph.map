@@ -1,9 +1,0 @@
-<map id="paceval_setSelfTestPassed" name="paceval_setSelfTestPassed">
-<area shape="rect" id="Node000001" title=" " alt="" coords="639,13,820,40"/>
-<area shape="rect" id="Node000002" href="$paceval__f_self_test_main_8cpp.html#a5cb77a00a63daa84c4771e62df42e5a1" title=" " alt="" coords="416,5,591,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="623,29,592,29,592,24,623,24"/>
-<area shape="rect" id="Node000003" href="$paceval__c_computation_8cpp.html#a02d68e2866a1f8c4228805d6479f9197" title=" " alt="" coords="211,13,368,40"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="400,29,368,29,368,24,400,24"/>
-<area shape="rect" id="Node000004" href="$paceval__main_8cpp.html#aad60cbad108b9e96511355e605d6ffaa" title=" " alt="" coords="5,13,163,40"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="195,29,163,29,163,24,195,24"/>
-</map>

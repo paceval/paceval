@@ -1,5 +1,0 @@
-<map id="paceval_cGraph" name="paceval_cGraph">
-<area shape="rect" id="Node000001" title="The class paceval_cGraph is derived from paceval_cRegisteredObject and encapsulates the management of..." alt="" coords="5,288,345,1013"/>
-<area shape="rect" id="Node000002" href="$classpaceval__c_registered_object.html" title="The base class paceval_cRegisteredObject encapsulates the management of the register position of the ..." alt="" coords="64,5,287,240"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,255,178,288,173,288,173,255"/>
-</map>

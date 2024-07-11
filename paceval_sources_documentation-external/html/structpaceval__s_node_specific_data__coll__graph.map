@@ -1,9 +1,0 @@
-<map id="paceval_sNodeSpecificData" name="paceval_sNodeSpecificData">
-<area shape="rect" id="Node000001" title="The struct paceval_sNodeSpecificData is used by class paceval_cBaseAtomicGraphNode." alt="" coords="218,405,423,539"/>
-<area shape="rect" id="Node000002" href="$structpaceval__s_node_base_data.html" title="The struct paceval_sNodeBaseData is used when necessary by the struct paceval_sNodeSpecificData and s..." alt="" coords="5,91,196,256"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,255,133,320,148,351,166,380,185,399,206,415,202,420,181,403,162,383,143,354,128,322,109,257"/>
-<area shape="rect" id="Node000003" href="$structpaceval__s_value_operator_as_data.html" title="The struct paceval_sValueOperatorAsData is used when necessary by the struct paceval_sNodeSpecificDat..." alt="" coords="221,53,421,293"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="323,293,323,388,318,388,318,293"/>
-<area shape="rect" id="Node000004" href="$structpaceval__s_lookahead_cache_data.html" title="The struct paceval_sLookaheadCacheData is used when necessary by the struct paceval_sNodeSpecificData..." alt="" coords="445,5,663,341"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="541,342,519,383,483,417,440,441,438,436,480,412,515,380,537,340"/>
-</map>
