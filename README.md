@@ -89,7 +89,7 @@ Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.
     - Eclipse/GCC (Linux 64bit)<br>
     - Eclipse/GCC (ARM64 64bit)<br>
     - Eclipse/GCC (ARM32 32bit)<br><br>
-    for Node.js - paceval-service is the Linux mathematical server for ARM64, Intel and AMD processors<br>
+    for Node.js - paceval-service is the Linux mathematical server for ARM64, ARM32, Intel and AMD processors<br>
      this includes the ["Guide for deploying the Kubernetes native paceval-service on any cluster"](https://github.com/paceval/paceval/blob/main/examples_sources/NodeJS_examples/k8s/doc/Readme.md)<br><br>
     for PHP - a simple mathematical engine, e.g. to offload battery-operated IoT devices and other examples<br>
     
