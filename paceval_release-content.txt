@@ -1,6 +1,7 @@
 
-Release-content – paceval.-Software Development Kit [SDK] 4.24a
+Release-content – paceval.-Software Development Kit [SDK] 4.25
 developer version – non-commercial use only 
+License - paceval source code GNU Affero General Public License (AGPL)
 
 •   "demo and examples" folder
     includes the executables
@@ -37,8 +38,8 @@ developer version – non-commercial use only
     - paceval_main.cpp
     and includes the dynamic and/or static libraries 
     for
-    - Windows 32bit      - "paceval_win32.dll" (shared library)
-    - Windows 64bit      - "paceval_win64i.dll" (shared library)
+    - Windows 32bit      - "paceval_win32.dll" (shared library)                                  | Created with Embarcadero C++ Builder 10 (2015)
+    - Windows 64bit      - "paceval_win64i.dll" (shared library)                                 | Created with Eclipse IDE for C/C++ 2020-09, Mingw-W64 4.3.5 (2018-12), GCC 9.2.0 (2020)
     - macOS 64bit        - "libpaceval_macos_staticLIB.a" (static library)
     - macOS 64bit        - "libpaceval_macOS_dynamicLIB.dylib" (shared library)
     - macCatalyst 64bit  - "libpaceval_ios_staticLIB.a" (static library)
@@ -55,6 +56,7 @@ developer version – non-commercial use only
     - Android+simulator  - "libpaceval_android_staticLIB.a" (static library)
     - Android 64bit      - "libpaceval_android_sharedLIB.so" (shared library)
     - Android+simulator  - "libpaceval_android_sharedLIB.so" (shared library)
+    - Windows 32bit      - "paceval_win32.dll" (shared library) in folder "Windows 98 and later" | Created with Borland C++ 5.02 (1997)
 
 •   "examples_sources" folder
     includes source-code, project files and executables of the demo and 
@@ -69,7 +71,7 @@ developer version – non-commercial use only
     - Eclipse/GCC (ARM64 64bit)
     - Eclipse/GCC (ARM32 32bit)
 
-    for Node.js - paceval-service an Apple Silicon-, Linux- and Windows-server for ARM64, Intel and AMD processors
+    for Node.js - paceval-service an Apple Silicon-, Linux- and Windows-server for APPLE, ARM64, ARM32, Intel and AMD processors
     for PHP - a simple mathematical engine, e.g. to offload battery-operated IoT devices and other examples
 
     other programming languages via Foreign function interface (FFI) 

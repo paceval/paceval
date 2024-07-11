@@ -1,11 +1,15 @@
 //---------------------------------------------------------------------------
-// Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
-// Copyright 2015-2023. Version 2.x, 3.x, 4.x 2015-2023 paceval.[Registered Trade Mark]
-//                                            All rights reserved.
+// Copyright ©1994-2024. Version 1.x, 2.x, 3.x, 4.x ©1994-2024
+//       Joerg Koenning & paceval.[Registered Trade Mark] All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_main.cpp
+// License   : paceval source code GNU Affero General Public License (AGPL)
 //---------------------------------------------------------------------------
 
+/**
+ * @file paceval_main.cpp
+ * @brief the paceval. application programming interface - for documentation please go to https://paceval.com/api/
+ */
 //---------------------------------------------------------------------------
 #if defined(_MSC_VER)
 #endif //#if defined(_MSC_VER)

@@ -1,4 +1,4 @@
-//Developed and tested with Node.js version 18.7.0, 20.11.1 and paceval. 4.24
+//Developed and tested with Node.js version 18.7.0, 20.11.1 and paceval. 4.24 and later
 
 'use strict';
 

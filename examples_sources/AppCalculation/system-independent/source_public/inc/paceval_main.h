@@ -1,17 +1,21 @@
 //---------------------------------------------------------------------------
-// Copyright 1997-2014. Version 1.x Joerg Koenning - All rights reserved.
-// Copyright 2015-2023. Version 2.x, 3.x, 4.x 2015-2023 paceval.[Registered Trade Mark]
-//                                            All rights reserved.
+// Copyright ©1994-2024. Version 1.x, 2.x, 3.x, 4.x ©1994-2024
+//       Joerg Koenning & paceval.[Registered Trade Mark] All rights reserved.
 // Author(s) : paceval., see http://www.paceval.com
 // File      : paceval_main.h
+// License   : paceval source code GNU Affero General Public License (AGPL)
 //---------------------------------------------------------------------------
 
+/**
+ * @file paceval_main.h
+ * @brief the paceval. application programming interface - for documentation please go to https://paceval.com/api/
+ */
 //---------------------------------------------------------------------------
 #ifndef paceval_mainH
 #define paceval_mainH
 
 #define paceval_mainVersionString   "4"
-#define paceval_subVersionString    "24"
+#define paceval_subVersionString    "25"
 
 #define PACEVAL_MAXVER	255
 #define PACEVAL_MAXERR	255
@@ -79,6 +83,7 @@ enum paceval_eErrorTypes
     PACEVAL_ERR_COMPUTATION_RESULT = 153,
     PACEVAL_ERR_COMPUTATION_BUSY = 154,
     PACEVAL_ERR_COMPUTATION_USER_COMPILER_NOT_SUPPORTS_LONG_DOUBLE = 160,
+    PACEVAL_ERR_COMPUTATION_PRECHECK_MULTIPLE = 161,
     PACEVAL_ERR_COMPUTATION_END,
     PACEVAL_ERR_END
 }; //paceval_eErrorTypes

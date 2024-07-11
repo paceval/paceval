@@ -122,7 +122,7 @@ int main(int argc, char* argv[])
         fileToWrite.close();
     }
 
-    /*
+    /**/
     //Alterative 1 : Create each paceval-Computation object
     //with paceval_CreateComputation
     for (unsigned int iCount = 0; iCount < 10; iCount++)
@@ -167,8 +167,9 @@ int main(int argc, char* argv[])
             delete[] variablesString;
         }
     }
-    */
+    /**/
 
+    /*
     //Alterative 2 : Create paceval-Computation objects in one step
     //with paceval_CreateMultipleComputations
     {
@@ -234,7 +235,7 @@ int main(int argc, char* argv[])
         delete[] functionStringsArray;
         delete[] variablesString;
     }
-
+    */
 
     if (success == true)
     {
@@ -311,6 +312,36 @@ int main(int argc, char* argv[])
             printf("\nExcerpt from the MSDN : 'Previous(...) versions of Microsoft C / C++ and Microsoft Visual C++ supported");
             printf("\nthe long double, 80-bit precision data type. (...), however, the long double data type");
             printf("\nmaps to the double, 64-bit precision data type.'");
+        }
+
+        //Finally, we write the information of each paceval-Computation object
+        for (unsigned int iCount = 0; iCount < 10; iCount++)
+        {
+            char filenamePlusExt[100];
+            char charBuffer25[25];
+            unsigned long lengthXML;
+            char* bufferXML;
+
+            strcpy(filenamePlusExt, "computationInfoforNumber_");
+            paceval_dConvertFloatToString(charBuffer25, iCount);
+            strcat(filenamePlusExt, charBuffer25);
+            strcat(filenamePlusExt, ".txt");
+
+            lengthXML = paceval_GetComputationInformationXML(handle_pacevalComputationsArray[iCount],
+                        NULL);
+            bufferXML = new char[lengthXML];
+            lengthXML = paceval_GetComputationInformationXML(handle_pacevalComputationsArray[iCount],
+                        bufferXML);
+
+            std::ofstream fileToWrite;
+            fileToWrite.open(filenamePlusExt);
+            if (fileToWrite.is_open())
+            {
+                fileToWrite << bufferXML;
+                fileToWrite.close();
+            }
+
+            delete[] bufferXML;
         }
 
         paceval_GetComputationVersionString(handle_pacevalComputationsArray[0], versionString);
