@@ -1,0 +1,117 @@
+\doxysection{G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/paceval\+\_\+d\+Test\+Debug.h File Reference}
+\hypertarget{paceval__d_test_debug_8h}{}\label{paceval__d_test_debug_8h}\index{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/inc/paceval\_dTestDebug.h@{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/inc/paceval\_dTestDebug.h}}
+
+
+switches the feature flags for paceval\textquotesingle{}s internal tests (annotation\+: for delivery, e.\+g. as a software development kit, all these feature flags should be set to 0)  
+
+
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__d_test_debug_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{paceval__d_test_debug_8h_aaa87d47e8e1381e4b1673f7469c3727e}{paceval\+\_\+test\+\_\+\+RUN\+\_\+\+QUICK\+\_\+\+TEST}}~0
+\item 
+\#define \mbox{\hyperlink{paceval__d_test_debug_8h_acc55ba4d4e8f319780d3233db8d9464d}{paceval\+\_\+test\+\_\+\+RUN\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+MEMORY}}~0
+\item 
+\#define \mbox{\hyperlink{paceval__d_test_debug_8h_a9210c0a8e3a51a15492e332ec58a3c11}{paceval\+\_\+test\+\_\+\+RUN\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+LONG\+\_\+\+DOUBLE}}~0
+\item 
+\#define \mbox{\hyperlink{paceval__d_test_debug_8h_a3e4bdf9af9fcd82cf91262cf3188db36}{paceval\+\_\+test\+\_\+\+RUN\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+DOUBLE}}~0
+\item 
+\#define \mbox{\hyperlink{paceval__d_test_debug_8h_a6d4c18eab89a1fdcdd44b4607434f583}{paceval\+\_\+test\+\_\+\+RUN\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+FLOAT}}~0
+\item 
+\#define \mbox{\hyperlink{paceval__d_test_debug_8h_a2479486903670e59664b55f422887617}{paceval\+\_\+\+ENABLE\+\_\+\+LOGGING\+\_\+\+TO\+\_\+\+FILE}}~0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{paceval__d_test_debug_8h_aca6a6e91b9816392c0bbab78704fefcd}{paceval\+\_\+get\+Logging\+Enabled}} ()
+\item 
+bool \mbox{\hyperlink{paceval__d_test_debug_8h_a3e728815e8c7607100ab2b9b31ee7bd2}{paceval\+\_\+set\+Logging\+Enabled}} (unsigned long logging\+Enabled\+\_\+in)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+switches the feature flags for paceval\textquotesingle{}s internal tests (annotation\+: for delivery, e.\+g. as a software development kit, all these feature flags should be set to 0) 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{paceval__d_test_debug_8h_a2479486903670e59664b55f422887617}\label{paceval__d_test_debug_8h_a2479486903670e59664b55f422887617} 
+\index{paceval\_dTestDebug.h@{paceval\_dTestDebug.h}!paceval\_ENABLE\_LOGGING\_TO\_FILE@{paceval\_ENABLE\_LOGGING\_TO\_FILE}}
+\index{paceval\_ENABLE\_LOGGING\_TO\_FILE@{paceval\_ENABLE\_LOGGING\_TO\_FILE}!paceval\_dTestDebug.h@{paceval\_dTestDebug.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_ENABLE\_LOGGING\_TO\_FILE}{paceval\_ENABLE\_LOGGING\_TO\_FILE}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+ENABLE\+\_\+\+LOGGING\+\_\+\+TO\+\_\+\+FILE~0}
+
+Defines whether the feature is set to log information to a file, e.\+g. the test results of the extended mathematical tests by paceval (default is 1 = feature is used, see \doxylink{paceval__c_cleanup_handler_8cpp}{paceval\+\_\+c\+Cleanup\+Handler.\+cpp}) \Hypertarget{paceval__d_test_debug_8h_aaa87d47e8e1381e4b1673f7469c3727e}\label{paceval__d_test_debug_8h_aaa87d47e8e1381e4b1673f7469c3727e} 
+\index{paceval\_dTestDebug.h@{paceval\_dTestDebug.h}!paceval\_test\_RUN\_QUICK\_TEST@{paceval\_test\_RUN\_QUICK\_TEST}}
+\index{paceval\_test\_RUN\_QUICK\_TEST@{paceval\_test\_RUN\_QUICK\_TEST}!paceval\_dTestDebug.h@{paceval\_dTestDebug.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_test\_RUN\_QUICK\_TEST}{paceval\_test\_RUN\_QUICK\_TEST}}
+{\footnotesize\ttfamily \#define paceval\+\_\+test\+\_\+\+RUN\+\_\+\+QUICK\+\_\+\+TEST~0}
+
+defines whether the feature is set to perform a quick mathematical test by paceval (default is 1 = feature is used, see \doxylink{paceval__f_self_test_main_8cpp}{paceval\+\_\+f\+Self\+Test\+Main.\+cpp}) \Hypertarget{paceval__d_test_debug_8h_a3e4bdf9af9fcd82cf91262cf3188db36}\label{paceval__d_test_debug_8h_a3e4bdf9af9fcd82cf91262cf3188db36} 
+\index{paceval\_dTestDebug.h@{paceval\_dTestDebug.h}!paceval\_test\_RUN\_SELF\_TEST\_DOUBLE@{paceval\_test\_RUN\_SELF\_TEST\_DOUBLE}}
+\index{paceval\_test\_RUN\_SELF\_TEST\_DOUBLE@{paceval\_test\_RUN\_SELF\_TEST\_DOUBLE}!paceval\_dTestDebug.h@{paceval\_dTestDebug.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_test\_RUN\_SELF\_TEST\_DOUBLE}{paceval\_test\_RUN\_SELF\_TEST\_DOUBLE}}
+{\footnotesize\ttfamily \#define paceval\+\_\+test\+\_\+\+RUN\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+DOUBLE~0}
+
+defines whether the feature is set to perform a extended mathematical test by paceval for precision double (default is 1 = feature is used, see \doxylink{paceval__f_self_test_main_8cpp}{paceval\+\_\+f\+Self\+Test\+Main.\+cpp}) \Hypertarget{paceval__d_test_debug_8h_a6d4c18eab89a1fdcdd44b4607434f583}\label{paceval__d_test_debug_8h_a6d4c18eab89a1fdcdd44b4607434f583} 
+\index{paceval\_dTestDebug.h@{paceval\_dTestDebug.h}!paceval\_test\_RUN\_SELF\_TEST\_FLOAT@{paceval\_test\_RUN\_SELF\_TEST\_FLOAT}}
+\index{paceval\_test\_RUN\_SELF\_TEST\_FLOAT@{paceval\_test\_RUN\_SELF\_TEST\_FLOAT}!paceval\_dTestDebug.h@{paceval\_dTestDebug.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_test\_RUN\_SELF\_TEST\_FLOAT}{paceval\_test\_RUN\_SELF\_TEST\_FLOAT}}
+{\footnotesize\ttfamily \#define paceval\+\_\+test\+\_\+\+RUN\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+FLOAT~0}
+
+defines whether the feature is set to perform a extended mathematical test by paceval for precision float (default is 1 = feature is used, see \doxylink{paceval__f_self_test_main_8cpp}{paceval\+\_\+f\+Self\+Test\+Main.\+cpp}) \Hypertarget{paceval__d_test_debug_8h_a9210c0a8e3a51a15492e332ec58a3c11}\label{paceval__d_test_debug_8h_a9210c0a8e3a51a15492e332ec58a3c11} 
+\index{paceval\_dTestDebug.h@{paceval\_dTestDebug.h}!paceval\_test\_RUN\_SELF\_TEST\_LONG\_DOUBLE@{paceval\_test\_RUN\_SELF\_TEST\_LONG\_DOUBLE}}
+\index{paceval\_test\_RUN\_SELF\_TEST\_LONG\_DOUBLE@{paceval\_test\_RUN\_SELF\_TEST\_LONG\_DOUBLE}!paceval\_dTestDebug.h@{paceval\_dTestDebug.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_test\_RUN\_SELF\_TEST\_LONG\_DOUBLE}{paceval\_test\_RUN\_SELF\_TEST\_LONG\_DOUBLE}}
+{\footnotesize\ttfamily \#define paceval\+\_\+test\+\_\+\+RUN\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+LONG\+\_\+\+DOUBLE~0}
+
+defines whether the feature is set to perform a extended mathematical test by paceval for precision long double (default is 1 = feature is used, see \doxylink{paceval__f_self_test_main_8cpp}{paceval\+\_\+f\+Self\+Test\+Main.\+cpp}) \Hypertarget{paceval__d_test_debug_8h_acc55ba4d4e8f319780d3233db8d9464d}\label{paceval__d_test_debug_8h_acc55ba4d4e8f319780d3233db8d9464d} 
+\index{paceval\_dTestDebug.h@{paceval\_dTestDebug.h}!paceval\_test\_RUN\_SELF\_TEST\_MEMORY@{paceval\_test\_RUN\_SELF\_TEST\_MEMORY}}
+\index{paceval\_test\_RUN\_SELF\_TEST\_MEMORY@{paceval\_test\_RUN\_SELF\_TEST\_MEMORY}!paceval\_dTestDebug.h@{paceval\_dTestDebug.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_test\_RUN\_SELF\_TEST\_MEMORY}{paceval\_test\_RUN\_SELF\_TEST\_MEMORY}}
+{\footnotesize\ttfamily \#define paceval\+\_\+test\+\_\+\+RUN\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+MEMORY~0}
+
+defines whether the feature is set to perform a memory test by paceval (default is 1 = feature is used, see \doxylink{paceval__f_self_test_main_8cpp}{paceval\+\_\+f\+Self\+Test\+Main.\+cpp}) 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{paceval__d_test_debug_8h_aca6a6e91b9816392c0bbab78704fefcd}\label{paceval__d_test_debug_8h_aca6a6e91b9816392c0bbab78704fefcd} 
+\index{paceval\_dTestDebug.h@{paceval\_dTestDebug.h}!paceval\_getLoggingEnabled@{paceval\_getLoggingEnabled}}
+\index{paceval\_getLoggingEnabled@{paceval\_getLoggingEnabled}!paceval\_dTestDebug.h@{paceval\_dTestDebug.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_getLoggingEnabled()}{paceval\_getLoggingEnabled()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+get\+Logging\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets whether log information to file should be used (annotation\+: this also depends on the feature flag paceval\+\_\+\+ENABLE\+\_\+\+LOGGING\+\_\+\+TO\+\_\+\+FILE) Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__d_test_debug_8h_aca6a6e91b9816392c0bbab78704fefcd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__d_test_debug_8h_a3e728815e8c7607100ab2b9b31ee7bd2}\label{paceval__d_test_debug_8h_a3e728815e8c7607100ab2b9b31ee7bd2} 
+\index{paceval\_dTestDebug.h@{paceval\_dTestDebug.h}!paceval\_setLoggingEnabled@{paceval\_setLoggingEnabled}}
+\index{paceval\_setLoggingEnabled@{paceval\_setLoggingEnabled}!paceval\_dTestDebug.h@{paceval\_dTestDebug.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_setLoggingEnabled()}{paceval\_setLoggingEnabled()}}
+{\footnotesize\ttfamily bool paceval\+\_\+set\+Logging\+Enabled (\begin{DoxyParamCaption}\item[{unsigned long}]{logging\+Enabled\+\_\+in }\end{DoxyParamCaption})}
+
+sets whether log information to file should be used (annotation\+: this also depends on the feature flag paceval\+\_\+\+ENABLE\+\_\+\+LOGGING\+\_\+\+TO\+\_\+\+FILE) 
+\begin{DoxyParams}{Parameters}
+{\em logging\+Enabled\+\_\+in} & specifies whether log information to file should be used \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__d_test_debug_8h_a3e728815e8c7607100ab2b9b31ee7bd2_icgraph}
+\end{center}
+\end{figure}

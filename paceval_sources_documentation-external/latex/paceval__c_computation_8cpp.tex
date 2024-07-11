@@ -1,0 +1,1547 @@
+\doxysection{G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/paceval\+\_\+c\+Computation.cpp File Reference}
+\hypertarget{paceval__c_computation_8cpp}{}\label{paceval__c_computation_8cpp}\index{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/paceval\_cComputation.cpp@{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/paceval\_cComputation.cpp}}
+
+
+implementation of the main interface of paceval\textquotesingle{}s API and the main class \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation}  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+d\+Test\+Debug.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+d\+Version.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+c\+Computation.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+f\+Self\+Test\+Main.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+f\+Self\+Test\+Floating\+Point.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+f\+Math.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+f\+Thread\+Handling.\+h"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+Include dependency graph for paceval\+\_\+c\+Computation.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a4a3cf5f78eecf9bb39529296b7fbec08}{paceval\+\_\+\+XMLdeclaration}}~"{}$<$?xml version=\textbackslash{}"{}1.\+0\textbackslash{}"{} encoding=\textbackslash{}"{}ISO-\/8859-\/1\textbackslash{}"{} standalone=\textbackslash{}"{}yes\textbackslash{}"{}?$>$\textbackslash{}r\textbackslash{}n"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a17c72b58bc941b49ccec4db0f65b91b8}{paceval\+\_\+\+XMLdocument\+Element\+Start}}~"{}$<$paceval.-\/Computation$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_abdc2eab035e26f7b5ff486d6f24334ec}{paceval\+\_\+\+XMLdocument\+Element\+End}}~"{}$<$/paceval.-\/Computation$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a55aab30f2a672392252455bc2a5197f7}{paceval\+\_\+\+XMLversion\+Element\+Start}}~"{}$<$version$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a34d945bf50d1d44b99a0eb14bb5fe1ba}{paceval\+\_\+\+XMLversion\+Element\+End}}~"{}$<$/version$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a25d1cead1681e716f0c791726ab6e6d7}{paceval\+\_\+\+XMLfunction50\+Element\+Start}}~"{}$<$function50\+Characters$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_ae333989e6e3036311737d92bfb1db6d2}{paceval\+\_\+\+XMLfunction50\+Element\+End}}~"{}$<$/function50\+Characters$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_ac41fd608bc3704dacf43a6c8c5d83d36}{paceval\+\_\+\+XMLfunction\+Length\+Start}}~"{}$<$function\+Length$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_afd03d02387074cc0b5810dfd4b8ac4e5}{paceval\+\_\+\+XMLfunction\+Length\+End}}~"{}$<$/function\+Length$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_adf3584cc26c04581bed58faca62eaf3b}{paceval\+\_\+\+XMLnumber\+Of\+Variables\+Start}}~"{}$<$number\+Of\+Variables$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a4244188f21dfbe0242d5ad46af71ff0f}{paceval\+\_\+\+XMLnumber\+Of\+Variables\+End}}~"{}$<$/number\+Of\+Variables$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_ac65f21636bf2dff6680a61a1877f0c67}{paceval\+\_\+\+XMLuse\+Interval\+Element\+Start}}~"{}$<$use\+Interval$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_aaa1e983a062113fd58fa4482302362f9}{paceval\+\_\+\+XMLuse\+Interval\+Element\+End}}~"{}$<$/use\+Interval$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_ac58aae13becc3dc01f9c33ef8535c912}{paceval\+\_\+\+XMLerror\+Message\+Start}}~"{}$<$error\+Message$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_afaf635ee569d4cb71f98878b872e319c}{paceval\+\_\+\+XMLerror\+Message\+End}}~"{}$<$/error\+Message$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a2886c8b838f379c95a7714516d873606}{paceval\+\_\+\+XMLerror\+Details\+Start}}~"{}$<$error\+Details$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a0107dc41bbf88bb58df3f9bffd81cdbe}{paceval\+\_\+\+XMLerror\+Details\+End}}~"{}$<$/error\+Details$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_af65894283a9005f45b1d2b11631b7ed1}{paceval\+\_\+\+XMLprecision\+Type\+Start}}~"{}$<$max\+Precision\+Type$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a7592c9e93f6ddb1e527e9c0ad0a573d5}{paceval\+\_\+\+XMLprecision\+Type\+End}}~"{}$<$/max\+Precision\+Type$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_ace2dd2c2426e0efd0c0135649a798460}{paceval\+\_\+\+XMLnumber\+Of\+Nodes\+Start}}~"{}$<$number\+Of\+Nodes$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a78fc9f4c0789d1fe80e63894dbb9c6d9}{paceval\+\_\+\+XMLnumber\+Of\+Nodes\+End}}~"{}$<$/number\+Of\+Nodes$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a7958323512047aa298c799bcfb97fe5f}{paceval\+\_\+\+XMLnumber\+Of\+Cores\+Start}}~"{}$<$number\+Of\+Cores$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a1d0039b035386168494829e39c078124}{paceval\+\_\+\+XMLnumber\+Of\+Cores\+End}}~"{}$<$/number\+Of\+Cores$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a474bbae29db498f4871d1cf5d14aa89d}{paceval\+\_\+\+XMLnumber\+Of\+Threads\+Start}}~"{}$<$number\+Of\+Threads$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a7d3f4f9a88419bd81a9d7155d61b484d}{paceval\+\_\+\+XMLnumber\+Of\+Threads\+End}}~"{}$<$/number\+Of\+Threads$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a5ae668ffaad41597f94c72ee4432ce79}{paceval\+\_\+\+XMLnumber\+Of\+Threads\+Fail\+Start}}~"{}$<$number\+Of\+Threads\+Failure$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a389b0afdf4dc92908b7b9545f5d14e37}{paceval\+\_\+\+XMLnumber\+Of\+Threads\+Fail\+End}}~"{}$<$/number\+Of\+Threads\+Failure$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a6a1785555143109e646054697b80e5a4}{paceval\+\_\+\+XMLcache\+Types\+Start}}~"{}$<$cache\+Types$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_ad1b3de9560d86d2a9bef0d28f82b5a90}{paceval\+\_\+\+XMLcache\+Types\+End}}~"{}$<$/cache\+Types$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_ad279795817e1aba33dd6df3bc5617c5e}{paceval\+\_\+\+XMLcache\+Hits\+ACCStart}}~"{}$<$cache\+Hits\+ACC$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a8e2dc0ea129f24551a6ed879d43a9091}{paceval\+\_\+\+XMLcache\+Hits\+ACCEnd}}~"{}$<$/cache\+Hits\+ACC$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a8e10461a7bc99f47f53f4536930dc9f7}{paceval\+\_\+\+XMLnumber\+Of\+Thread\+Opportunities\+Start}}~"{}$<$number\+Of\+Thread\+Opportunities$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_aad7ebe82828e677008940fb1e8fd2def}{paceval\+\_\+\+XMLnumber\+Of\+Thread\+Opportunities\+End}}~"{}$<$/number\+Of\+Thread\+Opportunities$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_computation_8cpp_a8cc5e9dfb74f35cedc9d43126599638c}{PACEVAL\+\_\+\+MAXINF}}~2500
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{paceval__c_computation_8cpp_a6373eabc0e6805c3f6192e4bb6834010}{increase\+Paceval\+Library\+Number\+Computations}} ()
+\item 
+void \mbox{\hyperlink{paceval__c_computation_8cpp_a0580b994a37a99aa07a0a18cdf4a126d}{increase\+Paceval\+Library\+Number\+Threads\+Used}} ()
+\item 
+void \mbox{\hyperlink{paceval__c_computation_8cpp_a23d0271201cf10a0b956559ef1eed3c1}{increase\+Paceval\+Library\+Number\+Threads\+Failure}} ()
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_aca6a6e91b9816392c0bbab78704fefcd}{paceval\+\_\+get\+Logging\+Enabled}} ()
+\item 
+bool \mbox{\hyperlink{paceval__c_computation_8cpp_a3e728815e8c7607100ab2b9b31ee7bd2}{paceval\+\_\+set\+Logging\+Enabled}} (unsigned long logging\+Enabled\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_a02448d1a69cf4d775c0152b66b8fd221}{paceval\+\_\+get\+Multithreading\+Enabled}} ()
+\item 
+bool \mbox{\hyperlink{paceval__c_computation_8cpp_ac71c6138c6b7e8f004154c639d44dd0d}{paceval\+\_\+set\+Multithreading\+Enabled}} (unsigned long multithreading\+Enabled\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_a1026811362c2a19c5e764cef6c5358bd}{paceval\+\_\+get\+Inner\+Outer\+Cache\+Enabled}} ()
+\item 
+bool \mbox{\hyperlink{paceval__c_computation_8cpp_a4df97f9a01f333c1ae7af402b9197cee}{paceval\+\_\+set\+Inner\+Outer\+Cache\+Enabled}} (unsigned long inner\+Cache\+Enabled\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_aa90ba43fb3ed64d1ca67d828d7fd789c}{paceval\+\_\+get\+Inner\+Outer\+Cache\+Ext\+Enabled}} ()
+\item 
+bool \mbox{\hyperlink{paceval__c_computation_8cpp_a675e6a0daf9be92a148d7d5728ea9b40}{paceval\+\_\+set\+Inner\+Outer\+Cache\+Ext\+Enabled}} (unsigned long inner\+Cache\+Ext\+Enabled\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_computation_8cpp_a12793cbe05b3744dd4095b6d40f7f477}{paceval\+\_\+identify\+Constant\+From\+String}} (const char \texorpdfstring{$\ast$}{*}value\+Operator\+\_\+in, bool \texorpdfstring{$\ast$}{*}constant\+Value\+Is\+Trusted\+\_\+out, long double \texorpdfstring{$\ast$}{*}constant\+Value\+As\+Long\+Double\+\_\+out, double \texorpdfstring{$\ast$}{*}constant\+Value\+As\+Double\+\_\+out, float \texorpdfstring{$\ast$}{*}constant\+Value\+As\+Float\+\_\+out)
+\item 
+void \mbox{\hyperlink{paceval__c_computation_8cpp_a07cd61ab215466f8d2d6bd1c90e3e12f}{paceval\+\_\+correct\+Floating\+Point\+Unit}} ()
+\item 
+long \mbox{\hyperlink{paceval__c_computation_8cpp_ac873f84001354aa1681be8dc468d73c1}{paceval\+\_\+c\+Computation\+\_\+get\+Single\+Calculation\+Position}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_a423f40ebe965a83505d70389f3d2c8d0}{paceval\+\_\+c\+Computation\+\_\+get\+Id\+Single\+Calculation}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+void \mbox{\hyperlink{paceval__c_computation_8cpp_a9a590114239f93077a473a7d1a9f23e6}{paceval\+\_\+c\+Computation\+\_\+increase\+Id\+Single\+Calculation}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+\+\_\+\+\_\+int64 \mbox{\hyperlink{paceval__c_computation_8cpp_a279c1efd8817dabf12497dd5b50ebbca}{paceval\+\_\+c\+Computation\+\_\+get\+IDfrom\+PACEVAL\+\_\+\+HANDLE}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+long \mbox{\hyperlink{paceval__c_computation_8cpp_a007c831108c6a79b8dc1bb7228a2ad6e}{paceval\+\_\+c\+Computation\+\_\+lock\+And\+Get\+To\+Do\+Level\+Multithread\+Position}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, const unsigned long stack\+Number\+\_\+in, unsigned long id\+Single\+Calculation\+To\+Do\+\_\+in, unsigned long \texorpdfstring{$\ast$}{*}last\+To\+Do\+Level\+Multithread\+Position\+\_\+in, unsigned long \texorpdfstring{$\ast$}{*}start\+Specific\+At\+Node\+\_\+in, unsigned long \texorpdfstring{$\ast$}{*}end\+Specific\+At\+Node\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_computation_8cpp_ace46d58892548a7577c82bc537b9c7cc}{paceval\+\_\+c\+Computation\+\_\+unlock\+To\+Do\+Level\+Multithread\+Position}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, const unsigned long stack\+Number\+\_\+in, unsigned long locked\+Level\+Multithread\+Position\+\_\+in, unsigned long id\+Single\+Calculation\+To\+Do\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_a5f120e88bdb14a2215e31321aeb00351}{paceval\+\_\+c\+Computation\+\_\+get\+Node\+Data}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, const unsigned long position\+Node\+\_\+in, long \texorpdfstring{$\ast$}{*}max\+Value\+Fields\+\_\+out, \mbox{\hyperlink{structpaceval__s_f_p_g_a_node_data}{paceval\+\_\+s\+FPGANode\+Data}} \texorpdfstring{$\ast$}{*}handle\+\_\+node\+Data\+Struct\+\_\+out, \mbox{\hyperlink{structpaceval__s_f_p_g_a_node_cache_status_for_stacks}{paceval\+\_\+s\+FPGANode\+Cache\+Status\+For\+Stacks}} \texorpdfstring{$\ast$}{*}handle\+\_\+node\+Data\+Cache\+Status\+Structs\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__c_computation_8cpp_a624f9a4d91f3f437c1c403e9987395e8}{paceval\+\_\+c\+Computation\+\_\+set\+FPGAMemory\+Allocation}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, void \texorpdfstring{$\ast$}{*}pointer\+To\+FPGAMemory)
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{paceval__c_computation_8cpp_ac8a8588d3f08eb906b62354610818757}{paceval\+\_\+c\+Computation\+\_\+get\+FPGAMemory\+Allocation}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_computation_8cpp_ac9544af8b2008642a290551bbfb31d7b}{paceval\+\_\+c\+Computation\+\_\+do\+Computation}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, const bool single\+Calculation\+\_\+in, const unsigned long start\+Specific\+At\+Node\+\_\+in, const unsigned long end\+Specific\+At\+Node\+\_\+in, const unsigned int size\+Of\+Long\+Double\+\_\+in, const \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}} use\+Calculation\+Precision\+\_\+in, void \texorpdfstring{$\ast$}{*}result\+\_\+out, const unsigned long stack\+Number, bool \texorpdfstring{$\ast$}{*}error\+\_\+out, void \texorpdfstring{$\ast$}{*}error\+Information\+\_\+out, void \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, void \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{paceval__c_computation_8cpp_a8753183b95e7531859babcce96a6e8e6}{paceval\+Library\+\_\+\+Create\+Error\+Message}} (char \texorpdfstring{$\ast$}{*}message\+Buffer\+\_\+out, int paceval\+Error\+Type\+\_\+in)
+\item 
+int \mbox{\hyperlink{paceval__c_computation_8cpp_ae1a840130e07d9dcb3092dc0dc6574f0}{paceval\+Library\+\_\+\+Get\+Error\+Type\+Message}} (int error\+Type\+\_\+in, char \texorpdfstring{$\ast$}{*}error\+Type\+\_\+str\+Message\+\_\+out)
+\item 
+int \mbox{\hyperlink{paceval__c_computation_8cpp_a213cfb83c7e76883eef6c9417fd4aeee}{paceval\+Library\+\_\+\+Create\+Error\+Information\+Text}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, char \texorpdfstring{$\ast$}{*}last\+Error\+\_\+str\+Message\+\_\+out, char \texorpdfstring{$\ast$}{*}last\+Error\+\_\+str\+Details\+\_\+out)
+\item 
+int \mbox{\hyperlink{paceval__c_computation_8cpp_a6632f82a8ba27e0c930f3191a77c60d5}{paceval\+Library\+\_\+ld\+Convert\+Float\+To\+String}} (char \texorpdfstring{$\ast$}{*}destination\+String\+\_\+in, long double float\+\_\+in)
+\item 
+int \mbox{\hyperlink{paceval__c_computation_8cpp_a956d1e0a4c96d7d984cdcc39b19b2f0b}{paceval\+Library\+\_\+d\+Convert\+Float\+To\+String}} (char \texorpdfstring{$\ast$}{*}destination\+String\+\_\+in, double float\+\_\+in)
+\item 
+int \mbox{\hyperlink{paceval__c_computation_8cpp_aa9486e483da87b250eae8972e46a0da4}{paceval\+Library\+\_\+f\+Convert\+Float\+To\+String}} (char \texorpdfstring{$\ast$}{*}destination\+String\+\_\+in, float float\+\_\+in)
+\item 
+long double \mbox{\hyperlink{paceval__c_computation_8cpp_a23d85c4350a4451b6cb71799857bb900}{paceval\+Library\+\_\+ld\+Convert\+String\+To\+Float}} (const char \texorpdfstring{$\ast$}{*}source\+String\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, long \texorpdfstring{$\ast$}{*}err\+Position\+\_\+out, bool use\+Interval\+\_\+in, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+double \mbox{\hyperlink{paceval__c_computation_8cpp_a1163f0350a18955da879ce4b5d9e8fee}{paceval\+Library\+\_\+d\+Convert\+String\+To\+Float}} (const char \texorpdfstring{$\ast$}{*}source\+String\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, long \texorpdfstring{$\ast$}{*}err\+Position\+\_\+out, bool use\+Interval\+\_\+in, double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+float \mbox{\hyperlink{paceval__c_computation_8cpp_affaeb85db37fa944918439917e462889}{paceval\+Library\+\_\+f\+Convert\+String\+To\+Float}} (const char \texorpdfstring{$\ast$}{*}source\+String\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, long \texorpdfstring{$\ast$}{*}err\+Position\+\_\+out, bool use\+Interval\+\_\+in, float \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+long double \mbox{\hyperlink{paceval__c_computation_8cpp_aa40621a97f021de5879436c70a9946d5}{paceval\+Library\+\_\+ldmathv}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in, long double values\+\_\+in\mbox{[}$\,$\mbox{]})
+\item 
+double \mbox{\hyperlink{paceval__c_computation_8cpp_aa8f87bb363a07eefb308dbcad12fd3b1}{paceval\+Library\+\_\+dmathv}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in, double values\+\_\+in\mbox{[}$\,$\mbox{]})
+\item 
+float \mbox{\hyperlink{paceval__c_computation_8cpp_ae4d88e556f80fafddcad8e401e671936}{paceval\+Library\+\_\+fmathv}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in, float values\+\_\+in\mbox{[}$\,$\mbox{]})
+\item 
+long double \mbox{\hyperlink{paceval__c_computation_8cpp_a21fc1db30295e57985e8ac86c779e13b}{paceval\+Library\+\_\+ldmathvi}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in, long double values\+\_\+in\mbox{[}$\,$\mbox{]})
+\item 
+double \mbox{\hyperlink{paceval__c_computation_8cpp_ab42ba2be711d7cfc57ee395b14a6d37b}{paceval\+Library\+\_\+dmathvi}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in, double values\+\_\+in\mbox{[}$\,$\mbox{]})
+\item 
+float \mbox{\hyperlink{paceval__c_computation_8cpp_ad20a2c12de8c3781d5d2ea61903208a7}{paceval\+Library\+\_\+fmathvi}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in, float values\+\_\+in\mbox{[}$\,$\mbox{]})
+\item 
+bool \mbox{\hyperlink{paceval__c_computation_8cpp_a02d68e2866a1f8c4228805d6479f9197}{paceval\+Library\+\_\+\+Initialize}} (const char \texorpdfstring{$\ast$}{*}init\+String\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_computation_8cpp_a7b1baa04a7f38d896c9e7ef8a3b7177b}{paceval\+Library\+\_\+\+Free}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_afab8301b7f15145810e38b0da1dac075}{paceval\+\_\+library\+\_\+number\+\_\+computations}} = 0
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_a69d758e7394d58300159242f98b99adc}{paceval\+\_\+library\+\_\+number\+\_\+calculations}} = 0
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_a24818c7cf943afe54eeb29c57c8b3a85}{paceval\+\_\+library\+\_\+number\+\_\+cached\+\_\+calculations}} = 0
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_aeaa66109e44b7e69436306483eaf9bf0}{paceval\+\_\+library\+\_\+number\+\_\+prefetched\+\_\+calculations}} = 0
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_a74c6bace2b84423b6c33e9619d5e894b}{paceval\+\_\+library\+\_\+number\+\_\+threads\+\_\+used}} = 0
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_a55f032df68faf00775387f0577b875a2}{paceval\+\_\+library\+\_\+number\+\_\+threads\+\_\+failure}} = 0
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_a31c69e34b0d6323b0f04a86fa77935f0}{paceval\+\_\+logging\+\_\+enabled}} = 0
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_a33ee8213af227f94961bc1ecc029d719}{paceval\+\_\+use\+\_\+threads\+\_\+enabled}} = 1
+\item 
+long \mbox{\hyperlink{paceval__c_computation_8cpp_a2abe44ca706cad568a31ad19591a9b19}{paceval\+\_\+library\+\_\+performance\+\_\+index}} = -\/1
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_ac96108b4c0d51ae53263b215c4d28512}{paceval\+\_\+feature\+\_\+inner\+\_\+cache\+\_\+enabled}} = 1
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_computation_8cpp_ad49d7a19b70ae1adf46cc8ddd725b12e}{paceval\+\_\+feature\+\_\+inner\+\_\+cache\+\_\+ext\+\_\+enabled}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+implementation of the main interface of paceval\textquotesingle{}s API and the main class \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{paceval__c_computation_8cpp_a8cc5e9dfb74f35cedc9d43126599638c}\label{paceval__c_computation_8cpp_a8cc5e9dfb74f35cedc9d43126599638c} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!PACEVAL\_MAXINF@{PACEVAL\_MAXINF}}
+\index{PACEVAL\_MAXINF@{PACEVAL\_MAXINF}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{PACEVAL\_MAXINF}{PACEVAL\_MAXINF}}
+{\footnotesize\ttfamily \#define PACEVAL\+\_\+\+MAXINF~2500}
+
+\Hypertarget{paceval__c_computation_8cpp_a8e2dc0ea129f24551a6ed879d43a9091}\label{paceval__c_computation_8cpp_a8e2dc0ea129f24551a6ed879d43a9091} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLcacheHitsACCEnd@{paceval\_XMLcacheHitsACCEnd}}
+\index{paceval\_XMLcacheHitsACCEnd@{paceval\_XMLcacheHitsACCEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLcacheHitsACCEnd}{paceval\_XMLcacheHitsACCEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLcache\+Hits\+ACCEnd~"{}$<$/cache\+Hits\+ACC$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_ad279795817e1aba33dd6df3bc5617c5e}\label{paceval__c_computation_8cpp_ad279795817e1aba33dd6df3bc5617c5e} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLcacheHitsACCStart@{paceval\_XMLcacheHitsACCStart}}
+\index{paceval\_XMLcacheHitsACCStart@{paceval\_XMLcacheHitsACCStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLcacheHitsACCStart}{paceval\_XMLcacheHitsACCStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLcache\+Hits\+ACCStart~"{}$<$cache\+Hits\+ACC$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_ad1b3de9560d86d2a9bef0d28f82b5a90}\label{paceval__c_computation_8cpp_ad1b3de9560d86d2a9bef0d28f82b5a90} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLcacheTypesEnd@{paceval\_XMLcacheTypesEnd}}
+\index{paceval\_XMLcacheTypesEnd@{paceval\_XMLcacheTypesEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLcacheTypesEnd}{paceval\_XMLcacheTypesEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLcache\+Types\+End~"{}$<$/cache\+Types$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a6a1785555143109e646054697b80e5a4}\label{paceval__c_computation_8cpp_a6a1785555143109e646054697b80e5a4} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLcacheTypesStart@{paceval\_XMLcacheTypesStart}}
+\index{paceval\_XMLcacheTypesStart@{paceval\_XMLcacheTypesStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLcacheTypesStart}{paceval\_XMLcacheTypesStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLcache\+Types\+Start~"{}$<$cache\+Types$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a4a3cf5f78eecf9bb39529296b7fbec08}\label{paceval__c_computation_8cpp_a4a3cf5f78eecf9bb39529296b7fbec08} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLdeclaration@{paceval\_XMLdeclaration}}
+\index{paceval\_XMLdeclaration@{paceval\_XMLdeclaration}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLdeclaration}{paceval\_XMLdeclaration}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLdeclaration~"{}$<$?xml version=\textbackslash{}"{}1.\+0\textbackslash{}"{} encoding=\textbackslash{}"{}ISO-\/8859-\/1\textbackslash{}"{} standalone=\textbackslash{}"{}yes\textbackslash{}"{}?$>$\textbackslash{}r\textbackslash{}n"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_abdc2eab035e26f7b5ff486d6f24334ec}\label{paceval__c_computation_8cpp_abdc2eab035e26f7b5ff486d6f24334ec} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLdocumentElementEnd@{paceval\_XMLdocumentElementEnd}}
+\index{paceval\_XMLdocumentElementEnd@{paceval\_XMLdocumentElementEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLdocumentElementEnd}{paceval\_XMLdocumentElementEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLdocument\+Element\+End~"{}$<$/paceval.-\/Computation$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a17c72b58bc941b49ccec4db0f65b91b8}\label{paceval__c_computation_8cpp_a17c72b58bc941b49ccec4db0f65b91b8} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLdocumentElementStart@{paceval\_XMLdocumentElementStart}}
+\index{paceval\_XMLdocumentElementStart@{paceval\_XMLdocumentElementStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLdocumentElementStart}{paceval\_XMLdocumentElementStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLdocument\+Element\+Start~"{}$<$paceval.-\/Computation$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a0107dc41bbf88bb58df3f9bffd81cdbe}\label{paceval__c_computation_8cpp_a0107dc41bbf88bb58df3f9bffd81cdbe} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLerrorDetailsEnd@{paceval\_XMLerrorDetailsEnd}}
+\index{paceval\_XMLerrorDetailsEnd@{paceval\_XMLerrorDetailsEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLerrorDetailsEnd}{paceval\_XMLerrorDetailsEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLerror\+Details\+End~"{}$<$/error\+Details$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a2886c8b838f379c95a7714516d873606}\label{paceval__c_computation_8cpp_a2886c8b838f379c95a7714516d873606} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLerrorDetailsStart@{paceval\_XMLerrorDetailsStart}}
+\index{paceval\_XMLerrorDetailsStart@{paceval\_XMLerrorDetailsStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLerrorDetailsStart}{paceval\_XMLerrorDetailsStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLerror\+Details\+Start~"{}$<$error\+Details$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_afaf635ee569d4cb71f98878b872e319c}\label{paceval__c_computation_8cpp_afaf635ee569d4cb71f98878b872e319c} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLerrorMessageEnd@{paceval\_XMLerrorMessageEnd}}
+\index{paceval\_XMLerrorMessageEnd@{paceval\_XMLerrorMessageEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLerrorMessageEnd}{paceval\_XMLerrorMessageEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLerror\+Message\+End~"{}$<$/error\+Message$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_ac58aae13becc3dc01f9c33ef8535c912}\label{paceval__c_computation_8cpp_ac58aae13becc3dc01f9c33ef8535c912} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLerrorMessageStart@{paceval\_XMLerrorMessageStart}}
+\index{paceval\_XMLerrorMessageStart@{paceval\_XMLerrorMessageStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLerrorMessageStart}{paceval\_XMLerrorMessageStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLerror\+Message\+Start~"{}$<$error\+Message$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_ae333989e6e3036311737d92bfb1db6d2}\label{paceval__c_computation_8cpp_ae333989e6e3036311737d92bfb1db6d2} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLfunction50ElementEnd@{paceval\_XMLfunction50ElementEnd}}
+\index{paceval\_XMLfunction50ElementEnd@{paceval\_XMLfunction50ElementEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLfunction50ElementEnd}{paceval\_XMLfunction50ElementEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLfunction50\+Element\+End~"{}$<$/function50\+Characters$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a25d1cead1681e716f0c791726ab6e6d7}\label{paceval__c_computation_8cpp_a25d1cead1681e716f0c791726ab6e6d7} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLfunction50ElementStart@{paceval\_XMLfunction50ElementStart}}
+\index{paceval\_XMLfunction50ElementStart@{paceval\_XMLfunction50ElementStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLfunction50ElementStart}{paceval\_XMLfunction50ElementStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLfunction50\+Element\+Start~"{}$<$function50\+Characters$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_afd03d02387074cc0b5810dfd4b8ac4e5}\label{paceval__c_computation_8cpp_afd03d02387074cc0b5810dfd4b8ac4e5} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLfunctionLengthEnd@{paceval\_XMLfunctionLengthEnd}}
+\index{paceval\_XMLfunctionLengthEnd@{paceval\_XMLfunctionLengthEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLfunctionLengthEnd}{paceval\_XMLfunctionLengthEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLfunction\+Length\+End~"{}$<$/function\+Length$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_ac41fd608bc3704dacf43a6c8c5d83d36}\label{paceval__c_computation_8cpp_ac41fd608bc3704dacf43a6c8c5d83d36} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLfunctionLengthStart@{paceval\_XMLfunctionLengthStart}}
+\index{paceval\_XMLfunctionLengthStart@{paceval\_XMLfunctionLengthStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLfunctionLengthStart}{paceval\_XMLfunctionLengthStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLfunction\+Length\+Start~"{}$<$function\+Length$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a1d0039b035386168494829e39c078124}\label{paceval__c_computation_8cpp_a1d0039b035386168494829e39c078124} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLnumberOfCoresEnd@{paceval\_XMLnumberOfCoresEnd}}
+\index{paceval\_XMLnumberOfCoresEnd@{paceval\_XMLnumberOfCoresEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfCoresEnd}{paceval\_XMLnumberOfCoresEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Cores\+End~"{}$<$/number\+Of\+Cores$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a7958323512047aa298c799bcfb97fe5f}\label{paceval__c_computation_8cpp_a7958323512047aa298c799bcfb97fe5f} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLnumberOfCoresStart@{paceval\_XMLnumberOfCoresStart}}
+\index{paceval\_XMLnumberOfCoresStart@{paceval\_XMLnumberOfCoresStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfCoresStart}{paceval\_XMLnumberOfCoresStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Cores\+Start~"{}$<$number\+Of\+Cores$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a78fc9f4c0789d1fe80e63894dbb9c6d9}\label{paceval__c_computation_8cpp_a78fc9f4c0789d1fe80e63894dbb9c6d9} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLnumberOfNodesEnd@{paceval\_XMLnumberOfNodesEnd}}
+\index{paceval\_XMLnumberOfNodesEnd@{paceval\_XMLnumberOfNodesEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfNodesEnd}{paceval\_XMLnumberOfNodesEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Nodes\+End~"{}$<$/number\+Of\+Nodes$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_ace2dd2c2426e0efd0c0135649a798460}\label{paceval__c_computation_8cpp_ace2dd2c2426e0efd0c0135649a798460} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLnumberOfNodesStart@{paceval\_XMLnumberOfNodesStart}}
+\index{paceval\_XMLnumberOfNodesStart@{paceval\_XMLnumberOfNodesStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfNodesStart}{paceval\_XMLnumberOfNodesStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Nodes\+Start~"{}$<$number\+Of\+Nodes$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_aad7ebe82828e677008940fb1e8fd2def}\label{paceval__c_computation_8cpp_aad7ebe82828e677008940fb1e8fd2def} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLnumberOfThreadOpportunitiesEnd@{paceval\_XMLnumberOfThreadOpportunitiesEnd}}
+\index{paceval\_XMLnumberOfThreadOpportunitiesEnd@{paceval\_XMLnumberOfThreadOpportunitiesEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfThreadOpportunitiesEnd}{paceval\_XMLnumberOfThreadOpportunitiesEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Thread\+Opportunities\+End~"{}$<$/number\+Of\+Thread\+Opportunities$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a8e10461a7bc99f47f53f4536930dc9f7}\label{paceval__c_computation_8cpp_a8e10461a7bc99f47f53f4536930dc9f7} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLnumberOfThreadOpportunitiesStart@{paceval\_XMLnumberOfThreadOpportunitiesStart}}
+\index{paceval\_XMLnumberOfThreadOpportunitiesStart@{paceval\_XMLnumberOfThreadOpportunitiesStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfThreadOpportunitiesStart}{paceval\_XMLnumberOfThreadOpportunitiesStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Thread\+Opportunities\+Start~"{}$<$number\+Of\+Thread\+Opportunities$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a7d3f4f9a88419bd81a9d7155d61b484d}\label{paceval__c_computation_8cpp_a7d3f4f9a88419bd81a9d7155d61b484d} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLnumberOfThreadsEnd@{paceval\_XMLnumberOfThreadsEnd}}
+\index{paceval\_XMLnumberOfThreadsEnd@{paceval\_XMLnumberOfThreadsEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfThreadsEnd}{paceval\_XMLnumberOfThreadsEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Threads\+End~"{}$<$/number\+Of\+Threads$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a389b0afdf4dc92908b7b9545f5d14e37}\label{paceval__c_computation_8cpp_a389b0afdf4dc92908b7b9545f5d14e37} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLnumberOfThreadsFailEnd@{paceval\_XMLnumberOfThreadsFailEnd}}
+\index{paceval\_XMLnumberOfThreadsFailEnd@{paceval\_XMLnumberOfThreadsFailEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfThreadsFailEnd}{paceval\_XMLnumberOfThreadsFailEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Threads\+Fail\+End~"{}$<$/number\+Of\+Threads\+Failure$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a5ae668ffaad41597f94c72ee4432ce79}\label{paceval__c_computation_8cpp_a5ae668ffaad41597f94c72ee4432ce79} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLnumberOfThreadsFailStart@{paceval\_XMLnumberOfThreadsFailStart}}
+\index{paceval\_XMLnumberOfThreadsFailStart@{paceval\_XMLnumberOfThreadsFailStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfThreadsFailStart}{paceval\_XMLnumberOfThreadsFailStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Threads\+Fail\+Start~"{}$<$number\+Of\+Threads\+Failure$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a474bbae29db498f4871d1cf5d14aa89d}\label{paceval__c_computation_8cpp_a474bbae29db498f4871d1cf5d14aa89d} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLnumberOfThreadsStart@{paceval\_XMLnumberOfThreadsStart}}
+\index{paceval\_XMLnumberOfThreadsStart@{paceval\_XMLnumberOfThreadsStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfThreadsStart}{paceval\_XMLnumberOfThreadsStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Threads\+Start~"{}$<$number\+Of\+Threads$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a4244188f21dfbe0242d5ad46af71ff0f}\label{paceval__c_computation_8cpp_a4244188f21dfbe0242d5ad46af71ff0f} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLnumberOfVariablesEnd@{paceval\_XMLnumberOfVariablesEnd}}
+\index{paceval\_XMLnumberOfVariablesEnd@{paceval\_XMLnumberOfVariablesEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfVariablesEnd}{paceval\_XMLnumberOfVariablesEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Variables\+End~"{}$<$/number\+Of\+Variables$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_adf3584cc26c04581bed58faca62eaf3b}\label{paceval__c_computation_8cpp_adf3584cc26c04581bed58faca62eaf3b} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLnumberOfVariablesStart@{paceval\_XMLnumberOfVariablesStart}}
+\index{paceval\_XMLnumberOfVariablesStart@{paceval\_XMLnumberOfVariablesStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfVariablesStart}{paceval\_XMLnumberOfVariablesStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Variables\+Start~"{}$<$number\+Of\+Variables$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a7592c9e93f6ddb1e527e9c0ad0a573d5}\label{paceval__c_computation_8cpp_a7592c9e93f6ddb1e527e9c0ad0a573d5} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLprecisionTypeEnd@{paceval\_XMLprecisionTypeEnd}}
+\index{paceval\_XMLprecisionTypeEnd@{paceval\_XMLprecisionTypeEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLprecisionTypeEnd}{paceval\_XMLprecisionTypeEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLprecision\+Type\+End~"{}$<$/max\+Precision\+Type$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_af65894283a9005f45b1d2b11631b7ed1}\label{paceval__c_computation_8cpp_af65894283a9005f45b1d2b11631b7ed1} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLprecisionTypeStart@{paceval\_XMLprecisionTypeStart}}
+\index{paceval\_XMLprecisionTypeStart@{paceval\_XMLprecisionTypeStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLprecisionTypeStart}{paceval\_XMLprecisionTypeStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLprecision\+Type\+Start~"{}$<$max\+Precision\+Type$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_aaa1e983a062113fd58fa4482302362f9}\label{paceval__c_computation_8cpp_aaa1e983a062113fd58fa4482302362f9} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLuseIntervalElementEnd@{paceval\_XMLuseIntervalElementEnd}}
+\index{paceval\_XMLuseIntervalElementEnd@{paceval\_XMLuseIntervalElementEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLuseIntervalElementEnd}{paceval\_XMLuseIntervalElementEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLuse\+Interval\+Element\+End~"{}$<$/use\+Interval$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_ac65f21636bf2dff6680a61a1877f0c67}\label{paceval__c_computation_8cpp_ac65f21636bf2dff6680a61a1877f0c67} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLuseIntervalElementStart@{paceval\_XMLuseIntervalElementStart}}
+\index{paceval\_XMLuseIntervalElementStart@{paceval\_XMLuseIntervalElementStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLuseIntervalElementStart}{paceval\_XMLuseIntervalElementStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLuse\+Interval\+Element\+Start~"{}$<$use\+Interval$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a34d945bf50d1d44b99a0eb14bb5fe1ba}\label{paceval__c_computation_8cpp_a34d945bf50d1d44b99a0eb14bb5fe1ba} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLversionElementEnd@{paceval\_XMLversionElementEnd}}
+\index{paceval\_XMLversionElementEnd@{paceval\_XMLversionElementEnd}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLversionElementEnd}{paceval\_XMLversionElementEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLversion\+Element\+End~"{}$<$/version$>$"{}}
+
+\Hypertarget{paceval__c_computation_8cpp_a55aab30f2a672392252455bc2a5197f7}\label{paceval__c_computation_8cpp_a55aab30f2a672392252455bc2a5197f7} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_XMLversionElementStart@{paceval\_XMLversionElementStart}}
+\index{paceval\_XMLversionElementStart@{paceval\_XMLversionElementStart}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLversionElementStart}{paceval\_XMLversionElementStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLversion\+Element\+Start~"{}$<$version$>$"{}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{paceval__c_computation_8cpp_a6373eabc0e6805c3f6192e4bb6834010}\label{paceval__c_computation_8cpp_a6373eabc0e6805c3f6192e4bb6834010} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!increasePacevalLibraryNumberComputations@{increasePacevalLibraryNumberComputations}}
+\index{increasePacevalLibraryNumberComputations@{increasePacevalLibraryNumberComputations}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{increasePacevalLibraryNumberComputations()}{increasePacevalLibraryNumberComputations()}}
+{\footnotesize\ttfamily void increase\+Paceval\+Library\+Number\+Computations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+increases the counter for the number of calculations performed by 1 Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a6373eabc0e6805c3f6192e4bb6834010_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a23d0271201cf10a0b956559ef1eed3c1}\label{paceval__c_computation_8cpp_a23d0271201cf10a0b956559ef1eed3c1} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!increasePacevalLibraryNumberThreadsFailure@{increasePacevalLibraryNumberThreadsFailure}}
+\index{increasePacevalLibraryNumberThreadsFailure@{increasePacevalLibraryNumberThreadsFailure}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{increasePacevalLibraryNumberThreadsFailure()}{increasePacevalLibraryNumberThreadsFailure()}}
+{\footnotesize\ttfamily void increase\+Paceval\+Library\+Number\+Threads\+Failure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+increases the count of the number of failed threads by 1 Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a23d0271201cf10a0b956559ef1eed3c1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a0580b994a37a99aa07a0a18cdf4a126d}\label{paceval__c_computation_8cpp_a0580b994a37a99aa07a0a18cdf4a126d} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!increasePacevalLibraryNumberThreadsUsed@{increasePacevalLibraryNumberThreadsUsed}}
+\index{increasePacevalLibraryNumberThreadsUsed@{increasePacevalLibraryNumberThreadsUsed}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{increasePacevalLibraryNumberThreadsUsed()}{increasePacevalLibraryNumberThreadsUsed()}}
+{\footnotesize\ttfamily void increase\+Paceval\+Library\+Number\+Threads\+Used (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+increases the counter for the number of threads used by 1 Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a0580b994a37a99aa07a0a18cdf4a126d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_ac9544af8b2008642a290551bbfb31d7b}\label{paceval__c_computation_8cpp_ac9544af8b2008642a290551bbfb31d7b} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_cComputation\_doComputation@{paceval\_cComputation\_doComputation}}
+\index{paceval\_cComputation\_doComputation@{paceval\_cComputation\_doComputation}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_doComputation()}{paceval\_cComputation\_doComputation()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+Computation\+\_\+do\+Computation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{const bool}]{single\+Calculation\+\_\+in,  }\item[{const unsigned long}]{start\+Specific\+At\+Node\+\_\+in,  }\item[{const unsigned long}]{end\+Specific\+At\+Node\+\_\+in,  }\item[{const unsigned int}]{size\+Of\+Long\+Double\+\_\+in,  }\item[{const \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}}}]{use\+Calculation\+Precision\+\_\+in,  }\item[{void \texorpdfstring{$\ast$}{*}}]{result\+\_\+out,  }\item[{const unsigned long}]{stack\+Number\+\_\+in,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{error\+\_\+out,  }\item[{void \texorpdfstring{$\ast$}{*}}]{error\+Information\+\_\+out,  }\item[{void \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{void \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+carries out a concrete calculation in the area of a start node and end node and returns whether an error occurred 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+{\em single\+Calculation\+\_\+in} & specifies whether this is the main computation that traverses the entire list of nodes (true) or is a minor computation that traverses only part of the list of nodes (false) \\
+\hline
+{\em start\+Specific\+At\+Node\+\_\+in} & specifies the node at which the calculation is started \\
+\hline
+{\em end\+Specific\+At\+Node\+\_\+in} & specifies the node at which the calculation ends \\
+\hline
+{\em size\+Of\+Long\+Double\+\_\+in} & specifies the size in bytes of long double in the calling system determined via sizeof(long double) \\
+\hline
+{\em use\+Calculation\+Precision\+\_\+in} & specifies the precision with which the calculation is performed \\
+\hline
+{\em result\+\_\+out} & the buffer for the result of the calculation with the specified precision \\
+\hline
+{\em stack\+Number\+\_\+in} & the number of the stack, e.\+g. for the values of the variables of the specific calculation \\
+\hline
+{\em error\+\_\+out} & the buffer whether an error occurred during the calculation (true) or not (false) \\
+\hline
+{\em error\+Information\+\_\+out} & the specific error information \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the calculation (annotation\+: in case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & this buffer retrieves the maximum/upper limit of the calculation (annotation\+: in case of an error the value is not specified) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_ac9544af8b2008642a290551bbfb31d7b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_ac8a8588d3f08eb906b62354610818757}\label{paceval__c_computation_8cpp_ac8a8588d3f08eb906b62354610818757} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_cComputation\_getFPGAMemoryAllocation@{paceval\_cComputation\_getFPGAMemoryAllocation}}
+\index{paceval\_cComputation\_getFPGAMemoryAllocation@{paceval\_cComputation\_getFPGAMemoryAllocation}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_getFPGAMemoryAllocation()}{paceval\_cComputation\_getFPGAMemoryAllocation()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Computation\+\_\+get\+FPGAMemory\+Allocation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+fetches an address noted in a paceval computation object to a memory location and the return value is the pointer to the saved memory location or NULL if no memory location has been saved yet 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_ac8a8588d3f08eb906b62354610818757_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a279c1efd8817dabf12497dd5b50ebbca}\label{paceval__c_computation_8cpp_a279c1efd8817dabf12497dd5b50ebbca} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_cComputation\_getIDfromPACEVAL\_HANDLE@{paceval\_cComputation\_getIDfromPACEVAL\_HANDLE}}
+\index{paceval\_cComputation\_getIDfromPACEVAL\_HANDLE@{paceval\_cComputation\_getIDfromPACEVAL\_HANDLE}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_getIDfromPACEVAL\_HANDLE()}{paceval\_cComputation\_getIDfromPACEVAL\_HANDLE()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+int64 paceval\+\_\+c\+Computation\+\_\+get\+IDfrom\+PACEVAL\+\_\+\+HANDLE (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+converts the pointer to a paceval computation object into a 64-\/bit number that can be used as a reference and the return value is a 64-\/bit number 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a279c1efd8817dabf12497dd5b50ebbca_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a423f40ebe965a83505d70389f3d2c8d0}\label{paceval__c_computation_8cpp_a423f40ebe965a83505d70389f3d2c8d0} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_cComputation\_getIdSingleCalculation@{paceval\_cComputation\_getIdSingleCalculation}}
+\index{paceval\_cComputation\_getIdSingleCalculation@{paceval\_cComputation\_getIdSingleCalculation}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_getIdSingleCalculation()}{paceval\_cComputation\_getIdSingleCalculation()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+Computation\+\_\+get\+Id\+Single\+Calculation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+gets the identification of the main computation that traverses the entire list of nodes (this is used by paceval for locking method because we want to avoid using mutex) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a423f40ebe965a83505d70389f3d2c8d0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a5f120e88bdb14a2215e31321aeb00351}\label{paceval__c_computation_8cpp_a5f120e88bdb14a2215e31321aeb00351} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_cComputation\_getNodeData@{paceval\_cComputation\_getNodeData}}
+\index{paceval\_cComputation\_getNodeData@{paceval\_cComputation\_getNodeData}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_getNodeData()}{paceval\_cComputation\_getNodeData()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+Computation\+\_\+get\+Node\+Data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{const unsigned long}]{position\+Node\+\_\+in,  }\item[{long \texorpdfstring{$\ast$}{*}}]{max\+Value\+Fields\+\_\+out,  }\item[{\mbox{\hyperlink{structpaceval__s_f_p_g_a_node_data}{paceval\+\_\+s\+FPGANode\+Data}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+node\+Data\+Struct\+\_\+out,  }\item[{\mbox{\hyperlink{structpaceval__s_f_p_g_a_node_cache_status_for_stacks}{paceval\+\_\+s\+FPGANode\+Cache\+Status\+For\+Stacks}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+node\+Data\+Cache\+Status\+Structs\+\_\+out }\end{DoxyParamCaption})}
+
+gets a node of the linked list of a paceval computation object and the return value is the total number of nodes in the list 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+{\em position\+Node\+\_\+in} & the position in the linked list of nodes to be read \\
+\hline
+{\em max\+Value\+Fields\+\_\+out} & the maximum field number used in the node \\
+\hline
+{\em handle\+\_\+node\+Data\+Struct\+\_\+out} & the data structure used to fetch and hold the node contents (see \doxylink{paceval__c_common_data_8h}{paceval\+\_\+c\+Common\+Data.\+h}) \\
+\hline
+{\em handle\+\_\+node\+Data\+Cache\+Status\+Structs\+\_\+out} & the data structure used to fetch and hold the cache contents (see \doxylink{paceval__c_common_data_8h}{paceval\+\_\+c\+Common\+Data.\+h}) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a5f120e88bdb14a2215e31321aeb00351_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_ac873f84001354aa1681be8dc468d73c1}\label{paceval__c_computation_8cpp_ac873f84001354aa1681be8dc468d73c1} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_cComputation\_getSingleCalculationPosition@{paceval\_cComputation\_getSingleCalculationPosition}}
+\index{paceval\_cComputation\_getSingleCalculationPosition@{paceval\_cComputation\_getSingleCalculationPosition}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_getSingleCalculationPosition()}{paceval\_cComputation\_getSingleCalculationPosition()}}
+{\footnotesize\ttfamily long paceval\+\_\+c\+Computation\+\_\+get\+Single\+Calculation\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+gets the node position where the main computation that traverses the entire list of nodes is currently located 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_ac873f84001354aa1681be8dc468d73c1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a9a590114239f93077a473a7d1a9f23e6}\label{paceval__c_computation_8cpp_a9a590114239f93077a473a7d1a9f23e6} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_cComputation\_increaseIdSingleCalculation@{paceval\_cComputation\_increaseIdSingleCalculation}}
+\index{paceval\_cComputation\_increaseIdSingleCalculation@{paceval\_cComputation\_increaseIdSingleCalculation}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_increaseIdSingleCalculation()}{paceval\_cComputation\_increaseIdSingleCalculation()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Computation\+\_\+increase\+Id\+Single\+Calculation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+increases the identification of the main computation that traverses the entire list of nodes by 1 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a9a590114239f93077a473a7d1a9f23e6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a007c831108c6a79b8dc1bb7228a2ad6e}\label{paceval__c_computation_8cpp_a007c831108c6a79b8dc1bb7228a2ad6e} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_cComputation\_lockAndGetToDoLevelMultithreadPosition@{paceval\_cComputation\_lockAndGetToDoLevelMultithreadPosition}}
+\index{paceval\_cComputation\_lockAndGetToDoLevelMultithreadPosition@{paceval\_cComputation\_lockAndGetToDoLevelMultithreadPosition}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_lockAndGetToDoLevelMultithreadPosition()}{paceval\_cComputation\_lockAndGetToDoLevelMultithreadPosition()}}
+{\footnotesize\ttfamily long paceval\+\_\+c\+Computation\+\_\+lock\+And\+Get\+To\+Do\+Level\+Multithread\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{const unsigned long}]{stack\+Number\+\_\+in,  }\item[{unsigned long}]{id\+Single\+Calculation\+To\+Do\+\_\+in,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{last\+To\+Do\+Level\+Multithread\+Position\+\_\+in,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{start\+Specific\+At\+Node\+\_\+in,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{end\+Specific\+At\+Node\+\_\+in }\end{DoxyParamCaption})}
+
+locks parallel computation by a thread so that data for caching, for example, does not overwrite each other and returns its position, see \doxylink{paceval__f_thread_handling_8cpp}{paceval\+\_\+f\+Thread\+Handling.\+cpp} and \doxylink{paceval__c_graph_8cpp}{paceval\+\_\+c\+Graph.\+cpp} 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+{\em id\+Single\+Calculation\+To\+Do\+\_\+in} & specifies the identification of the main computation \\
+\hline
+{\em stack\+Number\+\_\+in} & specifies the number of the stack that is being worked with in a locked manner \\
+\hline
+{\em last\+To\+Do\+Level\+Multithread\+Position\+\_\+in} & specifies the starting point for a possible parallel computation for a lookahead chaching thread \\
+\hline
+{\em start\+Specific\+At\+Node\+\_\+in} & specifies the node at which the calculation is started by the thread \\
+\hline
+{\em end\+Specific\+At\+Node\+\_\+in} & specifies the node at which the calculation ends by the thread \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a007c831108c6a79b8dc1bb7228a2ad6e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a624f9a4d91f3f437c1c403e9987395e8}\label{paceval__c_computation_8cpp_a624f9a4d91f3f437c1c403e9987395e8} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_cComputation\_setFPGAMemoryAllocation@{paceval\_cComputation\_setFPGAMemoryAllocation}}
+\index{paceval\_cComputation\_setFPGAMemoryAllocation@{paceval\_cComputation\_setFPGAMemoryAllocation}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_setFPGAMemoryAllocation()}{paceval\_cComputation\_setFPGAMemoryAllocation()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+Computation\+\_\+set\+FPGAMemory\+Allocation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{void \texorpdfstring{$\ast$}{*}}]{pointer\+To\+FPGAMemory\+\_\+in }\end{DoxyParamCaption})}
+
+remembers the address of a memory location in a temporary calculation object and the return value is true if the function was successful, otherwise the return value is false 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+{\em pointer\+To\+FPGAMemory\+\_\+in} & the address of the memory location to be remembered on the paceval computation object managed in the paceval library \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a624f9a4d91f3f437c1c403e9987395e8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_ace46d58892548a7577c82bc537b9c7cc}\label{paceval__c_computation_8cpp_ace46d58892548a7577c82bc537b9c7cc} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_cComputation\_unlockToDoLevelMultithreadPosition@{paceval\_cComputation\_unlockToDoLevelMultithreadPosition}}
+\index{paceval\_cComputation\_unlockToDoLevelMultithreadPosition@{paceval\_cComputation\_unlockToDoLevelMultithreadPosition}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_unlockToDoLevelMultithreadPosition()}{paceval\_cComputation\_unlockToDoLevelMultithreadPosition()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+Computation\+\_\+unlock\+To\+Do\+Level\+Multithread\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{const unsigned long}]{stack\+Number\+\_\+in,  }\item[{unsigned long}]{locked\+Level\+Multithread\+Position\+\_\+in,  }\item[{unsigned long}]{id\+Single\+Calculation\+To\+Do\+\_\+in }\end{DoxyParamCaption})}
+
+unlocks parallel computation by a thread, see \doxylink{paceval__f_thread_handling_8cpp}{paceval\+\_\+f\+Thread\+Handling.\+cpp} and \doxylink{paceval__c_graph_8cpp}{paceval\+\_\+c\+Graph.\+cpp} 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+{\em stack\+Number\+\_\+in} & specifies the number of the stack that was worked with locked \\
+\hline
+{\em locked\+Level\+Multithread\+Position\+\_\+in} & specifies the position of the lock for unlocking \\
+\hline
+{\em id\+Single\+Calculation\+To\+Do\+\_\+in} & specifies the identification of the main computation \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_ace46d58892548a7577c82bc537b9c7cc_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a07cd61ab215466f8d2d6bd1c90e3e12f}\label{paceval__c_computation_8cpp_a07cd61ab215466f8d2d6bd1c90e3e12f} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_correctFloatingPointUnit@{paceval\_correctFloatingPointUnit}}
+\index{paceval\_correctFloatingPointUnit@{paceval\_correctFloatingPointUnit}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_correctFloatingPointUnit()}{paceval\_correctFloatingPointUnit()}}
+{\footnotesize\ttfamily void paceval\+\_\+correct\+Floating\+Point\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+corrects the system\textquotesingle{}s floating pint unit Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a07cd61ab215466f8d2d6bd1c90e3e12f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a1026811362c2a19c5e764cef6c5358bd}\label{paceval__c_computation_8cpp_a1026811362c2a19c5e764cef6c5358bd} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_getInnerOuterCacheEnabled@{paceval\_getInnerOuterCacheEnabled}}
+\index{paceval\_getInnerOuterCacheEnabled@{paceval\_getInnerOuterCacheEnabled}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_getInnerOuterCacheEnabled()}{paceval\_getInnerOuterCacheEnabled()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+get\+Inner\+Outer\+Cache\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+this is a helper function that returns whether inner and outer caching is enabled for paceval (\texorpdfstring{$>$}{>}0) or not (0) (annotation\+: this could be enabled by the paceval constant "{}paceval\+\_\+\+Enable\+Inner\+Outer\+Cache"{} and disabled by "{}paceval\+\_\+\+Disable\+Inner\+Outer\+Cache"{}) Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a1026811362c2a19c5e764cef6c5358bd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_aa90ba43fb3ed64d1ca67d828d7fd789c}\label{paceval__c_computation_8cpp_aa90ba43fb3ed64d1ca67d828d7fd789c} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_getInnerOuterCacheExtEnabled@{paceval\_getInnerOuterCacheExtEnabled}}
+\index{paceval\_getInnerOuterCacheExtEnabled@{paceval\_getInnerOuterCacheExtEnabled}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_getInnerOuterCacheExtEnabled()}{paceval\_getInnerOuterCacheExtEnabled()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+get\+Inner\+Outer\+Cache\+Ext\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+this is a helper function that returns whether extended inner and outer caching (i.\+e. including \texorpdfstring{$\ast$}{*}, /) is enabled for paceval (\texorpdfstring{$>$}{>}0) or not (0) (annotation\+: this could be enabled by the paceval constant "{}paceval\+\_\+\+Enable\+Inner\+Outer\+Cache\+Ext"{} and disabled by "{}paceval\+\_\+\+Disable\+Inner\+Outer\+Cache\+Ext"{}) Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_aa90ba43fb3ed64d1ca67d828d7fd789c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_aca6a6e91b9816392c0bbab78704fefcd}\label{paceval__c_computation_8cpp_aca6a6e91b9816392c0bbab78704fefcd} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_getLoggingEnabled@{paceval\_getLoggingEnabled}}
+\index{paceval\_getLoggingEnabled@{paceval\_getLoggingEnabled}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_getLoggingEnabled()}{paceval\_getLoggingEnabled()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+get\+Logging\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets whether log information to file should be used (annotation\+: this also depends on the feature flag paceval\+\_\+\+ENABLE\+\_\+\+LOGGING\+\_\+\+TO\+\_\+\+FILE) Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_aca6a6e91b9816392c0bbab78704fefcd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a02448d1a69cf4d775c0152b66b8fd221}\label{paceval__c_computation_8cpp_a02448d1a69cf4d775c0152b66b8fd221} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_getMultithreadingEnabled@{paceval\_getMultithreadingEnabled}}
+\index{paceval\_getMultithreadingEnabled@{paceval\_getMultithreadingEnabled}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_getMultithreadingEnabled()}{paceval\_getMultithreadingEnabled()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+get\+Multithreading\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+this is a helper function that returns whether multithreading is enabled for paceval (\texorpdfstring{$>$}{>}0) or not (0) (annotation\+: this could be enabled by the paceval constant "{}paceval\+\_\+\+Enable\+Multithreading"{} and disabled by "{}paceval\+\_\+\+Disable\+Multithreading"{}) Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a02448d1a69cf4d775c0152b66b8fd221_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a12793cbe05b3744dd4095b6d40f7f477}\label{paceval__c_computation_8cpp_a12793cbe05b3744dd4095b6d40f7f477} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_identifyConstantFromString@{paceval\_identifyConstantFromString}}
+\index{paceval\_identifyConstantFromString@{paceval\_identifyConstantFromString}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_identifyConstantFromString()}{paceval\_identifyConstantFromString()}}
+{\footnotesize\ttfamily bool paceval\+\_\+identify\+Constant\+From\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{value\+Operator\+\_\+in,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{constant\+Value\+Is\+Trusted\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{constant\+Value\+As\+Long\+Double\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{constant\+Value\+As\+Double\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{constant\+Value\+As\+Float\+\_\+out }\end{DoxyParamCaption})}
+
+identifies a passed mathematical constant (e.\+g. "{}pi"{}) or paceval-\/internal constant (e.\+g. "{}paceval\+\_\+\+Version\+Number"{}) and returns its value in any precision if the respective buffer is not NULL and whether this is known (true) or not (false) (annotation\+: we treat the paceval-\/internal values as temporary constants because they are set when the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object is created to improve the performance, so they do not change while the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object is in use)
+
+this is the list of implemented constants that can be used in functions\+:
+\begin{DoxyItemize}
+\item "{}pi"{} \+: the number pi is a mathematical constant that indicates the ratio of the circumference of a circle to its diameter (\texorpdfstring{$\sim$}{\string~}3.1415384626433832795)
+\item "{}e"{} \+: the Euler\textquotesingle{}s number, denoted by the symbol "{}e"{}, is the base of the natural logarithm and the (natural) exponential function(\texorpdfstring{$\sim$}{\string~}2.718281828459045235)
+\item "{}paceval\+\_\+\+Version\+Number"{} \+: the version number of paceval, e.\+g. 4.\+24
+\item "{}paceval\+\_\+\+Random\+Max"{} \+: the maximum random number that can be used by rand(x) depending on the compiler, e.\+g. 2147483647
+\item "{}paceval\+\_\+\+Thread\+Step"{} \+: the default step size of nodes for parallel partial computations via threads for lookahead caching, e.\+g. 750
+\item "{}paceval\+\_\+\+Self\+Test\+Passed"{} \+: the recent self-\/test failure, see paceval\+\_\+e\+Error\+Self\+Test, e.\+g. 0 for no error in the self-\/test
+\item "{}paceval\+\_\+\+Max\+Number\+Of\+Calculation\+Threads"{} \+: the maximum number of threads for a computation for this system, e.\+g. 12 threads
+\item "{}paceval\+\_\+\+Number\+Calculations"{} \+: the number of partial calculations that were performed since the library was started
+\item "{}paceval\+\_\+\+Number\+Computations"{} \+: the number of paceval computations created since the library was started
+\item "{}paceval\+\_\+\+Number\+Cache\+Hits\+ACC"{} \+: the accumulated number of cached partial computations through inner caching, outer caching and lookahead caching since the library was started
+\item "{}paceval\+\_\+\+Number\+Cached\+Calculations"{} \+: the number of cached partial computations through inner caching and outer caching since the library was started
+\item "{}paceval\+\_\+\+Number\+Of\+Cores"{} \+: the number of cores available in the system, e.\+g. 8-\/core processors
+\item "{}paceval\+\_\+\+Number\+Prefetched\+Calculations"{} \+: the number of cached partial computations through lookahead caching since the library was started
+\item "{}paceval\+\_\+\+Number\+Prefetched\+Double\+Work"{} \+: the number of duplicated, i.\+e. unnecessary, cached partial calculations through lookahead caching since the start of the library
+\item "{}paceval\+\_\+\+Number\+Prefetched\+Damaged"{} \+: the number of cached partial calculations destroyed during lookahead caching since the library was started
+\item "{}paceval\+\_\+ld\+Max\+Calculation\+Value"{} \+: the maximum long double value depends on the compiler, e.\+g. 1.\+1e+4932
+\item "{}paceval\+\_\+d\+Max\+Calculation\+Value"{} \+: the maximum double value depends on the compiler, e.\+g. 1.\+7e+308
+\item "{}paceval\+\_\+f\+Max\+Calculation\+Value"{} \+: the maximum float value depends on the compiler, e.\+g. 3.\+4e+38
+\item "{}paceval\+\_\+\+Enable\+Logging"{} \+: turns on the logging feature and returns 1 (annotation\+: this also depends on the feature flag paceval\+\_\+\+ENABLE\+\_\+\+LOGGING\+\_\+\+TO\+\_\+\+FILE)
+\item "{}paceval\+\_\+\+Disable\+Logging"{} \+: turns off the logging feature and returns 1 (annotation\+: this also depends on the feature flag paceval\+\_\+\+ENABLE\+\_\+\+LOGGING\+\_\+\+TO\+\_\+\+FILE)
+\item "{}paceval\+\_\+\+Is\+Logging\+Enabled"{} \+: queries whether the logging feature is enabled and returns 1 if enabled otherwise returns 0
+\item "{}paceval\+\_\+\+Is\+POW10\+Bugfix\+Enabled"{} \+: queries whether the compiler specific bugfix for the internal use of pow10() is enabled
+\item "{}paceval\+\_\+\+Enable\+Multithreading"{} \+: turns on the feature to use multithreading and returns 1 (note\+: this also depends on the feature flag paceval\+\_\+feature\+\_\+\+Use\+Threads)
+\item "{}paceval\+\_\+\+Disable\+Multithreading"{} \+: turns off the feature to use multithreading and returns 1 (note\+: this also depends on the feature flag paceval\+\_\+feature\+\_\+\+Use\+Threads)
+\item "{}paceval\+\_\+\+Is\+Multithreading\+Enabled"{} \+: queries whether the the feature to use multithreading is enabled and returns 1 if enabled otherwise returns 0
+\item "{}paceval\+\_\+\+Enable\+Inner\+Outer\+Cache"{} \+: turns on the feature to use inner caching and outer caching and returns 1 (note\+: this also depends on the feature flag paceval\+\_\+feature\+\_\+\+Inner\+Cached\+Data)
+\item "{}paceval\+\_\+\+Disable\+Inner\+Outer\+Cache"{} \+: turns off the feature to use inner caching and outer caching and returns 1 (note\+: this also depends on the feature flag paceval\+\_\+feature\+\_\+\+Inner\+Cached\+Data)
+\item "{}paceval\+\_\+\+Is\+Inner\+Outer\+Cache\+Enabled"{} \+: queries whether the the feature to use inner caching and outer caching is enabled and returns 1 if enabled otherwise returns 0
+\item "{}paceval\+\_\+\+Enable\+Inner\+Outer\+Cache\+Ext"{} \+: turns on the feature to use extended inner caching and outer caching and returns 1 (note\+: this also depends on the feature flag paceval\+\_\+feature\+\_\+\+Inner\+Cached\+Data)
+\item "{}paceval\+\_\+\+Disable\+Inner\+Outer\+Cache\+Ext"{} \+: turns off the feature to use extended inner caching and outer caching and returns 1 (note\+: this also depends on the feature flag paceval\+\_\+feature\+\_\+\+Inner\+Cached\+Data)
+\item "{}paceval\+\_\+\+Is\+Inner\+Outer\+Cache\+Ext\+Enabled"{} \+: queries whether the the feature to use extended inner caching and outer caching is enabled and returns 1 if enabled otherwise returns 0
+\item "{}paceval\+\_\+\+Library\+Supports\+Long\+Double"{} \+: queries whether the compiled paceval library supports precision long double and returns 1 if supported otherwise returns 0
+\item "{}paceval\+\_\+\+Number\+Thread\+Usages"{} \+: the number of threads used since the library was started
+\item "{}paceval\+\_\+\+Number\+Thread\+Failures"{} \+: the number of failures in creating threads since the library was started
+\item "{}paceval\+\_\+\+Self\+Test\+Approximation"{} \+: returns whether the internal test for the approximation was successful and returns 1 if successful otherwise returns 0 (annotation\+: this also depends on the feature flag paceval\+\_\+test\+\_\+\+RUN\+\_\+\+QUICK\+\_\+\+TEST)
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em value\+Operator\+\_\+in} & specifies the operator as a string to be identified \\
+\hline
+{\em constant\+Value\+Is\+Trusted\+\_\+out} & the buffer that retrieves whether the constant is trusted (true, e.\+g. "{}paceval\+\_\+\+Version\+Number"{}) or not (false, e.\+g. "{}pi"{}) \\
+\hline
+{\em constant\+Value\+As\+Long\+Double\+\_\+out} & the buffer that retrieves the value of the constant with the precision long double \\
+\hline
+{\em constant\+Value\+As\+Double\+\_\+out} & the buffer that retrieves the value of the constant with the precision double \\
+\hline
+{\em constant\+Value\+As\+Float\+\_\+out} & the buffer that retrieves the value of the constant with the precision float \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a12793cbe05b3744dd4095b6d40f7f477_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a12793cbe05b3744dd4095b6d40f7f477_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a4df97f9a01f333c1ae7af402b9197cee}\label{paceval__c_computation_8cpp_a4df97f9a01f333c1ae7af402b9197cee} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_setInnerOuterCacheEnabled@{paceval\_setInnerOuterCacheEnabled}}
+\index{paceval\_setInnerOuterCacheEnabled@{paceval\_setInnerOuterCacheEnabled}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_setInnerOuterCacheEnabled()}{paceval\_setInnerOuterCacheEnabled()}}
+{\footnotesize\ttfamily bool paceval\+\_\+set\+Inner\+Outer\+Cache\+Enabled (\begin{DoxyParamCaption}\item[{unsigned long}]{inner\+Cache\+Enabled\+\_\+in }\end{DoxyParamCaption})}
+
+sets whether inner and outer caching is enabled for paceval and returns whether this setting was successful (true) or not (false) (annotation\+: this could be enabled by the paceval constant "{}paceval\+\_\+\+Enable\+Inner\+Outer\+Cache"{} and disabled by "{}paceval\+\_\+\+Disable\+Inner\+Outer\+Cache"{}) 
+\begin{DoxyParams}{Parameters}
+{\em inner\+Cache\+Enabled\+\_\+in} & specifies whether inner and outer caching is enabled for paceval (1) or not (0) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a4df97f9a01f333c1ae7af402b9197cee_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a675e6a0daf9be92a148d7d5728ea9b40}\label{paceval__c_computation_8cpp_a675e6a0daf9be92a148d7d5728ea9b40} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_setInnerOuterCacheExtEnabled@{paceval\_setInnerOuterCacheExtEnabled}}
+\index{paceval\_setInnerOuterCacheExtEnabled@{paceval\_setInnerOuterCacheExtEnabled}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_setInnerOuterCacheExtEnabled()}{paceval\_setInnerOuterCacheExtEnabled()}}
+{\footnotesize\ttfamily bool paceval\+\_\+set\+Inner\+Outer\+Cache\+Ext\+Enabled (\begin{DoxyParamCaption}\item[{unsigned long}]{inner\+Cache\+Ext\+Enabled\+\_\+in }\end{DoxyParamCaption})}
+
+sets whether extended inner and outer caching (i.\+e. including \texorpdfstring{$\ast$}{*}, /) is enabled for paceval and returns whether this setting was successful (true) or not (false) (annotation\+: this could be enabled by the paceval constant "{}paceval\+\_\+\+Enable\+Inner\+Outer\+Cache\+Ext"{} and disabled by "{}paceval\+\_\+\+Disable\+Inner\+Outer\+Cache\+Ext"{}) 
+\begin{DoxyParams}{Parameters}
+{\em inner\+Cache\+Ext\+Enabled\+\_\+in} & specifies whether extended inner and outer caching is enabled for paceval (1) or not (0) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a675e6a0daf9be92a148d7d5728ea9b40_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a3e728815e8c7607100ab2b9b31ee7bd2}\label{paceval__c_computation_8cpp_a3e728815e8c7607100ab2b9b31ee7bd2} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_setLoggingEnabled@{paceval\_setLoggingEnabled}}
+\index{paceval\_setLoggingEnabled@{paceval\_setLoggingEnabled}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_setLoggingEnabled()}{paceval\_setLoggingEnabled()}}
+{\footnotesize\ttfamily bool paceval\+\_\+set\+Logging\+Enabled (\begin{DoxyParamCaption}\item[{unsigned long}]{logging\+Enabled\+\_\+in }\end{DoxyParamCaption})}
+
+sets whether log information to file should be used (annotation\+: this also depends on the feature flag paceval\+\_\+\+ENABLE\+\_\+\+LOGGING\+\_\+\+TO\+\_\+\+FILE) 
+\begin{DoxyParams}{Parameters}
+{\em logging\+Enabled\+\_\+in} & specifies whether log information to file should be used \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a3e728815e8c7607100ab2b9b31ee7bd2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_ac71c6138c6b7e8f004154c639d44dd0d}\label{paceval__c_computation_8cpp_ac71c6138c6b7e8f004154c639d44dd0d} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_setMultithreadingEnabled@{paceval\_setMultithreadingEnabled}}
+\index{paceval\_setMultithreadingEnabled@{paceval\_setMultithreadingEnabled}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_setMultithreadingEnabled()}{paceval\_setMultithreadingEnabled()}}
+{\footnotesize\ttfamily bool paceval\+\_\+set\+Multithreading\+Enabled (\begin{DoxyParamCaption}\item[{unsigned long}]{multithreading\+Enabled\+\_\+in }\end{DoxyParamCaption})}
+
+sets whether multithreading is enabled for paceval and returns whether this setting was successful (true) or not (false) (annotation\+: this could be enabled by the paceval constant "{}paceval\+\_\+\+Enable\+Multithreading"{} and disabled by "{}paceval\+\_\+\+Disable\+Multithreading"{}) 
+\begin{DoxyParams}{Parameters}
+{\em multithreading\+Enabled\+\_\+in} & specifies whether multithreading is enabled for paceval (1) or not (0) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_ac71c6138c6b7e8f004154c639d44dd0d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a213cfb83c7e76883eef6c9417fd4aeee}\label{paceval__c_computation_8cpp_a213cfb83c7e76883eef6c9417fd4aeee} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_CreateErrorInformationText@{pacevalLibrary\_CreateErrorInformationText}}
+\index{pacevalLibrary\_CreateErrorInformationText@{pacevalLibrary\_CreateErrorInformationText}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_CreateErrorInformationText()}{pacevalLibrary\_CreateErrorInformationText()}}
+{\footnotesize\ttfamily int paceval\+Library\+\_\+\+Create\+Error\+Information\+Text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{char \texorpdfstring{$\ast$}{*}}]{last\+Error\+\_\+str\+Message\+\_\+out,  }\item[{char \texorpdfstring{$\ast$}{*}}]{last\+Error\+\_\+str\+Details\+\_\+out }\end{DoxyParamCaption})}
+
+a helper function to create error information in text from a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} and it can be used to provide more information to the user -\/ the return value is maximum length of last\+Error\+\_\+str\+Message\+\_\+out and last\+Error\+\_\+str\+Details\+\_\+out 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em last\+Error\+\_\+str\+Message\+\_\+out} & buffer to get message describing the error (annotation\+: maximum size of the retrieved null-\/terminated string is 255 per "{}\#define PACEVAL\+\_\+\+MAXERR 255"{}, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}) \\
+\hline
+{\em last\+Error\+\_\+str\+Details\+\_\+out} & buffer to get details like error type as a number, the operator and the position in the function (annotation\+: maximum size of the retrieved null-\/terminated string is 255 per "{}\#define PACEVAL\+\_\+\+MAXERR 255"{}, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a213cfb83c7e76883eef6c9417fd4aeee_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a213cfb83c7e76883eef6c9417fd4aeee_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a8753183b95e7531859babcce96a6e8e6}\label{paceval__c_computation_8cpp_a8753183b95e7531859babcce96a6e8e6} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_CreateErrorMessage@{pacevalLibrary\_CreateErrorMessage}}
+\index{pacevalLibrary\_CreateErrorMessage@{pacevalLibrary\_CreateErrorMessage}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_CreateErrorMessage()}{pacevalLibrary\_CreateErrorMessage()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} paceval\+Library\+\_\+\+Create\+Error\+Message (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{message\+Buffer\+\_\+out,  }\item[{int}]{paceval\+Error\+Type\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a8753183b95e7531859babcce96a6e8e6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a956d1e0a4c96d7d984cdcc39b19b2f0b}\label{paceval__c_computation_8cpp_a956d1e0a4c96d7d984cdcc39b19b2f0b} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_dConvertFloatToString@{pacevalLibrary\_dConvertFloatToString}}
+\index{pacevalLibrary\_dConvertFloatToString@{pacevalLibrary\_dConvertFloatToString}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_dConvertFloatToString()}{pacevalLibrary\_dConvertFloatToString()}}
+{\footnotesize\ttfamily int paceval\+Library\+\_\+d\+Convert\+Float\+To\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{destination\+String\+\_\+in,  }\item[{double}]{float\+\_\+in }\end{DoxyParamCaption})}
+
+converts a floating point number with precision double to a string -\/ if the function succeeds, the return value is \texorpdfstring{$>$}{>}0 and gives the precision of the conversion, otherwise the return value is \texorpdfstring{$<$}{<}0 
+\begin{DoxyParams}{Parameters}
+{\em destination\+String\+\_\+in} & points to the buffer that will receive the string of the coverted floating point number (annotation\+: in case of an error the buffer is not specified) \\
+\hline
+{\em float\+\_\+in} & the floating point number with precision double to convert \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a956d1e0a4c96d7d984cdcc39b19b2f0b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a956d1e0a4c96d7d984cdcc39b19b2f0b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a1163f0350a18955da879ce4b5d9e8fee}\label{paceval__c_computation_8cpp_a1163f0350a18955da879ce4b5d9e8fee} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_dConvertStringToFloat@{pacevalLibrary\_dConvertStringToFloat}}
+\index{pacevalLibrary\_dConvertStringToFloat@{pacevalLibrary\_dConvertStringToFloat}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_dConvertStringToFloat()}{pacevalLibrary\_dConvertStringToFloat()}}
+{\footnotesize\ttfamily double paceval\+Library\+\_\+d\+Convert\+String\+To\+Float (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{source\+String\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{long \texorpdfstring{$\ast$}{*}}]{err\+Position\+\_\+out,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+converts a to a string to a floating point number with precision double (in case a caluclation is given in the string the result is converted) -\/ if the function succeeds, the return value is the result of the conversion (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em source\+String\+\_\+in} & the string to convert \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em err\+Position\+\_\+out} & position in the string where the error occurred \\
+\hline
+{\em use\+Interval\+\_\+in} & enables or disables the Trusted Interval Computation, TINC (paceval specific) for the conversion \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & if Trusted Interval Computation was enabled this retrieves the minimum/lower interval limit of the conversion (annotation\+: in case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & if Trusted Interval Computation was enabled this retrieves the maximum/upper interval limit of the conversion (annotation\+: in case of an error the value is not specified) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a1163f0350a18955da879ce4b5d9e8fee_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a1163f0350a18955da879ce4b5d9e8fee_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_aa8f87bb363a07eefb308dbcad12fd3b1}\label{paceval__c_computation_8cpp_aa8f87bb363a07eefb308dbcad12fd3b1} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_dmathv@{pacevalLibrary\_dmathv}}
+\index{pacevalLibrary\_dmathv@{pacevalLibrary\_dmathv}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_dmathv()}{pacevalLibrary\_dmathv()}}
+{\footnotesize\ttfamily double paceval\+Library\+\_\+dmathv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+a convenience function to get results of computations in a single step with precision double -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em values\+\_\+in} & array of double defining the values of the variables \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_aa8f87bb363a07eefb308dbcad12fd3b1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_aa8f87bb363a07eefb308dbcad12fd3b1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_ab42ba2be711d7cfc57ee395b14a6d37b}\label{paceval__c_computation_8cpp_ab42ba2be711d7cfc57ee395b14a6d37b} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_dmathvi@{pacevalLibrary\_dmathvi}}
+\index{pacevalLibrary\_dmathvi@{pacevalLibrary\_dmathvi}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_dmathvi()}{pacevalLibrary\_dmathvi()}}
+{\footnotesize\ttfamily double paceval\+Library\+\_\+dmathvi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+a convenience function to get results of computations in a single step with precision double and with Trusted Interval Computation, TINC (paceval specific) -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & this buffer retrieves the maximum/upper limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em values\+\_\+in} & array of double defining the values of the variables \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_ab42ba2be711d7cfc57ee395b14a6d37b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_ab42ba2be711d7cfc57ee395b14a6d37b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_aa9486e483da87b250eae8972e46a0da4}\label{paceval__c_computation_8cpp_aa9486e483da87b250eae8972e46a0da4} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_fConvertFloatToString@{pacevalLibrary\_fConvertFloatToString}}
+\index{pacevalLibrary\_fConvertFloatToString@{pacevalLibrary\_fConvertFloatToString}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_fConvertFloatToString()}{pacevalLibrary\_fConvertFloatToString()}}
+{\footnotesize\ttfamily int paceval\+Library\+\_\+f\+Convert\+Float\+To\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{destination\+String\+\_\+in,  }\item[{float}]{float\+\_\+in }\end{DoxyParamCaption})}
+
+converts a floating point number with precision float to a string -\/ if the function succeeds, the return value is \texorpdfstring{$>$}{>}0 and gives the precision of the conversion, otherwise the return value is \texorpdfstring{$<$}{<}0 
+\begin{DoxyParams}{Parameters}
+{\em destination\+String\+\_\+in} & points to the buffer that will receive the string of the coverted floating point number (annotation\+: in case of an error the buffer is not specified) \\
+\hline
+{\em float\+\_\+in} & the floating point number with precision float to convert \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_aa9486e483da87b250eae8972e46a0da4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_aa9486e483da87b250eae8972e46a0da4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_affaeb85db37fa944918439917e462889}\label{paceval__c_computation_8cpp_affaeb85db37fa944918439917e462889} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_fConvertStringToFloat@{pacevalLibrary\_fConvertStringToFloat}}
+\index{pacevalLibrary\_fConvertStringToFloat@{pacevalLibrary\_fConvertStringToFloat}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_fConvertStringToFloat()}{pacevalLibrary\_fConvertStringToFloat()}}
+{\footnotesize\ttfamily float paceval\+Library\+\_\+f\+Convert\+String\+To\+Float (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{source\+String\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{long \texorpdfstring{$\ast$}{*}}]{err\+Position\+\_\+out,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+converts a to a string to a floating point number with precision float (in case a caluclation is given in the string the result is converted) -\/ if the function succeeds, the return value is the result of the conversion (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em source\+String\+\_\+in} & the string to convert \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em err\+Position\+\_\+out} & position in the string where the error occurred \\
+\hline
+{\em use\+Interval\+\_\+in} & enables or disables the Trusted Interval Computation, TINC (paceval specific) for the conversion \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & if Trusted Interval Computation was enabled this retrieves the minimum/lower interval limit of the conversion (annotation\+: in case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & if Trusted Interval Computation was enabled this retrieves the maximum/upper interval limit of the conversion (annotation\+: in case of an error the value is not specified) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_affaeb85db37fa944918439917e462889_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_affaeb85db37fa944918439917e462889_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_ae4d88e556f80fafddcad8e401e671936}\label{paceval__c_computation_8cpp_ae4d88e556f80fafddcad8e401e671936} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_fmathv@{pacevalLibrary\_fmathv}}
+\index{pacevalLibrary\_fmathv@{pacevalLibrary\_fmathv}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_fmathv()}{pacevalLibrary\_fmathv()}}
+{\footnotesize\ttfamily float paceval\+Library\+\_\+fmathv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+a convenience function to get results of computations in a single step with precision float -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em values\+\_\+in} & array of float defining the values of the variables \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_ae4d88e556f80fafddcad8e401e671936_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_ae4d88e556f80fafddcad8e401e671936_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_ad20a2c12de8c3781d5d2ea61903208a7}\label{paceval__c_computation_8cpp_ad20a2c12de8c3781d5d2ea61903208a7} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_fmathvi@{pacevalLibrary\_fmathvi}}
+\index{pacevalLibrary\_fmathvi@{pacevalLibrary\_fmathvi}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_fmathvi()}{pacevalLibrary\_fmathvi()}}
+{\footnotesize\ttfamily float paceval\+Library\+\_\+fmathvi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+a convenience function to get results of computations in a single step with precision float and with Trusted Interval Computation, TINC (paceval specific) -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & this buffer retrieves the maximum/upper limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em values\+\_\+in} & array of float defining the values of the variables \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_ad20a2c12de8c3781d5d2ea61903208a7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{paceval__c_computation_8cpp_ad20a2c12de8c3781d5d2ea61903208a7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a7b1baa04a7f38d896c9e7ef8a3b7177b}\label{paceval__c_computation_8cpp_a7b1baa04a7f38d896c9e7ef8a3b7177b} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_Free@{pacevalLibrary\_Free}}
+\index{pacevalLibrary\_Free@{pacevalLibrary\_Free}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_Free()}{pacevalLibrary\_Free()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+frees the paceval.-\/library -\/ you must call \doxylink{paceval__c_computation_8h_a7b1baa04a7f38d896c9e7ef8a3b7177b}{paceval\+Library\+\_\+\+Free()} at the end of your application -\/ if the function succeeds, the return value is TRUE, otherwise it is FALSE Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a7b1baa04a7f38d896c9e7ef8a3b7177b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{paceval__c_computation_8cpp_a7b1baa04a7f38d896c9e7ef8a3b7177b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_ae1a840130e07d9dcb3092dc0dc6574f0}\label{paceval__c_computation_8cpp_ae1a840130e07d9dcb3092dc0dc6574f0} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_GetErrorTypeMessage@{pacevalLibrary\_GetErrorTypeMessage}}
+\index{pacevalLibrary\_GetErrorTypeMessage@{pacevalLibrary\_GetErrorTypeMessage}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_GetErrorTypeMessage()}{pacevalLibrary\_GetErrorTypeMessage()}}
+{\footnotesize\ttfamily int paceval\+Library\+\_\+\+Get\+Error\+Type\+Message (\begin{DoxyParamCaption}\item[{int}]{error\+Type\+\_\+in,  }\item[{char \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+str\+Message\+\_\+out }\end{DoxyParamCaption})}
+
+a helper function to create an error message in text from an error type and It can be used to provide more information to the user -\/ the return value is the length of last\+Error\+\_\+str\+Message\+\_\+out 
+\begin{DoxyParams}{Parameters}
+{\em error\+Type\+\_\+in} & specifies the the error type value \\
+\hline
+{\em error\+Type\+\_\+str\+Message\+\_\+out} & buffer to get message describing the error (annotation\+: maximum size of the retrieved null-\/terminated string is 255 per "{}\#define PACEVAL\+\_\+\+MAXERR 255"{}, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_ae1a840130e07d9dcb3092dc0dc6574f0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_ae1a840130e07d9dcb3092dc0dc6574f0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a02d68e2866a1f8c4228805d6479f9197}\label{paceval__c_computation_8cpp_a02d68e2866a1f8c4228805d6479f9197} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_Initialize@{pacevalLibrary\_Initialize}}
+\index{pacevalLibrary\_Initialize@{pacevalLibrary\_Initialize}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_Initialize()}{pacevalLibrary\_Initialize()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Initialize (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{init\+String\+\_\+in }\end{DoxyParamCaption})}
+
+initializes the paceval-\/library -\/ you must call \doxylink{paceval__c_computation_8h_a02d68e2866a1f8c4228805d6479f9197}{paceval\+Library\+\_\+\+Initialize()} before you use paceval-\/\+API function calls in your code -\/ if the function succeeds, the return value is TRUE, otherwise it is FALSE 
+\begin{DoxyParams}{Parameters}
+{\em init\+String\+\_\+in} & specifies a string that can be used for additional parameterization of the library, e.\+g. a string for licensing (annotation\+: if the string is not used, NULL can be passed) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a02d68e2866a1f8c4228805d6479f9197_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a02d68e2866a1f8c4228805d6479f9197_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a6632f82a8ba27e0c930f3191a77c60d5}\label{paceval__c_computation_8cpp_a6632f82a8ba27e0c930f3191a77c60d5} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_ldConvertFloatToString@{pacevalLibrary\_ldConvertFloatToString}}
+\index{pacevalLibrary\_ldConvertFloatToString@{pacevalLibrary\_ldConvertFloatToString}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldConvertFloatToString()}{pacevalLibrary\_ldConvertFloatToString()}}
+{\footnotesize\ttfamily int paceval\+Library\+\_\+ld\+Convert\+Float\+To\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{destination\+String\+\_\+in,  }\item[{long double}]{float\+\_\+in }\end{DoxyParamCaption})}
+
+converts a floating point number with precision long double to a string -\/ if the function succeeds, the return value is \texorpdfstring{$>$}{>}0 and gives the precision of the conversion, otherwise the return value is \texorpdfstring{$<$}{<}0 
+\begin{DoxyParams}{Parameters}
+{\em destination\+String\+\_\+in} & points to the buffer that will receive the string of the coverted floating point number (annotation\+: in case of an error the buffer is not specified) \\
+\hline
+{\em float\+\_\+in} & the floating point number with precision long double to convert \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a6632f82a8ba27e0c930f3191a77c60d5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a6632f82a8ba27e0c930f3191a77c60d5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a23d85c4350a4451b6cb71799857bb900}\label{paceval__c_computation_8cpp_a23d85c4350a4451b6cb71799857bb900} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_ldConvertStringToFloat@{pacevalLibrary\_ldConvertStringToFloat}}
+\index{pacevalLibrary\_ldConvertStringToFloat@{pacevalLibrary\_ldConvertStringToFloat}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldConvertStringToFloat()}{pacevalLibrary\_ldConvertStringToFloat()}}
+{\footnotesize\ttfamily long double paceval\+Library\+\_\+ld\+Convert\+String\+To\+Float (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{source\+String\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{long \texorpdfstring{$\ast$}{*}}]{err\+Position\+\_\+out,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+converts a to a string to a floating point number with precision long double (in case a caluclation is given in the string the result is converted) -\/ if the function succeeds, the return value is the result of the conversion (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em source\+String\+\_\+in} & the string to convert \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em err\+Position\+\_\+out} & position in the string where the error occurred \\
+\hline
+{\em use\+Interval\+\_\+in} & enables or disables the Trusted Interval Computation, TINC (paceval specific) for the conversion \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & if Trusted Interval Computation was enabled this retrieves the minimum/lower interval limit of the conversion (annotation\+: in case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & if Trusted Interval Computation was enabled this retrieves the maximum/upper interval limit of the conversion (annotation\+: in case of an error the value is not specified) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a23d85c4350a4451b6cb71799857bb900_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a23d85c4350a4451b6cb71799857bb900_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_aa40621a97f021de5879436c70a9946d5}\label{paceval__c_computation_8cpp_aa40621a97f021de5879436c70a9946d5} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_ldmathv@{pacevalLibrary\_ldmathv}}
+\index{pacevalLibrary\_ldmathv@{pacevalLibrary\_ldmathv}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldmathv()}{pacevalLibrary\_ldmathv()}}
+{\footnotesize\ttfamily long double paceval\+Library\+\_\+ldmathv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+a convenience function to get results of computations in a single step with precision long double -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em values\+\_\+in} & array of long double defining the values of the variables \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_aa40621a97f021de5879436c70a9946d5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_aa40621a97f021de5879436c70a9946d5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8cpp_a21fc1db30295e57985e8ac86c779e13b}\label{paceval__c_computation_8cpp_a21fc1db30295e57985e8ac86c779e13b} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!pacevalLibrary\_ldmathvi@{pacevalLibrary\_ldmathvi}}
+\index{pacevalLibrary\_ldmathvi@{pacevalLibrary\_ldmathvi}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldmathvi()}{pacevalLibrary\_ldmathvi()}}
+{\footnotesize\ttfamily long double paceval\+Library\+\_\+ldmathvi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+a convenience function to get results of computations in a single step with precision long double and with Trusted Interval Computation, TINC (paceval specific) -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & this buffer retrieves the maximum/upper limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em values\+\_\+in} & array of long double defining the values of the variables \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a21fc1db30295e57985e8ac86c779e13b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8cpp_a21fc1db30295e57985e8ac86c779e13b_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{paceval__c_computation_8cpp_ac96108b4c0d51ae53263b215c4d28512}\label{paceval__c_computation_8cpp_ac96108b4c0d51ae53263b215c4d28512} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_feature\_inner\_cache\_enabled@{paceval\_feature\_inner\_cache\_enabled}}
+\index{paceval\_feature\_inner\_cache\_enabled@{paceval\_feature\_inner\_cache\_enabled}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_feature\_inner\_cache\_enabled}{paceval\_feature\_inner\_cache\_enabled}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+feature\+\_\+inner\+\_\+cache\+\_\+enabled = 1}
+
+\Hypertarget{paceval__c_computation_8cpp_ad49d7a19b70ae1adf46cc8ddd725b12e}\label{paceval__c_computation_8cpp_ad49d7a19b70ae1adf46cc8ddd725b12e} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_feature\_inner\_cache\_ext\_enabled@{paceval\_feature\_inner\_cache\_ext\_enabled}}
+\index{paceval\_feature\_inner\_cache\_ext\_enabled@{paceval\_feature\_inner\_cache\_ext\_enabled}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_feature\_inner\_cache\_ext\_enabled}{paceval\_feature\_inner\_cache\_ext\_enabled}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+feature\+\_\+inner\+\_\+cache\+\_\+ext\+\_\+enabled = 0}
+
+\Hypertarget{paceval__c_computation_8cpp_a24818c7cf943afe54eeb29c57c8b3a85}\label{paceval__c_computation_8cpp_a24818c7cf943afe54eeb29c57c8b3a85} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_library\_number\_cached\_calculations@{paceval\_library\_number\_cached\_calculations}}
+\index{paceval\_library\_number\_cached\_calculations@{paceval\_library\_number\_cached\_calculations}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_number\_cached\_calculations}{paceval\_library\_number\_cached\_calculations}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+library\+\_\+number\+\_\+cached\+\_\+calculations = 0}
+
+\Hypertarget{paceval__c_computation_8cpp_a69d758e7394d58300159242f98b99adc}\label{paceval__c_computation_8cpp_a69d758e7394d58300159242f98b99adc} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_library\_number\_calculations@{paceval\_library\_number\_calculations}}
+\index{paceval\_library\_number\_calculations@{paceval\_library\_number\_calculations}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_number\_calculations}{paceval\_library\_number\_calculations}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+library\+\_\+number\+\_\+calculations = 0}
+
+\Hypertarget{paceval__c_computation_8cpp_afab8301b7f15145810e38b0da1dac075}\label{paceval__c_computation_8cpp_afab8301b7f15145810e38b0da1dac075} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_library\_number\_computations@{paceval\_library\_number\_computations}}
+\index{paceval\_library\_number\_computations@{paceval\_library\_number\_computations}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_number\_computations}{paceval\_library\_number\_computations}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+library\+\_\+number\+\_\+computations = 0}
+
+\Hypertarget{paceval__c_computation_8cpp_aeaa66109e44b7e69436306483eaf9bf0}\label{paceval__c_computation_8cpp_aeaa66109e44b7e69436306483eaf9bf0} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_library\_number\_prefetched\_calculations@{paceval\_library\_number\_prefetched\_calculations}}
+\index{paceval\_library\_number\_prefetched\_calculations@{paceval\_library\_number\_prefetched\_calculations}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_number\_prefetched\_calculations}{paceval\_library\_number\_prefetched\_calculations}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+library\+\_\+number\+\_\+prefetched\+\_\+calculations = 0}
+
+\Hypertarget{paceval__c_computation_8cpp_a55f032df68faf00775387f0577b875a2}\label{paceval__c_computation_8cpp_a55f032df68faf00775387f0577b875a2} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_library\_number\_threads\_failure@{paceval\_library\_number\_threads\_failure}}
+\index{paceval\_library\_number\_threads\_failure@{paceval\_library\_number\_threads\_failure}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_number\_threads\_failure}{paceval\_library\_number\_threads\_failure}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+library\+\_\+number\+\_\+threads\+\_\+failure = 0}
+
+\Hypertarget{paceval__c_computation_8cpp_a74c6bace2b84423b6c33e9619d5e894b}\label{paceval__c_computation_8cpp_a74c6bace2b84423b6c33e9619d5e894b} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_library\_number\_threads\_used@{paceval\_library\_number\_threads\_used}}
+\index{paceval\_library\_number\_threads\_used@{paceval\_library\_number\_threads\_used}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_number\_threads\_used}{paceval\_library\_number\_threads\_used}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+library\+\_\+number\+\_\+threads\+\_\+used = 0}
+
+\Hypertarget{paceval__c_computation_8cpp_a2abe44ca706cad568a31ad19591a9b19}\label{paceval__c_computation_8cpp_a2abe44ca706cad568a31ad19591a9b19} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_library\_performance\_index@{paceval\_library\_performance\_index}}
+\index{paceval\_library\_performance\_index@{paceval\_library\_performance\_index}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_performance\_index}{paceval\_library\_performance\_index}}
+{\footnotesize\ttfamily long paceval\+\_\+library\+\_\+performance\+\_\+index = -\/1}
+
+\Hypertarget{paceval__c_computation_8cpp_a31c69e34b0d6323b0f04a86fa77935f0}\label{paceval__c_computation_8cpp_a31c69e34b0d6323b0f04a86fa77935f0} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_logging\_enabled@{paceval\_logging\_enabled}}
+\index{paceval\_logging\_enabled@{paceval\_logging\_enabled}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_logging\_enabled}{paceval\_logging\_enabled}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+logging\+\_\+enabled = 0}
+
+\Hypertarget{paceval__c_computation_8cpp_a33ee8213af227f94961bc1ecc029d719}\label{paceval__c_computation_8cpp_a33ee8213af227f94961bc1ecc029d719} 
+\index{paceval\_cComputation.cpp@{paceval\_cComputation.cpp}!paceval\_use\_threads\_enabled@{paceval\_use\_threads\_enabled}}
+\index{paceval\_use\_threads\_enabled@{paceval\_use\_threads\_enabled}!paceval\_cComputation.cpp@{paceval\_cComputation.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_use\_threads\_enabled}{paceval\_use\_threads\_enabled}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+use\+\_\+threads\+\_\+enabled = 1}
+

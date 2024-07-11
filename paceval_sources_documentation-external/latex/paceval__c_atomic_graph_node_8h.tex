@@ -1,0 +1,52 @@
+\doxysection{G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/paceval\+\_\+c\+Atomic\+Graph\+Node.h File Reference}
+\hypertarget{paceval__c_atomic_graph_node_8h}{}\label{paceval__c_atomic_graph_node_8h}\index{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/inc/paceval\_cAtomicGraphNode.h@{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/inc/paceval\_cAtomicGraphNode.h}}
+
+
+specification of the different data types of nodes in paceval  
+
+
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include "{}../../source\+\_\+public/inc/paceval\+\_\+main.\+h"{}}\newline
+{\ttfamily \#include "{}paceval\+\_\+d\+Version.\+h"{}}\newline
+{\ttfamily \#include "{}paceval\+\_\+c\+Cleanup\+Handler.\+h"{}}\newline
+Include dependency graph for paceval\+\_\+c\+Atomic\+Graph\+Node.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_atomic_graph_node_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_atomic_graph_node_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{structpaceval__s_node_specific_data}{paceval\+\_\+s\+Node\+Specific\+Data}}
+\begin{DoxyCompactList}\small\item\em The struct \doxylink{structpaceval__s_node_specific_data}{paceval\+\_\+s\+Node\+Specific\+Data} is used by class \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{structpaceval__s_node_base_data}{paceval\+\_\+s\+Node\+Base\+Data}}
+\begin{DoxyCompactList}\small\item\em The struct \doxylink{structpaceval__s_node_base_data}{paceval\+\_\+s\+Node\+Base\+Data} is used when necessary by the struct \doxylink{structpaceval__s_node_specific_data}{paceval\+\_\+s\+Node\+Specific\+Data} and stores information about the operator and operands. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{structpaceval__s_value_operator_as_data}{paceval\+\_\+s\+Value\+Operator\+As\+Data}}
+\begin{DoxyCompactList}\small\item\em The struct \doxylink{structpaceval__s_value_operator_as_data}{paceval\+\_\+s\+Value\+Operator\+As\+Data} is used when necessary by the struct \doxylink{structpaceval__s_node_specific_data}{paceval\+\_\+s\+Node\+Specific\+Data} and stores the floating point value at this node in all available precisions. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{structpaceval__s_lookahead_cache_data}{paceval\+\_\+s\+Lookahead\+Cache\+Data}}
+\begin{DoxyCompactList}\small\item\em The struct \doxylink{structpaceval__s_lookahead_cache_data}{paceval\+\_\+s\+Lookahead\+Cache\+Data} is used when necessary by the struct \doxylink{structpaceval__s_node_specific_data}{paceval\+\_\+s\+Node\+Specific\+Data} and stores data for lookahead caching. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{structpaceval__s_inner_cached_data}{paceval\+\_\+s\+Inner\+Cached\+Data}}
+\begin{DoxyCompactList}\small\item\em The struct \doxylink{structpaceval__s_inner_cached_data}{paceval\+\_\+s\+Inner\+Cached\+Data} is used when necessary by the struct \doxylink{structpaceval__s_node_specific_data}{paceval\+\_\+s\+Node\+Specific\+Data} and stores data for inner and outer caching. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node}}
+\begin{DoxyCompactList}\small\item\em The base class \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node} encapsulates the handling of the mathematical subfunctions, the so-\/called nodes in paceval. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classpaceval__c_atomic_graph_node_add_value}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Add\+Value}}
+\begin{DoxyCompactList}\small\item\em The class \doxylink{classpaceval__c_atomic_graph_node_add_value}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Add\+Value} is derived from \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node} and encapsulates the special handling of nodes for setting variables or values in paceval, see \doxylink{paceval__c_syntactic_analysis_8cpp}{paceval\+\_\+c\+Syntactic\+Analysis.\+cpp}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation}}
+\begin{DoxyCompactList}\small\item\em The class \doxylink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation} is derived from \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node} and encapsulates the special handling of nodes for operations (e.\+g. "{}+"{} or "{}sin"{}) in paceval, see \doxylink{paceval__c_syntactic_analysis_8cpp}{paceval\+\_\+c\+Syntactic\+Analysis.\+cpp}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+specification of the different data types of nodes in paceval 
+
+specification of the different data types of nodes \doxylink{classpaceval__c_atomic_graph_node_add_value}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Add\+Value} and \doxylink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation} and their base class \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node} 

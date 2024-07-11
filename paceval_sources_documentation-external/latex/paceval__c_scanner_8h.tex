@@ -1,0 +1,309 @@
+\doxysection{G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/paceval\+\_\+c\+Scanner.h File Reference}
+\hypertarget{paceval__c_scanner_8h}{}\label{paceval__c_scanner_8h}\index{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/inc/paceval\_cScanner.h@{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/inc/paceval\_cScanner.h}}
+
+
+specification of the class \doxylink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner}  
+
+
+{\ttfamily \#include "{}paceval\+\_\+c\+Atomic\+Graph\+Node.\+h"{}}\newline
+{\ttfamily \#include "{}paceval\+\_\+c\+List\+Of\+Pointer.\+h"{}}\newline
+Include dependency graph for paceval\+\_\+c\+Scanner.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_scanner_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_scanner_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner}}
+\begin{DoxyCompactList}\small\item\em The class \doxylink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the exploration of mathematical strings as parts of the user\textquotesingle{}s function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45b}{paceval\+\_\+e\+Mathematical\+Character\+Types}} \{ \newline
+\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba4995004b722ea2ad10ffeb442b19b314}{NO\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45badb12300158758d48c5f52e4f4f9caaec}{OPERAND\+\_\+\+CHARACTER\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba25519b9088f13b25d2438cda7754d903}{VARIABLE\+\_\+\+OR\+\_\+\+CONSTANT\+\_\+\+OR\+\_\+\+FUNCTION\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bace5650f295241be62da31488caa2bac3}{FUNCTION\+\_\+\+CHARACTER}}
+, \newline
+\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba3e94623eab7b99150ccee110c5a151d5}{NUMBER\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba4c8058ced1719231cc31975c6a2f9bce}{OPERAND\+\_\+\+CHARACTER\+\_\+\+END}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba0432b06ba5d346aa5645b3aa93939608}{CIRCLE\+\_\+\+BRACKET\+\_\+\+OPEN\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba6729dbad64b40e04bb37019cb0dc64ae}{CIRCLE\+\_\+\+BRACKET\+\_\+\+CLOSE\+\_\+\+CHARACTER}}
+, \newline
+\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba7f198d08a626ef9882b0b4dd5fc7cb4d}{OPERATOR\+\_\+\+CHARACTER\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baa6f159349b9589b7aa58f38244416231}{ADDITION\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba41fed1c19b470f1a5d6f782bbe5adc88}{SUBTRACTION\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba370b936e79f08a2c6ac56a09d32bdec5}{MULTIPLICATION\+\_\+\+CHARACTER}}
+, \newline
+\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bacee34e71371f3e306a86d13a42f6fb14}{DIVISION\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bab34b6138d9f79fe78ca3a0959b29d40a}{POWER\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba71a0a72a376e08b0cd496eedd525ca4d}{MODULO\+\_\+\+SYMMETRIC\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba6c9b90d66237fb0b5c060053ccdf1aab}{MODULO\+\_\+\+MATHEMATIC\+\_\+\+CHARACTER}}
+, \newline
+\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba8b55570529af0254fd73fa98a3d8641b}{MAX\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba60963db29c3964baf525abf30b101648}{MIN\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bac1347e6d047f47820fe8266edf893e92}{BOOLEAN\+\_\+\+AND\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bacfc07e314482a40445b401569ffe1690}{BOOLEAN\+\_\+\+OR\+\_\+\+CHARACTER}}
+, \newline
+\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba52baaa07d718553a74cc46f14ad0da93}{BOOLEAN\+\_\+\+XOR\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba8420ad58ccda9fa5f3aefe3706028f59}{BOOLEAN\+\_\+\+NAND\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bad907af5c37a6b6ea55500d9ac20f544a}{BOOLEAN\+\_\+\+NOR\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baa60619e561e83bd3335f2566e2844029}{BOOLEAN\+\_\+\+XNOR\+\_\+\+CHARACTER}}
+, \newline
+\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba8582044e2de4391e64c5fda1d54f4e2e}{EQUAL\+\_\+\+TO\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba4a0fefafd614aa3c9f730fdf1b565b1f}{NOT\+\_\+\+EQUAL\+\_\+\+TO\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba55f004a41430ce499b9de17b9c17e88d}{GREATER\+\_\+\+THAN\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba07ad4cbcd2b723f783e90e8f7cf53def}{GREATER\+\_\+\+THAN\+\_\+\+OR\+\_\+\+EQUAL\+\_\+\+TO\+\_\+\+CHARACTER}}
+, \newline
+\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baf223cce62ce40237f5e83a512a0e871e}{LESS\+\_\+\+THAN\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baa17b0365aa12a2df72c5575a6073e3b7}{LESS\+\_\+\+THAN\+\_\+\+OR\+\_\+\+EQUAL\+\_\+\+TO\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baac5b55ed8d7ed88835762dace29b9952}{OPERATOR\+\_\+\+CHARACTER\+\_\+\+END}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba5fbb8191248ca29596f5a6133f97f272}{OPERATOR\+\_\+\+SPECIAL\+\_\+\+HANDLING\+\_\+\+BEGIN}}
+, \newline
+\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baca28c7affb983319c7d679a757838f00}{FACTORIAL\+\_\+\+CHARACTER}}
+, \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baf3c640540fa0a8820a5e52092b5aa9f2}{OPERATOR\+\_\+\+SPECIAL\+\_\+\+HANDLING\+\_\+\+END}}
+ \}
+\item 
+enum \mbox{\hyperlink{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7}{paceval\+\_\+e\+ASCIITypes}} \{ \newline
+\mbox{\hyperlink{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7ab2800c382fca24c25c508d3352e26f39}{ASCII\+\_\+\+CONTROL\+\_\+\+CODE\+\_\+\+BEGIN}} = 0
+, \mbox{\hyperlink{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7a543e3ddda1c5b3c35757f3b89420de09}{ASCII\+\_\+\+CONTROL\+\_\+\+CODE\+\_\+\+END}} = 31
+, \mbox{\hyperlink{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7a646137cb372954c20fc8c50641bd73bf}{ASCII\+\_\+\+PRINTABLE\+\_\+\+NUMERICAL\+\_\+\+DIGIT\+\_\+\+CODE\+\_\+\+BEGIN}} = 48
+, \mbox{\hyperlink{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7ae44c2fdb6652e7b7e2662d7989a2f74d}{ASCII\+\_\+\+PRINTABLE\+\_\+\+NUMERICAL\+\_\+\+DIGIT\+\_\+\+CODE\+\_\+\+END}} = 57
+, \newline
+\mbox{\hyperlink{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7a714ef2336390bdfc50f3973e290c68ee}{ASCII\+\_\+\+PRINTABLE\+\_\+\+ALPHABETIC\+\_\+\+UPPER\+\_\+\+CASE\+\_\+\+CODE\+\_\+\+BEGIN}} = 65
+, \mbox{\hyperlink{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7ab3466bcdb956f2230fb5c4d63dd44bb3}{ASCII\+\_\+\+PRINTABLE\+\_\+\+ALPHABETIC\+\_\+\+UPPER\+\_\+\+CASE\+\_\+\+CODE\+\_\+\+END}} = 90
+, \mbox{\hyperlink{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7a9be2a73adb69fbec86f21863aacd219b}{ASCII\+\_\+\+PRINTABLE\+\_\+\+ALPHABETIC\+\_\+\+LOWER\+\_\+\+CASE\+\_\+\+CODE\+\_\+\+BEGIN}} = 97
+, \mbox{\hyperlink{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7ad2ed8a4cabc4068c46905b8752896b6b}{ASCII\+\_\+\+PRINTABLE\+\_\+\+ALPHABETIC\+\_\+\+LOWER\+\_\+\+CASE\+\_\+\+CODE\+\_\+\+END}} = 122
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}} \mbox{\hyperlink{paceval__c_scanner_8h_a042fff3baa254afc470f45eb1ad7229b}{paceval\+\_\+identify\+Operator\+From\+Mathematical\+Character}} (\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45b}{paceval\+\_\+e\+Mathematical\+Character\+Types}} e\+Mathematical\+Character\+Type\+\_\+in)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+specification of the class \doxylink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner} 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7}\label{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7} 
+\index{paceval\_cScanner.h@{paceval\_cScanner.h}!paceval\_eASCIITypes@{paceval\_eASCIITypes}}
+\index{paceval\_eASCIITypes@{paceval\_eASCIITypes}!paceval\_cScanner.h@{paceval\_cScanner.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_eASCIITypes}{paceval\_eASCIITypes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7}{paceval\+\_\+e\+ASCIITypes}}}
+
+specifies the ASCII character types that are accepted by the scanner for numbers and character strings (annotation\+: for numbers, "{}."{} and "{}e+"{}/"{}e-\/"{} are treated specifically in the source code, the same applies to "{}\+\_\+"{} for variables, constants and function identifiers) \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ASCII\_CONTROL\_CODE\_BEGIN@{ASCII\_CONTROL\_CODE\_BEGIN}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!ASCII\_CONTROL\_CODE\_BEGIN@{ASCII\_CONTROL\_CODE\_BEGIN}}}\Hypertarget{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7ab2800c382fca24c25c508d3352e26f39}\label{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7ab2800c382fca24c25c508d3352e26f39} 
+ASCII\+\_\+\+CONTROL\+\_\+\+CODE\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ASCII\_CONTROL\_CODE\_END@{ASCII\_CONTROL\_CODE\_END}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!ASCII\_CONTROL\_CODE\_END@{ASCII\_CONTROL\_CODE\_END}}}\Hypertarget{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7a543e3ddda1c5b3c35757f3b89420de09}\label{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7a543e3ddda1c5b3c35757f3b89420de09} 
+ASCII\+\_\+\+CONTROL\+\_\+\+CODE\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ASCII\_PRINTABLE\_NUMERICAL\_DIGIT\_CODE\_BEGIN@{ASCII\_PRINTABLE\_NUMERICAL\_DIGIT\_CODE\_BEGIN}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!ASCII\_PRINTABLE\_NUMERICAL\_DIGIT\_CODE\_BEGIN@{ASCII\_PRINTABLE\_NUMERICAL\_DIGIT\_CODE\_BEGIN}}}\Hypertarget{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7a646137cb372954c20fc8c50641bd73bf}\label{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7a646137cb372954c20fc8c50641bd73bf} 
+ASCII\+\_\+\+PRINTABLE\+\_\+\+NUMERICAL\+\_\+\+DIGIT\+\_\+\+CODE\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ASCII\_PRINTABLE\_NUMERICAL\_DIGIT\_CODE\_END@{ASCII\_PRINTABLE\_NUMERICAL\_DIGIT\_CODE\_END}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!ASCII\_PRINTABLE\_NUMERICAL\_DIGIT\_CODE\_END@{ASCII\_PRINTABLE\_NUMERICAL\_DIGIT\_CODE\_END}}}\Hypertarget{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7ae44c2fdb6652e7b7e2662d7989a2f74d}\label{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7ae44c2fdb6652e7b7e2662d7989a2f74d} 
+ASCII\+\_\+\+PRINTABLE\+\_\+\+NUMERICAL\+\_\+\+DIGIT\+\_\+\+CODE\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ASCII\_PRINTABLE\_ALPHABETIC\_UPPER\_CASE\_CODE\_BEGIN@{ASCII\_PRINTABLE\_ALPHABETIC\_UPPER\_CASE\_CODE\_BEGIN}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!ASCII\_PRINTABLE\_ALPHABETIC\_UPPER\_CASE\_CODE\_BEGIN@{ASCII\_PRINTABLE\_ALPHABETIC\_UPPER\_CASE\_CODE\_BEGIN}}}\Hypertarget{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7a714ef2336390bdfc50f3973e290c68ee}\label{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7a714ef2336390bdfc50f3973e290c68ee} 
+ASCII\+\_\+\+PRINTABLE\+\_\+\+ALPHABETIC\+\_\+\+UPPER\+\_\+\+CASE\+\_\+\+CODE\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ASCII\_PRINTABLE\_ALPHABETIC\_UPPER\_CASE\_CODE\_END@{ASCII\_PRINTABLE\_ALPHABETIC\_UPPER\_CASE\_CODE\_END}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!ASCII\_PRINTABLE\_ALPHABETIC\_UPPER\_CASE\_CODE\_END@{ASCII\_PRINTABLE\_ALPHABETIC\_UPPER\_CASE\_CODE\_END}}}\Hypertarget{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7ab3466bcdb956f2230fb5c4d63dd44bb3}\label{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7ab3466bcdb956f2230fb5c4d63dd44bb3} 
+ASCII\+\_\+\+PRINTABLE\+\_\+\+ALPHABETIC\+\_\+\+UPPER\+\_\+\+CASE\+\_\+\+CODE\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ASCII\_PRINTABLE\_ALPHABETIC\_LOWER\_CASE\_CODE\_BEGIN@{ASCII\_PRINTABLE\_ALPHABETIC\_LOWER\_CASE\_CODE\_BEGIN}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!ASCII\_PRINTABLE\_ALPHABETIC\_LOWER\_CASE\_CODE\_BEGIN@{ASCII\_PRINTABLE\_ALPHABETIC\_LOWER\_CASE\_CODE\_BEGIN}}}\Hypertarget{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7a9be2a73adb69fbec86f21863aacd219b}\label{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7a9be2a73adb69fbec86f21863aacd219b} 
+ASCII\+\_\+\+PRINTABLE\+\_\+\+ALPHABETIC\+\_\+\+LOWER\+\_\+\+CASE\+\_\+\+CODE\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ASCII\_PRINTABLE\_ALPHABETIC\_LOWER\_CASE\_CODE\_END@{ASCII\_PRINTABLE\_ALPHABETIC\_LOWER\_CASE\_CODE\_END}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!ASCII\_PRINTABLE\_ALPHABETIC\_LOWER\_CASE\_CODE\_END@{ASCII\_PRINTABLE\_ALPHABETIC\_LOWER\_CASE\_CODE\_END}}}\Hypertarget{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7ad2ed8a4cabc4068c46905b8752896b6b}\label{paceval__c_scanner_8h_a1b3a212c97b8be1173f10c81433952e7ad2ed8a4cabc4068c46905b8752896b6b} 
+ASCII\+\_\+\+PRINTABLE\+\_\+\+ALPHABETIC\+\_\+\+LOWER\+\_\+\+CASE\+\_\+\+CODE\+\_\+\+END&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45b}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45b} 
+\index{paceval\_cScanner.h@{paceval\_cScanner.h}!paceval\_eMathematicalCharacterTypes@{paceval\_eMathematicalCharacterTypes}}
+\index{paceval\_eMathematicalCharacterTypes@{paceval\_eMathematicalCharacterTypes}!paceval\_cScanner.h@{paceval\_cScanner.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_eMathematicalCharacterTypes}{paceval\_eMathematicalCharacterTypes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45b}{paceval\+\_\+e\+Mathematical\+Character\+Types}}}
+
+specifies the different types of mathematical characters that the \doxylink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner} object recognizes and which are then specifically created as node objects in the \doxylink{classpaceval__c_syntactic_analysis}{paceval\+\_\+c\+Syntactic\+Analysis} object and filled with data \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_CHARACTER@{NO\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!NO\_CHARACTER@{NO\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba4995004b722ea2ad10ffeb442b19b314}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba4995004b722ea2ad10ffeb442b19b314} 
+NO\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPERAND\_CHARACTER\_BEGIN@{OPERAND\_CHARACTER\_BEGIN}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!OPERAND\_CHARACTER\_BEGIN@{OPERAND\_CHARACTER\_BEGIN}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45badb12300158758d48c5f52e4f4f9caaec}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45badb12300158758d48c5f52e4f4f9caaec} 
+OPERAND\+\_\+\+CHARACTER\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VARIABLE\_OR\_CONSTANT\_OR\_FUNCTION\_CHARACTER@{VARIABLE\_OR\_CONSTANT\_OR\_FUNCTION\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!VARIABLE\_OR\_CONSTANT\_OR\_FUNCTION\_CHARACTER@{VARIABLE\_OR\_CONSTANT\_OR\_FUNCTION\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba25519b9088f13b25d2438cda7754d903}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba25519b9088f13b25d2438cda7754d903} 
+VARIABLE\+\_\+\+OR\+\_\+\+CONSTANT\+\_\+\+OR\+\_\+\+FUNCTION\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FUNCTION\_CHARACTER@{FUNCTION\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!FUNCTION\_CHARACTER@{FUNCTION\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bace5650f295241be62da31488caa2bac3}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bace5650f295241be62da31488caa2bac3} 
+FUNCTION\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NUMBER\_CHARACTER@{NUMBER\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!NUMBER\_CHARACTER@{NUMBER\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba3e94623eab7b99150ccee110c5a151d5}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba3e94623eab7b99150ccee110c5a151d5} 
+NUMBER\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPERAND\_CHARACTER\_END@{OPERAND\_CHARACTER\_END}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!OPERAND\_CHARACTER\_END@{OPERAND\_CHARACTER\_END}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba4c8058ced1719231cc31975c6a2f9bce}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba4c8058ced1719231cc31975c6a2f9bce} 
+OPERAND\+\_\+\+CHARACTER\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CIRCLE\_BRACKET\_OPEN\_CHARACTER@{CIRCLE\_BRACKET\_OPEN\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!CIRCLE\_BRACKET\_OPEN\_CHARACTER@{CIRCLE\_BRACKET\_OPEN\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba0432b06ba5d346aa5645b3aa93939608}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba0432b06ba5d346aa5645b3aa93939608} 
+CIRCLE\+\_\+\+BRACKET\+\_\+\+OPEN\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CIRCLE\_BRACKET\_CLOSE\_CHARACTER@{CIRCLE\_BRACKET\_CLOSE\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!CIRCLE\_BRACKET\_CLOSE\_CHARACTER@{CIRCLE\_BRACKET\_CLOSE\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba6729dbad64b40e04bb37019cb0dc64ae}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba6729dbad64b40e04bb37019cb0dc64ae} 
+CIRCLE\+\_\+\+BRACKET\+\_\+\+CLOSE\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPERATOR\_CHARACTER\_BEGIN@{OPERATOR\_CHARACTER\_BEGIN}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!OPERATOR\_CHARACTER\_BEGIN@{OPERATOR\_CHARACTER\_BEGIN}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba7f198d08a626ef9882b0b4dd5fc7cb4d}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba7f198d08a626ef9882b0b4dd5fc7cb4d} 
+OPERATOR\+\_\+\+CHARACTER\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ADDITION\_CHARACTER@{ADDITION\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!ADDITION\_CHARACTER@{ADDITION\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baa6f159349b9589b7aa58f38244416231}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baa6f159349b9589b7aa58f38244416231} 
+ADDITION\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SUBTRACTION\_CHARACTER@{SUBTRACTION\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!SUBTRACTION\_CHARACTER@{SUBTRACTION\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba41fed1c19b470f1a5d6f782bbe5adc88}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba41fed1c19b470f1a5d6f782bbe5adc88} 
+SUBTRACTION\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MULTIPLICATION\_CHARACTER@{MULTIPLICATION\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!MULTIPLICATION\_CHARACTER@{MULTIPLICATION\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba370b936e79f08a2c6ac56a09d32bdec5}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba370b936e79f08a2c6ac56a09d32bdec5} 
+MULTIPLICATION\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIVISION\_CHARACTER@{DIVISION\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!DIVISION\_CHARACTER@{DIVISION\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bacee34e71371f3e306a86d13a42f6fb14}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bacee34e71371f3e306a86d13a42f6fb14} 
+DIVISION\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{POWER\_CHARACTER@{POWER\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!POWER\_CHARACTER@{POWER\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bab34b6138d9f79fe78ca3a0959b29d40a}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bab34b6138d9f79fe78ca3a0959b29d40a} 
+POWER\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODULO\_SYMMETRIC\_CHARACTER@{MODULO\_SYMMETRIC\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!MODULO\_SYMMETRIC\_CHARACTER@{MODULO\_SYMMETRIC\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba71a0a72a376e08b0cd496eedd525ca4d}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba71a0a72a376e08b0cd496eedd525ca4d} 
+MODULO\+\_\+\+SYMMETRIC\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODULO\_MATHEMATIC\_CHARACTER@{MODULO\_MATHEMATIC\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!MODULO\_MATHEMATIC\_CHARACTER@{MODULO\_MATHEMATIC\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba6c9b90d66237fb0b5c060053ccdf1aab}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba6c9b90d66237fb0b5c060053ccdf1aab} 
+MODULO\+\_\+\+MATHEMATIC\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAX\_CHARACTER@{MAX\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!MAX\_CHARACTER@{MAX\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba8b55570529af0254fd73fa98a3d8641b}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba8b55570529af0254fd73fa98a3d8641b} 
+MAX\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MIN\_CHARACTER@{MIN\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!MIN\_CHARACTER@{MIN\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba60963db29c3964baf525abf30b101648}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba60963db29c3964baf525abf30b101648} 
+MIN\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN\_AND\_CHARACTER@{BOOLEAN\_AND\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!BOOLEAN\_AND\_CHARACTER@{BOOLEAN\_AND\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bac1347e6d047f47820fe8266edf893e92}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bac1347e6d047f47820fe8266edf893e92} 
+BOOLEAN\+\_\+\+AND\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN\_OR\_CHARACTER@{BOOLEAN\_OR\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!BOOLEAN\_OR\_CHARACTER@{BOOLEAN\_OR\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bacfc07e314482a40445b401569ffe1690}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bacfc07e314482a40445b401569ffe1690} 
+BOOLEAN\+\_\+\+OR\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN\_XOR\_CHARACTER@{BOOLEAN\_XOR\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!BOOLEAN\_XOR\_CHARACTER@{BOOLEAN\_XOR\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba52baaa07d718553a74cc46f14ad0da93}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba52baaa07d718553a74cc46f14ad0da93} 
+BOOLEAN\+\_\+\+XOR\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN\_NAND\_CHARACTER@{BOOLEAN\_NAND\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!BOOLEAN\_NAND\_CHARACTER@{BOOLEAN\_NAND\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba8420ad58ccda9fa5f3aefe3706028f59}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba8420ad58ccda9fa5f3aefe3706028f59} 
+BOOLEAN\+\_\+\+NAND\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN\_NOR\_CHARACTER@{BOOLEAN\_NOR\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!BOOLEAN\_NOR\_CHARACTER@{BOOLEAN\_NOR\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bad907af5c37a6b6ea55500d9ac20f544a}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45bad907af5c37a6b6ea55500d9ac20f544a} 
+BOOLEAN\+\_\+\+NOR\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN\_XNOR\_CHARACTER@{BOOLEAN\_XNOR\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!BOOLEAN\_XNOR\_CHARACTER@{BOOLEAN\_XNOR\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baa60619e561e83bd3335f2566e2844029}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baa60619e561e83bd3335f2566e2844029} 
+BOOLEAN\+\_\+\+XNOR\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EQUAL\_TO\_CHARACTER@{EQUAL\_TO\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!EQUAL\_TO\_CHARACTER@{EQUAL\_TO\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba8582044e2de4391e64c5fda1d54f4e2e}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba8582044e2de4391e64c5fda1d54f4e2e} 
+EQUAL\+\_\+\+TO\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NOT\_EQUAL\_TO\_CHARACTER@{NOT\_EQUAL\_TO\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!NOT\_EQUAL\_TO\_CHARACTER@{NOT\_EQUAL\_TO\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba4a0fefafd614aa3c9f730fdf1b565b1f}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba4a0fefafd614aa3c9f730fdf1b565b1f} 
+NOT\+\_\+\+EQUAL\+\_\+\+TO\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GREATER\_THAN\_CHARACTER@{GREATER\_THAN\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!GREATER\_THAN\_CHARACTER@{GREATER\_THAN\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba55f004a41430ce499b9de17b9c17e88d}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba55f004a41430ce499b9de17b9c17e88d} 
+GREATER\+\_\+\+THAN\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GREATER\_THAN\_OR\_EQUAL\_TO\_CHARACTER@{GREATER\_THAN\_OR\_EQUAL\_TO\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!GREATER\_THAN\_OR\_EQUAL\_TO\_CHARACTER@{GREATER\_THAN\_OR\_EQUAL\_TO\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba07ad4cbcd2b723f783e90e8f7cf53def}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba07ad4cbcd2b723f783e90e8f7cf53def} 
+GREATER\+\_\+\+THAN\+\_\+\+OR\+\_\+\+EQUAL\+\_\+\+TO\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LESS\_THAN\_CHARACTER@{LESS\_THAN\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!LESS\_THAN\_CHARACTER@{LESS\_THAN\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baf223cce62ce40237f5e83a512a0e871e}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baf223cce62ce40237f5e83a512a0e871e} 
+LESS\+\_\+\+THAN\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LESS\_THAN\_OR\_EQUAL\_TO\_CHARACTER@{LESS\_THAN\_OR\_EQUAL\_TO\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!LESS\_THAN\_OR\_EQUAL\_TO\_CHARACTER@{LESS\_THAN\_OR\_EQUAL\_TO\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baa17b0365aa12a2df72c5575a6073e3b7}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baa17b0365aa12a2df72c5575a6073e3b7} 
+LESS\+\_\+\+THAN\+\_\+\+OR\+\_\+\+EQUAL\+\_\+\+TO\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPERATOR\_CHARACTER\_END@{OPERATOR\_CHARACTER\_END}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!OPERATOR\_CHARACTER\_END@{OPERATOR\_CHARACTER\_END}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baac5b55ed8d7ed88835762dace29b9952}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baac5b55ed8d7ed88835762dace29b9952} 
+OPERATOR\+\_\+\+CHARACTER\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPERATOR\_SPECIAL\_HANDLING\_BEGIN@{OPERATOR\_SPECIAL\_HANDLING\_BEGIN}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!OPERATOR\_SPECIAL\_HANDLING\_BEGIN@{OPERATOR\_SPECIAL\_HANDLING\_BEGIN}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba5fbb8191248ca29596f5a6133f97f272}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45ba5fbb8191248ca29596f5a6133f97f272} 
+OPERATOR\+\_\+\+SPECIAL\+\_\+\+HANDLING\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FACTORIAL\_CHARACTER@{FACTORIAL\_CHARACTER}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!FACTORIAL\_CHARACTER@{FACTORIAL\_CHARACTER}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baca28c7affb983319c7d679a757838f00}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baca28c7affb983319c7d679a757838f00} 
+FACTORIAL\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPERATOR\_SPECIAL\_HANDLING\_END@{OPERATOR\_SPECIAL\_HANDLING\_END}!paceval\_cScanner.h@{paceval\_cScanner.h}}\index{paceval\_cScanner.h@{paceval\_cScanner.h}!OPERATOR\_SPECIAL\_HANDLING\_END@{OPERATOR\_SPECIAL\_HANDLING\_END}}}\Hypertarget{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baf3c640540fa0a8820a5e52092b5aa9f2}\label{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45baf3c640540fa0a8820a5e52092b5aa9f2} 
+OPERATOR\+\_\+\+SPECIAL\+\_\+\+HANDLING\+\_\+\+END&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{paceval__c_scanner_8h_a042fff3baa254afc470f45eb1ad7229b}\label{paceval__c_scanner_8h_a042fff3baa254afc470f45eb1ad7229b} 
+\index{paceval\_cScanner.h@{paceval\_cScanner.h}!paceval\_identifyOperatorFromMathematicalCharacter@{paceval\_identifyOperatorFromMathematicalCharacter}}
+\index{paceval\_identifyOperatorFromMathematicalCharacter@{paceval\_identifyOperatorFromMathematicalCharacter}!paceval\_cScanner.h@{paceval\_cScanner.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_identifyOperatorFromMathematicalCharacter()}{paceval\_identifyOperatorFromMathematicalCharacter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}} paceval\+\_\+identify\+Operator\+From\+Mathematical\+Character (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45b}{paceval\+\_\+e\+Mathematical\+Character\+Types}}}]{e\+Mathematical\+Character\+Type\+\_\+in }\end{DoxyParamCaption})}
+
+forward declaration -\/ gets the current time in milliseconds since the system started (see \doxylink{paceval__c_cleanup_handler_8h}{paceval\+\_\+c\+Cleanup\+Handler.\+h}) identifies the associated type of paceval\+\_\+e\+Operator\+Types for a type of paceval\+\_\+e\+Mathematical\+Character\+Types, e.\+g. the associated ADDITION\+\_\+\+SIGN for ADDITION\+\_\+\+CHARACTER (see \doxylink{paceval__c_cleanup_handler_8cpp}{paceval\+\_\+c\+Cleanup\+Handler.\+cpp}) 
+\begin{DoxyParams}{Parameters}
+{\em e\+Mathematical\+Character\+Type\+\_\+in} & specifies the type of paceval\+\_\+e\+Mathematical\+Character\+Types \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_scanner_8h_a042fff3baa254afc470f45eb1ad7229b_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,107 @@
+\doxysection{paceval\+\_\+s\+Lookahead\+Cache\+Data Class Reference}
+\hypertarget{structpaceval__s_lookahead_cache_data}{}\label{structpaceval__s_lookahead_cache_data}\index{paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}}
+
+
+The struct \doxylink{structpaceval__s_lookahead_cache_data}{paceval\+\_\+s\+Lookahead\+Cache\+Data} is used when necessary by the struct \doxylink{structpaceval__s_node_specific_data}{paceval\+\_\+s\+Node\+Specific\+Data} and stores data for lookahead caching.  
+
+
+
+
+{\ttfamily \#include "{}inc/paceval\+\_\+c\+Atomic\+Graph\+Node.\+h"{}}
+
+
+
+Collaboration diagram for paceval\+\_\+s\+Lookahead\+Cache\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{structpaceval__s_lookahead_cache_data__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{structpaceval__s_lookahead_cache_data_a4fb6c320876631898ad081cfcac7c047}{level\+Multithread\+Available}}
+\item 
+long \mbox{\hyperlink{structpaceval__s_lookahead_cache_data_a14884dc348881389fc6a0d936adbb90b}{level\+Multithread\+Jump}}
+\item 
+unsigned long \mbox{\hyperlink{structpaceval__s_lookahead_cache_data_a8bfc8df92d62de1f9550a33f040f31f2}{id\+Single\+Calculation}}
+\item 
+long double \mbox{\hyperlink{structpaceval__s_lookahead_cache_data_a0be243f20f48cf2900255832d027e6fd}{value\+Level\+Multithread\+As\+Long\+Double}}
+\item 
+double \mbox{\hyperlink{structpaceval__s_lookahead_cache_data_addcaf81c86ce603ff07e4344b207aa12}{value\+Level\+Multithread\+As\+Double}}
+\item 
+float \mbox{\hyperlink{structpaceval__s_lookahead_cache_data_a19984fa6c950ddf62d212cc0f627b567}{value\+Level\+Multithread\+As\+Float}}
+\item 
+bool \mbox{\hyperlink{structpaceval__s_lookahead_cache_data_a7780e7857fc4192b660f1683d9020cc6}{has\+Trusted\+Level\+Multithread\+Min\+Max\+Result}}
+\item 
+long double \mbox{\hyperlink{structpaceval__s_lookahead_cache_data_a68f33655800ba136506d37dd660872da}{value\+Level\+Multithread\+Min\+Value}}
+\item 
+long double \mbox{\hyperlink{structpaceval__s_lookahead_cache_data_a2b6635bea092bdaee158690132255d75}{value\+Level\+Multithread\+Max\+Value}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The struct \doxylink{structpaceval__s_lookahead_cache_data}{paceval\+\_\+s\+Lookahead\+Cache\+Data} is used when necessary by the struct \doxylink{structpaceval__s_node_specific_data}{paceval\+\_\+s\+Node\+Specific\+Data} and stores data for lookahead caching. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structpaceval__s_lookahead_cache_data_a7780e7857fc4192b660f1683d9020cc6}\label{structpaceval__s_lookahead_cache_data_a7780e7857fc4192b660f1683d9020cc6} 
+\index{paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}!hasTrustedLevelMultithreadMinMaxResult@{hasTrustedLevelMultithreadMinMaxResult}}
+\index{hasTrustedLevelMultithreadMinMaxResult@{hasTrustedLevelMultithreadMinMaxResult}!paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}}
+\doxysubsubsection{\texorpdfstring{hasTrustedLevelMultithreadMinMaxResult}{hasTrustedLevelMultithreadMinMaxResult}}
+{\footnotesize\ttfamily bool paceval\+\_\+s\+Lookahead\+Cache\+Data\+::has\+Trusted\+Level\+Multithread\+Min\+Max\+Result}
+
+stores whether the cached value is trusted (true) or not trusted (false) \Hypertarget{structpaceval__s_lookahead_cache_data_a8bfc8df92d62de1f9550a33f040f31f2}\label{structpaceval__s_lookahead_cache_data_a8bfc8df92d62de1f9550a33f040f31f2} 
+\index{paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}!idSingleCalculation@{idSingleCalculation}}
+\index{idSingleCalculation@{idSingleCalculation}!paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}}
+\doxysubsubsection{\texorpdfstring{idSingleCalculation}{idSingleCalculation}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+s\+Lookahead\+Cache\+Data\+::id\+Single\+Calculation}
+
+stores the unique identification number of the associated main calculation \Hypertarget{structpaceval__s_lookahead_cache_data_a4fb6c320876631898ad081cfcac7c047}\label{structpaceval__s_lookahead_cache_data_a4fb6c320876631898ad081cfcac7c047} 
+\index{paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}!levelMultithreadAvailable@{levelMultithreadAvailable}}
+\index{levelMultithreadAvailable@{levelMultithreadAvailable}!paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}}
+\doxysubsubsection{\texorpdfstring{levelMultithreadAvailable}{levelMultithreadAvailable}}
+{\footnotesize\ttfamily bool paceval\+\_\+s\+Lookahead\+Cache\+Data\+::level\+Multithread\+Available}
+
+stores whether the node has the ability to parallelize a partial calculation (true) or not (false) as lookahead caching \Hypertarget{structpaceval__s_lookahead_cache_data_a14884dc348881389fc6a0d936adbb90b}\label{structpaceval__s_lookahead_cache_data_a14884dc348881389fc6a0d936adbb90b} 
+\index{paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}!levelMultithreadJump@{levelMultithreadJump}}
+\index{levelMultithreadJump@{levelMultithreadJump}!paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}}
+\doxysubsubsection{\texorpdfstring{levelMultithreadJump}{levelMultithreadJump}}
+{\footnotesize\ttfamily long paceval\+\_\+s\+Lookahead\+Cache\+Data\+::level\+Multithread\+Jump}
+
+stores the target node for the jump in case of a successful parallel partial calculation as lookahead caching \Hypertarget{structpaceval__s_lookahead_cache_data_addcaf81c86ce603ff07e4344b207aa12}\label{structpaceval__s_lookahead_cache_data_addcaf81c86ce603ff07e4344b207aa12} 
+\index{paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}!valueLevelMultithreadAsDouble@{valueLevelMultithreadAsDouble}}
+\index{valueLevelMultithreadAsDouble@{valueLevelMultithreadAsDouble}!paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}}
+\doxysubsubsection{\texorpdfstring{valueLevelMultithreadAsDouble}{valueLevelMultithreadAsDouble}}
+{\footnotesize\ttfamily double paceval\+\_\+s\+Lookahead\+Cache\+Data\+::value\+Level\+Multithread\+As\+Double}
+
+stores the cached value with precision double \Hypertarget{structpaceval__s_lookahead_cache_data_a19984fa6c950ddf62d212cc0f627b567}\label{structpaceval__s_lookahead_cache_data_a19984fa6c950ddf62d212cc0f627b567} 
+\index{paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}!valueLevelMultithreadAsFloat@{valueLevelMultithreadAsFloat}}
+\index{valueLevelMultithreadAsFloat@{valueLevelMultithreadAsFloat}!paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}}
+\doxysubsubsection{\texorpdfstring{valueLevelMultithreadAsFloat}{valueLevelMultithreadAsFloat}}
+{\footnotesize\ttfamily float paceval\+\_\+s\+Lookahead\+Cache\+Data\+::value\+Level\+Multithread\+As\+Float}
+
+stores the cached value with precision float \Hypertarget{structpaceval__s_lookahead_cache_data_a0be243f20f48cf2900255832d027e6fd}\label{structpaceval__s_lookahead_cache_data_a0be243f20f48cf2900255832d027e6fd} 
+\index{paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}!valueLevelMultithreadAsLongDouble@{valueLevelMultithreadAsLongDouble}}
+\index{valueLevelMultithreadAsLongDouble@{valueLevelMultithreadAsLongDouble}!paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}}
+\doxysubsubsection{\texorpdfstring{valueLevelMultithreadAsLongDouble}{valueLevelMultithreadAsLongDouble}}
+{\footnotesize\ttfamily long double paceval\+\_\+s\+Lookahead\+Cache\+Data\+::value\+Level\+Multithread\+As\+Long\+Double}
+
+stores the cached value with precision long double \Hypertarget{structpaceval__s_lookahead_cache_data_a2b6635bea092bdaee158690132255d75}\label{structpaceval__s_lookahead_cache_data_a2b6635bea092bdaee158690132255d75} 
+\index{paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}!valueLevelMultithreadMaxValue@{valueLevelMultithreadMaxValue}}
+\index{valueLevelMultithreadMaxValue@{valueLevelMultithreadMaxValue}!paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}}
+\doxysubsubsection{\texorpdfstring{valueLevelMultithreadMaxValue}{valueLevelMultithreadMaxValue}}
+{\footnotesize\ttfamily long double paceval\+\_\+s\+Lookahead\+Cache\+Data\+::value\+Level\+Multithread\+Max\+Value}
+
+stores the maximum value of the interval if the cached value is not trusted \Hypertarget{structpaceval__s_lookahead_cache_data_a68f33655800ba136506d37dd660872da}\label{structpaceval__s_lookahead_cache_data_a68f33655800ba136506d37dd660872da} 
+\index{paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}!valueLevelMultithreadMinValue@{valueLevelMultithreadMinValue}}
+\index{valueLevelMultithreadMinValue@{valueLevelMultithreadMinValue}!paceval\_sLookaheadCacheData@{paceval\_sLookaheadCacheData}}
+\doxysubsubsection{\texorpdfstring{valueLevelMultithreadMinValue}{valueLevelMultithreadMinValue}}
+{\footnotesize\ttfamily long double paceval\+\_\+s\+Lookahead\+Cache\+Data\+::value\+Level\+Multithread\+Min\+Value}
+
+stores the minimum value of the interval if the cached value is not trusted 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/\mbox{\hyperlink{paceval__c_atomic_graph_node_8h}{paceval\+\_\+c\+Atomic\+Graph\+Node.\+h}}\end{DoxyCompactItemize}

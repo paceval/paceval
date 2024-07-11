@@ -1,0 +1,568 @@
+\doxysection{G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/paceval\+\_\+c\+Common\+Data.h File Reference}
+\hypertarget{paceval__c_common_data_8h}{}\label{paceval__c_common_data_8h}\index{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/inc/paceval\_cCommonData.h@{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/inc/paceval\_cCommonData.h}}
+
+
+specifies global, compiler-\/specific definitions and data types for the supported mathematical functions (annotation\+: it also includes the data types for paceval\textquotesingle{}s FPGA hardware support)  
+
+
+{\ttfamily \#include "{}../../source\+\_\+public/inc/paceval\+\_\+main.\+h"{}}\newline
+Include dependency graph for paceval\+\_\+c\+Common\+Data.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{paceval__c_common_data_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_common_data_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{structpaceval__s_f_p_g_a_node_data}{paceval\+\_\+s\+FPGANode\+Data}}
+\begin{DoxyCompactList}\small\item\em The struct \doxylink{structpaceval__s_f_p_g_a_node_data}{paceval\+\_\+s\+FPGANode\+Data}, among others, by \doxylink{paceval__f_f_p_g_a_handling_8cpp_a65643747ee8511c9ab81c178f4c2b02d}{paceval\+\_\+activity\+End\+\_\+\+FPGA\+\_\+\+Create\+Computation()} and \doxylink{paceval__f_f_p_g_a_handling_8cpp_a1160d7a8c994d3edc5cf80e79e1a57e2}{paceval\+\_\+activity\+Main\+\_\+\+FPGA\+\_\+\+Do\+Computation()}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{structpaceval__s_f_p_g_a_value_field_for_stacks}{paceval\+\_\+s\+FPGAValue\+Field\+For\+Stacks}}
+\begin{DoxyCompactList}\small\item\em The struct \doxylink{structpaceval__s_f_p_g_a_value_field_for_stacks}{paceval\+\_\+s\+FPGAValue\+Field\+For\+Stacks} is used, among others, by \doxylink{paceval__f_f_p_g_a_handling_8cpp_a65643747ee8511c9ab81c178f4c2b02d}{paceval\+\_\+activity\+End\+\_\+\+FPGA\+\_\+\+Create\+Computation()} and \doxylink{paceval__f_f_p_g_a_handling_8cpp_a1160d7a8c994d3edc5cf80e79e1a57e2}{paceval\+\_\+activity\+Main\+\_\+\+FPGA\+\_\+\+Do\+Computation()}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{structpaceval__s_f_p_g_a_node_cache_status_for_stacks}{paceval\+\_\+s\+FPGANode\+Cache\+Status\+For\+Stacks}}
+\begin{DoxyCompactList}\small\item\em The struct \doxylink{structpaceval__s_f_p_g_a_value_field_for_stacks}{paceval\+\_\+s\+FPGAValue\+Field\+For\+Stacks} is used, among others, by \doxylink{paceval__f_f_p_g_a_handling_8cpp_a65643747ee8511c9ab81c178f4c2b02d}{paceval\+\_\+activity\+End\+\_\+\+FPGA\+\_\+\+Create\+Computation()} and \doxylink{paceval__f_f_p_g_a_handling_8cpp_a1160d7a8c994d3edc5cf80e79e1a57e2}{paceval\+\_\+activity\+Main\+\_\+\+FPGA\+\_\+\+Do\+Computation()}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{structpaceval__s_f_p_g_a_memory_allocation}{paceval\+\_\+s\+FPGAMemory\+Allocation}}
+\begin{DoxyCompactList}\small\item\em The struct \doxylink{structpaceval__s_f_p_g_a_memory_allocation}{paceval\+\_\+s\+FPGAMemory\+Allocation} is used, among others, by \doxylink{paceval__f_f_p_g_a_handling_8cpp_a65643747ee8511c9ab81c178f4c2b02d}{paceval\+\_\+activity\+End\+\_\+\+FPGA\+\_\+\+Create\+Computation()} and \doxylink{paceval__f_f_p_g_a_handling_8cpp_a1160d7a8c994d3edc5cf80e79e1a57e2}{paceval\+\_\+activity\+Main\+\_\+\+FPGA\+\_\+\+Do\+Computation()}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{paceval__c_common_data_8h_acb44a6c44cd59a44e156e7bede33bf08}{paceval\+\_\+max\+\_\+user\+\_\+functions}}~1000
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}} \{ \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a02f804d09a552bac3be5e3a0eaacdb06}{NO\+\_\+\+OPERATOR}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4b73fa8bd8139194d353e0697f5e1d2c}{OPERATORS\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afa62bef5fd08306e9123185ff059cb8a}{SIGNS\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a21505a39f27e763fe021d35e0d9b20f4}{SET\+\_\+\+TO\+\_\+\+VALUE\+\_\+\+SIGN}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa8270b18a0810ff4a9ff110aee357f44}{SET\+\_\+\+TO\+\_\+\+VARIABLE\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa0d67a1842dee6450923b28eb66e2ed1}{SIGNS\+\_\+\+CALCULATION\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ac1ed3a73a5202f1f687b0992a079ade9}{ADDITION\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afdc8564a6c3375536d1bd9e9416c866f}{SUBTRACTION\+\_\+\+SIGN}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a86812024a28b0fe0d9b714678c30e685}{CACHE\+\_\+\+SIGNS\+\_\+\+EXT\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2ab527d94ce03bbba9be7eb5b1683f11}{MULTIPLICATION\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0c3e39bba1c5c3577708bf5f630a1c90}{DIVISION\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a77a065a6a0c76880a4037dac53f2a55a}{CACHE\+\_\+\+SIGNS\+\_\+\+BEGIN}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670acb72e710e85a59634ca586c8b47b7337}{POWER\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aed8d286695eef8a8366397c202d28276}{MODULO\+\_\+\+SYMMETRIC\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa2d7136f60e2a2cc31f31e95d17c64ea}{MODULO\+\_\+\+MATHEMATIC\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a6f2ef013e0070b337cb8ea1e1da0b1d9}{FACTORIAL\+\_\+\+SIGN}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a718ceaacdbc92bb2ffc4615a769cc445}{CACHE\+\_\+\+SIGNS\+\_\+\+END}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ab3e8ab59cf92d18e1bbbfc6f0e3c812f}{CACHE\+\_\+\+SIGNS\+\_\+\+EXT\+\_\+\+END}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a003da7961f314b3d156c2a1c2886cca1}{MAX\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0b5be754e81d8a29d168477be5f42ca4}{MIN\+\_\+\+SIGN}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa7868c68da0065cd3c7622e413cfb6e9}{SIGNS\+\_\+\+BOOLEAN\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aeda99111156606eb2177fbc4a08f1e6b}{BOOLEAN\+\_\+\+AND\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aad1106437aa05585361d2fd420509e00}{BOOLEAN\+\_\+\+OR\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a9091678e654f98143f7ebe68e8171540}{BOOLEAN\+\_\+\+XOR\+\_\+\+SIGN}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4a635ff931d44b8d0449f84b36334b2b}{BOOLEAN\+\_\+\+NAND\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a5a373ac352b35a9d8e79cf19963cf396}{BOOLEAN\+\_\+\+NOR\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af458840c540ef1e07923b4cb1c4d08a3}{BOOLEAN\+\_\+\+XNOR\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0f8286088eb718205f314f38a5455f30}{SIGNS\+\_\+\+BOOLEAN\+\_\+\+END}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0048589f424ae6fe86364cef0e44408f}{SIGNS\+\_\+\+RELATIONAL\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670abfc432dea04f744736beca44f303ad5a}{EQUAL\+\_\+\+TO\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aefc6e44418e6bc92d2c9e5df4b243369}{NOT\+\_\+\+EQUAL\+\_\+\+TO\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4640aa43248d315aa4b521912f3965c9}{GREATER\+\_\+\+THAN\+\_\+\+SIGN}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ac7ea265e850ef6cd0d0f015524bd4b28}{GREATER\+\_\+\+THAN\+\_\+\+OR\+\_\+\+EQUAL\+\_\+\+TO\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afdf983b6dfc6ca97604c400dda0c688b}{LESS\+\_\+\+THAN\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a272344954c3d148e2a468f0c5c8b003b}{LESS\+\_\+\+THAN\+\_\+\+OR\+\_\+\+EQUAL\+\_\+\+TO\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a1e8692848829b58ada7b6b12291e8efb}{SIGNS\+\_\+\+RELATIONAL\+\_\+\+END}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a1360a524125bd8e429e9e308f5b71acd}{SIGNS\+\_\+\+CALCULATION\+\_\+\+END}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a341552c202b703a3b01038b3e8c4b235}{SIGNS\+\_\+\+END}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a390cfd7e799f45c738cb2c8b842548ad}{FUNCTIONS\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a80352399d47bea0a811b5cb94f7ae84b}{CACHE\+\_\+\+FUNCTIONS\+\_\+\+BEGIN}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aec6ad8dfda469594e40204ed265f8b48}{USER\+\_\+\+FUNCTIONS\+\_\+\+BEGIN}} = FUNCTIONS\+\_\+\+BEGIN + paceval\+\_\+max\+\_\+user\+\_\+functions
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa7f978b0ada926bee06ba93bfb2ea897}{USER1\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa667c25672464dade78dc32b04799136}{USER1000\+\_\+\+FUNCTION}} = USER1\+\_\+\+FUNCTION + (paceval\+\_\+max\+\_\+user\+\_\+functions -\/ 1)
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aed5d11eca0b6438d75f7d8dadcecc906}{USER\+\_\+\+FUNCTIONS\+\_\+\+END}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a872cf6277eaa72c2bfb7f7be5a17b51b}{SINE\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa260b927b2d5738d647c17070147a66e}{COSINE\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0d1a64c3a784436abfd8a549ffca9a52}{TANGENT\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae66912b61effa75b655071c45ba84b30}{COTANGENT\+\_\+\+FUNCTION}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a995c131ed0860ec91f66ee1d94e4d3f9}{ARC\+\_\+\+SINE\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af863e06134169964deb5f197cf376c07}{ARC\+\_\+\+COSINE\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a6f83a8f2cc3b43fc64c6a67ee2ffa3f7}{ARC\+\_\+\+TANGENT\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af73f4b31968fa712774c87ea7c1b987d}{ARC\+\_\+\+COTANGENT\+\_\+\+FUNCTION}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afb26de44a72d1acafecc2a036c63cff1}{HYPERBOLIC\+\_\+\+SINE\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae75189f6f84b2bba690a0d3b20503558}{HYPERBOLIC\+\_\+\+COSINE\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2b075b08232e6af5c59773e413e28e7c}{HYPERBOLIC\+\_\+\+TANGENT\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae2724f302c771287ce632740344c37aa}{HYPERBOLIC\+\_\+\+COTANGENT\+\_\+\+FUNCTION}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a68950733588497b322b740aa0b6f73c7}{AREA\+\_\+\+HYPERBOLIC\+\_\+\+SINE\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af8c974c2c3d7c64042de21f0d23fe0b9}{AREA\+\_\+\+HYPERBOLIC\+\_\+\+COSINE\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ab1a6aaf52a36d4b6a12d4073a82638cf}{AREA\+\_\+\+HYPERBOLIC\+\_\+\+TANGENT\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a33fa24fd21cf142f6cfa53426d4c250d}{AREA\+\_\+\+HYPERBOLIC\+\_\+\+COTANGENT\+\_\+\+FUNCTION}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ac366c0058d77890bbb22b76f5efc0e46}{SQUARE\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a556d096b8648f31e1428960e14ea1c61}{SQUARE\+\_\+\+ROOT\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a50624f7d3a64cabdeb6ce74a0196344c}{EXPONENTIAL\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a6d12ceee30bebd4fdda5db2863eb7c1a}{LOGARITHM\+\_\+\+FUNCTION}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a7ebad9707f7241f45a95fb37d4b82145}{NATURAL\+\_\+\+LOGARITHM\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a59658a49fcce8aa4bafa18a28fe3e0bf}{SIGMOID\+\_\+\+LOGISTIC\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a8a211b235e3baf78edae1abdf7ed3eb2}{FACTORIAL\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670abbff66de122f0397ea107fd4a21ad016}{ABSOLUTE\+\_\+\+VALUE\+\_\+\+FUNCTION}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a523dc56aa3d09423e26ee81cb9c962f6}{ROUNDING\+\_\+\+VALUE\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a7ba38ae6a852f00b57640a4e2f2269de}{NORMALIZE\+\_\+\+VALUE\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aaeced3007ad113a7850230212ad08666}{CEILING\+\_\+\+VALUE\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a8dffb53ff8afff0a7c90abeed9fa8f43}{FLOOR\+\_\+\+VALUE\+\_\+\+FUNCTION}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ab9d858e97b1bacf602cd01e97b7484b8}{CACHE\+\_\+\+FUNCTIONS\+\_\+\+END}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af14edbfc15cfb68de8f634fd965eabb2}{RANDOM\+\_\+\+VALUE\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa773951bbc6c6a6ac7b3f404b4663d0c}{SIGNS\+\_\+\+LOGICAL\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae82d2ebf3f94864bda3271862c2b53e5}{SIGN\+\_\+\+FUNCTION}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4d7812c9e4cb6de0d64131a1ffafe703}{GREATER\+\_\+\+THAN\+\_\+\+ZERO\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a8fbad78630a7589a02735f134a2bd64b}{GREATER\+\_\+\+THAN\+\_\+\+ZERO\+\_\+\+OR\+\_\+\+ZERO\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a49c3d59743d59fcc69701ef47f767205}{LESS\+\_\+\+THAN\+\_\+\+ZERO\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4a85787252e5eae90e3898f071401af9}{LESS\+\_\+\+THAN\+\_\+\+ZERO\+\_\+\+OR\+\_\+\+ZERO\+\_\+\+FUNCTION}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ab0e3f418369cc4ffca9538a33ca0e9e0}{IS\+\_\+\+ZERO\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2ec38ad7feab57bdc136a51bac7c95fb}{BOOLEAN\+\_\+\+NOT\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a8da03c3e5ed1e015e41c2d7845d882e3}{SIGNS\+\_\+\+LOGICAL\+\_\+\+END}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aab4ed536e3382bff5d150bfcd6b7b624}{FUNCTIONS\+\_\+\+END}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2ba1b0d2d66da6ebc9993da1fe769133}{UNKNOWN\+\_\+\+SIGNS\+\_\+\+OR\+\_\+\+FUNCTIONS\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae87f8b3faa1610240f28707b2e2b8da1}{UNKNOWN\+\_\+\+SIGN}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2c01f3756e1d4df409f4cc355c37242f}{UNKNOWN\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afcc47e691c63af1eb29d037571a50a1c}{UNKNOWN\+\_\+\+SIGNS\+\_\+\+OR\+\_\+\+FUNCTIONS\+\_\+\+END}}
+, \newline
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a3652ab5ad494b590d12e222909fd4be4}{OPERATORS\+\_\+\+END}}
+ \}
+\item 
+enum \mbox{\hyperlink{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80}{paceval\+\_\+e\+FPGACache\+Status}} \{ \mbox{\hyperlink{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80a499eb549cbf6cae61c01a7dbfbfcd886}{CACHE\+\_\+\+UNDEFINED}} = 0
+, \mbox{\hyperlink{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80ac0b7971cabb763ab484c83bbe2efbe67}{CACHE\+\_\+\+CALCULATION\+\_\+\+CIRCLE\+\_\+1\+\_\+\+VALID}} = 3
+, \mbox{\hyperlink{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80af7d0efe84f212abf1d748a3548447b06}{CACHE\+\_\+\+CALCULATION\+\_\+\+ALWAYS\+\_\+\+VALID}} = 5
+, \mbox{\hyperlink{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80a751e54471877e4e679ce7d8578cb6a94}{CACHE\+\_\+\+CALCULATION\+\_\+\+CIRCLE\+\_\+2\+\_\+\+VALID}} = 6
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+specifies global, compiler-\/specific definitions and data types for the supported mathematical functions (annotation\+: it also includes the data types for paceval\textquotesingle{}s FPGA hardware support) 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{paceval__c_common_data_8h_acb44a6c44cd59a44e156e7bede33bf08}\label{paceval__c_common_data_8h_acb44a6c44cd59a44e156e7bede33bf08} 
+\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!paceval\_max\_user\_functions@{paceval\_max\_user\_functions}}
+\index{paceval\_max\_user\_functions@{paceval\_max\_user\_functions}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_max\_user\_functions}{paceval\_max\_user\_functions}}
+{\footnotesize\ttfamily \#define paceval\+\_\+max\+\_\+user\+\_\+functions~1000}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80}\label{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80} 
+\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!paceval\_eFPGACacheStatus@{paceval\_eFPGACacheStatus}}
+\index{paceval\_eFPGACacheStatus@{paceval\_eFPGACacheStatus}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_eFPGACacheStatus}{paceval\_eFPGACacheStatus}}
+{\footnotesize\ttfamily enum paceval\+\_\+e\+FPGACache\+Status}
+
+specifies the validation types of the cache \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CACHE\_UNDEFINED@{CACHE\_UNDEFINED}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!CACHE\_UNDEFINED@{CACHE\_UNDEFINED}}}\Hypertarget{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80a499eb549cbf6cae61c01a7dbfbfcd886}\label{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80a499eb549cbf6cae61c01a7dbfbfcd886} 
+CACHE\+\_\+\+UNDEFINED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CACHE\_CALCULATION\_CIRCLE\_1\_VALID@{CACHE\_CALCULATION\_CIRCLE\_1\_VALID}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!CACHE\_CALCULATION\_CIRCLE\_1\_VALID@{CACHE\_CALCULATION\_CIRCLE\_1\_VALID}}}\Hypertarget{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80ac0b7971cabb763ab484c83bbe2efbe67}\label{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80ac0b7971cabb763ab484c83bbe2efbe67} 
+CACHE\+\_\+\+CALCULATION\+\_\+\+CIRCLE\+\_\+1\+\_\+\+VALID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CACHE\_CALCULATION\_ALWAYS\_VALID@{CACHE\_CALCULATION\_ALWAYS\_VALID}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!CACHE\_CALCULATION\_ALWAYS\_VALID@{CACHE\_CALCULATION\_ALWAYS\_VALID}}}\Hypertarget{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80af7d0efe84f212abf1d748a3548447b06}\label{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80af7d0efe84f212abf1d748a3548447b06} 
+CACHE\+\_\+\+CALCULATION\+\_\+\+ALWAYS\+\_\+\+VALID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CACHE\_CALCULATION\_CIRCLE\_2\_VALID@{CACHE\_CALCULATION\_CIRCLE\_2\_VALID}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!CACHE\_CALCULATION\_CIRCLE\_2\_VALID@{CACHE\_CALCULATION\_CIRCLE\_2\_VALID}}}\Hypertarget{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80a751e54471877e4e679ce7d8578cb6a94}\label{paceval__c_common_data_8h_ab14370f386e74fd5dac4f0265d4a2c80a751e54471877e4e679ce7d8578cb6a94} 
+CACHE\+\_\+\+CALCULATION\+\_\+\+CIRCLE\+\_\+2\+\_\+\+VALID&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670} 
+\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!paceval\_eOperatorTypes@{paceval\_eOperatorTypes}}
+\index{paceval\_eOperatorTypes@{paceval\_eOperatorTypes}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_eOperatorTypes}{paceval\_eOperatorTypes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}}}
+
+specifies the types of supported mathematical character strings (annotation\+: these are placeholders in the respective nodes for the actual character strings and can be processed much faster and more effectively as enum, i.\+e. integer) \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_OPERATOR@{NO\_OPERATOR}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!NO\_OPERATOR@{NO\_OPERATOR}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a02f804d09a552bac3be5e3a0eaacdb06}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a02f804d09a552bac3be5e3a0eaacdb06} 
+NO\+\_\+\+OPERATOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPERATORS\_BEGIN@{OPERATORS\_BEGIN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!OPERATORS\_BEGIN@{OPERATORS\_BEGIN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4b73fa8bd8139194d353e0697f5e1d2c}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4b73fa8bd8139194d353e0697f5e1d2c} 
+OPERATORS\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNS\_BEGIN@{SIGNS\_BEGIN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SIGNS\_BEGIN@{SIGNS\_BEGIN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afa62bef5fd08306e9123185ff059cb8a}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afa62bef5fd08306e9123185ff059cb8a} 
+SIGNS\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SET\_TO\_VALUE\_SIGN@{SET\_TO\_VALUE\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SET\_TO\_VALUE\_SIGN@{SET\_TO\_VALUE\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a21505a39f27e763fe021d35e0d9b20f4}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a21505a39f27e763fe021d35e0d9b20f4} 
+SET\+\_\+\+TO\+\_\+\+VALUE\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SET\_TO\_VARIABLE\_SIGN@{SET\_TO\_VARIABLE\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SET\_TO\_VARIABLE\_SIGN@{SET\_TO\_VARIABLE\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa8270b18a0810ff4a9ff110aee357f44}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa8270b18a0810ff4a9ff110aee357f44} 
+SET\+\_\+\+TO\+\_\+\+VARIABLE\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNS\_CALCULATION\_BEGIN@{SIGNS\_CALCULATION\_BEGIN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SIGNS\_CALCULATION\_BEGIN@{SIGNS\_CALCULATION\_BEGIN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa0d67a1842dee6450923b28eb66e2ed1}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa0d67a1842dee6450923b28eb66e2ed1} 
+SIGNS\+\_\+\+CALCULATION\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ADDITION\_SIGN@{ADDITION\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!ADDITION\_SIGN@{ADDITION\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ac1ed3a73a5202f1f687b0992a079ade9}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ac1ed3a73a5202f1f687b0992a079ade9} 
+ADDITION\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SUBTRACTION\_SIGN@{SUBTRACTION\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SUBTRACTION\_SIGN@{SUBTRACTION\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afdc8564a6c3375536d1bd9e9416c866f}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afdc8564a6c3375536d1bd9e9416c866f} 
+SUBTRACTION\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CACHE\_SIGNS\_EXT\_BEGIN@{CACHE\_SIGNS\_EXT\_BEGIN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!CACHE\_SIGNS\_EXT\_BEGIN@{CACHE\_SIGNS\_EXT\_BEGIN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a86812024a28b0fe0d9b714678c30e685}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a86812024a28b0fe0d9b714678c30e685} 
+CACHE\+\_\+\+SIGNS\+\_\+\+EXT\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MULTIPLICATION\_SIGN@{MULTIPLICATION\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!MULTIPLICATION\_SIGN@{MULTIPLICATION\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2ab527d94ce03bbba9be7eb5b1683f11}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2ab527d94ce03bbba9be7eb5b1683f11} 
+MULTIPLICATION\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIVISION\_SIGN@{DIVISION\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!DIVISION\_SIGN@{DIVISION\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0c3e39bba1c5c3577708bf5f630a1c90}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0c3e39bba1c5c3577708bf5f630a1c90} 
+DIVISION\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CACHE\_SIGNS\_BEGIN@{CACHE\_SIGNS\_BEGIN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!CACHE\_SIGNS\_BEGIN@{CACHE\_SIGNS\_BEGIN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a77a065a6a0c76880a4037dac53f2a55a}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a77a065a6a0c76880a4037dac53f2a55a} 
+CACHE\+\_\+\+SIGNS\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{POWER\_SIGN@{POWER\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!POWER\_SIGN@{POWER\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670acb72e710e85a59634ca586c8b47b7337}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670acb72e710e85a59634ca586c8b47b7337} 
+POWER\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODULO\_SYMMETRIC\_SIGN@{MODULO\_SYMMETRIC\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!MODULO\_SYMMETRIC\_SIGN@{MODULO\_SYMMETRIC\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aed8d286695eef8a8366397c202d28276}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aed8d286695eef8a8366397c202d28276} 
+MODULO\+\_\+\+SYMMETRIC\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODULO\_MATHEMATIC\_SIGN@{MODULO\_MATHEMATIC\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!MODULO\_MATHEMATIC\_SIGN@{MODULO\_MATHEMATIC\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa2d7136f60e2a2cc31f31e95d17c64ea}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa2d7136f60e2a2cc31f31e95d17c64ea} 
+MODULO\+\_\+\+MATHEMATIC\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FACTORIAL\_SIGN@{FACTORIAL\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!FACTORIAL\_SIGN@{FACTORIAL\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a6f2ef013e0070b337cb8ea1e1da0b1d9}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a6f2ef013e0070b337cb8ea1e1da0b1d9} 
+FACTORIAL\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CACHE\_SIGNS\_END@{CACHE\_SIGNS\_END}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!CACHE\_SIGNS\_END@{CACHE\_SIGNS\_END}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a718ceaacdbc92bb2ffc4615a769cc445}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a718ceaacdbc92bb2ffc4615a769cc445} 
+CACHE\+\_\+\+SIGNS\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CACHE\_SIGNS\_EXT\_END@{CACHE\_SIGNS\_EXT\_END}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!CACHE\_SIGNS\_EXT\_END@{CACHE\_SIGNS\_EXT\_END}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ab3e8ab59cf92d18e1bbbfc6f0e3c812f}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ab3e8ab59cf92d18e1bbbfc6f0e3c812f} 
+CACHE\+\_\+\+SIGNS\+\_\+\+EXT\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAX\_SIGN@{MAX\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!MAX\_SIGN@{MAX\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a003da7961f314b3d156c2a1c2886cca1}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a003da7961f314b3d156c2a1c2886cca1} 
+MAX\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MIN\_SIGN@{MIN\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!MIN\_SIGN@{MIN\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0b5be754e81d8a29d168477be5f42ca4}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0b5be754e81d8a29d168477be5f42ca4} 
+MIN\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNS\_BOOLEAN\_BEGIN@{SIGNS\_BOOLEAN\_BEGIN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SIGNS\_BOOLEAN\_BEGIN@{SIGNS\_BOOLEAN\_BEGIN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa7868c68da0065cd3c7622e413cfb6e9}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa7868c68da0065cd3c7622e413cfb6e9} 
+SIGNS\+\_\+\+BOOLEAN\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN\_AND\_SIGN@{BOOLEAN\_AND\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!BOOLEAN\_AND\_SIGN@{BOOLEAN\_AND\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aeda99111156606eb2177fbc4a08f1e6b}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aeda99111156606eb2177fbc4a08f1e6b} 
+BOOLEAN\+\_\+\+AND\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN\_OR\_SIGN@{BOOLEAN\_OR\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!BOOLEAN\_OR\_SIGN@{BOOLEAN\_OR\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aad1106437aa05585361d2fd420509e00}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aad1106437aa05585361d2fd420509e00} 
+BOOLEAN\+\_\+\+OR\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN\_XOR\_SIGN@{BOOLEAN\_XOR\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!BOOLEAN\_XOR\_SIGN@{BOOLEAN\_XOR\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a9091678e654f98143f7ebe68e8171540}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a9091678e654f98143f7ebe68e8171540} 
+BOOLEAN\+\_\+\+XOR\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN\_NAND\_SIGN@{BOOLEAN\_NAND\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!BOOLEAN\_NAND\_SIGN@{BOOLEAN\_NAND\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4a635ff931d44b8d0449f84b36334b2b}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4a635ff931d44b8d0449f84b36334b2b} 
+BOOLEAN\+\_\+\+NAND\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN\_NOR\_SIGN@{BOOLEAN\_NOR\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!BOOLEAN\_NOR\_SIGN@{BOOLEAN\_NOR\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a5a373ac352b35a9d8e79cf19963cf396}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a5a373ac352b35a9d8e79cf19963cf396} 
+BOOLEAN\+\_\+\+NOR\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN\_XNOR\_SIGN@{BOOLEAN\_XNOR\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!BOOLEAN\_XNOR\_SIGN@{BOOLEAN\_XNOR\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af458840c540ef1e07923b4cb1c4d08a3}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af458840c540ef1e07923b4cb1c4d08a3} 
+BOOLEAN\+\_\+\+XNOR\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNS\_BOOLEAN\_END@{SIGNS\_BOOLEAN\_END}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SIGNS\_BOOLEAN\_END@{SIGNS\_BOOLEAN\_END}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0f8286088eb718205f314f38a5455f30}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0f8286088eb718205f314f38a5455f30} 
+SIGNS\+\_\+\+BOOLEAN\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNS\_RELATIONAL\_BEGIN@{SIGNS\_RELATIONAL\_BEGIN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SIGNS\_RELATIONAL\_BEGIN@{SIGNS\_RELATIONAL\_BEGIN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0048589f424ae6fe86364cef0e44408f}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0048589f424ae6fe86364cef0e44408f} 
+SIGNS\+\_\+\+RELATIONAL\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EQUAL\_TO\_SIGN@{EQUAL\_TO\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!EQUAL\_TO\_SIGN@{EQUAL\_TO\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670abfc432dea04f744736beca44f303ad5a}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670abfc432dea04f744736beca44f303ad5a} 
+EQUAL\+\_\+\+TO\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NOT\_EQUAL\_TO\_SIGN@{NOT\_EQUAL\_TO\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!NOT\_EQUAL\_TO\_SIGN@{NOT\_EQUAL\_TO\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aefc6e44418e6bc92d2c9e5df4b243369}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aefc6e44418e6bc92d2c9e5df4b243369} 
+NOT\+\_\+\+EQUAL\+\_\+\+TO\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GREATER\_THAN\_SIGN@{GREATER\_THAN\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!GREATER\_THAN\_SIGN@{GREATER\_THAN\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4640aa43248d315aa4b521912f3965c9}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4640aa43248d315aa4b521912f3965c9} 
+GREATER\+\_\+\+THAN\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GREATER\_THAN\_OR\_EQUAL\_TO\_SIGN@{GREATER\_THAN\_OR\_EQUAL\_TO\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!GREATER\_THAN\_OR\_EQUAL\_TO\_SIGN@{GREATER\_THAN\_OR\_EQUAL\_TO\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ac7ea265e850ef6cd0d0f015524bd4b28}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ac7ea265e850ef6cd0d0f015524bd4b28} 
+GREATER\+\_\+\+THAN\+\_\+\+OR\+\_\+\+EQUAL\+\_\+\+TO\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LESS\_THAN\_SIGN@{LESS\_THAN\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!LESS\_THAN\_SIGN@{LESS\_THAN\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afdf983b6dfc6ca97604c400dda0c688b}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afdf983b6dfc6ca97604c400dda0c688b} 
+LESS\+\_\+\+THAN\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LESS\_THAN\_OR\_EQUAL\_TO\_SIGN@{LESS\_THAN\_OR\_EQUAL\_TO\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!LESS\_THAN\_OR\_EQUAL\_TO\_SIGN@{LESS\_THAN\_OR\_EQUAL\_TO\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a272344954c3d148e2a468f0c5c8b003b}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a272344954c3d148e2a468f0c5c8b003b} 
+LESS\+\_\+\+THAN\+\_\+\+OR\+\_\+\+EQUAL\+\_\+\+TO\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNS\_RELATIONAL\_END@{SIGNS\_RELATIONAL\_END}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SIGNS\_RELATIONAL\_END@{SIGNS\_RELATIONAL\_END}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a1e8692848829b58ada7b6b12291e8efb}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a1e8692848829b58ada7b6b12291e8efb} 
+SIGNS\+\_\+\+RELATIONAL\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNS\_CALCULATION\_END@{SIGNS\_CALCULATION\_END}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SIGNS\_CALCULATION\_END@{SIGNS\_CALCULATION\_END}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a1360a524125bd8e429e9e308f5b71acd}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a1360a524125bd8e429e9e308f5b71acd} 
+SIGNS\+\_\+\+CALCULATION\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNS\_END@{SIGNS\_END}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SIGNS\_END@{SIGNS\_END}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a341552c202b703a3b01038b3e8c4b235}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a341552c202b703a3b01038b3e8c4b235} 
+SIGNS\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FUNCTIONS\_BEGIN@{FUNCTIONS\_BEGIN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!FUNCTIONS\_BEGIN@{FUNCTIONS\_BEGIN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a390cfd7e799f45c738cb2c8b842548ad}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a390cfd7e799f45c738cb2c8b842548ad} 
+FUNCTIONS\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CACHE\_FUNCTIONS\_BEGIN@{CACHE\_FUNCTIONS\_BEGIN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!CACHE\_FUNCTIONS\_BEGIN@{CACHE\_FUNCTIONS\_BEGIN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a80352399d47bea0a811b5cb94f7ae84b}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a80352399d47bea0a811b5cb94f7ae84b} 
+CACHE\+\_\+\+FUNCTIONS\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{USER\_FUNCTIONS\_BEGIN@{USER\_FUNCTIONS\_BEGIN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!USER\_FUNCTIONS\_BEGIN@{USER\_FUNCTIONS\_BEGIN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aec6ad8dfda469594e40204ed265f8b48}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aec6ad8dfda469594e40204ed265f8b48} 
+USER\+\_\+\+FUNCTIONS\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{USER1\_FUNCTION@{USER1\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!USER1\_FUNCTION@{USER1\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa7f978b0ada926bee06ba93bfb2ea897}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa7f978b0ada926bee06ba93bfb2ea897} 
+USER1\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{USER1000\_FUNCTION@{USER1000\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!USER1000\_FUNCTION@{USER1000\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa667c25672464dade78dc32b04799136}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa667c25672464dade78dc32b04799136} 
+USER1000\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{USER\_FUNCTIONS\_END@{USER\_FUNCTIONS\_END}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!USER\_FUNCTIONS\_END@{USER\_FUNCTIONS\_END}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aed5d11eca0b6438d75f7d8dadcecc906}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aed5d11eca0b6438d75f7d8dadcecc906} 
+USER\+\_\+\+FUNCTIONS\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SINE\_FUNCTION@{SINE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SINE\_FUNCTION@{SINE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a872cf6277eaa72c2bfb7f7be5a17b51b}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a872cf6277eaa72c2bfb7f7be5a17b51b} 
+SINE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COSINE\_FUNCTION@{COSINE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!COSINE\_FUNCTION@{COSINE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa260b927b2d5738d647c17070147a66e}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa260b927b2d5738d647c17070147a66e} 
+COSINE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TANGENT\_FUNCTION@{TANGENT\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!TANGENT\_FUNCTION@{TANGENT\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0d1a64c3a784436abfd8a549ffca9a52}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a0d1a64c3a784436abfd8a549ffca9a52} 
+TANGENT\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COTANGENT\_FUNCTION@{COTANGENT\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!COTANGENT\_FUNCTION@{COTANGENT\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae66912b61effa75b655071c45ba84b30}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae66912b61effa75b655071c45ba84b30} 
+COTANGENT\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ARC\_SINE\_FUNCTION@{ARC\_SINE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!ARC\_SINE\_FUNCTION@{ARC\_SINE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a995c131ed0860ec91f66ee1d94e4d3f9}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a995c131ed0860ec91f66ee1d94e4d3f9} 
+ARC\+\_\+\+SINE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ARC\_COSINE\_FUNCTION@{ARC\_COSINE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!ARC\_COSINE\_FUNCTION@{ARC\_COSINE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af863e06134169964deb5f197cf376c07}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af863e06134169964deb5f197cf376c07} 
+ARC\+\_\+\+COSINE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ARC\_TANGENT\_FUNCTION@{ARC\_TANGENT\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!ARC\_TANGENT\_FUNCTION@{ARC\_TANGENT\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a6f83a8f2cc3b43fc64c6a67ee2ffa3f7}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a6f83a8f2cc3b43fc64c6a67ee2ffa3f7} 
+ARC\+\_\+\+TANGENT\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ARC\_COTANGENT\_FUNCTION@{ARC\_COTANGENT\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!ARC\_COTANGENT\_FUNCTION@{ARC\_COTANGENT\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af73f4b31968fa712774c87ea7c1b987d}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af73f4b31968fa712774c87ea7c1b987d} 
+ARC\+\_\+\+COTANGENT\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HYPERBOLIC\_SINE\_FUNCTION@{HYPERBOLIC\_SINE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!HYPERBOLIC\_SINE\_FUNCTION@{HYPERBOLIC\_SINE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afb26de44a72d1acafecc2a036c63cff1}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afb26de44a72d1acafecc2a036c63cff1} 
+HYPERBOLIC\+\_\+\+SINE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HYPERBOLIC\_COSINE\_FUNCTION@{HYPERBOLIC\_COSINE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!HYPERBOLIC\_COSINE\_FUNCTION@{HYPERBOLIC\_COSINE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae75189f6f84b2bba690a0d3b20503558}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae75189f6f84b2bba690a0d3b20503558} 
+HYPERBOLIC\+\_\+\+COSINE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HYPERBOLIC\_TANGENT\_FUNCTION@{HYPERBOLIC\_TANGENT\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!HYPERBOLIC\_TANGENT\_FUNCTION@{HYPERBOLIC\_TANGENT\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2b075b08232e6af5c59773e413e28e7c}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2b075b08232e6af5c59773e413e28e7c} 
+HYPERBOLIC\+\_\+\+TANGENT\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HYPERBOLIC\_COTANGENT\_FUNCTION@{HYPERBOLIC\_COTANGENT\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!HYPERBOLIC\_COTANGENT\_FUNCTION@{HYPERBOLIC\_COTANGENT\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae2724f302c771287ce632740344c37aa}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae2724f302c771287ce632740344c37aa} 
+HYPERBOLIC\+\_\+\+COTANGENT\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AREA\_HYPERBOLIC\_SINE\_FUNCTION@{AREA\_HYPERBOLIC\_SINE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!AREA\_HYPERBOLIC\_SINE\_FUNCTION@{AREA\_HYPERBOLIC\_SINE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a68950733588497b322b740aa0b6f73c7}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a68950733588497b322b740aa0b6f73c7} 
+AREA\+\_\+\+HYPERBOLIC\+\_\+\+SINE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AREA\_HYPERBOLIC\_COSINE\_FUNCTION@{AREA\_HYPERBOLIC\_COSINE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!AREA\_HYPERBOLIC\_COSINE\_FUNCTION@{AREA\_HYPERBOLIC\_COSINE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af8c974c2c3d7c64042de21f0d23fe0b9}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af8c974c2c3d7c64042de21f0d23fe0b9} 
+AREA\+\_\+\+HYPERBOLIC\+\_\+\+COSINE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AREA\_HYPERBOLIC\_TANGENT\_FUNCTION@{AREA\_HYPERBOLIC\_TANGENT\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!AREA\_HYPERBOLIC\_TANGENT\_FUNCTION@{AREA\_HYPERBOLIC\_TANGENT\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ab1a6aaf52a36d4b6a12d4073a82638cf}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ab1a6aaf52a36d4b6a12d4073a82638cf} 
+AREA\+\_\+\+HYPERBOLIC\+\_\+\+TANGENT\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AREA\_HYPERBOLIC\_COTANGENT\_FUNCTION@{AREA\_HYPERBOLIC\_COTANGENT\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!AREA\_HYPERBOLIC\_COTANGENT\_FUNCTION@{AREA\_HYPERBOLIC\_COTANGENT\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a33fa24fd21cf142f6cfa53426d4c250d}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a33fa24fd21cf142f6cfa53426d4c250d} 
+AREA\+\_\+\+HYPERBOLIC\+\_\+\+COTANGENT\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SQUARE\_FUNCTION@{SQUARE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SQUARE\_FUNCTION@{SQUARE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ac366c0058d77890bbb22b76f5efc0e46}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ac366c0058d77890bbb22b76f5efc0e46} 
+SQUARE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SQUARE\_ROOT\_FUNCTION@{SQUARE\_ROOT\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SQUARE\_ROOT\_FUNCTION@{SQUARE\_ROOT\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a556d096b8648f31e1428960e14ea1c61}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a556d096b8648f31e1428960e14ea1c61} 
+SQUARE\+\_\+\+ROOT\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXPONENTIAL\_FUNCTION@{EXPONENTIAL\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!EXPONENTIAL\_FUNCTION@{EXPONENTIAL\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a50624f7d3a64cabdeb6ce74a0196344c}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a50624f7d3a64cabdeb6ce74a0196344c} 
+EXPONENTIAL\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOGARITHM\_FUNCTION@{LOGARITHM\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!LOGARITHM\_FUNCTION@{LOGARITHM\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a6d12ceee30bebd4fdda5db2863eb7c1a}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a6d12ceee30bebd4fdda5db2863eb7c1a} 
+LOGARITHM\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NATURAL\_LOGARITHM\_FUNCTION@{NATURAL\_LOGARITHM\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!NATURAL\_LOGARITHM\_FUNCTION@{NATURAL\_LOGARITHM\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a7ebad9707f7241f45a95fb37d4b82145}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a7ebad9707f7241f45a95fb37d4b82145} 
+NATURAL\+\_\+\+LOGARITHM\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGMOID\_LOGISTIC\_FUNCTION@{SIGMOID\_LOGISTIC\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SIGMOID\_LOGISTIC\_FUNCTION@{SIGMOID\_LOGISTIC\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a59658a49fcce8aa4bafa18a28fe3e0bf}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a59658a49fcce8aa4bafa18a28fe3e0bf} 
+SIGMOID\+\_\+\+LOGISTIC\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FACTORIAL\_FUNCTION@{FACTORIAL\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!FACTORIAL\_FUNCTION@{FACTORIAL\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a8a211b235e3baf78edae1abdf7ed3eb2}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a8a211b235e3baf78edae1abdf7ed3eb2} 
+FACTORIAL\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ABSOLUTE\_VALUE\_FUNCTION@{ABSOLUTE\_VALUE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!ABSOLUTE\_VALUE\_FUNCTION@{ABSOLUTE\_VALUE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670abbff66de122f0397ea107fd4a21ad016}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670abbff66de122f0397ea107fd4a21ad016} 
+ABSOLUTE\+\_\+\+VALUE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROUNDING\_VALUE\_FUNCTION@{ROUNDING\_VALUE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!ROUNDING\_VALUE\_FUNCTION@{ROUNDING\_VALUE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a523dc56aa3d09423e26ee81cb9c962f6}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a523dc56aa3d09423e26ee81cb9c962f6} 
+ROUNDING\+\_\+\+VALUE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NORMALIZE\_VALUE\_FUNCTION@{NORMALIZE\_VALUE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!NORMALIZE\_VALUE\_FUNCTION@{NORMALIZE\_VALUE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a7ba38ae6a852f00b57640a4e2f2269de}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a7ba38ae6a852f00b57640a4e2f2269de} 
+NORMALIZE\+\_\+\+VALUE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CEILING\_VALUE\_FUNCTION@{CEILING\_VALUE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!CEILING\_VALUE\_FUNCTION@{CEILING\_VALUE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aaeced3007ad113a7850230212ad08666}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aaeced3007ad113a7850230212ad08666} 
+CEILING\+\_\+\+VALUE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLOOR\_VALUE\_FUNCTION@{FLOOR\_VALUE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!FLOOR\_VALUE\_FUNCTION@{FLOOR\_VALUE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a8dffb53ff8afff0a7c90abeed9fa8f43}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a8dffb53ff8afff0a7c90abeed9fa8f43} 
+FLOOR\+\_\+\+VALUE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CACHE\_FUNCTIONS\_END@{CACHE\_FUNCTIONS\_END}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!CACHE\_FUNCTIONS\_END@{CACHE\_FUNCTIONS\_END}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ab9d858e97b1bacf602cd01e97b7484b8}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ab9d858e97b1bacf602cd01e97b7484b8} 
+CACHE\+\_\+\+FUNCTIONS\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RANDOM\_VALUE\_FUNCTION@{RANDOM\_VALUE\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!RANDOM\_VALUE\_FUNCTION@{RANDOM\_VALUE\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af14edbfc15cfb68de8f634fd965eabb2}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670af14edbfc15cfb68de8f634fd965eabb2} 
+RANDOM\+\_\+\+VALUE\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNS\_LOGICAL\_BEGIN@{SIGNS\_LOGICAL\_BEGIN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SIGNS\_LOGICAL\_BEGIN@{SIGNS\_LOGICAL\_BEGIN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa773951bbc6c6a6ac7b3f404b4663d0c}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aa773951bbc6c6a6ac7b3f404b4663d0c} 
+SIGNS\+\_\+\+LOGICAL\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGN\_FUNCTION@{SIGN\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SIGN\_FUNCTION@{SIGN\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae82d2ebf3f94864bda3271862c2b53e5}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae82d2ebf3f94864bda3271862c2b53e5} 
+SIGN\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GREATER\_THAN\_ZERO\_FUNCTION@{GREATER\_THAN\_ZERO\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!GREATER\_THAN\_ZERO\_FUNCTION@{GREATER\_THAN\_ZERO\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4d7812c9e4cb6de0d64131a1ffafe703}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4d7812c9e4cb6de0d64131a1ffafe703} 
+GREATER\+\_\+\+THAN\+\_\+\+ZERO\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GREATER\_THAN\_ZERO\_OR\_ZERO\_FUNCTION@{GREATER\_THAN\_ZERO\_OR\_ZERO\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!GREATER\_THAN\_ZERO\_OR\_ZERO\_FUNCTION@{GREATER\_THAN\_ZERO\_OR\_ZERO\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a8fbad78630a7589a02735f134a2bd64b}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a8fbad78630a7589a02735f134a2bd64b} 
+GREATER\+\_\+\+THAN\+\_\+\+ZERO\+\_\+\+OR\+\_\+\+ZERO\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LESS\_THAN\_ZERO\_FUNCTION@{LESS\_THAN\_ZERO\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!LESS\_THAN\_ZERO\_FUNCTION@{LESS\_THAN\_ZERO\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a49c3d59743d59fcc69701ef47f767205}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a49c3d59743d59fcc69701ef47f767205} 
+LESS\+\_\+\+THAN\+\_\+\+ZERO\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LESS\_THAN\_ZERO\_OR\_ZERO\_FUNCTION@{LESS\_THAN\_ZERO\_OR\_ZERO\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!LESS\_THAN\_ZERO\_OR\_ZERO\_FUNCTION@{LESS\_THAN\_ZERO\_OR\_ZERO\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4a85787252e5eae90e3898f071401af9}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a4a85787252e5eae90e3898f071401af9} 
+LESS\+\_\+\+THAN\+\_\+\+ZERO\+\_\+\+OR\+\_\+\+ZERO\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IS\_ZERO\_FUNCTION@{IS\_ZERO\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!IS\_ZERO\_FUNCTION@{IS\_ZERO\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ab0e3f418369cc4ffca9538a33ca0e9e0}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ab0e3f418369cc4ffca9538a33ca0e9e0} 
+IS\+\_\+\+ZERO\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN\_NOT\_FUNCTION@{BOOLEAN\_NOT\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!BOOLEAN\_NOT\_FUNCTION@{BOOLEAN\_NOT\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2ec38ad7feab57bdc136a51bac7c95fb}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2ec38ad7feab57bdc136a51bac7c95fb} 
+BOOLEAN\+\_\+\+NOT\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIGNS\_LOGICAL\_END@{SIGNS\_LOGICAL\_END}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!SIGNS\_LOGICAL\_END@{SIGNS\_LOGICAL\_END}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a8da03c3e5ed1e015e41c2d7845d882e3}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a8da03c3e5ed1e015e41c2d7845d882e3} 
+SIGNS\+\_\+\+LOGICAL\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FUNCTIONS\_END@{FUNCTIONS\_END}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!FUNCTIONS\_END@{FUNCTIONS\_END}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aab4ed536e3382bff5d150bfcd6b7b624}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670aab4ed536e3382bff5d150bfcd6b7b624} 
+FUNCTIONS\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNKNOWN\_SIGNS\_OR\_FUNCTIONS\_BEGIN@{UNKNOWN\_SIGNS\_OR\_FUNCTIONS\_BEGIN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!UNKNOWN\_SIGNS\_OR\_FUNCTIONS\_BEGIN@{UNKNOWN\_SIGNS\_OR\_FUNCTIONS\_BEGIN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2ba1b0d2d66da6ebc9993da1fe769133}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2ba1b0d2d66da6ebc9993da1fe769133} 
+UNKNOWN\+\_\+\+SIGNS\+\_\+\+OR\+\_\+\+FUNCTIONS\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNKNOWN\_SIGN@{UNKNOWN\_SIGN}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!UNKNOWN\_SIGN@{UNKNOWN\_SIGN}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae87f8b3faa1610240f28707b2e2b8da1}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670ae87f8b3faa1610240f28707b2e2b8da1} 
+UNKNOWN\+\_\+\+SIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNKNOWN\_FUNCTION@{UNKNOWN\_FUNCTION}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!UNKNOWN\_FUNCTION@{UNKNOWN\_FUNCTION}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2c01f3756e1d4df409f4cc355c37242f}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a2c01f3756e1d4df409f4cc355c37242f} 
+UNKNOWN\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNKNOWN\_SIGNS\_OR\_FUNCTIONS\_END@{UNKNOWN\_SIGNS\_OR\_FUNCTIONS\_END}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!UNKNOWN\_SIGNS\_OR\_FUNCTIONS\_END@{UNKNOWN\_SIGNS\_OR\_FUNCTIONS\_END}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afcc47e691c63af1eb29d037571a50a1c}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670afcc47e691c63af1eb29d037571a50a1c} 
+UNKNOWN\+\_\+\+SIGNS\+\_\+\+OR\+\_\+\+FUNCTIONS\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPERATORS\_END@{OPERATORS\_END}!paceval\_cCommonData.h@{paceval\_cCommonData.h}}\index{paceval\_cCommonData.h@{paceval\_cCommonData.h}!OPERATORS\_END@{OPERATORS\_END}}}\Hypertarget{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a3652ab5ad494b590d12e222909fd4be4}\label{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670a3652ab5ad494b590d12e222909fd4be4} 
+OPERATORS\+\_\+\+END&\\
+\hline
+
+\end{DoxyEnumFields}

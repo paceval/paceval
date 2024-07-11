@@ -1,0 +1,222 @@
+\doxysection{paceval\+\_\+c\+List\+Of\+Pointer Class Reference}
+\hypertarget{classpaceval__c_list_of_pointer}{}\label{classpaceval__c_list_of_pointer}\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+
+
+The class \doxylink{classpaceval__c_list_of_pointer}{paceval\+\_\+c\+List\+Of\+Pointer} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the storage of a list of pointers to objects, such as the list of nodes in \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph}, the list of pointers in \doxylink{classpaceval__c_list_of_variables}{paceval\+\_\+c\+List\+Of\+Variables} or the list of registered objects in \doxylink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}.  
+
+
+
+
+{\ttfamily \#include "{}inc/paceval\+\_\+c\+List\+Of\+Pointer.\+h"{}}
+
+
+
+Inheritance diagram for paceval\+\_\+c\+List\+Of\+Pointer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classpaceval__c_list_of_pointer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for paceval\+\_\+c\+List\+Of\+Pointer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classpaceval__c_list_of_pointer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_list_of_pointer_abf7b18c8247b7c7f9c8aa6d2e74a0041}{paceval\+\_\+c\+List\+Of\+Pointer}} (\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}handle\+\_\+\+Cleanup\+Handler\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_list_of_pointer_ac2fb8eb1463c782928e98f27b66717c8}{initialize\+Data}} (unsigned long proposed\+Size\+\_\+in)
+\item 
+\mbox{\hyperlink{classpaceval__c_list_of_pointer_a0f47f83137c11295f406dea9778ef8e4}{\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+List\+Of\+Pointer}} ()
+\item 
+bool \mbox{\hyperlink{classpaceval__c_list_of_pointer_ad74398541ab7d61635915ddb928bdf79}{do\+Add\+Pointer}} (void \texorpdfstring{$\ast$}{*}handle\+\_\+\+Pointer\+\_\+in, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbe}{paceval\+\_\+e\+List\+Of\+Pointer\+Types}} e\+Pointer\+Type\+\_\+in, unsigned long \texorpdfstring{$\ast$}{*}pointer\+Position\+\_\+out)
+\item 
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbe}{paceval\+\_\+e\+List\+Of\+Pointer\+Types}} \mbox{\hyperlink{classpaceval__c_list_of_pointer_ab7796d231f8dc9c4f43ab9e2f374ced3}{get\+Pointer\+Type}} (unsigned long position\+\_\+in)
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_list_of_pointer_a9981ad68db585a734c12d0c337e3c35d}{get\+Pointer}} (unsigned long position\+\_\+in)
+\item 
+bool \mbox{\hyperlink{classpaceval__c_list_of_pointer_a4cbdab63d343f0c4f9680fa6020385bb}{remove\+Pointer}} (unsigned long position\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_list_of_pointer_a338e47a5fda16c4eb4becd32c5faa806}{size\+Of}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a4f13b696019f4f84d70f0899e1a93e6b}{paceval\+\_\+c\+Registered\+Object}} (\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}handle\+\_\+\+Cleanup\+Handler\+\_\+in)
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a3968a184ea427893d836b7b676ce6d82}{\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Registered\+Object}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_registered_object_a342114d4bb2f86b2c4cfecb300925878}{set\+Register\+Position}} (unsigned long register\+Position\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a98739f041c398e860d9c7f9118fcfe0f}{get\+Register\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_registered_object_a56a8caf41119639bae9f389a6a7f7187}{handle\+\_\+\+Cleanup\+Handler}}
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a6a4cbc3ca8ae598995e763fc2005b69f}{register\+Position}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The class \doxylink{classpaceval__c_list_of_pointer}{paceval\+\_\+c\+List\+Of\+Pointer} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the storage of a list of pointers to objects, such as the list of nodes in \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph}, the list of pointers in \doxylink{classpaceval__c_list_of_variables}{paceval\+\_\+c\+List\+Of\+Variables} or the list of registered objects in \doxylink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classpaceval__c_list_of_pointer_abf7b18c8247b7c7f9c8aa6d2e74a0041}\label{classpaceval__c_list_of_pointer_abf7b18c8247b7c7f9c8aa6d2e74a0041} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{paceval\_cListOfPointer()}{paceval\_cListOfPointer()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+List\+Of\+Pointer\+::paceval\+\_\+c\+List\+Of\+Pointer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+\+Cleanup\+Handler\+\_\+in }\end{DoxyParamCaption})}
+
+the constructor of \doxylink{classpaceval__c_list_of_pointer}{paceval\+\_\+c\+List\+Of\+Pointer} 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+\+Cleanup\+Handler\+\_\+in} & is the associated handler for deleting this registered object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classpaceval__c_list_of_pointer_a0f47f83137c11295f406dea9778ef8e4}\label{classpaceval__c_list_of_pointer_a0f47f83137c11295f406dea9778ef8e4} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!````~paceval\_cListOfPointer@{\texorpdfstring{$\sim$}{\string~}paceval\_cListOfPointer}}
+\index{````~paceval\_cListOfPointer@{\texorpdfstring{$\sim$}{\string~}paceval\_cListOfPointer}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}paceval\_cListOfPointer()}{\string~paceval\_cListOfPointer()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+List\+Of\+Pointer\+::\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+List\+Of\+Pointer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the destructor of \doxylink{classpaceval__c_list_of_pointer}{paceval\+\_\+c\+List\+Of\+Pointer} 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpaceval__c_list_of_pointer_ad74398541ab7d61635915ddb928bdf79}\label{classpaceval__c_list_of_pointer_ad74398541ab7d61635915ddb928bdf79} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!doAddPointer@{doAddPointer}}
+\index{doAddPointer@{doAddPointer}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{doAddPointer()}{doAddPointer()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+List\+Of\+Pointer\+::do\+Add\+Pointer (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{handle\+\_\+\+Pointer\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbe}{paceval\+\_\+e\+List\+Of\+Pointer\+Types}}}]{e\+Pointer\+Type\+\_\+in,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{pointer\+Position\+\_\+out }\end{DoxyParamCaption})}
+
+adds a pointer to the list and returns whether this was successful (true) or not (false) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+\+Pointer\+\_\+in} & specifies the pointer to be added to the list \\
+\hline
+{\em e\+Pointer\+Type\+\_\+in} & specifies the type of pointer of the object to add to the node list \\
+\hline
+{\em pointer\+Position\+\_\+out} & this buffer retrieves the position of the added pointer in the list \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_pointer_ad74398541ab7d61635915ddb928bdf79_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_list_of_pointer_a9981ad68db585a734c12d0c337e3c35d}\label{classpaceval__c_list_of_pointer_a9981ad68db585a734c12d0c337e3c35d} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!getPointer@{getPointer}}
+\index{getPointer@{getPointer}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{getPointer()}{getPointer()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} paceval\+\_\+c\+List\+Of\+Pointer\+::get\+Pointer (\begin{DoxyParamCaption}\item[{unsigned long}]{position\+\_\+in }\end{DoxyParamCaption})}
+
+gets the pointer at a position in the list 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+in} & specifies the position in the list \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_pointer_a9981ad68db585a734c12d0c337e3c35d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_list_of_pointer_ab7796d231f8dc9c4f43ab9e2f374ced3}\label{classpaceval__c_list_of_pointer_ab7796d231f8dc9c4f43ab9e2f374ced3} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!getPointerType@{getPointerType}}
+\index{getPointerType@{getPointerType}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{getPointerType()}{getPointerType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbe}{paceval\+\_\+e\+List\+Of\+Pointer\+Types}} paceval\+\_\+c\+List\+Of\+Pointer\+::get\+Pointer\+Type (\begin{DoxyParamCaption}\item[{unsigned long}]{position\+\_\+in }\end{DoxyParamCaption})}
+
+gets the type of the pointer at a position in the list 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+in} & specifies the position in the list \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_pointer_ab7796d231f8dc9c4f43ab9e2f374ced3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_list_of_pointer_ac2fb8eb1463c782928e98f27b66717c8}\label{classpaceval__c_list_of_pointer_ac2fb8eb1463c782928e98f27b66717c8} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!initializeData@{initializeData}}
+\index{initializeData@{initializeData}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{initializeData()}{initializeData()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+List\+Of\+Pointer\+::initialize\+Data (\begin{DoxyParamCaption}\item[{unsigned long}]{proposed\+Size\+\_\+in }\end{DoxyParamCaption})}
+
+initializes the size of the list 
+\begin{DoxyParams}{Parameters}
+{\em proposed\+Size\+\_\+in} & specifies the initial size of the list \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_pointer_ac2fb8eb1463c782928e98f27b66717c8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_pointer_ac2fb8eb1463c782928e98f27b66717c8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_list_of_pointer_a4cbdab63d343f0c4f9680fa6020385bb}\label{classpaceval__c_list_of_pointer_a4cbdab63d343f0c4f9680fa6020385bb} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!removePointer@{removePointer}}
+\index{removePointer@{removePointer}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{removePointer()}{removePointer()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+List\+Of\+Pointer\+::remove\+Pointer (\begin{DoxyParamCaption}\item[{unsigned long}]{position\+\_\+in }\end{DoxyParamCaption})}
+
+removes the pointer from a position in the list 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+in} & specifies the position in the list \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_pointer_a4cbdab63d343f0c4f9680fa6020385bb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_list_of_pointer_a338e47a5fda16c4eb4becd32c5faa806}\label{classpaceval__c_list_of_pointer_a338e47a5fda16c4eb4becd32c5faa806} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!sizeOf@{sizeOf}}
+\index{sizeOf@{sizeOf}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{sizeOf()}{sizeOf()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+List\+Of\+Pointer\+::size\+Of (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+returns the size of the list of pointers, i.\+e. the number of pointers stored in the list Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_pointer_a338e47a5fda16c4eb4becd32c5faa806_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/\mbox{\hyperlink{paceval__c_list_of_pointer_8h}{paceval\+\_\+c\+List\+Of\+Pointer.\+h}}\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/\mbox{\hyperlink{paceval__c_list_of_pointer_8cpp}{paceval\+\_\+c\+List\+Of\+Pointer.\+cpp}}\end{DoxyCompactItemize}

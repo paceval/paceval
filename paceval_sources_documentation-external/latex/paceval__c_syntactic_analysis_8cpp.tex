@@ -1,0 +1,1331 @@
+\doxysection{G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/paceval\+\_\+c\+Syntactic\+Analysis.cpp File Reference}
+\hypertarget{paceval__c_syntactic_analysis_8cpp}{}\label{paceval__c_syntactic_analysis_8cpp}\index{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/paceval\_cSyntacticAnalysis.cpp@{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/paceval\_cSyntacticAnalysis.cpp}}
+
+
+implementation of the class \doxylink{classpaceval__c_syntactic_analysis}{paceval\+\_\+c\+Syntactic\+Analysis}  
+
+
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+d\+Version.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+d\+Test\+Debug.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+c\+Syntactic\+Analysis.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+c\+Computation.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+d\+License.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+f\+Self\+Test\+Main.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+f\+Thread\+Handling.\+h"{}}\newline
+Include dependency graph for paceval\+\_\+c\+Syntactic\+Analysis.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{structpaceval__sld_create_computations_thread_data}{paceval\+\_\+sld\+Create\+Computations\+Thread\+Data}}
+\begin{DoxyCompactList}\small\item\em The struct \doxylink{structpaceval__sld_create_computations_thread_data}{paceval\+\_\+sld\+Create\+Computations\+Thread\+Data} is used by \doxylink{paceval__main_8cpp_a9bcd79663939f622ca862829cdb376d7}{paceval\+Library\+\_\+ld\+Get\+Computation\+Result\+Ext()}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{structpaceval__sd_create_computations_thread_data}{paceval\+\_\+sd\+Create\+Computations\+Thread\+Data}}
+\begin{DoxyCompactList}\small\item\em The struct \doxylink{structpaceval__sd_create_computations_thread_data}{paceval\+\_\+sd\+Create\+Computations\+Thread\+Data} is used by \doxylink{paceval__main_8cpp_aa2b13bf07326969afc0646bb12e3b72d}{paceval\+Library\+\_\+d\+Get\+Computation\+Result\+Ext()}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{structpaceval__sf_create_computations_thread_data}{paceval\+\_\+sf\+Create\+Computations\+Thread\+Data}}
+\begin{DoxyCompactList}\small\item\em The struct \doxylink{structpaceval__sf_create_computations_thread_data}{paceval\+\_\+sf\+Create\+Computations\+Thread\+Data} is used by \doxylink{paceval__main_8cpp_aa459fc5d99a99829cf710547da04fe61}{paceval\+Library\+\_\+f\+Get\+Computation\+Result\+Ext()}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a4a3cf5f78eecf9bb39529296b7fbec08}{paceval\+\_\+\+XMLdeclaration}}~"{}$<$?xml version=\textbackslash{}"{}1.\+0\textbackslash{}"{} encoding=\textbackslash{}"{}ISO-\/8859-\/1\textbackslash{}"{} standalone=\textbackslash{}"{}yes\textbackslash{}"{}?$>$\textbackslash{}r\textbackslash{}n"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a841487bb0a1cb3364426bde075a4a986}{paceval\+\_\+\+XMLdeclaration\+Mandatory1}}~"{}$<$?xml"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_ab1dd25a0b2a724f666ee055c6c85c25d}{paceval\+\_\+\+XMLdeclaration\+Mandatory2}}~"{}ISO-\/8859-\/1"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a17c72b58bc941b49ccec4db0f65b91b8}{paceval\+\_\+\+XMLdocument\+Element\+Start}}~"{}$<$paceval.-\/Data$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_abdc2eab035e26f7b5ff486d6f24334ec}{paceval\+\_\+\+XMLdocument\+Element\+End}}~"{}$<$/paceval.-\/Data$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a55aab30f2a672392252455bc2a5197f7}{paceval\+\_\+\+XMLversion\+Element\+Start}}~"{}$<$version$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a34d945bf50d1d44b99a0eb14bb5fe1ba}{paceval\+\_\+\+XMLversion\+Element\+End}}~"{}$<$/version$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_ad7f31ead0d7d71a733f00c9d3f2e1f8c}{paceval\+\_\+\+XMLfunction\+Element\+Start}}~"{}$<$function$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a66ac023e76c74fe6f381f6bfbe5fb49c}{paceval\+\_\+\+XMLfunction\+Element\+End}}~"{}$<$/function$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a8fc5b37b81231d8162c5f7ba3cb1134a}{paceval\+\_\+\+XMLnumber\+Of\+Var\+Element\+Start}}~"{}$<$number\+Of\+Variables$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_ad78918a53c38ae6401a1a366daf56970}{paceval\+\_\+\+XMLnumber\+Of\+Var\+Element\+End}}~"{}$<$/number\+Of\+Variables$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_ac65f21636bf2dff6680a61a1877f0c67}{paceval\+\_\+\+XMLuse\+Interval\+Element\+Start}}~"{}$<$use\+Interval$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_aaa1e983a062113fd58fa4482302362f9}{paceval\+\_\+\+XMLuse\+Interval\+Element\+End}}~"{}$<$/use\+Interval$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a167944f326fab656fab8e6f51cb38eb5}{paceval\+\_\+\+XMLvariable\+Element\+Start}}~"{}$<$variable number=\textbackslash{}"{}"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_ae985c571d3123d747f87cd108dcd0cba}{paceval\+\_\+\+XMLvariable\+Element\+Start2}}~"{}\textbackslash{}"{}$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_aebbd933fd1b6b8d1fd4e26972cb7d571}{paceval\+\_\+\+XMLvariable\+Element\+End}}~"{}$<$/variable$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_aec9ac33c5ecf76041356e61ad314e34f}{paceval\+\_\+\+XMLname\+Variable\+Element\+Start}}~"{}$<$name$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a84b61f043d1ef00a76c4e9bc9a333562}{paceval\+\_\+\+XMLname\+Variable\+Element\+End}}~"{}$<$/name$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a7857dbd301e5a23bbd8f81c3b238f9db}{paceval\+\_\+\+XMLvalue\+Variable\+Element\+Start}}~"{}$<$value$>$"{}
+\item 
+\#define \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a2607efa7ac6873134d9fb2211c104148}{paceval\+\_\+\+XMLvalue\+Variable\+Element\+End}}~"{}$<$/value$>$"{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a83d9969420ce07a22eaff3e1cfc3ad40}{paceval\+\_\+\+Check\+Computation\+Handle}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a368bb034ad3535c82777bc20b20bdd2f}{paceval\+Library\+\_\+\+Add\+Computation}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_ae96bc4c303678d7568dc9a258be667fa}{paceval\+Library\+\_\+\+Remove\+Computation}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a37e78dfc5cad378b130179e9d819aa5e}{paceval\+Library\+\_\+\+Exist\+Computation}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation}} (const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in, bool use\+Interval\+\_\+in, \mbox{\hyperlink{paceval__main_8h_a953cdb322badceecf9e5351340e0eb2f}{paceval\+\_\+callback\+Status\+Type}} \texorpdfstring{$\ast$}{*}paceval\+\_\+callback\+Status\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a21a51891513bee83213577b2db1d6928}{paceval\+Library\+\_\+\+Create\+Multiple\+Computations}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+out\mbox{[}$\,$\mbox{]}, const char \texorpdfstring{$\ast$}{*}function\+Strings\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in, bool use\+Interval\+\_\+in, \mbox{\hyperlink{paceval__main_8h_a953cdb322badceecf9e5351340e0eb2f}{paceval\+\_\+callback\+Status\+Type}} \texorpdfstring{$\ast$}{*}paceval\+\_\+callback\+Status\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a5aec719c96dcaf284f4de22b5a2994a4}{paceval\+Library\+\_\+\+Internal\+Get\+Computation\+Result}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, unsigned long number\+Of\+Threads\+In\+Use\+\_\+in, \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}} use\+Calculation\+Precision\+\_\+in, void \texorpdfstring{$\ast$}{*}values\+\_\+in, void \texorpdfstring{$\ast$}{*}result\+\_\+out, unsigned int size\+Of\+Long\+Double\+\_\+in, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+long double \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a20e3063a85a7ff4dc39260f464212b22}{paceval\+Library\+\_\+ld\+Get\+Computation\+Result}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, long double values\+\_\+in\mbox{[}$\,$\mbox{]}, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+double \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a4c4ea05d9207def52c8fa9ec3a68d51d}{paceval\+Library\+\_\+d\+Get\+Computation\+Result}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, double values\+\_\+in\mbox{[}$\,$\mbox{]}, double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+float \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_acf6e000373965eae6c69cbc1c7584bd8}{paceval\+Library\+\_\+f\+Get\+Computation\+Result}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, float values\+\_\+in\mbox{[}$\,$\mbox{]}, float \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+int \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a26a2fde8b51768688069cf7edd599ffa}{paceval\+Library\+\_\+\+Get\+Error\+Information}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, char \texorpdfstring{$\ast$}{*}last\+Error\+\_\+str\+Operator\+\_\+in, long \texorpdfstring{$\ast$}{*}last\+Error\+\_\+e\+Position\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_aa8979ad66d74f0a3f9e34bfad384f7ac}{paceval\+Library\+\_\+\+Internal\+Get\+Computation\+Result\+Thread\+Handle\+Block}} (unsigned long thread\+Count, \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}} use\+Calculation\+Precision\+\_\+in, unsigned long number\+Of\+Threads, unsigned long number\+Of\+Variables, \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, void \texorpdfstring{$\ast$}{*}ptr\+\_\+values\+\_\+in, unsigned long number\+Of\+Calculations\+\_\+in, unsigned int size\+Of\+Long\+Double\+\_\+in, void \texorpdfstring{$\ast$}{*}ptr\+\_\+results\+\_\+out, void \texorpdfstring{$\ast$}{*}ptr\+\_\+trusted\+Min\+Results\+\_\+out, void \texorpdfstring{$\ast$}{*}ptr\+\_\+trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a312c31d57c21cbccac510fef91b467ea}{ld\+Create\+Computations\+Thread\+Function}} (void \texorpdfstring{$\ast$}{*}lp\+Param)
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a0e3863b09cec5cd3ae187477118750cb}{d\+Create\+Computations\+Thread\+Function}} (void \texorpdfstring{$\ast$}{*}lp\+Param)
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a68c14f048baa12d21a6b9213e90a1da6}{f\+Create\+Computations\+Thread\+Function}} (void \texorpdfstring{$\ast$}{*}lp\+Param)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_aa5a6e82d9a88d0385e7823eef6686fb6}{paceval\+Library\+\_\+\+Internal\+Get\+Computations\+Results}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}} use\+Calculation\+Precision\+\_\+in, unsigned long number\+Ofpaceval\+Computations\+\_\+in, void \texorpdfstring{$\ast$}{*}ptr\+\_\+values\+\_\+in, unsigned long number\+Of\+Calculations\+\_\+in, unsigned int size\+Of\+Long\+Double\+\_\+in, void \texorpdfstring{$\ast$}{*}ptr\+\_\+results\+\_\+out, void \texorpdfstring{$\ast$}{*}ptr\+\_\+trusted\+Min\+Results\+\_\+out, void \texorpdfstring{$\ast$}{*}ptr\+\_\+trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a9bcd79663939f622ca862829cdb376d7}{paceval\+Library\+\_\+ld\+Get\+Computation\+Result\+Ext}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, long double values\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Of\+Calculations\+\_\+in, long double \texorpdfstring{$\ast$}{*}results\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_aa2b13bf07326969afc0646bb12e3b72d}{paceval\+Library\+\_\+d\+Get\+Computation\+Result\+Ext}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, double values\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Of\+Calculations\+\_\+in, double \texorpdfstring{$\ast$}{*}results\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_aa459fc5d99a99829cf710547da04fe61}{paceval\+Library\+\_\+f\+Get\+Computation\+Result\+Ext}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, float values\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Of\+Calculations\+\_\+in, float \texorpdfstring{$\ast$}{*}results\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_aa89c24d1a11baea7ef75d421f640c494}{paceval\+\_\+precheck\+Multiple\+Computations}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a6de3623e77430fdd803d71c09f05aba6}{paceval\+Library\+\_\+ld\+Get\+Multiple\+Computations\+Results}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, long double values\+\_\+in\mbox{[}$\,$\mbox{]}, long double \texorpdfstring{$\ast$}{*}results\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a4b7907fe40d8f2f9f332a572b8ffda40}{paceval\+Library\+\_\+d\+Get\+Multiple\+Computations\+Results}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, double values\+\_\+in\mbox{[}$\,$\mbox{]}, double \texorpdfstring{$\ast$}{*}results\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a1f7a7fee6838b93d4f840bce4a92cd42}{paceval\+Library\+\_\+f\+Get\+Multiple\+Computations\+Results}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, float values\+\_\+in\mbox{[}$\,$\mbox{]}, float \texorpdfstring{$\ast$}{*}results\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a190c7daca86f625b5d42b538faa5dfb4}{paceval\+Library\+\_\+ld\+Get\+Multiple\+Computations\+Results\+Ext}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, long double values\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Of\+Calculations\+\_\+in, long double \texorpdfstring{$\ast$}{*}results\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a3930b10a5fe345f1a5112ea035921dfa}{paceval\+Library\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, double values\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Of\+Calculations\+\_\+in, double \texorpdfstring{$\ast$}{*}results\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_ae89257d9402f64f08f9fcfe9c92f0256}{paceval\+Library\+\_\+f\+Get\+Multiple\+Computations\+Results\+Ext}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, float values\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Of\+Calculations\+\_\+in, float \texorpdfstring{$\ast$}{*}results\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+int \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_ae9526b55d5b05df48f1d11724c5ae8ee}{paceval\+Library\+\_\+\+Get\+Computation\+Version\+String}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, char \texorpdfstring{$\ast$}{*}paceval\+\_\+str\+Version\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a9eec32938832c121cbc5aad3e89059b8}{paceval\+Library\+\_\+\+Set\+Callback\+User\+Function}} (unsigned int number\+User\+Function\+\_\+in, const char \texorpdfstring{$\ast$}{*}single\+Function\+String\+\_\+in, \mbox{\hyperlink{paceval__main_8h_a0d991e803d57a927030e18b762b6aae5}{paceval\+\_\+callback\+User\+Function\+Type}} \texorpdfstring{$\ast$}{*}paceval\+\_\+callback\+User\+Function\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a48e6e2c011ebf6f74e55832ed905f291}{paceval\+Library\+\_\+\+Create\+XMLFrom\+Parameters}} (char \texorpdfstring{$\ast$}{*}paceval\+\_\+str\+XML\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}values\+String\+\_\+in, bool use\+Interval\+\_\+in)
+\item 
+void \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a7737bfd9ac7fa605fd9ab25a5a1ced4d}{paceval\+\_\+remove\+Unused\+ASCII}} (char \texorpdfstring{$\ast$}{*}string\+To\+Change)
+\item 
+int \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a876a5e418214b421cea1cbfef3a75e93}{paceval\+Library\+\_\+\+Read\+Parameters\+From\+XML}} (const char \texorpdfstring{$\ast$}{*}paceval\+\_\+str\+XML\+\_\+in, unsigned long \texorpdfstring{$\ast$}{*}function\+String\+Length\+\_\+out, unsigned long \texorpdfstring{$\ast$}{*}variables\+String\+Length\+\_\+out, unsigned long \texorpdfstring{$\ast$}{*}number\+Of\+Variables\+\_\+out, unsigned long \texorpdfstring{$\ast$}{*}values\+String\+Length\+\_\+out, char \texorpdfstring{$\ast$}{*}function\+String\+\_\+out, char \texorpdfstring{$\ast$}{*}variables\+\_\+out, char \texorpdfstring{$\ast$}{*}values\+String\+\_\+out, bool \texorpdfstring{$\ast$}{*}use\+Interval\+\_\+out)
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_ac37970c25d5fd5156100e2ef91f84922}{paceval\+Library\+\_\+\+Get\+Computation\+Information\+XML}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, char \texorpdfstring{$\ast$}{*}paceval\+\_\+str\+XML\+\_\+out)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a2f79cbef608ef0ef82e4fde3ff001cf0}{paceval\+\_\+library\+\_\+sizeof\+\_\+computations\+\_\+array}} = 0
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_a530e6ef15abcecf5c0711f5222260f68}{paceval\+\_\+library\+\_\+elements\+\_\+in\+\_\+computations\+\_\+array}} = 0
+\item 
+\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp_ac87b82c47c667161d5f5095fd2909010}{paceval\+\_\+library\+\_\+computations\+\_\+array}} = NULL
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+implementation of the class \doxylink{classpaceval__c_syntactic_analysis}{paceval\+\_\+c\+Syntactic\+Analysis} 
+
+the class \doxylink{classpaceval__c_syntactic_analysis}{paceval\+\_\+c\+Syntactic\+Analysis} leads the analysis and the creation of node objects and in addition, the implementation of the thread-\/related parts of paceval is located in \doxylink{paceval__c_syntactic_analysis_8cpp}{paceval\+\_\+c\+Syntactic\+Analysis.\+cpp} 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a4a3cf5f78eecf9bb39529296b7fbec08}\label{paceval__c_syntactic_analysis_8cpp_a4a3cf5f78eecf9bb39529296b7fbec08} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLdeclaration@{paceval\_XMLdeclaration}}
+\index{paceval\_XMLdeclaration@{paceval\_XMLdeclaration}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLdeclaration}{paceval\_XMLdeclaration}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLdeclaration~"{}$<$?xml version=\textbackslash{}"{}1.\+0\textbackslash{}"{} encoding=\textbackslash{}"{}ISO-\/8859-\/1\textbackslash{}"{} standalone=\textbackslash{}"{}yes\textbackslash{}"{}?$>$\textbackslash{}r\textbackslash{}n"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a841487bb0a1cb3364426bde075a4a986}\label{paceval__c_syntactic_analysis_8cpp_a841487bb0a1cb3364426bde075a4a986} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLdeclarationMandatory1@{paceval\_XMLdeclarationMandatory1}}
+\index{paceval\_XMLdeclarationMandatory1@{paceval\_XMLdeclarationMandatory1}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLdeclarationMandatory1}{paceval\_XMLdeclarationMandatory1}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLdeclaration\+Mandatory1~"{}$<$?xml"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_ab1dd25a0b2a724f666ee055c6c85c25d}\label{paceval__c_syntactic_analysis_8cpp_ab1dd25a0b2a724f666ee055c6c85c25d} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLdeclarationMandatory2@{paceval\_XMLdeclarationMandatory2}}
+\index{paceval\_XMLdeclarationMandatory2@{paceval\_XMLdeclarationMandatory2}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLdeclarationMandatory2}{paceval\_XMLdeclarationMandatory2}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLdeclaration\+Mandatory2~"{}ISO-\/8859-\/1"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_abdc2eab035e26f7b5ff486d6f24334ec}\label{paceval__c_syntactic_analysis_8cpp_abdc2eab035e26f7b5ff486d6f24334ec} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLdocumentElementEnd@{paceval\_XMLdocumentElementEnd}}
+\index{paceval\_XMLdocumentElementEnd@{paceval\_XMLdocumentElementEnd}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLdocumentElementEnd}{paceval\_XMLdocumentElementEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLdocument\+Element\+End~"{}$<$/paceval.-\/Data$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a17c72b58bc941b49ccec4db0f65b91b8}\label{paceval__c_syntactic_analysis_8cpp_a17c72b58bc941b49ccec4db0f65b91b8} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLdocumentElementStart@{paceval\_XMLdocumentElementStart}}
+\index{paceval\_XMLdocumentElementStart@{paceval\_XMLdocumentElementStart}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLdocumentElementStart}{paceval\_XMLdocumentElementStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLdocument\+Element\+Start~"{}$<$paceval.-\/Data$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a66ac023e76c74fe6f381f6bfbe5fb49c}\label{paceval__c_syntactic_analysis_8cpp_a66ac023e76c74fe6f381f6bfbe5fb49c} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLfunctionElementEnd@{paceval\_XMLfunctionElementEnd}}
+\index{paceval\_XMLfunctionElementEnd@{paceval\_XMLfunctionElementEnd}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLfunctionElementEnd}{paceval\_XMLfunctionElementEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLfunction\+Element\+End~"{}$<$/function$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_ad7f31ead0d7d71a733f00c9d3f2e1f8c}\label{paceval__c_syntactic_analysis_8cpp_ad7f31ead0d7d71a733f00c9d3f2e1f8c} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLfunctionElementStart@{paceval\_XMLfunctionElementStart}}
+\index{paceval\_XMLfunctionElementStart@{paceval\_XMLfunctionElementStart}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLfunctionElementStart}{paceval\_XMLfunctionElementStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLfunction\+Element\+Start~"{}$<$function$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a84b61f043d1ef00a76c4e9bc9a333562}\label{paceval__c_syntactic_analysis_8cpp_a84b61f043d1ef00a76c4e9bc9a333562} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLnameVariableElementEnd@{paceval\_XMLnameVariableElementEnd}}
+\index{paceval\_XMLnameVariableElementEnd@{paceval\_XMLnameVariableElementEnd}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnameVariableElementEnd}{paceval\_XMLnameVariableElementEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLname\+Variable\+Element\+End~"{}$<$/name$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_aec9ac33c5ecf76041356e61ad314e34f}\label{paceval__c_syntactic_analysis_8cpp_aec9ac33c5ecf76041356e61ad314e34f} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLnameVariableElementStart@{paceval\_XMLnameVariableElementStart}}
+\index{paceval\_XMLnameVariableElementStart@{paceval\_XMLnameVariableElementStart}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnameVariableElementStart}{paceval\_XMLnameVariableElementStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLname\+Variable\+Element\+Start~"{}$<$name$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_ad78918a53c38ae6401a1a366daf56970}\label{paceval__c_syntactic_analysis_8cpp_ad78918a53c38ae6401a1a366daf56970} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLnumberOfVarElementEnd@{paceval\_XMLnumberOfVarElementEnd}}
+\index{paceval\_XMLnumberOfVarElementEnd@{paceval\_XMLnumberOfVarElementEnd}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfVarElementEnd}{paceval\_XMLnumberOfVarElementEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Var\+Element\+End~"{}$<$/number\+Of\+Variables$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a8fc5b37b81231d8162c5f7ba3cb1134a}\label{paceval__c_syntactic_analysis_8cpp_a8fc5b37b81231d8162c5f7ba3cb1134a} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLnumberOfVarElementStart@{paceval\_XMLnumberOfVarElementStart}}
+\index{paceval\_XMLnumberOfVarElementStart@{paceval\_XMLnumberOfVarElementStart}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLnumberOfVarElementStart}{paceval\_XMLnumberOfVarElementStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLnumber\+Of\+Var\+Element\+Start~"{}$<$number\+Of\+Variables$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_aaa1e983a062113fd58fa4482302362f9}\label{paceval__c_syntactic_analysis_8cpp_aaa1e983a062113fd58fa4482302362f9} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLuseIntervalElementEnd@{paceval\_XMLuseIntervalElementEnd}}
+\index{paceval\_XMLuseIntervalElementEnd@{paceval\_XMLuseIntervalElementEnd}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLuseIntervalElementEnd}{paceval\_XMLuseIntervalElementEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLuse\+Interval\+Element\+End~"{}$<$/use\+Interval$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_ac65f21636bf2dff6680a61a1877f0c67}\label{paceval__c_syntactic_analysis_8cpp_ac65f21636bf2dff6680a61a1877f0c67} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLuseIntervalElementStart@{paceval\_XMLuseIntervalElementStart}}
+\index{paceval\_XMLuseIntervalElementStart@{paceval\_XMLuseIntervalElementStart}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLuseIntervalElementStart}{paceval\_XMLuseIntervalElementStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLuse\+Interval\+Element\+Start~"{}$<$use\+Interval$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a2607efa7ac6873134d9fb2211c104148}\label{paceval__c_syntactic_analysis_8cpp_a2607efa7ac6873134d9fb2211c104148} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLvalueVariableElementEnd@{paceval\_XMLvalueVariableElementEnd}}
+\index{paceval\_XMLvalueVariableElementEnd@{paceval\_XMLvalueVariableElementEnd}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLvalueVariableElementEnd}{paceval\_XMLvalueVariableElementEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLvalue\+Variable\+Element\+End~"{}$<$/value$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a7857dbd301e5a23bbd8f81c3b238f9db}\label{paceval__c_syntactic_analysis_8cpp_a7857dbd301e5a23bbd8f81c3b238f9db} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLvalueVariableElementStart@{paceval\_XMLvalueVariableElementStart}}
+\index{paceval\_XMLvalueVariableElementStart@{paceval\_XMLvalueVariableElementStart}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLvalueVariableElementStart}{paceval\_XMLvalueVariableElementStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLvalue\+Variable\+Element\+Start~"{}$<$value$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_aebbd933fd1b6b8d1fd4e26972cb7d571}\label{paceval__c_syntactic_analysis_8cpp_aebbd933fd1b6b8d1fd4e26972cb7d571} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLvariableElementEnd@{paceval\_XMLvariableElementEnd}}
+\index{paceval\_XMLvariableElementEnd@{paceval\_XMLvariableElementEnd}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLvariableElementEnd}{paceval\_XMLvariableElementEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLvariable\+Element\+End~"{}$<$/variable$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a167944f326fab656fab8e6f51cb38eb5}\label{paceval__c_syntactic_analysis_8cpp_a167944f326fab656fab8e6f51cb38eb5} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLvariableElementStart@{paceval\_XMLvariableElementStart}}
+\index{paceval\_XMLvariableElementStart@{paceval\_XMLvariableElementStart}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLvariableElementStart}{paceval\_XMLvariableElementStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLvariable\+Element\+Start~"{}$<$variable number=\textbackslash{}"{}"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_ae985c571d3123d747f87cd108dcd0cba}\label{paceval__c_syntactic_analysis_8cpp_ae985c571d3123d747f87cd108dcd0cba} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLvariableElementStart2@{paceval\_XMLvariableElementStart2}}
+\index{paceval\_XMLvariableElementStart2@{paceval\_XMLvariableElementStart2}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLvariableElementStart2}{paceval\_XMLvariableElementStart2}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLvariable\+Element\+Start2~"{}\textbackslash{}"{}$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a34d945bf50d1d44b99a0eb14bb5fe1ba}\label{paceval__c_syntactic_analysis_8cpp_a34d945bf50d1d44b99a0eb14bb5fe1ba} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLversionElementEnd@{paceval\_XMLversionElementEnd}}
+\index{paceval\_XMLversionElementEnd@{paceval\_XMLversionElementEnd}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLversionElementEnd}{paceval\_XMLversionElementEnd}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLversion\+Element\+End~"{}$<$/version$>$"{}}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a55aab30f2a672392252455bc2a5197f7}\label{paceval__c_syntactic_analysis_8cpp_a55aab30f2a672392252455bc2a5197f7} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_XMLversionElementStart@{paceval\_XMLversionElementStart}}
+\index{paceval\_XMLversionElementStart@{paceval\_XMLversionElementStart}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_XMLversionElementStart}{paceval\_XMLversionElementStart}}
+{\footnotesize\ttfamily \#define paceval\+\_\+\+XMLversion\+Element\+Start~"{}$<$version$>$"{}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a0e3863b09cec5cd3ae187477118750cb}\label{paceval__c_syntactic_analysis_8cpp_a0e3863b09cec5cd3ae187477118750cb} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!dCreateComputationsThreadFunction@{dCreateComputationsThreadFunction}}
+\index{dCreateComputationsThreadFunction@{dCreateComputationsThreadFunction}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{dCreateComputationsThreadFunction()}{dCreateComputationsThreadFunction()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} d\+Create\+Computations\+Thread\+Function (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{lp\+Param }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a0e3863b09cec5cd3ae187477118750cb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a0e3863b09cec5cd3ae187477118750cb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a68c14f048baa12d21a6b9213e90a1da6}\label{paceval__c_syntactic_analysis_8cpp_a68c14f048baa12d21a6b9213e90a1da6} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!fCreateComputationsThreadFunction@{fCreateComputationsThreadFunction}}
+\index{fCreateComputationsThreadFunction@{fCreateComputationsThreadFunction}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{fCreateComputationsThreadFunction()}{fCreateComputationsThreadFunction()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} f\+Create\+Computations\+Thread\+Function (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{lp\+Param }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a68c14f048baa12d21a6b9213e90a1da6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a68c14f048baa12d21a6b9213e90a1da6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a312c31d57c21cbccac510fef91b467ea}\label{paceval__c_syntactic_analysis_8cpp_a312c31d57c21cbccac510fef91b467ea} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!ldCreateComputationsThreadFunction@{ldCreateComputationsThreadFunction}}
+\index{ldCreateComputationsThreadFunction@{ldCreateComputationsThreadFunction}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{ldCreateComputationsThreadFunction()}{ldCreateComputationsThreadFunction()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} ld\+Create\+Computations\+Thread\+Function (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{lp\+Param }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a312c31d57c21cbccac510fef91b467ea_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a312c31d57c21cbccac510fef91b467ea_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a83d9969420ce07a22eaff3e1cfc3ad40}\label{paceval__c_syntactic_analysis_8cpp_a83d9969420ce07a22eaff3e1cfc3ad40} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_CheckComputationHandle@{paceval\_CheckComputationHandle}}
+\index{paceval\_CheckComputationHandle@{paceval\_CheckComputationHandle}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_CheckComputationHandle()}{paceval\_CheckComputationHandle()}}
+{\footnotesize\ttfamily bool paceval\+\_\+\+Check\+Computation\+Handle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a83d9969420ce07a22eaff3e1cfc3ad40_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_aa89c24d1a11baea7ef75d421f640c494}\label{paceval__c_syntactic_analysis_8cpp_aa89c24d1a11baea7ef75d421f640c494} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_precheckMultipleComputations@{paceval\_precheckMultipleComputations}}
+\index{paceval\_precheckMultipleComputations@{paceval\_precheckMultipleComputations}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_precheckMultipleComputations()}{paceval\_precheckMultipleComputations()}}
+{\footnotesize\ttfamily bool paceval\+\_\+precheck\+Multiple\+Computations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in }\end{DoxyParamCaption})}
+
+performs a precheck of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects for multiple operations, e.\+g. a handle may only occur once 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_aa89c24d1a11baea7ef75d421f640c494_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a7737bfd9ac7fa605fd9ab25a5a1ced4d}\label{paceval__c_syntactic_analysis_8cpp_a7737bfd9ac7fa605fd9ab25a5a1ced4d} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_removeUnusedASCII@{paceval\_removeUnusedASCII}}
+\index{paceval\_removeUnusedASCII@{paceval\_removeUnusedASCII}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_removeUnusedASCII()}{paceval\_removeUnusedASCII()}}
+{\footnotesize\ttfamily void paceval\+\_\+remove\+Unused\+ASCII (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{string\+To\+Change }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a7737bfd9ac7fa605fd9ab25a5a1ced4d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a368bb034ad3535c82777bc20b20bdd2f}\label{paceval__c_syntactic_analysis_8cpp_a368bb034ad3535c82777bc20b20bdd2f} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_AddComputation@{pacevalLibrary\_AddComputation}}
+\index{pacevalLibrary\_AddComputation@{pacevalLibrary\_AddComputation}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_AddComputation()}{pacevalLibrary\_AddComputation()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Add\+Computation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a368bb034ad3535c82777bc20b20bdd2f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a86035087b6238a298436d26e6ba95a68}\label{paceval__c_syntactic_analysis_8cpp_a86035087b6238a298436d26e6ba95a68} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_CreateComputation@{pacevalLibrary\_CreateComputation}}
+\index{pacevalLibrary\_CreateComputation@{pacevalLibrary\_CreateComputation}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_CreateComputation()}{pacevalLibrary\_CreateComputation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} paceval\+Library\+\_\+\+Create\+Computation (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_a953cdb322badceecf9e5351340e0eb2f}{paceval\+\_\+callback\+Status\+Type}} \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+callback\+Status\+\_\+in }\end{DoxyParamCaption})}
+
+creates a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object for a mathematical function and its variables -\/ the return value is the HANDLE of the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred) 
+\begin{DoxyParams}{Parameters}
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em use\+Interval\+\_\+in} & enables or disables the Trusted Interval Computation, TINC (paceval specific) putting bounds on rounding errors and measurement errors of the computation system to yield reliable results \\
+\hline
+{\em paceval\+\_\+callback\+Status\+\_\+in} & a user-\/defined callback function to give status information of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a86035087b6238a298436d26e6ba95a68_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a86035087b6238a298436d26e6ba95a68_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a21a51891513bee83213577b2db1d6928}\label{paceval__c_syntactic_analysis_8cpp_a21a51891513bee83213577b2db1d6928} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_CreateMultipleComputations@{pacevalLibrary\_CreateMultipleComputations}}
+\index{pacevalLibrary\_CreateMultipleComputations@{pacevalLibrary\_CreateMultipleComputations}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_CreateMultipleComputations()}{pacevalLibrary\_CreateMultipleComputations()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Create\+Multiple\+Computations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+out\mbox{[}$\,$\mbox{]},  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+Strings\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_a953cdb322badceecf9e5351340e0eb2f}{paceval\+\_\+callback\+Status\+Type}} \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+callback\+Status\+\_\+in }\end{DoxyParamCaption})}
+
+creates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects for multiple mathematical functions and one set of variables in a single step -\/ if the function succeeds, the return value is TRUE and handle\+\_\+paceval\+Computations\+\_\+out contains the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects (each of these objects can be used individually, e.\+g. with \doxylink{paceval__c_computation_8h_a4c4ea05d9207def52c8fa9ec3a68d51d}{paceval\+Library\+\_\+d\+Get\+Computation\+Result()}, \doxylink{paceval__c_computation_8h_a4b7907fe40d8f2f9f332a572b8ffda40}{paceval\+Library\+\_\+d\+Get\+Multiple\+Computations\+Results()}, \doxylink{paceval__c_computation_8h_aa8f87bb363a07eefb308dbcad12fd3b1}{paceval\+Library\+\_\+dmathv()} or \doxylink{paceval__c_computation_8h_ab42ba2be711d7cfc57ee395b14a6d37b}{paceval\+Library\+\_\+dmathvi()} and must be deleted with \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) 
+\begin{DoxyParams}{Parameters}
+{\em function\+Strings\+\_\+in} & points to an array of null-\/terminated strings to be used as the functions to work with for the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects to create (e.\+g. if the functions to work with are "{}sin(x)"{} and "{}cos(x)"{} number\+Ofpaceval\+Computations\+\_\+in must be set to 2) \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em use\+Interval\+\_\+in} & enables or disables the Trusted Interval Computation, TINC (paceval specific) putting bounds on rounding errors and measurement errors of the computation system to yield reliable results \\
+\hline
+{\em paceval\+\_\+callback\+Status\+\_\+in} & a user-\/defined callback function to give status information of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a21a51891513bee83213577b2db1d6928_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a21a51891513bee83213577b2db1d6928_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a48e6e2c011ebf6f74e55832ed905f291}\label{paceval__c_syntactic_analysis_8cpp_a48e6e2c011ebf6f74e55832ed905f291} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_CreateXMLFromParameters@{pacevalLibrary\_CreateXMLFromParameters}}
+\index{pacevalLibrary\_CreateXMLFromParameters@{pacevalLibrary\_CreateXMLFromParameters}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_CreateXMLFromParameters()}{pacevalLibrary\_CreateXMLFromParameters()}}
+{\footnotesize\ttfamily unsigned long paceval\+Library\+\_\+\+Create\+XMLFrom\+Parameters (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+str\+XML\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{values\+String\+\_\+in,  }\item[{bool}]{use\+Interval\+\_\+in }\end{DoxyParamCaption})}
+
+a helper function to create XML data representing a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and you can use it to store data representing a computation to a file system or to transmit it via a network or channel -\/ the return value is the size of the XML data (in case of an error the return value is 0) 
+\begin{DoxyParams}{Parameters}
+{\em paceval\+\_\+str\+XML\+\_\+out} & pointer to a buffer for the XML data (set paceval\+\_\+str\+XML\+\_\+out to NULL to receive the length of the version string) \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string representing the function \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the variables in one string seperated by blanks \\
+\hline
+{\em values\+String\+\_\+in} & specifies the values for the variables in one string seperated by semicolons (;) \\
+\hline
+{\em use\+Interval\+\_\+in} & specifies whether Trusted Interval Computation is enabled or not \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a48e6e2c011ebf6f74e55832ed905f291_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a48e6e2c011ebf6f74e55832ed905f291_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a3b5857bde82baf2316dd2a674436055f}\label{paceval__c_syntactic_analysis_8cpp_a3b5857bde82baf2316dd2a674436055f} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_DeleteComputation@{pacevalLibrary\_DeleteComputation}}
+\index{pacevalLibrary\_DeleteComputation@{pacevalLibrary\_DeleteComputation}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_DeleteComputation()}{pacevalLibrary\_DeleteComputation()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Delete\+Computation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+deletes a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object -\/ if the function succeeds, the return value is TRUE (if the given HANDLE is not valid the return value is FALSE) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object to delete \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a3b5857bde82baf2316dd2a674436055f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a3b5857bde82baf2316dd2a674436055f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a4c4ea05d9207def52c8fa9ec3a68d51d}\label{paceval__c_syntactic_analysis_8cpp_a4c4ea05d9207def52c8fa9ec3a68d51d} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_dGetComputationResult@{pacevalLibrary\_dGetComputationResult}}
+\index{pacevalLibrary\_dGetComputationResult@{pacevalLibrary\_dGetComputationResult}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_dGetComputationResult()}{pacevalLibrary\_dGetComputationResult()}}
+{\footnotesize\ttfamily double paceval\+Library\+\_\+d\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+performs a calculation with precision double on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em values\+\_\+in} & array of double defining the values of the variables \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & this buffer retrieves the maximum/upper limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a4c4ea05d9207def52c8fa9ec3a68d51d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a4c4ea05d9207def52c8fa9ec3a68d51d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_aa2b13bf07326969afc0646bb12e3b72d}\label{paceval__c_syntactic_analysis_8cpp_aa2b13bf07326969afc0646bb12e3b72d} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_dGetComputationResultExt@{pacevalLibrary\_dGetComputationResultExt}}
+\index{pacevalLibrary\_dGetComputationResultExt@{pacevalLibrary\_dGetComputationResultExt}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_dGetComputationResultExt()}{pacevalLibrary\_dGetComputationResultExt()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+d\+Get\+Computation\+Result\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+performs multiple calculations with precision double in parallel on a single \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em values\+\_\+in} & array of double defining the multiple values of the variables \\
+\hline
+{\em number\+Of\+Calculations\+\_\+in} & specifies the number of different calculations you want to run and this number specifies the size of the array values\+\_\+in, e.\+g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values\+\_\+in must be 50\texorpdfstring{$\ast$}{*}1000 (the order of the array values\+\_\+in must be variable values for the first calculation, then variable values for the second calculation and so on) \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the computation with the multiple values of the variables (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_aa2b13bf07326969afc0646bb12e3b72d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_aa2b13bf07326969afc0646bb12e3b72d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a4b7907fe40d8f2f9f332a572b8ffda40}\label{paceval__c_syntactic_analysis_8cpp_a4b7907fe40d8f2f9f332a572b8ffda40} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_dGetMultipleComputationsResults@{pacevalLibrary\_dGetMultipleComputationsResults}}
+\index{pacevalLibrary\_dGetMultipleComputationsResults@{pacevalLibrary\_dGetMultipleComputationsResults}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_dGetMultipleComputationsResults()}{pacevalLibrary\_dGetMultipleComputationsResults()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+d\+Get\+Multiple\+Computations\+Results (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+performs multiple calculations with precision double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with the same set of values for these variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em values\+\_\+in} & array of double defining the values of the variables \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the multiple computations (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a4b7907fe40d8f2f9f332a572b8ffda40_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a4b7907fe40d8f2f9f332a572b8ffda40_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a3930b10a5fe345f1a5112ea035921dfa}\label{paceval__c_syntactic_analysis_8cpp_a3930b10a5fe345f1a5112ea035921dfa} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_dGetMultipleComputationsResultsExt@{pacevalLibrary\_dGetMultipleComputationsResultsExt}}
+\index{pacevalLibrary\_dGetMultipleComputationsResultsExt@{pacevalLibrary\_dGetMultipleComputationsResultsExt}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_dGetMultipleComputationsResultsExt()}{pacevalLibrary\_dGetMultipleComputationsResultsExt()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+performs multiple calculations with precision double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em values\+\_\+in} & array of double defining the values of the variables \\
+\hline
+{\em number\+Of\+Calculations\+\_\+in} & specifies the number of different calculations you want to run and this number specifies the size of the array values\+\_\+in, e.\+g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values\+\_\+in must be 50\texorpdfstring{$\ast$}{*}1000 (the order of the array values\+\_\+in must be variable values for the first calculation, then variable values for the second calculation and so on) \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the multiple computations (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a3930b10a5fe345f1a5112ea035921dfa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a3930b10a5fe345f1a5112ea035921dfa_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a37e78dfc5cad378b130179e9d819aa5e}\label{paceval__c_syntactic_analysis_8cpp_a37e78dfc5cad378b130179e9d819aa5e} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_ExistComputation@{pacevalLibrary\_ExistComputation}}
+\index{pacevalLibrary\_ExistComputation@{pacevalLibrary\_ExistComputation}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_ExistComputation()}{pacevalLibrary\_ExistComputation()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Exist\+Computation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+determines whether a particular \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object has been created -\/ if the object exists, the return value is TRUE. If the specified HANDLE is invalid or the object does not exist, the return value is FALSE 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object to be questioned \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a37e78dfc5cad378b130179e9d819aa5e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_acf6e000373965eae6c69cbc1c7584bd8}\label{paceval__c_syntactic_analysis_8cpp_acf6e000373965eae6c69cbc1c7584bd8} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_fGetComputationResult@{pacevalLibrary\_fGetComputationResult}}
+\index{pacevalLibrary\_fGetComputationResult@{pacevalLibrary\_fGetComputationResult}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_fGetComputationResult()}{pacevalLibrary\_fGetComputationResult()}}
+{\footnotesize\ttfamily float paceval\+Library\+\_\+f\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+performs a calculation with precision float on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em values\+\_\+in} & array of float defining the values of the variables \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & this buffer retrieves the maximum/upper limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_acf6e000373965eae6c69cbc1c7584bd8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_acf6e000373965eae6c69cbc1c7584bd8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_aa459fc5d99a99829cf710547da04fe61}\label{paceval__c_syntactic_analysis_8cpp_aa459fc5d99a99829cf710547da04fe61} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_fGetComputationResultExt@{pacevalLibrary\_fGetComputationResultExt}}
+\index{pacevalLibrary\_fGetComputationResultExt@{pacevalLibrary\_fGetComputationResultExt}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_fGetComputationResultExt()}{pacevalLibrary\_fGetComputationResultExt()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+f\+Get\+Computation\+Result\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{float \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+performs multiple calculations with precision float in parallel on a single \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em values\+\_\+in} & array of float defining the multiple values of the variables \\
+\hline
+{\em number\+Of\+Calculations\+\_\+in} & specifies the number of different calculations you want to run and this number specifies the size of the array values\+\_\+in, e.\+g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values\+\_\+in must be 50\texorpdfstring{$\ast$}{*}1000 (the order of the array values\+\_\+in must be variable values for the first calculation, then variable values for the second calculation and so on) \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the computation with the multiple values of the variables (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_aa459fc5d99a99829cf710547da04fe61_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_aa459fc5d99a99829cf710547da04fe61_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a1f7a7fee6838b93d4f840bce4a92cd42}\label{paceval__c_syntactic_analysis_8cpp_a1f7a7fee6838b93d4f840bce4a92cd42} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_fGetMultipleComputationsResults@{pacevalLibrary\_fGetMultipleComputationsResults}}
+\index{pacevalLibrary\_fGetMultipleComputationsResults@{pacevalLibrary\_fGetMultipleComputationsResults}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_fGetMultipleComputationsResults()}{pacevalLibrary\_fGetMultipleComputationsResults()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+f\+Get\+Multiple\+Computations\+Results (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{float \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+performs multiple calculations with precision float in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with the same set of values for these variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em values\+\_\+in} & array of float defining the values of the variables \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the multiple computations (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a1f7a7fee6838b93d4f840bce4a92cd42_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a1f7a7fee6838b93d4f840bce4a92cd42_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_ae89257d9402f64f08f9fcfe9c92f0256}\label{paceval__c_syntactic_analysis_8cpp_ae89257d9402f64f08f9fcfe9c92f0256} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_fGetMultipleComputationsResultsExt@{pacevalLibrary\_fGetMultipleComputationsResultsExt}}
+\index{pacevalLibrary\_fGetMultipleComputationsResultsExt@{pacevalLibrary\_fGetMultipleComputationsResultsExt}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_fGetMultipleComputationsResultsExt()}{pacevalLibrary\_fGetMultipleComputationsResultsExt()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+f\+Get\+Multiple\+Computations\+Results\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{float \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+performs multiple calculations with precision float in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em values\+\_\+in} & array of float defining the values of the variables \\
+\hline
+{\em number\+Of\+Calculations\+\_\+in} & specifies the number of different calculations you want to run and this number specifies the size of the array values\+\_\+in, e.\+g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values\+\_\+in must be 50\texorpdfstring{$\ast$}{*}1000 (the order of the array values\+\_\+in must be variable values for the first calculation, then variable values for the second calculation and so on) \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the multiple computations (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_ae89257d9402f64f08f9fcfe9c92f0256_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_ae89257d9402f64f08f9fcfe9c92f0256_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_ac37970c25d5fd5156100e2ef91f84922}\label{paceval__c_syntactic_analysis_8cpp_ac37970c25d5fd5156100e2ef91f84922} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_GetComputationInformationXML@{pacevalLibrary\_GetComputationInformationXML}}
+\index{pacevalLibrary\_GetComputationInformationXML@{pacevalLibrary\_GetComputationInformationXML}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_GetComputationInformationXML()}{pacevalLibrary\_GetComputationInformationXML()}}
+{\footnotesize\ttfamily unsigned long paceval\+Library\+\_\+\+Get\+Computation\+Information\+XML (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{char \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+str\+XML\+\_\+out }\end{DoxyParamCaption})}
+
+a helper function for getting data from a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object, such as the number of cores in the system, the number of threads used or the cache hits in the computations with that particular \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object -\/ the return value is the size of the XML data (in case of an error the return value is 0) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em paceval\+\_\+str\+XML\+\_\+out} & pointer to a buffer for the XML data (set paceval\+\_\+str\+XML\+\_\+out to NULL to receive the length of the version string) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_ac37970c25d5fd5156100e2ef91f84922_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_ac37970c25d5fd5156100e2ef91f84922_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_ae9526b55d5b05df48f1d11724c5ae8ee}\label{paceval__c_syntactic_analysis_8cpp_ae9526b55d5b05df48f1d11724c5ae8ee} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_GetComputationVersionString@{pacevalLibrary\_GetComputationVersionString}}
+\index{pacevalLibrary\_GetComputationVersionString@{pacevalLibrary\_GetComputationVersionString}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_GetComputationVersionString()}{pacevalLibrary\_GetComputationVersionString()}}
+{\footnotesize\ttfamily int paceval\+Library\+\_\+\+Get\+Computation\+Version\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{char \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+str\+Version\+\_\+out }\end{DoxyParamCaption})}
+
+returns the version string including the version number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object -\/ the return value is the length of the version string 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em paceval\+\_\+str\+Version\+\_\+out} & points to the buffer that will receive the string (set paceval\+\_\+str\+Version\+\_\+in to NULL to receive the length of the version string) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_ae9526b55d5b05df48f1d11724c5ae8ee_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_ae9526b55d5b05df48f1d11724c5ae8ee_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a26a2fde8b51768688069cf7edd599ffa}\label{paceval__c_syntactic_analysis_8cpp_a26a2fde8b51768688069cf7edd599ffa} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_GetErrorInformation@{pacevalLibrary\_GetErrorInformation}}
+\index{pacevalLibrary\_GetErrorInformation@{pacevalLibrary\_GetErrorInformation}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_GetErrorInformation()}{pacevalLibrary\_GetErrorInformation()}}
+{\footnotesize\ttfamily int paceval\+Library\+\_\+\+Get\+Error\+Information (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{char \texorpdfstring{$\ast$}{*}}]{last\+Error\+\_\+str\+Operator\+\_\+out,  }\item[{long \texorpdfstring{$\ast$}{*}}]{last\+Error\+\_\+e\+Position\+\_\+out }\end{DoxyParamCaption})}
+
+returns the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error type value\+: possible errors are analysis and computation errors (errors during the analysis should be checked after creation of the object like \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} while errors during the computation should be checked after a calculation, e.\+g. paceval\+Library\+\_\+\+Get\+Computation\+Result()) -\/ the return value is the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types and you can retrieve further information for the error type via \doxylink{paceval__c_computation_8h_a213cfb83c7e76883eef6c9417fd4aeee}{paceval\+Library\+\_\+\+Create\+Error\+Information\+Text()}, e.\+g. to present this to the user 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em last\+Error\+\_\+str\+Operator\+\_\+out} & buffer to get the operator causing the error (annotation\+: maximum size of the retrieved null-\/terminated string is 255 per "{}\#define PACEVAL\+\_\+\+MAXERR 255"{}, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}) \\
+\hline
+{\em last\+Error\+\_\+e\+Position\+\_\+out} & position in the function where the error occurred \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a26a2fde8b51768688069cf7edd599ffa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a26a2fde8b51768688069cf7edd599ffa_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_ab8edc967f7ef2d67b95c3139d9343204}\label{paceval__c_syntactic_analysis_8cpp_ab8edc967f7ef2d67b95c3139d9343204} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_GetIsError@{pacevalLibrary\_GetIsError}}
+\index{pacevalLibrary\_GetIsError@{pacevalLibrary\_GetIsError}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_GetIsError()}{pacevalLibrary\_GetIsError()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Get\+Is\+Error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+determines whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} -\/ if an error has occurred, the return value is TRUE, otherwise it is FALSE 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_ab8edc967f7ef2d67b95c3139d9343204_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_ab8edc967f7ef2d67b95c3139d9343204_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a5aec719c96dcaf284f4de22b5a2994a4}\label{paceval__c_syntactic_analysis_8cpp_a5aec719c96dcaf284f4de22b5a2994a4} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_InternalGetComputationResult@{pacevalLibrary\_InternalGetComputationResult}}
+\index{pacevalLibrary\_InternalGetComputationResult@{pacevalLibrary\_InternalGetComputationResult}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_InternalGetComputationResult()}{pacevalLibrary\_InternalGetComputationResult()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Internal\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Threads\+In\+Use\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}}}]{use\+Calculation\+Precision\+\_\+in,  }\item[{void \texorpdfstring{$\ast$}{*}}]{values\+\_\+in,  }\item[{void \texorpdfstring{$\ast$}{*}}]{result\+\_\+out,  }\item[{unsigned int}]{size\+Of\+Long\+Double\+\_\+in,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+performs a calculation on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em number\+Of\+Threads\+In\+Use\+\_\+in} & specifies the number of threads already in use for \doxylink{paceval__main_8cpp_a7ee63b91471db048e4e8c7c9940a0b14}{paceval\+\_\+d\+Get\+Multiple\+Computations\+Results()} \mbox{[}\doxylink{paceval__main_8cpp_afabef4b584a635a79afdc5034a1397af}{paceval\+\_\+ld\+Get\+Multiple\+Computations\+Results()}, \doxylink{paceval__main_8cpp_ad33a118f90a1313031e7724839c6c025}{paceval\+\_\+f\+Get\+Multiple\+Computations\+Results()}\mbox{]} \\
+\hline
+{\em use\+Calculation\+Precision\+\_\+in} & specifies the precision with which the calculation should be performed \\
+\hline
+{\em values\+\_\+in} & specifies the pointer to the array of variable values to use as floating point values for this calculation \\
+\hline
+{\em result\+\_\+out} & the buffer for the result of the calculation in the precision defined with use\+Calculation\+Precision\+\_\+in (annotation\+: in case of an error the value is not specified) \\
+\hline
+{\em size\+Of\+Long\+Double\+\_\+in} & specifies the size in bytes of long double in the calling system determined via sizeof(long double) \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & if Trusted Interval Computation was enabled by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} this retrieves the minimum/lower interval limit of the computation (annotation\+: in case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & if Trusted Interval Computation was enabled by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} this retrieves the maximum/upper interval limit limit of the computation (annotation\+: in case of an error the value is not specified) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a5aec719c96dcaf284f4de22b5a2994a4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a5aec719c96dcaf284f4de22b5a2994a4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_aa8979ad66d74f0a3f9e34bfad384f7ac}\label{paceval__c_syntactic_analysis_8cpp_aa8979ad66d74f0a3f9e34bfad384f7ac} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_InternalGetComputationResultThreadHandleBlock@{pacevalLibrary\_InternalGetComputationResultThreadHandleBlock}}
+\index{pacevalLibrary\_InternalGetComputationResultThreadHandleBlock@{pacevalLibrary\_InternalGetComputationResultThreadHandleBlock}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_InternalGetComputationResultThreadHandleBlock()}{pacevalLibrary\_InternalGetComputationResultThreadHandleBlock()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Internal\+Get\+Computation\+Result\+Thread\+Handle\+Block (\begin{DoxyParamCaption}\item[{unsigned long}]{thread\+Count,  }\item[{\mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}}}]{use\+Calculation\+Precision\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Threads,  }\item[{unsigned long}]{number\+Of\+Variables,  }\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{void \texorpdfstring{$\ast$}{*}}]{ptr\+\_\+values\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{unsigned int}]{size\+Of\+Long\+Double\+\_\+in,  }\item[{void \texorpdfstring{$\ast$}{*}}]{ptr\+\_\+results\+\_\+out,  }\item[{void \texorpdfstring{$\ast$}{*}}]{ptr\+\_\+trusted\+Min\+Results\+\_\+out,  }\item[{void \texorpdfstring{$\ast$}{*}}]{ptr\+\_\+trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_aa8979ad66d74f0a3f9e34bfad384f7ac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_aa8979ad66d74f0a3f9e34bfad384f7ac_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_aa5a6e82d9a88d0385e7823eef6686fb6}\label{paceval__c_syntactic_analysis_8cpp_aa5a6e82d9a88d0385e7823eef6686fb6} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_InternalGetComputationsResults@{pacevalLibrary\_InternalGetComputationsResults}}
+\index{pacevalLibrary\_InternalGetComputationsResults@{pacevalLibrary\_InternalGetComputationsResults}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_InternalGetComputationsResults()}{pacevalLibrary\_InternalGetComputationsResults()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Internal\+Get\+Computations\+Results (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}}}]{use\+Calculation\+Precision\+\_\+in,  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{void \texorpdfstring{$\ast$}{*}}]{ptr\+\_\+values\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{unsigned int}]{size\+Of\+Long\+Double\+\_\+in,  }\item[{void \texorpdfstring{$\ast$}{*}}]{ptr\+\_\+results\+\_\+out,  }\item[{void \texorpdfstring{$\ast$}{*}}]{ptr\+\_\+trusted\+Min\+Results\+\_\+out,  }\item[{void \texorpdfstring{$\ast$}{*}}]{ptr\+\_\+trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_aa5a6e82d9a88d0385e7823eef6686fb6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_aa5a6e82d9a88d0385e7823eef6686fb6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a20e3063a85a7ff4dc39260f464212b22}\label{paceval__c_syntactic_analysis_8cpp_a20e3063a85a7ff4dc39260f464212b22} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_ldGetComputationResult@{pacevalLibrary\_ldGetComputationResult}}
+\index{pacevalLibrary\_ldGetComputationResult@{pacevalLibrary\_ldGetComputationResult}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldGetComputationResult()}{pacevalLibrary\_ldGetComputationResult()}}
+{\footnotesize\ttfamily long double paceval\+Library\+\_\+ld\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+performs a calculation with precision long double on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em values\+\_\+in} & array of long double defining the values of the variables \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & this buffer retrieves the maximum/upper limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a20e3063a85a7ff4dc39260f464212b22_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a20e3063a85a7ff4dc39260f464212b22_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a9bcd79663939f622ca862829cdb376d7}\label{paceval__c_syntactic_analysis_8cpp_a9bcd79663939f622ca862829cdb376d7} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_ldGetComputationResultExt@{pacevalLibrary\_ldGetComputationResultExt}}
+\index{pacevalLibrary\_ldGetComputationResultExt@{pacevalLibrary\_ldGetComputationResultExt}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldGetComputationResultExt()}{pacevalLibrary\_ldGetComputationResultExt()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+ld\+Get\+Computation\+Result\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+performs multiple calculations with precision long double in parallel on a single \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em values\+\_\+in} & array of long double defining the multiple values of the variables \\
+\hline
+{\em number\+Of\+Calculations\+\_\+in} & specifies the number of different calculations you want to run and this number specifies the size of the array values\+\_\+in, e.\+g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values\+\_\+in must be 50\texorpdfstring{$\ast$}{*}1000 (the order of the array values\+\_\+in must be variable values for the first calculation, then variable values for the second calculation and so on) \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the computation with the multiple values of the variables (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a9bcd79663939f622ca862829cdb376d7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a9bcd79663939f622ca862829cdb376d7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a6de3623e77430fdd803d71c09f05aba6}\label{paceval__c_syntactic_analysis_8cpp_a6de3623e77430fdd803d71c09f05aba6} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_ldGetMultipleComputationsResults@{pacevalLibrary\_ldGetMultipleComputationsResults}}
+\index{pacevalLibrary\_ldGetMultipleComputationsResults@{pacevalLibrary\_ldGetMultipleComputationsResults}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldGetMultipleComputationsResults()}{pacevalLibrary\_ldGetMultipleComputationsResults()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+ld\+Get\+Multiple\+Computations\+Results (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{long double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+performs multiple calculations with precision long double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with the same set of values for these variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em values\+\_\+in} & array of long double defining the values of the variables \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the multiple computations (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a6de3623e77430fdd803d71c09f05aba6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a6de3623e77430fdd803d71c09f05aba6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a190c7daca86f625b5d42b538faa5dfb4}\label{paceval__c_syntactic_analysis_8cpp_a190c7daca86f625b5d42b538faa5dfb4} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_ldGetMultipleComputationsResultsExt@{pacevalLibrary\_ldGetMultipleComputationsResultsExt}}
+\index{pacevalLibrary\_ldGetMultipleComputationsResultsExt@{pacevalLibrary\_ldGetMultipleComputationsResultsExt}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldGetMultipleComputationsResultsExt()}{pacevalLibrary\_ldGetMultipleComputationsResultsExt()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+ld\+Get\+Multiple\+Computations\+Results\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+performs multiple calculations with precision long double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em values\+\_\+in} & array of long double defining the values of the variables \\
+\hline
+{\em number\+Of\+Calculations\+\_\+in} & specifies the number of different calculations you want to run and this number specifies the size of the array values\+\_\+in, e.\+g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values\+\_\+in must be 50\texorpdfstring{$\ast$}{*}1000 (the order of the array values\+\_\+in must be variable values for the first calculation, then variable values for the second calculation and so on) \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the multiple computations (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a190c7daca86f625b5d42b538faa5dfb4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a190c7daca86f625b5d42b538faa5dfb4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a876a5e418214b421cea1cbfef3a75e93}\label{paceval__c_syntactic_analysis_8cpp_a876a5e418214b421cea1cbfef3a75e93} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_ReadParametersFromXML@{pacevalLibrary\_ReadParametersFromXML}}
+\index{pacevalLibrary\_ReadParametersFromXML@{pacevalLibrary\_ReadParametersFromXML}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_ReadParametersFromXML()}{pacevalLibrary\_ReadParametersFromXML()}}
+{\footnotesize\ttfamily int paceval\+Library\+\_\+\+Read\+Parameters\+From\+XML (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+str\+XML\+\_\+in,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{function\+String\+Length\+\_\+out,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{variables\+String\+Length\+\_\+out,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{number\+Of\+Variables\+\_\+out,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{values\+String\+Length\+\_\+out,  }\item[{char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+out,  }\item[{char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+out,  }\item[{char \texorpdfstring{$\ast$}{*}}]{values\+String\+\_\+out,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{use\+Interval\+\_\+out }\end{DoxyParamCaption})}
+
+a helper function to read XML data representing a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and you can use it to read data representing a computation from a file system or to receive it via a network or channel -\/ in case of an error the return value is \texorpdfstring{$<$}{<}0 
+\begin{DoxyParams}{Parameters}
+{\em paceval\+\_\+str\+XML\+\_\+in} & pointer to the XML data \\
+\hline
+{\em function\+String\+Length\+\_\+out} & the length of the function string \\
+\hline
+{\em variables\+String\+Length\+\_\+out} & the length of the variable names in one string \\
+\hline
+{\em number\+Of\+Variables\+\_\+out} & the number of variables \\
+\hline
+{\em values\+String\+Length\+\_\+out} & the length of the values seperated by blanks in one string \\
+\hline
+{\em function\+String\+\_\+out} & points to the buffer for the function string (set function\+String\+\_\+out to NULL to receive the length at first with function\+String\+Length\+\_\+out) \\
+\hline
+{\em variables\+\_\+out} & points to the buffer for the variable names in one string (set variables\+\_\+out to NULL to receive the length at first with variables\+String\+Length\+\_\+out) \\
+\hline
+{\em values\+String\+\_\+out} & points to the buffer for the values seperated by semicolons (;) in one string (set values\+String\+\_\+out to NULL to receive the length at first with values\+String\+Length\+\_\+out) \\
+\hline
+{\em use\+Interval\+\_\+out} & points to the buffer specifying whether Trusted Interval Computation is enabled or not \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a876a5e418214b421cea1cbfef3a75e93_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a876a5e418214b421cea1cbfef3a75e93_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_ae96bc4c303678d7568dc9a258be667fa}\label{paceval__c_syntactic_analysis_8cpp_ae96bc4c303678d7568dc9a258be667fa} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_RemoveComputation@{pacevalLibrary\_RemoveComputation}}
+\index{pacevalLibrary\_RemoveComputation@{pacevalLibrary\_RemoveComputation}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_RemoveComputation()}{pacevalLibrary\_RemoveComputation()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Remove\+Computation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_ae96bc4c303678d7568dc9a258be667fa_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a9eec32938832c121cbc5aad3e89059b8}\label{paceval__c_syntactic_analysis_8cpp_a9eec32938832c121cbc5aad3e89059b8} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!pacevalLibrary\_SetCallbackUserFunction@{pacevalLibrary\_SetCallbackUserFunction}}
+\index{pacevalLibrary\_SetCallbackUserFunction@{pacevalLibrary\_SetCallbackUserFunction}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_SetCallbackUserFunction()}{pacevalLibrary\_SetCallbackUserFunction()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Set\+Callback\+User\+Function (\begin{DoxyParamCaption}\item[{unsigned int}]{number\+User\+Function\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{single\+Function\+String\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_a0d991e803d57a927030e18b762b6aae5}{paceval\+\_\+callback\+User\+Function\+Type}} \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+callback\+User\+Function\+\_\+in }\end{DoxyParamCaption})}
+
+allows the definition of up to 1000 custom user functions. Depending on your requirements, you could a) add mathematical functions that enable new functions or b) add faster mathematical functions that are not as accurate as those used by paceval -\/ if the function succeeds, the return value is TRUE, otherwise it is FALSE 
+\begin{DoxyParams}{Parameters}
+{\em number\+User\+Function\+\_\+in} & specifies the number of the user function to set the single function for, e.\+g. 1 \\
+\hline
+{\em single\+Function\+String\+\_\+in} & points to a null-\/terminated string specifying the user-\/defined single function, e.\+g. "{}my\+\_\+function1"{} \\
+\hline
+{\em paceval\+\_\+callback\+User\+Function\+\_\+in} & a user-\/defined callback function to handle the computation for the specific single function, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a9eec32938832c121cbc5aad3e89059b8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_syntactic_analysis_8cpp_a9eec32938832c121cbc5aad3e89059b8_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_ac87b82c47c667161d5f5095fd2909010}\label{paceval__c_syntactic_analysis_8cpp_ac87b82c47c667161d5f5095fd2909010} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_library\_computations\_array@{paceval\_library\_computations\_array}}
+\index{paceval\_library\_computations\_array@{paceval\_library\_computations\_array}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_computations\_array}{paceval\_library\_computations\_array}}
+{\footnotesize\ttfamily \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}\texorpdfstring{$\ast$}{*} paceval\+\_\+library\+\_\+computations\+\_\+array = NULL}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a530e6ef15abcecf5c0711f5222260f68}\label{paceval__c_syntactic_analysis_8cpp_a530e6ef15abcecf5c0711f5222260f68} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_library\_elements\_in\_computations\_array@{paceval\_library\_elements\_in\_computations\_array}}
+\index{paceval\_library\_elements\_in\_computations\_array@{paceval\_library\_elements\_in\_computations\_array}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_elements\_in\_computations\_array}{paceval\_library\_elements\_in\_computations\_array}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+library\+\_\+elements\+\_\+in\+\_\+computations\+\_\+array = 0}
+
+\Hypertarget{paceval__c_syntactic_analysis_8cpp_a2f79cbef608ef0ef82e4fde3ff001cf0}\label{paceval__c_syntactic_analysis_8cpp_a2f79cbef608ef0ef82e4fde3ff001cf0} 
+\index{paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}!paceval\_library\_sizeof\_computations\_array@{paceval\_library\_sizeof\_computations\_array}}
+\index{paceval\_library\_sizeof\_computations\_array@{paceval\_library\_sizeof\_computations\_array}!paceval\_cSyntacticAnalysis.cpp@{paceval\_cSyntacticAnalysis.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_sizeof\_computations\_array}{paceval\_library\_sizeof\_computations\_array}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+library\+\_\+sizeof\+\_\+computations\+\_\+array = 0}
+

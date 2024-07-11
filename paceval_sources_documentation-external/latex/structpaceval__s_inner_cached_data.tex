@@ -1,0 +1,147 @@
+\doxysection{paceval\+\_\+s\+Inner\+Cached\+Data Class Reference}
+\hypertarget{structpaceval__s_inner_cached_data}{}\label{structpaceval__s_inner_cached_data}\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+
+
+The struct \doxylink{structpaceval__s_inner_cached_data}{paceval\+\_\+s\+Inner\+Cached\+Data} is used when necessary by the struct \doxylink{structpaceval__s_node_specific_data}{paceval\+\_\+s\+Node\+Specific\+Data} and stores data for inner and outer caching.  
+
+
+
+
+{\ttfamily \#include "{}inc/paceval\+\_\+c\+Atomic\+Graph\+Node.\+h"{}}
+
+
+
+Collaboration diagram for paceval\+\_\+s\+Inner\+Cached\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{structpaceval__s_inner_cached_data__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{structpaceval__s_inner_cached_data_a37338e15d4b189a7bee39e9b38ec8e94}{failed\+Read\+Cache\+Counter}}
+\item 
+long double \mbox{\hyperlink{structpaceval__s_inner_cached_data_ad02ff1767606c4cbd43841a679ef515b}{inner\+Cached\+Value1\+As\+Long\+Double}}
+\item 
+long double \mbox{\hyperlink{structpaceval__s_inner_cached_data_af59feed223ba37b2d8847e962b40dbc0}{inner\+Cached\+Value2\+As\+Long\+Double}}
+\item 
+long double \mbox{\hyperlink{structpaceval__s_inner_cached_data_a6c33211f90d820c3a6ade7dc4a35644c}{inner\+Cached\+Result\+As\+Long\+Double}}
+\item 
+double \mbox{\hyperlink{structpaceval__s_inner_cached_data_afb5b7011ab8404a1642ad190c29dfc74}{inner\+Cached\+Value1\+As\+Double}}
+\item 
+double \mbox{\hyperlink{structpaceval__s_inner_cached_data_a9d1b8d3216de0ba0bdf805d444d1cd93}{inner\+Cached\+Value2\+As\+Double}}
+\item 
+double \mbox{\hyperlink{structpaceval__s_inner_cached_data_ac6e7f5e2804a9731be707545bea3b876}{inner\+Cached\+Result\+As\+Double}}
+\item 
+float \mbox{\hyperlink{structpaceval__s_inner_cached_data_aa4d08e37287d95b3173f256a285ca860}{inner\+Cached\+Value1\+As\+Float}}
+\item 
+float \mbox{\hyperlink{structpaceval__s_inner_cached_data_a1bbad790efb799f4141f735591d876c3}{inner\+Cached\+Value2\+As\+Float}}
+\item 
+float \mbox{\hyperlink{structpaceval__s_inner_cached_data_a65b86f2bb8bd883ea5855272743ee8d0}{inner\+Cached\+Result\+As\+Float}}
+\item 
+bool \mbox{\hyperlink{structpaceval__s_inner_cached_data_ac98779c96b9a32aaae5ec27756dc3c5a}{inner\+Cached\+Has\+Trusted\+Min\+Max\+Values}}
+\item 
+long double \mbox{\hyperlink{structpaceval__s_inner_cached_data_a8545d89a258af14b0908fea41abc7476}{inner\+Cached\+Trusted\+Result}}
+\item 
+long double \mbox{\hyperlink{structpaceval__s_inner_cached_data_a96ea8e5550bee34fbf9aa1fcca5933fa}{inner\+Cached\+Trusted\+Min\+Value}}
+\item 
+long double \mbox{\hyperlink{structpaceval__s_inner_cached_data_acb7f010f5ece0572f6616529a0dc6d7e}{inner\+Cached\+Trusted\+Max\+Value}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The struct \doxylink{structpaceval__s_inner_cached_data}{paceval\+\_\+s\+Inner\+Cached\+Data} is used when necessary by the struct \doxylink{structpaceval__s_node_specific_data}{paceval\+\_\+s\+Node\+Specific\+Data} and stores data for inner and outer caching. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structpaceval__s_inner_cached_data_a37338e15d4b189a7bee39e9b38ec8e94}\label{structpaceval__s_inner_cached_data_a37338e15d4b189a7bee39e9b38ec8e94} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!failedReadCacheCounter@{failedReadCacheCounter}}
+\index{failedReadCacheCounter@{failedReadCacheCounter}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{failedReadCacheCounter}{failedReadCacheCounter}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+s\+Inner\+Cached\+Data\+::failed\+Read\+Cache\+Counter}
+
+stores the number of times the inner caching of a partial calculation failed (see paceval\+\_\+max\+Number\+Of\+Failed\+Read\+Inner\+Cached\+Data in \doxylink{paceval__d_version_8h}{paceval\+\_\+d\+Version.\+h}) \Hypertarget{structpaceval__s_inner_cached_data_ac98779c96b9a32aaae5ec27756dc3c5a}\label{structpaceval__s_inner_cached_data_ac98779c96b9a32aaae5ec27756dc3c5a} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!innerCachedHasTrustedMinMaxValues@{innerCachedHasTrustedMinMaxValues}}
+\index{innerCachedHasTrustedMinMaxValues@{innerCachedHasTrustedMinMaxValues}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{innerCachedHasTrustedMinMaxValues}{innerCachedHasTrustedMinMaxValues}}
+{\footnotesize\ttfamily bool paceval\+\_\+s\+Inner\+Cached\+Data\+::inner\+Cached\+Has\+Trusted\+Min\+Max\+Values}
+
+stores whether the result value is trusted (true) or not trusted (false) \Hypertarget{structpaceval__s_inner_cached_data_ac6e7f5e2804a9731be707545bea3b876}\label{structpaceval__s_inner_cached_data_ac6e7f5e2804a9731be707545bea3b876} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!innerCachedResultAsDouble@{innerCachedResultAsDouble}}
+\index{innerCachedResultAsDouble@{innerCachedResultAsDouble}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{innerCachedResultAsDouble}{innerCachedResultAsDouble}}
+{\footnotesize\ttfamily double paceval\+\_\+s\+Inner\+Cached\+Data\+::inner\+Cached\+Result\+As\+Double}
+
+stores the result value as double \Hypertarget{structpaceval__s_inner_cached_data_a65b86f2bb8bd883ea5855272743ee8d0}\label{structpaceval__s_inner_cached_data_a65b86f2bb8bd883ea5855272743ee8d0} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!innerCachedResultAsFloat@{innerCachedResultAsFloat}}
+\index{innerCachedResultAsFloat@{innerCachedResultAsFloat}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{innerCachedResultAsFloat}{innerCachedResultAsFloat}}
+{\footnotesize\ttfamily float paceval\+\_\+s\+Inner\+Cached\+Data\+::inner\+Cached\+Result\+As\+Float}
+
+stores the result value as float \Hypertarget{structpaceval__s_inner_cached_data_a6c33211f90d820c3a6ade7dc4a35644c}\label{structpaceval__s_inner_cached_data_a6c33211f90d820c3a6ade7dc4a35644c} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!innerCachedResultAsLongDouble@{innerCachedResultAsLongDouble}}
+\index{innerCachedResultAsLongDouble@{innerCachedResultAsLongDouble}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{innerCachedResultAsLongDouble}{innerCachedResultAsLongDouble}}
+{\footnotesize\ttfamily long double paceval\+\_\+s\+Inner\+Cached\+Data\+::inner\+Cached\+Result\+As\+Long\+Double}
+
+stores the result value as long double \Hypertarget{structpaceval__s_inner_cached_data_acb7f010f5ece0572f6616529a0dc6d7e}\label{structpaceval__s_inner_cached_data_acb7f010f5ece0572f6616529a0dc6d7e} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!innerCachedTrustedMaxValue@{innerCachedTrustedMaxValue}}
+\index{innerCachedTrustedMaxValue@{innerCachedTrustedMaxValue}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{innerCachedTrustedMaxValue}{innerCachedTrustedMaxValue}}
+{\footnotesize\ttfamily long double paceval\+\_\+s\+Inner\+Cached\+Data\+::inner\+Cached\+Trusted\+Max\+Value}
+
+stores the maximum value of the interval if the result is not trusted \Hypertarget{structpaceval__s_inner_cached_data_a96ea8e5550bee34fbf9aa1fcca5933fa}\label{structpaceval__s_inner_cached_data_a96ea8e5550bee34fbf9aa1fcca5933fa} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!innerCachedTrustedMinValue@{innerCachedTrustedMinValue}}
+\index{innerCachedTrustedMinValue@{innerCachedTrustedMinValue}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{innerCachedTrustedMinValue}{innerCachedTrustedMinValue}}
+{\footnotesize\ttfamily long double paceval\+\_\+s\+Inner\+Cached\+Data\+::inner\+Cached\+Trusted\+Min\+Value}
+
+stores the minimum value of the interval if the result is not trusted \Hypertarget{structpaceval__s_inner_cached_data_a8545d89a258af14b0908fea41abc7476}\label{structpaceval__s_inner_cached_data_a8545d89a258af14b0908fea41abc7476} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!innerCachedTrustedResult@{innerCachedTrustedResult}}
+\index{innerCachedTrustedResult@{innerCachedTrustedResult}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{innerCachedTrustedResult}{innerCachedTrustedResult}}
+{\footnotesize\ttfamily long double paceval\+\_\+s\+Inner\+Cached\+Data\+::inner\+Cached\+Trusted\+Result}
+
+stores the result value with the precision long double \Hypertarget{structpaceval__s_inner_cached_data_afb5b7011ab8404a1642ad190c29dfc74}\label{structpaceval__s_inner_cached_data_afb5b7011ab8404a1642ad190c29dfc74} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!innerCachedValue1AsDouble@{innerCachedValue1AsDouble}}
+\index{innerCachedValue1AsDouble@{innerCachedValue1AsDouble}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{innerCachedValue1AsDouble}{innerCachedValue1AsDouble}}
+{\footnotesize\ttfamily double paceval\+\_\+s\+Inner\+Cached\+Data\+::inner\+Cached\+Value1\+As\+Double}
+
+stores the first value as double \Hypertarget{structpaceval__s_inner_cached_data_aa4d08e37287d95b3173f256a285ca860}\label{structpaceval__s_inner_cached_data_aa4d08e37287d95b3173f256a285ca860} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!innerCachedValue1AsFloat@{innerCachedValue1AsFloat}}
+\index{innerCachedValue1AsFloat@{innerCachedValue1AsFloat}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{innerCachedValue1AsFloat}{innerCachedValue1AsFloat}}
+{\footnotesize\ttfamily float paceval\+\_\+s\+Inner\+Cached\+Data\+::inner\+Cached\+Value1\+As\+Float}
+
+stores the first value as float \Hypertarget{structpaceval__s_inner_cached_data_ad02ff1767606c4cbd43841a679ef515b}\label{structpaceval__s_inner_cached_data_ad02ff1767606c4cbd43841a679ef515b} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!innerCachedValue1AsLongDouble@{innerCachedValue1AsLongDouble}}
+\index{innerCachedValue1AsLongDouble@{innerCachedValue1AsLongDouble}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{innerCachedValue1AsLongDouble}{innerCachedValue1AsLongDouble}}
+{\footnotesize\ttfamily long double paceval\+\_\+s\+Inner\+Cached\+Data\+::inner\+Cached\+Value1\+As\+Long\+Double}
+
+stores the first value as long double \Hypertarget{structpaceval__s_inner_cached_data_a9d1b8d3216de0ba0bdf805d444d1cd93}\label{structpaceval__s_inner_cached_data_a9d1b8d3216de0ba0bdf805d444d1cd93} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!innerCachedValue2AsDouble@{innerCachedValue2AsDouble}}
+\index{innerCachedValue2AsDouble@{innerCachedValue2AsDouble}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{innerCachedValue2AsDouble}{innerCachedValue2AsDouble}}
+{\footnotesize\ttfamily double paceval\+\_\+s\+Inner\+Cached\+Data\+::inner\+Cached\+Value2\+As\+Double}
+
+stores the possible second value as double \Hypertarget{structpaceval__s_inner_cached_data_a1bbad790efb799f4141f735591d876c3}\label{structpaceval__s_inner_cached_data_a1bbad790efb799f4141f735591d876c3} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!innerCachedValue2AsFloat@{innerCachedValue2AsFloat}}
+\index{innerCachedValue2AsFloat@{innerCachedValue2AsFloat}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{innerCachedValue2AsFloat}{innerCachedValue2AsFloat}}
+{\footnotesize\ttfamily float paceval\+\_\+s\+Inner\+Cached\+Data\+::inner\+Cached\+Value2\+As\+Float}
+
+stores the possible second value as float \Hypertarget{structpaceval__s_inner_cached_data_af59feed223ba37b2d8847e962b40dbc0}\label{structpaceval__s_inner_cached_data_af59feed223ba37b2d8847e962b40dbc0} 
+\index{paceval\_sInnerCachedData@{paceval\_sInnerCachedData}!innerCachedValue2AsLongDouble@{innerCachedValue2AsLongDouble}}
+\index{innerCachedValue2AsLongDouble@{innerCachedValue2AsLongDouble}!paceval\_sInnerCachedData@{paceval\_sInnerCachedData}}
+\doxysubsubsection{\texorpdfstring{innerCachedValue2AsLongDouble}{innerCachedValue2AsLongDouble}}
+{\footnotesize\ttfamily long double paceval\+\_\+s\+Inner\+Cached\+Data\+::inner\+Cached\+Value2\+As\+Long\+Double}
+
+stores the possible second value as long double 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/\mbox{\hyperlink{paceval__c_atomic_graph_node_8h}{paceval\+\_\+c\+Atomic\+Graph\+Node.\+h}}\end{DoxyCompactItemize}

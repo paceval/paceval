@@ -1,0 +1,1039 @@
+\doxysection{G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source\+\_\+public/inc/paceval\+\_\+main.h File Reference}
+\hypertarget{paceval__main_8h}{}\label{paceval__main_8h}\index{G:/Onedrive/Development/paceval/system-\/independent/source\_public/inc/paceval\_main.h@{G:/Onedrive/Development/paceval/system-\/independent/source\_public/inc/paceval\_main.h}}
+
+
+the paceval. application programming interface -\/ for documentation please go to \href{https://paceval.com/api/}{\texttt{ https\+://paceval.\+com/api/}}  
+
+
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{paceval__main_8h_adff3231ed7be17f42658c7a1c0ae12be}{paceval\+\_\+main\+Version\+String}}~"{}4"{}
+\item 
+\#define \mbox{\hyperlink{paceval__main_8h_a3580a3d4a77d5d501b521f538b7698da}{paceval\+\_\+sub\+Version\+String}}~"{}25"{}
+\item 
+\#define \mbox{\hyperlink{paceval__main_8h_a09c4fa95754d4be39824ff7075988ed0}{PACEVAL\+\_\+\+MAXVER}}~255
+\item 
+\#define \mbox{\hyperlink{paceval__main_8h_a03674963d268849a48efdf3b2b7f9247}{PACEVAL\+\_\+\+MAXERR}}~255
+\item 
+\#define \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}~void\texorpdfstring{$\ast$}{*}
+\item 
+\#define \mbox{\hyperlink{paceval__main_8h_a5d57777450dab7225724b873a05adf47}{paceval\+\_\+use\+\_\+dll}}~0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef bool \mbox{\hyperlink{paceval__main_8h_a953cdb322badceecf9e5351340e0eb2f}{paceval\+\_\+callback\+Status\+Type}}(const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}, const \mbox{\hyperlink{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63}{paceval\+\_\+e\+Status\+Types}}, const int)
+\item 
+typedef bool \mbox{\hyperlink{paceval__main_8h_a0d991e803d57a927030e18b762b6aae5}{paceval\+\_\+callback\+User\+Function\+Type}}(const int, const long double \texorpdfstring{$\ast$}{*}, long double \texorpdfstring{$\ast$}{*}, const double \texorpdfstring{$\ast$}{*}, double \texorpdfstring{$\ast$}{*}, const float \texorpdfstring{$\ast$}{*}, float \texorpdfstring{$\ast$}{*})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328ef}{paceval\+\_\+e\+Error\+Types}} \{ \newline
+\mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa54fb07f3adc19d4a415b07ff4f031e00}{PACEVAL\+\_\+\+ERR\+\_\+\+NO\+\_\+\+ERROR}} = 0
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa9b570d053c0d00f9bd07781ec3610623}{PACEVAL\+\_\+\+ERR\+\_\+\+CREATION\+\_\+\+NO\+\_\+\+ERROR\+\_\+\+BUT\+\_\+\+BUSY}} = 1
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa663566d8247a643ae84282616f17c91b}{PACEVAL\+\_\+\+ERR\+\_\+\+CREATION\+\_\+\+OUT\+\_\+\+OF\+\_\+\+MEMORY}} = 5
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efadeba5706b83133f1aca8f32850e389fe}{PACEVAL\+\_\+\+ERR\+\_\+\+BEGIN}}
+, \newline
+\mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa26873b4af809ec601f168ffb2d80e478}{PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa20de8ab719365d3e1b370d021a4bdcf0}{PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+INITIALIZE\+\_\+\+LIBRARY\+\_\+\+NOT\+\_\+\+CALLED}} = 10
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa4b5e40984d7b17c281c2c369fc280867}{PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+NO\+\_\+\+LICENSE}} = 11
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa69c65d907d0da154c61b0dbdb6337980}{PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+CONNECTING\+\_\+\+SERVER}} = 15
+, \newline
+\mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efaae44c2b3feabf342737e787dfca42b80}{PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+PARAMETERS\+\_\+\+SERVER}} = 16
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efada8ec242568be141794a4667c14d62e0}{PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+END}}
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efac1bdea5aca84a153c06aef67b4ff9012}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efabeb03fa082a03fd9820b9bd0de49e7e9}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNKNOWN\+\_\+\+SIGN\+\_\+\+OR\+\_\+\+FUNCTION}} = 110
+, \newline
+\mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa5e6425ef83bf9951b384ffb4f89dfe6b}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+BRACKETS}} = 111
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa0404db007ab6dbce7d95304fbd8347ab}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNKNOWN\+\_\+\+CONSTANT\+\_\+\+OR\+\_\+\+VARIABLE}} = 112
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa1f9f79a57013df7b08dcd50c7cd8e95f}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+COMMENT}} = 113
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efafcd7735036acb95fd7b55839487de049}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+NUMBER\+\_\+\+OF\+\_\+\+VARIABLES}} = 114
+, \newline
+\mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efad7a87cc1297201653506ed202bfbc327}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+MISPLACED\+\_\+\+SIGN\+\_\+\+CALCULATION}} = 115
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa32ab45e9fb24ba8f645c6d53e4cdb516}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNEXPECTED\+\_\+\+END}} = 116
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa8fddf4c00a218e948cca4d79008aeb7a}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+WRONGLY\+\_\+\+USED\+\_\+\+FUNCTION}} = 117
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efab062b50b27d6d9a847a78eb31585196a}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+NO\+\_\+\+USER\+\_\+\+FUNCTION}} = 118
+, \newline
+\mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa801e61699d4128f464af3f2e3e336375}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNKNOWN\+\_\+\+CHARACTER}} = 119
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa49f79a5a6d6722cfbff594f23e134c1d}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+WRONGLY\+\_\+\+USED\+\_\+\+CONSTANT\+\_\+\+OR\+\_\+\+VALUE}} = 120
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa1f18cff3f779e3bbd97ccb58e038b8dc}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+MISSING\+\_\+\+OPERATOR}} = 121
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa07ab5fe66b535c72dde07ef18dd33474}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+OUT\+\_\+\+OF\+\_\+\+MEMORY}} = 122
+, \newline
+\mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa431aa6a368ef5149e7c58955e5d7d9d7}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNKNOWN\+\_\+\+OBJECT\+\_\+\+TYPE}} = 124
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efabb85a0c074290e3e8fd3692df2c22a67}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+MEMORY\+\_\+\+CLEANUP}} = 126
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa4c338173b303685485bb6935f756383a}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+USER\+\_\+\+ABORT}} = 127
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa94aec5315976f9cd0cc060e9d1bde08c}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+MATH\+\_\+\+OS\+\_\+\+NOT\+\_\+\+SUPPORTED}} = 128
+, \newline
+\mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efabe77356bea1ec328e8f93de3e9ef5e67}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+NO\+\_\+\+COMMUNITY\+\_\+\+FEATURE}} = 130
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa3eadc919a67a628dd59fc053680c94a4}{PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+END}}
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa01bad02a32c55a229fddff966ba89560}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+BEGIN}}
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa2a729c72fa185ac4ad5b5a80d4cd6313}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+HANDLE\+\_\+\+INVALID}} = 140
+, \newline
+\mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efab0d6e0c6a095aca50088f2e0e7a1c9a6}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+MULTIPLICATION}} = 141
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa69fccb222a128666238f984cd494c31c}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+DIVISION}} = 142
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efaa565d462f5d1f098e98e8d58159ded53}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+FUNCTION}} = 143
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efafe8a3648110c7bff746407745a13534f}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+ADDITION}} = 144
+, \newline
+\mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efae0ffed72a8f1c660c4d44724818345be}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+SUBTRACTION}} = 145
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efae083ac83eb8a7a9f6e5ad4eb2e78b33f}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+UNSPECIFIED}} = 150
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efab592e30a32f86f4331c835f310b6846d}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+INTERVAL\+\_\+\+RESULT}} = 151
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa64805c8dfe97b02b5e253fbc79c7903f}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+USER\+\_\+\+ABORT}} = 152
+, \newline
+\mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efaed86ef75167e52a58d89b1b964d3a9da}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+RESULT}} = 153
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efae012d60e48f7f70d519254dee570354e}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+BUSY}} = 154
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa0199aac463c0ec923033db908cb22ed9}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+USER\+\_\+\+COMPILER\+\_\+\+NOT\+\_\+\+SUPPORTS\+\_\+\+LONG\+\_\+\+DOUBLE}} = 160
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efad3760889cb31dd5881312ae0fafdb38a}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+PRECHECK\+\_\+\+MULTIPLE}} = 161
+, \newline
+\mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa7dc6faadae7c876d3237d2be140adb0c}{PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+END}}
+, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa228c3c3105fad994aaa0c226c27ee528}{PACEVAL\+\_\+\+ERR\+\_\+\+END}}
+ \}
+\item 
+enum \mbox{\hyperlink{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63}{paceval\+\_\+e\+Status\+Types}} \{ \mbox{\hyperlink{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63a7997634acd8a92d54de92c0dde169ef0}{PACEVAL\+\_\+\+STATUS\+\_\+\+NO\+\_\+\+STATUS}} = 0
+, \mbox{\hyperlink{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63a3c50a0aa14977fc6852529b856934bd7}{PACEVAL\+\_\+\+STATUS\+\_\+\+ANALYSIS\+\_\+\+PROGRESS}} = 1
+, \mbox{\hyperlink{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63a0a2864200183d59c3abc99b78242171e}{PACEVAL\+\_\+\+STATUS\+\_\+\+ANALYSIS\+\_\+\+ERROR}} = 2
+ \}
+\item 
+enum \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}} \{ \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11eae8c20c67be7bf6acfdfa011f0d5d6697}{PACEVAL\+\_\+\+CALCULATION\+\_\+\+PRECISION\+\_\+\+NO\+\_\+\+PRECISION}} = 0
+, \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11ea2061f102cee838ac38004e9bf96f49cc}{PACEVAL\+\_\+\+CALCULATION\+\_\+\+PRECISION\+\_\+\+FLOAT}} = 4
+, \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11ea728e83cc0d27d076a317234f7384deaa}{PACEVAL\+\_\+\+CALCULATION\+\_\+\+PRECISION\+\_\+\+DOUBLE}} = 8
+, \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11eac9bfe21df9cd5508325e0299be0ab822}{PACEVAL\+\_\+\+CALCULATION\+\_\+\+PRECISION\+\_\+\+LONG\+\_\+\+DOUBLE}} = 10
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \mbox{\hyperlink{paceval__main_8h_ae04cf0ab1cdbd57df334d660578bfdc3}{paceval\+\_\+\+Create\+Computation}} (const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in, bool use\+Interval\+\_\+in, \mbox{\hyperlink{paceval__main_8h_a953cdb322badceecf9e5351340e0eb2f}{paceval\+\_\+callback\+Status\+Type}} \texorpdfstring{$\ast$}{*}paceval\+\_\+callback\+Status\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_ae110de903a843cf67aae55c9157321c3}{paceval\+\_\+\+Create\+Multiple\+Computations}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+out\mbox{[}$\,$\mbox{]}, const char \texorpdfstring{$\ast$}{*}function\+Strings\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in, bool use\+Interval\+\_\+in, \mbox{\hyperlink{paceval__main_8h_a953cdb322badceecf9e5351340e0eb2f}{paceval\+\_\+callback\+Status\+Type}} \texorpdfstring{$\ast$}{*}paceval\+\_\+callback\+Status\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_a3bbf1ad5d43871e716421e5e9258a81f}{paceval\+\_\+\+Exist\+Computation}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_a0a5a920a210ff6914dd5742f096635a2}{paceval\+\_\+\+Delete\+Computation}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+int \mbox{\hyperlink{paceval__main_8h_a2b65fedcf0fe473b8fa8c7cb1ffe2d04}{paceval\+\_\+ld\+Convert\+Float\+To\+String}} (char \texorpdfstring{$\ast$}{*}destination\+String\+\_\+out, long double float\+\_\+in)
+\item 
+int \mbox{\hyperlink{paceval__main_8h_a44b9c6c08787849c24e614730379915e}{paceval\+\_\+d\+Convert\+Float\+To\+String}} (char \texorpdfstring{$\ast$}{*}destination\+String\+\_\+out, double float\+\_\+in)
+\item 
+int \mbox{\hyperlink{paceval__main_8h_a98a374e463cf39a88002cb4c2e04b330}{paceval\+\_\+f\+Convert\+Float\+To\+String}} (char \texorpdfstring{$\ast$}{*}destination\+String\+\_\+out, float float\+\_\+in)
+\item 
+long double \mbox{\hyperlink{paceval__main_8h_a8b350b303088c466d8e33af2cb993da1}{paceval\+\_\+ld\+Convert\+String\+To\+Float}} (const char \texorpdfstring{$\ast$}{*}source\+String\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, long \texorpdfstring{$\ast$}{*}err\+Position\+\_\+out, bool use\+Interval\+\_\+in, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+double \mbox{\hyperlink{paceval__main_8h_a9bece1ed849041ccae24ab45211f015c}{paceval\+\_\+d\+Convert\+String\+To\+Float}} (const char \texorpdfstring{$\ast$}{*}source\+String\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, long \texorpdfstring{$\ast$}{*}err\+Position\+\_\+out, bool use\+Interval\+\_\+in, double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+float \mbox{\hyperlink{paceval__main_8h_a2cf189e770fe4476e5fa2413dc2ac27d}{paceval\+\_\+f\+Convert\+String\+To\+Float}} (const char \texorpdfstring{$\ast$}{*}source\+String\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, long \texorpdfstring{$\ast$}{*}err\+Position\+\_\+out, bool use\+Interval\+\_\+in, float \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+long double \mbox{\hyperlink{paceval__main_8h_a1ee9aba36d0e8c5b976b3041a307d686}{paceval\+\_\+ldmathv}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in,...)
+\item 
+double \mbox{\hyperlink{paceval__main_8h_adb7810ef4d1bb1faad4f53ef9b3be0ad}{paceval\+\_\+dmathv}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in,...)
+\item 
+float \mbox{\hyperlink{paceval__main_8h_adab52ee43943a9e39d1a868ce45fef86}{paceval\+\_\+fmathv}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in,...)
+\item 
+long double \mbox{\hyperlink{paceval__main_8h_a0c438c5b9941288a8f8ccdf752e2994e}{paceval\+\_\+ldmathvi}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in,...)
+\item 
+double \mbox{\hyperlink{paceval__main_8h_adb94a3729c81137ecce3389870b396ae}{paceval\+\_\+dmathvi}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in,...)
+\item 
+float \mbox{\hyperlink{paceval__main_8h_a7ae18edbb7f6056e94840eecc471d33f}{paceval\+\_\+fmathvi}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in, int \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in,...)
+\item 
+long double \mbox{\hyperlink{paceval__main_8h_a25b7909057621f8ec8c52312b692f80a}{paceval\+\_\+ld\+Get\+Computation\+Result}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, long double values\+\_\+in\mbox{[}$\,$\mbox{]}, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+double \mbox{\hyperlink{paceval__main_8h_acbc57bb0edcafb8811d082617b6b1531}{paceval\+\_\+d\+Get\+Computation\+Result}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, double values\+\_\+in\mbox{[}$\,$\mbox{]}, double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+float \mbox{\hyperlink{paceval__main_8h_a608786d2771854226f6326ebd9c9c0ab}{paceval\+\_\+f\+Get\+Computation\+Result}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, float values\+\_\+in\mbox{[}$\,$\mbox{]}, float \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_aa1ced7b5bfb432bc46e7c77ec7e70a08}{paceval\+\_\+ld\+Get\+Computation\+Result\+Ext}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, long double values\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Of\+Calculations\+\_\+in, long double \texorpdfstring{$\ast$}{*}results\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_a355e632ee48694f62cf038b77b6ca6ac}{paceval\+\_\+d\+Get\+Computation\+Result\+Ext}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, double values\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Of\+Calculations\+\_\+in, double \texorpdfstring{$\ast$}{*}results\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_ac0f2e206cb7c87cffa8bb334ee2832d1}{paceval\+\_\+f\+Get\+Computation\+Result\+Ext}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, float values\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Of\+Calculations\+\_\+in, float \texorpdfstring{$\ast$}{*}results\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_afabef4b584a635a79afdc5034a1397af}{paceval\+\_\+ld\+Get\+Multiple\+Computations\+Results}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, long double values\+\_\+in\mbox{[}$\,$\mbox{]}, long double \texorpdfstring{$\ast$}{*}results\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_a7ee63b91471db048e4e8c7c9940a0b14}{paceval\+\_\+d\+Get\+Multiple\+Computations\+Results}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, double values\+\_\+in\mbox{[}$\,$\mbox{]}, double \texorpdfstring{$\ast$}{*}results\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_ad33a118f90a1313031e7724839c6c025}{paceval\+\_\+f\+Get\+Multiple\+Computations\+Results}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, float values\+\_\+in\mbox{[}$\,$\mbox{]}, float \texorpdfstring{$\ast$}{*}results\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_ac5dc620a3ba9d03ca3f80f47900fff7d}{paceval\+\_\+ld\+Get\+Multiple\+Computations\+Results\+Ext}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, long double values\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Of\+Calculations\+\_\+in, long double \texorpdfstring{$\ast$}{*}results\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_a5cc7887ed6b733722bd93a7669cf7a34}{paceval\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, double values\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Of\+Calculations\+\_\+in, double \texorpdfstring{$\ast$}{*}results\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, double \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_ad459ea225b88689869085d7995c8b0d8}{paceval\+\_\+f\+Get\+Multiple\+Computations\+Results\+Ext}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in, float values\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Of\+Calculations\+\_\+in, float \texorpdfstring{$\ast$}{*}results\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Min\+Results\+\_\+out, float \texorpdfstring{$\ast$}{*}trusted\+Max\+Results\+\_\+out, int \texorpdfstring{$\ast$}{*}error\+Types\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_aeb160cc6b1cd758372a45264f3e92ee7}{paceval\+\_\+\+Get\+Is\+Error}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+int \mbox{\hyperlink{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786}{paceval\+\_\+\+Get\+Error\+Information}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, char \texorpdfstring{$\ast$}{*}last\+Error\+\_\+str\+Operator\+\_\+out, long \texorpdfstring{$\ast$}{*}last\+Error\+\_\+err\+Position\+\_\+out)
+\item 
+int \mbox{\hyperlink{paceval__main_8h_ad4fb9e86602b96735b49ca4ce737d55f}{paceval\+\_\+\+Create\+Error\+Information\+Text}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, char \texorpdfstring{$\ast$}{*}last\+Error\+\_\+str\+Message\+\_\+out, char \texorpdfstring{$\ast$}{*}last\+Error\+\_\+str\+Details\+\_\+out)
+\item 
+int \mbox{\hyperlink{paceval__main_8h_a5cd9aa61dffec4c9a1edc7ff9f5cb7da}{paceval\+\_\+\+Get\+Error\+Type\+Message}} (int error\+Type\+\_\+in, char \texorpdfstring{$\ast$}{*}error\+Type\+\_\+str\+Message\+\_\+out)
+\item 
+int \mbox{\hyperlink{paceval__main_8h_aea14f43c3d7f8ff895156c4289d0d9bd}{paceval\+\_\+\+Get\+Computation\+Version\+String}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, char \texorpdfstring{$\ast$}{*}paceval\+\_\+str\+Version\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_a61afdee8752fab8e20c5982959ee9bcd}{paceval\+\_\+\+Set\+Callback\+User\+Function}} (unsigned int number\+User\+Function\+\_\+in, const char \texorpdfstring{$\ast$}{*}single\+Function\+String\+\_\+in, \mbox{\hyperlink{paceval__main_8h_a0d991e803d57a927030e18b762b6aae5}{paceval\+\_\+callback\+User\+Function\+Type}} \texorpdfstring{$\ast$}{*}paceval\+\_\+callback\+User\+Function\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_aad60cbad108b9e96511355e605d6ffaa}{paceval\+\_\+\+Initialize\+Library}} (const char \texorpdfstring{$\ast$}{*}init\+String\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__main_8h_a36703ae7d9e3998f7a60e8295ec92427}{paceval\+\_\+\+Free\+Library}} ()
+\item 
+unsigned long \mbox{\hyperlink{paceval__main_8h_a6db0db946cb55b8c85c82082c58b8717}{paceval\+\_\+\+Create\+XMLFrom\+Parameters}} (char \texorpdfstring{$\ast$}{*}paceval\+\_\+str\+XML\+\_\+out, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}variables\+\_\+in, const char \texorpdfstring{$\ast$}{*}values\+String\+\_\+in, bool use\+Interval\+\_\+in)
+\item 
+int \mbox{\hyperlink{paceval__main_8h_a27886e80efbb9b9b3d18cc34ed90168d}{paceval\+\_\+\+Read\+Parameters\+From\+XML}} (const char \texorpdfstring{$\ast$}{*}paceval\+\_\+str\+XML\+\_\+in, unsigned long \texorpdfstring{$\ast$}{*}function\+String\+Length\+\_\+out, unsigned long \texorpdfstring{$\ast$}{*}variables\+String\+Length\+\_\+out, unsigned long \texorpdfstring{$\ast$}{*}number\+Of\+Variables\+\_\+out, unsigned long \texorpdfstring{$\ast$}{*}values\+String\+Length\+\_\+out, char \texorpdfstring{$\ast$}{*}function\+String\+\_\+out, char \texorpdfstring{$\ast$}{*}variables\+\_\+out, char \texorpdfstring{$\ast$}{*}values\+String\+\_\+out, bool \texorpdfstring{$\ast$}{*}use\+Interval\+\_\+out)
+\item 
+unsigned long \mbox{\hyperlink{paceval__main_8h_a3ee97cad992bf2e26a88765ce587dfb7}{paceval\+\_\+\+Get\+Computation\+Information\+XML}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, char \texorpdfstring{$\ast$}{*}paceval\+\_\+str\+XML\+\_\+out)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+the paceval. application programming interface -\/ for documentation please go to \href{https://paceval.com/api/}{\texttt{ https\+://paceval.\+com/api/}} 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}\label{paceval__main_8h_a6f1065aa80751e736be247a901a6258f} 
+\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_HANDLE@{PACEVAL\_HANDLE}}
+\index{PACEVAL\_HANDLE@{PACEVAL\_HANDLE}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{PACEVAL\_HANDLE}{PACEVAL\_HANDLE}}
+{\footnotesize\ttfamily \#define PACEVAL\+\_\+\+HANDLE~void\texorpdfstring{$\ast$}{*}}
+
+\Hypertarget{paceval__main_8h_adff3231ed7be17f42658c7a1c0ae12be}\label{paceval__main_8h_adff3231ed7be17f42658c7a1c0ae12be} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_mainVersionString@{paceval\_mainVersionString}}
+\index{paceval\_mainVersionString@{paceval\_mainVersionString}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_mainVersionString}{paceval\_mainVersionString}}
+{\footnotesize\ttfamily \#define paceval\+\_\+main\+Version\+String~"{}4"{}}
+
+\Hypertarget{paceval__main_8h_a03674963d268849a48efdf3b2b7f9247}\label{paceval__main_8h_a03674963d268849a48efdf3b2b7f9247} 
+\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_MAXERR@{PACEVAL\_MAXERR}}
+\index{PACEVAL\_MAXERR@{PACEVAL\_MAXERR}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{PACEVAL\_MAXERR}{PACEVAL\_MAXERR}}
+{\footnotesize\ttfamily \#define PACEVAL\+\_\+\+MAXERR~255}
+
+\Hypertarget{paceval__main_8h_a09c4fa95754d4be39824ff7075988ed0}\label{paceval__main_8h_a09c4fa95754d4be39824ff7075988ed0} 
+\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_MAXVER@{PACEVAL\_MAXVER}}
+\index{PACEVAL\_MAXVER@{PACEVAL\_MAXVER}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{PACEVAL\_MAXVER}{PACEVAL\_MAXVER}}
+{\footnotesize\ttfamily \#define PACEVAL\+\_\+\+MAXVER~255}
+
+\Hypertarget{paceval__main_8h_a3580a3d4a77d5d501b521f538b7698da}\label{paceval__main_8h_a3580a3d4a77d5d501b521f538b7698da} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_subVersionString@{paceval\_subVersionString}}
+\index{paceval\_subVersionString@{paceval\_subVersionString}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_subVersionString}{paceval\_subVersionString}}
+{\footnotesize\ttfamily \#define paceval\+\_\+sub\+Version\+String~"{}25"{}}
+
+\Hypertarget{paceval__main_8h_a5d57777450dab7225724b873a05adf47}\label{paceval__main_8h_a5d57777450dab7225724b873a05adf47} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_use\_dll@{paceval\_use\_dll}}
+\index{paceval\_use\_dll@{paceval\_use\_dll}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_use\_dll}{paceval\_use\_dll}}
+{\footnotesize\ttfamily \#define paceval\+\_\+use\+\_\+dll~0}
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{paceval__main_8h_a953cdb322badceecf9e5351340e0eb2f}\label{paceval__main_8h_a953cdb322badceecf9e5351340e0eb2f} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_callbackStatusType@{paceval\_callbackStatusType}}
+\index{paceval\_callbackStatusType@{paceval\_callbackStatusType}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_callbackStatusType}{paceval\_callbackStatusType}}
+{\footnotesize\ttfamily typedef bool paceval\+\_\+callback\+Status\+Type(const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}, const \mbox{\hyperlink{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63}{paceval\+\_\+e\+Status\+Types}}, const int)}
+
+\Hypertarget{paceval__main_8h_a0d991e803d57a927030e18b762b6aae5}\label{paceval__main_8h_a0d991e803d57a927030e18b762b6aae5} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_callbackUserFunctionType@{paceval\_callbackUserFunctionType}}
+\index{paceval\_callbackUserFunctionType@{paceval\_callbackUserFunctionType}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_callbackUserFunctionType}{paceval\_callbackUserFunctionType}}
+{\footnotesize\ttfamily typedef bool paceval\+\_\+callback\+User\+Function\+Type(const int, const long double \texorpdfstring{$\ast$}{*}, long double \texorpdfstring{$\ast$}{*}, const double \texorpdfstring{$\ast$}{*}, double \texorpdfstring{$\ast$}{*}, const float \texorpdfstring{$\ast$}{*}, float \texorpdfstring{$\ast$}{*})}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}\label{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_eCalculationPrecisionTypes@{paceval\_eCalculationPrecisionTypes}}
+\index{paceval\_eCalculationPrecisionTypes@{paceval\_eCalculationPrecisionTypes}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_eCalculationPrecisionTypes}{paceval\_eCalculationPrecisionTypes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_CALCULATION\_PRECISION\_NO\_PRECISION@{PACEVAL\_CALCULATION\_PRECISION\_NO\_PRECISION}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_CALCULATION\_PRECISION\_NO\_PRECISION@{PACEVAL\_CALCULATION\_PRECISION\_NO\_PRECISION}}}\Hypertarget{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11eae8c20c67be7bf6acfdfa011f0d5d6697}\label{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11eae8c20c67be7bf6acfdfa011f0d5d6697} 
+PACEVAL\+\_\+\+CALCULATION\+\_\+\+PRECISION\+\_\+\+NO\+\_\+\+PRECISION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_CALCULATION\_PRECISION\_FLOAT@{PACEVAL\_CALCULATION\_PRECISION\_FLOAT}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_CALCULATION\_PRECISION\_FLOAT@{PACEVAL\_CALCULATION\_PRECISION\_FLOAT}}}\Hypertarget{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11ea2061f102cee838ac38004e9bf96f49cc}\label{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11ea2061f102cee838ac38004e9bf96f49cc} 
+PACEVAL\+\_\+\+CALCULATION\+\_\+\+PRECISION\+\_\+\+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_CALCULATION\_PRECISION\_DOUBLE@{PACEVAL\_CALCULATION\_PRECISION\_DOUBLE}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_CALCULATION\_PRECISION\_DOUBLE@{PACEVAL\_CALCULATION\_PRECISION\_DOUBLE}}}\Hypertarget{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11ea728e83cc0d27d076a317234f7384deaa}\label{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11ea728e83cc0d27d076a317234f7384deaa} 
+PACEVAL\+\_\+\+CALCULATION\+\_\+\+PRECISION\+\_\+\+DOUBLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_CALCULATION\_PRECISION\_LONG\_DOUBLE@{PACEVAL\_CALCULATION\_PRECISION\_LONG\_DOUBLE}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_CALCULATION\_PRECISION\_LONG\_DOUBLE@{PACEVAL\_CALCULATION\_PRECISION\_LONG\_DOUBLE}}}\Hypertarget{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11eac9bfe21df9cd5508325e0299be0ab822}\label{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11eac9bfe21df9cd5508325e0299be0ab822} 
+PACEVAL\+\_\+\+CALCULATION\+\_\+\+PRECISION\+\_\+\+LONG\+\_\+\+DOUBLE&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328ef}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328ef} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_eErrorTypes@{paceval\_eErrorTypes}}
+\index{paceval\_eErrorTypes@{paceval\_eErrorTypes}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_eErrorTypes}{paceval\_eErrorTypes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328ef}{paceval\+\_\+e\+Error\+Types}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_NO\_ERROR@{PACEVAL\_ERR\_NO\_ERROR}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_NO\_ERROR@{PACEVAL\_ERR\_NO\_ERROR}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa54fb07f3adc19d4a415b07ff4f031e00}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa54fb07f3adc19d4a415b07ff4f031e00} 
+PACEVAL\+\_\+\+ERR\+\_\+\+NO\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_CREATION\_NO\_ERROR\_BUT\_BUSY@{PACEVAL\_ERR\_CREATION\_NO\_ERROR\_BUT\_BUSY}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_CREATION\_NO\_ERROR\_BUT\_BUSY@{PACEVAL\_ERR\_CREATION\_NO\_ERROR\_BUT\_BUSY}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa9b570d053c0d00f9bd07781ec3610623}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa9b570d053c0d00f9bd07781ec3610623} 
+PACEVAL\+\_\+\+ERR\+\_\+\+CREATION\+\_\+\+NO\+\_\+\+ERROR\+\_\+\+BUT\+\_\+\+BUSY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_CREATION\_OUT\_OF\_MEMORY@{PACEVAL\_ERR\_CREATION\_OUT\_OF\_MEMORY}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_CREATION\_OUT\_OF\_MEMORY@{PACEVAL\_ERR\_CREATION\_OUT\_OF\_MEMORY}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa663566d8247a643ae84282616f17c91b}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa663566d8247a643ae84282616f17c91b} 
+PACEVAL\+\_\+\+ERR\+\_\+\+CREATION\+\_\+\+OUT\+\_\+\+OF\+\_\+\+MEMORY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_BEGIN@{PACEVAL\_ERR\_BEGIN}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_BEGIN@{PACEVAL\_ERR\_BEGIN}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efadeba5706b83133f1aca8f32850e389fe}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efadeba5706b83133f1aca8f32850e389fe} 
+PACEVAL\+\_\+\+ERR\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_FATAL\_BEGIN@{PACEVAL\_ERR\_FATAL\_BEGIN}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_FATAL\_BEGIN@{PACEVAL\_ERR\_FATAL\_BEGIN}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa26873b4af809ec601f168ffb2d80e478}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa26873b4af809ec601f168ffb2d80e478} 
+PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_FATAL\_INITIALIZE\_LIBRARY\_NOT\_CALLED@{PACEVAL\_ERR\_FATAL\_INITIALIZE\_LIBRARY\_NOT\_CALLED}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_FATAL\_INITIALIZE\_LIBRARY\_NOT\_CALLED@{PACEVAL\_ERR\_FATAL\_INITIALIZE\_LIBRARY\_NOT\_CALLED}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa20de8ab719365d3e1b370d021a4bdcf0}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa20de8ab719365d3e1b370d021a4bdcf0} 
+PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+INITIALIZE\+\_\+\+LIBRARY\+\_\+\+NOT\+\_\+\+CALLED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_FATAL\_NO\_LICENSE@{PACEVAL\_ERR\_FATAL\_NO\_LICENSE}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_FATAL\_NO\_LICENSE@{PACEVAL\_ERR\_FATAL\_NO\_LICENSE}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa4b5e40984d7b17c281c2c369fc280867}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa4b5e40984d7b17c281c2c369fc280867} 
+PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+NO\+\_\+\+LICENSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_FATAL\_CONNECTING\_SERVER@{PACEVAL\_ERR\_FATAL\_CONNECTING\_SERVER}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_FATAL\_CONNECTING\_SERVER@{PACEVAL\_ERR\_FATAL\_CONNECTING\_SERVER}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa69c65d907d0da154c61b0dbdb6337980}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa69c65d907d0da154c61b0dbdb6337980} 
+PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+CONNECTING\+\_\+\+SERVER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_FATAL\_PARAMETERS\_SERVER@{PACEVAL\_ERR\_FATAL\_PARAMETERS\_SERVER}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_FATAL\_PARAMETERS\_SERVER@{PACEVAL\_ERR\_FATAL\_PARAMETERS\_SERVER}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efaae44c2b3feabf342737e787dfca42b80}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efaae44c2b3feabf342737e787dfca42b80} 
+PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+PARAMETERS\+\_\+\+SERVER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_FATAL\_END@{PACEVAL\_ERR\_FATAL\_END}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_FATAL\_END@{PACEVAL\_ERR\_FATAL\_END}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efada8ec242568be141794a4667c14d62e0}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efada8ec242568be141794a4667c14d62e0} 
+PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_BEGIN@{PACEVAL\_ERR\_ANALYSIS\_BEGIN}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_BEGIN@{PACEVAL\_ERR\_ANALYSIS\_BEGIN}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efac1bdea5aca84a153c06aef67b4ff9012}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efac1bdea5aca84a153c06aef67b4ff9012} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_SIGN\_OR\_FUNCTION@{PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_SIGN\_OR\_FUNCTION}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_SIGN\_OR\_FUNCTION@{PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_SIGN\_OR\_FUNCTION}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efabeb03fa082a03fd9820b9bd0de49e7e9}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efabeb03fa082a03fd9820b9bd0de49e7e9} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNKNOWN\+\_\+\+SIGN\+\_\+\+OR\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_BRACKETS@{PACEVAL\_ERR\_ANALYSIS\_BRACKETS}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_BRACKETS@{PACEVAL\_ERR\_ANALYSIS\_BRACKETS}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa5e6425ef83bf9951b384ffb4f89dfe6b}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa5e6425ef83bf9951b384ffb4f89dfe6b} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+BRACKETS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_CONSTANT\_OR\_VARIABLE@{PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_CONSTANT\_OR\_VARIABLE}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_CONSTANT\_OR\_VARIABLE@{PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_CONSTANT\_OR\_VARIABLE}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa0404db007ab6dbce7d95304fbd8347ab}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa0404db007ab6dbce7d95304fbd8347ab} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNKNOWN\+\_\+\+CONSTANT\+\_\+\+OR\+\_\+\+VARIABLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_COMMENT@{PACEVAL\_ERR\_ANALYSIS\_COMMENT}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_COMMENT@{PACEVAL\_ERR\_ANALYSIS\_COMMENT}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa1f9f79a57013df7b08dcd50c7cd8e95f}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa1f9f79a57013df7b08dcd50c7cd8e95f} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+COMMENT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_NUMBER\_OF\_VARIABLES@{PACEVAL\_ERR\_ANALYSIS\_NUMBER\_OF\_VARIABLES}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_NUMBER\_OF\_VARIABLES@{PACEVAL\_ERR\_ANALYSIS\_NUMBER\_OF\_VARIABLES}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efafcd7735036acb95fd7b55839487de049}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efafcd7735036acb95fd7b55839487de049} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+NUMBER\+\_\+\+OF\+\_\+\+VARIABLES&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_MISPLACED\_SIGN\_CALCULATION@{PACEVAL\_ERR\_ANALYSIS\_MISPLACED\_SIGN\_CALCULATION}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_MISPLACED\_SIGN\_CALCULATION@{PACEVAL\_ERR\_ANALYSIS\_MISPLACED\_SIGN\_CALCULATION}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efad7a87cc1297201653506ed202bfbc327}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efad7a87cc1297201653506ed202bfbc327} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+MISPLACED\+\_\+\+SIGN\+\_\+\+CALCULATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_UNEXPECTED\_END@{PACEVAL\_ERR\_ANALYSIS\_UNEXPECTED\_END}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_UNEXPECTED\_END@{PACEVAL\_ERR\_ANALYSIS\_UNEXPECTED\_END}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa32ab45e9fb24ba8f645c6d53e4cdb516}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa32ab45e9fb24ba8f645c6d53e4cdb516} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNEXPECTED\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_WRONGLY\_USED\_FUNCTION@{PACEVAL\_ERR\_ANALYSIS\_WRONGLY\_USED\_FUNCTION}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_WRONGLY\_USED\_FUNCTION@{PACEVAL\_ERR\_ANALYSIS\_WRONGLY\_USED\_FUNCTION}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa8fddf4c00a218e948cca4d79008aeb7a}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa8fddf4c00a218e948cca4d79008aeb7a} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+WRONGLY\+\_\+\+USED\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_NO\_USER\_FUNCTION@{PACEVAL\_ERR\_ANALYSIS\_NO\_USER\_FUNCTION}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_NO\_USER\_FUNCTION@{PACEVAL\_ERR\_ANALYSIS\_NO\_USER\_FUNCTION}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efab062b50b27d6d9a847a78eb31585196a}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efab062b50b27d6d9a847a78eb31585196a} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+NO\+\_\+\+USER\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_CHARACTER@{PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_CHARACTER}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_CHARACTER@{PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_CHARACTER}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa801e61699d4128f464af3f2e3e336375}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa801e61699d4128f464af3f2e3e336375} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNKNOWN\+\_\+\+CHARACTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_WRONGLY\_USED\_CONSTANT\_OR\_VALUE@{PACEVAL\_ERR\_ANALYSIS\_WRONGLY\_USED\_CONSTANT\_OR\_VALUE}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_WRONGLY\_USED\_CONSTANT\_OR\_VALUE@{PACEVAL\_ERR\_ANALYSIS\_WRONGLY\_USED\_CONSTANT\_OR\_VALUE}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa49f79a5a6d6722cfbff594f23e134c1d}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa49f79a5a6d6722cfbff594f23e134c1d} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+WRONGLY\+\_\+\+USED\+\_\+\+CONSTANT\+\_\+\+OR\+\_\+\+VALUE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_MISSING\_OPERATOR@{PACEVAL\_ERR\_ANALYSIS\_MISSING\_OPERATOR}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_MISSING\_OPERATOR@{PACEVAL\_ERR\_ANALYSIS\_MISSING\_OPERATOR}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa1f18cff3f779e3bbd97ccb58e038b8dc}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa1f18cff3f779e3bbd97ccb58e038b8dc} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+MISSING\+\_\+\+OPERATOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_OUT\_OF\_MEMORY@{PACEVAL\_ERR\_ANALYSIS\_OUT\_OF\_MEMORY}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_OUT\_OF\_MEMORY@{PACEVAL\_ERR\_ANALYSIS\_OUT\_OF\_MEMORY}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa07ab5fe66b535c72dde07ef18dd33474}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa07ab5fe66b535c72dde07ef18dd33474} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+OUT\+\_\+\+OF\+\_\+\+MEMORY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_OBJECT\_TYPE@{PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_OBJECT\_TYPE}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_OBJECT\_TYPE@{PACEVAL\_ERR\_ANALYSIS\_UNKNOWN\_OBJECT\_TYPE}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa431aa6a368ef5149e7c58955e5d7d9d7}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa431aa6a368ef5149e7c58955e5d7d9d7} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNKNOWN\+\_\+\+OBJECT\+\_\+\+TYPE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_MEMORY\_CLEANUP@{PACEVAL\_ERR\_ANALYSIS\_MEMORY\_CLEANUP}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_MEMORY\_CLEANUP@{PACEVAL\_ERR\_ANALYSIS\_MEMORY\_CLEANUP}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efabb85a0c074290e3e8fd3692df2c22a67}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efabb85a0c074290e3e8fd3692df2c22a67} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+MEMORY\+\_\+\+CLEANUP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_USER\_ABORT@{PACEVAL\_ERR\_ANALYSIS\_USER\_ABORT}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_USER\_ABORT@{PACEVAL\_ERR\_ANALYSIS\_USER\_ABORT}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa4c338173b303685485bb6935f756383a}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa4c338173b303685485bb6935f756383a} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+USER\+\_\+\+ABORT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_MATH\_OS\_NOT\_SUPPORTED@{PACEVAL\_ERR\_ANALYSIS\_MATH\_OS\_NOT\_SUPPORTED}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_MATH\_OS\_NOT\_SUPPORTED@{PACEVAL\_ERR\_ANALYSIS\_MATH\_OS\_NOT\_SUPPORTED}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa94aec5315976f9cd0cc060e9d1bde08c}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa94aec5315976f9cd0cc060e9d1bde08c} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+MATH\+\_\+\+OS\+\_\+\+NOT\+\_\+\+SUPPORTED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_NO\_COMMUNITY\_FEATURE@{PACEVAL\_ERR\_ANALYSIS\_NO\_COMMUNITY\_FEATURE}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_NO\_COMMUNITY\_FEATURE@{PACEVAL\_ERR\_ANALYSIS\_NO\_COMMUNITY\_FEATURE}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efabe77356bea1ec328e8f93de3e9ef5e67}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efabe77356bea1ec328e8f93de3e9ef5e67} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+NO\+\_\+\+COMMUNITY\+\_\+\+FEATURE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_ANALYSIS\_END@{PACEVAL\_ERR\_ANALYSIS\_END}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_ANALYSIS\_END@{PACEVAL\_ERR\_ANALYSIS\_END}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa3eadc919a67a628dd59fc053680c94a4}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa3eadc919a67a628dd59fc053680c94a4} 
+PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_BEGIN@{PACEVAL\_ERR\_COMPUTATION\_BEGIN}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_BEGIN@{PACEVAL\_ERR\_COMPUTATION\_BEGIN}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa01bad02a32c55a229fddff966ba89560}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa01bad02a32c55a229fddff966ba89560} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+BEGIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_HANDLE\_INVALID@{PACEVAL\_ERR\_COMPUTATION\_HANDLE\_INVALID}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_HANDLE\_INVALID@{PACEVAL\_ERR\_COMPUTATION\_HANDLE\_INVALID}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa2a729c72fa185ac4ad5b5a80d4cd6313}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa2a729c72fa185ac4ad5b5a80d4cd6313} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+HANDLE\+\_\+\+INVALID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_MULTIPLICATION@{PACEVAL\_ERR\_COMPUTATION\_MULTIPLICATION}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_MULTIPLICATION@{PACEVAL\_ERR\_COMPUTATION\_MULTIPLICATION}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efab0d6e0c6a095aca50088f2e0e7a1c9a6}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efab0d6e0c6a095aca50088f2e0e7a1c9a6} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+MULTIPLICATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_DIVISION@{PACEVAL\_ERR\_COMPUTATION\_DIVISION}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_DIVISION@{PACEVAL\_ERR\_COMPUTATION\_DIVISION}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa69fccb222a128666238f984cd494c31c}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa69fccb222a128666238f984cd494c31c} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+DIVISION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_FUNCTION@{PACEVAL\_ERR\_COMPUTATION\_FUNCTION}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_FUNCTION@{PACEVAL\_ERR\_COMPUTATION\_FUNCTION}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efaa565d462f5d1f098e98e8d58159ded53}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efaa565d462f5d1f098e98e8d58159ded53} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+FUNCTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_ADDITION@{PACEVAL\_ERR\_COMPUTATION\_ADDITION}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_ADDITION@{PACEVAL\_ERR\_COMPUTATION\_ADDITION}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efafe8a3648110c7bff746407745a13534f}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efafe8a3648110c7bff746407745a13534f} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+ADDITION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_SUBTRACTION@{PACEVAL\_ERR\_COMPUTATION\_SUBTRACTION}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_SUBTRACTION@{PACEVAL\_ERR\_COMPUTATION\_SUBTRACTION}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efae0ffed72a8f1c660c4d44724818345be}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efae0ffed72a8f1c660c4d44724818345be} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+SUBTRACTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_UNSPECIFIED@{PACEVAL\_ERR\_COMPUTATION\_UNSPECIFIED}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_UNSPECIFIED@{PACEVAL\_ERR\_COMPUTATION\_UNSPECIFIED}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efae083ac83eb8a7a9f6e5ad4eb2e78b33f}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efae083ac83eb8a7a9f6e5ad4eb2e78b33f} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+UNSPECIFIED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_INTERVAL\_RESULT@{PACEVAL\_ERR\_COMPUTATION\_INTERVAL\_RESULT}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_INTERVAL\_RESULT@{PACEVAL\_ERR\_COMPUTATION\_INTERVAL\_RESULT}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efab592e30a32f86f4331c835f310b6846d}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efab592e30a32f86f4331c835f310b6846d} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+INTERVAL\+\_\+\+RESULT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_USER\_ABORT@{PACEVAL\_ERR\_COMPUTATION\_USER\_ABORT}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_USER\_ABORT@{PACEVAL\_ERR\_COMPUTATION\_USER\_ABORT}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa64805c8dfe97b02b5e253fbc79c7903f}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa64805c8dfe97b02b5e253fbc79c7903f} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+USER\+\_\+\+ABORT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_RESULT@{PACEVAL\_ERR\_COMPUTATION\_RESULT}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_RESULT@{PACEVAL\_ERR\_COMPUTATION\_RESULT}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efaed86ef75167e52a58d89b1b964d3a9da}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efaed86ef75167e52a58d89b1b964d3a9da} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+RESULT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_BUSY@{PACEVAL\_ERR\_COMPUTATION\_BUSY}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_BUSY@{PACEVAL\_ERR\_COMPUTATION\_BUSY}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efae012d60e48f7f70d519254dee570354e}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efae012d60e48f7f70d519254dee570354e} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+BUSY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_USER\_COMPILER\_NOT\_SUPPORTS\_LONG\_DOUBLE@{PACEVAL\_ERR\_COMPUTATION\_USER\_COMPILER\_NOT\_SUPPORTS\_LONG\_DOUBLE}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_USER\_COMPILER\_NOT\_SUPPORTS\_LONG\_DOUBLE@{PACEVAL\_ERR\_COMPUTATION\_USER\_COMPILER\_NOT\_SUPPORTS\_LONG\_DOUBLE}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa0199aac463c0ec923033db908cb22ed9}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa0199aac463c0ec923033db908cb22ed9} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+USER\+\_\+\+COMPILER\+\_\+\+NOT\+\_\+\+SUPPORTS\+\_\+\+LONG\+\_\+\+DOUBLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_PRECHECK\_MULTIPLE@{PACEVAL\_ERR\_COMPUTATION\_PRECHECK\_MULTIPLE}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_PRECHECK\_MULTIPLE@{PACEVAL\_ERR\_COMPUTATION\_PRECHECK\_MULTIPLE}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efad3760889cb31dd5881312ae0fafdb38a}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efad3760889cb31dd5881312ae0fafdb38a} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+PRECHECK\+\_\+\+MULTIPLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_COMPUTATION\_END@{PACEVAL\_ERR\_COMPUTATION\_END}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_COMPUTATION\_END@{PACEVAL\_ERR\_COMPUTATION\_END}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa7dc6faadae7c876d3237d2be140adb0c}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa7dc6faadae7c876d3237d2be140adb0c} 
+PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_END@{PACEVAL\_ERR\_END}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_ERR\_END@{PACEVAL\_ERR\_END}}}\Hypertarget{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa228c3c3105fad994aaa0c226c27ee528}\label{paceval__main_8h_a59e502857d43b3bbf9145f13103328efa228c3c3105fad994aaa0c226c27ee528} 
+PACEVAL\+\_\+\+ERR\+\_\+\+END&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63}\label{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_eStatusTypes@{paceval\_eStatusTypes}}
+\index{paceval\_eStatusTypes@{paceval\_eStatusTypes}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_eStatusTypes}{paceval\_eStatusTypes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63}{paceval\+\_\+e\+Status\+Types}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_STATUS\_NO\_STATUS@{PACEVAL\_STATUS\_NO\_STATUS}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_STATUS\_NO\_STATUS@{PACEVAL\_STATUS\_NO\_STATUS}}}\Hypertarget{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63a7997634acd8a92d54de92c0dde169ef0}\label{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63a7997634acd8a92d54de92c0dde169ef0} 
+PACEVAL\+\_\+\+STATUS\+\_\+\+NO\+\_\+\+STATUS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_STATUS\_ANALYSIS\_PROGRESS@{PACEVAL\_STATUS\_ANALYSIS\_PROGRESS}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_STATUS\_ANALYSIS\_PROGRESS@{PACEVAL\_STATUS\_ANALYSIS\_PROGRESS}}}\Hypertarget{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63a3c50a0aa14977fc6852529b856934bd7}\label{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63a3c50a0aa14977fc6852529b856934bd7} 
+PACEVAL\+\_\+\+STATUS\+\_\+\+ANALYSIS\+\_\+\+PROGRESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_STATUS\_ANALYSIS\_ERROR@{PACEVAL\_STATUS\_ANALYSIS\_ERROR}!paceval\_main.h@{paceval\_main.h}}\index{paceval\_main.h@{paceval\_main.h}!PACEVAL\_STATUS\_ANALYSIS\_ERROR@{PACEVAL\_STATUS\_ANALYSIS\_ERROR}}}\Hypertarget{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63a0a2864200183d59c3abc99b78242171e}\label{paceval__main_8h_aa89e806fa7a433069d7c51c34a124f63a0a2864200183d59c3abc99b78242171e} 
+PACEVAL\+\_\+\+STATUS\+\_\+\+ANALYSIS\+\_\+\+ERROR&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{paceval__main_8h_ae04cf0ab1cdbd57df334d660578bfdc3}\label{paceval__main_8h_ae04cf0ab1cdbd57df334d660578bfdc3} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_CreateComputation@{paceval\_CreateComputation}}
+\index{paceval\_CreateComputation@{paceval\_CreateComputation}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_CreateComputation()}{paceval\_CreateComputation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} paceval\+\_\+\+Create\+Computation (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_a953cdb322badceecf9e5351340e0eb2f}{paceval\+\_\+callback\+Status\+Type}} \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+callback\+Status\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_ae04cf0ab1cdbd57df334d660578bfdc3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_ad4fb9e86602b96735b49ca4ce737d55f}\label{paceval__main_8h_ad4fb9e86602b96735b49ca4ce737d55f} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_CreateErrorInformationText@{paceval\_CreateErrorInformationText}}
+\index{paceval\_CreateErrorInformationText@{paceval\_CreateErrorInformationText}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_CreateErrorInformationText()}{paceval\_CreateErrorInformationText()}}
+{\footnotesize\ttfamily int paceval\+\_\+\+Create\+Error\+Information\+Text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{char \texorpdfstring{$\ast$}{*}}]{last\+Error\+\_\+str\+Message\+\_\+out,  }\item[{char \texorpdfstring{$\ast$}{*}}]{last\+Error\+\_\+str\+Details\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_ad4fb9e86602b96735b49ca4ce737d55f_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_ae110de903a843cf67aae55c9157321c3}\label{paceval__main_8h_ae110de903a843cf67aae55c9157321c3} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_CreateMultipleComputations@{paceval\_CreateMultipleComputations}}
+\index{paceval\_CreateMultipleComputations@{paceval\_CreateMultipleComputations}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_CreateMultipleComputations()}{paceval\_CreateMultipleComputations()}}
+{\footnotesize\ttfamily bool paceval\+\_\+\+Create\+Multiple\+Computations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+out\mbox{[}$\,$\mbox{]},  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+Strings\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_a953cdb322badceecf9e5351340e0eb2f}{paceval\+\_\+callback\+Status\+Type}} \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+callback\+Status\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_ae110de903a843cf67aae55c9157321c3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a6db0db946cb55b8c85c82082c58b8717}\label{paceval__main_8h_a6db0db946cb55b8c85c82082c58b8717} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_CreateXMLFromParameters@{paceval\_CreateXMLFromParameters}}
+\index{paceval\_CreateXMLFromParameters@{paceval\_CreateXMLFromParameters}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_CreateXMLFromParameters()}{paceval\_CreateXMLFromParameters()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+\+Create\+XMLFrom\+Parameters (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+str\+XML\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{values\+String\+\_\+in,  }\item[{bool}]{use\+Interval\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a6db0db946cb55b8c85c82082c58b8717_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a44b9c6c08787849c24e614730379915e}\label{paceval__main_8h_a44b9c6c08787849c24e614730379915e} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_dConvertFloatToString@{paceval\_dConvertFloatToString}}
+\index{paceval\_dConvertFloatToString@{paceval\_dConvertFloatToString}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_dConvertFloatToString()}{paceval\_dConvertFloatToString()}}
+{\footnotesize\ttfamily int paceval\+\_\+d\+Convert\+Float\+To\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{destination\+String\+\_\+out,  }\item[{double}]{float\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a44b9c6c08787849c24e614730379915e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a9bece1ed849041ccae24ab45211f015c}\label{paceval__main_8h_a9bece1ed849041ccae24ab45211f015c} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_dConvertStringToFloat@{paceval\_dConvertStringToFloat}}
+\index{paceval\_dConvertStringToFloat@{paceval\_dConvertStringToFloat}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_dConvertStringToFloat()}{paceval\_dConvertStringToFloat()}}
+{\footnotesize\ttfamily double paceval\+\_\+d\+Convert\+String\+To\+Float (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{source\+String\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{long \texorpdfstring{$\ast$}{*}}]{err\+Position\+\_\+out,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a9bece1ed849041ccae24ab45211f015c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a0a5a920a210ff6914dd5742f096635a2}\label{paceval__main_8h_a0a5a920a210ff6914dd5742f096635a2} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_DeleteComputation@{paceval\_DeleteComputation}}
+\index{paceval\_DeleteComputation@{paceval\_DeleteComputation}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_DeleteComputation()}{paceval\_DeleteComputation()}}
+{\footnotesize\ttfamily bool paceval\+\_\+\+Delete\+Computation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a0a5a920a210ff6914dd5742f096635a2_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_acbc57bb0edcafb8811d082617b6b1531}\label{paceval__main_8h_acbc57bb0edcafb8811d082617b6b1531} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_dGetComputationResult@{paceval\_dGetComputationResult}}
+\index{paceval\_dGetComputationResult@{paceval\_dGetComputationResult}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_dGetComputationResult()}{paceval\_dGetComputationResult()}}
+{\footnotesize\ttfamily double paceval\+\_\+d\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_acbc57bb0edcafb8811d082617b6b1531_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a355e632ee48694f62cf038b77b6ca6ac}\label{paceval__main_8h_a355e632ee48694f62cf038b77b6ca6ac} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_dGetComputationResultExt@{paceval\_dGetComputationResultExt}}
+\index{paceval\_dGetComputationResultExt@{paceval\_dGetComputationResultExt}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_dGetComputationResultExt()}{paceval\_dGetComputationResultExt()}}
+{\footnotesize\ttfamily bool paceval\+\_\+d\+Get\+Computation\+Result\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a355e632ee48694f62cf038b77b6ca6ac_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a7ee63b91471db048e4e8c7c9940a0b14}\label{paceval__main_8h_a7ee63b91471db048e4e8c7c9940a0b14} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_dGetMultipleComputationsResults@{paceval\_dGetMultipleComputationsResults}}
+\index{paceval\_dGetMultipleComputationsResults@{paceval\_dGetMultipleComputationsResults}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_dGetMultipleComputationsResults()}{paceval\_dGetMultipleComputationsResults()}}
+{\footnotesize\ttfamily bool paceval\+\_\+d\+Get\+Multiple\+Computations\+Results (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a7ee63b91471db048e4e8c7c9940a0b14_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a5cc7887ed6b733722bd93a7669cf7a34}\label{paceval__main_8h_a5cc7887ed6b733722bd93a7669cf7a34} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_dGetMultipleComputationsResultsExt@{paceval\_dGetMultipleComputationsResultsExt}}
+\index{paceval\_dGetMultipleComputationsResultsExt@{paceval\_dGetMultipleComputationsResultsExt}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_dGetMultipleComputationsResultsExt()}{paceval\_dGetMultipleComputationsResultsExt()}}
+{\footnotesize\ttfamily bool paceval\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a5cc7887ed6b733722bd93a7669cf7a34_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_adb7810ef4d1bb1faad4f53ef9b3be0ad}\label{paceval__main_8h_adb7810ef4d1bb1faad4f53ef9b3be0ad} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_dmathv@{paceval\_dmathv}}
+\index{paceval\_dmathv@{paceval\_dmathv}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_dmathv()}{paceval\_dmathv()}}
+{\footnotesize\ttfamily double paceval\+\_\+dmathv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_adb7810ef4d1bb1faad4f53ef9b3be0ad_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_adb94a3729c81137ecce3389870b396ae}\label{paceval__main_8h_adb94a3729c81137ecce3389870b396ae} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_dmathvi@{paceval\_dmathvi}}
+\index{paceval\_dmathvi@{paceval\_dmathvi}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_dmathvi()}{paceval\_dmathvi()}}
+{\footnotesize\ttfamily double paceval\+\_\+dmathvi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_adb94a3729c81137ecce3389870b396ae_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a3bbf1ad5d43871e716421e5e9258a81f}\label{paceval__main_8h_a3bbf1ad5d43871e716421e5e9258a81f} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_ExistComputation@{paceval\_ExistComputation}}
+\index{paceval\_ExistComputation@{paceval\_ExistComputation}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_ExistComputation()}{paceval\_ExistComputation()}}
+{\footnotesize\ttfamily bool paceval\+\_\+\+Exist\+Computation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a3bbf1ad5d43871e716421e5e9258a81f_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a98a374e463cf39a88002cb4c2e04b330}\label{paceval__main_8h_a98a374e463cf39a88002cb4c2e04b330} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_fConvertFloatToString@{paceval\_fConvertFloatToString}}
+\index{paceval\_fConvertFloatToString@{paceval\_fConvertFloatToString}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_fConvertFloatToString()}{paceval\_fConvertFloatToString()}}
+{\footnotesize\ttfamily int paceval\+\_\+f\+Convert\+Float\+To\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{destination\+String\+\_\+out,  }\item[{float}]{float\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a98a374e463cf39a88002cb4c2e04b330_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a2cf189e770fe4476e5fa2413dc2ac27d}\label{paceval__main_8h_a2cf189e770fe4476e5fa2413dc2ac27d} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_fConvertStringToFloat@{paceval\_fConvertStringToFloat}}
+\index{paceval\_fConvertStringToFloat@{paceval\_fConvertStringToFloat}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_fConvertStringToFloat()}{paceval\_fConvertStringToFloat()}}
+{\footnotesize\ttfamily float paceval\+\_\+f\+Convert\+String\+To\+Float (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{source\+String\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{long \texorpdfstring{$\ast$}{*}}]{err\+Position\+\_\+out,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a2cf189e770fe4476e5fa2413dc2ac27d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a608786d2771854226f6326ebd9c9c0ab}\label{paceval__main_8h_a608786d2771854226f6326ebd9c9c0ab} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_fGetComputationResult@{paceval\_fGetComputationResult}}
+\index{paceval\_fGetComputationResult@{paceval\_fGetComputationResult}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_fGetComputationResult()}{paceval\_fGetComputationResult()}}
+{\footnotesize\ttfamily float paceval\+\_\+f\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a608786d2771854226f6326ebd9c9c0ab_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_ac0f2e206cb7c87cffa8bb334ee2832d1}\label{paceval__main_8h_ac0f2e206cb7c87cffa8bb334ee2832d1} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_fGetComputationResultExt@{paceval\_fGetComputationResultExt}}
+\index{paceval\_fGetComputationResultExt@{paceval\_fGetComputationResultExt}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_fGetComputationResultExt()}{paceval\_fGetComputationResultExt()}}
+{\footnotesize\ttfamily bool paceval\+\_\+f\+Get\+Computation\+Result\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{float \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_ac0f2e206cb7c87cffa8bb334ee2832d1_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_ad33a118f90a1313031e7724839c6c025}\label{paceval__main_8h_ad33a118f90a1313031e7724839c6c025} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_fGetMultipleComputationsResults@{paceval\_fGetMultipleComputationsResults}}
+\index{paceval\_fGetMultipleComputationsResults@{paceval\_fGetMultipleComputationsResults}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_fGetMultipleComputationsResults()}{paceval\_fGetMultipleComputationsResults()}}
+{\footnotesize\ttfamily bool paceval\+\_\+f\+Get\+Multiple\+Computations\+Results (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{float \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_ad33a118f90a1313031e7724839c6c025_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_ad459ea225b88689869085d7995c8b0d8}\label{paceval__main_8h_ad459ea225b88689869085d7995c8b0d8} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_fGetMultipleComputationsResultsExt@{paceval\_fGetMultipleComputationsResultsExt}}
+\index{paceval\_fGetMultipleComputationsResultsExt@{paceval\_fGetMultipleComputationsResultsExt}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_fGetMultipleComputationsResultsExt()}{paceval\_fGetMultipleComputationsResultsExt()}}
+{\footnotesize\ttfamily bool paceval\+\_\+f\+Get\+Multiple\+Computations\+Results\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{float \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_ad459ea225b88689869085d7995c8b0d8_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_adab52ee43943a9e39d1a868ce45fef86}\label{paceval__main_8h_adab52ee43943a9e39d1a868ce45fef86} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_fmathv@{paceval\_fmathv}}
+\index{paceval\_fmathv@{paceval\_fmathv}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_fmathv()}{paceval\_fmathv()}}
+{\footnotesize\ttfamily float paceval\+\_\+fmathv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_adab52ee43943a9e39d1a868ce45fef86_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a7ae18edbb7f6056e94840eecc471d33f}\label{paceval__main_8h_a7ae18edbb7f6056e94840eecc471d33f} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_fmathvi@{paceval\_fmathvi}}
+\index{paceval\_fmathvi@{paceval\_fmathvi}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_fmathvi()}{paceval\_fmathvi()}}
+{\footnotesize\ttfamily float paceval\+\_\+fmathvi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a7ae18edbb7f6056e94840eecc471d33f_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a36703ae7d9e3998f7a60e8295ec92427}\label{paceval__main_8h_a36703ae7d9e3998f7a60e8295ec92427} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_FreeLibrary@{paceval\_FreeLibrary}}
+\index{paceval\_FreeLibrary@{paceval\_FreeLibrary}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_FreeLibrary()}{paceval\_FreeLibrary()}}
+{\footnotesize\ttfamily bool paceval\+\_\+\+Free\+Library (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a36703ae7d9e3998f7a60e8295ec92427_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a3ee97cad992bf2e26a88765ce587dfb7}\label{paceval__main_8h_a3ee97cad992bf2e26a88765ce587dfb7} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_GetComputationInformationXML@{paceval\_GetComputationInformationXML}}
+\index{paceval\_GetComputationInformationXML@{paceval\_GetComputationInformationXML}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_GetComputationInformationXML()}{paceval\_GetComputationInformationXML()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+\+Get\+Computation\+Information\+XML (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{char \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+str\+XML\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a3ee97cad992bf2e26a88765ce587dfb7_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_aea14f43c3d7f8ff895156c4289d0d9bd}\label{paceval__main_8h_aea14f43c3d7f8ff895156c4289d0d9bd} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_GetComputationVersionString@{paceval\_GetComputationVersionString}}
+\index{paceval\_GetComputationVersionString@{paceval\_GetComputationVersionString}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_GetComputationVersionString()}{paceval\_GetComputationVersionString()}}
+{\footnotesize\ttfamily int paceval\+\_\+\+Get\+Computation\+Version\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{char \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+str\+Version\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_aea14f43c3d7f8ff895156c4289d0d9bd_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786}\label{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_GetErrorInformation@{paceval\_GetErrorInformation}}
+\index{paceval\_GetErrorInformation@{paceval\_GetErrorInformation}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_GetErrorInformation()}{paceval\_GetErrorInformation()}}
+{\footnotesize\ttfamily int paceval\+\_\+\+Get\+Error\+Information (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{char \texorpdfstring{$\ast$}{*}}]{last\+Error\+\_\+str\+Operator\+\_\+out,  }\item[{long \texorpdfstring{$\ast$}{*}}]{last\+Error\+\_\+err\+Position\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a5cd9aa61dffec4c9a1edc7ff9f5cb7da}\label{paceval__main_8h_a5cd9aa61dffec4c9a1edc7ff9f5cb7da} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_GetErrorTypeMessage@{paceval\_GetErrorTypeMessage}}
+\index{paceval\_GetErrorTypeMessage@{paceval\_GetErrorTypeMessage}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_GetErrorTypeMessage()}{paceval\_GetErrorTypeMessage()}}
+{\footnotesize\ttfamily int paceval\+\_\+\+Get\+Error\+Type\+Message (\begin{DoxyParamCaption}\item[{int}]{error\+Type\+\_\+in,  }\item[{char \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+str\+Message\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a5cd9aa61dffec4c9a1edc7ff9f5cb7da_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_aeb160cc6b1cd758372a45264f3e92ee7}\label{paceval__main_8h_aeb160cc6b1cd758372a45264f3e92ee7} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_GetIsError@{paceval\_GetIsError}}
+\index{paceval\_GetIsError@{paceval\_GetIsError}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_GetIsError()}{paceval\_GetIsError()}}
+{\footnotesize\ttfamily bool paceval\+\_\+\+Get\+Is\+Error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_aeb160cc6b1cd758372a45264f3e92ee7_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_aad60cbad108b9e96511355e605d6ffaa}\label{paceval__main_8h_aad60cbad108b9e96511355e605d6ffaa} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_InitializeLibrary@{paceval\_InitializeLibrary}}
+\index{paceval\_InitializeLibrary@{paceval\_InitializeLibrary}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_InitializeLibrary()}{paceval\_InitializeLibrary()}}
+{\footnotesize\ttfamily bool paceval\+\_\+\+Initialize\+Library (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{init\+String\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_aad60cbad108b9e96511355e605d6ffaa_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a2b65fedcf0fe473b8fa8c7cb1ffe2d04}\label{paceval__main_8h_a2b65fedcf0fe473b8fa8c7cb1ffe2d04} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_ldConvertFloatToString@{paceval\_ldConvertFloatToString}}
+\index{paceval\_ldConvertFloatToString@{paceval\_ldConvertFloatToString}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_ldConvertFloatToString()}{paceval\_ldConvertFloatToString()}}
+{\footnotesize\ttfamily int paceval\+\_\+ld\+Convert\+Float\+To\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{destination\+String\+\_\+out,  }\item[{long double}]{float\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a2b65fedcf0fe473b8fa8c7cb1ffe2d04_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a8b350b303088c466d8e33af2cb993da1}\label{paceval__main_8h_a8b350b303088c466d8e33af2cb993da1} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_ldConvertStringToFloat@{paceval\_ldConvertStringToFloat}}
+\index{paceval\_ldConvertStringToFloat@{paceval\_ldConvertStringToFloat}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_ldConvertStringToFloat()}{paceval\_ldConvertStringToFloat()}}
+{\footnotesize\ttfamily long double paceval\+\_\+ld\+Convert\+String\+To\+Float (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{source\+String\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{long \texorpdfstring{$\ast$}{*}}]{err\+Position\+\_\+out,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a8b350b303088c466d8e33af2cb993da1_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a25b7909057621f8ec8c52312b692f80a}\label{paceval__main_8h_a25b7909057621f8ec8c52312b692f80a} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_ldGetComputationResult@{paceval\_ldGetComputationResult}}
+\index{paceval\_ldGetComputationResult@{paceval\_ldGetComputationResult}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_ldGetComputationResult()}{paceval\_ldGetComputationResult()}}
+{\footnotesize\ttfamily long double paceval\+\_\+ld\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a25b7909057621f8ec8c52312b692f80a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_aa1ced7b5bfb432bc46e7c77ec7e70a08}\label{paceval__main_8h_aa1ced7b5bfb432bc46e7c77ec7e70a08} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_ldGetComputationResultExt@{paceval\_ldGetComputationResultExt}}
+\index{paceval\_ldGetComputationResultExt@{paceval\_ldGetComputationResultExt}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_ldGetComputationResultExt()}{paceval\_ldGetComputationResultExt()}}
+{\footnotesize\ttfamily bool paceval\+\_\+ld\+Get\+Computation\+Result\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_aa1ced7b5bfb432bc46e7c77ec7e70a08_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_afabef4b584a635a79afdc5034a1397af}\label{paceval__main_8h_afabef4b584a635a79afdc5034a1397af} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_ldGetMultipleComputationsResults@{paceval\_ldGetMultipleComputationsResults}}
+\index{paceval\_ldGetMultipleComputationsResults@{paceval\_ldGetMultipleComputationsResults}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_ldGetMultipleComputationsResults()}{paceval\_ldGetMultipleComputationsResults()}}
+{\footnotesize\ttfamily bool paceval\+\_\+ld\+Get\+Multiple\+Computations\+Results (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{long double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_afabef4b584a635a79afdc5034a1397af_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_ac5dc620a3ba9d03ca3f80f47900fff7d}\label{paceval__main_8h_ac5dc620a3ba9d03ca3f80f47900fff7d} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_ldGetMultipleComputationsResultsExt@{paceval\_ldGetMultipleComputationsResultsExt}}
+\index{paceval\_ldGetMultipleComputationsResultsExt@{paceval\_ldGetMultipleComputationsResultsExt}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_ldGetMultipleComputationsResultsExt()}{paceval\_ldGetMultipleComputationsResultsExt()}}
+{\footnotesize\ttfamily bool paceval\+\_\+ld\+Get\+Multiple\+Computations\+Results\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_ac5dc620a3ba9d03ca3f80f47900fff7d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a1ee9aba36d0e8c5b976b3041a307d686}\label{paceval__main_8h_a1ee9aba36d0e8c5b976b3041a307d686} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_ldmathv@{paceval\_ldmathv}}
+\index{paceval\_ldmathv@{paceval\_ldmathv}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_ldmathv()}{paceval\_ldmathv()}}
+{\footnotesize\ttfamily long double paceval\+\_\+ldmathv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a1ee9aba36d0e8c5b976b3041a307d686_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a0c438c5b9941288a8f8ccdf752e2994e}\label{paceval__main_8h_a0c438c5b9941288a8f8ccdf752e2994e} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_ldmathvi@{paceval\_ldmathvi}}
+\index{paceval\_ldmathvi@{paceval\_ldmathvi}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_ldmathvi()}{paceval\_ldmathvi()}}
+{\footnotesize\ttfamily long double paceval\+\_\+ldmathvi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a0c438c5b9941288a8f8ccdf752e2994e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a27886e80efbb9b9b3d18cc34ed90168d}\label{paceval__main_8h_a27886e80efbb9b9b3d18cc34ed90168d} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_ReadParametersFromXML@{paceval\_ReadParametersFromXML}}
+\index{paceval\_ReadParametersFromXML@{paceval\_ReadParametersFromXML}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_ReadParametersFromXML()}{paceval\_ReadParametersFromXML()}}
+{\footnotesize\ttfamily int paceval\+\_\+\+Read\+Parameters\+From\+XML (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+str\+XML\+\_\+in,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{function\+String\+Length\+\_\+out,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{variables\+String\+Length\+\_\+out,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{number\+Of\+Variables\+\_\+out,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{values\+String\+Length\+\_\+out,  }\item[{char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+out,  }\item[{char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+out,  }\item[{char \texorpdfstring{$\ast$}{*}}]{values\+String\+\_\+out,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{use\+Interval\+\_\+out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a27886e80efbb9b9b3d18cc34ed90168d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__main_8h_a61afdee8752fab8e20c5982959ee9bcd}\label{paceval__main_8h_a61afdee8752fab8e20c5982959ee9bcd} 
+\index{paceval\_main.h@{paceval\_main.h}!paceval\_SetCallbackUserFunction@{paceval\_SetCallbackUserFunction}}
+\index{paceval\_SetCallbackUserFunction@{paceval\_SetCallbackUserFunction}!paceval\_main.h@{paceval\_main.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_SetCallbackUserFunction()}{paceval\_SetCallbackUserFunction()}}
+{\footnotesize\ttfamily bool paceval\+\_\+\+Set\+Callback\+User\+Function (\begin{DoxyParamCaption}\item[{unsigned int}]{number\+User\+Function\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{single\+Function\+String\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_a0d991e803d57a927030e18b762b6aae5}{paceval\+\_\+callback\+User\+Function\+Type}} \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+callback\+User\+Function\+\_\+in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__main_8h_a61afdee8752fab8e20c5982959ee9bcd_cgraph}
+\end{center}
+\end{figure}

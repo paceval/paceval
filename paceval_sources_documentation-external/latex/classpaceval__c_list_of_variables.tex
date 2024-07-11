@@ -1,0 +1,234 @@
+\doxysection{paceval\+\_\+c\+List\+Of\+Variables Class Reference}
+\hypertarget{classpaceval__c_list_of_variables}{}\label{classpaceval__c_list_of_variables}\index{paceval\_cListOfVariables@{paceval\_cListOfVariables}}
+
+
+The class \doxylink{classpaceval__c_list_of_variables}{paceval\+\_\+c\+List\+Of\+Variables} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the storage of a list of user variable identifiers (e.\+g. "{}x"{}, "{}y"{}, "{}z"{} or "{}variable\+\_\+01"{}, "{}variable\+\_\+02"{} ... etc.).  
+
+
+
+
+{\ttfamily \#include "{}inc/paceval\+\_\+c\+List\+Of\+Variables.\+h"{}}
+
+
+
+Inheritance diagram for paceval\+\_\+c\+List\+Of\+Variables\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{classpaceval__c_list_of_variables__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for paceval\+\_\+c\+List\+Of\+Variables\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classpaceval__c_list_of_variables__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_list_of_variables_a26e06610f3e4a04f4dd067b786b079a8}{paceval\+\_\+c\+List\+Of\+Variables}} (\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}handle\+\_\+\+Cleanup\+Handler\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_list_of_variables_a2c011d0a90995214f209b907da458fa4}{initialize\+Data}} (unsigned long proposed\+Size\+\_\+in)
+\item 
+\mbox{\hyperlink{classpaceval__c_list_of_variables_a7524f5dba04376f3e51631e0cc37ec4d}{\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+List\+Of\+Variables}} ()
+\item 
+bool \mbox{\hyperlink{classpaceval__c_list_of_variables_a529f99ae206b164ac40ebd969181c3ed}{do\+Add\+Variable}} (const char \texorpdfstring{$\ast$}{*}varable\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_list_of_variables_a299a7d25eb2d8dfe3d3a6bb95770ce1c}{add\+Variables\+At\+Once}} (const char \texorpdfstring{$\ast$}{*}variables\+\_\+in, unsigned long number\+Of\+Variables\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_list_of_variables_acb131838a64a3759c095b51aeeb80fad}{get\+Number\+Of\+Variables}} ()
+\item 
+long \mbox{\hyperlink{classpaceval__c_list_of_variables_a5e42c1290df8cddf0476214f88361125}{identify\+Variable\+Positionfrom\+String}} (const char \texorpdfstring{$\ast$}{*}variable\+\_\+in)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a4f13b696019f4f84d70f0899e1a93e6b}{paceval\+\_\+c\+Registered\+Object}} (\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}handle\+\_\+\+Cleanup\+Handler\+\_\+in)
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a3968a184ea427893d836b7b676ce6d82}{\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Registered\+Object}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_registered_object_a342114d4bb2f86b2c4cfecb300925878}{set\+Register\+Position}} (unsigned long register\+Position\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a98739f041c398e860d9c7f9118fcfe0f}{get\+Register\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_registered_object_a56a8caf41119639bae9f389a6a7f7187}{handle\+\_\+\+Cleanup\+Handler}}
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a6a4cbc3ca8ae598995e763fc2005b69f}{register\+Position}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The class \doxylink{classpaceval__c_list_of_variables}{paceval\+\_\+c\+List\+Of\+Variables} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the storage of a list of user variable identifiers (e.\+g. "{}x"{}, "{}y"{}, "{}z"{} or "{}variable\+\_\+01"{}, "{}variable\+\_\+02"{} ... etc.). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classpaceval__c_list_of_variables_a26e06610f3e4a04f4dd067b786b079a8}\label{classpaceval__c_list_of_variables_a26e06610f3e4a04f4dd067b786b079a8} 
+\index{paceval\_cListOfVariables@{paceval\_cListOfVariables}!paceval\_cListOfVariables@{paceval\_cListOfVariables}}
+\index{paceval\_cListOfVariables@{paceval\_cListOfVariables}!paceval\_cListOfVariables@{paceval\_cListOfVariables}}
+\doxysubsubsection{\texorpdfstring{paceval\_cListOfVariables()}{paceval\_cListOfVariables()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+List\+Of\+Variables\+::paceval\+\_\+c\+List\+Of\+Variables (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+\+Cleanup\+Handler\+\_\+in }\end{DoxyParamCaption})}
+
+the constructor of \doxylink{classpaceval__c_list_of_variables}{paceval\+\_\+c\+List\+Of\+Variables} 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+\+Cleanup\+Handler\+\_\+in} & is the associated handler for deleting this registered object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classpaceval__c_list_of_variables_a7524f5dba04376f3e51631e0cc37ec4d}\label{classpaceval__c_list_of_variables_a7524f5dba04376f3e51631e0cc37ec4d} 
+\index{paceval\_cListOfVariables@{paceval\_cListOfVariables}!````~paceval\_cListOfVariables@{\texorpdfstring{$\sim$}{\string~}paceval\_cListOfVariables}}
+\index{````~paceval\_cListOfVariables@{\texorpdfstring{$\sim$}{\string~}paceval\_cListOfVariables}!paceval\_cListOfVariables@{paceval\_cListOfVariables}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}paceval\_cListOfVariables()}{\string~paceval\_cListOfVariables()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+List\+Of\+Variables\+::\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+List\+Of\+Variables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the destructor of \doxylink{classpaceval__c_list_of_variables}{paceval\+\_\+c\+List\+Of\+Variables} Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_variables_a7524f5dba04376f3e51631e0cc37ec4d_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpaceval__c_list_of_variables_a299a7d25eb2d8dfe3d3a6bb95770ce1c}\label{classpaceval__c_list_of_variables_a299a7d25eb2d8dfe3d3a6bb95770ce1c} 
+\index{paceval\_cListOfVariables@{paceval\_cListOfVariables}!addVariablesAtOnce@{addVariablesAtOnce}}
+\index{addVariablesAtOnce@{addVariablesAtOnce}!paceval\_cListOfVariables@{paceval\_cListOfVariables}}
+\doxysubsubsection{\texorpdfstring{addVariablesAtOnce()}{addVariablesAtOnce()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+List\+Of\+Variables\+::add\+Variables\+At\+Once (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in }\end{DoxyParamCaption})}
+
+adds variable identifiers separated by blanks to the list in one step (annotation\+: if the variable identifiers all have a length of 1, the blank can be omitted) 
+\begin{DoxyParams}{Parameters}
+{\em variables\+\_\+in} & specifies the string of the variable identifiers separated by blanks \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variable identifiers \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_variables_a299a7d25eb2d8dfe3d3a6bb95770ce1c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_variables_a299a7d25eb2d8dfe3d3a6bb95770ce1c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_list_of_variables_a529f99ae206b164ac40ebd969181c3ed}\label{classpaceval__c_list_of_variables_a529f99ae206b164ac40ebd969181c3ed} 
+\index{paceval\_cListOfVariables@{paceval\_cListOfVariables}!doAddVariable@{doAddVariable}}
+\index{doAddVariable@{doAddVariable}!paceval\_cListOfVariables@{paceval\_cListOfVariables}}
+\doxysubsubsection{\texorpdfstring{doAddVariable()}{doAddVariable()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+List\+Of\+Variables\+::do\+Add\+Variable (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{varable\+\_\+in }\end{DoxyParamCaption})}
+
+adds a variable identifier to the list and returns whether this was successful (true) or not (false) 
+\begin{DoxyParams}{Parameters}
+{\em varable\+\_\+in} & specifies the string of the variable identifier \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_variables_a529f99ae206b164ac40ebd969181c3ed_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_variables_a529f99ae206b164ac40ebd969181c3ed_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_list_of_variables_acb131838a64a3759c095b51aeeb80fad}\label{classpaceval__c_list_of_variables_acb131838a64a3759c095b51aeeb80fad} 
+\index{paceval\_cListOfVariables@{paceval\_cListOfVariables}!getNumberOfVariables@{getNumberOfVariables}}
+\index{getNumberOfVariables@{getNumberOfVariables}!paceval\_cListOfVariables@{paceval\_cListOfVariables}}
+\doxysubsubsection{\texorpdfstring{getNumberOfVariables()}{getNumberOfVariables()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+List\+Of\+Variables\+::get\+Number\+Of\+Variables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the number of variable identifiers Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_variables_acb131838a64a3759c095b51aeeb80fad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_variables_acb131838a64a3759c095b51aeeb80fad_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_list_of_variables_a5e42c1290df8cddf0476214f88361125}\label{classpaceval__c_list_of_variables_a5e42c1290df8cddf0476214f88361125} 
+\index{paceval\_cListOfVariables@{paceval\_cListOfVariables}!identifyVariablePositionfromString@{identifyVariablePositionfromString}}
+\index{identifyVariablePositionfromString@{identifyVariablePositionfromString}!paceval\_cListOfVariables@{paceval\_cListOfVariables}}
+\doxysubsubsection{\texorpdfstring{identifyVariablePositionfromString()}{identifyVariablePositionfromString()}}
+{\footnotesize\ttfamily long paceval\+\_\+c\+List\+Of\+Variables\+::identify\+Variable\+Positionfrom\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{variable\+\_\+in }\end{DoxyParamCaption})}
+
+identifies the position of the variable identifier via the string Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_variables_a5e42c1290df8cddf0476214f88361125_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_variables_a5e42c1290df8cddf0476214f88361125_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_list_of_variables_a2c011d0a90995214f209b907da458fa4}\label{classpaceval__c_list_of_variables_a2c011d0a90995214f209b907da458fa4} 
+\index{paceval\_cListOfVariables@{paceval\_cListOfVariables}!initializeData@{initializeData}}
+\index{initializeData@{initializeData}!paceval\_cListOfVariables@{paceval\_cListOfVariables}}
+\doxysubsubsection{\texorpdfstring{initializeData()}{initializeData()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+List\+Of\+Variables\+::initialize\+Data (\begin{DoxyParamCaption}\item[{unsigned long}]{proposed\+Size\+\_\+in }\end{DoxyParamCaption})}
+
+initializes the size of the list 
+\begin{DoxyParams}{Parameters}
+{\em proposed\+Size\+\_\+in} & specifies the initial size of the list \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_variables_a2c011d0a90995214f209b907da458fa4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_variables_a2c011d0a90995214f209b907da458fa4_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/\mbox{\hyperlink{paceval__c_list_of_variables_8h}{paceval\+\_\+c\+List\+Of\+Variables.\+h}}\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/\mbox{\hyperlink{paceval__c_list_of_variables_8cpp}{paceval\+\_\+c\+List\+Of\+Variables.\+cpp}}\end{DoxyCompactItemize}

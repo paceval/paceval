@@ -1,0 +1,107 @@
+\doxysection{G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/paceval\+\_\+c\+Graph.cpp File Reference}
+\hypertarget{paceval__c_graph_8cpp}{}\label{paceval__c_graph_8cpp}\index{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/paceval\_cGraph.cpp@{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/paceval\_cGraph.cpp}}
+
+
+implementation of the class \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph}  
+
+
+{\ttfamily \#include "{}./inc/paceval\+\_\+c\+Graph.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+f\+Self\+Test\+Main.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+f\+Thread\+Handling.\+h"{}}\newline
+Include dependency graph for paceval\+\_\+c\+Graph.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_graph_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_graph_8cpp_aa3dae93074d28c6e76a1272f09aae34c}{paceval\+\_\+get\+Thread\+Step}} ()
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_graph_8cpp_a5d8d84c513e2fbc5a4c3a1f512d2f6d5}{get\+Number\+Of\+Prefetched\+Double\+Work}} ()
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_graph_8cpp_afff514abfbd42536891411a02682f966}{get\+Number\+Of\+Prefetched\+Damaged}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_graph_8cpp_a4d7256719c4399dfd4cc276882129fa4}{paceval\+\_\+library\+\_\+number\+Of\+Prefetched\+Double\+Work}} = 0
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_graph_8cpp_a5084963d9b9b8d4be6d4911ebb91a6a4}{paceval\+\_\+library\+\_\+number\+Of\+Prefetched\+Damaged}} = 0
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_graph_8cpp_af7f4d25f9708ce09e80d574773311f9b}{paceval\+\_\+library\+\_\+thread\+\_\+step}} = \mbox{\hyperlink{paceval__d_version_8h_a31949fabcc3c2eb2f8f3769199e8fd91}{paceval\+\_\+const\+\_\+default\+\_\+thread\+\_\+step}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+implementation of the class \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} 
+
+the class \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} manages the list of nodes and the identification and management of parallelization opportunities for caching 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{paceval__c_graph_8cpp_afff514abfbd42536891411a02682f966}\label{paceval__c_graph_8cpp_afff514abfbd42536891411a02682f966} 
+\index{paceval\_cGraph.cpp@{paceval\_cGraph.cpp}!getNumberOfPrefetchedDamaged@{getNumberOfPrefetchedDamaged}}
+\index{getNumberOfPrefetchedDamaged@{getNumberOfPrefetchedDamaged}!paceval\_cGraph.cpp@{paceval\_cGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{getNumberOfPrefetchedDamaged()}{getNumberOfPrefetchedDamaged()}}
+{\footnotesize\ttfamily unsigned long get\+Number\+Of\+Prefetched\+Damaged (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the number of times the a lookahead cache was damaged (this number should be 0) Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_graph_8cpp_afff514abfbd42536891411a02682f966_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_graph_8cpp_a5d8d84c513e2fbc5a4c3a1f512d2f6d5}\label{paceval__c_graph_8cpp_a5d8d84c513e2fbc5a4c3a1f512d2f6d5} 
+\index{paceval\_cGraph.cpp@{paceval\_cGraph.cpp}!getNumberOfPrefetchedDoubleWork@{getNumberOfPrefetchedDoubleWork}}
+\index{getNumberOfPrefetchedDoubleWork@{getNumberOfPrefetchedDoubleWork}!paceval\_cGraph.cpp@{paceval\_cGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{getNumberOfPrefetchedDoubleWork()}{getNumberOfPrefetchedDoubleWork()}}
+{\footnotesize\ttfamily unsigned long get\+Number\+Of\+Prefetched\+Double\+Work (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the number of times work was doubled, meaning that a partial computation was performed by a secondary thread for the lookahead cache, but was also computed by the main thread (this number should be very small or 0) Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_graph_8cpp_a5d8d84c513e2fbc5a4c3a1f512d2f6d5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_graph_8cpp_aa3dae93074d28c6e76a1272f09aae34c}\label{paceval__c_graph_8cpp_aa3dae93074d28c6e76a1272f09aae34c} 
+\index{paceval\_cGraph.cpp@{paceval\_cGraph.cpp}!paceval\_getThreadStep@{paceval\_getThreadStep}}
+\index{paceval\_getThreadStep@{paceval\_getThreadStep}!paceval\_cGraph.cpp@{paceval\_cGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_getThreadStep()}{paceval\_getThreadStep()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+get\+Thread\+Step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the default step size of nodes for parallel partial computations via threads for lookahead caching Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_graph_8cpp_aa3dae93074d28c6e76a1272f09aae34c_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{paceval__c_graph_8cpp_a5084963d9b9b8d4be6d4911ebb91a6a4}\label{paceval__c_graph_8cpp_a5084963d9b9b8d4be6d4911ebb91a6a4} 
+\index{paceval\_cGraph.cpp@{paceval\_cGraph.cpp}!paceval\_library\_numberOfPrefetchedDamaged@{paceval\_library\_numberOfPrefetchedDamaged}}
+\index{paceval\_library\_numberOfPrefetchedDamaged@{paceval\_library\_numberOfPrefetchedDamaged}!paceval\_cGraph.cpp@{paceval\_cGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_numberOfPrefetchedDamaged}{paceval\_library\_numberOfPrefetchedDamaged}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+library\+\_\+number\+Of\+Prefetched\+Damaged = 0}
+
+\Hypertarget{paceval__c_graph_8cpp_a4d7256719c4399dfd4cc276882129fa4}\label{paceval__c_graph_8cpp_a4d7256719c4399dfd4cc276882129fa4} 
+\index{paceval\_cGraph.cpp@{paceval\_cGraph.cpp}!paceval\_library\_numberOfPrefetchedDoubleWork@{paceval\_library\_numberOfPrefetchedDoubleWork}}
+\index{paceval\_library\_numberOfPrefetchedDoubleWork@{paceval\_library\_numberOfPrefetchedDoubleWork}!paceval\_cGraph.cpp@{paceval\_cGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_numberOfPrefetchedDoubleWork}{paceval\_library\_numberOfPrefetchedDoubleWork}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+library\+\_\+number\+Of\+Prefetched\+Double\+Work = 0}
+
+\Hypertarget{paceval__c_graph_8cpp_af7f4d25f9708ce09e80d574773311f9b}\label{paceval__c_graph_8cpp_af7f4d25f9708ce09e80d574773311f9b} 
+\index{paceval\_cGraph.cpp@{paceval\_cGraph.cpp}!paceval\_library\_thread\_step@{paceval\_library\_thread\_step}}
+\index{paceval\_library\_thread\_step@{paceval\_library\_thread\_step}!paceval\_cGraph.cpp@{paceval\_cGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_thread\_step}{paceval\_library\_thread\_step}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+library\+\_\+thread\+\_\+step = \mbox{\hyperlink{paceval__d_version_8h_a31949fabcc3c2eb2f8f3769199e8fd91}{paceval\+\_\+const\+\_\+default\+\_\+thread\+\_\+step}}}
+

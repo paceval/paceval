@@ -1,0 +1,533 @@
+\doxysection{paceval\+\_\+c\+Syntactic\+Analysis Class Reference}
+\hypertarget{classpaceval__c_syntactic_analysis}{}\label{classpaceval__c_syntactic_analysis}\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+
+
+The class \doxylink{classpaceval__c_syntactic_analysis}{paceval\+\_\+c\+Syntactic\+Analysis} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and and encapsulates the analysis of the function with the \doxylink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner} object and the creation of node objects with the \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} object.  
+
+
+
+
+{\ttfamily \#include "{}inc/paceval\+\_\+c\+Syntactic\+Analysis.\+h"{}}
+
+
+
+Inheritance diagram for paceval\+\_\+c\+Syntactic\+Analysis\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classpaceval__c_syntactic_analysis__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for paceval\+\_\+c\+Syntactic\+Analysis\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_syntactic_analysis_ad4df878809df5a3ace0fe3307b6609b4}{paceval\+\_\+c\+Syntactic\+Analysis}} (\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}handle\+\_\+\+Cleanup\+Handler\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_syntactic_analysis_a5dd030d583098f92081518328ffd1f92}{initialize\+Data}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in, \mbox{\hyperlink{classpaceval__c_list_of_variables}{paceval\+\_\+c\+List\+Of\+Variables}} \texorpdfstring{$\ast$}{*}list\+Of\+Variables\+\_\+in)
+\item 
+\mbox{\hyperlink{classpaceval__c_syntactic_analysis_a383546d304558ac7afa009d47f093911}{\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Syntactic\+Analysis}} ()
+\item 
+\mbox{\hyperlink{classpaceval__c_graph}{paceval\+\_\+c\+Graph}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_syntactic_analysis_a3bf9d54d5d5889274ac243c327466b06}{get\+Graph}} ()
+\item 
+\mbox{\hyperlink{classpaceval__c_list_of_variables}{paceval\+\_\+c\+List\+Of\+Variables}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_syntactic_analysis_a140fe1bb628b44a27201ed2fc1449af0}{get\+Var\+List}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a4f13b696019f4f84d70f0899e1a93e6b}{paceval\+\_\+c\+Registered\+Object}} (\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}handle\+\_\+\+Cleanup\+Handler\+\_\+in)
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a3968a184ea427893d836b7b676ce6d82}{\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Registered\+Object}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_registered_object_a342114d4bb2f86b2c4cfecb300925878}{set\+Register\+Position}} (unsigned long register\+Position\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a98739f041c398e860d9c7f9118fcfe0f}{get\+Register\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classpaceval__c_syntactic_analysis_ac830fb825738bd288776030ee77ab952}{do\+Analyze\+Terms}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_syntactic_analysis_a472cf43897a08143defa135ce0f1ac11}{set\+Operation\+Placeholders\+Positions}} (long \texorpdfstring{$\ast$}{*}position\+\_\+value1\+\_\+in, long \texorpdfstring{$\ast$}{*}position\+\_\+value2\+\_\+in, long \texorpdfstring{$\ast$}{*}position\+\_\+result\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_syntactic_analysis_a67505cc902e68f0fda3c94dbeaf784f4}{add\+Elementary\+Arithmetic\+Or\+Power\+Sign}} (const char \texorpdfstring{$\ast$}{*}operator\+\_\+in, long position\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_syntactic_analysis_a865d05ca173971c19f9227f67cd28311}{add\+Facultation\+Sign}} (long position\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_syntactic_analysis_aa407f6c1bceec6ccfc648f7cc6910fe0}{add\+Function}} (const char \texorpdfstring{$\ast$}{*}function\+As\+Operator\+\_\+in, long position\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_syntactic_analysis_ab6c891357bf0d13196b002d7670c392b}{do\+Summation}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_syntactic_analysis_abf1b0e7180f028db80f0c9c8dff41768}{do\+Term}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_syntactic_analysis_afcfb28524d9d1849f9ba9b9f8a9134b2}{do\+Power\+Character}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_syntactic_analysis_a6b028992d3620e3b47cde592607de063}{do\+Single\+Character}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_syntactic_analysis_ac6f7e3d71e9271c04639df6f3244ca0d}{add\+Value}} (long position\+\_\+in, const char \texorpdfstring{$\ast$}{*}value\+As\+Operator\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_syntactic_analysis_a58be84d3b8a96b24215143c226e47ba9}{add\+Constant}} (long position\+\_\+in, const char \texorpdfstring{$\ast$}{*}constant\+As\+Operator\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_syntactic_analysis_a2f01dee4bbfb8659f296ee9a08cab939}{add\+Variable}} (long position\+\_\+in, long variable\+Position\+\_\+in)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_syntactic_analysis_a4be2d516e6be44ed1502326e4d946836}{handle\+\_\+\+Scanner}}
+\item 
+\mbox{\hyperlink{classpaceval__c_graph}{paceval\+\_\+c\+Graph}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_syntactic_analysis_a01ebd6e355740872c14defbfb251f651}{handle\+\_\+\+Graph}}
+\item 
+\mbox{\hyperlink{classpaceval__c_list_of_variables}{paceval\+\_\+c\+List\+Of\+Variables}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_syntactic_analysis_afcf3a0953e695a78a884f0b28433b5d9}{list\+Of\+Variables}}
+\item 
+long \mbox{\hyperlink{classpaceval__c_syntactic_analysis_a8ea8528478e9455128845322a12b2fec}{current\+Atomic\+Graph\+Node}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_registered_object_a56a8caf41119639bae9f389a6a7f7187}{handle\+\_\+\+Cleanup\+Handler}}
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a6a4cbc3ca8ae598995e763fc2005b69f}{register\+Position}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The class \doxylink{classpaceval__c_syntactic_analysis}{paceval\+\_\+c\+Syntactic\+Analysis} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and and encapsulates the analysis of the function with the \doxylink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner} object and the creation of node objects with the \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} object. 
+
+The \doxylink{classpaceval__c_syntactic_analysis}{paceval\+\_\+c\+Syntactic\+Analysis} and \doxylink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner} objects are only needed temporarily once to initiate the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and are then deleted again and their memory released\+: 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classpaceval__c_syntactic_analysis_ad4df878809df5a3ace0fe3307b6609b4}\label{classpaceval__c_syntactic_analysis_ad4df878809df5a3ace0fe3307b6609b4} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{paceval\_cSyntacticAnalysis()}{paceval\_cSyntacticAnalysis()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+Syntactic\+Analysis\+::paceval\+\_\+c\+Syntactic\+Analysis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+\+Cleanup\+Handler\+\_\+in }\end{DoxyParamCaption})}
+
+the constructor of \doxylink{classpaceval__c_syntactic_analysis}{paceval\+\_\+c\+Syntactic\+Analysis} 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+\+Cleanup\+Handler\+\_\+in} & is the associated handler for deleting this registered object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classpaceval__c_syntactic_analysis_a383546d304558ac7afa009d47f093911}\label{classpaceval__c_syntactic_analysis_a383546d304558ac7afa009d47f093911} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!````~paceval\_cSyntacticAnalysis@{\texorpdfstring{$\sim$}{\string~}paceval\_cSyntacticAnalysis}}
+\index{````~paceval\_cSyntacticAnalysis@{\texorpdfstring{$\sim$}{\string~}paceval\_cSyntacticAnalysis}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}paceval\_cSyntacticAnalysis()}{\string~paceval\_cSyntacticAnalysis()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+Syntactic\+Analysis\+::\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Syntactic\+Analysis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the destructor of \doxylink{classpaceval__c_syntactic_analysis}{paceval\+\_\+c\+Syntactic\+Analysis} Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a383546d304558ac7afa009d47f093911_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpaceval__c_syntactic_analysis_a58be84d3b8a96b24215143c226e47ba9}\label{classpaceval__c_syntactic_analysis_a58be84d3b8a96b24215143c226e47ba9} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!addConstant@{addConstant}}
+\index{addConstant@{addConstant}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{addConstant()}{addConstant()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Syntactic\+Analysis\+::add\+Constant (\begin{DoxyParamCaption}\item[{long}]{position\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{constant\+As\+Operator\+\_\+in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+checks whether it is a known constant (e.\+g. "{}pi"{}) and then calls add\+Value to create a \doxylink{classpaceval__c_atomic_graph_node_add_value}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Add\+Value} object for it 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+in} & specifies the position in the function string (e.\+g. for possible error messages to the user) \\
+\hline
+{\em constant\+As\+Operator\+\_\+in} & specifies the constant as a string as an operator for conversion to a floating point number \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a58be84d3b8a96b24215143c226e47ba9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a58be84d3b8a96b24215143c226e47ba9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_a67505cc902e68f0fda3c94dbeaf784f4}\label{classpaceval__c_syntactic_analysis_a67505cc902e68f0fda3c94dbeaf784f4} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!addElementaryArithmeticOrPowerSign@{addElementaryArithmeticOrPowerSign}}
+\index{addElementaryArithmeticOrPowerSign@{addElementaryArithmeticOrPowerSign}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{addElementaryArithmeticOrPowerSign()}{addElementaryArithmeticOrPowerSign()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Syntactic\+Analysis\+::add\+Elementary\+Arithmetic\+Or\+Power\+Sign (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{operator\+\_\+in,  }\item[{long}]{position\+\_\+in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+creates a new node as a \doxylink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation} object and saves the positions for the operands and the result of the operation 
+\begin{DoxyParams}{Parameters}
+{\em operator\+\_\+in} & specifies the operator as a string to be processed \\
+\hline
+{\em position\+\_\+in} & specifies the position in the function string (e.\+g. for possible error messages to the user) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a67505cc902e68f0fda3c94dbeaf784f4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a67505cc902e68f0fda3c94dbeaf784f4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_a865d05ca173971c19f9227f67cd28311}\label{classpaceval__c_syntactic_analysis_a865d05ca173971c19f9227f67cd28311} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!addFacultationSign@{addFacultationSign}}
+\index{addFacultationSign@{addFacultationSign}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{addFacultationSign()}{addFacultationSign()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Syntactic\+Analysis\+::add\+Facultation\+Sign (\begin{DoxyParamCaption}\item[{long}]{position\+\_\+in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+creates a new node as a \doxylink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation} object for the factorial function (e.\+g. "{}x!"{}) and saves the positions for the operand and the result of the factorial function 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+in} & specifies the position in the function string (e.\+g. for possible error messages to the user) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a865d05ca173971c19f9227f67cd28311_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a865d05ca173971c19f9227f67cd28311_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_aa407f6c1bceec6ccfc648f7cc6910fe0}\label{classpaceval__c_syntactic_analysis_aa407f6c1bceec6ccfc648f7cc6910fe0} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!addFunction@{addFunction}}
+\index{addFunction@{addFunction}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{addFunction()}{addFunction()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Syntactic\+Analysis\+::add\+Function (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+As\+Operator\+\_\+in,  }\item[{long}]{position\+\_\+in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+creates a new node as a \doxylink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation} object for a function (e.\+g. "{}sin"{}) and saves the positions for the operand and the result of the function 
+\begin{DoxyParams}{Parameters}
+{\em function\+As\+Operator\+\_\+in} & specifies the function (i.\+e. the partial function like "{}sin"{}) as a string to be processed \\
+\hline
+{\em position\+\_\+in} & specifies the position in the function string (e.\+g. for possible error messages to the user) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_aa407f6c1bceec6ccfc648f7cc6910fe0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_aa407f6c1bceec6ccfc648f7cc6910fe0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_ac6f7e3d71e9271c04639df6f3244ca0d}\label{classpaceval__c_syntactic_analysis_ac6f7e3d71e9271c04639df6f3244ca0d} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!addValue@{addValue}}
+\index{addValue@{addValue}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{addValue()}{addValue()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Syntactic\+Analysis\+::add\+Value (\begin{DoxyParamCaption}\item[{long}]{position\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{value\+As\+Operator\+\_\+in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+creates a new node as a \doxylink{classpaceval__c_atomic_graph_node_add_value}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Add\+Value} object for a floating point or constant value as a string (e.\+g. "{}5.\+47563"{} or "{}pi"{}) and stores the position to the result of the conversion to a floating point number 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+in} & specifies the position in the function string (e.\+g. for possible error messages to the user) \\
+\hline
+{\em value\+As\+Operator\+\_\+in} & specifies the value or constant value as a string as an operator for conversion to a floating point number \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_ac6f7e3d71e9271c04639df6f3244ca0d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_ac6f7e3d71e9271c04639df6f3244ca0d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_a2f01dee4bbfb8659f296ee9a08cab939}\label{classpaceval__c_syntactic_analysis_a2f01dee4bbfb8659f296ee9a08cab939} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!addVariable@{addVariable}}
+\index{addVariable@{addVariable}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{addVariable()}{addVariable()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Syntactic\+Analysis\+::add\+Variable (\begin{DoxyParamCaption}\item[{long}]{position\+\_\+in,  }\item[{long}]{variable\+Position\+\_\+in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+creates a new node as a handle\+\_\+\+Atomic\+Graph\+Node\+Add\+Variable object for a variable from the list of variables 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+in} & specifies the position in the function string (e.\+g. for possible error messages to the user) \\
+\hline
+{\em variable\+Position\+\_\+in} & specifies the position of the variable identifier in the list of variables \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a2f01dee4bbfb8659f296ee9a08cab939_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a2f01dee4bbfb8659f296ee9a08cab939_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_ac830fb825738bd288776030ee77ab952}\label{classpaceval__c_syntactic_analysis_ac830fb825738bd288776030ee77ab952} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!doAnalyzeTerms@{doAnalyzeTerms}}
+\index{doAnalyzeTerms@{doAnalyzeTerms}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{doAnalyzeTerms()}{doAnalyzeTerms()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Syntactic\+Analysis\+::do\+Analyze\+Terms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Starts the processing of mathematical terms in the function and in subfunctions, which are enclosed, for example, with brackets ("{}("{}, "{})"{}) Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_ac830fb825738bd288776030ee77ab952_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_ac830fb825738bd288776030ee77ab952_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_afcfb28524d9d1849f9ba9b9f8a9134b2}\label{classpaceval__c_syntactic_analysis_afcfb28524d9d1849f9ba9b9f8a9134b2} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!doPowerCharacter@{doPowerCharacter}}
+\index{doPowerCharacter@{doPowerCharacter}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{doPowerCharacter()}{doPowerCharacter()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Syntactic\+Analysis\+::do\+Power\+Character (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+this method processes a power character found in the function (i.\+e. "{}\texorpdfstring{$^\wedge$}{\string^}"{} like in "{}x\texorpdfstring{$^\wedge$}{\string^}(1/3)"{}) Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_afcfb28524d9d1849f9ba9b9f8a9134b2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_afcfb28524d9d1849f9ba9b9f8a9134b2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_a6b028992d3620e3b47cde592607de063}\label{classpaceval__c_syntactic_analysis_a6b028992d3620e3b47cde592607de063} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!doSingleCharacter@{doSingleCharacter}}
+\index{doSingleCharacter@{doSingleCharacter}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{doSingleCharacter()}{doSingleCharacter()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Syntactic\+Analysis\+::do\+Single\+Character (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+this method processes all characters that cannot yet be specifically assigned to a function or variable identifier or a number, for example Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a6b028992d3620e3b47cde592607de063_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a6b028992d3620e3b47cde592607de063_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_ab6c891357bf0d13196b002d7670c392b}\label{classpaceval__c_syntactic_analysis_ab6c891357bf0d13196b002d7670c392b} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!doSummation@{doSummation}}
+\index{doSummation@{doSummation}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{doSummation()}{doSummation()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Syntactic\+Analysis\+::do\+Summation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+this method processes a summation found in the function (e.\+g. "{}+"{}, "{}-\/"{} but also "{}\+OR"{} or "{}\+XOR"{}) Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_ab6c891357bf0d13196b002d7670c392b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_ab6c891357bf0d13196b002d7670c392b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_abf1b0e7180f028db80f0c9c8dff41768}\label{classpaceval__c_syntactic_analysis_abf1b0e7180f028db80f0c9c8dff41768} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!doTerm@{doTerm}}
+\index{doTerm@{doTerm}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{doTerm()}{doTerm()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Syntactic\+Analysis\+::do\+Term (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+this method processes a mathematical term found in the function where multiplications and divisions must be performed before additions and subtractions (e.\+g. "{}\texorpdfstring{$\ast$}{*}"{}, "{}/"{} but also "{}\+AND"{} or "{}$>$="{}) Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_abf1b0e7180f028db80f0c9c8dff41768_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_abf1b0e7180f028db80f0c9c8dff41768_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_a3bf9d54d5d5889274ac243c327466b06}\label{classpaceval__c_syntactic_analysis_a3bf9d54d5d5889274ac243c327466b06} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!getGraph@{getGraph}}
+\index{getGraph@{getGraph}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{getGraph()}{getGraph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpaceval__c_graph}{paceval\+\_\+c\+Graph}} \texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Syntactic\+Analysis\+::get\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the pointer to the associated \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} object Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a3bf9d54d5d5889274ac243c327466b06_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_a140fe1bb628b44a27201ed2fc1449af0}\label{classpaceval__c_syntactic_analysis_a140fe1bb628b44a27201ed2fc1449af0} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!getVarList@{getVarList}}
+\index{getVarList@{getVarList}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{getVarList()}{getVarList()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpaceval__c_list_of_variables}{paceval\+\_\+c\+List\+Of\+Variables}} \texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Syntactic\+Analysis\+::get\+Var\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the pointer to the associated list of variables Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a140fe1bb628b44a27201ed2fc1449af0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_a5dd030d583098f92081518328ffd1f92}\label{classpaceval__c_syntactic_analysis_a5dd030d583098f92081518328ffd1f92} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!initializeData@{initializeData}}
+\index{initializeData@{initializeData}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{initializeData()}{initializeData()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Syntactic\+Analysis\+::initialize\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{\mbox{\hyperlink{classpaceval__c_list_of_variables}{paceval\+\_\+c\+List\+Of\+Variables}} \texorpdfstring{$\ast$}{*}}]{list\+Of\+Variables\+\_\+in }\end{DoxyParamCaption})}
+
+initiates the data held by this \doxylink{classpaceval__c_syntactic_analysis}{paceval\+\_\+c\+Syntactic\+Analysis} 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & is the associated \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em function\+String\+\_\+in} & specifies the user\textquotesingle{}s function \\
+\hline
+{\em list\+Of\+Variables\+\_\+in} & specifies the list of variables managed by the class \doxylink{classpaceval__c_list_of_variables}{paceval\+\_\+c\+List\+Of\+Variables} to be used for analysis by this \doxylink{classpaceval__c_syntactic_analysis}{paceval\+\_\+c\+Syntactic\+Analysis} object \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a5dd030d583098f92081518328ffd1f92_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a5dd030d583098f92081518328ffd1f92_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_syntactic_analysis_a472cf43897a08143defa135ce0f1ac11}\label{classpaceval__c_syntactic_analysis_a472cf43897a08143defa135ce0f1ac11} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!setOperationPlaceholdersPositions@{setOperationPlaceholdersPositions}}
+\index{setOperationPlaceholdersPositions@{setOperationPlaceholdersPositions}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{setOperationPlaceholdersPositions()}{setOperationPlaceholdersPositions()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Syntactic\+Analysis\+::set\+Operation\+Placeholders\+Positions (\begin{DoxyParamCaption}\item[{long \texorpdfstring{$\ast$}{*}}]{position\+\_\+value1\+\_\+in,  }\item[{long \texorpdfstring{$\ast$}{*}}]{position\+\_\+value2\+\_\+in,  }\item[{long \texorpdfstring{$\ast$}{*}}]{position\+\_\+result\+\_\+in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+stores the positions in the node list from which the first and second operands of an operation are fetched and the position to which the result of the operation is then written 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+value1\+\_\+in} & specifies the position of the first operand \\
+\hline
+{\em position\+\_\+value2\+\_\+in} & specifies the position of the second operand \\
+\hline
+{\em position\+\_\+result\+\_\+in} & specifies the position for the result of the operation \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_syntactic_analysis_a472cf43897a08143defa135ce0f1ac11_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classpaceval__c_syntactic_analysis_a8ea8528478e9455128845322a12b2fec}\label{classpaceval__c_syntactic_analysis_a8ea8528478e9455128845322a12b2fec} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!currentAtomicGraphNode@{currentAtomicGraphNode}}
+\index{currentAtomicGraphNode@{currentAtomicGraphNode}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{currentAtomicGraphNode}{currentAtomicGraphNode}}
+{\footnotesize\ttfamily long paceval\+\_\+c\+Syntactic\+Analysis\+::current\+Atomic\+Graph\+Node\hspace{0.3cm}{\ttfamily [protected]}}
+
+stores the position of the node currently being created and edited in the list \Hypertarget{classpaceval__c_syntactic_analysis_a01ebd6e355740872c14defbfb251f651}\label{classpaceval__c_syntactic_analysis_a01ebd6e355740872c14defbfb251f651} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!handle\_Graph@{handle\_Graph}}
+\index{handle\_Graph@{handle\_Graph}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{handle\_Graph}{handle\_Graph}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpaceval__c_graph}{paceval\+\_\+c\+Graph}}\texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Syntactic\+Analysis\+::handle\+\_\+\+Graph\hspace{0.3cm}{\ttfamily [protected]}}
+
+the \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} for the management of the node list \Hypertarget{classpaceval__c_syntactic_analysis_a4be2d516e6be44ed1502326e4d946836}\label{classpaceval__c_syntactic_analysis_a4be2d516e6be44ed1502326e4d946836} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!handle\_Scanner@{handle\_Scanner}}
+\index{handle\_Scanner@{handle\_Scanner}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{handle\_Scanner}{handle\_Scanner}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner}}\texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Syntactic\+Analysis\+::handle\+\_\+\+Scanner\hspace{0.3cm}{\ttfamily [protected]}}
+
+the \doxylink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner} for the exploration of mathematical strings as parts of the user\textquotesingle{}s function \Hypertarget{classpaceval__c_syntactic_analysis_afcf3a0953e695a78a884f0b28433b5d9}\label{classpaceval__c_syntactic_analysis_afcf3a0953e695a78a884f0b28433b5d9} 
+\index{paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}!listOfVariables@{listOfVariables}}
+\index{listOfVariables@{listOfVariables}!paceval\_cSyntacticAnalysis@{paceval\_cSyntacticAnalysis}}
+\doxysubsubsection{\texorpdfstring{listOfVariables}{listOfVariables}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpaceval__c_list_of_variables}{paceval\+\_\+c\+List\+Of\+Variables}}\texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Syntactic\+Analysis\+::list\+Of\+Variables\hspace{0.3cm}{\ttfamily [protected]}}
+
+stores the pointer to the associated list of variables 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/\mbox{\hyperlink{paceval__c_syntactic_analysis_8h}{paceval\+\_\+c\+Syntactic\+Analysis.\+h}}\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/\mbox{\hyperlink{paceval__c_syntactic_analysis_8cpp}{paceval\+\_\+c\+Syntactic\+Analysis.\+cpp}}\end{DoxyCompactItemize}

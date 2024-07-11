@@ -1,0 +1,377 @@
+\doxysection{G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/paceval\+\_\+f\+FPGAHandling.cpp File Reference}
+\hypertarget{paceval__f_f_p_g_a_handling_8cpp}{}\label{paceval__f_f_p_g_a_handling_8cpp}\index{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/paceval\_fFPGAHandling.cpp@{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/paceval\_fFPGAHandling.cpp}}
+
+
+implementation of the main routines for handling paceval in hardware, in particular via an FPGA implementation (annotation\+: the source code of \doxylink{paceval__f_f_p_g_a_handling_8cpp}{paceval\+\_\+f\+FPGAHandling.\+cpp} can be given to customers to perform specialized handling of the hardware)  
+
+
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+f\+FPGAHandling.\+h"{}}\newline
+Include dependency graph for paceval\+\_\+f\+FPGAHandling.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{paceval__f_f_p_g_a_handling_8cpp_a7013543d6f8a1bb564489a4460269af3}{max}}(\+\_\+\+\_\+a,  \+\_\+\+\_\+b)~(((\+\_\+\+\_\+a) $>$ (\+\_\+\+\_\+b)) ? (\+\_\+\+\_\+a) \+: (\+\_\+\+\_\+b))
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\+\_\+\+\_\+int64 \mbox{\hyperlink{paceval__f_f_p_g_a_handling_8cpp_a279c1efd8817dabf12497dd5b50ebbca}{paceval\+\_\+c\+Computation\+\_\+get\+IDfrom\+PACEVAL\+\_\+\+HANDLE}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{paceval__f_f_p_g_a_handling_8cpp_a5f120e88bdb14a2215e31321aeb00351}{paceval\+\_\+c\+Computation\+\_\+get\+Node\+Data}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, const unsigned long position\+Node\+\_\+in, long \texorpdfstring{$\ast$}{*}max\+Value\+Fields\+\_\+out, \mbox{\hyperlink{structpaceval__s_f_p_g_a_node_data}{paceval\+\_\+s\+FPGANode\+Data}} \texorpdfstring{$\ast$}{*}handle\+\_\+node\+Data\+Struct\+\_\+out, \mbox{\hyperlink{structpaceval__s_f_p_g_a_node_cache_status_for_stacks}{paceval\+\_\+s\+FPGANode\+Cache\+Status\+For\+Stacks}} \texorpdfstring{$\ast$}{*}handle\+\_\+node\+Data\+Cache\+Status\+Structs\+\_\+out)
+\item 
+bool \mbox{\hyperlink{paceval__f_f_p_g_a_handling_8cpp_a92e99ac4469104b2cfe3365cc1661441}{paceval\+\_\+c\+Computation\+\_\+set\+FPGAMemory\+Allocation}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, void \texorpdfstring{$\ast$}{*}pointer\+To\+FPGAMemory\+\_\+in)
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{paceval__f_f_p_g_a_handling_8cpp_ac8a8588d3f08eb906b62354610818757}{paceval\+\_\+c\+Computation\+\_\+get\+FPGAMemory\+Allocation}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+void \mbox{\hyperlink{paceval__f_f_p_g_a_handling_8cpp_ae983480dfafd642036164757ef1e2bfb}{paceval\+\_\+activity\+Start\+\_\+\+FPGA\+\_\+\+Create\+Computation}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, const unsigned long function\+Length\+String\+\_\+in, const unsigned long number\+Of\+Variables\+\_\+in, const bool use\+Interval\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__f_f_p_g_a_handling_8cpp_a65643747ee8511c9ab81c178f4c2b02d}{paceval\+\_\+activity\+End\+\_\+\+FPGA\+\_\+\+Create\+Computation}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, const unsigned long function\+Length\+String\+\_\+in, const unsigned long number\+Of\+Variables\+\_\+in, const bool use\+Interval\+\_\+in, const bool success\+\_\+in, const unsigned long number\+Of\+Nodes\+\_\+in, const unsigned long number\+Of\+Stacks\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__f_f_p_g_a_handling_8cpp_ae5fcb88214550c44e9a712e37a2654fd}{paceval\+\_\+activity\+Start\+\_\+\+FPGA\+\_\+\+Get\+Computation\+Result}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, const \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}} use\+Calculation\+Precision\+\_\+in, const unsigned long stack\+Number\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__f_f_p_g_a_handling_8cpp_a1160d7a8c994d3edc5cf80e79e1a57e2}{paceval\+\_\+activity\+Main\+\_\+\+FPGA\+\_\+\+Do\+Computation}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, const unsigned char computation\+Circle\+\_\+in, \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}} use\+Calculation\+Precision\+\_\+in, const unsigned long stack\+Number\+\_\+in, const void \texorpdfstring{$\ast$}{*}variables\+Values\+\_\+in, double \texorpdfstring{$\ast$}{*}result\+As\+Double\+\_\+out, float \texorpdfstring{$\ast$}{*}result\+As\+Float\+\_\+out, \mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328ef}{paceval\+\_\+e\+Error\+Types}} \texorpdfstring{$\ast$}{*}error\+Type\+\_\+out, unsigned long \texorpdfstring{$\ast$}{*}error\+Node\+Position\+\_\+out)
+\item 
+void \mbox{\hyperlink{paceval__f_f_p_g_a_handling_8cpp_a15d477e82288a56dfc5d3858be80aa9b}{paceval\+\_\+activity\+Main\+\_\+\+FPGA\+\_\+\+Reset\+Cached\+Node\+Data}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, const unsigned long stack\+Number\+\_\+in)
+\item 
+void \mbox{\hyperlink{paceval__f_f_p_g_a_handling_8cpp_a2cfac90d511f003aae3babc132e100a5}{paceval\+\_\+activity\+End\+\_\+\+FPGA\+\_\+\+Get\+Computation\+Result}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, const \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}} use\+Calculation\+Precision\+\_\+in, const unsigned long stack\+Number\+\_\+in, const bool valid\+Result\+Standard\+\_\+in, const void \texorpdfstring{$\ast$}{*}result\+Standard\+\_\+in, const bool valid\+Result\+FPGA\+\_\+in, const void \texorpdfstring{$\ast$}{*}result\+FPGA\+\_\+in)
+\item 
+void \mbox{\hyperlink{paceval__f_f_p_g_a_handling_8cpp_a54a7f65c0e60d2465f181b557d2acb24}{paceval\+\_\+activity\+Start\+\_\+\+FPGA\+\_\+\+Delete\+Computation}} (const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+implementation of the main routines for handling paceval in hardware, in particular via an FPGA implementation (annotation\+: the source code of \doxylink{paceval__f_f_p_g_a_handling_8cpp}{paceval\+\_\+f\+FPGAHandling.\+cpp} can be given to customers to perform specialized handling of the hardware) 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{paceval__f_f_p_g_a_handling_8cpp_a7013543d6f8a1bb564489a4460269af3}\label{paceval__f_f_p_g_a_handling_8cpp_a7013543d6f8a1bb564489a4460269af3} 
+\index{paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}!max@{max}}
+\index{max@{max}!paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}}
+\doxysubsubsection{\texorpdfstring{max}{max}}
+{\footnotesize\ttfamily \#define max(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+a,  }\item[{}]{\+\_\+\+\_\+b }\end{DoxyParamCaption})~(((\+\_\+\+\_\+a) $>$ (\+\_\+\+\_\+b)) ? (\+\_\+\+\_\+a) \+: (\+\_\+\+\_\+b))}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{paceval__f_f_p_g_a_handling_8cpp_a65643747ee8511c9ab81c178f4c2b02d}\label{paceval__f_f_p_g_a_handling_8cpp_a65643747ee8511c9ab81c178f4c2b02d} 
+\index{paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}!paceval\_activityEnd\_FPGA\_CreateComputation@{paceval\_activityEnd\_FPGA\_CreateComputation}}
+\index{paceval\_activityEnd\_FPGA\_CreateComputation@{paceval\_activityEnd\_FPGA\_CreateComputation}!paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_activityEnd\_FPGA\_CreateComputation()}{paceval\_activityEnd\_FPGA\_CreateComputation()}}
+{\footnotesize\ttfamily bool paceval\+\_\+activity\+End\+\_\+\+FPGA\+\_\+\+Create\+Computation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{const unsigned long}]{function\+Length\+String\+\_\+in,  }\item[{const unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const bool}]{use\+Interval\+\_\+in,  }\item[{const bool}]{success\+\_\+in,  }\item[{const unsigned long}]{number\+Of\+Nodes\+\_\+in,  }\item[{const unsigned long}]{number\+Of\+Stacks\+\_\+in }\end{DoxyParamCaption})}
+
+this C function is called when a paceval computation object has been created via the paceval library 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+{\em function\+Length\+String\+\_\+in} & the length of the function that is processed via the paceval library \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & the number of variables of the function \\
+\hline
+{\em use\+Interval\+\_\+in} & should interval arithmetic be used (true) or not (false) \\
+\hline
+{\em success\+\_\+in} & the creation of the paceval computation object via the paceval library was successful (true) or not (false) \\
+\hline
+{\em number\+Of\+Nodes\+\_\+in} & the number of nodes of the paceval computation object \\
+\hline
+{\em number\+Of\+Stacks\+\_\+in} & the maximum number of stacks required for the calculations \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_a65643747ee8511c9ab81c178f4c2b02d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_a65643747ee8511c9ab81c178f4c2b02d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_f_p_g_a_handling_8cpp_a2cfac90d511f003aae3babc132e100a5}\label{paceval__f_f_p_g_a_handling_8cpp_a2cfac90d511f003aae3babc132e100a5} 
+\index{paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}!paceval\_activityEnd\_FPGA\_GetComputationResult@{paceval\_activityEnd\_FPGA\_GetComputationResult}}
+\index{paceval\_activityEnd\_FPGA\_GetComputationResult@{paceval\_activityEnd\_FPGA\_GetComputationResult}!paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_activityEnd\_FPGA\_GetComputationResult()}{paceval\_activityEnd\_FPGA\_GetComputationResult()}}
+{\footnotesize\ttfamily void paceval\+\_\+activity\+End\+\_\+\+FPGA\+\_\+\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{const \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}}}]{use\+Calculation\+Precision\+\_\+in,  }\item[{const unsigned long}]{stack\+Number\+\_\+in,  }\item[{const bool}]{valid\+Result\+Standard\+\_\+in,  }\item[{const void \texorpdfstring{$\ast$}{*}}]{result\+Standard\+\_\+in,  }\item[{const bool}]{valid\+Result\+FPGA\+\_\+in,  }\item[{const void \texorpdfstring{$\ast$}{*}}]{result\+FPGA\+\_\+in }\end{DoxyParamCaption})}
+
+this C function is called when a calculation has been performed on a paceval computation object via the paceval library 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+{\em use\+Calculation\+Precision\+\_\+in} & the precision (float or double) with which the calculation should be performed \\
+\hline
+{\em stack\+Number\+\_\+in} & the stack on which the calculation is to be performed \\
+\hline
+{\em valid\+Result\+Standard\+\_\+in} & indicates whether the result of the standard calculation is valid \\
+\hline
+{\em result\+Standard\+\_\+in} & the result of the standard calculation (float or double depending on use\+Calculation\+Precision\+\_\+in) \\
+\hline
+{\em valid\+Result\+FPGA\+\_\+in} & indicates whether the result of the calculation via the FPGA is valid (see especially \doxylink{paceval__f_f_p_g_a_handling_8h_a1160d7a8c994d3edc5cf80e79e1a57e2}{paceval\+\_\+activity\+Main\+\_\+\+FPGA\+\_\+\+Do\+Computation()}) \\
+\hline
+{\em result\+FPGA\+\_\+in} & the result of the calculation via the FPGA (float or double depending on use\+Calculation\+Precision\+\_\+in) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_a2cfac90d511f003aae3babc132e100a5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_f_p_g_a_handling_8cpp_a1160d7a8c994d3edc5cf80e79e1a57e2}\label{paceval__f_f_p_g_a_handling_8cpp_a1160d7a8c994d3edc5cf80e79e1a57e2} 
+\index{paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}!paceval\_activityMain\_FPGA\_DoComputation@{paceval\_activityMain\_FPGA\_DoComputation}}
+\index{paceval\_activityMain\_FPGA\_DoComputation@{paceval\_activityMain\_FPGA\_DoComputation}!paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_activityMain\_FPGA\_DoComputation()}{paceval\_activityMain\_FPGA\_DoComputation()}}
+{\footnotesize\ttfamily bool paceval\+\_\+activity\+Main\+\_\+\+FPGA\+\_\+\+Do\+Computation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{const unsigned char}]{computation\+Circle\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}}}]{use\+Calculation\+Precision\+\_\+in,  }\item[{const unsigned long}]{stack\+Number\+\_\+in,  }\item[{const void \texorpdfstring{$\ast$}{*}}]{variables\+Values\+\_\+in,  }\item[{double \texorpdfstring{$\ast$}{*}}]{result\+As\+Double\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{result\+As\+Float\+\_\+out,  }\item[{\mbox{\hyperlink{paceval__main_8h_a59e502857d43b3bbf9145f13103328ef}{paceval\+\_\+e\+Error\+Types}} \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{error\+Node\+Position\+\_\+out }\end{DoxyParamCaption})}
+
+This C function is responsible for processing the mathematical calculation on the FPGA 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+{\em use\+Calculation\+Precision\+\_\+in} & the precision (float or double) with which the calculation should be performed \\
+\hline
+{\em stack\+Number\+\_\+in} & the stack on which the calculation is to be performed \\
+\hline
+{\em variables\+Values\+\_\+in} & the pointer to the values for the variables (float or double depending on use\+Calculation\+Precision\+\_\+in) \\
+\hline
+{\em result\+As\+Double\+\_\+out} & the placeholder for the result of the calculation as a double if everything worked \\
+\hline
+{\em result\+As\+Float\+\_\+out} & the placeholder for the result of the calculation as a float if everything worked \\
+\hline
+{\em error\+Type\+\_\+out} & in case of error, the type of error that occurred (see paceval\+\_\+e\+Error\+Types in \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}) \\
+\hline
+{\em error\+Node\+Position\+\_\+out} & in case of an error, the position of the error that occurred (can be used to report to the user by the paceval library) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_a1160d7a8c994d3edc5cf80e79e1a57e2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_a1160d7a8c994d3edc5cf80e79e1a57e2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_f_p_g_a_handling_8cpp_a15d477e82288a56dfc5d3858be80aa9b}\label{paceval__f_f_p_g_a_handling_8cpp_a15d477e82288a56dfc5d3858be80aa9b} 
+\index{paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}!paceval\_activityMain\_FPGA\_ResetCachedNodeData@{paceval\_activityMain\_FPGA\_ResetCachedNodeData}}
+\index{paceval\_activityMain\_FPGA\_ResetCachedNodeData@{paceval\_activityMain\_FPGA\_ResetCachedNodeData}!paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_activityMain\_FPGA\_ResetCachedNodeData()}{paceval\_activityMain\_FPGA\_ResetCachedNodeData()}}
+{\footnotesize\ttfamily void paceval\+\_\+activity\+Main\+\_\+\+FPGA\+\_\+\+Reset\+Cached\+Node\+Data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{const unsigned long}]{stack\+Number\+\_\+in }\end{DoxyParamCaption})}
+
+this C function is responsible for resetting the invalid cache in case of an abort or error in \doxylink{paceval__f_f_p_g_a_handling_8h_a1160d7a8c994d3edc5cf80e79e1a57e2}{paceval\+\_\+activity\+Main\+\_\+\+FPGA\+\_\+\+Do\+Computation()} (annotation\+: this does not affect the cache for constant values) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+{\em stack\+Number\+\_\+in} & the stack on which the calculation is to be performed \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_a15d477e82288a56dfc5d3858be80aa9b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_a15d477e82288a56dfc5d3858be80aa9b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_f_p_g_a_handling_8cpp_ae983480dfafd642036164757ef1e2bfb}\label{paceval__f_f_p_g_a_handling_8cpp_ae983480dfafd642036164757ef1e2bfb} 
+\index{paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}!paceval\_activityStart\_FPGA\_CreateComputation@{paceval\_activityStart\_FPGA\_CreateComputation}}
+\index{paceval\_activityStart\_FPGA\_CreateComputation@{paceval\_activityStart\_FPGA\_CreateComputation}!paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_activityStart\_FPGA\_CreateComputation()}{paceval\_activityStart\_FPGA\_CreateComputation()}}
+{\footnotesize\ttfamily void paceval\+\_\+activity\+Start\+\_\+\+FPGA\+\_\+\+Create\+Computation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{const unsigned long}]{function\+Length\+String\+\_\+in,  }\item[{const unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const bool}]{use\+Interval\+\_\+in }\end{DoxyParamCaption})}
+
+this C function is called when a paceval computation object is created via the paceval library 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+{\em function\+Length\+String\+\_\+in} & the length of the function that is processed via the paceval library \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & the number of variables of the function \\
+\hline
+{\em use\+Interval\+\_\+in} & should interval arithmetic be used (true) or not (false) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_ae983480dfafd642036164757ef1e2bfb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_ae983480dfafd642036164757ef1e2bfb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_f_p_g_a_handling_8cpp_a54a7f65c0e60d2465f181b557d2acb24}\label{paceval__f_f_p_g_a_handling_8cpp_a54a7f65c0e60d2465f181b557d2acb24} 
+\index{paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}!paceval\_activityStart\_FPGA\_DeleteComputation@{paceval\_activityStart\_FPGA\_DeleteComputation}}
+\index{paceval\_activityStart\_FPGA\_DeleteComputation@{paceval\_activityStart\_FPGA\_DeleteComputation}!paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_activityStart\_FPGA\_DeleteComputation()}{paceval\_activityStart\_FPGA\_DeleteComputation()}}
+{\footnotesize\ttfamily void paceval\+\_\+activity\+Start\+\_\+\+FPGA\+\_\+\+Delete\+Computation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+this C function is called when a paceval computation object is deleted via the paceval library (annotation\+: in particular all allocated memory must be released) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_a54a7f65c0e60d2465f181b557d2acb24_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_a54a7f65c0e60d2465f181b557d2acb24_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_f_p_g_a_handling_8cpp_ae5fcb88214550c44e9a712e37a2654fd}\label{paceval__f_f_p_g_a_handling_8cpp_ae5fcb88214550c44e9a712e37a2654fd} 
+\index{paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}!paceval\_activityStart\_FPGA\_GetComputationResult@{paceval\_activityStart\_FPGA\_GetComputationResult}}
+\index{paceval\_activityStart\_FPGA\_GetComputationResult@{paceval\_activityStart\_FPGA\_GetComputationResult}!paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_activityStart\_FPGA\_GetComputationResult()}{paceval\_activityStart\_FPGA\_GetComputationResult()}}
+{\footnotesize\ttfamily bool paceval\+\_\+activity\+Start\+\_\+\+FPGA\+\_\+\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{const \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}}}]{use\+Calculation\+Precision\+\_\+in,  }\item[{const unsigned long}]{stack\+Number\+\_\+in }\end{DoxyParamCaption})}
+
+this C function is called when a calculation is to be performed on a paceval computation object via the paceval library 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+{\em use\+Calculation\+Precision\+\_\+in} & the precision (float or double) with which the calculation should be performed \\
+\hline
+{\em stack\+Number\+\_\+in} & the stack on which the calculation is to be performed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_ae5fcb88214550c44e9a712e37a2654fd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_f_p_g_a_handling_8cpp_ac8a8588d3f08eb906b62354610818757}\label{paceval__f_f_p_g_a_handling_8cpp_ac8a8588d3f08eb906b62354610818757} 
+\index{paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}!paceval\_cComputation\_getFPGAMemoryAllocation@{paceval\_cComputation\_getFPGAMemoryAllocation}}
+\index{paceval\_cComputation\_getFPGAMemoryAllocation@{paceval\_cComputation\_getFPGAMemoryAllocation}!paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_getFPGAMemoryAllocation()}{paceval\_cComputation\_getFPGAMemoryAllocation()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Computation\+\_\+get\+FPGAMemory\+Allocation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+fetches an address noted in a paceval computation object to a memory location and the return value is the pointer to the saved memory location or NULL if no memory location has been saved yet 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_ac8a8588d3f08eb906b62354610818757_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_f_p_g_a_handling_8cpp_a279c1efd8817dabf12497dd5b50ebbca}\label{paceval__f_f_p_g_a_handling_8cpp_a279c1efd8817dabf12497dd5b50ebbca} 
+\index{paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}!paceval\_cComputation\_getIDfromPACEVAL\_HANDLE@{paceval\_cComputation\_getIDfromPACEVAL\_HANDLE}}
+\index{paceval\_cComputation\_getIDfromPACEVAL\_HANDLE@{paceval\_cComputation\_getIDfromPACEVAL\_HANDLE}!paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_getIDfromPACEVAL\_HANDLE()}{paceval\_cComputation\_getIDfromPACEVAL\_HANDLE()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+int64 paceval\+\_\+c\+Computation\+\_\+get\+IDfrom\+PACEVAL\+\_\+\+HANDLE (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+converts the pointer to a paceval computation object into a 64-\/bit number that can be used as a reference and the return value is a 64-\/bit number 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_a279c1efd8817dabf12497dd5b50ebbca_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_f_p_g_a_handling_8cpp_a5f120e88bdb14a2215e31321aeb00351}\label{paceval__f_f_p_g_a_handling_8cpp_a5f120e88bdb14a2215e31321aeb00351} 
+\index{paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}!paceval\_cComputation\_getNodeData@{paceval\_cComputation\_getNodeData}}
+\index{paceval\_cComputation\_getNodeData@{paceval\_cComputation\_getNodeData}!paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_getNodeData()}{paceval\_cComputation\_getNodeData()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+Computation\+\_\+get\+Node\+Data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{const unsigned long}]{position\+Node\+\_\+in,  }\item[{long \texorpdfstring{$\ast$}{*}}]{max\+Value\+Fields\+\_\+out,  }\item[{\mbox{\hyperlink{structpaceval__s_f_p_g_a_node_data}{paceval\+\_\+s\+FPGANode\+Data}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+node\+Data\+Struct\+\_\+out,  }\item[{\mbox{\hyperlink{structpaceval__s_f_p_g_a_node_cache_status_for_stacks}{paceval\+\_\+s\+FPGANode\+Cache\+Status\+For\+Stacks}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+node\+Data\+Cache\+Status\+Structs\+\_\+out }\end{DoxyParamCaption})}
+
+gets a node of the linked list of a paceval computation object and the return value is the total number of nodes in the list 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+{\em position\+Node\+\_\+in} & the position in the linked list of nodes to be read \\
+\hline
+{\em max\+Value\+Fields\+\_\+out} & the maximum field number used in the node \\
+\hline
+{\em handle\+\_\+node\+Data\+Struct\+\_\+out} & the data structure used to fetch and hold the node contents (see \doxylink{paceval__c_common_data_8h}{paceval\+\_\+c\+Common\+Data.\+h}) \\
+\hline
+{\em handle\+\_\+node\+Data\+Cache\+Status\+Structs\+\_\+out} & the data structure used to fetch and hold the cache contents (see \doxylink{paceval__c_common_data_8h}{paceval\+\_\+c\+Common\+Data.\+h}) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_a5f120e88bdb14a2215e31321aeb00351_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_f_p_g_a_handling_8cpp_a92e99ac4469104b2cfe3365cc1661441}\label{paceval__f_f_p_g_a_handling_8cpp_a92e99ac4469104b2cfe3365cc1661441} 
+\index{paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}!paceval\_cComputation\_setFPGAMemoryAllocation@{paceval\_cComputation\_setFPGAMemoryAllocation}}
+\index{paceval\_cComputation\_setFPGAMemoryAllocation@{paceval\_cComputation\_setFPGAMemoryAllocation}!paceval\_fFPGAHandling.cpp@{paceval\_fFPGAHandling.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_cComputation\_setFPGAMemoryAllocation()}{paceval\_cComputation\_setFPGAMemoryAllocation()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+Computation\+\_\+set\+FPGAMemory\+Allocation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{void \texorpdfstring{$\ast$}{*}}]{pointer\+To\+FPGAMemory\+\_\+in }\end{DoxyParamCaption})}
+
+remembers the address of a memory location in a temporary calculation object and the return value is true if the function was successful, otherwise the return value is false 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & the pointer to the paceval computation object managed in the paceval library \\
+\hline
+{\em pointer\+To\+FPGAMemory\+\_\+in} & the address of the memory location to be remembered on the paceval computation object managed in the paceval library \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_f_p_g_a_handling_8cpp_a92e99ac4469104b2cfe3365cc1661441_icgraph}
+\end{center}
+\end{figure}

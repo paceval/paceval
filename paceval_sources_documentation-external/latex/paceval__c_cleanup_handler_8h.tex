@@ -1,0 +1,576 @@
+\doxysection{G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/paceval\+\_\+c\+Cleanup\+Handler.h File Reference}
+\hypertarget{paceval__c_cleanup_handler_8h}{}\label{paceval__c_cleanup_handler_8h}\index{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/inc/paceval\_cCleanupHandler.h@{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/inc/paceval\_cCleanupHandler.h}}
+
+
+specification of the main memory management in paceval  
+
+
+{\ttfamily \#include "{}../../source\+\_\+public/inc/paceval\+\_\+main.\+h"{}}\newline
+{\ttfamily \#include "{}paceval\+\_\+f\+Math.\+h"{}}\newline
+{\ttfamily \#include "{}paceval\+\_\+f\+Math\+Interval.\+h"{}}\newline
+Include dependency graph for paceval\+\_\+c\+Cleanup\+Handler.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{paceval__c_cleanup_handler_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}
+\begin{DoxyCompactList}\small\item\em The base class \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} encapsulates the management of the register position of the object created by the class and the \doxylink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classpaceval__c_char_array}{paceval\+\_\+c\+Char\+Array}}
+\begin{DoxyCompactList}\small\item\em The class \doxylink{classpaceval__c_char_array}{paceval\+\_\+c\+Char\+Array} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the management of a character string. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classpaceval__c_unsigned_long_list}{paceval\+\_\+c\+Unsigned\+Long\+List}}
+\begin{DoxyCompactList}\small\item\em The class \doxylink{classpaceval__c_unsigned_long_list}{paceval\+\_\+c\+Unsigned\+Long\+List} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the management of an auto-\/expanding list of non-\/negative integer values with precision unsigned long. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classpaceval__c_values_stack}{paceval\+\_\+c\+Values\+Stack}}
+\begin{DoxyCompactList}\small\item\em The class \doxylink{classpaceval__c_values_stack}{paceval\+\_\+c\+Values\+Stack} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the management of values in a stack in all available floating point precisions long double, double and float. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{structpaceval__s_error_information}{paceval\+\_\+s\+Error\+Information}}
+\begin{DoxyCompactList}\small\item\em The struct \doxylink{structpaceval__s_error_information}{paceval\+\_\+s\+Error\+Information} is used to store the specific error information in case of a paceval specific exception for possible error messages to the user (see \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}). \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}}
+\begin{DoxyCompactList}\small\item\em The class \doxylink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the management of all objects created and registered in paceval. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cac}{paceval\+\_\+e\+Error\+Types\+Specific\+Location}} \{ \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaec4c4a07d83a7ce3cbcb1186e2009cf2}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Computation\+\_\+exception\+Handler\+Is\+Available\+\_\+in\+\_\+c\+Computation}} = -\/1
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9f26f452c87f11c888457e2acef18aa8}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Computation\+\_\+get\+Length\+Function\+String\+\_\+in\+\_\+c\+Computation}} = -\/2
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca6caae224a4b36f5b80972730dbe58fba}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Computation\+\_\+handle\+\_\+\+FPGACircle\+Stacks\+\_\+in\+\_\+c\+Computation}} = -\/3
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca92b10347991cdbb2d3126d44dec3172e}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Computation\+\_\+handle\+\_\+\+Values\+Stacks\+\_\+in\+\_\+c\+Computation}} = -\/4
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9deb7fb9574cba316940920a5687fca8}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Computation\+\_\+handle\+\_\+\+List\+Of\+Variables\+\_\+in\+\_\+c\+Computation}} = -\/5
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3ab1844b65b13334699fb89e16aaa568}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+ldmathv\+\_\+in\+\_\+c\+Computation}} = -\/6
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaf6b03ad33304c0f3002c1dd91087862f}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+create\+Syntactic\+Analysis\+\_\+handle\+\_\+\+Syntactic\+Analysis\+\_\+in\+\_\+c\+Computation}} = -\/11
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3409b56edf1213fa982fb14b177ab458}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+initiate\+Data\+\_\+handle\+\_\+\+Values\+Stack\+\_\+in\+\_\+c\+Computation}} = -\/12
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1db176876a06d29b58233a316f4c724c}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+initiate\+Data\+\_\+e\+Floating\+Point\+Precision\+\_\+in\+\_\+c\+Computation}} = -\/16
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1dd95670b5d20c1476f3506d3e7501d1}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+do\+Computation\+\_\+trusted\+Min\+Max\+Result\+\_\+out\+\_\+in\+\_\+c\+Computation}} = -\/17
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacab9517f17378723d859d0022c10f728bf}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+do\+Computation\+\_\+size\+Of\+Long\+Double\+\_\+in\+\_\+in\+\_\+c\+Computation}} = -\/18
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacac78cfa731582b8a7bd324a744a95160d}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Syntactic\+Analysis\+\_\+handle\+\_\+\+Scanner\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/20
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca19aa6bd9b69af767be0498072ff45caa}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Syntactic\+Analysis\+\_\+handle\+\_\+\+Graph\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/21
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaa56f63f521361004168531b1788c0310}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Syntactic\+Analysis\+\_\+stack\+Of\+Atomic\+Graph\+Node\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/22
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca984265dfb990f09b90e81be2b84eae84}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Elementary\+Arithmetic\+Or\+Power\+Sign\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/23
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacab6eaaa96fd363dedf11d56ab38357525}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Value1\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/24
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9b0444ab0a8afa572f3e3c904bbc9015}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Value2\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/25
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca93f807191daf673b103a4f20d1daba9b}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+do\+Single\+Character\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/26
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacab7aa76b68d39a0efadb57b7439cdf26a}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Variable\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/27
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1e01926109f0af87efa8545c261318f8}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Function\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/28
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacabc3a60da3ac50422dbd59ed5dc43e306}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Facultation\+Sign\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/29
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9ba1018febda1f99e926d51888657f40}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+ld\+Get\+Computation\+Result\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/30
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca52bf909f8b56634163d12cca0cb00f62}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+ld\+Get\+Computation\+Result\+Ext\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/31
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3c1db01022468ee2028ea13c62a79186}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+ld\+Get\+Multiple\+Computations\+Results\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/32
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca4e106a0c23a92de513b259c5f1ea0605}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+ld\+Get\+Multiple\+Computations\+Results\+Ext\+\_\+in\+\_\+c\+Syntactic\+Analysis}} = -\/33
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca0a07cf4ace2ceedb0d5855ec617592c3}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+List\+Of\+Pointer\+\_\+array\+Of\+Pointer\+\_\+in\+\_\+c\+List\+Of\+Pointer}} = -\/35
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacac679f254afb305f8c7e0bdf62d2fec50}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+List\+Of\+Pointer\+\_\+array\+Of\+Pointer\+Types\+\_\+in\+\_\+c\+List\+Of\+Pointer}} = -\/36
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca03922e6f0bbc04266c0bbc0698938d1b}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+increase\+Size\+\_\+new\+\_\+array\+Of\+Pointer\+\_\+in\+\_\+c\+List\+Of\+Pointer}} = -\/37
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca4672bd4006e22d1e66b771a3926a09ff}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+increase\+Size\+\_\+new\+\_\+array\+Of\+Pointer\+Types\+\_\+in\+\_\+c\+List\+Of\+Pointer}} = -\/38
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaf00b2b957ef4a4c12655d0f09f0df619}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Variable\+\_\+new\+Variable\+String\+\_\+in\+\_\+c\+List\+Of\+Variables}} = -\/40
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca724267c731a052ce4a0021f8b6d9e41e}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Variable\+\_\+list\+Of\+Variables\+\_\+in\+\_\+c\+List\+Of\+Variables}} = -\/41
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaf3a5e038ea473cdce2fb9af9e8c30968}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Variables\+At\+Once\+\_\+handle\+\_\+add\+Variable\+String\+\_\+in\+\_\+c\+List\+Of\+Variables}} = -\/42
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca812adfedebb5c61999e0620e04eaba67}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Variables\+At\+Once\+\_\+do\+Add\+Variable1\+\_\+in\+\_\+c\+List\+Of\+Variables}} = -\/43
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca0836265a25bd5f76e85b408923701a38}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Variables\+At\+Once\+\_\+do\+Add\+Variable2\+\_\+in\+\_\+c\+List\+Of\+Variables}} = -\/44
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacac141cd69a83d760e57dfc6317868ec51}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+increase\+Scanner\+String\+Size\+\_\+in\+\_\+c\+Scanner}} = -\/50
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca8de8e6816d6ccc0eea0d7f9d4362e214}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Scanner\+\_\+in\+\_\+c\+Scanner}} = -\/51
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacae5d244ef6a92494b0a65364f606ef50e}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+list\+Ofc\+Atomic\+Graph\+Nodes\+\_\+in\+\_\+c\+Graph}} = -\/52
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9b926a31f8a9b4a944e0ee4c75f99244}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+list\+Of\+Level\+Multithread\+Positions1\+\_\+in\+\_\+c\+Graph}} = -\/56
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaa30616d17c63284cbeecadd09f0ef624}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+list\+Of\+Level\+Multithread\+Positions2\+\_\+in\+\_\+c\+Graph}} = -\/57
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3351846839ced7cc79f1f0805a511082}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Atomic\+Graph\+Node\+\_\+in\+\_\+c\+Graph}} = -\/65
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca7f6cf2caa57a3376f95e94c57d10bb4e}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+List\+Of\+Variables\+\_\+in\+\_\+c\+List\+Of\+Variables}} = -\/70
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacade92f4221b9f51d10d6ef979fbfc7feb}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Cleanup\+Handler\+\_\+in\+\_\+c\+Cleanup\+Handler}} = -\/80
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacae8ded26bbe57bc24573bfd90ca9090db}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+List\+Of\+Unsigned\+Long\+\_\+array\+Of\+Unsigned\+Long\+\_\+in\+\_\+c\+Cleanup\+Handler}} = -\/85
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca8605669b7279cf69590355e52521eccd}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+List\+Of\+Unsigned\+Long\+\_\+new\+\_\+array\+Of\+Unsigned\+Long\+\_\+in\+\_\+c\+Cleanup\+Handler}} = -\/86
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacadb44afd8f70701ce4831ecbb54da7e6d}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+set\+Inner\+Cached\+Result\+\_\+in\+\_\+c\+Atomic\+Graph\+Node}} = -\/90
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaebb6d7ca335d192324aa684a2dee2e83}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+handle\+\_\+s\+Node\+Specific\+Data\+\_\+in\+\_\+c\+Atomic\+Graph\+Node}} = -\/91
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca065aa9fdd74aa14b55d079e8df47255b}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+handle\+\_\+s\+Node\+Base\+Data\+\_\+in\+\_\+c\+Atomic\+Graph\+Node}} = -\/92
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1208fb848f835f128df1e70457ee66ee}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+handle\+\_\+s\+Value\+Operator\+As\+Data\+\_\+in\+\_\+c\+Atomic\+Graph\+Node}} = -\/93
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca5bf04c1cacce5f0ba94e531b1f8c1aeb}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+handle\+\_\+s\+Level\+Multithread\+Data\+\_\+in\+\_\+c\+Atomic\+Graph\+Node}} = -\/94
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1e3dfdcf29244c4a4a316b02c6a017df}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+unregister\+Object\+\_\+in\+\_\+c\+Cleanup\+Handler}} = -\/100
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacad1b195a217ca4802990cb6247fba6113}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+register\+Object\+\_\+e\+Pointer\+Type\+\_\+in\+\_\+c\+Cleanup\+Handler}} = -\/101
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca0679056a9a9f20edf2637b40efd7a32a}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+register\+Object\+\_\+list\+Ofpaceval\+Objects\+\_\+in\+\_\+c\+Cleanup\+Handler}} = -\/102
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3690cf67a35925339c93b4a9afa56f82}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+cleanup\+Allpaceval\+Objects\+\_\+in\+\_\+c\+Cleanup\+Handler}} = -\/103
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9da5a53ef112702bac1d6a13807bf9f7}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Char\+Array\+\_\+in\+\_\+c\+Char\+Array}} = -\/110
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9a1086361665f53981cd8a015a2917d7}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Long\+Array\+\_\+in\+\_\+c\+Long\+Array}} = -\/120
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca31e9278da89dd15961ff3958e8602744}{PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Values\+Stack\+\_\+in\+\_\+c\+Values\+Stack}} = -\/130
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca48e371a55c311218654ee0bc2f44a5ea}{PACEVAL\+\_\+\+ERR\+\_\+\+UNSPECIFIED\+\_\+\+LOCATION}} = -\/999
+ \}
+\item 
+enum \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbe}{paceval\+\_\+e\+List\+Of\+Pointer\+Types}} \{ \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea28075fa8a2cdc4b2e2361c53e0fa05f1}{LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+\+NONE}} = 5
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea4e790a3ddc1646f090c44071e5054b2c}{LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+\+NOT\+\_\+\+TO\+\_\+\+HANDLE}} = 10
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeaa05a66f0a6c4e53818c7d148aba736c4}{LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+List\+Of\+Variables\+Pointer}} = 20
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbead29a129554a4d64cf86b7e3102981524}{LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Syntactic\+Analysis\+Pointer}} = 21
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeac303b7e9a7fa3b8987756d871cb17103}{LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Atomic\+Graph\+Node\+Add\+Value\+Pointer}} = 22
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea79de8a41370c4ce36c762c2da75e0f8e}{LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Atomic\+Graph\+Node\+Operation\+Pointer}} = 23
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeab3bec81ab80799650ff352ba2b26a934}{LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Scanner\+Pointer}} = 24
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea6d52ca714dbd8d1a2318e129bad39ed5}{LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Graph\+Pointer}} = 25
+, \newline
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeaf13dbd0b2ca291497c81067aad664901}{LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Char\+Array\+Pointer}} = 26
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeab8ac6e1ae9eb595c2e196443f10d9518}{LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Unsigned\+Long\+List\+Pointer}} = 27
+, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea3fa2dc623a6e61523ca4e35650d7c358}{LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Values\+Stack\+Pointer}} = 28
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}} \mbox{\hyperlink{paceval__c_cleanup_handler_8h_ab24920e49e587d2ad2f58fd542190fab}{paceval\+\_\+identify\+Operator\+From\+String}} (const char \texorpdfstring{$\ast$}{*}operator\+\_\+in, long value\+Node2\+\_\+in, const char \texorpdfstring{$\ast$}{*}value\+Operator\+\_\+in)
+\item 
+void \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a259feffba4d85fd7c759418dbc4ca1a5}{paceval\+\_\+identify\+Operator\+From\+Operator\+Type}} (char \texorpdfstring{$\ast$}{*}operator\+\_\+out, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}} e\+Return\+Operator\+\_\+in)
+\item 
+void \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a708622c1e260da79a58dade45afa0682}{paceval\+\_\+set\+Callback\+User\+Function\+String}} (unsigned int number\+User\+Function\+\_\+in, const char \texorpdfstring{$\ast$}{*}single\+Function\+String\+\_\+in)
+\item 
+void \mbox{\hyperlink{paceval__c_cleanup_handler_8h_aac304504fe9019598bd2f4f9d60e6e79}{paceval\+\_\+write\+Logging\+String}} (const char \texorpdfstring{$\ast$}{*}logging\+String\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a10040d7f8cd6d48679c8a3f9dca66fab}{paceval\+\_\+delete\+Logging\+Memory}} ()
+\item 
+unsigned long \mbox{\hyperlink{paceval__c_cleanup_handler_8h_aad285407cbade8ce903b2a7a4bc3e437}{paceval\+\_\+get\+Current\+Time}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+specification of the main memory management in paceval 
+
+specification of the data types, objects and classes required in paceval that are responsible for memory management (e.\+g. \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and \doxylink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}) and error handling (e.\+g. \doxylink{structpaceval__s_error_information}{paceval\+\_\+s\+Error\+Information}) 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cac}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cac} 
+\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!paceval\_eErrorTypesSpecificLocation@{paceval\_eErrorTypesSpecificLocation}}
+\index{paceval\_eErrorTypesSpecificLocation@{paceval\_eErrorTypesSpecificLocation}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_eErrorTypesSpecificLocation}{paceval\_eErrorTypesSpecificLocation}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cac}{paceval\+\_\+e\+Error\+Types\+Specific\+Location}}}
+
+specifies the possible error types and error locations using a unique number \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cComputation\_exceptionHandlerIsAvailable\_in\_cComputation@{PACEVAL\_ERR\_LOC\_cComputation\_exceptionHandlerIsAvailable\_in\_cComputation}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cComputation\_exceptionHandlerIsAvailable\_in\_cComputation@{PACEVAL\_ERR\_LOC\_cComputation\_exceptionHandlerIsAvailable\_in\_cComputation}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaec4c4a07d83a7ce3cbcb1186e2009cf2}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaec4c4a07d83a7ce3cbcb1186e2009cf2} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Computation\+\_\+exception\+Handler\+Is\+Available\+\_\+in\+\_\+c\+Computation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cComputation\_getLengthFunctionString\_in\_cComputation@{PACEVAL\_ERR\_LOC\_cComputation\_getLengthFunctionString\_in\_cComputation}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cComputation\_getLengthFunctionString\_in\_cComputation@{PACEVAL\_ERR\_LOC\_cComputation\_getLengthFunctionString\_in\_cComputation}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9f26f452c87f11c888457e2acef18aa8}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9f26f452c87f11c888457e2acef18aa8} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Computation\+\_\+get\+Length\+Function\+String\+\_\+in\+\_\+c\+Computation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cComputation\_handle\_FPGACircleStacks\_in\_cComputation@{PACEVAL\_ERR\_LOC\_cComputation\_handle\_FPGACircleStacks\_in\_cComputation}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cComputation\_handle\_FPGACircleStacks\_in\_cComputation@{PACEVAL\_ERR\_LOC\_cComputation\_handle\_FPGACircleStacks\_in\_cComputation}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca6caae224a4b36f5b80972730dbe58fba}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca6caae224a4b36f5b80972730dbe58fba} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Computation\+\_\+handle\+\_\+\+FPGACircle\+Stacks\+\_\+in\+\_\+c\+Computation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cComputation\_handle\_ValuesStacks\_in\_cComputation@{PACEVAL\_ERR\_LOC\_cComputation\_handle\_ValuesStacks\_in\_cComputation}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cComputation\_handle\_ValuesStacks\_in\_cComputation@{PACEVAL\_ERR\_LOC\_cComputation\_handle\_ValuesStacks\_in\_cComputation}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca92b10347991cdbb2d3126d44dec3172e}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca92b10347991cdbb2d3126d44dec3172e} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Computation\+\_\+handle\+\_\+\+Values\+Stacks\+\_\+in\+\_\+c\+Computation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cComputation\_handle\_ListOfVariables\_in\_cComputation@{PACEVAL\_ERR\_LOC\_cComputation\_handle\_ListOfVariables\_in\_cComputation}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cComputation\_handle\_ListOfVariables\_in\_cComputation@{PACEVAL\_ERR\_LOC\_cComputation\_handle\_ListOfVariables\_in\_cComputation}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9deb7fb9574cba316940920a5687fca8}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9deb7fb9574cba316940920a5687fca8} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Computation\+\_\+handle\+\_\+\+List\+Of\+Variables\+\_\+in\+\_\+c\+Computation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_ldmathv\_in\_cComputation@{PACEVAL\_ERR\_LOC\_ldmathv\_in\_cComputation}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_ldmathv\_in\_cComputation@{PACEVAL\_ERR\_LOC\_ldmathv\_in\_cComputation}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3ab1844b65b13334699fb89e16aaa568}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3ab1844b65b13334699fb89e16aaa568} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+ldmathv\+\_\+in\+\_\+c\+Computation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_createSyntacticAnalysis\_handle\_SyntacticAnalysis\_in\_cComputation@{PACEVAL\_ERR\_LOC\_createSyntacticAnalysis\_handle\_SyntacticAnalysis\_in\_cComputation}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_createSyntacticAnalysis\_handle\_SyntacticAnalysis\_in\_cComputation@{PACEVAL\_ERR\_LOC\_createSyntacticAnalysis\_handle\_SyntacticAnalysis\_in\_cComputation}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaf6b03ad33304c0f3002c1dd91087862f}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaf6b03ad33304c0f3002c1dd91087862f} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+create\+Syntactic\+Analysis\+\_\+handle\+\_\+\+Syntactic\+Analysis\+\_\+in\+\_\+c\+Computation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_initiateData\_handle\_ValuesStack\_in\_cComputation@{PACEVAL\_ERR\_LOC\_initiateData\_handle\_ValuesStack\_in\_cComputation}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_initiateData\_handle\_ValuesStack\_in\_cComputation@{PACEVAL\_ERR\_LOC\_initiateData\_handle\_ValuesStack\_in\_cComputation}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3409b56edf1213fa982fb14b177ab458}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3409b56edf1213fa982fb14b177ab458} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+initiate\+Data\+\_\+handle\+\_\+\+Values\+Stack\+\_\+in\+\_\+c\+Computation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_initiateData\_eFloatingPointPrecision\_in\_cComputation@{PACEVAL\_ERR\_LOC\_initiateData\_eFloatingPointPrecision\_in\_cComputation}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_initiateData\_eFloatingPointPrecision\_in\_cComputation@{PACEVAL\_ERR\_LOC\_initiateData\_eFloatingPointPrecision\_in\_cComputation}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1db176876a06d29b58233a316f4c724c}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1db176876a06d29b58233a316f4c724c} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+initiate\+Data\+\_\+e\+Floating\+Point\+Precision\+\_\+in\+\_\+c\+Computation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_doComputation\_trustedMinMaxResult\_out\_in\_cComputation@{PACEVAL\_ERR\_LOC\_doComputation\_trustedMinMaxResult\_out\_in\_cComputation}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_doComputation\_trustedMinMaxResult\_out\_in\_cComputation@{PACEVAL\_ERR\_LOC\_doComputation\_trustedMinMaxResult\_out\_in\_cComputation}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1dd95670b5d20c1476f3506d3e7501d1}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1dd95670b5d20c1476f3506d3e7501d1} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+do\+Computation\+\_\+trusted\+Min\+Max\+Result\+\_\+out\+\_\+in\+\_\+c\+Computation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_doComputation\_sizeOfLongDouble\_in\_in\_cComputation@{PACEVAL\_ERR\_LOC\_doComputation\_sizeOfLongDouble\_in\_in\_cComputation}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_doComputation\_sizeOfLongDouble\_in\_in\_cComputation@{PACEVAL\_ERR\_LOC\_doComputation\_sizeOfLongDouble\_in\_in\_cComputation}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacab9517f17378723d859d0022c10f728bf}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacab9517f17378723d859d0022c10f728bf} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+do\+Computation\+\_\+size\+Of\+Long\+Double\+\_\+in\+\_\+in\+\_\+c\+Computation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cSyntacticAnalysis\_handle\_Scanner\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_cSyntacticAnalysis\_handle\_Scanner\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cSyntacticAnalysis\_handle\_Scanner\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_cSyntacticAnalysis\_handle\_Scanner\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacac78cfa731582b8a7bd324a744a95160d}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacac78cfa731582b8a7bd324a744a95160d} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Syntactic\+Analysis\+\_\+handle\+\_\+\+Scanner\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cSyntacticAnalysis\_handle\_Graph\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_cSyntacticAnalysis\_handle\_Graph\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cSyntacticAnalysis\_handle\_Graph\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_cSyntacticAnalysis\_handle\_Graph\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca19aa6bd9b69af767be0498072ff45caa}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca19aa6bd9b69af767be0498072ff45caa} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Syntactic\+Analysis\+\_\+handle\+\_\+\+Graph\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cSyntacticAnalysis\_stackOfAtomicGraphNode\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_cSyntacticAnalysis\_stackOfAtomicGraphNode\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cSyntacticAnalysis\_stackOfAtomicGraphNode\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_cSyntacticAnalysis\_stackOfAtomicGraphNode\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaa56f63f521361004168531b1788c0310}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaa56f63f521361004168531b1788c0310} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Syntactic\+Analysis\+\_\+stack\+Of\+Atomic\+Graph\+Node\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_addElementaryArithmeticOrPowerSign\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_addElementaryArithmeticOrPowerSign\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_addElementaryArithmeticOrPowerSign\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_addElementaryArithmeticOrPowerSign\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca984265dfb990f09b90e81be2b84eae84}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca984265dfb990f09b90e81be2b84eae84} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Elementary\+Arithmetic\+Or\+Power\+Sign\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_addValue1\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_addValue1\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_addValue1\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_addValue1\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacab6eaaa96fd363dedf11d56ab38357525}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacab6eaaa96fd363dedf11d56ab38357525} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Value1\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_addValue2\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_addValue2\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_addValue2\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_addValue2\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9b0444ab0a8afa572f3e3c904bbc9015}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9b0444ab0a8afa572f3e3c904bbc9015} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Value2\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_doSingleCharacter\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_doSingleCharacter\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_doSingleCharacter\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_doSingleCharacter\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca93f807191daf673b103a4f20d1daba9b}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca93f807191daf673b103a4f20d1daba9b} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+do\+Single\+Character\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_addVariable\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_addVariable\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_addVariable\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_addVariable\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacab7aa76b68d39a0efadb57b7439cdf26a}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacab7aa76b68d39a0efadb57b7439cdf26a} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Variable\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_addFunction\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_addFunction\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_addFunction\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_addFunction\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1e01926109f0af87efa8545c261318f8}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1e01926109f0af87efa8545c261318f8} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Function\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_addFacultationSign\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_addFacultationSign\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_addFacultationSign\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_addFacultationSign\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacabc3a60da3ac50422dbd59ed5dc43e306}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacabc3a60da3ac50422dbd59ed5dc43e306} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Facultation\+Sign\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_ldGetComputationResult\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_ldGetComputationResult\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_ldGetComputationResult\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_ldGetComputationResult\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9ba1018febda1f99e926d51888657f40}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9ba1018febda1f99e926d51888657f40} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+ld\+Get\+Computation\+Result\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_ldGetComputationResultExt\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_ldGetComputationResultExt\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_ldGetComputationResultExt\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_ldGetComputationResultExt\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca52bf909f8b56634163d12cca0cb00f62}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca52bf909f8b56634163d12cca0cb00f62} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+ld\+Get\+Computation\+Result\+Ext\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_ldGetMultipleComputationsResults\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_ldGetMultipleComputationsResults\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_ldGetMultipleComputationsResults\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_ldGetMultipleComputationsResults\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3c1db01022468ee2028ea13c62a79186}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3c1db01022468ee2028ea13c62a79186} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+ld\+Get\+Multiple\+Computations\+Results\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_ldGetMultipleComputationsResultsExt\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_ldGetMultipleComputationsResultsExt\_in\_cSyntacticAnalysis}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_ldGetMultipleComputationsResultsExt\_in\_cSyntacticAnalysis@{PACEVAL\_ERR\_LOC\_ldGetMultipleComputationsResultsExt\_in\_cSyntacticAnalysis}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca4e106a0c23a92de513b259c5f1ea0605}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca4e106a0c23a92de513b259c5f1ea0605} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+ld\+Get\+Multiple\+Computations\+Results\+Ext\+\_\+in\+\_\+c\+Syntactic\+Analysis&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cListOfPointer\_arrayOfPointer\_in\_cListOfPointer@{PACEVAL\_ERR\_LOC\_cListOfPointer\_arrayOfPointer\_in\_cListOfPointer}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cListOfPointer\_arrayOfPointer\_in\_cListOfPointer@{PACEVAL\_ERR\_LOC\_cListOfPointer\_arrayOfPointer\_in\_cListOfPointer}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca0a07cf4ace2ceedb0d5855ec617592c3}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca0a07cf4ace2ceedb0d5855ec617592c3} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+List\+Of\+Pointer\+\_\+array\+Of\+Pointer\+\_\+in\+\_\+c\+List\+Of\+Pointer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cListOfPointer\_arrayOfPointerTypes\_in\_cListOfPointer@{PACEVAL\_ERR\_LOC\_cListOfPointer\_arrayOfPointerTypes\_in\_cListOfPointer}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cListOfPointer\_arrayOfPointerTypes\_in\_cListOfPointer@{PACEVAL\_ERR\_LOC\_cListOfPointer\_arrayOfPointerTypes\_in\_cListOfPointer}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacac679f254afb305f8c7e0bdf62d2fec50}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacac679f254afb305f8c7e0bdf62d2fec50} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+List\+Of\+Pointer\+\_\+array\+Of\+Pointer\+Types\+\_\+in\+\_\+c\+List\+Of\+Pointer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_increaseSize\_new\_arrayOfPointer\_in\_cListOfPointer@{PACEVAL\_ERR\_LOC\_increaseSize\_new\_arrayOfPointer\_in\_cListOfPointer}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_increaseSize\_new\_arrayOfPointer\_in\_cListOfPointer@{PACEVAL\_ERR\_LOC\_increaseSize\_new\_arrayOfPointer\_in\_cListOfPointer}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca03922e6f0bbc04266c0bbc0698938d1b}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca03922e6f0bbc04266c0bbc0698938d1b} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+increase\+Size\+\_\+new\+\_\+array\+Of\+Pointer\+\_\+in\+\_\+c\+List\+Of\+Pointer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_increaseSize\_new\_arrayOfPointerTypes\_in\_cListOfPointer@{PACEVAL\_ERR\_LOC\_increaseSize\_new\_arrayOfPointerTypes\_in\_cListOfPointer}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_increaseSize\_new\_arrayOfPointerTypes\_in\_cListOfPointer@{PACEVAL\_ERR\_LOC\_increaseSize\_new\_arrayOfPointerTypes\_in\_cListOfPointer}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca4672bd4006e22d1e66b771a3926a09ff}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca4672bd4006e22d1e66b771a3926a09ff} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+increase\+Size\+\_\+new\+\_\+array\+Of\+Pointer\+Types\+\_\+in\+\_\+c\+List\+Of\+Pointer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_addVariable\_newVariableString\_in\_cListOfVariables@{PACEVAL\_ERR\_LOC\_addVariable\_newVariableString\_in\_cListOfVariables}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_addVariable\_newVariableString\_in\_cListOfVariables@{PACEVAL\_ERR\_LOC\_addVariable\_newVariableString\_in\_cListOfVariables}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaf00b2b957ef4a4c12655d0f09f0df619}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaf00b2b957ef4a4c12655d0f09f0df619} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Variable\+\_\+new\+Variable\+String\+\_\+in\+\_\+c\+List\+Of\+Variables&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_addVariable\_listOfVariables\_in\_cListOfVariables@{PACEVAL\_ERR\_LOC\_addVariable\_listOfVariables\_in\_cListOfVariables}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_addVariable\_listOfVariables\_in\_cListOfVariables@{PACEVAL\_ERR\_LOC\_addVariable\_listOfVariables\_in\_cListOfVariables}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca724267c731a052ce4a0021f8b6d9e41e}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca724267c731a052ce4a0021f8b6d9e41e} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Variable\+\_\+list\+Of\+Variables\+\_\+in\+\_\+c\+List\+Of\+Variables&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_addVariablesAtOnce\_handle\_addVariableString\_in\_cListOfVariables@{PACEVAL\_ERR\_LOC\_addVariablesAtOnce\_handle\_addVariableString\_in\_cListOfVariables}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_addVariablesAtOnce\_handle\_addVariableString\_in\_cListOfVariables@{PACEVAL\_ERR\_LOC\_addVariablesAtOnce\_handle\_addVariableString\_in\_cListOfVariables}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaf3a5e038ea473cdce2fb9af9e8c30968}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaf3a5e038ea473cdce2fb9af9e8c30968} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Variables\+At\+Once\+\_\+handle\+\_\+add\+Variable\+String\+\_\+in\+\_\+c\+List\+Of\+Variables&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_addVariablesAtOnce\_doAddVariable1\_in\_cListOfVariables@{PACEVAL\_ERR\_LOC\_addVariablesAtOnce\_doAddVariable1\_in\_cListOfVariables}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_addVariablesAtOnce\_doAddVariable1\_in\_cListOfVariables@{PACEVAL\_ERR\_LOC\_addVariablesAtOnce\_doAddVariable1\_in\_cListOfVariables}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca812adfedebb5c61999e0620e04eaba67}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca812adfedebb5c61999e0620e04eaba67} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Variables\+At\+Once\+\_\+do\+Add\+Variable1\+\_\+in\+\_\+c\+List\+Of\+Variables&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_addVariablesAtOnce\_doAddVariable2\_in\_cListOfVariables@{PACEVAL\_ERR\_LOC\_addVariablesAtOnce\_doAddVariable2\_in\_cListOfVariables}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_addVariablesAtOnce\_doAddVariable2\_in\_cListOfVariables@{PACEVAL\_ERR\_LOC\_addVariablesAtOnce\_doAddVariable2\_in\_cListOfVariables}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca0836265a25bd5f76e85b408923701a38}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca0836265a25bd5f76e85b408923701a38} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Variables\+At\+Once\+\_\+do\+Add\+Variable2\+\_\+in\+\_\+c\+List\+Of\+Variables&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_increaseScannerStringSize\_in\_cScanner@{PACEVAL\_ERR\_LOC\_increaseScannerStringSize\_in\_cScanner}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_increaseScannerStringSize\_in\_cScanner@{PACEVAL\_ERR\_LOC\_increaseScannerStringSize\_in\_cScanner}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacac141cd69a83d760e57dfc6317868ec51}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacac141cd69a83d760e57dfc6317868ec51} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+increase\+Scanner\+String\+Size\+\_\+in\+\_\+c\+Scanner&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cScanner\_in\_cScanner@{PACEVAL\_ERR\_LOC\_cScanner\_in\_cScanner}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cScanner\_in\_cScanner@{PACEVAL\_ERR\_LOC\_cScanner\_in\_cScanner}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca8de8e6816d6ccc0eea0d7f9d4362e214}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca8de8e6816d6ccc0eea0d7f9d4362e214} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Scanner\+\_\+in\+\_\+c\+Scanner&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_listOfcAtomicGraphNodes\_in\_cGraph@{PACEVAL\_ERR\_LOC\_listOfcAtomicGraphNodes\_in\_cGraph}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_listOfcAtomicGraphNodes\_in\_cGraph@{PACEVAL\_ERR\_LOC\_listOfcAtomicGraphNodes\_in\_cGraph}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacae5d244ef6a92494b0a65364f606ef50e}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacae5d244ef6a92494b0a65364f606ef50e} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+list\+Ofc\+Atomic\+Graph\+Nodes\+\_\+in\+\_\+c\+Graph&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_listOfLevelMultithreadPositions1\_in\_cGraph@{PACEVAL\_ERR\_LOC\_listOfLevelMultithreadPositions1\_in\_cGraph}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_listOfLevelMultithreadPositions1\_in\_cGraph@{PACEVAL\_ERR\_LOC\_listOfLevelMultithreadPositions1\_in\_cGraph}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9b926a31f8a9b4a944e0ee4c75f99244}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9b926a31f8a9b4a944e0ee4c75f99244} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+list\+Of\+Level\+Multithread\+Positions1\+\_\+in\+\_\+c\+Graph&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_listOfLevelMultithreadPositions2\_in\_cGraph@{PACEVAL\_ERR\_LOC\_listOfLevelMultithreadPositions2\_in\_cGraph}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_listOfLevelMultithreadPositions2\_in\_cGraph@{PACEVAL\_ERR\_LOC\_listOfLevelMultithreadPositions2\_in\_cGraph}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaa30616d17c63284cbeecadd09f0ef624}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaa30616d17c63284cbeecadd09f0ef624} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+list\+Of\+Level\+Multithread\+Positions2\+\_\+in\+\_\+c\+Graph&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_addAtomicGraphNode\_in\_cGraph@{PACEVAL\_ERR\_LOC\_addAtomicGraphNode\_in\_cGraph}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_addAtomicGraphNode\_in\_cGraph@{PACEVAL\_ERR\_LOC\_addAtomicGraphNode\_in\_cGraph}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3351846839ced7cc79f1f0805a511082}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3351846839ced7cc79f1f0805a511082} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+add\+Atomic\+Graph\+Node\+\_\+in\+\_\+c\+Graph&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cListOfVariables\_in\_cListOfVariables@{PACEVAL\_ERR\_LOC\_cListOfVariables\_in\_cListOfVariables}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cListOfVariables\_in\_cListOfVariables@{PACEVAL\_ERR\_LOC\_cListOfVariables\_in\_cListOfVariables}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca7f6cf2caa57a3376f95e94c57d10bb4e}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca7f6cf2caa57a3376f95e94c57d10bb4e} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+List\+Of\+Variables\+\_\+in\+\_\+c\+List\+Of\+Variables&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cCleanupHandler\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_cCleanupHandler\_in\_cCleanupHandler}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cCleanupHandler\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_cCleanupHandler\_in\_cCleanupHandler}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacade92f4221b9f51d10d6ef979fbfc7feb}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacade92f4221b9f51d10d6ef979fbfc7feb} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Cleanup\+Handler\+\_\+in\+\_\+c\+Cleanup\+Handler&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cListOfUnsignedLong\_arrayOfUnsignedLong\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_cListOfUnsignedLong\_arrayOfUnsignedLong\_in\_cCleanupHandler}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cListOfUnsignedLong\_arrayOfUnsignedLong\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_cListOfUnsignedLong\_arrayOfUnsignedLong\_in\_cCleanupHandler}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacae8ded26bbe57bc24573bfd90ca9090db}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacae8ded26bbe57bc24573bfd90ca9090db} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+List\+Of\+Unsigned\+Long\+\_\+array\+Of\+Unsigned\+Long\+\_\+in\+\_\+c\+Cleanup\+Handler&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cListOfUnsignedLong\_new\_arrayOfUnsignedLong\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_cListOfUnsignedLong\_new\_arrayOfUnsignedLong\_in\_cCleanupHandler}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cListOfUnsignedLong\_new\_arrayOfUnsignedLong\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_cListOfUnsignedLong\_new\_arrayOfUnsignedLong\_in\_cCleanupHandler}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca8605669b7279cf69590355e52521eccd}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca8605669b7279cf69590355e52521eccd} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+List\+Of\+Unsigned\+Long\+\_\+new\+\_\+array\+Of\+Unsigned\+Long\+\_\+in\+\_\+c\+Cleanup\+Handler&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_setInnerCachedResult\_in\_cAtomicGraphNode@{PACEVAL\_ERR\_LOC\_setInnerCachedResult\_in\_cAtomicGraphNode}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_setInnerCachedResult\_in\_cAtomicGraphNode@{PACEVAL\_ERR\_LOC\_setInnerCachedResult\_in\_cAtomicGraphNode}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacadb44afd8f70701ce4831ecbb54da7e6d}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacadb44afd8f70701ce4831ecbb54da7e6d} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+set\+Inner\+Cached\+Result\+\_\+in\+\_\+c\+Atomic\+Graph\+Node&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_handle\_sNodeSpecificData\_in\_cAtomicGraphNode@{PACEVAL\_ERR\_LOC\_handle\_sNodeSpecificData\_in\_cAtomicGraphNode}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_handle\_sNodeSpecificData\_in\_cAtomicGraphNode@{PACEVAL\_ERR\_LOC\_handle\_sNodeSpecificData\_in\_cAtomicGraphNode}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaebb6d7ca335d192324aa684a2dee2e83}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacaebb6d7ca335d192324aa684a2dee2e83} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+handle\+\_\+s\+Node\+Specific\+Data\+\_\+in\+\_\+c\+Atomic\+Graph\+Node&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_handle\_sNodeBaseData\_in\_cAtomicGraphNode@{PACEVAL\_ERR\_LOC\_handle\_sNodeBaseData\_in\_cAtomicGraphNode}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_handle\_sNodeBaseData\_in\_cAtomicGraphNode@{PACEVAL\_ERR\_LOC\_handle\_sNodeBaseData\_in\_cAtomicGraphNode}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca065aa9fdd74aa14b55d079e8df47255b}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca065aa9fdd74aa14b55d079e8df47255b} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+handle\+\_\+s\+Node\+Base\+Data\+\_\+in\+\_\+c\+Atomic\+Graph\+Node&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_handle\_sValueOperatorAsData\_in\_cAtomicGraphNode@{PACEVAL\_ERR\_LOC\_handle\_sValueOperatorAsData\_in\_cAtomicGraphNode}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_handle\_sValueOperatorAsData\_in\_cAtomicGraphNode@{PACEVAL\_ERR\_LOC\_handle\_sValueOperatorAsData\_in\_cAtomicGraphNode}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1208fb848f835f128df1e70457ee66ee}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1208fb848f835f128df1e70457ee66ee} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+handle\+\_\+s\+Value\+Operator\+As\+Data\+\_\+in\+\_\+c\+Atomic\+Graph\+Node&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_handle\_sLevelMultithreadData\_in\_cAtomicGraphNode@{PACEVAL\_ERR\_LOC\_handle\_sLevelMultithreadData\_in\_cAtomicGraphNode}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_handle\_sLevelMultithreadData\_in\_cAtomicGraphNode@{PACEVAL\_ERR\_LOC\_handle\_sLevelMultithreadData\_in\_cAtomicGraphNode}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca5bf04c1cacce5f0ba94e531b1f8c1aeb}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca5bf04c1cacce5f0ba94e531b1f8c1aeb} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+handle\+\_\+s\+Level\+Multithread\+Data\+\_\+in\+\_\+c\+Atomic\+Graph\+Node&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_unregisterObject\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_unregisterObject\_in\_cCleanupHandler}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_unregisterObject\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_unregisterObject\_in\_cCleanupHandler}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1e3dfdcf29244c4a4a316b02c6a017df}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca1e3dfdcf29244c4a4a316b02c6a017df} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+unregister\+Object\+\_\+in\+\_\+c\+Cleanup\+Handler&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_registerObject\_ePointerType\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_registerObject\_ePointerType\_in\_cCleanupHandler}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_registerObject\_ePointerType\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_registerObject\_ePointerType\_in\_cCleanupHandler}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacad1b195a217ca4802990cb6247fba6113}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1cacad1b195a217ca4802990cb6247fba6113} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+register\+Object\+\_\+e\+Pointer\+Type\+\_\+in\+\_\+c\+Cleanup\+Handler&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_registerObject\_listOfpacevalObjects\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_registerObject\_listOfpacevalObjects\_in\_cCleanupHandler}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_registerObject\_listOfpacevalObjects\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_registerObject\_listOfpacevalObjects\_in\_cCleanupHandler}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca0679056a9a9f20edf2637b40efd7a32a}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca0679056a9a9f20edf2637b40efd7a32a} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+register\+Object\+\_\+list\+Ofpaceval\+Objects\+\_\+in\+\_\+c\+Cleanup\+Handler&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cleanupAllpacevalObjects\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_cleanupAllpacevalObjects\_in\_cCleanupHandler}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cleanupAllpacevalObjects\_in\_cCleanupHandler@{PACEVAL\_ERR\_LOC\_cleanupAllpacevalObjects\_in\_cCleanupHandler}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3690cf67a35925339c93b4a9afa56f82}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca3690cf67a35925339c93b4a9afa56f82} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+cleanup\+Allpaceval\+Objects\+\_\+in\+\_\+c\+Cleanup\+Handler&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cCharArray\_in\_cCharArray@{PACEVAL\_ERR\_LOC\_cCharArray\_in\_cCharArray}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cCharArray\_in\_cCharArray@{PACEVAL\_ERR\_LOC\_cCharArray\_in\_cCharArray}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9da5a53ef112702bac1d6a13807bf9f7}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9da5a53ef112702bac1d6a13807bf9f7} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Char\+Array\+\_\+in\+\_\+c\+Char\+Array&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cLongArray\_in\_cLongArray@{PACEVAL\_ERR\_LOC\_cLongArray\_in\_cLongArray}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cLongArray\_in\_cLongArray@{PACEVAL\_ERR\_LOC\_cLongArray\_in\_cLongArray}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9a1086361665f53981cd8a015a2917d7}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca9a1086361665f53981cd8a015a2917d7} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Long\+Array\+\_\+in\+\_\+c\+Long\+Array&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_LOC\_cValuesStack\_in\_cValuesStack@{PACEVAL\_ERR\_LOC\_cValuesStack\_in\_cValuesStack}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_LOC\_cValuesStack\_in\_cValuesStack@{PACEVAL\_ERR\_LOC\_cValuesStack\_in\_cValuesStack}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca31e9278da89dd15961ff3958e8602744}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca31e9278da89dd15961ff3958e8602744} 
+PACEVAL\+\_\+\+ERR\+\_\+\+LOC\+\_\+c\+Values\+Stack\+\_\+in\+\_\+c\+Values\+Stack&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_UNSPECIFIED\_LOCATION@{PACEVAL\_ERR\_UNSPECIFIED\_LOCATION}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!PACEVAL\_ERR\_UNSPECIFIED\_LOCATION@{PACEVAL\_ERR\_UNSPECIFIED\_LOCATION}}}\Hypertarget{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca48e371a55c311218654ee0bc2f44a5ea}\label{paceval__c_cleanup_handler_8h_a931f3d2910c22f160b477c606e7e1caca48e371a55c311218654ee0bc2f44a5ea} 
+PACEVAL\+\_\+\+ERR\+\_\+\+UNSPECIFIED\+\_\+\+LOCATION&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbe}\label{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbe} 
+\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!paceval\_eListOfPointerTypes@{paceval\_eListOfPointerTypes}}
+\index{paceval\_eListOfPointerTypes@{paceval\_eListOfPointerTypes}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_eListOfPointerTypes}{paceval\_eListOfPointerTypes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbe}{paceval\+\_\+e\+List\+Of\+Pointer\+Types}}}
+
+specifies the possible types of pointers that can be registered using a unique number \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIST\_OF\_POINTER\_TYPE\_NONE@{LIST\_OF\_POINTER\_TYPE\_NONE}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!LIST\_OF\_POINTER\_TYPE\_NONE@{LIST\_OF\_POINTER\_TYPE\_NONE}}}\Hypertarget{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea28075fa8a2cdc4b2e2361c53e0fa05f1}\label{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea28075fa8a2cdc4b2e2361c53e0fa05f1} 
+LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+\+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIST\_OF\_POINTER\_TYPE\_NOT\_TO\_HANDLE@{LIST\_OF\_POINTER\_TYPE\_NOT\_TO\_HANDLE}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!LIST\_OF\_POINTER\_TYPE\_NOT\_TO\_HANDLE@{LIST\_OF\_POINTER\_TYPE\_NOT\_TO\_HANDLE}}}\Hypertarget{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea4e790a3ddc1646f090c44071e5054b2c}\label{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea4e790a3ddc1646f090c44071e5054b2c} 
+LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+\+NOT\+\_\+\+TO\+\_\+\+HANDLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIST\_OF\_POINTER\_TYPE\_cListOfVariablesPointer@{LIST\_OF\_POINTER\_TYPE\_cListOfVariablesPointer}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!LIST\_OF\_POINTER\_TYPE\_cListOfVariablesPointer@{LIST\_OF\_POINTER\_TYPE\_cListOfVariablesPointer}}}\Hypertarget{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeaa05a66f0a6c4e53818c7d148aba736c4}\label{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeaa05a66f0a6c4e53818c7d148aba736c4} 
+LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+List\+Of\+Variables\+Pointer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIST\_OF\_POINTER\_TYPE\_cSyntacticAnalysisPointer@{LIST\_OF\_POINTER\_TYPE\_cSyntacticAnalysisPointer}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!LIST\_OF\_POINTER\_TYPE\_cSyntacticAnalysisPointer@{LIST\_OF\_POINTER\_TYPE\_cSyntacticAnalysisPointer}}}\Hypertarget{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbead29a129554a4d64cf86b7e3102981524}\label{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbead29a129554a4d64cf86b7e3102981524} 
+LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Syntactic\+Analysis\+Pointer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIST\_OF\_POINTER\_TYPE\_cAtomicGraphNodeAddValuePointer@{LIST\_OF\_POINTER\_TYPE\_cAtomicGraphNodeAddValuePointer}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!LIST\_OF\_POINTER\_TYPE\_cAtomicGraphNodeAddValuePointer@{LIST\_OF\_POINTER\_TYPE\_cAtomicGraphNodeAddValuePointer}}}\Hypertarget{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeac303b7e9a7fa3b8987756d871cb17103}\label{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeac303b7e9a7fa3b8987756d871cb17103} 
+LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Atomic\+Graph\+Node\+Add\+Value\+Pointer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIST\_OF\_POINTER\_TYPE\_cAtomicGraphNodeOperationPointer@{LIST\_OF\_POINTER\_TYPE\_cAtomicGraphNodeOperationPointer}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!LIST\_OF\_POINTER\_TYPE\_cAtomicGraphNodeOperationPointer@{LIST\_OF\_POINTER\_TYPE\_cAtomicGraphNodeOperationPointer}}}\Hypertarget{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea79de8a41370c4ce36c762c2da75e0f8e}\label{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea79de8a41370c4ce36c762c2da75e0f8e} 
+LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Atomic\+Graph\+Node\+Operation\+Pointer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIST\_OF\_POINTER\_TYPE\_cScannerPointer@{LIST\_OF\_POINTER\_TYPE\_cScannerPointer}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!LIST\_OF\_POINTER\_TYPE\_cScannerPointer@{LIST\_OF\_POINTER\_TYPE\_cScannerPointer}}}\Hypertarget{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeab3bec81ab80799650ff352ba2b26a934}\label{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeab3bec81ab80799650ff352ba2b26a934} 
+LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Scanner\+Pointer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIST\_OF\_POINTER\_TYPE\_cGraphPointer@{LIST\_OF\_POINTER\_TYPE\_cGraphPointer}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!LIST\_OF\_POINTER\_TYPE\_cGraphPointer@{LIST\_OF\_POINTER\_TYPE\_cGraphPointer}}}\Hypertarget{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea6d52ca714dbd8d1a2318e129bad39ed5}\label{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea6d52ca714dbd8d1a2318e129bad39ed5} 
+LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Graph\+Pointer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIST\_OF\_POINTER\_TYPE\_cCharArrayPointer@{LIST\_OF\_POINTER\_TYPE\_cCharArrayPointer}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!LIST\_OF\_POINTER\_TYPE\_cCharArrayPointer@{LIST\_OF\_POINTER\_TYPE\_cCharArrayPointer}}}\Hypertarget{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeaf13dbd0b2ca291497c81067aad664901}\label{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeaf13dbd0b2ca291497c81067aad664901} 
+LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Char\+Array\+Pointer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIST\_OF\_POINTER\_TYPE\_cUnsignedLongListPointer@{LIST\_OF\_POINTER\_TYPE\_cUnsignedLongListPointer}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!LIST\_OF\_POINTER\_TYPE\_cUnsignedLongListPointer@{LIST\_OF\_POINTER\_TYPE\_cUnsignedLongListPointer}}}\Hypertarget{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeab8ac6e1ae9eb595c2e196443f10d9518}\label{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbeab8ac6e1ae9eb595c2e196443f10d9518} 
+LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Unsigned\+Long\+List\+Pointer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIST\_OF\_POINTER\_TYPE\_cValuesStackPointer@{LIST\_OF\_POINTER\_TYPE\_cValuesStackPointer}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!LIST\_OF\_POINTER\_TYPE\_cValuesStackPointer@{LIST\_OF\_POINTER\_TYPE\_cValuesStackPointer}}}\Hypertarget{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea3fa2dc623a6e61523ca4e35650d7c358}\label{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbea3fa2dc623a6e61523ca4e35650d7c358} 
+LIST\+\_\+\+OF\+\_\+\+POINTER\+\_\+\+TYPE\+\_\+c\+Values\+Stack\+Pointer&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{paceval__c_cleanup_handler_8h_a10040d7f8cd6d48679c8a3f9dca66fab}\label{paceval__c_cleanup_handler_8h_a10040d7f8cd6d48679c8a3f9dca66fab} 
+\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!paceval\_deleteLoggingMemory@{paceval\_deleteLoggingMemory}}
+\index{paceval\_deleteLoggingMemory@{paceval\_deleteLoggingMemory}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_deleteLoggingMemory()}{paceval\_deleteLoggingMemory()}}
+{\footnotesize\ttfamily bool paceval\+\_\+delete\+Logging\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+deletes the memory buffer used for logging, which empties it Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8h_a10040d7f8cd6d48679c8a3f9dca66fab_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_cleanup_handler_8h_aad285407cbade8ce903b2a7a4bc3e437}\label{paceval__c_cleanup_handler_8h_aad285407cbade8ce903b2a7a4bc3e437} 
+\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!paceval\_getCurrentTime@{paceval\_getCurrentTime}}
+\index{paceval\_getCurrentTime@{paceval\_getCurrentTime}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_getCurrentTime()}{paceval\_getCurrentTime()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+get\+Current\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the current time in milliseconds since the system started \Hypertarget{paceval__c_cleanup_handler_8h_a259feffba4d85fd7c759418dbc4ca1a5}\label{paceval__c_cleanup_handler_8h_a259feffba4d85fd7c759418dbc4ca1a5} 
+\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!paceval\_identifyOperatorFromOperatorType@{paceval\_identifyOperatorFromOperatorType}}
+\index{paceval\_identifyOperatorFromOperatorType@{paceval\_identifyOperatorFromOperatorType}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_identifyOperatorFromOperatorType()}{paceval\_identifyOperatorFromOperatorType()}}
+{\footnotesize\ttfamily void paceval\+\_\+identify\+Operator\+From\+Operator\+Type (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{operator\+\_\+out,  }\item[{\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}}}]{e\+Return\+Operator\+\_\+in }\end{DoxyParamCaption})}
+
+identifies the operator (e.\+g. "{}+"{}) from the type of operator (e.\+g. ADDITION\+\_\+\+SIGN) 
+\begin{DoxyParams}{Parameters}
+{\em operator\+\_\+out} & specifies the buffer for the operator \\
+\hline
+{\em e\+Return\+Operator\+\_\+in} & specifies the type of operator to look for \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8h_a259feffba4d85fd7c759418dbc4ca1a5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8h_a259feffba4d85fd7c759418dbc4ca1a5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_cleanup_handler_8h_ab24920e49e587d2ad2f58fd542190fab}\label{paceval__c_cleanup_handler_8h_ab24920e49e587d2ad2f58fd542190fab} 
+\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!paceval\_identifyOperatorFromString@{paceval\_identifyOperatorFromString}}
+\index{paceval\_identifyOperatorFromString@{paceval\_identifyOperatorFromString}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_identifyOperatorFromString()}{paceval\_identifyOperatorFromString()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}} paceval\+\_\+identify\+Operator\+From\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{operator\+\_\+in,  }\item[{long}]{value\+Node2\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{value\+Operator\+\_\+in }\end{DoxyParamCaption})}
+
+identifies the type of operator (e.\+g. ADDITION\+\_\+\+SIGN) based on the associated parameters 
+\begin{DoxyParams}{Parameters}
+{\em operator\+\_\+in} & is the character string that contains the operator (e.\+g. "{}\+:="{}, "{}+"{} or "{}sin"{}) \\
+\hline
+{\em value\+Node2\+\_\+in} & specifies the node of the possible second operand (e.\+g. the operator "{}y"{} for "{}x+y"{}) \\
+\hline
+{\em value\+Operator\+\_\+in} & specifies the numerical value to convert when "{}\+:=$<$floating point number$>$"{} (SET\+\_\+\+TO\+\_\+\+VALUE\+\_\+\+SIGN) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8h_ab24920e49e587d2ad2f58fd542190fab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8h_ab24920e49e587d2ad2f58fd542190fab_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_cleanup_handler_8h_a708622c1e260da79a58dade45afa0682}\label{paceval__c_cleanup_handler_8h_a708622c1e260da79a58dade45afa0682} 
+\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!paceval\_setCallbackUserFunctionString@{paceval\_setCallbackUserFunctionString}}
+\index{paceval\_setCallbackUserFunctionString@{paceval\_setCallbackUserFunctionString}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_setCallbackUserFunctionString()}{paceval\_setCallbackUserFunctionString()}}
+{\footnotesize\ttfamily void paceval\+\_\+set\+Callback\+User\+Function\+String (\begin{DoxyParamCaption}\item[{unsigned int}]{number\+User\+Function\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{single\+Function\+String\+\_\+in }\end{DoxyParamCaption})}
+
+allows the definition of up to 1000 custom user functions (see \doxylink{paceval__main_8cpp_a9eec32938832c121cbc5aad3e89059b8}{paceval\+Library\+\_\+\+Set\+Callback\+User\+Function()}) 
+\begin{DoxyParams}{Parameters}
+{\em number\+User\+Function\+\_\+in} & specifies the number of the user function to set the single function for (e.\+g. 1) \\
+\hline
+{\em single\+Function\+String\+\_\+in} & specifies the user-\/defined single function (e.\+g. "{}my\+\_\+function1"{}) \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8h_a708622c1e260da79a58dade45afa0682_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_cleanup_handler_8h_aac304504fe9019598bd2f4f9d60e6e79}\label{paceval__c_cleanup_handler_8h_aac304504fe9019598bd2f4f9d60e6e79} 
+\index{paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}!paceval\_writeLoggingString@{paceval\_writeLoggingString}}
+\index{paceval\_writeLoggingString@{paceval\_writeLoggingString}!paceval\_cCleanupHandler.h@{paceval\_cCleanupHandler.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_writeLoggingString()}{paceval\_writeLoggingString()}}
+{\footnotesize\ttfamily void paceval\+\_\+write\+Logging\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{logging\+String\+\_\+in }\end{DoxyParamCaption})}
+
+writes data for logging with a time stamp into a memory buffer and, if paceval\+\_\+\+ENABLE\+\_\+\+LOGGING\+\_\+\+TO\+\_\+\+FILE is set, into the file "{}paceval\+\_\+logging\+File.\+log"{} 
+\begin{DoxyParams}{Parameters}
+{\em logging\+String\+\_\+in} & specifies the string to add to logging \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8h_aac304504fe9019598bd2f4f9d60e6e79_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8h_aac304504fe9019598bd2f4f9d60e6e79_icgraph}
+\end{center}
+\end{figure}

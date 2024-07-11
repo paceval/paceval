@@ -1,0 +1,258 @@
+\doxysection{paceval\+\_\+c\+Unsigned\+Long\+List Class Reference}
+\hypertarget{classpaceval__c_unsigned_long_list}{}\label{classpaceval__c_unsigned_long_list}\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+
+
+The class \doxylink{classpaceval__c_unsigned_long_list}{paceval\+\_\+c\+Unsigned\+Long\+List} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the management of an auto-\/expanding list of non-\/negative integer values with precision unsigned long.  
+
+
+
+
+{\ttfamily \#include "{}inc/paceval\+\_\+c\+Cleanup\+Handler.\+h"{}}
+
+
+
+Inheritance diagram for paceval\+\_\+c\+Unsigned\+Long\+List\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classpaceval__c_unsigned_long_list__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for paceval\+\_\+c\+Unsigned\+Long\+List\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classpaceval__c_unsigned_long_list__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_unsigned_long_list_afaa4fa081b9ce664b4521edfe1e09e6d}{paceval\+\_\+c\+Unsigned\+Long\+List}} (\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}handle\+\_\+\+Cleanup\+Handler\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_unsigned_long_list_a0713bc271b43cda59dbc61ef4232a23a}{initialize\+Data}} ()
+\item 
+\mbox{\hyperlink{classpaceval__c_unsigned_long_list_ae1d06db2636fc9d7c2b75507eca79390}{\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Unsigned\+Long\+List}} ()
+\item 
+bool \mbox{\hyperlink{classpaceval__c_unsigned_long_list_abbb028231b643bc63ff043a7224028d8}{do\+Add\+Unsigned\+Long}} (unsigned long value\+Unsigned\+Long\+\_\+in)
+\item 
+unsigned long \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_unsigned_long_list_ac41bf5173e8168ccbac36e99b8284e0b}{get\+Unsigned\+Long\+Pointer}} (unsigned long position\+\_\+in)
+\item 
+bool \mbox{\hyperlink{classpaceval__c_unsigned_long_list_a9e2e308b181a540ddc854bfc8924d6d9}{set\+Unsigned\+Long}} (unsigned long position\+\_\+in, unsigned long value\+Unsigned\+Long\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_unsigned_long_list_ae364a7c38b97ab9133781227b07ea9cb}{size\+Of}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a4f13b696019f4f84d70f0899e1a93e6b}{paceval\+\_\+c\+Registered\+Object}} (\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}handle\+\_\+\+Cleanup\+Handler\+\_\+in)
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a3968a184ea427893d836b7b676ce6d82}{\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Registered\+Object}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_registered_object_a342114d4bb2f86b2c4cfecb300925878}{set\+Register\+Position}} (unsigned long register\+Position\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a98739f041c398e860d9c7f9118fcfe0f}{get\+Register\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classpaceval__c_unsigned_long_list_abfd68b69543a787e3673ce2bd1fd7d8f}{do\+Increase\+Size}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_unsigned_long_list_a9c694df882b4211ea3e703d30432c56b}{array\+Of\+Unsigned\+Long}}
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_unsigned_long_list_ac135f1cb4cd7dca44c27d0134e046951}{size\+\_\+array\+Of\+Unsigned\+Long}}
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_unsigned_long_list_aed8304b693bc706784c6e2458f7bcf7f}{size\+Used\+\_\+array\+Of\+Unsigned\+Long}}
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_unsigned_long_list_a3b3d0459943b857616e235b36d22845a}{increase\+Counter}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_registered_object_a56a8caf41119639bae9f389a6a7f7187}{handle\+\_\+\+Cleanup\+Handler}}
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a6a4cbc3ca8ae598995e763fc2005b69f}{register\+Position}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The class \doxylink{classpaceval__c_unsigned_long_list}{paceval\+\_\+c\+Unsigned\+Long\+List} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the management of an auto-\/expanding list of non-\/negative integer values with precision unsigned long. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classpaceval__c_unsigned_long_list_afaa4fa081b9ce664b4521edfe1e09e6d}\label{classpaceval__c_unsigned_long_list_afaa4fa081b9ce664b4521edfe1e09e6d} 
+\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}!paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}!paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+\doxysubsubsection{\texorpdfstring{paceval\_cUnsignedLongList()}{paceval\_cUnsignedLongList()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+Unsigned\+Long\+List\+::paceval\+\_\+c\+Unsigned\+Long\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+\+Cleanup\+Handler\+\_\+in }\end{DoxyParamCaption})}
+
+the constructor of \doxylink{classpaceval__c_unsigned_long_list}{paceval\+\_\+c\+Unsigned\+Long\+List} 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+\+Cleanup\+Handler\+\_\+in} & is the associated handler for deleting this registered object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classpaceval__c_unsigned_long_list_ae1d06db2636fc9d7c2b75507eca79390}\label{classpaceval__c_unsigned_long_list_ae1d06db2636fc9d7c2b75507eca79390} 
+\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}!````~paceval\_cUnsignedLongList@{\texorpdfstring{$\sim$}{\string~}paceval\_cUnsignedLongList}}
+\index{````~paceval\_cUnsignedLongList@{\texorpdfstring{$\sim$}{\string~}paceval\_cUnsignedLongList}!paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}paceval\_cUnsignedLongList()}{\string~paceval\_cUnsignedLongList()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+Unsigned\+Long\+List\+::\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Unsigned\+Long\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the destructor of \doxylink{classpaceval__c_unsigned_long_list}{paceval\+\_\+c\+Unsigned\+Long\+List} 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpaceval__c_unsigned_long_list_abbb028231b643bc63ff043a7224028d8}\label{classpaceval__c_unsigned_long_list_abbb028231b643bc63ff043a7224028d8} 
+\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}!doAddUnsignedLong@{doAddUnsignedLong}}
+\index{doAddUnsignedLong@{doAddUnsignedLong}!paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+\doxysubsubsection{\texorpdfstring{doAddUnsignedLong()}{doAddUnsignedLong()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+Unsigned\+Long\+List\+::do\+Add\+Unsigned\+Long (\begin{DoxyParamCaption}\item[{unsigned long}]{value\+Unsigned\+Long\+\_\+in }\end{DoxyParamCaption})}
+
+adds a non-\/negative integer value to the list 
+\begin{DoxyParams}{Parameters}
+{\em value\+Unsigned\+Long\+\_\+in} & specifies the non-\/negative integer value to add to the list \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_unsigned_long_list_abbb028231b643bc63ff043a7224028d8_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_unsigned_long_list_abfd68b69543a787e3673ce2bd1fd7d8f}\label{classpaceval__c_unsigned_long_list_abfd68b69543a787e3673ce2bd1fd7d8f} 
+\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}!doIncreaseSize@{doIncreaseSize}}
+\index{doIncreaseSize@{doIncreaseSize}!paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+\doxysubsubsection{\texorpdfstring{doIncreaseSize()}{doIncreaseSize()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+Unsigned\+Long\+List\+::do\+Increase\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+expands the list Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_unsigned_long_list_abfd68b69543a787e3673ce2bd1fd7d8f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_unsigned_long_list_abfd68b69543a787e3673ce2bd1fd7d8f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_unsigned_long_list_ac41bf5173e8168ccbac36e99b8284e0b}\label{classpaceval__c_unsigned_long_list_ac41bf5173e8168ccbac36e99b8284e0b} 
+\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}!getUnsignedLongPointer@{getUnsignedLongPointer}}
+\index{getUnsignedLongPointer@{getUnsignedLongPointer}!paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+\doxysubsubsection{\texorpdfstring{getUnsignedLongPointer()}{getUnsignedLongPointer()}}
+{\footnotesize\ttfamily unsigned long \texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Unsigned\+Long\+List\+::get\+Unsigned\+Long\+Pointer (\begin{DoxyParamCaption}\item[{unsigned long}]{position\+\_\+in }\end{DoxyParamCaption})}
+
+gets the pointer to the non-\/negative integer value at a given position in the list, or NULL if the position does not exist 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+in} & specifies the position in the list \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_unsigned_long_list_ac41bf5173e8168ccbac36e99b8284e0b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_unsigned_long_list_a0713bc271b43cda59dbc61ef4232a23a}\label{classpaceval__c_unsigned_long_list_a0713bc271b43cda59dbc61ef4232a23a} 
+\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}!initializeData@{initializeData}}
+\index{initializeData@{initializeData}!paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+\doxysubsubsection{\texorpdfstring{initializeData()}{initializeData()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Unsigned\+Long\+List\+::initialize\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+initializes the list Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_unsigned_long_list_a0713bc271b43cda59dbc61ef4232a23a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_unsigned_long_list_a0713bc271b43cda59dbc61ef4232a23a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_unsigned_long_list_a9e2e308b181a540ddc854bfc8924d6d9}\label{classpaceval__c_unsigned_long_list_a9e2e308b181a540ddc854bfc8924d6d9} 
+\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}!setUnsignedLong@{setUnsignedLong}}
+\index{setUnsignedLong@{setUnsignedLong}!paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+\doxysubsubsection{\texorpdfstring{setUnsignedLong()}{setUnsignedLong()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+Unsigned\+Long\+List\+::set\+Unsigned\+Long (\begin{DoxyParamCaption}\item[{unsigned long}]{position\+\_\+in,  }\item[{unsigned long}]{value\+Unsigned\+Long\+\_\+in }\end{DoxyParamCaption})}
+
+puts a non-\/negative numerical value at a given position in the list and returns whether this was successful (true) or not (false) 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+in} & specifies the position in the list \\
+\hline
+{\em value\+Unsigned\+Long\+\_\+in} & specifies the non-\/negative integer value to set in the list \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_unsigned_long_list_a9e2e308b181a540ddc854bfc8924d6d9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_unsigned_long_list_ae364a7c38b97ab9133781227b07ea9cb}\label{classpaceval__c_unsigned_long_list_ae364a7c38b97ab9133781227b07ea9cb} 
+\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}!sizeOf@{sizeOf}}
+\index{sizeOf@{sizeOf}!paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+\doxysubsubsection{\texorpdfstring{sizeOf()}{sizeOf()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+Unsigned\+Long\+List\+::size\+Of (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+queries the length of the list Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_unsigned_long_list_ae364a7c38b97ab9133781227b07ea9cb_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classpaceval__c_unsigned_long_list_a9c694df882b4211ea3e703d30432c56b}\label{classpaceval__c_unsigned_long_list_a9c694df882b4211ea3e703d30432c56b} 
+\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}!arrayOfUnsignedLong@{arrayOfUnsignedLong}}
+\index{arrayOfUnsignedLong@{arrayOfUnsignedLong}!paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+\doxysubsubsection{\texorpdfstring{arrayOfUnsignedLong}{arrayOfUnsignedLong}}
+{\footnotesize\ttfamily unsigned long\texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Unsigned\+Long\+List\+::array\+Of\+Unsigned\+Long\hspace{0.3cm}{\ttfamily [protected]}}
+
+stores the list of non-\/negative integers \Hypertarget{classpaceval__c_unsigned_long_list_a3b3d0459943b857616e235b36d22845a}\label{classpaceval__c_unsigned_long_list_a3b3d0459943b857616e235b36d22845a} 
+\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}!increaseCounter@{increaseCounter}}
+\index{increaseCounter@{increaseCounter}!paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+\doxysubsubsection{\texorpdfstring{increaseCounter}{increaseCounter}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+Unsigned\+Long\+List\+::increase\+Counter\hspace{0.3cm}{\ttfamily [protected]}}
+
+the number of times the list was automatically expanded \Hypertarget{classpaceval__c_unsigned_long_list_ac135f1cb4cd7dca44c27d0134e046951}\label{classpaceval__c_unsigned_long_list_ac135f1cb4cd7dca44c27d0134e046951} 
+\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}!size\_arrayOfUnsignedLong@{size\_arrayOfUnsignedLong}}
+\index{size\_arrayOfUnsignedLong@{size\_arrayOfUnsignedLong}!paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+\doxysubsubsection{\texorpdfstring{size\_arrayOfUnsignedLong}{size\_arrayOfUnsignedLong}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+Unsigned\+Long\+List\+::size\+\_\+array\+Of\+Unsigned\+Long\hspace{0.3cm}{\ttfamily [protected]}}
+
+the actual size of the list \Hypertarget{classpaceval__c_unsigned_long_list_aed8304b693bc706784c6e2458f7bcf7f}\label{classpaceval__c_unsigned_long_list_aed8304b693bc706784c6e2458f7bcf7f} 
+\index{paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}!sizeUsed\_arrayOfUnsignedLong@{sizeUsed\_arrayOfUnsignedLong}}
+\index{sizeUsed\_arrayOfUnsignedLong@{sizeUsed\_arrayOfUnsignedLong}!paceval\_cUnsignedLongList@{paceval\_cUnsignedLongList}}
+\doxysubsubsection{\texorpdfstring{sizeUsed\_arrayOfUnsignedLong}{sizeUsed\_arrayOfUnsignedLong}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+Unsigned\+Long\+List\+::size\+Used\+\_\+array\+Of\+Unsigned\+Long\hspace{0.3cm}{\ttfamily [protected]}}
+
+the number of occupied entries in the list 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/\mbox{\hyperlink{paceval__c_cleanup_handler_8h}{paceval\+\_\+c\+Cleanup\+Handler.\+h}}\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/\mbox{\hyperlink{paceval__c_cleanup_handler_8cpp}{paceval\+\_\+c\+Cleanup\+Handler.\+cpp}}\end{DoxyCompactItemize}

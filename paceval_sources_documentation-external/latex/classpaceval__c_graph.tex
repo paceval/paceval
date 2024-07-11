@@ -1,0 +1,384 @@
+\doxysection{paceval\+\_\+c\+Graph Class Reference}
+\hypertarget{classpaceval__c_graph}{}\label{classpaceval__c_graph}\index{paceval\_cGraph@{paceval\_cGraph}}
+
+
+The class \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the management of the node list as well as the identification and management of parallelization options for caching.  
+
+
+
+
+{\ttfamily \#include "{}inc/paceval\+\_\+c\+Graph.\+h"{}}
+
+
+
+Inheritance diagram for paceval\+\_\+c\+Graph\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classpaceval__c_graph__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for paceval\+\_\+c\+Graph\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classpaceval__c_graph__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_graph_ae16f0292b7dbe6b33b5b469da02b9d4a}{paceval\+\_\+c\+Graph}} (\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}handle\+\_\+\+Cleanup\+Handler\+\_\+in, \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_graph_a0a2f71f7fd8337190c3e801178943fbd}{initialize\+Data}} ()
+\item 
+\mbox{\hyperlink{classpaceval__c_graph_a4a33c68620cc1a8ed52201380925d9fe}{\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Graph}} ()
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_graph_a5e8f2230887e903e1843408fa49bf8f8}{add\+Atomic\+Graph\+Node}} (\mbox{\hyperlink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node}} \texorpdfstring{$\ast$}{*}handle\+\_\+c\+Base\+Atomic\+Graph\+Node\+\_\+in, \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbe}{paceval\+\_\+e\+List\+Of\+Pointer\+Types}} e\+Pointer\+Type\+\_\+in, bool \texorpdfstring{$\ast$}{*}success\+\_\+out)
+\item 
+\mbox{\hyperlink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_graph_abdb07a85124c6ffd66bbe0aabc2225ca}{get\+Atomic\+Graph\+Node}} (unsigned long position\+\_\+in)
+\item 
+long \mbox{\hyperlink{classpaceval__c_graph_aac29e66ba7986922e22123fe68c83c61}{size\+Of}} ()
+\item 
+long \mbox{\hyperlink{classpaceval__c_graph_a5563c74cd2f95beb3dbf0463e43f0d62}{get\+Maximum\+Field}} ()
+\item 
+long \mbox{\hyperlink{classpaceval__c_graph_a43c83d05a0635cdf2d134b384e18a5b4}{get\+Number\+Of\+Position\+Levels}} ()
+\item 
+long \mbox{\hyperlink{classpaceval__c_graph_aa7c800b5f503bb1b4ae0b725e9ae5c11}{get\+Max\+To\+Do\+Level\+Multithread\+Position}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_graph_a9eb81815bdabaafb35c97ede7299b964}{reset\+Max\+To\+Do\+Level\+Multithread\+Position}} ()
+\item 
+long \mbox{\hyperlink{classpaceval__c_graph_a7a62c4b648363cda91e6fde1200b60b4}{lock\+And\+Get\+To\+Do\+Level\+Multithread\+Position}} (unsigned long stack\+Number\+\_\+in, unsigned long id\+Single\+Calculation\+To\+Do\+\_\+in, unsigned long \texorpdfstring{$\ast$}{*}last\+To\+Do\+Level\+Multithread\+Position\+\_\+in, unsigned long \texorpdfstring{$\ast$}{*}start\+Specific\+At\+Node\+\_\+in, unsigned long \texorpdfstring{$\ast$}{*}end\+Specific\+At\+Node\+\_\+in)
+\item 
+bool \mbox{\hyperlink{classpaceval__c_graph_a54d971df7b04048483b9cc8de7429224}{unlock\+To\+Do\+Level\+Multithread\+Position}} (unsigned long stack\+Number\+\_\+in, unsigned long locked\+Level\+Multithread\+Position\+\_\+in, unsigned long id\+Single\+Calculation\+To\+Do\+\_\+in)
+\item 
+bool \mbox{\hyperlink{classpaceval__c_graph_a19f5d1d557d65cac5a6117fbab513eb8}{identify\+Graph\+Caching\+Opportunities}} (\mbox{\hyperlink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node}} \texorpdfstring{$\ast$}{*}handle\+\_\+c\+Atomic\+Graph\+Node\+\_\+in, unsigned long handle\+\_\+handle\+\_\+\+Atomic\+Graph\+Position\+\_\+in)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a4f13b696019f4f84d70f0899e1a93e6b}{paceval\+\_\+c\+Registered\+Object}} (\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}handle\+\_\+\+Cleanup\+Handler\+\_\+in)
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a3968a184ea427893d836b7b676ce6d82}{\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Registered\+Object}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_registered_object_a342114d4bb2f86b2c4cfecb300925878}{set\+Register\+Position}} (unsigned long register\+Position\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a98739f041c398e860d9c7f9118fcfe0f}{get\+Register\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_registered_object_a56a8caf41119639bae9f389a6a7f7187}{handle\+\_\+\+Cleanup\+Handler}}
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a6a4cbc3ca8ae598995e763fc2005b69f}{register\+Position}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The class \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the management of the node list as well as the identification and management of parallelization options for caching. 
+
+For example the identify\+Multithread\+Opportunity function of the \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} class looks for opportunities for parallelization. These opportunities are taken into account when processing the node list later with \doxylink{classpaceval__c_computation_a2cde08aa8ee7a3cd0da75fe4e296b6b9}{paceval\+\_\+c\+Computation\+::do\+Computation()}. Parentheses levels such as (1/x) in the function -\/sin(x\texorpdfstring{$\ast$}{*}cos(cos(x))\texorpdfstring{$^\wedge$}{\string^}(1/x) can then be calculated in parallel in advance in a separate thread, which saves significant time. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classpaceval__c_graph_ae16f0292b7dbe6b33b5b469da02b9d4a}\label{classpaceval__c_graph_ae16f0292b7dbe6b33b5b469da02b9d4a} 
+\index{paceval\_cGraph@{paceval\_cGraph}!paceval\_cGraph@{paceval\_cGraph}}
+\index{paceval\_cGraph@{paceval\_cGraph}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{paceval\_cGraph()}{paceval\_cGraph()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+Graph\+::paceval\+\_\+c\+Graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+\+Cleanup\+Handler\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
+
+the constructor of \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+\+Cleanup\+Handler\+\_\+in} & is the associated handler for deleting this registered object \\
+\hline
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & is the associated \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classpaceval__c_graph_a4a33c68620cc1a8ed52201380925d9fe}\label{classpaceval__c_graph_a4a33c68620cc1a8ed52201380925d9fe} 
+\index{paceval\_cGraph@{paceval\_cGraph}!````~paceval\_cGraph@{\texorpdfstring{$\sim$}{\string~}paceval\_cGraph}}
+\index{````~paceval\_cGraph@{\texorpdfstring{$\sim$}{\string~}paceval\_cGraph}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}paceval\_cGraph()}{\string~paceval\_cGraph()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+Graph\+::\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the destructor of \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a4a33c68620cc1a8ed52201380925d9fe_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpaceval__c_graph_a5e8f2230887e903e1843408fa49bf8f8}\label{classpaceval__c_graph_a5e8f2230887e903e1843408fa49bf8f8} 
+\index{paceval\_cGraph@{paceval\_cGraph}!addAtomicGraphNode@{addAtomicGraphNode}}
+\index{addAtomicGraphNode@{addAtomicGraphNode}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{addAtomicGraphNode()}{addAtomicGraphNode()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+Graph\+::add\+Atomic\+Graph\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+c\+Base\+Atomic\+Graph\+Node\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbe}{paceval\+\_\+e\+List\+Of\+Pointer\+Types}}}]{e\+Pointer\+Type\+\_\+in,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{success\+\_\+out }\end{DoxyParamCaption})}
+
+adds an object derived from base class \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node} to the node list and returns its number in the list of nodes 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+c\+Base\+Atomic\+Graph\+Node\+\_\+in} & specifies the object to be added to the list of nodes \\
+\hline
+{\em e\+Pointer\+Type\+\_\+in} & specifies the type of pointer of the object to add to the node list \\
+\hline
+{\em success\+\_\+out} & this buffer retrieves whether this was successful (true) or not (false) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a5e8f2230887e903e1843408fa49bf8f8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a5e8f2230887e903e1843408fa49bf8f8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_graph_abdb07a85124c6ffd66bbe0aabc2225ca}\label{classpaceval__c_graph_abdb07a85124c6ffd66bbe0aabc2225ca} 
+\index{paceval\_cGraph@{paceval\_cGraph}!getAtomicGraphNode@{getAtomicGraphNode}}
+\index{getAtomicGraphNode@{getAtomicGraphNode}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{getAtomicGraphNode()}{getAtomicGraphNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node}} \texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Graph\+::get\+Atomic\+Graph\+Node (\begin{DoxyParamCaption}\item[{unsigned long}]{position\+\_\+in }\end{DoxyParamCaption})}
+
+gets the pointer to an object derived from the base class \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node} at a position in the node list, or NULL if the position does not exist 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+in} & specifies the position in the list \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_abdb07a85124c6ffd66bbe0aabc2225ca_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_abdb07a85124c6ffd66bbe0aabc2225ca_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_graph_a5563c74cd2f95beb3dbf0463e43f0d62}\label{classpaceval__c_graph_a5563c74cd2f95beb3dbf0463e43f0d62} 
+\index{paceval\_cGraph@{paceval\_cGraph}!getMaximumField@{getMaximumField}}
+\index{getMaximumField@{getMaximumField}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{getMaximumField()}{getMaximumField()}}
+{\footnotesize\ttfamily long paceval\+\_\+c\+Graph\+::get\+Maximum\+Field (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the maximum field from the list of nodes (this determines the maximum size of the stacks of the class \doxylink{classpaceval__c_values_stack}{paceval\+\_\+c\+Values\+Stack}) Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a5563c74cd2f95beb3dbf0463e43f0d62_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a5563c74cd2f95beb3dbf0463e43f0d62_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_graph_aa7c800b5f503bb1b4ae0b725e9ae5c11}\label{classpaceval__c_graph_aa7c800b5f503bb1b4ae0b725e9ae5c11} 
+\index{paceval\_cGraph@{paceval\_cGraph}!getMaxToDoLevelMultithreadPosition@{getMaxToDoLevelMultithreadPosition}}
+\index{getMaxToDoLevelMultithreadPosition@{getMaxToDoLevelMultithreadPosition}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{getMaxToDoLevelMultithreadPosition()}{getMaxToDoLevelMultithreadPosition()}}
+{\footnotesize\ttfamily long paceval\+\_\+c\+Graph\+::get\+Max\+To\+Do\+Level\+Multithread\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the position in the list of nodes of the maximum parentheses level at which a thread is currently working (the next parentheses level is then used for the next thread) Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_aa7c800b5f503bb1b4ae0b725e9ae5c11_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_graph_a43c83d05a0635cdf2d134b384e18a5b4}\label{classpaceval__c_graph_a43c83d05a0635cdf2d134b384e18a5b4} 
+\index{paceval\_cGraph@{paceval\_cGraph}!getNumberOfPositionLevels@{getNumberOfPositionLevels}}
+\index{getNumberOfPositionLevels@{getNumberOfPositionLevels}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{getNumberOfPositionLevels()}{getNumberOfPositionLevels()}}
+{\footnotesize\ttfamily long paceval\+\_\+c\+Graph\+::get\+Number\+Of\+Position\+Levels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the number of positions for multithreading (i.\+e. lookahead caching) that are assigned to parentheses levels in the function Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a43c83d05a0635cdf2d134b384e18a5b4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_graph_a19f5d1d557d65cac5a6117fbab513eb8}\label{classpaceval__c_graph_a19f5d1d557d65cac5a6117fbab513eb8} 
+\index{paceval\_cGraph@{paceval\_cGraph}!identifyGraphCachingOpportunities@{identifyGraphCachingOpportunities}}
+\index{identifyGraphCachingOpportunities@{identifyGraphCachingOpportunities}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{identifyGraphCachingOpportunities()}{identifyGraphCachingOpportunities()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+Graph\+::identify\+Graph\+Caching\+Opportunities (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+c\+Atomic\+Graph\+Node\+\_\+in,  }\item[{unsigned long}]{handle\+\_\+handle\+\_\+\+Atomic\+Graph\+Position\+\_\+in }\end{DoxyParamCaption})}
+
+identifies the different possibilities for caching across the list of nodes such as outer caching (which is based on inner caching), multithreaded lookahead caching, and zero caching 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+c\+Atomic\+Graph\+Node\+\_\+in} & specifies the \doxylink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation} to examine \\
+\hline
+{\em handle\+\_\+handle\+\_\+\+Atomic\+Graph\+Position\+\_\+in} & specifies the position of this \doxylink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation} object in the list of nodes \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a19f5d1d557d65cac5a6117fbab513eb8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a19f5d1d557d65cac5a6117fbab513eb8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_graph_a0a2f71f7fd8337190c3e801178943fbd}\label{classpaceval__c_graph_a0a2f71f7fd8337190c3e801178943fbd} 
+\index{paceval\_cGraph@{paceval\_cGraph}!initializeData@{initializeData}}
+\index{initializeData@{initializeData}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{initializeData()}{initializeData()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Graph\+::initialize\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+initiates the data held by this \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a0a2f71f7fd8337190c3e801178943fbd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a0a2f71f7fd8337190c3e801178943fbd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_graph_a7a62c4b648363cda91e6fde1200b60b4}\label{classpaceval__c_graph_a7a62c4b648363cda91e6fde1200b60b4} 
+\index{paceval\_cGraph@{paceval\_cGraph}!lockAndGetToDoLevelMultithreadPosition@{lockAndGetToDoLevelMultithreadPosition}}
+\index{lockAndGetToDoLevelMultithreadPosition@{lockAndGetToDoLevelMultithreadPosition}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{lockAndGetToDoLevelMultithreadPosition()}{lockAndGetToDoLevelMultithreadPosition()}}
+{\footnotesize\ttfamily long paceval\+\_\+c\+Graph\+::lock\+And\+Get\+To\+Do\+Level\+Multithread\+Position (\begin{DoxyParamCaption}\item[{unsigned long}]{stack\+Number\+\_\+in,  }\item[{unsigned long}]{id\+Single\+Calculation\+To\+Do\+\_\+in,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{last\+To\+Do\+Level\+Multithread\+Position\+\_\+in,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{start\+Specific\+At\+Node\+\_\+in,  }\item[{unsigned long \texorpdfstring{$\ast$}{*}}]{end\+Specific\+At\+Node\+\_\+in }\end{DoxyParamCaption})}
+
+locks parallel computation by a thread so that data for caching, for example, does not overwrite each other and returns its position, see \doxylink{paceval__f_thread_handling_8cpp}{paceval\+\_\+f\+Thread\+Handling.\+cpp} and \doxylink{paceval__c_computation_8cpp}{paceval\+\_\+c\+Computation.\+cpp} 
+\begin{DoxyParams}{Parameters}
+{\em stack\+Number\+\_\+in} & specifies the number of the stack that is being worked with in a locked manner \\
+\hline
+{\em id\+Single\+Calculation\+To\+Do\+\_\+in} & specifies the identification of the main computation \\
+\hline
+{\em last\+To\+Do\+Level\+Multithread\+Position\+\_\+in} & specifies the starting point for a possible parallel computation for a lookahead chaching thread \\
+\hline
+{\em start\+Specific\+At\+Node\+\_\+in} & specifies the node at which the calculation is started by the thread \\
+\hline
+{\em end\+Specific\+At\+Node\+\_\+in} & specifies the node at which the calculation ends by the thread \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a7a62c4b648363cda91e6fde1200b60b4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a7a62c4b648363cda91e6fde1200b60b4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_graph_a9eb81815bdabaafb35c97ede7299b964}\label{classpaceval__c_graph_a9eb81815bdabaafb35c97ede7299b964} 
+\index{paceval\_cGraph@{paceval\_cGraph}!resetMaxToDoLevelMultithreadPosition@{resetMaxToDoLevelMultithreadPosition}}
+\index{resetMaxToDoLevelMultithreadPosition@{resetMaxToDoLevelMultithreadPosition}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{resetMaxToDoLevelMultithreadPosition()}{resetMaxToDoLevelMultithreadPosition()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Graph\+::reset\+Max\+To\+Do\+Level\+Multithread\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+resets the position of the maximum parentheses level at which a thread is currently working Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a9eb81815bdabaafb35c97ede7299b964_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_graph_aac29e66ba7986922e22123fe68c83c61}\label{classpaceval__c_graph_aac29e66ba7986922e22123fe68c83c61} 
+\index{paceval\_cGraph@{paceval\_cGraph}!sizeOf@{sizeOf}}
+\index{sizeOf@{sizeOf}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{sizeOf()}{sizeOf()}}
+{\footnotesize\ttfamily long paceval\+\_\+c\+Graph\+::size\+Of (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+returns the size of the list of nodes, i.\+e. the number of objects in the list of nodes Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_aac29e66ba7986922e22123fe68c83c61_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_aac29e66ba7986922e22123fe68c83c61_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_graph_a54d971df7b04048483b9cc8de7429224}\label{classpaceval__c_graph_a54d971df7b04048483b9cc8de7429224} 
+\index{paceval\_cGraph@{paceval\_cGraph}!unlockToDoLevelMultithreadPosition@{unlockToDoLevelMultithreadPosition}}
+\index{unlockToDoLevelMultithreadPosition@{unlockToDoLevelMultithreadPosition}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{unlockToDoLevelMultithreadPosition()}{unlockToDoLevelMultithreadPosition()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+Graph\+::unlock\+To\+Do\+Level\+Multithread\+Position (\begin{DoxyParamCaption}\item[{unsigned long}]{stack\+Number\+\_\+in,  }\item[{unsigned long}]{locked\+Level\+Multithread\+Position\+\_\+in,  }\item[{unsigned long}]{id\+Single\+Calculation\+To\+Do\+\_\+in }\end{DoxyParamCaption})}
+
+unlocks parallel computation by a thread, see \doxylink{paceval__f_thread_handling_8cpp}{paceval\+\_\+f\+Thread\+Handling.\+cpp} and \doxylink{paceval__c_computation_8cpp}{paceval\+\_\+c\+Computation.\+cpp} 
+\begin{DoxyParams}{Parameters}
+{\em stack\+Number\+\_\+in} & specifies the number of the stack that was worked with locked \\
+\hline
+{\em locked\+Level\+Multithread\+Position\+\_\+in} & specifies the position of the lock for unlocking \\
+\hline
+{\em id\+Single\+Calculation\+To\+Do\+\_\+in} & specifies the identification of the main computation \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a54d971df7b04048483b9cc8de7429224_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a54d971df7b04048483b9cc8de7429224_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/\mbox{\hyperlink{paceval__c_graph_8h}{paceval\+\_\+c\+Graph.\+h}}\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/\mbox{\hyperlink{paceval__c_graph_8cpp}{paceval\+\_\+c\+Graph.\+cpp}}\end{DoxyCompactItemize}

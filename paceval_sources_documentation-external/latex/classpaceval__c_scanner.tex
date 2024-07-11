@@ -1,0 +1,215 @@
+\doxysection{paceval\+\_\+c\+Scanner Class Reference}
+\hypertarget{classpaceval__c_scanner}{}\label{classpaceval__c_scanner}\index{paceval\_cScanner@{paceval\_cScanner}}
+
+
+The class \doxylink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the exploration of mathematical strings as parts of the user\textquotesingle{}s function.  
+
+
+
+
+{\ttfamily \#include "{}inc/paceval\+\_\+c\+Scanner.\+h"{}}
+
+
+
+Inheritance diagram for paceval\+\_\+c\+Scanner\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classpaceval__c_scanner__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for paceval\+\_\+c\+Scanner\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classpaceval__c_scanner__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_scanner_a69af3993d996d1df433e343ef9b2ed67}{paceval\+\_\+c\+Scanner}} (\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}handle\+\_\+\+Cleanup\+Handler\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_scanner_ab207df8b8d78d5b5a199c502e080b50d}{initialize\+Data}} (const char \texorpdfstring{$\ast$}{*}function\+String\+\_\+in)
+\item 
+\mbox{\hyperlink{classpaceval__c_scanner_aa850135bc0ff480af58e84894ea5022a}{\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Scanner}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_scanner_a3c96365f67d92d697e0fb30c86fab7de}{identify\+Match}} (\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45b}{paceval\+\_\+e\+Mathematical\+Character\+Types}} e\+Mathematical\+Character\+Type\+\_\+in)
+\item 
+void \mbox{\hyperlink{classpaceval__c_scanner_a2f09e7513a0fed6875c4d4eff843b0e9}{set\+Main\+Position\+Of\+Scanner}} (long main\+Position\+Of\+Scanner\+\_\+in)
+\item 
+long \mbox{\hyperlink{classpaceval__c_scanner_ac55d3fd3bd164e1275765d5f02fa8d16}{get\+Main\+Position\+Of\+Scanner}} ()
+\item 
+\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45b}{paceval\+\_\+e\+Mathematical\+Character\+Types}} \mbox{\hyperlink{classpaceval__c_scanner_a66d6ea4590c7d5f7335e2991e03bf6c5}{get\+Look\+Ahead\+Mathematical\+Character\+Type}} ()
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_scanner_ac2fde0a9dec3247b069217e8b84b72c6}{get\+Scanner\+String}} (long \texorpdfstring{$\ast$}{*}length\+Of\+Scanner\+String\+\_\+out)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a4f13b696019f4f84d70f0899e1a93e6b}{paceval\+\_\+c\+Registered\+Object}} (\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}handle\+\_\+\+Cleanup\+Handler\+\_\+in)
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a3968a184ea427893d836b7b676ce6d82}{\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Registered\+Object}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_registered_object_a342114d4bb2f86b2c4cfecb300925878}{set\+Register\+Position}} (unsigned long register\+Position\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a98739f041c398e860d9c7f9118fcfe0f}{get\+Register\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_registered_object_a56a8caf41119639bae9f389a6a7f7187}{handle\+\_\+\+Cleanup\+Handler}}
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a6a4cbc3ca8ae598995e763fc2005b69f}{register\+Position}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The class \doxylink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the exploration of mathematical strings as parts of the user\textquotesingle{}s function. 
+
+The scanner itself is controlled by the \doxylink{classpaceval__c_syntactic_analysis}{paceval\+\_\+c\+Syntactic\+Analysis} object. The user\textquotesingle{}s function is run through once from left to right and all node objects are created in a single run, which is very performant. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classpaceval__c_scanner_a69af3993d996d1df433e343ef9b2ed67}\label{classpaceval__c_scanner_a69af3993d996d1df433e343ef9b2ed67} 
+\index{paceval\_cScanner@{paceval\_cScanner}!paceval\_cScanner@{paceval\_cScanner}}
+\index{paceval\_cScanner@{paceval\_cScanner}!paceval\_cScanner@{paceval\_cScanner}}
+\doxysubsubsection{\texorpdfstring{paceval\_cScanner()}{paceval\_cScanner()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+Scanner\+::paceval\+\_\+c\+Scanner (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+\+Cleanup\+Handler\+\_\+in }\end{DoxyParamCaption})}
+
+the constructor of \doxylink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner} 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+\+Cleanup\+Handler\+\_\+in} & is the associated handler for deleting this registered object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classpaceval__c_scanner_aa850135bc0ff480af58e84894ea5022a}\label{classpaceval__c_scanner_aa850135bc0ff480af58e84894ea5022a} 
+\index{paceval\_cScanner@{paceval\_cScanner}!````~paceval\_cScanner@{\texorpdfstring{$\sim$}{\string~}paceval\_cScanner}}
+\index{````~paceval\_cScanner@{\texorpdfstring{$\sim$}{\string~}paceval\_cScanner}!paceval\_cScanner@{paceval\_cScanner}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}paceval\_cScanner()}{\string~paceval\_cScanner()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+Scanner\+::\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Scanner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the destructor of \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpaceval__c_scanner_a66d6ea4590c7d5f7335e2991e03bf6c5}\label{classpaceval__c_scanner_a66d6ea4590c7d5f7335e2991e03bf6c5} 
+\index{paceval\_cScanner@{paceval\_cScanner}!getLookAheadMathematicalCharacterType@{getLookAheadMathematicalCharacterType}}
+\index{getLookAheadMathematicalCharacterType@{getLookAheadMathematicalCharacterType}!paceval\_cScanner@{paceval\_cScanner}}
+\doxysubsubsection{\texorpdfstring{getLookAheadMathematicalCharacterType()}{getLookAheadMathematicalCharacterType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45b}{paceval\+\_\+e\+Mathematical\+Character\+Types}} paceval\+\_\+c\+Scanner\+::get\+Look\+Ahead\+Mathematical\+Character\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the next mathematical character type Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_scanner_a66d6ea4590c7d5f7335e2991e03bf6c5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_scanner_ac55d3fd3bd164e1275765d5f02fa8d16}\label{classpaceval__c_scanner_ac55d3fd3bd164e1275765d5f02fa8d16} 
+\index{paceval\_cScanner@{paceval\_cScanner}!getMainPositionOfScanner@{getMainPositionOfScanner}}
+\index{getMainPositionOfScanner@{getMainPositionOfScanner}!paceval\_cScanner@{paceval\_cScanner}}
+\doxysubsubsection{\texorpdfstring{getMainPositionOfScanner()}{getMainPositionOfScanner()}}
+{\footnotesize\ttfamily long paceval\+\_\+c\+Scanner\+::get\+Main\+Position\+Of\+Scanner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the current main position of the scanner in the user\textquotesingle{}s function Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_scanner_ac55d3fd3bd164e1275765d5f02fa8d16_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_scanner_ac2fde0a9dec3247b069217e8b84b72c6}\label{classpaceval__c_scanner_ac2fde0a9dec3247b069217e8b84b72c6} 
+\index{paceval\_cScanner@{paceval\_cScanner}!getScannerString@{getScannerString}}
+\index{getScannerString@{getScannerString}!paceval\_cScanner@{paceval\_cScanner}}
+\doxysubsubsection{\texorpdfstring{getScannerString()}{getScannerString()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Scanner\+::get\+Scanner\+String (\begin{DoxyParamCaption}\item[{long \texorpdfstring{$\ast$}{*}}]{length\+Of\+Scanner\+String\+\_\+out }\end{DoxyParamCaption})}
+
+gets the pointer to the last scanned string of variable length (this can be variable identifiers, constants and function names) 
+\begin{DoxyParams}{Parameters}
+{\em length\+Of\+Scanner\+String\+\_\+out} & this buffer retrieves the length of the string \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_scanner_ac2fde0a9dec3247b069217e8b84b72c6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_scanner_a3c96365f67d92d697e0fb30c86fab7de}\label{classpaceval__c_scanner_a3c96365f67d92d697e0fb30c86fab7de} 
+\index{paceval\_cScanner@{paceval\_cScanner}!identifyMatch@{identifyMatch}}
+\index{identifyMatch@{identifyMatch}!paceval\_cScanner@{paceval\_cScanner}}
+\doxysubsubsection{\texorpdfstring{identifyMatch()}{identifyMatch()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Scanner\+::identify\+Match (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45b}{paceval\+\_\+e\+Mathematical\+Character\+Types}}}]{e\+Mathematical\+Character\+Type\+\_\+in }\end{DoxyParamCaption})}
+
+identifies whether the current status of the scanner matches the newly scanned mathematical character type or not (in this case an error is thrown as an exception) 
+\begin{DoxyParams}{Parameters}
+{\em e\+Mathematical\+Character\+Type\+\_\+in} & specifies the newly scanned type of paceval\+\_\+e\+Mathematical\+Character\+Types \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_scanner_a3c96365f67d92d697e0fb30c86fab7de_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_scanner_a3c96365f67d92d697e0fb30c86fab7de_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_scanner_ab207df8b8d78d5b5a199c502e080b50d}\label{classpaceval__c_scanner_ab207df8b8d78d5b5a199c502e080b50d} 
+\index{paceval\_cScanner@{paceval\_cScanner}!initializeData@{initializeData}}
+\index{initializeData@{initializeData}!paceval\_cScanner@{paceval\_cScanner}}
+\doxysubsubsection{\texorpdfstring{initializeData()}{initializeData()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Scanner\+::initialize\+Data (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in }\end{DoxyParamCaption})}
+
+initiates the data held by this \doxylink{classpaceval__c_scanner}{paceval\+\_\+c\+Scanner} 
+\begin{DoxyParams}{Parameters}
+{\em function\+String\+\_\+in} & specifies the user\textquotesingle{}s function \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_scanner_ab207df8b8d78d5b5a199c502e080b50d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_scanner_ab207df8b8d78d5b5a199c502e080b50d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_scanner_a2f09e7513a0fed6875c4d4eff843b0e9}\label{classpaceval__c_scanner_a2f09e7513a0fed6875c4d4eff843b0e9} 
+\index{paceval\_cScanner@{paceval\_cScanner}!setMainPositionOfScanner@{setMainPositionOfScanner}}
+\index{setMainPositionOfScanner@{setMainPositionOfScanner}!paceval\_cScanner@{paceval\_cScanner}}
+\doxysubsubsection{\texorpdfstring{setMainPositionOfScanner()}{setMainPositionOfScanner()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Scanner\+::set\+Main\+Position\+Of\+Scanner (\begin{DoxyParamCaption}\item[{long}]{main\+Position\+Of\+Scanner\+\_\+in }\end{DoxyParamCaption})}
+
+sets the new main position of the scanner in the user\textquotesingle{}s function (this can also be referred to as the start of the position of interest and is also used for error outputs) 
+\begin{DoxyParams}{Parameters}
+{\em main\+Position\+Of\+Scanner\+\_\+in} & specifies the new main position of the scanner \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/\mbox{\hyperlink{paceval__c_scanner_8h}{paceval\+\_\+c\+Scanner.\+h}}\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/\mbox{\hyperlink{paceval__c_scanner_8cpp}{paceval\+\_\+c\+Scanner.\+cpp}}\end{DoxyCompactItemize}

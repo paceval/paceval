@@ -1,0 +1,129 @@
+\doxysection{paceval\+\_\+c\+Registered\+Object Class Reference}
+\hypertarget{classpaceval__c_registered_object}{}\label{classpaceval__c_registered_object}\index{paceval\_cRegisteredObject@{paceval\_cRegisteredObject}}
+
+
+The base class \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} encapsulates the management of the register position of the object created by the class and the \doxylink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}.  
+
+
+
+
+{\ttfamily \#include "{}inc/paceval\+\_\+c\+Cleanup\+Handler.\+h"{}}
+
+
+
+Inheritance diagram for paceval\+\_\+c\+Registered\+Object\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_registered_object__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for paceval\+\_\+c\+Registered\+Object\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classpaceval__c_registered_object__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a4f13b696019f4f84d70f0899e1a93e6b}{paceval\+\_\+c\+Registered\+Object}} (\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}handle\+\_\+\+Cleanup\+Handler\+\_\+in)
+\item 
+\mbox{\hyperlink{classpaceval__c_registered_object_a3968a184ea427893d836b7b676ce6d82}{\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Registered\+Object}} ()
+\item 
+void \mbox{\hyperlink{classpaceval__c_registered_object_a342114d4bb2f86b2c4cfecb300925878}{set\+Register\+Position}} (unsigned long register\+Position\+\_\+in)
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a98739f041c398e860d9c7f9118fcfe0f}{get\+Register\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_registered_object_a56a8caf41119639bae9f389a6a7f7187}{handle\+\_\+\+Cleanup\+Handler}}
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a6a4cbc3ca8ae598995e763fc2005b69f}{register\+Position}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The base class \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} encapsulates the management of the register position of the object created by the class and the \doxylink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classpaceval__c_registered_object_a4f13b696019f4f84d70f0899e1a93e6b}\label{classpaceval__c_registered_object_a4f13b696019f4f84d70f0899e1a93e6b} 
+\index{paceval\_cRegisteredObject@{paceval\_cRegisteredObject}!paceval\_cRegisteredObject@{paceval\_cRegisteredObject}}
+\index{paceval\_cRegisteredObject@{paceval\_cRegisteredObject}!paceval\_cRegisteredObject@{paceval\_cRegisteredObject}}
+\doxysubsubsection{\texorpdfstring{paceval\_cRegisteredObject()}{paceval\_cRegisteredObject()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+Registered\+Object\+::paceval\+\_\+c\+Registered\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+\+Cleanup\+Handler\+\_\+in }\end{DoxyParamCaption})}
+
+the constructor of \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node} 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+\+Cleanup\+Handler\+\_\+in} & is the associated handler for deleting this registered object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classpaceval__c_registered_object_a3968a184ea427893d836b7b676ce6d82}\label{classpaceval__c_registered_object_a3968a184ea427893d836b7b676ce6d82} 
+\index{paceval\_cRegisteredObject@{paceval\_cRegisteredObject}!````~paceval\_cRegisteredObject@{\texorpdfstring{$\sim$}{\string~}paceval\_cRegisteredObject}}
+\index{````~paceval\_cRegisteredObject@{\texorpdfstring{$\sim$}{\string~}paceval\_cRegisteredObject}!paceval\_cRegisteredObject@{paceval\_cRegisteredObject}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}paceval\_cRegisteredObject()}{\string~paceval\_cRegisteredObject()}}
+{\footnotesize\ttfamily paceval\+\_\+c\+Registered\+Object\+::\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Registered\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+the destructor of \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpaceval__c_registered_object_a98739f041c398e860d9c7f9118fcfe0f}\label{classpaceval__c_registered_object_a98739f041c398e860d9c7f9118fcfe0f} 
+\index{paceval\_cRegisteredObject@{paceval\_cRegisteredObject}!getRegisterPosition@{getRegisterPosition}}
+\index{getRegisterPosition@{getRegisterPosition}!paceval\_cRegisteredObject@{paceval\_cRegisteredObject}}
+\doxysubsubsection{\texorpdfstring{getRegisterPosition()}{getRegisterPosition()}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+Registered\+Object\+::get\+Register\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the register position of this object Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_registered_object_a98739f041c398e860d9c7f9118fcfe0f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_registered_object_a342114d4bb2f86b2c4cfecb300925878}\label{classpaceval__c_registered_object_a342114d4bb2f86b2c4cfecb300925878} 
+\index{paceval\_cRegisteredObject@{paceval\_cRegisteredObject}!setRegisterPosition@{setRegisterPosition}}
+\index{setRegisterPosition@{setRegisterPosition}!paceval\_cRegisteredObject@{paceval\_cRegisteredObject}}
+\doxysubsubsection{\texorpdfstring{setRegisterPosition()}{setRegisterPosition()}}
+{\footnotesize\ttfamily void paceval\+\_\+c\+Registered\+Object\+::set\+Register\+Position (\begin{DoxyParamCaption}\item[{unsigned long}]{register\+Position\+\_\+in }\end{DoxyParamCaption})}
+
+sets the register position of this object, which is determined by \doxylink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler} 
+\begin{DoxyParams}{Parameters}
+{\em register\+Position\+\_\+in} & specifies the register position of this object \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_registered_object_a342114d4bb2f86b2c4cfecb300925878_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classpaceval__c_registered_object_a56a8caf41119639bae9f389a6a7f7187}\label{classpaceval__c_registered_object_a56a8caf41119639bae9f389a6a7f7187} 
+\index{paceval\_cRegisteredObject@{paceval\_cRegisteredObject}!handle\_CleanupHandler@{handle\_CleanupHandler}}
+\index{handle\_CleanupHandler@{handle\_CleanupHandler}!paceval\_cRegisteredObject@{paceval\_cRegisteredObject}}
+\doxysubsubsection{\texorpdfstring{handle\_CleanupHandler}{handle\_CleanupHandler}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler}}\texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Registered\+Object\+::handle\+\_\+\+Cleanup\+Handler\hspace{0.3cm}{\ttfamily [protected]}}
+
+the pointer of the \doxylink{classpaceval__c_cleanup_handler}{paceval\+\_\+c\+Cleanup\+Handler} \Hypertarget{classpaceval__c_registered_object_a6a4cbc3ca8ae598995e763fc2005b69f}\label{classpaceval__c_registered_object_a6a4cbc3ca8ae598995e763fc2005b69f} 
+\index{paceval\_cRegisteredObject@{paceval\_cRegisteredObject}!registerPosition@{registerPosition}}
+\index{registerPosition@{registerPosition}!paceval\_cRegisteredObject@{paceval\_cRegisteredObject}}
+\doxysubsubsection{\texorpdfstring{registerPosition}{registerPosition}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+Registered\+Object\+::register\+Position\hspace{0.3cm}{\ttfamily [protected]}}
+
+the register position of this object 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/\mbox{\hyperlink{paceval__c_cleanup_handler_8h}{paceval\+\_\+c\+Cleanup\+Handler.\+h}}\item 
+G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/\mbox{\hyperlink{paceval__c_cleanup_handler_8cpp}{paceval\+\_\+c\+Cleanup\+Handler.\+cpp}}\end{DoxyCompactItemize}

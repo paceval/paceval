@@ -1,0 +1,169 @@
+\doxysection{G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/inc/paceval\+\_\+f\+Self\+Test\+Main.h File Reference}
+\hypertarget{paceval__f_self_test_main_8h}{}\label{paceval__f_self_test_main_8h}\index{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/inc/paceval\_fSelfTestMain.h@{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/inc/paceval\_fSelfTestMain.h}}
+
+
+specification of the main interface for paceval\textquotesingle{}s self-\/test functions (annotation\+: switching the functionality on and off is set in \doxylink{paceval__d_test_debug_8h}{paceval\+\_\+d\+Test\+Debug.\+h})  
+
+
+{\ttfamily \#include "{}../../source\+\_\+public/inc/paceval\+\_\+main.\+h"{}}\newline
+{\ttfamily \#include "{}paceval\+\_\+d\+Version.\+h"{}}\newline
+Include dependency graph for paceval\+\_\+f\+Self\+Test\+Main.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_self_test_main_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_self_test_main_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88}{paceval\+\_\+e\+Error\+Self\+Test}} \{ \newline
+\mbox{\hyperlink{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a21dd3e9c591b7f61b9ea18c942a18087}{PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+NO\+\_\+\+ERROR}} = 0
+, \mbox{\hyperlink{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a29b6dbf08b2efd2981c3a1cb1bf565ae}{PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+PERFORMANCE\+\_\+\+INDEX}} = -\/10
+, \mbox{\hyperlink{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88ad2caab3f8c6e8a9e75d002b086427e5b}{PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+APPROXIMATION}} = -\/20
+, \mbox{\hyperlink{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a3ec522ec315bd46b08c275e1d8c098d3}{PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+MIXED\+\_\+\+FUNCTIONS}} = -\/30
+, \newline
+\mbox{\hyperlink{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a75b608e171b7d985c489ef7b176881c0}{PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+MEMORY}} = -\/40
+, \mbox{\hyperlink{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a43076dd805dd60d21bc0b05432c506b5}{PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+FLOAT}} = -\/1000
+, \mbox{\hyperlink{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88ae4ef60c7280f9dc299e77fb0cd98f14c}{PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+DOUBLE}} = -\/2000
+, \mbox{\hyperlink{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a111d7e369049a45a7893bf06ec91cfcf}{PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+LONG\+\_\+\+DOUBLE}} = -\/3000
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+long \mbox{\hyperlink{paceval__f_self_test_main_8h_ad307d07bb3c9d664441952fa22a3ed6f}{paceval\+\_\+get\+Self\+Test\+Passed}} ()
+\item 
+void \mbox{\hyperlink{paceval__f_self_test_main_8h_a85d00f8b1d545f93257d969975b357f8}{paceval\+\_\+set\+Self\+Test\+Passed}} (const long value\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__f_self_test_main_8h_a5cb77a00a63daa84c4771e62df42e5a1}{paceval\+Library\+\_\+\+Internal\+Run\+Self\+Test}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{paceval__f_self_test_main_8h_a0b5e8913a29cb9a04fa794e9301177c7}{counter\+\_\+allpaceval\+Objects\+\_\+in\+\_\+c\+Cleanup\+Handler}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+specification of the main interface for paceval\textquotesingle{}s self-\/test functions (annotation\+: switching the functionality on and off is set in \doxylink{paceval__d_test_debug_8h}{paceval\+\_\+d\+Test\+Debug.\+h}) 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88}\label{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88} 
+\index{paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}!paceval\_eErrorSelfTest@{paceval\_eErrorSelfTest}}
+\index{paceval\_eErrorSelfTest@{paceval\_eErrorSelfTest}!paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_eErrorSelfTest}{paceval\_eErrorSelfTest}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88}{paceval\+\_\+e\+Error\+Self\+Test}}}
+
+specifies the type of recent self-\/test failures (annotation\+: this can be determined by the constant paceval\+\_\+\+Self\+Test\+Passed) \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_SELF\_TEST\_NO\_ERROR@{PACEVAL\_ERR\_SELF\_TEST\_NO\_ERROR}!paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}}\index{paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}!PACEVAL\_ERR\_SELF\_TEST\_NO\_ERROR@{PACEVAL\_ERR\_SELF\_TEST\_NO\_ERROR}}}\Hypertarget{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a21dd3e9c591b7f61b9ea18c942a18087}\label{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a21dd3e9c591b7f61b9ea18c942a18087} 
+PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+NO\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_SELF\_TEST\_PERFORMANCE\_INDEX@{PACEVAL\_ERR\_SELF\_TEST\_PERFORMANCE\_INDEX}!paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}}\index{paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}!PACEVAL\_ERR\_SELF\_TEST\_PERFORMANCE\_INDEX@{PACEVAL\_ERR\_SELF\_TEST\_PERFORMANCE\_INDEX}}}\Hypertarget{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a29b6dbf08b2efd2981c3a1cb1bf565ae}\label{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a29b6dbf08b2efd2981c3a1cb1bf565ae} 
+PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+PERFORMANCE\+\_\+\+INDEX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_SELF\_TEST\_APPROXIMATION@{PACEVAL\_ERR\_SELF\_TEST\_APPROXIMATION}!paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}}\index{paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}!PACEVAL\_ERR\_SELF\_TEST\_APPROXIMATION@{PACEVAL\_ERR\_SELF\_TEST\_APPROXIMATION}}}\Hypertarget{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88ad2caab3f8c6e8a9e75d002b086427e5b}\label{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88ad2caab3f8c6e8a9e75d002b086427e5b} 
+PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+APPROXIMATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_SELF\_TEST\_MIXED\_FUNCTIONS@{PACEVAL\_ERR\_SELF\_TEST\_MIXED\_FUNCTIONS}!paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}}\index{paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}!PACEVAL\_ERR\_SELF\_TEST\_MIXED\_FUNCTIONS@{PACEVAL\_ERR\_SELF\_TEST\_MIXED\_FUNCTIONS}}}\Hypertarget{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a3ec522ec315bd46b08c275e1d8c098d3}\label{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a3ec522ec315bd46b08c275e1d8c098d3} 
+PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+MIXED\+\_\+\+FUNCTIONS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_SELF\_TEST\_MEMORY@{PACEVAL\_ERR\_SELF\_TEST\_MEMORY}!paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}}\index{paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}!PACEVAL\_ERR\_SELF\_TEST\_MEMORY@{PACEVAL\_ERR\_SELF\_TEST\_MEMORY}}}\Hypertarget{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a75b608e171b7d985c489ef7b176881c0}\label{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a75b608e171b7d985c489ef7b176881c0} 
+PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+MEMORY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_SELF\_TEST\_FLOAT@{PACEVAL\_ERR\_SELF\_TEST\_FLOAT}!paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}}\index{paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}!PACEVAL\_ERR\_SELF\_TEST\_FLOAT@{PACEVAL\_ERR\_SELF\_TEST\_FLOAT}}}\Hypertarget{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a43076dd805dd60d21bc0b05432c506b5}\label{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a43076dd805dd60d21bc0b05432c506b5} 
+PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_SELF\_TEST\_DOUBLE@{PACEVAL\_ERR\_SELF\_TEST\_DOUBLE}!paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}}\index{paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}!PACEVAL\_ERR\_SELF\_TEST\_DOUBLE@{PACEVAL\_ERR\_SELF\_TEST\_DOUBLE}}}\Hypertarget{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88ae4ef60c7280f9dc299e77fb0cd98f14c}\label{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88ae4ef60c7280f9dc299e77fb0cd98f14c} 
+PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+DOUBLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACEVAL\_ERR\_SELF\_TEST\_LONG\_DOUBLE@{PACEVAL\_ERR\_SELF\_TEST\_LONG\_DOUBLE}!paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}}\index{paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}!PACEVAL\_ERR\_SELF\_TEST\_LONG\_DOUBLE@{PACEVAL\_ERR\_SELF\_TEST\_LONG\_DOUBLE}}}\Hypertarget{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a111d7e369049a45a7893bf06ec91cfcf}\label{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a111d7e369049a45a7893bf06ec91cfcf} 
+PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+LONG\+\_\+\+DOUBLE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{paceval__f_self_test_main_8h_ad307d07bb3c9d664441952fa22a3ed6f}\label{paceval__f_self_test_main_8h_ad307d07bb3c9d664441952fa22a3ed6f} 
+\index{paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}!paceval\_getSelfTestPassed@{paceval\_getSelfTestPassed}}
+\index{paceval\_getSelfTestPassed@{paceval\_getSelfTestPassed}!paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_getSelfTestPassed()}{paceval\_getSelfTestPassed()}}
+{\footnotesize\ttfamily long paceval\+\_\+get\+Self\+Test\+Passed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the recent self-\/test failure, see paceval\+\_\+e\+Error\+Self\+Test Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_self_test_main_8h_ad307d07bb3c9d664441952fa22a3ed6f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_self_test_main_8h_a85d00f8b1d545f93257d969975b357f8}\label{paceval__f_self_test_main_8h_a85d00f8b1d545f93257d969975b357f8} 
+\index{paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}!paceval\_setSelfTestPassed@{paceval\_setSelfTestPassed}}
+\index{paceval\_setSelfTestPassed@{paceval\_setSelfTestPassed}!paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_setSelfTestPassed()}{paceval\_setSelfTestPassed()}}
+{\footnotesize\ttfamily void paceval\+\_\+set\+Self\+Test\+Passed (\begin{DoxyParamCaption}\item[{const long}]{value\+\_\+in }\end{DoxyParamCaption})}
+
+stores the recent self-\/test failure, see paceval\+\_\+e\+Error\+Self\+Test 
+\begin{DoxyParams}{Parameters}
+{\em value\+\_\+in} & specifies the recent self-\/test failure \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_self_test_main_8h_a85d00f8b1d545f93257d969975b357f8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_self_test_main_8h_a5cb77a00a63daa84c4771e62df42e5a1}\label{paceval__f_self_test_main_8h_a5cb77a00a63daa84c4771e62df42e5a1} 
+\index{paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}!pacevalLibrary\_InternalRunSelfTest@{pacevalLibrary\_InternalRunSelfTest}}
+\index{pacevalLibrary\_InternalRunSelfTest@{pacevalLibrary\_InternalRunSelfTest}!paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_InternalRunSelfTest()}{pacevalLibrary\_InternalRunSelfTest()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Internal\+Run\+Self\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+starts all paceval self-\/tests that are set via the functionalities in \doxylink{paceval__d_test_debug_8h}{paceval\+\_\+d\+Test\+Debug.\+h} Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_self_test_main_8h_a5cb77a00a63daa84c4771e62df42e5a1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_self_test_main_8h_a5cb77a00a63daa84c4771e62df42e5a1_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{paceval__f_self_test_main_8h_a0b5e8913a29cb9a04fa794e9301177c7}\label{paceval__f_self_test_main_8h_a0b5e8913a29cb9a04fa794e9301177c7} 
+\index{paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}!counter\_allpacevalObjects\_in\_cCleanupHandler@{counter\_allpacevalObjects\_in\_cCleanupHandler}}
+\index{counter\_allpacevalObjects\_in\_cCleanupHandler@{counter\_allpacevalObjects\_in\_cCleanupHandler}!paceval\_fSelfTestMain.h@{paceval\_fSelfTestMain.h}}
+\doxysubsubsection{\texorpdfstring{counter\_allpacevalObjects\_in\_cCleanupHandler}{counter\_allpacevalObjects\_in\_cCleanupHandler}}
+{\footnotesize\ttfamily unsigned long counter\+\_\+allpaceval\+Objects\+\_\+in\+\_\+c\+Cleanup\+Handler\hspace{0.3cm}{\ttfamily [extern]}}
+

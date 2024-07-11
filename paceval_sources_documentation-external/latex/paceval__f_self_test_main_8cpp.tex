@@ -1,0 +1,115 @@
+\doxysection{G\+:/\+Onedrive/\+Development/paceval/system-\/independent/source-\/internal/paceval\+\_\+f\+Self\+Test\+Main.cpp File Reference}
+\hypertarget{paceval__f_self_test_main_8cpp}{}\label{paceval__f_self_test_main_8cpp}\index{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/paceval\_fSelfTestMain.cpp@{G:/Onedrive/Development/paceval/system-\/independent/source-\/internal/paceval\_fSelfTestMain.cpp}}
+
+
+implementation of the main interface for paceval\textquotesingle{}s self-\/test functions (annotation\+: switching the functionality on and off is set in \doxylink{paceval__d_test_debug_8h}{paceval\+\_\+d\+Test\+Debug.\+h})  
+
+
+{\ttfamily \#include "{}./inc/paceval\+\_\+d\+Version.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+f\+Self\+Test\+Main.\+h"{}}\newline
+{\ttfamily \#include "{}./inc/paceval\+\_\+f\+Self\+Test\+Floating\+Point.\+h"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for paceval\+\_\+f\+Self\+Test\+Main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_self_test_main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+long \mbox{\hyperlink{paceval__f_self_test_main_8cpp_ad307d07bb3c9d664441952fa22a3ed6f}{paceval\+\_\+get\+Self\+Test\+Passed}} ()
+\item 
+void \mbox{\hyperlink{paceval__f_self_test_main_8cpp_a85d00f8b1d545f93257d969975b357f8}{paceval\+\_\+set\+Self\+Test\+Passed}} (const long value\+\_\+in)
+\item 
+bool \mbox{\hyperlink{paceval__f_self_test_main_8cpp_a5cb77a00a63daa84c4771e62df42e5a1}{paceval\+Library\+\_\+\+Internal\+Run\+Self\+Test}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+long \mbox{\hyperlink{paceval__f_self_test_main_8cpp_a4705462096f0a1ebe9c5b05dff180e47}{paceval\+\_\+library\+\_\+self\+\_\+test\+\_\+passed}} = \mbox{\hyperlink{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a21dd3e9c591b7f61b9ea18c942a18087}{PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+NO\+\_\+\+ERROR}}
+\item 
+unsigned long \mbox{\hyperlink{paceval__f_self_test_main_8cpp_a0b5e8913a29cb9a04fa794e9301177c7}{counter\+\_\+allpaceval\+Objects\+\_\+in\+\_\+c\+Cleanup\+Handler}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+implementation of the main interface for paceval\textquotesingle{}s self-\/test functions (annotation\+: switching the functionality on and off is set in \doxylink{paceval__d_test_debug_8h}{paceval\+\_\+d\+Test\+Debug.\+h}) 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{paceval__f_self_test_main_8cpp_ad307d07bb3c9d664441952fa22a3ed6f}\label{paceval__f_self_test_main_8cpp_ad307d07bb3c9d664441952fa22a3ed6f} 
+\index{paceval\_fSelfTestMain.cpp@{paceval\_fSelfTestMain.cpp}!paceval\_getSelfTestPassed@{paceval\_getSelfTestPassed}}
+\index{paceval\_getSelfTestPassed@{paceval\_getSelfTestPassed}!paceval\_fSelfTestMain.cpp@{paceval\_fSelfTestMain.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_getSelfTestPassed()}{paceval\_getSelfTestPassed()}}
+{\footnotesize\ttfamily long paceval\+\_\+get\+Self\+Test\+Passed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets the recent self-\/test failure, see paceval\+\_\+e\+Error\+Self\+Test Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_self_test_main_8cpp_ad307d07bb3c9d664441952fa22a3ed6f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_self_test_main_8cpp_a85d00f8b1d545f93257d969975b357f8}\label{paceval__f_self_test_main_8cpp_a85d00f8b1d545f93257d969975b357f8} 
+\index{paceval\_fSelfTestMain.cpp@{paceval\_fSelfTestMain.cpp}!paceval\_setSelfTestPassed@{paceval\_setSelfTestPassed}}
+\index{paceval\_setSelfTestPassed@{paceval\_setSelfTestPassed}!paceval\_fSelfTestMain.cpp@{paceval\_fSelfTestMain.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_setSelfTestPassed()}{paceval\_setSelfTestPassed()}}
+{\footnotesize\ttfamily void paceval\+\_\+set\+Self\+Test\+Passed (\begin{DoxyParamCaption}\item[{const long}]{value\+\_\+in }\end{DoxyParamCaption})}
+
+stores the recent self-\/test failure, see paceval\+\_\+e\+Error\+Self\+Test 
+\begin{DoxyParams}{Parameters}
+{\em value\+\_\+in} & specifies the recent self-\/test failure \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_self_test_main_8cpp_a85d00f8b1d545f93257d969975b357f8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_self_test_main_8cpp_a5cb77a00a63daa84c4771e62df42e5a1}\label{paceval__f_self_test_main_8cpp_a5cb77a00a63daa84c4771e62df42e5a1} 
+\index{paceval\_fSelfTestMain.cpp@{paceval\_fSelfTestMain.cpp}!pacevalLibrary\_InternalRunSelfTest@{pacevalLibrary\_InternalRunSelfTest}}
+\index{pacevalLibrary\_InternalRunSelfTest@{pacevalLibrary\_InternalRunSelfTest}!paceval\_fSelfTestMain.cpp@{paceval\_fSelfTestMain.cpp}}
+\doxysubsubsection{\texorpdfstring{pacevalLibrary\_InternalRunSelfTest()}{pacevalLibrary\_InternalRunSelfTest()}}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Internal\+Run\+Self\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+starts all paceval self-\/tests that are set via the functionalities in \doxylink{paceval__d_test_debug_8h}{paceval\+\_\+d\+Test\+Debug.\+h} Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_self_test_main_8cpp_a5cb77a00a63daa84c4771e62df42e5a1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_self_test_main_8cpp_a5cb77a00a63daa84c4771e62df42e5a1_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{paceval__f_self_test_main_8cpp_a0b5e8913a29cb9a04fa794e9301177c7}\label{paceval__f_self_test_main_8cpp_a0b5e8913a29cb9a04fa794e9301177c7} 
+\index{paceval\_fSelfTestMain.cpp@{paceval\_fSelfTestMain.cpp}!counter\_allpacevalObjects\_in\_cCleanupHandler@{counter\_allpacevalObjects\_in\_cCleanupHandler}}
+\index{counter\_allpacevalObjects\_in\_cCleanupHandler@{counter\_allpacevalObjects\_in\_cCleanupHandler}!paceval\_fSelfTestMain.cpp@{paceval\_fSelfTestMain.cpp}}
+\doxysubsubsection{\texorpdfstring{counter\_allpacevalObjects\_in\_cCleanupHandler}{counter\_allpacevalObjects\_in\_cCleanupHandler}}
+{\footnotesize\ttfamily unsigned long counter\+\_\+allpaceval\+Objects\+\_\+in\+\_\+c\+Cleanup\+Handler = 0}
+
+\Hypertarget{paceval__f_self_test_main_8cpp_a4705462096f0a1ebe9c5b05dff180e47}\label{paceval__f_self_test_main_8cpp_a4705462096f0a1ebe9c5b05dff180e47} 
+\index{paceval\_fSelfTestMain.cpp@{paceval\_fSelfTestMain.cpp}!paceval\_library\_self\_test\_passed@{paceval\_library\_self\_test\_passed}}
+\index{paceval\_library\_self\_test\_passed@{paceval\_library\_self\_test\_passed}!paceval\_fSelfTestMain.cpp@{paceval\_fSelfTestMain.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_self\_test\_passed}{paceval\_library\_self\_test\_passed}}
+{\footnotesize\ttfamily long paceval\+\_\+library\+\_\+self\+\_\+test\+\_\+passed = \mbox{\hyperlink{paceval__f_self_test_main_8h_acb12e00ba8d62aad32050bdffad24b88a21dd3e9c591b7f61b9ea18c942a18087}{PACEVAL\+\_\+\+ERR\+\_\+\+SELF\+\_\+\+TEST\+\_\+\+NO\+\_\+\+ERROR}}}
+
