@@ -11,8 +11,7 @@ The class \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} is derived fro
 
 
 
-Inheritance diagram for paceval\+\_\+c\+Graph\+:
-\nopagebreak
+Inheritance diagram for paceval\+\_\+c\+Graph\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Inheritance diagram for paceval\+\_\+c\+Graph\+:
 \end{figure}
 
 
-Collaboration diagram for paceval\+\_\+c\+Graph\+:
-\nopagebreak
+Collaboration diagram for paceval\+\_\+c\+Graph\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -82,7 +80,7 @@ unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a6a4cbc3ca8ae59
 \doxysubsection{Detailed Description}
 The class \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the management of the node list as well as the identification and management of parallelization options for caching. 
 
-For example the identify\+Multithread\+Opportunity function of the \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} class looks for opportunities for parallelization. These opportunities are taken into account when processing the node list later with \doxylink{classpaceval__c_computation_a2cde08aa8ee7a3cd0da75fe4e296b6b9}{paceval\+\_\+c\+Computation\+::do\+Computation()}. Parentheses levels such as (1/x) in the function -\/sin(x\texorpdfstring{$\ast$}{*}cos(cos(x))\texorpdfstring{$^\wedge$}{\string^}(1/x) can then be calculated in parallel in advance in a separate thread, which saves significant time. 
+For example the identify\+Multithread\+Opportunity() function of the \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} class looks for opportunities for parallelization. These opportunities are taken into account when processing the node list later with \doxylink{classpaceval__c_computation_a2cde08aa8ee7a3cd0da75fe4e296b6b9}{paceval\+\_\+c\+Computation\+::do\+Computation()}. Parentheses levels such as (1/x) in the function -\/sin(x\texorpdfstring{$\ast$}{*}cos(cos(x))\texorpdfstring{$^\wedge$}{\string^}(1/x) can then be calculated in parallel in advance in a separate thread, which saves significant time. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classpaceval__c_graph_ae16f0292b7dbe6b33b5b469da02b9d4a}\label{classpaceval__c_graph_ae16f0292b7dbe6b33b5b469da02b9d4a} 
@@ -104,8 +102,7 @@ the constructor of \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph}
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}paceval\_cGraph()}{\string~paceval\_cGraph()}}
 {\footnotesize\ttfamily paceval\+\_\+c\+Graph\+::\texorpdfstring{$\sim$}{\string~}paceval\+\_\+c\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-the destructor of \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} Here is the call graph for this function\+:
-\nopagebreak
+the destructor of \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -130,16 +127,14 @@ adds an object derived from base class \doxylink{classpaceval__c_base_atomic_gra
 {\em success\+\_\+out} & this buffer retrieves whether this was successful (true) or not (false) \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classpaceval__c_graph_a5e8f2230887e903e1843408fa49bf8f8_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -157,16 +152,14 @@ gets the pointer to an object derived from the base class \doxylink{classpaceval
 {\em position\+\_\+in} & specifies the position in the list \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classpaceval__c_graph_abdb07a85124c6ffd66bbe0aabc2225ca_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -179,16 +172,14 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{getMaximumField()}{getMaximumField()}}
 {\footnotesize\ttfamily long paceval\+\_\+c\+Graph\+::get\+Maximum\+Field (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-gets the maximum field from the list of nodes (this determines the maximum size of the stacks of the class \doxylink{classpaceval__c_values_stack}{paceval\+\_\+c\+Values\+Stack}) Here is the call graph for this function\+:
-\nopagebreak
+gets the maximum field from the list of nodes (this determines the maximum size of the stacks of the class \doxylink{classpaceval__c_values_stack}{paceval\+\_\+c\+Values\+Stack}) Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classpaceval__c_graph_a5563c74cd2f95beb3dbf0463e43f0d62_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -201,8 +192,7 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{getMaxToDoLevelMultithreadPosition()}{getMaxToDoLevelMultithreadPosition()}}
 {\footnotesize\ttfamily long paceval\+\_\+c\+Graph\+::get\+Max\+To\+Do\+Level\+Multithread\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-gets the position in the list of nodes of the maximum parentheses level at which a thread is currently working (the next parentheses level is then used for the next thread) Here is the caller graph for this function\+:
-\nopagebreak
+gets the position in the list of nodes of the maximum parentheses level at which a thread is currently working (the next parentheses level is then used for the next thread) Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -215,8 +205,7 @@ gets the position in the list of nodes of the maximum parentheses level at which
 \doxysubsubsection{\texorpdfstring{getNumberOfPositionLevels()}{getNumberOfPositionLevels()}}
 {\footnotesize\ttfamily long paceval\+\_\+c\+Graph\+::get\+Number\+Of\+Position\+Levels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-gets the number of positions for multithreading (i.\+e. lookahead caching) that are assigned to parentheses levels in the function Here is the caller graph for this function\+:
-\nopagebreak
+gets the number of positions for multithreading (i.\+e. lookahead caching) that are assigned to parentheses levels in the function Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -236,16 +225,14 @@ identifies the different possibilities for caching across the list of nodes such
 {\em handle\+\_\+handle\+\_\+\+Atomic\+Graph\+Position\+\_\+in} & specifies the position of this \doxylink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation} object in the list of nodes \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classpaceval__c_graph_a19f5d1d557d65cac5a6117fbab513eb8_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -258,16 +245,14 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{initializeData()}{initializeData()}}
 {\footnotesize\ttfamily void paceval\+\_\+c\+Graph\+::initialize\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-initiates the data held by this \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} Here is the call graph for this function\+:
-\nopagebreak
+initiates the data held by this \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classpaceval__c_graph_a0a2f71f7fd8337190c3e801178943fbd_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -293,16 +278,14 @@ locks parallel computation by a thread so that data for caching, for example, do
 {\em end\+Specific\+At\+Node\+\_\+in} & specifies the node at which the calculation ends by the thread \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classpaceval__c_graph_a7a62c4b648363cda91e6fde1200b60b4_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -315,8 +298,7 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{resetMaxToDoLevelMultithreadPosition()}{resetMaxToDoLevelMultithreadPosition()}}
 {\footnotesize\ttfamily void paceval\+\_\+c\+Graph\+::reset\+Max\+To\+Do\+Level\+Multithread\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-resets the position of the maximum parentheses level at which a thread is currently working Here is the caller graph for this function\+:
-\nopagebreak
+resets the position of the maximum parentheses level at which a thread is currently working Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -329,16 +311,14 @@ resets the position of the maximum parentheses level at which a thread is curren
 \doxysubsubsection{\texorpdfstring{sizeOf()}{sizeOf()}}
 {\footnotesize\ttfamily long paceval\+\_\+c\+Graph\+::size\+Of (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-returns the size of the list of nodes, i.\+e. the number of objects in the list of nodes Here is the call graph for this function\+:
-\nopagebreak
+returns the size of the list of nodes, i.\+e. the number of objects in the list of nodes Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classpaceval__c_graph_aac29e66ba7986922e22123fe68c83c61_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -360,16 +340,14 @@ unlocks parallel computation by a thread, see \doxylink{paceval__f_thread_handli
 {\em id\+Single\+Calculation\+To\+Do\+\_\+in} & specifies the identification of the main computation \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classpaceval__c_graph_a54d971df7b04048483b9cc8de7429224_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
