@@ -1,0 +1,18 @@
+<map id="paceval_cComputation::getNumberOfSingleCalculationThreads" name="paceval_cComputation::getNumberOfSingleCalculationThreads">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,211,139"/>
+<area shape="rect" id="Node000002" href="$classpaceval__c_computation.html#af3e406f8285f7b287e046be7c8d1c902" title=" " alt="" coords="283,5,471,64"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,78,267,62,268,68,212,83"/>
+<area shape="rect" id="Node000004" href="$paceval__f_math_8cpp.html#a1b66b2a380082d6eeec7477c4da53342" title=" " alt="" coords="259,88,495,131"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="211,107,243,107,243,112,211,112"/>
+<area shape="rect" id="Node000006" href="$paceval__f_math_8cpp.html#a452ff69cc5ef638f5eee1ecf5e4a16ec" title=" " alt="" coords="573,155,754,181"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="211,132,259,140,415,156,557,163,557,169,415,161,258,145,210,137"/>
+<area shape="rect" id="Node000003" href="$classpaceval__c_graph.html#a43c83d05a0635cdf2d134b384e18a5b4" title=" " alt="" coords="571,13,755,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="471,32,555,32,555,37,471,37"/>
+<area shape="rect" id="Node000005" href="$paceval__f_thread_handling_8cpp.html#a86997a446a1eecac643c2871673a8bfe" title=" " alt="" coords="543,88,783,131"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="496,107,528,107,528,112,496,112"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="485,129,580,148,579,154,484,134"/>
+<area shape="rect" id="Node000007" href="$paceval__c_computation_8cpp.html#aca6a6e91b9816392c0bbab78704fefcd" title=" " alt="" coords="831,125,1013,152"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="754,155,816,148,817,153,755,160"/>
+<area shape="rect" id="Node000008" href="$paceval__c_computation_8cpp.html#a02448d1a69cf4d775c0152b66b8fd221" title=" " alt="" coords="837,176,1007,219"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="755,176,822,183,821,189,754,181"/>
+</map>

@@ -1,0 +1,29 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classpaceval__c_registered_object.html" title="The base class paceval_cRegisteredObject encapsulates the management of the register position of the ..." alt="" coords="5,287,184,313"/>
+<area shape="rect" id="Node000001" href="$classpaceval__c_base_atomic_graph_node.html" title="The base class paceval_cBaseAtomicGraphNode encapsulates the handling of the mathematical subfunction..." alt="" coords="232,59,446,85"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="104,271,122,231,150,184,186,136,230,95,252,83,255,88,233,100,190,139,154,187,127,234,109,273"/>
+<area shape="rect" id="Node000004" href="$classpaceval__c_char_array.html" title="The class paceval_cCharArray is derived from paceval_cRegisteredObject and encapsulates the managemen..." alt="" coords="271,109,407,136"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="110,272,158,208,192,174,230,146,269,130,271,135,233,150,195,178,162,211,114,275"/>
+<area shape="rect" id="Node000005" href="$classpaceval__c_cleanup_handler.html" title="The class paceval_cCleanupHandler is derived from paceval_cRegisteredObject and encapsulates the mana..." alt="" coords="254,160,424,187"/>
+<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="120,274,169,234,231,196,262,185,264,190,233,201,172,238,123,278"/>
+<area shape="rect" id="Node000007" href="$classpaceval__c_graph.html" title="The class paceval_cGraph is derived from paceval_cRegisteredObject and encapsulates the management of..." alt="" coords="282,211,396,237"/>
+<area shape="poly" id="edge7_Node000000_Node000007" title=" " alt="" coords="143,278,231,247,281,233,282,239,232,252,144,283"/>
+<area shape="rect" id="Node000008" href="$classpaceval__c_list_of_pointer.html" title="The class paceval_cListOfPointer is derived from paceval_cRegisteredObject and encapsulates the stora..." alt="" coords="262,261,416,288"/>
+<area shape="poly" id="edge8_Node000000_Node000008" title=" " alt="" coords="199,287,262,280,262,285,200,292"/>
+<area shape="rect" id="Node000009" href="$classpaceval__c_list_of_variables.html" title="The class paceval_cListOfVariables is derived from paceval_cRegisteredObject and encapsulates the sto..." alt="" coords="256,312,422,339"/>
+<area shape="poly" id="edge9_Node000000_Node000009" title=" " alt="" coords="199,308,255,314,255,319,199,313"/>
+<area shape="rect" id="Node000010" href="$classpaceval__c_scanner.html" title="The class paceval_cScanner is derived from paceval_cRegisteredObject and encapsulates the exploration..." alt="" coords="276,363,402,389"/>
+<area shape="poly" id="edge10_Node000000_Node000010" title=" " alt="" coords="144,317,232,348,276,360,274,365,231,353,143,322"/>
+<area shape="rect" id="Node000011" href="$classpaceval__c_syntactic_analysis.html" title="The class paceval_cSyntacticAnalysis is derived from paceval_cRegisteredObject and and encapsulates t..." alt="" coords="247,413,431,440"/>
+<area shape="poly" id="edge11_Node000000_Node000011" title=" " alt="" coords="123,322,172,362,233,399,264,410,262,415,231,404,169,366,120,326"/>
+<area shape="rect" id="Node000012" href="$classpaceval__c_unsigned_long_list.html" title="The class paceval_cUnsignedLongList is derived from paceval_cRegisteredObject and encapsulates the ma..." alt="" coords="248,464,430,491"/>
+<area shape="poly" id="edge12_Node000000_Node000012" title=" " alt="" coords="114,325,162,389,195,422,233,450,257,461,255,466,230,454,192,426,158,392,110,328"/>
+<area shape="rect" id="Node000013" href="$classpaceval__c_values_stack.html" title="The class paceval_cValuesStack is derived from paceval_cRegisteredObject and encapsulates the managem..." alt="" coords="263,515,415,541"/>
+<area shape="poly" id="edge13_Node000000_Node000013" title=" " alt="" coords="109,327,127,366,154,413,190,461,233,500,263,515,261,520,230,505,186,464,150,416,122,369,104,329"/>
+<area shape="rect" id="Node000002" href="$classpaceval__c_atomic_graph_node_add_value.html" title="The class paceval_cAtomicGraphNodeAddValue is derived from paceval_cBaseAtomicGraphNode and encapsula..." alt="" coords="494,5,678,48"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="430,53,493,41,494,46,431,58"/>
+<area shape="rect" id="Node000003" href="$classpaceval__c_atomic_graph_node_operation.html" title="The class paceval_cAtomicGraphNodeOperation is derived from paceval_cBaseAtomicGraphNode and encapsul..." alt="" coords="494,72,678,115"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="462,80,494,83,493,88,461,85"/>
+<area shape="rect" id="Node000006" href="$classpaceval__c_computation.html" title="The main class paceval_cComputation encapsulates all the work steps that a user&#39;s passed function is ..." alt="" coords="511,160,662,187"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="439,171,510,171,510,176,439,176"/>
+</map>

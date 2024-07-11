@@ -1,0 +1,7 @@
+<map id="paceval_cComputation" name="paceval_cComputation">
+<area shape="rect" id="Node000001" title="The main class paceval_cComputation encapsulates all the work steps that a user&#39;s passed function is ..." alt="" coords="5,1451,357,3760"/>
+<area shape="rect" id="Node000002" href="$classpaceval__c_cleanup_handler.html" title="The class paceval_cCleanupHandler is derived from paceval_cRegisteredObject and encapsulates the mana..." alt="" coords="51,288,311,1403"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,1417,184,1451,179,1451,179,1417"/>
+<area shape="rect" id="Node000003" href="$classpaceval__c_registered_object.html" title="The base class paceval_cRegisteredObject encapsulates the management of the register position of the ..." alt="" coords="70,5,293,240"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="184,255,184,288,179,288,179,255"/>
+</map>

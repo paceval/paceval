@@ -1,0 +1,27 @@
+<map id="G:/Onedrive/Development/paceval/system&#45;independent/source&#45;internal/inc/paceval_cAtomicGraphNode.h" name="G:/Onedrive/Development/paceval/system&#45;independent/source&#45;internal/inc/paceval_cAtomicGraphNode.h">
+<area shape="rect" id="Node000001" title="specification of the different data types of nodes in paceval" alt="" coords="68,5,258,80"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,128,73,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,83,69,120,66,116,114,78"/>
+<area shape="rect" id="Node000003" href="$paceval__main_8h.html" title="the paceval. application programming interface &#45; for documentation please go to https://paceval...." alt="" coords="458,427,593,469"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="147,81,124,143,116,179,112,215,112,292,115,304,121,316,146,338,184,359,231,378,340,409,443,430,442,436,339,414,230,383,182,364,143,343,117,319,110,306,107,292,107,215,110,178,119,141,142,79"/>
+<area shape="rect" id="Node000004" href="$paceval__d_version_8h.html" title="specifies global, version&#45;specific definitions to ensure system independence, configure features,..." alt="" coords="151,128,284,155"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="186,79,205,113,201,115,181,82"/>
+<area shape="rect" id="Node000008" href="$paceval__c_cleanup_handler_8h.html" title="specification of the main memory management in paceval" alt="" coords="436,128,616,155"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="259,67,464,121,463,126,258,72"/>
+<area shape="rect" id="Node000005" href="$paceval__d_compiler_8h.html" title="specifies global, compiler&#45;specific definitions to ensure system independence" alt="" coords="148,203,288,229"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="220,155,220,187,215,187,215,155"/>
+<area shape="rect" id="Node000007" href="$paceval__d_test_debug_8h.html" title="switches the feature flags for paceval&#39;s internal tests (annotation: for delivery,..." alt="" coords="311,203,463,229"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="248,153,344,194,342,199,246,158"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="190,277,245,304"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="220,230,220,262,215,262,215,230"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="528,155,528,411,523,411,523,155"/>
+<area shape="rect" id="Node000009" href="$paceval__f_math_8h.html" title="specification of the main interface of all non&#45;interval arithmetic mathematical methods used by the m..." alt="" coords="574,277,688,304"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="534,154,553,188,578,228,609,264,605,268,574,231,548,191,529,156"/>
+<area shape="rect" id="Node000011" href="$paceval__f_math_interval_8h.html" title="specification of the main interface of all interval arithmetic mathematical methods used by the main ..." alt="" coords="589,203,743,229"/>
+<area shape="poly" id="edge13_Node000008_Node000011" title=" " alt="" coords="551,153,629,193,626,197,549,158"/>
+<area shape="poly" id="edge10_Node000009_Node000003" title=" " alt="" coords="620,306,579,354,544,414,539,411,574,350,616,303"/>
+<area shape="rect" id="Node000010" href="$paceval__c_common_data_8h.html" title="specifies global, compiler&#45;specific definitions and data types for the supported mathematical functio..." alt="" coords="588,352,757,379"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="641,303,660,337,655,340,636,306"/>
+<area shape="poly" id="edge12_Node000010_Node000003" title=" " alt="" coords="651,382,578,421,575,417,648,377"/>
+<area shape="poly" id="edge14_Node000011_Node000009" title=" " alt="" coords="662,231,646,264,641,262,657,229"/>
+</map>

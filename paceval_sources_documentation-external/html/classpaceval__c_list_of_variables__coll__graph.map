@@ -1,0 +1,13 @@
+<map id="paceval_cListOfVariables" name="paceval_cListOfVariables">
+<area shape="rect" id="Node000001" title="The class paceval_cListOfVariables is derived from paceval_cRegisteredObject and encapsulates the sto..." alt="" coords="5,279,269,604"/>
+<area shape="rect" id="Node000002" href="$classpaceval__c_registered_object.html" title="The base class paceval_cRegisteredObject encapsulates the management of the register position of the ..." alt="" coords="254,5,477,203"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="293,217,249,280,245,277,288,214"/>
+<area shape="rect" id="Node000003" href="$classpaceval__c_cleanup_handler.html" title="The class paceval_cCleanupHandler is derived from paceval_cRegisteredObject and encapsulates the mana..." alt="" coords="437,695,697,1735"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="339,218,333,252,321,359,314,442,317,525,333,630,353,713,378,796,439,953,434,955,373,797,348,714,328,631,312,526,309,442,315,358,328,252,333,217"/>
+<area shape="rect" id="Node000005" href="$classpaceval__c_list_of_pointer.html" title="The class paceval_cListOfPointer is derived from paceval_cRegisteredObject and encapsulates the stora..." alt="" coords="342,252,594,631"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="402,216,413,252,408,253,397,218"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="635,695,643,559,642,433,638,378,630,328,619,286,604,253,582,223,554,196,523,174,490,155,493,150,526,169,558,192,586,219,609,251,624,285,635,327,643,377,648,433,648,559,640,695"/>
+<area shape="rect" id="Node000004" href="$structpaceval__s_error_information.html" title="The struct paceval_sErrorInformation is used to store the specific error information in case of a pac..." alt="" coords="813,369,979,513"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="868,514,706,895,701,893,863,512"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="493,630,498,670,499,677,493,678,492,671,487,631"/>
+</map>
