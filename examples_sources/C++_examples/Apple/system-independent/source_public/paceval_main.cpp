@@ -33,12 +33,21 @@ bool paceval_WIN64_i = true;
 #if defined(paceval_use_dll) && (paceval_use_dll == 1)
 bool (*pacevalLibrary_Initialize)(const char* initString_in);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_InitializeLibrary() (Windows):
+ * initializes the paceval-library - you must call pacevalLibrary_Initialize() before you use paceval-API function calls in your code - if the function succeeds, the return value is TRUE, otherwise it is FALSE
+ * @param initString_in specifies a string that can be used for additional parameterization of the library, e.g. a string for licensing (annotation: if the string is not used, NULL can be passed)
+ */
 extern "C" bool pacevalLibrary_Initialize(const char* initString_in);
 #endif //defined(paceval_use_dll)
 
 #if defined(paceval_use_dll) && (paceval_use_dll == 1)
 bool (*pacevalLibrary_Free)();
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_FreeLibrary() (Windows):
+ * frees the paceval.-library - you must call pacevalLibrary_Free() at the end of your application - if the function succeeds, the return value is TRUE, otherwise it is FALSE
+ */
 extern "C" bool pacevalLibrary_Free();
 #endif //defined(paceval_use_dll)
 
@@ -49,6 +58,15 @@ PACEVAL_HANDLE (*pacevalLibrary_CreateComputation)(const char* functionString_in
         bool useInterval_in,
         paceval_callbackStatusType* paceval_callbackStatus_in);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_CreateComputation() (Windows):
+ * creates a paceval_cComputation object for a mathematical function and its variables - the return value is the HANDLE of the created paceval_cComputation object (pacevalLibrary_GetIsError() should be called to check whether an error has occurred)
+ * @param functionString_in points to a null-terminated string to be used as the function to work with
+ * @param numberOfVariables_in specifies the number of variables to work with (e.g. if the variables are "xValue yValue zValue" or "x y z" numberOfVariables_in must be set to 3)
+ * @param variables_in points to a null-terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.g. the variables xValue, yValue, zValue must be set with "xValue yValue zValue" or the variables x, y, z must be set with "x y z")
+ * @param useInterval_in enables or disables the Trusted Interval Computation, TINC (paceval specific) putting bounds on rounding errors and measurement errors of the computation system to yield reliable results
+ * @param paceval_callbackStatus_in a user-defined callback function to give status information of the paceval_cComputation object, see paceval_main.h
+ */
 extern "C" PACEVAL_HANDLE pacevalLibrary_CreateComputation(const char* functionString_in,
         unsigned long numberOfVariables_in,
         const char* variables_in,
@@ -65,6 +83,16 @@ bool (*pacevalLibrary_CreateMultipleComputations)(PACEVAL_HANDLE handle_pacevalC
         bool useInterval_in,
         paceval_callbackStatusType* paceval_callbackStatus_in);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_CreateMultipleComputations() (Windows):
+ * creates paceval_cComputation objects for multiple mathematical functions and one set of variables in a single step - if the function succeeds, the return value is TRUE and handle_pacevalComputations_out contains the paceval_cComputation objects (each of these objects can be used individually, e.g. with pacevalLibrary_dGetComputationResult(), pacevalLibrary_dGetMultipleComputationsResults(), pacevalLibrary_dmathv() or pacevalLibrary_dmathvi() and must be deleted with pacevalLibrary_DeleteComputation())
+ * @param functionStrings_in points to an array of null-terminated strings to be used as the functions to work with for the created paceval_cComputation objects
+ * @param numberOfpacevalComputations_in specifies the number of paceval_cComputation objects to create (e.g. if the functions to work with are "sin(x)" and "cos(x)" numberOfpacevalComputations_in must be set to 2)
+ * @param numberOfVariables_in specifies the number of variables to work with (e.g. if the variables are "xValue yValue zValue" or "x y z" numberOfVariables_in must be set to 3)
+ * @param variables_in points to a null-terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.g. the variables xValue, yValue, zValue must be set with "xValue yValue zValue" or the variables x, y, z must be set with "x y z")
+ * @param useInterval_in enables or disables the Trusted Interval Computation, TINC (paceval specific) putting bounds on rounding errors and measurement errors of the computation system to yield reliable results
+ * @param paceval_callbackStatus_in a user-defined callback function to give status information of the paceval_cComputation objects, see paceval_main.h
+ */
 extern "C" bool pacevalLibrary_CreateMultipleComputations(PACEVAL_HANDLE handle_pacevalComputations_out[],
         const char* functionStrings_in[],
         unsigned long numberOfpacevalComputations_in,
@@ -78,6 +106,12 @@ extern "C" bool pacevalLibrary_CreateMultipleComputations(PACEVAL_HANDLE handle_
 int (*pacevalLibrary_ldConvertFloatToString)(char* destinationString_in,
         long double float_in);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_ldConvertFloatToString() (Windows):
+ * converts a floating point number with precision long double to a string - if the function succeeds, the return value is >0 and gives the precision of the conversion, otherwise the return value is <0
+ * @param destinationString_in points to the buffer that will receive the string of the coverted floating point number (annotation: in case of an error the buffer is not specified)
+ * @param float_in the floating point number with precision long double to convert
+ */
 extern "C" int pacevalLibrary_ldConvertFloatToString(char* destinationString_in,
         long double float_in);
 #endif //defined(paceval_use_dll)
@@ -86,6 +120,12 @@ extern "C" int pacevalLibrary_ldConvertFloatToString(char* destinationString_in,
 int (*pacevalLibrary_dConvertFloatToString)(char* destinationString_in,
         double float_in);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_dConvertFloatToString() (Windows):
+ * converts a floating point number with precision double to a string - if the function succeeds, the return value is >0 and gives the precision of the conversion, otherwise the return value is <0
+ * @param destinationString_in points to the buffer that will receive the string of the coverted floating point number (annotation: in case of an error the buffer is not specified)
+ * @param float_in the floating point number with precision double to convert
+ */
 extern "C" int pacevalLibrary_dConvertFloatToString(char* destinationString_in,
         double float_in);
 #endif //defined(paceval_use_dll)
@@ -94,6 +134,12 @@ extern "C" int pacevalLibrary_dConvertFloatToString(char* destinationString_in,
 int (*pacevalLibrary_fConvertFloatToString)(char* destinationString_in,
         float float_in);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_fConvertFloatToString() (Windows):
+ * converts a floating point number with precision float to a string - if the function succeeds, the return value is >0 and gives the precision of the conversion, otherwise the return value is <0
+ * @param destinationString_in points to the buffer that will receive the string of the coverted floating point number (annotation: in case of an error the buffer is not specified)
+ * @param float_in the floating point number with precision float to convert
+ */
 extern "C" int pacevalLibrary_fConvertFloatToString(char* destinationString_in,
         float float_in);
 #endif //defined(paceval_use_dll)
@@ -106,6 +152,16 @@ long double (*pacevalLibrary_ldConvertStringToFloat)(const char* sourceString_in
         long double* trustedMinResult_out,
         long double* trustedMaxResult_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_ldConvertStringToFloat() (Windows):
+ * converts a string to a floating point number with precision long double (in case a caluclation is given in the string the result is converted) - if the function succeeds, the return value is the result of the conversion (annotation: in case of an error the return value is not specified)
+ * @param sourceString_in the string to convert
+ * @param errorType_out points to the buffer that will receive the paceval_cComputation object error, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ * @param errPosition_out position in the string where the error occurred
+ * @param useInterval_in enables or disables the Trusted Interval Computation, TINC (paceval specific) for the conversion
+ * @param trustedMinResult_out if Trusted Interval Computation was enabled this retrieves the minimum/lower interval limit of the conversion (annotation: in case of an error the value is not specified)
+ * @param trustedMaxResult_out if Trusted Interval Computation was enabled this retrieves the maximum/upper interval limit of the conversion (annotation: in case of an error the value is not specified)
+ */
 extern "C" long double pacevalLibrary_ldConvertStringToFloat(const char* sourceString_in,
         int* errorType_out,
         long* errPosition_out,
@@ -122,6 +178,16 @@ double (*pacevalLibrary_dConvertStringToFloat)(const char* sourceString_in,
         double* trustedMinResult_out,
         double* trustedMaxResult_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_dConvertStringToFloat() (Windows):
+ * converts a string to a floating point number with precision double (in case a caluclation is given in the string the result is converted) - if the function succeeds, the return value is the result of the conversion (annotation: in case of an error the return value is not specified)
+ * @param sourceString_in the string to convert
+ * @param errorType_out points to the buffer that will receive the paceval_cComputation object error, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ * @param errPosition_out position in the string where the error occurred
+ * @param useInterval_in enables or disables the Trusted Interval Computation, TINC (paceval specific) for the conversion
+ * @param trustedMinResult_out if Trusted Interval Computation was enabled this retrieves the minimum/lower interval limit of the conversion (annotation: in case of an error the value is not specified)
+ * @param trustedMaxResult_out if Trusted Interval Computation was enabled this retrieves the maximum/upper interval limit of the conversion (annotation: in case of an error the value is not specified)
+ */
 extern "C" double pacevalLibrary_dConvertStringToFloat(const char* sourceString_in,
         int* errorType_out,
         long* errPosition_out,
@@ -138,6 +204,16 @@ float (*pacevalLibrary_fConvertStringToFloat)(const char* sourceString_in,
         float* trustedMinResult_out,
         float* trustedMaxResult_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_fConvertStringToFloat() (Windows):
+ * converts a string to a floating point number with precision float (in case a caluclation is given in the string the result is converted) - if the function succeeds, the return value is the result of the conversion (annotation: in case of an error the return value is not specified)
+ * @param sourceString_in the string to convert
+ * @param errorType_out points to the buffer that will receive the paceval_cComputation object error, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ * @param errPosition_out position in the string where the error occurred
+ * @param useInterval_in enables or disables the Trusted Interval Computation, TINC (paceval specific) for the conversion
+ * @param trustedMinResult_out if Trusted Interval Computation was enabled this retrieves the minimum/lower interval limit of the conversion (annotation: in case of an error the value is not specified)
+ * @param trustedMaxResult_out if Trusted Interval Computation was enabled this retrieves the maximum/upper interval limit of the conversion (annotation: in case of an error the value is not specified)
+ */
 extern "C" float pacevalLibrary_fConvertStringToFloat(const char* sourceString_in,
         int* errorType_out,
         long* errPosition_out,
@@ -154,6 +230,16 @@ long double (*pacevalLibrary_ldmathv)(PACEVAL_HANDLE* handle_pacevalComputation_
                                       const char* variables_in,
                                       long double values_in[]);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_ldmathv() (Windows):
+ * a convenience function to get results of computations in a single step with precision long double - if the function succeeds, the return value is the result of the computation (pacevalLibrary_GetIsError() should be called to check whether an error has occurred and to get more information about the error, call pacevalLibrary_GetErrorInformation()) (annotation: in case of an error the return value is not specified)
+ * @param handle_pacevalComputation_out_in pointer to a paceval_cComputation object (if handle_pacevalComputation_out_in is not NULL this buffer will retrieve the created paceval_cComputation object and can be used again and this will improve the performance -> in this case the paceval_cComputation object will not be deleted and you must call pacevalLibrary_DeleteComputation())
+ * @param errorType_out points to the buffer that will receive the paceval_cComputation object error, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ * @param functionString_in points to a null-terminated string to be used as the function to work with
+ * @param numberOfVariables_in specifies the number of variables to work with (e.g. if the variables are "xValue yValue zValue" or "x y z" numberOfVariables_in must be set to 3)
+ * @param variables_in points to a null-terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.g. the variables xValue, yValue, zValue must be set with "xValue yValue zValue" or the variables x, y, z must be set with "x y z")
+ * @param values_in array of long double defining the values of the variables
+ */
 extern "C" long double pacevalLibrary_ldmathv(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
         int* errorType_out,
         const char* functionString_in,
@@ -170,6 +256,16 @@ double (*pacevalLibrary_dmathv)(PACEVAL_HANDLE* handle_pacevalComputation_out_in
                                 const char* variables_in,
                                 double values_in[]);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_dmathv() (Windows):
+ * a convenience function to get results of computations in a single step with precision double - if the function succeeds, the return value is the result of the computation (pacevalLibrary_GetIsError() should be called to check whether an error has occurred and to get more information about the error, call pacevalLibrary_GetErrorInformation()) (annotation: in case of an error the return value is not specified)
+ * @param handle_pacevalComputation_out_in pointer to a paceval_cComputation object (if handle_pacevalComputation_out_in is not NULL this buffer will retrieve the created paceval_cComputation object and can be used again and this will improve the performance -> in this case the paceval_cComputation object will not be deleted and you must call pacevalLibrary_DeleteComputation())
+ * @param errorType_out points to the buffer that will receive the paceval_cComputation object error, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ * @param functionString_in points to a null-terminated string to be used as the function to work with
+ * @param numberOfVariables_in specifies the number of variables to work with (e.g. if the variables are "xValue yValue zValue" or "x y z" numberOfVariables_in must be set to 3)
+ * @param variables_in points to a null-terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.g. the variables xValue, yValue, zValue must be set with "xValue yValue zValue" or the variables x, y, z must be set with "x y z")
+ * @param values_in array of double defining the values of the variables
+ */
 extern "C" double pacevalLibrary_dmathv(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
                                         int* errorType_out,
                                         const char* functionString_in,
@@ -186,6 +282,16 @@ float (*pacevalLibrary_fmathv)(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
                                const char* variables_in,
                                float values_in[]);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_fmathv() (Windows):
+ * a convenience function to get results of computations in a single step with precision float - if the function succeeds, the return value is the result of the computation (pacevalLibrary_GetIsError() should be called to check whether an error has occurred and to get more information about the error, call pacevalLibrary_GetErrorInformation()) (annotation: in case of an error the return value is not specified)
+ * @param handle_pacevalComputation_out_in pointer to a paceval_cComputation object (if handle_pacevalComputation_out_in is not NULL this buffer will retrieve the created paceval_cComputation object and can be used again and this will improve the performance -> in this case the paceval_cComputation object will not be deleted and you must call pacevalLibrary_DeleteComputation())
+ * @param errorType_out points to the buffer that will receive the paceval_cComputation object error, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ * @param functionString_in points to a null-terminated string to be used as the function to work with
+ * @param numberOfVariables_in specifies the number of variables to work with (e.g. if the variables are "xValue yValue zValue" or "x y z" numberOfVariables_in must be set to 3)
+ * @param variables_in points to a null-terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.g. the variables xValue, yValue, zValue must be set with "xValue yValue zValue" or the variables x, y, z must be set with "x y z")
+ * @param values_in array of float defining the values of the variables
+ */
 extern "C" float pacevalLibrary_fmathv(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
                                        int* errorType_out,
                                        const char* functionString_in,
@@ -204,6 +310,18 @@ long double (*pacevalLibrary_ldmathvi)(PACEVAL_HANDLE* handle_pacevalComputation
                                        const char* variables_in,
                                        long double values_in[]);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_ldmathvi() (Windows):
+ * a convenience function to get results of computations in a single step with precision long double and with Trusted Interval Computation, TINC (paceval specific) - if the function succeeds, the return value is the result of the computation (pacevalLibrary_GetIsError() should be called to check whether an error has occurred and to get more information about the error, call pacevalLibrary_GetErrorInformation()) (annotation: in case of an error the return value is not specified)
+ * @param handle_pacevalComputation_out_in pointer to a paceval_cComputation object (if handle_pacevalComputation_out_in is not NULL this buffer will retrieve the created paceval_cComputation object and can be used again and this will improve the performance -> in this case the paceval_cComputation object will not be deleted and you must call pacevalLibrary_DeleteComputation())
+ * @param errorType_out points to the buffer that will receive the paceval_cComputation object error, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ * @param trustedMinResult_out this buffer retrieves the minimum/lower interval limit of the computation (annotation: In case of an error the value is not specified)
+ * @param trustedMaxResult_out this buffer retrieves the maximum/upper limit of the computation (annotation: In case of an error the value is not specified)
+ * @param functionString_in points to a null-terminated string to be used as the function to work with
+ * @param numberOfVariables_in specifies the number of variables to work with (e.g. if the variables are "xValue yValue zValue" or "x y z" numberOfVariables_in must be set to 3)
+ * @param variables_in points to a null-terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.g. the variables xValue, yValue, zValue must be set with "xValue yValue zValue" or the variables x, y, z must be set with "x y z")
+ * @param values_in array of long double defining the values of the variables
+ */
 extern "C" long double pacevalLibrary_ldmathvi(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
         int* errorType_out,
         long double* trustedMinResult_out,
@@ -224,6 +342,18 @@ double (*pacevalLibrary_dmathvi)(PACEVAL_HANDLE* handle_pacevalComputation_out_i
                                  const char* variables_in,
                                  double values_in[]);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_dmathvi() (Windows):
+ * a convenience function to get results of computations in a single step with precision double and with Trusted Interval Computation, TINC (paceval specific) - if the function succeeds, the return value is the result of the computation (pacevalLibrary_GetIsError() should be called to check whether an error has occurred and to get more information about the error, call pacevalLibrary_GetErrorInformation()) (annotation: in case of an error the return value is not specified)
+ * @param handle_pacevalComputation_out_in pointer to a paceval_cComputation object (if handle_pacevalComputation_out_in is not NULL this buffer will retrieve the created paceval_cComputation object and can be used again and this will improve the performance -> in this case the paceval_cComputation object will not be deleted and you must call pacevalLibrary_DeleteComputation())
+ * @param errorType_out points to the buffer that will receive the paceval_cComputation object error, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ * @param trustedMinResult_out this buffer retrieves the minimum/lower interval limit of the computation (annotation: In case of an error the value is not specified)
+ * @param trustedMaxResult_out this buffer retrieves the maximum/upper limit of the computation (annotation: In case of an error the value is not specified)
+ * @param functionString_in points to a null-terminated string to be used as the function to work with
+ * @param numberOfVariables_in specifies the number of variables to work with (e.g. if the variables are "xValue yValue zValue" or "x y z" numberOfVariables_in must be set to 3)
+ * @param variables_in points to a null-terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.g. the variables xValue, yValue, zValue must be set with "xValue yValue zValue" or the variables x, y, z must be set with "x y z")
+ * @param values_in array of double defining the values of the variables
+ */
 extern "C" double pacevalLibrary_dmathvi(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
         int* errorType_out,
         double* trustedMinResult_out,
@@ -244,6 +374,18 @@ float (*pacevalLibrary_fmathvi)(PACEVAL_HANDLE* handle_pacevalComputation_out_in
                                 const char* variables_in,
                                 float values_in[]);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_fmathvi() (Windows):
+ * a convenience function to get results of computations in a single step with precision float and with Trusted Interval Computation, TINC (paceval specific) - if the function succeeds, the return value is the result of the computation (pacevalLibrary_GetIsError() should be called to check whether an error has occurred and to get more information about the error, call pacevalLibrary_GetErrorInformation()) (annotation: in case of an error the return value is not specified)
+ * @param handle_pacevalComputation_out_in pointer to a paceval_cComputation object (if handle_pacevalComputation_out_in is not NULL this buffer will retrieve the created paceval_cComputation object and can be used again and this will improve the performance -> in this case the paceval_cComputation object will not be deleted and you must call pacevalLibrary_DeleteComputation())
+ * @param errorType_out points to the buffer that will receive the paceval_cComputation object error, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ * @param trustedMinResult_out this buffer retrieves the minimum/lower interval limit of the computation (annotation: In case of an error the value is not specified)
+ * @param trustedMaxResult_out this buffer retrieves the maximum/upper limit of the computation (annotation: In case of an error the value is not specified)
+ * @param functionString_in points to a null-terminated string to be used as the function to work with
+ * @param numberOfVariables_in specifies the number of variables to work with (e.g. if the variables are "xValue yValue zValue" or "x y z" numberOfVariables_in must be set to 3)
+ * @param variables_in points to a null-terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.g. the variables xValue, yValue, zValue must be set with "xValue yValue zValue" or the variables x, y, z must be set with "x y z")
+ * @param values_in array of float defining the values of the variables
+ */
 extern "C" float pacevalLibrary_fmathvi(PACEVAL_HANDLE* handle_pacevalComputation_out_in,
                                         int* errorType_out,
                                         float* trustedMinResult_out,
@@ -257,12 +399,22 @@ extern "C" float pacevalLibrary_fmathvi(PACEVAL_HANDLE* handle_pacevalComputatio
 #if defined(paceval_use_dll) && (paceval_use_dll == 1)
 bool (*pacevalLibrary_ExistComputation)(PACEVAL_HANDLE handle_pacevalComputation_in);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_ExistComputation() (Windows):
+ * determines whether a particular paceval_cComputation object has been created - if the object exists, the return value is TRUE. If the specified HANDLE is invalid or the object does not exist, the return value is FALSE
+ * @param handle_pacevalComputation_in identifies the paceval_cComputation object to be questioned
+ */
 extern "C" bool pacevalLibrary_ExistComputation(PACEVAL_HANDLE handle_pacevalComputation_in);
 #endif //defined(paceval_use_dll)
 
 #if defined(paceval_use_dll) && (paceval_use_dll == 1)
 bool (*pacevalLibrary_DeleteComputation)(PACEVAL_HANDLE handle_pacevalComputation_in);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_DeleteComputation() (Windows):
+ * deletes a paceval_cComputation object - if the function succeeds, the return value is TRUE (if the given HANDLE is not valid the return value is FALSE)
+ * @param handle_pacevalComputation_in identifies the paceval_cComputation object to delete
+ */
 extern "C" bool pacevalLibrary_DeleteComputation(PACEVAL_HANDLE handle_pacevalComputation_in);
 #endif //defined(paceval_use_dll)
 
@@ -272,6 +424,14 @@ long double(*pacevalLibrary_ldGetComputationResult)(PACEVAL_HANDLE handle_paceva
         long double* trustedMinResult_out,
         long double* trustedMaxResult_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_ldGetComputationResult() (Windows):
+ * performs a calculation with precision long double on a paceval_cComputation object with the variables declared by pacevalLibrary_CreateComputation() and with a set of values for those variables - if the function succeeds, the return value is the result of the computation (pacevalLibrary_GetIsError() should be called to check whether an error has occurred and to get more information about the error, call pacevalLibrary_GetErrorInformation()) (annotation: in case of an error the return value is not specified)
+ * @param handle_pacevalComputation_in identifies the paceval_cComputation object
+ * @param values_in array of long double defining the values of the variables
+ * @param trustedMinResult_out this buffer retrieves the minimum/lower interval limit of the computation (annotation: In case of an error the value is not specified)
+ * @param trustedMaxResult_out this buffer retrieves the maximum/upper limit of the computation (annotation: In case of an error the value is not specified)
+ */
 extern "C" long double pacevalLibrary_ldGetComputationResult(PACEVAL_HANDLE handle_pacevalComputation_in,
         long double values_in[],
         long double* trustedMinResult_out,
@@ -284,6 +444,14 @@ double(*pacevalLibrary_dGetComputationResult)(PACEVAL_HANDLE handle_pacevalCompu
         double* trustedMinResult_out,
         double* trustedMaxResult_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_dGetComputationResult() (Windows):
+ * performs a calculation with precision double on a paceval_cComputation object with the variables declared by pacevalLibrary_CreateComputation() and with a set of values for those variables - if the function succeeds, the return value is the result of the computation (pacevalLibrary_GetIsError() should be called to check whether an error has occurred and to get more information about the error, call pacevalLibrary_GetErrorInformation()) (annotation: in case of an error the return value is not specified)
+ * @param handle_pacevalComputation_in identifies the paceval_cComputation object
+ * @param values_in array of double defining the values of the variables
+ * @param trustedMinResult_out this buffer retrieves the minimum/lower interval limit of the computation (annotation: In case of an error the value is not specified)
+ * @param trustedMaxResult_out this buffer retrieves the maximum/upper limit of the computation (annotation: In case of an error the value is not specified)
+ */
 extern "C" double pacevalLibrary_dGetComputationResult(PACEVAL_HANDLE handle_pacevalComputation_in,
         double values_in[],
         double* trustedMinResult_out,
@@ -296,6 +464,14 @@ float(*pacevalLibrary_fGetComputationResult)(PACEVAL_HANDLE handle_pacevalComput
         float* trustedMinResult_out,
         float* trustedMaxResult_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_fGetComputationResult() (Windows):
+ * performs a calculation with precision float on a paceval_cComputation object with the variables declared by pacevalLibrary_CreateComputation() and with a set of values for those variables - if the function succeeds, the return value is the result of the computation (pacevalLibrary_GetIsError() should be called to check whether an error has occurred and to get more information about the error, call pacevalLibrary_GetErrorInformation()) (annotation: in case of an error the return value is not specified)
+ * @param handle_pacevalComputation_in identifies the paceval_cComputation object
+ * @param values_in array of float defining the values of the variables
+ * @param trustedMinResult_out this buffer retrieves the minimum/lower interval limit of the computation (annotation: In case of an error the value is not specified)
+ * @param trustedMaxResult_out this buffer retrieves the maximum/upper limit of the computation (annotation: In case of an error the value is not specified)
+ */
 extern "C" float pacevalLibrary_fGetComputationResult(PACEVAL_HANDLE handle_pacevalComputation_in,
         float values_in[],
         float* trustedMinResult_out,
@@ -311,6 +487,16 @@ bool(*pacevalLibrary_ldGetComputationResultExt)(PACEVAL_HANDLE handle_pacevalCom
         long double* trustedMaxResults_out,
         int* errorTypes_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_ldGetComputationResultExt() (Windows):
+ * performs multiple calculations with precision long double in parallel on a single paceval_cComputation with the variables declared by pacevalLibrary_CreateComputation() and with multiple sets of values for those variables - the return value indicates paceval_cComputation object errors and you should check the array errorTypes_out in this case
+ * @param values_in array of long double defining the multiple values of the variables
+ * @param numberOfCalculations_in specifies the number of different calculations you want to run and this number specifies the size of the array values_in, e.g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values_in must be 50*1000 (the order of the array values_in must be variable values for the first calculation, then variable values for the second calculation and so on)
+ * @param results_out pointer to an array for the results of the computation with the multiple values of the variables (annotation: in case of an error the values are not specified)
+ * @param trustedMinResults_out pointer to an array for the minimum/lower interval limits (annotation: in case of an error the values are not specified)
+ * @param trustedMaxResults_out pointer to an array for the maximum/upper interval limits (annotation: in case of an error the values are not specified)
+ * @param errorTypes_out pointer to an array of the paceval_cComputation object errors, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ */
 extern "C" bool pacevalLibrary_ldGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_in,
         long double values_in[],
         unsigned long numberOfCalculations_in,
@@ -329,6 +515,16 @@ bool(*pacevalLibrary_dGetComputationResultExt)(PACEVAL_HANDLE handle_pacevalComp
         double* trustedMaxResults_out,
         int* errorTypes_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_dGetComputationResultExt() (Windows):
+ * performs multiple calculations with precision double in parallel on a single paceval_cComputation with the variables declared by pacevalLibrary_CreateComputation() and with multiple sets of values for those variables - the return value indicates paceval_cComputation object errors and you should check the array errorTypes_out in this case
+ * @param values_in array of double defining the multiple values of the variables
+ * @param numberOfCalculations_in specifies the number of different calculations you want to run and this number specifies the size of the array values_in, e.g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values_in must be 50*1000 (the order of the array values_in must be variable values for the first calculation, then variable values for the second calculation and so on)
+ * @param results_out pointer to an array for the results of the computation with the multiple values of the variables (annotation: in case of an error the values are not specified)
+ * @param trustedMinResults_out pointer to an array for the minimum/lower interval limits (annotation: in case of an error the values are not specified)
+ * @param trustedMaxResults_out pointer to an array for the maximum/upper interval limits (annotation: in case of an error the values are not specified)
+ * @param errorTypes_out pointer to an array of the paceval_cComputation object errors, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ */
 extern "C" bool pacevalLibrary_dGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_in,
         double values_in[],
         unsigned long numberOfCalculations_in,
@@ -347,6 +543,16 @@ bool(*pacevalLibrary_fGetComputationResultExt)(PACEVAL_HANDLE handle_pacevalComp
         float* trustedMaxResults_out,
         int* errorTypes_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_fGetComputationResultExt() (Windows):
+ * performs multiple calculations with precision float in parallel on a single paceval_cComputation with the variables declared by pacevalLibrary_CreateComputation() and with multiple sets of values for those variables - the return value indicates paceval_cComputation object errors and you should check the array errorTypes_out in this case
+ * @param values_in array of float defining the multiple values of the variables
+ * @param numberOfCalculations_in specifies the number of different calculations you want to run and this number specifies the size of the array values_in, e.g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values_in must be 50*1000 (the order of the array values_in must be variable values for the first calculation, then variable values for the second calculation and so on)
+ * @param results_out pointer to an array for the results of the computation with the multiple values of the variables (annotation: in case of an error the values are not specified)
+ * @param trustedMinResults_out pointer to an array for the minimum/lower interval limits (annotation: in case of an error the values are not specified)
+ * @param trustedMaxResults_out pointer to an array for the maximum/upper interval limits (annotation: in case of an error the values are not specified)
+ * @param errorTypes_out pointer to an array of the paceval_cComputation object errors, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ */
 extern "C" bool pacevalLibrary_fGetComputationResultExt(PACEVAL_HANDLE handle_pacevalComputation_in,
         float values_in[],
         unsigned long numberOfCalculations_in,
@@ -365,6 +571,17 @@ bool(*pacevalLibrary_ldGetMultipleComputationsResults)(PACEVAL_HANDLE handle_pac
         long double* trustedMaxResults_out,
         int* errorTypes_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_ldGetMultipleComputationsResults() (Windows):
+ * performs multiple calculations with precision long double in parallel on multiple paceval_cComputation objects using the variables declared by pacevalLibrary_CreateComputation() and with the same set of values for these variables - the return value indicates paceval_cComputation object errors and you should check the array errorTypes_out in this case
+ * @param handle_pacevalComputations_in array of the paceval_cComputation objects
+ * @param numberOfpacevalComputations_in specifies the number of the paceval_cComputation objects
+ * @param values_in array of long double defining the values of the variables
+ * @param results_out pointer to an array for the results of the multiple computations (annotation: in case of an error the values are not specified)
+ * @param trustedMinResults_out pointer to an array for the minimum/lower interval limits (annotation: in case of an error the values are not specified)
+ * @param trustedMaxResults_out pointer to an array for the maximum/upper interval limits (annotation: in case of an error the values are not specified)
+ * @param errorTypes_out pointer to an array of the paceval_cComputation object errors, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ */
 extern "C" bool pacevalLibrary_ldGetMultipleComputationsResults(PACEVAL_HANDLE handle_pacevalComputations_in[],
         unsigned long numberOfpacevalComputations_in,
         long double values_in[],
@@ -383,6 +600,17 @@ bool(*pacevalLibrary_dGetMultipleComputationsResults)(PACEVAL_HANDLE handle_pace
         double* trustedMaxResults_out,
         int* errorTypes_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_dGetMultipleComputationsResults() (Windows):
+ * performs multiple calculations with precision double in parallel on multiple paceval_cComputation objects using the variables declared by pacevalLibrary_CreateComputation() and with the same set of values for these variables - the return value indicates paceval_cComputation object errors and you should check the array errorTypes_out in this case
+ * @param handle_pacevalComputations_in array of the paceval_cComputation objects
+ * @param numberOfpacevalComputations_in specifies the number of the paceval_cComputation objects
+ * @param values_in array of double defining the values of the variables
+ * @param results_out pointer to an array for the results of the multiple computations (annotation: in case of an error the values are not specified)
+ * @param trustedMinResults_out pointer to an array for the minimum/lower interval limits (annotation: in case of an error the values are not specified)
+ * @param trustedMaxResults_out pointer to an array for the maximum/upper interval limits (annotation: in case of an error the values are not specified)
+ * @param errorTypes_out pointer to an array of the paceval_cComputation object errors, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ */
 extern "C" bool pacevalLibrary_dGetMultipleComputationsResults(PACEVAL_HANDLE handle_pacevalComputations_in[],
         unsigned long numberOfpacevalComputations_in,
         double values_in[],
@@ -401,6 +629,17 @@ bool(*pacevalLibrary_fGetMultipleComputationsResults)(PACEVAL_HANDLE handle_pace
         float* trustedMaxResults_out,
         int* errorTypes_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_fGetMultipleComputationsResults() (Windows):
+ * performs multiple calculations with precision float in parallel on multiple paceval_cComputation objects using the variables declared by pacevalLibrary_CreateComputation() and with the same set of values for these variables - the return value indicates paceval_cComputation object errors and you should check the array errorTypes_out in this case
+ * @param handle_pacevalComputations_in array of the paceval_cComputation objects
+ * @param numberOfpacevalComputations_in specifies the number of the paceval_cComputation objects
+ * @param values_in array of float defining the values of the variables
+ * @param results_out pointer to an array for the results of the multiple computations (annotation: in case of an error the values are not specified)
+ * @param trustedMinResults_out pointer to an array for the minimum/lower interval limits (annotation: in case of an error the values are not specified)
+ * @param trustedMaxResults_out pointer to an array for the maximum/upper interval limits (annotation: in case of an error the values are not specified)
+ * @param errorTypes_out pointer to an array of the paceval_cComputation object errors, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ */
 extern "C" bool pacevalLibrary_fGetMultipleComputationsResults(PACEVAL_HANDLE handle_pacevalComputations_in[],
         unsigned long numberOfpacevalComputations_in,
         float values_in[],
@@ -420,6 +659,18 @@ bool(*pacevalLibrary_ldGetMultipleComputationsResultsExt)(PACEVAL_HANDLE handle_
         long double* trustedMaxResults_out,
         int* errorTypes_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_ldGetMultipleComputationsResultsExt() (Windows):
+ * performs multiple calculations with precision long double in parallel on multiple paceval_cComputation objects using the variables declared by pacevalLibrary_CreateComputation() and with multiple sets of values for those variables - the return value indicates paceval_cComputation object errors and you should check the array errorTypes_out in this case
+ * @param handle_pacevalComputations_in array of the paceval_cComputation objects
+ * @param numberOfpacevalComputations_in specifies the number of the paceval_cComputation objects
+ * @param values_in array of long double defining the values of the variables
+ * @param numberOfCalculations_in specifies the number of different calculations you want to run and this number specifies the size of the array values_in, e.g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values_in must be 50*1000 (the order of the array values_in must be variable values for the first calculation, then variable values for the second calculation and so on)
+ * @param results_out pointer to an array for the results of the multiple computations (annotation: in case of an error the values are not specified)
+ * @param trustedMinResults_out pointer to an array for the minimum/lower interval limits (annotation: in case of an error the values are not specified)
+ * @param trustedMaxResults_out pointer to an array for the maximum/upper interval limits (annotation: in case of an error the values are not specified)
+ * @param errorTypes_out pointer to an array of the paceval_cComputation object errors, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ */
 extern "C" bool pacevalLibrary_ldGetMultipleComputationsResultsExt(PACEVAL_HANDLE handle_pacevalComputations_in[],
         unsigned long numberOfpacevalComputations_in,
         long double values_in[],
@@ -440,6 +691,18 @@ bool(*pacevalLibrary_dGetMultipleComputationsResultsExt)(PACEVAL_HANDLE handle_p
         double* trustedMaxResults_out,
         int* errorTypes_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_dGetMultipleComputationsResultsExt() (Windows):
+ * performs multiple calculations with precision double in parallel on multiple paceval_cComputation objects using the variables declared by pacevalLibrary_CreateComputation() and with multiple sets of values for those variables - the return value indicates paceval_cComputation object errors and you should check the array errorTypes_out in this case
+ * @param handle_pacevalComputations_in array of the paceval_cComputation objects
+ * @param numberOfpacevalComputations_in specifies the number of the paceval_cComputation objects
+ * @param values_in array of double defining the values of the variables
+ * @param numberOfCalculations_in specifies the number of different calculations you want to run and this number specifies the size of the array values_in, e.g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values_in must be 50*1000 (the order of the array values_in must be variable values for the first calculation, then variable values for the second calculation and so on)
+ * @param results_out pointer to an array for the results of the multiple computations (annotation: in case of an error the values are not specified)
+ * @param trustedMinResults_out pointer to an array for the minimum/lower interval limits (annotation: in case of an error the values are not specified)
+ * @param trustedMaxResults_out pointer to an array for the maximum/upper interval limits (annotation: in case of an error the values are not specified)
+ * @param errorTypes_out pointer to an array of the paceval_cComputation object errors, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ */
 extern "C" bool pacevalLibrary_dGetMultipleComputationsResultsExt(PACEVAL_HANDLE handle_pacevalComputations_in[],
         unsigned long numberOfpacevalComputations_in,
         double values_in[],
@@ -460,6 +723,18 @@ bool(*pacevalLibrary_fGetMultipleComputationsResultsExt)(PACEVAL_HANDLE handle_p
         float* trustedMaxResults_out,
         int* errorTypes_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_fGetMultipleComputationsResultsExt() (Windows):
+ * performs multiple calculations with precision float in parallel on multiple paceval_cComputation objects using the variables declared by pacevalLibrary_CreateComputation() and with multiple sets of values for those variables - the return value indicates paceval_cComputation object errors and you should check the array errorTypes_out in this case
+ * @param handle_pacevalComputations_in array of the paceval_cComputation objects
+ * @param numberOfpacevalComputations_in specifies the number of the paceval_cComputation objects
+ * @param values_in array of float defining the values of the variables
+ * @param numberOfCalculations_in specifies the number of different calculations you want to run and this number specifies the size of the array values_in, e.g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values_in must be 50*1000 (the order of the array values_in must be variable values for the first calculation, then variable values for the second calculation and so on)
+ * @param results_out pointer to an array for the results of the multiple computations (annotation: in case of an error the values are not specified)
+ * @param trustedMinResults_out pointer to an array for the minimum/lower interval limits (annotation: in case of an error the values are not specified)
+ * @param trustedMaxResults_out pointer to an array for the maximum/upper interval limits (annotation: in case of an error the values are not specified)
+ * @param errorTypes_out pointer to an array of the paceval_cComputation object errors, see also paceval_eErrorTypes or pacevalLibrary_GetErrorInformation()
+ */
 extern "C" bool pacevalLibrary_fGetMultipleComputationsResultsExt(PACEVAL_HANDLE handle_pacevalComputations_in[],
         unsigned long numberOfpacevalComputations_in,
         float values_in[],
@@ -473,6 +748,11 @@ extern "C" bool pacevalLibrary_fGetMultipleComputationsResultsExt(PACEVAL_HANDLE
 #if defined(paceval_use_dll) && (paceval_use_dll == 1)
 bool (*pacevalLibrary_GetIsError)(PACEVAL_HANDLE handle_pacevalComputation_in);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_GetIsError() (Windows):
+ * determines whether an error has occurred and to get more information about the error, call pacevalLibrary_GetErrorInformation() - if an error has occurred, the return value is TRUE, otherwise it is FALSE
+ * @param handle_pacevalComputation_in identifies the paceval_cComputation object
+ */
 extern "C" bool pacevalLibrary_GetIsError(PACEVAL_HANDLE handle_pacevalComputation_in);
 #endif //defined(paceval_use_dll)
 
@@ -481,6 +761,50 @@ int (*pacevalLibrary_GetErrorInformation)(PACEVAL_HANDLE handle_pacevalComputati
         char* lastError_strOperator_out,
         long* lastError_ePosition_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_GetErrorInformation() (Windows):
+ * returns the paceval_cComputation object error type value: possible errors are analysis and computation errors (errors during the analysis should be checked after creation of the object like pacevalLibrary_CreateComputation() while errors during the computation should be checked after a calculation, e.g. pacevalLibrary_GetComputationResult()) - the return value is the paceval_cComputation object error, see also paceval_eErrorTypes and you can retrieve further information for the error type via pacevalLibrary_CreateErrorInformationText(), e.g. to present this to the user:
+ * - PACEVAL_ERR_NO_ERROR = 0: No error occured for this computation object.
+ * - PACEVAL_ERR_FATAL_INITIALIZE_LIBRARY_NOT_CALLED = 10: Initialization of paceval. with paceval_InitializeLibrary() is missing.
+ * - PACEVAL_ERR_FATAL_NO_LICENSE = 11: Get in contact with us via info@paceval.com for a license.
+ * - PACEVAL_ERR_FATAL_CONNECTING_SERVER = 15: This is a placeholder for the error codes when using an external library, e.g. like curl.
+ * - PACEVAL_ERR_FATAL_PARAMETERS_SERVER = 16: This is a placeholder for the error codes when using an external library, e.g. like curl.
+ * - PACEVAL_ERR_ANALYSIS_UNKNOWN_SIGN_OR_FUNCTION = 110: The function string contains an unknown sign or subfunction.
+ * - PACEVAL_ERR_ANALYSIS_BRACKETS = 111: Incorrect brackets are set in the function string.
+ * - PACEVAL_ERR_ANALYSIS_UNKNOWN_CONSTANT_OR_VARIABLE = 112: The function string contains an unknown constant factor or variable.
+ * - PACEVAL_ERR_ANALYSIS_COMMENT = 113: An invalid comment in the function string.
+ * - PACEVAL_ERR_ANALYSIS_NUMBER_OF_VARIABLES = 114: The specified number of variables is not the number of the declared variables.
+ * - PACEVAL_ERR_ANALYSIS_MISPLACED_SIGN_CALCULATION = 115: An operator is set incorrectly in the function string.
+ * - PACEVAL_ERR_ANALYSIS_UNEXPECTED_END = 116: An unexpected end in the function string.
+ * - PACEVAL_ERR_ANALYSIS_WRONGLY_USED_FUNCTION = 117: A subfunction is set incorrectly in the function string.
+ * - PACEVAL_ERR_ANALYSIS_NO_USER_FUNCTION = 118: No user function and no operations.
+ * - PACEVAL_ERR_ANALYSIS_UNKNOWN_CHARACTER = 119: The function string contains an unknown character.
+ * - PACEVAL_ERR_ANALYSIS_WRONGLY_USED_CONSTANT_OR_VALUE = 120: A constant factor or value is not correctly used.
+ * - PACEVAL_ERR_ANALYSIS_MISSING_OPERATOR = 121: An operator is missing for operands.
+ * - PACEVAL_ERR_ANALYSIS_OUT_OF_MEMORY = 122: Analysis out of memory.
+ * - PACEVAL_ERR_ANALYSIS_UNKNOWN_OBJECT_TYPE = 124: An invalid object-type was passed.
+ * - PACEVAL_ERR_ANALYSIS_MEMORY_CLEANUP = 126: An error has occured in the memory cleanup.
+ * - PACEVAL_ERR_ANALYSIS_USER_ABORT = 127: The analysis was aborted by the user.
+ * - PACEVAL_ERR_ANALYSIS_MATH_OS_NOT_SUPPORTED = 128: The operating system may not be supported due to known mathematical errors.
+ * - PACEVAL_ERR_ANALYSIS_NO_COMMUNITY_FEATURE = 130: This feature is not supported in the free version of paceval.
+ * - PACEVAL_ERR_COMPUTATION_HANDLE_INVALID = 140: An invalid handle was passed.
+ * - PACEVAL_ERR_COMPUTATION_MULTIPLICATION = 141: A multiplication causes an error.
+ * - PACEVAL_ERR_COMPUTATION_DIVISION = 142: A division causes an error.
+ * - PACEVAL_ERR_COMPUTATION_FUNCTION = 143: The result of the calculation is not valid.
+ * - PACEVAL_ERR_COMPUTATION_ADDITION = 144: An addition causes an error.
+ * - PACEVAL_ERR_COMPUTATION_SUBTRACTION = 145: A subtraction causes an error.
+ * - PACEVAL_ERR_COMPUTATION_UNSPECIFIED = 150: A not specified user-function causes an error.
+ * - PACEVAL_ERR_COMPUTATION_INTERVAL_RESULT = 151: The interval result of the calculation is not trusted.
+ * - PACEVAL_ERR_COMPUTATION_USER_ABORT = 152: The calculation was aborted by the user.
+ * - PACEVAL_ERR_COMPUTATION_RESULT = 153: The result of the calculation is not trusted.
+ * - PACEVAL_ERR_COMPUTATION_BUSY = 154: The referenced computation object is busy.
+ * - PACEVAL_ERR_COMPUTATION_USER_COMPILER_NOT_SUPPORTS_LONG_DOUBLE = 160: Your compiler does not support long double floating-point data type.
+ * - PACEVAL_ERR_COMPUTATION_PRECHECK_MULTIPLE = 161: Precheck failed for multiple operations, e.g. a handle may only occur once.
+ *
+ * @param handle_pacevalComputation_in identifies the paceval_cComputation object
+ * @param lastError_strOperator_out buffer to get the operator causing the error (annotation: maximum size of the retrieved null-terminated string is 255 per "#define PACEVAL_MAXERR 255", see paceval_main.h)
+ * @param lastError_ePosition_out position in the function where the error occurred
+ */
 extern "C" int pacevalLibrary_GetErrorInformation(PACEVAL_HANDLE handle_pacevalComputation_in,
         char* lastError_strOperator_out,
         long* lastError_ePosition_out);
@@ -491,6 +815,13 @@ int (*pacevalLibrary_CreateErrorInformationText)(PACEVAL_HANDLE handle_pacevalCo
         char* lastError_strMessage_out,
         char* lastError_strDetails_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_CreateErrorInformationText() (Windows):
+ * a helper function to create error information in text from a paceval_cComputation and it can be used to provide more information to the user - the return value is maximum length of lastError_strMessage_out and lastError_strDetails_out
+ * @param handle_pacevalComputation_in identifies the paceval_cComputation object
+ * @param lastError_strMessage_out buffer to get message describing the error (annotation: maximum size of the retrieved null-terminated string is 255 per "#define PACEVAL_MAXERR 255", see paceval_main.h)
+ * @param lastError_strDetails_out buffer to get details like error type as a number, the operator and the position in the function (annotation: maximum size of the retrieved null-terminated string is 255 per "#define PACEVAL_MAXERR 255", see paceval_main.h)
+ */
 extern "C" int pacevalLibrary_CreateErrorInformationText(PACEVAL_HANDLE handle_pacevalComputation_in,
         char* lastError_strMessage_out,
         char* lastError_strDetails_out);
@@ -500,6 +831,12 @@ extern "C" int pacevalLibrary_CreateErrorInformationText(PACEVAL_HANDLE handle_p
 int (*pacevalLibrary_GetErrorTypeMessage)(int errorType_in,
         char* errorType_strMessage_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_GetErrorTypeMessage() (Windows):
+ * a helper function to create an error message in text from an error type and It can be used to provide more information to the user - the return value is the length of lastError_strMessage_out
+ * @param errorType_in specifies the the error type value
+ * @param errorType_strMessage_out buffer to get message describing the error (annotation: maximum size of the retrieved null-terminated string is 255 per "#define PACEVAL_MAXERR 255", see paceval_main.h)
+ */
 extern "C" int pacevalLibrary_GetErrorTypeMessage(int errorType_in,
         char* errorType_strMessage_out);
 #endif //defined(paceval_use_dll)
@@ -508,6 +845,12 @@ extern "C" int pacevalLibrary_GetErrorTypeMessage(int errorType_in,
 int (*pacevalLibrary_GetComputationVersionString)(PACEVAL_HANDLE handle_pacevalComputation_in,
         char* paceval_strVersion_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_GetComputationVersionString() (Windows):
+ * returns the version string including the version number of the paceval_cComputation object - the return value is the length of the version string
+ * @param handle_pacevalComputation_in identifies the paceval_cComputation object
+ * @param paceval_strVersion_out points to the buffer that will receive the string (set paceval_strVersion_in to NULL to receive the length of the version string)
+ */
 extern "C" int pacevalLibrary_GetComputationVersionString(PACEVAL_HANDLE handle_pacevalComputation_in,
         char* paceval_strVersion_out);
 #endif //defined(paceval_use_dll)
@@ -517,6 +860,13 @@ bool (*pacevalLibrary_SetCallbackUserFunction)(unsigned int numberUserFunction_i
         const char* singleFunctionString_in,
         paceval_callbackUserFunctionType* paceval_callbackUserFunction_in);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_SetCallbackUserFunction() (Windows):
+ * allows the definition of up to 1000 custom user functions. Depending on your requirements, you could a) add mathematical functions that enable new functions or b) add faster mathematical functions that are not as accurate as those used by paceval - if the function succeeds, the return value is TRUE, otherwise it is FALSE
+ * @param numberUserFunction_in specifies the number of the user function to set the single function for, e.g. 1
+ * @param singleFunctionString_in points to a null-terminated string specifying the user-defined single function, e.g. "my_function1"
+ * @param paceval_callbackUserFunction_in a user-defined callback function to handle the computation for the specific single function, see paceval_main.h
+ */
 extern "C" bool pacevalLibrary_SetCallbackUserFunction(unsigned int numberUserFunction_in,
         const char* singleFunctionString_in,
         paceval_callbackUserFunctionType* paceval_callbackUserFunction_in);
@@ -530,6 +880,16 @@ unsigned long (*pacevalLibrary_CreateXMLFromParameters)(char* paceval_strXML_out
         const char* valuesString_in,
         bool useInterval_in);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_CreateXMLFromParameters() (Windows):
+ * a helper function to create XML data representing a paceval_cComputation object and you can use it to store data representing a computation to a file system or to transmit it via a network or channel - the return value is the size of the XML data (in case of an error the return value is 0)
+ * @param paceval_strXML_out pointer to a buffer for the XML data (set paceval_strXML_out to NULL to receive the length of the version string)
+ * @param functionString_in points to a null-terminated string representing the function
+ * @param numberOfVariables_in specifies the number of variables
+ * @param variables_in points to a null-terminated string specifying the names of the variables in one string seperated by blanks
+ * @param valuesString_in specifies the values for the variables in one string seperated by semicolons (;)
+ * @param useInterval_in specifies whether Trusted Interval Computation is enabled or not
+ */
 extern "C" unsigned long pacevalLibrary_CreateXMLFromParameters(char* paceval_strXML_out,
         const char* functionString_in,
         unsigned long numberOfVariables_in,
@@ -549,6 +909,19 @@ int (*pacevalLibrary_ReadParametersFromXML)(const char* paceval_strXML_in,
         char* valuesString_out,
         bool* useInterval_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_ReadParametersFromXML() (Windows):
+ * a helper function to read XML data representing a paceval_cComputation object and you can use it to read data representing a computation from a file system or to receive it via a network or channel - in case of an error the return value is <0
+ * @param paceval_strXML_in pointer to the XML data
+ * @param functionStringLength_out the length of the function string
+ * @param variablesStringLength_out the length of the variable names in one string
+ * @param numberOfVariables_out the number of variables
+ * @param valuesStringLength_out the length of the values seperated by blanks in one string
+ * @param functionString_out points to the buffer for the function string (set functionString_out to NULL to receive the length at first with functionStringLength_out)
+ * @param variables_out points to the buffer for the variable names in one string (set variables_out to NULL to receive the length at first with variablesStringLength_out)
+ * @param valuesString_out points to the buffer for the values seperated by semicolons (;) in one string (set valuesString_out to NULL to receive the length at first with valuesStringLength_out)
+ * @param useInterval_out points to the buffer specifying whether Trusted Interval Computation is enabled or not
+ */
 extern "C" int pacevalLibrary_ReadParametersFromXML(const char* paceval_strXML_in,
         unsigned long* functionStringLength_out,
         unsigned long* variablesStringLength_out,
@@ -564,6 +937,12 @@ extern "C" int pacevalLibrary_ReadParametersFromXML(const char* paceval_strXML_i
 unsigned long (*pacevalLibrary_GetComputationInformationXML)(PACEVAL_HANDLE handle_pacevalComputation_in,
         char* paceval_strXML_out);
 #else
+/**
+ * Foreign function interface (FFI) version of paceval_GetComputationInformationXML() (Windows):
+ * a helper function for getting data from a paceval_cComputation object, such as the number of cores in the system, the number of threads used or the cache hits in the computations with that particular paceval_cComputation object - the return value is the size of the XML data (in case of an error the return value is 0)
+ * @param handle_pacevalComputation_in identifies the paceval_cComputation object
+ * @param paceval_strXML_out pointer to a buffer for the XML data (set paceval_strXML_out to NULL to receive the length of the version string)
+ */
 extern "C" unsigned long pacevalLibrary_GetComputationInformationXML(PACEVAL_HANDLE handle_pacevalComputation_in,
         char* paceval_strXML_out);
 #endif //defined(paceval_use_dll)
