@@ -5,7 +5,7 @@ https://www.paceval.com<br>
 <b>the system independent mathematical engine</b><br>
 [paceval-Mathematical Engine-Motivation.pdf](https://github.com/paceval/paceval/files/6521237/paceval-Mathematical.Engine-Motivation.pdf) and
 [paceval-Mathematical Engine-Our solution.pdf](https://github.com/paceval/paceval/files/6521239/paceval-Mathematical.Engine-Our.solution.pdf)<br>
-Download Installer Software Development Kit, https://paceval.com/product-demo/ or via Github [paceval-Software_Development_Kit.exe](http://paceval.com/download/paceval-Software_Development_Kit.exe) (Installer works for Windows 2000 up to the latest Windows version 11)<br>
+Download Installer Software Development Kit, https://paceval.com/product-demo/ or [paceval-Software_Development_Kit.exe](http://paceval.com/download/paceval-Software_Development_Kit.exe) (Installer works for Windows 2000 up to the latest Windows version 11)<br>
 
 “<b>Our goal</b> was to create<br>
 • [fast parallel calculation](https://paceval.com/developers/#fast_parallel_calculation) of mathematical functions<br>
