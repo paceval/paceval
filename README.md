@@ -5,7 +5,7 @@ https://www.paceval.com<br>
 <b>the system independent mathematical engine</b><br>
 [paceval-Mathematical Engine-Motivation.pdf](https://github.com/paceval/paceval/files/6521237/paceval-Mathematical.Engine-Motivation.pdf) and
 [paceval-Mathematical Engine-Our solution.pdf](https://github.com/paceval/paceval/files/6521239/paceval-Mathematical.Engine-Our.solution.pdf)<br>
-Download Installer Software Development Kit, https://paceval.com/product-demo/ or via Github [paceval-Software_Development_Kit.exe](http://paceval.com/download/paceval-Software_Development_Kit.exe) (Installer works for Windows 2000 up to the latest Windows version 11)<br>
+Download Installer Software Development Kit, https://paceval.com/product-demo/ or [paceval-Software_Development_Kit.exe](http://paceval.com/download/paceval-Software_Development_Kit.exe) (Installer works for Windows 2000 up to the latest Windows version 11)<br>
 
 “<b>Our goal</b> was to create<br>
 • [fast parallel calculation](https://paceval.com/developers/#fast_parallel_calculation) of mathematical functions<br>
@@ -22,7 +22,8 @@ to compute [all financial, stochastic, engineering, and scientific functions](ht
 ## Release-content – paceval.-Software Development Kit [SDK] 4.25
 developer version – non-commercial use only<br> 
 License - paceval source code GNU Affero General Public License (AGPL) (see [paceval sources (external) documentation](https://paceval.com/paceval_sources_documentation-external/html/index.html))<br>
-Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.
+Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.<br>
+[Installer paceval-Software Development Kit 4.25](https://github.com/paceval/paceval/raw/main/_released/_Installer%204.25%20Software%20Development%20Kit/paceval-Software_Development_Kit.exe)
 
 •   <b>["demo and examples"](https://github.com/paceval/paceval/tree/main/demo%20and%20examples) folder<br></b>
     includes the executables<br>
