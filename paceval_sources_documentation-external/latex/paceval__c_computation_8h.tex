@@ -358,7 +358,20 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_CreateComputation()}{pacevalLibrary\_CreateComputation()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} paceval\+Library\+\_\+\+Create\+Computation (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_a953cdb322badceecf9e5351340e0eb2f}{paceval\+\_\+callback\+Status\+Type}} \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+callback\+Status\+\_\+in }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ae04cf0ab1cdbd57df334d660578bfdc3}{paceval\+\_\+\+Create\+Computation()} (Windows)\+: creates a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object for a mathematical function and its variables -\/ the return value is the HANDLE of the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred) 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ae04cf0ab1cdbd57df334d660578bfdc3}{paceval\+\_\+\+Create\+Computation()} (Windows)\+: creates a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object for a mathematical function and its variables -\/ the return value is the HANDLE of the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred) 
+\begin{DoxyParams}{Parameters}
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em use\+Interval\+\_\+in} & enables or disables the Trusted Interval Computation, TINC (paceval specific) putting bounds on rounding errors and measurement errors of the computation system to yield reliable results \\
+\hline
+{\em paceval\+\_\+callback\+Status\+\_\+in} & a user-\/defined callback function to give status information of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_ae04cf0ab1cdbd57df334d660578bfdc3}{paceval\+\_\+\+Create\+Computation()} (Windows DLLs and static libraries)\+: creates a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object for a mathematical function and its variables -\/ the return value is the HANDLE of the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred) 
 \begin{DoxyParams}{Parameters}
 {\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
 \hline
@@ -390,6 +403,15 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ad4fb9e
 \hline
 {\em last\+Error\+\_\+str\+Message\+\_\+out} & buffer to get message describing the error (annotation\+: maximum size of the retrieved null-\/terminated string is 255 per "{}\#define PACEVAL\+\_\+\+MAXERR 255"{}, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}) \\
 \hline
+{\em last\+Error\+\_\+str\+Details\+\_\+out} & buffer to get details like error type as a number, the operator and the position in the function (annotation\+: maximum size of the retrieved null-\/terminated string is 255 per "{}\#define PACEVAL\+\_\+\+MAXERR 255"{}, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h})\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_ad4fb9e86602b96735b49ca4ce737d55f}{paceval\+\_\+\+Create\+Error\+Information\+Text()} (Windows DLLs and static libraries)\+: a helper function to create error information in text from a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} and it can be used to provide more information to the user -\/ the return value is maximum length of last\+Error\+\_\+str\+Message\+\_\+out and last\+Error\+\_\+str\+Details\+\_\+out 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em last\+Error\+\_\+str\+Message\+\_\+out} & buffer to get message describing the error (annotation\+: maximum size of the retrieved null-\/terminated string is 255 per "{}\#define PACEVAL\+\_\+\+MAXERR 255"{}, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}) \\
+\hline
 {\em last\+Error\+\_\+str\+Details\+\_\+out} & buffer to get details like error type as a number, the operator and the position in the function (annotation\+: maximum size of the retrieved null-\/terminated string is 255 per "{}\#define PACEVAL\+\_\+\+MAXERR 255"{}, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}) \\
 \hline
 \end{DoxyParams}
@@ -406,7 +428,22 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_CreateMultipleComputations()}{pacevalLibrary\_CreateMultipleComputations()}}
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Create\+Multiple\+Computations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+out\mbox{[}$\,$\mbox{]},  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+Strings\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_a953cdb322badceecf9e5351340e0eb2f}{paceval\+\_\+callback\+Status\+Type}} \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+callback\+Status\+\_\+in }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ae110de903a843cf67aae55c9157321c3}{paceval\+\_\+\+Create\+Multiple\+Computations()} (Windows)\+: creates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects for multiple mathematical functions and one set of variables in a single step -\/ if the function succeeds, the return value is TRUE and handle\+\_\+paceval\+Computations\+\_\+out contains the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects (each of these objects can be used individually, e.\+g. with \doxylink{paceval__c_computation_8h_a4c4ea05d9207def52c8fa9ec3a68d51d}{paceval\+Library\+\_\+d\+Get\+Computation\+Result()}, \doxylink{paceval__c_computation_8h_a4b7907fe40d8f2f9f332a572b8ffda40}{paceval\+Library\+\_\+d\+Get\+Multiple\+Computations\+Results()}, \doxylink{paceval__c_computation_8h_aa8f87bb363a07eefb308dbcad12fd3b1}{paceval\+Library\+\_\+dmathv()} or \doxylink{paceval__c_computation_8h_ab42ba2be711d7cfc57ee395b14a6d37b}{paceval\+Library\+\_\+dmathvi()} and must be deleted with \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ae110de903a843cf67aae55c9157321c3}{paceval\+\_\+\+Create\+Multiple\+Computations()} (Windows)\+: creates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects for multiple mathematical functions and one set of variables in a single step -\/ if the function succeeds, the return value is TRUE and handle\+\_\+paceval\+Computations\+\_\+out contains the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects (each of these objects can be used individually, e.\+g. with \doxylink{paceval__main_8cpp_a4c4ea05d9207def52c8fa9ec3a68d51d}{paceval\+Library\+\_\+d\+Get\+Computation\+Result()}, \doxylink{paceval__main_8cpp_a4b7907fe40d8f2f9f332a572b8ffda40}{paceval\+Library\+\_\+d\+Get\+Multiple\+Computations\+Results()}, \doxylink{paceval__main_8cpp_aa8f87bb363a07eefb308dbcad12fd3b1}{paceval\+Library\+\_\+dmathv()} or \doxylink{paceval__main_8cpp_ab42ba2be711d7cfc57ee395b14a6d37b}{paceval\+Library\+\_\+dmathvi()} and must be deleted with \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) 
+\begin{DoxyParams}{Parameters}
+{\em function\+Strings\+\_\+in} & points to an array of null-\/terminated strings to be used as the functions to work with for the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects to create (e.\+g. if the functions to work with are "{}sin(x)"{} and "{}cos(x)"{} number\+Ofpaceval\+Computations\+\_\+in must be set to 2) \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em use\+Interval\+\_\+in} & enables or disables the Trusted Interval Computation, TINC (paceval specific) putting bounds on rounding errors and measurement errors of the computation system to yield reliable results \\
+\hline
+{\em paceval\+\_\+callback\+Status\+\_\+in} & a user-\/defined callback function to give status information of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_ae110de903a843cf67aae55c9157321c3}{paceval\+\_\+\+Create\+Multiple\+Computations()} (Windows DLLs and static libraries)\+: creates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects for multiple mathematical functions and one set of variables in a single step -\/ if the function succeeds, the return value is TRUE and handle\+\_\+paceval\+Computations\+\_\+out contains the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects (each of these objects can be used individually, e.\+g. with \doxylink{paceval__main_8cpp_a4c4ea05d9207def52c8fa9ec3a68d51d}{paceval\+Library\+\_\+d\+Get\+Computation\+Result()}, \doxylink{paceval__main_8cpp_a4b7907fe40d8f2f9f332a572b8ffda40}{paceval\+Library\+\_\+d\+Get\+Multiple\+Computations\+Results()}, \doxylink{paceval__main_8cpp_aa8f87bb363a07eefb308dbcad12fd3b1}{paceval\+Library\+\_\+dmathv()} or \doxylink{paceval__main_8cpp_ab42ba2be711d7cfc57ee395b14a6d37b}{paceval\+Library\+\_\+dmathvi()} and must be deleted with \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) 
 \begin{DoxyParams}{Parameters}
 {\em function\+Strings\+\_\+in} & points to an array of null-\/terminated strings to be used as the functions to work with for the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
 \hline
@@ -439,6 +476,21 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a6db0db
 \hline
 {\em values\+String\+\_\+in} & specifies the values for the variables in one string seperated by semicolons (;) \\
 \hline
+{\em use\+Interval\+\_\+in} & specifies whether Trusted Interval Computation is enabled or not\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a6db0db946cb55b8c85c82082c58b8717}{paceval\+\_\+\+Create\+XMLFrom\+Parameters()} (Windows DLLs and static libraries)\+: a helper function to create XML data representing a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and you can use it to store data representing a computation to a file system or to transmit it via a network or channel -\/ the return value is the size of the XML data (in case of an error the return value is 0) 
+\begin{DoxyParams}{Parameters}
+{\em paceval\+\_\+str\+XML\+\_\+out} & pointer to a buffer for the XML data (set paceval\+\_\+str\+XML\+\_\+out to NULL to receive the length of the version string) \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string representing the function \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the variables in one string seperated by blanks \\
+\hline
+{\em values\+String\+\_\+in} & specifies the values for the variables in one string seperated by semicolons (;) \\
+\hline
 {\em use\+Interval\+\_\+in} & specifies whether Trusted Interval Computation is enabled or not \\
 \hline
 \end{DoxyParams}
@@ -449,6 +501,13 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a6db0db
 {\footnotesize\ttfamily int paceval\+Library\+\_\+d\+Convert\+Float\+To\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{destination\+String\+\_\+in,  }\item[{double}]{float\+\_\+in }\end{DoxyParamCaption})}
 
 Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a44b9c6c08787849c24e614730379915e}{paceval\+\_\+d\+Convert\+Float\+To\+String()} (Windows)\+: converts a floating point number with precision double to a string -\/ if the function succeeds, the return value is \texorpdfstring{$>$}{>}0 and gives the precision of the conversion, otherwise the return value is \texorpdfstring{$<$}{<}0 
+\begin{DoxyParams}{Parameters}
+{\em destination\+String\+\_\+in} & points to the buffer that will receive the string of the coverted floating point number (annotation\+: in case of an error the buffer is not specified) \\
+\hline
+{\em float\+\_\+in} & the floating point number with precision double to convert\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a44b9c6c08787849c24e614730379915e}{paceval\+\_\+d\+Convert\+Float\+To\+String()} (Windows DLLs and static libraries)\+: converts a floating point number with precision double to a string -\/ if the function succeeds, the return value is \texorpdfstring{$>$}{>}0 and gives the precision of the conversion, otherwise the return value is \texorpdfstring{$<$}{<}0 
 \begin{DoxyParams}{Parameters}
 {\em destination\+String\+\_\+in} & points to the buffer that will receive the string of the coverted floating point number (annotation\+: in case of an error the buffer is not specified) \\
 \hline
@@ -472,7 +531,22 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a9bece1
 \begin{DoxyParams}{Parameters}
 {\em source\+String\+\_\+in} & the string to convert \\
 \hline
-{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em err\+Position\+\_\+out} & position in the string where the error occurred \\
+\hline
+{\em use\+Interval\+\_\+in} & enables or disables the Trusted Interval Computation, TINC (paceval specific) for the conversion \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & if Trusted Interval Computation was enabled this retrieves the minimum/lower interval limit of the conversion (annotation\+: in case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & if Trusted Interval Computation was enabled this retrieves the maximum/upper interval limit of the conversion (annotation\+: in case of an error the value is not specified)\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a9bece1ed849041ccae24ab45211f015c}{paceval\+\_\+d\+Convert\+String\+To\+Float()} (Windows DLLs and static libraries)\+: converts a string to a floating point number with precision double (in case a caluclation is given in the string the result is converted) -\/ if the function succeeds, the return value is the result of the conversion (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em source\+String\+\_\+in} & the string to convert \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 {\em err\+Position\+\_\+out} & position in the string where the error occurred \\
 \hline
@@ -491,6 +565,11 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a9bece1
 
 Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a0a5a920a210ff6914dd5742f096635a2}{paceval\+\_\+\+Delete\+Computation()} (Windows)\+: deletes a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object -\/ if the function succeeds, the return value is TRUE (if the given HANDLE is not valid the return value is FALSE) 
 \begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object to delete\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a0a5a920a210ff6914dd5742f096635a2}{paceval\+\_\+\+Delete\+Computation()} (Windows DLLs and static libraries)\+: deletes a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object -\/ if the function succeeds, the return value is TRUE (if the given HANDLE is not valid the return value is FALSE) 
+\begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object to delete \\
 \hline
 \end{DoxyParams}
@@ -507,7 +586,18 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_dGetComputationResult()}{pacevalLibrary\_dGetComputationResult()}}
 {\footnotesize\ttfamily double paceval\+Library\+\_\+d\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_acbc57bb0edcafb8811d082617b6b1531}{paceval\+\_\+d\+Get\+Computation\+Result()} (Windows)\+: performs a calculation with precision double on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_acbc57bb0edcafb8811d082617b6b1531}{paceval\+\_\+d\+Get\+Computation\+Result()} (Windows)\+: performs a calculation with precision double on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em values\+\_\+in} & array of double defining the values of the variables \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & this buffer retrieves the maximum/upper limit of the computation (annotation\+: In case of an error the value is not specified)\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_acbc57bb0edcafb8811d082617b6b1531}{paceval\+\_\+d\+Get\+Computation\+Result()} (Windows DLLs and static libraries)\+: performs a calculation with precision double on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
 \begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
 \hline
@@ -524,7 +614,7 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_acbc57b
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_dGetComputationResultExt()}{pacevalLibrary\_dGetComputationResultExt()}}
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+d\+Get\+Computation\+Result\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a355e632ee48694f62cf038b77b6ca6ac}{paceval\+\_\+d\+Get\+Computation\+Result\+Ext()} (Windows)\+: performs multiple calculations with precision double in parallel on a single \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a355e632ee48694f62cf038b77b6ca6ac}{paceval\+\_\+d\+Get\+Computation\+Result\+Ext()} (Windows)\+: performs multiple calculations with precision double in parallel on a single \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} with the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
 \begin{DoxyParams}{Parameters}
 {\em values\+\_\+in} & array of double defining the multiple values of the variables \\
 \hline
@@ -536,7 +626,22 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a355e63
 \hline
 {\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
 \hline
-{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a355e632ee48694f62cf038b77b6ca6ac}{paceval\+\_\+d\+Get\+Computation\+Result\+Ext()} (Windows DLLs and static libraries)\+: performs multiple calculations with precision double in parallel on a single \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} with the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em values\+\_\+in} & array of double defining the multiple values of the variables \\
+\hline
+{\em number\+Of\+Calculations\+\_\+in} & specifies the number of different calculations you want to run and this number specifies the size of the array values\+\_\+in, e.\+g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values\+\_\+in must be 50\texorpdfstring{$\ast$}{*}1000 (the order of the array values\+\_\+in must be variable values for the first calculation, then variable values for the second calculation and so on) \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the computation with the multiple values of the variables (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 \end{DoxyParams}
 \Hypertarget{paceval__c_computation_8h_a4b7907fe40d8f2f9f332a572b8ffda40}\label{paceval__c_computation_8h_a4b7907fe40d8f2f9f332a572b8ffda40} 
@@ -545,7 +650,7 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a355e63
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_dGetMultipleComputationsResults()}{pacevalLibrary\_dGetMultipleComputationsResults()}}
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+d\+Get\+Multiple\+Computations\+Results (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a7ee63b91471db048e4e8c7c9940a0b14}{paceval\+\_\+d\+Get\+Multiple\+Computations\+Results()} (Windows)\+: performs multiple calculations with precision double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with the same set of values for these variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a7ee63b91471db048e4e8c7c9940a0b14}{paceval\+\_\+d\+Get\+Multiple\+Computations\+Results()} (Windows)\+: performs multiple calculations with precision double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with the same set of values for these variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
 \begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
 \hline
@@ -559,7 +664,24 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a7ee63b
 \hline
 {\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
 \hline
-{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a7ee63b91471db048e4e8c7c9940a0b14}{paceval\+\_\+d\+Get\+Multiple\+Computations\+Results()} (Windows DLLs and static libraries)\+: performs multiple calculations with precision double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with the same set of values for these variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em values\+\_\+in} & array of double defining the values of the variables \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the multiple computations (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 \end{DoxyParams}
 \Hypertarget{paceval__c_computation_8h_a3930b10a5fe345f1a5112ea035921dfa}\label{paceval__c_computation_8h_a3930b10a5fe345f1a5112ea035921dfa} 
@@ -568,7 +690,7 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a7ee63b
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_dGetMultipleComputationsResultsExt()}{pacevalLibrary\_dGetMultipleComputationsResultsExt()}}
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a5cc7887ed6b733722bd93a7669cf7a34}{paceval\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext()} (Windows)\+: performs multiple calculations with precision double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a5cc7887ed6b733722bd93a7669cf7a34}{paceval\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext()} (Windows)\+: performs multiple calculations with precision double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
 \begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
 \hline
@@ -584,7 +706,26 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a5cc788
 \hline
 {\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
 \hline
-{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a5cc7887ed6b733722bd93a7669cf7a34}{paceval\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext()} (Windows DLLs and static libraries)\+: performs multiple calculations with precision double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em values\+\_\+in} & array of double defining the values of the variables \\
+\hline
+{\em number\+Of\+Calculations\+\_\+in} & specifies the number of different calculations you want to run and this number specifies the size of the array values\+\_\+in, e.\+g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values\+\_\+in must be 50\texorpdfstring{$\ast$}{*}1000 (the order of the array values\+\_\+in must be variable values for the first calculation, then variable values for the second calculation and so on) \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the multiple computations (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 \end{DoxyParams}
 \Hypertarget{paceval__c_computation_8h_aa8f87bb363a07eefb308dbcad12fd3b1}\label{paceval__c_computation_8h_aa8f87bb363a07eefb308dbcad12fd3b1} 
@@ -593,11 +734,26 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a5cc788
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_dmathv()}{pacevalLibrary\_dmathv()}}
 {\footnotesize\ttfamily double paceval\+Library\+\_\+dmathv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a265cdc9fd945d8bb8a0a9784db853691}{paceval\+\_\+dmathv()} (Windows)\+: a convenience function to get results of computations in a single step with precision double -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a265cdc9fd945d8bb8a0a9784db853691}{paceval\+\_\+dmathv()} (Windows)\+: a convenience function to get results of computations in a single step with precision double -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
 \begin{DoxyParams}{Parameters}
-{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
 \hline
-{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em values\+\_\+in} & array of double defining the values of the variables\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a265cdc9fd945d8bb8a0a9784db853691}{paceval\+\_\+dmathv()} (Windows DLLs and static libraries)\+: a convenience function to get results of computations in a single step with precision double -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 {\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
 \hline
@@ -614,11 +770,30 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a265cdc
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_dmathvi()}{pacevalLibrary\_dmathvi()}}
 {\footnotesize\ttfamily double paceval\+Library\+\_\+dmathvi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{double}]{values\+\_\+in\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a2bef25d6ed8b72b759afb46a6691e640}{paceval\+\_\+dmathvi()} (Windows)\+: a convenience function to get results of computations in a single step with precision double and with Trusted Interval Computation, TINC (paceval specific) -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a2bef25d6ed8b72b759afb46a6691e640}{paceval\+\_\+dmathvi()} (Windows)\+: a convenience function to get results of computations in a single step with precision double and with Trusted Interval Computation, TINC (paceval specific) -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
 \begin{DoxyParams}{Parameters}
-{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
 \hline
-{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & this buffer retrieves the maximum/upper limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em values\+\_\+in} & array of double defining the values of the variables\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a2bef25d6ed8b72b759afb46a6691e640}{paceval\+\_\+dmathvi()} (Windows DLLs and static libraries)\+: a convenience function to get results of computations in a single step with precision double and with Trusted Interval Computation, TINC (paceval specific) -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 {\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
 \hline
@@ -641,6 +816,11 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a2bef25
 
 Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a3bbf1ad5d43871e716421e5e9258a81f}{paceval\+\_\+\+Exist\+Computation()} (Windows)\+: determines whether a particular \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object has been created -\/ if the object exists, the return value is TRUE. If the specified HANDLE is invalid or the object does not exist, the return value is FALSE 
 \begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object to be questioned\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a3bbf1ad5d43871e716421e5e9258a81f}{paceval\+\_\+\+Exist\+Computation()} (Windows DLLs and static libraries)\+: determines whether a particular \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object has been created -\/ if the object exists, the return value is TRUE. If the specified HANDLE is invalid or the object does not exist, the return value is FALSE 
+\begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object to be questioned \\
 \hline
 \end{DoxyParams}
@@ -651,6 +831,13 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a3bbf1a
 {\footnotesize\ttfamily int paceval\+Library\+\_\+f\+Convert\+Float\+To\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{destination\+String\+\_\+in,  }\item[{float}]{float\+\_\+in }\end{DoxyParamCaption})}
 
 Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a98a374e463cf39a88002cb4c2e04b330}{paceval\+\_\+f\+Convert\+Float\+To\+String()} (Windows)\+: converts a floating point number with precision float to a string -\/ if the function succeeds, the return value is \texorpdfstring{$>$}{>}0 and gives the precision of the conversion, otherwise the return value is \texorpdfstring{$<$}{<}0 
+\begin{DoxyParams}{Parameters}
+{\em destination\+String\+\_\+in} & points to the buffer that will receive the string of the coverted floating point number (annotation\+: in case of an error the buffer is not specified) \\
+\hline
+{\em float\+\_\+in} & the floating point number with precision float to convert\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a98a374e463cf39a88002cb4c2e04b330}{paceval\+\_\+f\+Convert\+Float\+To\+String()} (Windows DLLs and static libraries)\+: converts a floating point number with precision float to a string -\/ if the function succeeds, the return value is \texorpdfstring{$>$}{>}0 and gives the precision of the conversion, otherwise the return value is \texorpdfstring{$<$}{<}0 
 \begin{DoxyParams}{Parameters}
 {\em destination\+String\+\_\+in} & points to the buffer that will receive the string of the coverted floating point number (annotation\+: in case of an error the buffer is not specified) \\
 \hline
@@ -667,7 +854,22 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a6a7e91
 \begin{DoxyParams}{Parameters}
 {\em source\+String\+\_\+in} & the string to convert \\
 \hline
-{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em err\+Position\+\_\+out} & position in the string where the error occurred \\
+\hline
+{\em use\+Interval\+\_\+in} & enables or disables the Trusted Interval Computation, TINC (paceval specific) for the conversion \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & if Trusted Interval Computation was enabled this retrieves the minimum/lower interval limit of the conversion (annotation\+: in case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & if Trusted Interval Computation was enabled this retrieves the maximum/upper interval limit of the conversion (annotation\+: in case of an error the value is not specified)\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a6a7e917c734528161907f55960230eb5}{paceval\+\_\+f\+Convert\+String\+To\+Float()} (Windows DLLs and static libraries)\+: converts a string to a floating point number with precision float (in case a caluclation is given in the string the result is converted) -\/ if the function succeeds, the return value is the result of the conversion (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em source\+String\+\_\+in} & the string to convert \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 {\em err\+Position\+\_\+out} & position in the string where the error occurred \\
 \hline
@@ -684,7 +886,18 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a6a7e91
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_fGetComputationResult()}{pacevalLibrary\_fGetComputationResult()}}
 {\footnotesize\ttfamily float paceval\+Library\+\_\+f\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a608786d2771854226f6326ebd9c9c0ab}{paceval\+\_\+f\+Get\+Computation\+Result()} (Windows)\+: performs a calculation with precision float on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a608786d2771854226f6326ebd9c9c0ab}{paceval\+\_\+f\+Get\+Computation\+Result()} (Windows)\+: performs a calculation with precision float on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em values\+\_\+in} & array of float defining the values of the variables \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & this buffer retrieves the maximum/upper limit of the computation (annotation\+: In case of an error the value is not specified)\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a608786d2771854226f6326ebd9c9c0ab}{paceval\+\_\+f\+Get\+Computation\+Result()} (Windows DLLs and static libraries)\+: performs a calculation with precision float on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
 \begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
 \hline
@@ -701,7 +914,7 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a608786
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_fGetComputationResultExt()}{pacevalLibrary\_fGetComputationResultExt()}}
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+f\+Get\+Computation\+Result\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{float \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ac0f2e206cb7c87cffa8bb334ee2832d1}{paceval\+\_\+f\+Get\+Computation\+Result\+Ext()} (Windows)\+: performs multiple calculations with precision float in parallel on a single \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ac0f2e206cb7c87cffa8bb334ee2832d1}{paceval\+\_\+f\+Get\+Computation\+Result\+Ext()} (Windows)\+: performs multiple calculations with precision float in parallel on a single \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} with the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
 \begin{DoxyParams}{Parameters}
 {\em values\+\_\+in} & array of float defining the multiple values of the variables \\
 \hline
@@ -713,7 +926,22 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ac0f2e2
 \hline
 {\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
 \hline
-{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_ac0f2e206cb7c87cffa8bb334ee2832d1}{paceval\+\_\+f\+Get\+Computation\+Result\+Ext()} (Windows DLLs and static libraries)\+: performs multiple calculations with precision float in parallel on a single \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} with the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em values\+\_\+in} & array of float defining the multiple values of the variables \\
+\hline
+{\em number\+Of\+Calculations\+\_\+in} & specifies the number of different calculations you want to run and this number specifies the size of the array values\+\_\+in, e.\+g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values\+\_\+in must be 50\texorpdfstring{$\ast$}{*}1000 (the order of the array values\+\_\+in must be variable values for the first calculation, then variable values for the second calculation and so on) \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the computation with the multiple values of the variables (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 \end{DoxyParams}
 \Hypertarget{paceval__c_computation_8h_a1f7a7fee6838b93d4f840bce4a92cd42}\label{paceval__c_computation_8h_a1f7a7fee6838b93d4f840bce4a92cd42} 
@@ -722,7 +950,7 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ac0f2e2
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_fGetMultipleComputationsResults()}{pacevalLibrary\_fGetMultipleComputationsResults()}}
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+f\+Get\+Multiple\+Computations\+Results (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{float \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ad33a118f90a1313031e7724839c6c025}{paceval\+\_\+f\+Get\+Multiple\+Computations\+Results()} (Windows)\+: performs multiple calculations with precision float in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with the same set of values for these variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ad33a118f90a1313031e7724839c6c025}{paceval\+\_\+f\+Get\+Multiple\+Computations\+Results()} (Windows)\+: performs multiple calculations with precision float in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with the same set of values for these variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
 \begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
 \hline
@@ -736,7 +964,24 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ad33a11
 \hline
 {\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
 \hline
-{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_ad33a118f90a1313031e7724839c6c025}{paceval\+\_\+f\+Get\+Multiple\+Computations\+Results()} (Windows DLLs and static libraries)\+: performs multiple calculations with precision float in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with the same set of values for these variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em values\+\_\+in} & array of float defining the values of the variables \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the multiple computations (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 \end{DoxyParams}
 \Hypertarget{paceval__c_computation_8h_ae89257d9402f64f08f9fcfe9c92f0256}\label{paceval__c_computation_8h_ae89257d9402f64f08f9fcfe9c92f0256} 
@@ -745,7 +990,7 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ad33a11
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_fGetMultipleComputationsResultsExt()}{pacevalLibrary\_fGetMultipleComputationsResultsExt()}}
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+f\+Get\+Multiple\+Computations\+Results\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{float \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ad459ea225b88689869085d7995c8b0d8}{paceval\+\_\+f\+Get\+Multiple\+Computations\+Results\+Ext()} (Windows)\+: performs multiple calculations with precision float in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ad459ea225b88689869085d7995c8b0d8}{paceval\+\_\+f\+Get\+Multiple\+Computations\+Results\+Ext()} (Windows)\+: performs multiple calculations with precision float in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
 \begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
 \hline
@@ -761,7 +1006,26 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ad459ea
 \hline
 {\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
 \hline
-{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_ad459ea225b88689869085d7995c8b0d8}{paceval\+\_\+f\+Get\+Multiple\+Computations\+Results\+Ext()} (Windows DLLs and static libraries)\+: performs multiple calculations with precision float in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em values\+\_\+in} & array of float defining the values of the variables \\
+\hline
+{\em number\+Of\+Calculations\+\_\+in} & specifies the number of different calculations you want to run and this number specifies the size of the array values\+\_\+in, e.\+g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values\+\_\+in must be 50\texorpdfstring{$\ast$}{*}1000 (the order of the array values\+\_\+in must be variable values for the first calculation, then variable values for the second calculation and so on) \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the multiple computations (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 \end{DoxyParams}
 \Hypertarget{paceval__c_computation_8h_ae4d88e556f80fafddcad8e401e671936}\label{paceval__c_computation_8h_ae4d88e556f80fafddcad8e401e671936} 
@@ -770,11 +1034,26 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ad459ea
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_fmathv()}{pacevalLibrary\_fmathv()}}
 {\footnotesize\ttfamily float paceval\+Library\+\_\+fmathv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_aead1793c054ebf5a99e1fe7af37cc77e}{paceval\+\_\+fmathv()} (Windows)\+: a convenience function to get results of computations in a single step with precision float -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_aead1793c054ebf5a99e1fe7af37cc77e}{paceval\+\_\+fmathv()} (Windows)\+: a convenience function to get results of computations in a single step with precision float -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
 \begin{DoxyParams}{Parameters}
-{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
 \hline
-{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em values\+\_\+in} & array of float defining the values of the variables\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_aead1793c054ebf5a99e1fe7af37cc77e}{paceval\+\_\+fmathv()} (Windows DLLs and static libraries)\+: a convenience function to get results of computations in a single step with precision float -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 {\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
 \hline
@@ -798,11 +1077,30 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_fmathvi()}{pacevalLibrary\_fmathvi()}}
 {\footnotesize\ttfamily float paceval\+Library\+\_\+fmathvi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{float}]{values\+\_\+in\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ad42ee7b6c31f01b9ed159719c165a850}{paceval\+\_\+fmathvi()} (Windows)\+: a convenience function to get results of computations in a single step with precision float and with Trusted Interval Computation, TINC (paceval specific) -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ad42ee7b6c31f01b9ed159719c165a850}{paceval\+\_\+fmathvi()} (Windows)\+: a convenience function to get results of computations in a single step with precision float and with Trusted Interval Computation, TINC (paceval specific) -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
 \begin{DoxyParams}{Parameters}
-{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
 \hline
-{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & this buffer retrieves the maximum/upper limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em values\+\_\+in} & array of float defining the values of the variables\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_ad42ee7b6c31f01b9ed159719c165a850}{paceval\+\_\+fmathvi()} (Windows DLLs and static libraries)\+: a convenience function to get results of computations in a single step with precision float and with Trusted Interval Computation, TINC (paceval specific) -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 {\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
 \hline
@@ -823,13 +1121,22 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ad42ee7
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_Free()}{pacevalLibrary\_Free()}}
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a36703ae7d9e3998f7a60e8295ec92427}{paceval\+\_\+\+Free\+Library()} (Windows)\+: frees the paceval.-\/library -\/ you must call \doxylink{paceval__c_computation_8h_a7b1baa04a7f38d896c9e7ef8a3b7177b}{paceval\+Library\+\_\+\+Free()} at the end of your application -\/ if the function succeeds, the return value is TRUE, otherwise it is FALSE \Hypertarget{paceval__c_computation_8h_ac37970c25d5fd5156100e2ef91f84922}\label{paceval__c_computation_8h_ac37970c25d5fd5156100e2ef91f84922} 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a36703ae7d9e3998f7a60e8295ec92427}{paceval\+\_\+\+Free\+Library()} (Windows)\+: frees the paceval.-\/library -\/ you must call \doxylink{paceval__main_8cpp_a7b1baa04a7f38d896c9e7ef8a3b7177b}{paceval\+Library\+\_\+\+Free()} at the end of your application -\/ if the function succeeds, the return value is TRUE, otherwise it is FALSE
+
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a36703ae7d9e3998f7a60e8295ec92427}{paceval\+\_\+\+Free\+Library()} (Windows DLLs and static libraries)\+: frees the paceval.-\/library -\/ you must call \doxylink{paceval__main_8cpp_a7b1baa04a7f38d896c9e7ef8a3b7177b}{paceval\+Library\+\_\+\+Free()} at the end of your application -\/ if the function succeeds, the return value is TRUE, otherwise it is FALSE \Hypertarget{paceval__c_computation_8h_ac37970c25d5fd5156100e2ef91f84922}\label{paceval__c_computation_8h_ac37970c25d5fd5156100e2ef91f84922} 
 \index{paceval\_cComputation.h@{paceval\_cComputation.h}!pacevalLibrary\_GetComputationInformationXML@{pacevalLibrary\_GetComputationInformationXML}}
 \index{pacevalLibrary\_GetComputationInformationXML@{pacevalLibrary\_GetComputationInformationXML}!paceval\_cComputation.h@{paceval\_cComputation.h}}
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_GetComputationInformationXML()}{pacevalLibrary\_GetComputationInformationXML()}}
 {\footnotesize\ttfamily unsigned long paceval\+Library\+\_\+\+Get\+Computation\+Information\+XML (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{char \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+str\+XML\+\_\+out }\end{DoxyParamCaption})}
 
 Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a3ee97cad992bf2e26a88765ce587dfb7}{paceval\+\_\+\+Get\+Computation\+Information\+XML()} (Windows)\+: a helper function for getting data from a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object, such as the number of cores in the system, the number of threads used or the cache hits in the computations with that particular \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object -\/ the return value is the size of the XML data (in case of an error the return value is 0) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em paceval\+\_\+str\+XML\+\_\+out} & pointer to a buffer for the XML data (set paceval\+\_\+str\+XML\+\_\+out to NULL to receive the length of the version string)\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a3ee97cad992bf2e26a88765ce587dfb7}{paceval\+\_\+\+Get\+Computation\+Information\+XML()} (Windows DLLs and static libraries)\+: a helper function for getting data from a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object, such as the number of cores in the system, the number of threads used or the cache hits in the computations with that particular \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object -\/ the return value is the size of the XML data (in case of an error the return value is 0) 
 \begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
 \hline
@@ -846,6 +1153,13 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_aea14f4
 \begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
 \hline
+{\em paceval\+\_\+str\+Version\+\_\+out} & points to the buffer that will receive the string (set paceval\+\_\+str\+Version\+\_\+in to NULL to receive the length of the version string)\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_aea14f43c3d7f8ff895156c4289d0d9bd}{paceval\+\_\+\+Get\+Computation\+Version\+String()} (Windows DLLs and static libraries)\+: returns the version string including the version number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object -\/ the return value is the length of the version string 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
 {\em paceval\+\_\+str\+Version\+\_\+out} & points to the buffer that will receive the string (set paceval\+\_\+str\+Version\+\_\+in to NULL to receive the length of the version string) \\
 \hline
 \end{DoxyParams}
@@ -855,7 +1169,56 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_aea14f4
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_GetErrorInformation()}{pacevalLibrary\_GetErrorInformation()}}
 {\footnotesize\ttfamily int paceval\+Library\+\_\+\+Get\+Error\+Information (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{char \texorpdfstring{$\ast$}{*}}]{last\+Error\+\_\+str\+Operator\+\_\+out,  }\item[{long \texorpdfstring{$\ast$}{*}}]{last\+Error\+\_\+e\+Position\+\_\+out }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ac0cc5e90a94ccdb637747d559cafe3bd}{paceval\+\_\+\+Get\+Error\+Information()} (Windows)\+: returns the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error type value\+: possible errors are analysis and computation errors (errors during the analysis should be checked after creation of the object like \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} while errors during the computation should be checked after a calculation, e.\+g. paceval\+Library\+\_\+\+Get\+Computation\+Result()) -\/ the return value is the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types and you can retrieve further information for the error type via \doxylink{paceval__c_computation_8h_a213cfb83c7e76883eef6c9417fd4aeee}{paceval\+Library\+\_\+\+Create\+Error\+Information\+Text()}, e.\+g. to present this to the user\+:
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ac0cc5e90a94ccdb637747d559cafe3bd}{paceval\+\_\+\+Get\+Error\+Information()} (Windows)\+: returns the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error type value\+: possible errors are analysis and computation errors (errors during the analysis should be checked after creation of the object like \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} while errors during the computation should be checked after a calculation, e.\+g. paceval\+Library\+\_\+\+Get\+Computation\+Result()) -\/ the return value is the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types and you can retrieve further information for the error type via \doxylink{paceval__main_8cpp_a213cfb83c7e76883eef6c9417fd4aeee}{paceval\+Library\+\_\+\+Create\+Error\+Information\+Text()}, e.\+g. to present this to the user\+:
+\begin{DoxyItemize}
+\item PACEVAL\+\_\+\+ERR\+\_\+\+NO\+\_\+\+ERROR = 0\+: No error occured for this computation object.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+INITIALIZE\+\_\+\+LIBRARY\+\_\+\+NOT\+\_\+\+CALLED = 10\+: Initialization of paceval. with \doxylink{paceval__main_8cpp_aad60cbad108b9e96511355e605d6ffaa}{paceval\+\_\+\+Initialize\+Library()} is missing.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+NO\+\_\+\+LICENSE = 11\+: Get in contact with us via \href{mailto:info@paceval.com}{\texttt{ info@paceval.\+com}} for a license.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+CONNECTING\+\_\+\+SERVER = 15\+: This is a placeholder for the error codes when using an external library, e.\+g. like curl.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+PARAMETERS\+\_\+\+SERVER = 16\+: This is a placeholder for the error codes when using an external library, e.\+g. like curl.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNKNOWN\+\_\+\+SIGN\+\_\+\+OR\+\_\+\+FUNCTION = 110\+: The function string contains an unknown sign or subfunction.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+BRACKETS = 111\+: Incorrect brackets are set in the function string.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNKNOWN\+\_\+\+CONSTANT\+\_\+\+OR\+\_\+\+VARIABLE = 112\+: The function string contains an unknown constant factor or variable.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+COMMENT = 113\+: An invalid comment in the function string.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+NUMBER\+\_\+\+OF\+\_\+\+VARIABLES = 114\+: The specified number of variables is not the number of the declared variables.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+MISPLACED\+\_\+\+SIGN\+\_\+\+CALCULATION = 115\+: An operator is set incorrectly in the function string.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNEXPECTED\+\_\+\+END = 116\+: An unexpected end in the function string.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+WRONGLY\+\_\+\+USED\+\_\+\+FUNCTION = 117\+: A subfunction is set incorrectly in the function string.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+NO\+\_\+\+USER\+\_\+\+FUNCTION = 118\+: No user function and no operations.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNKNOWN\+\_\+\+CHARACTER = 119\+: The function string contains an unknown character.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+WRONGLY\+\_\+\+USED\+\_\+\+CONSTANT\+\_\+\+OR\+\_\+\+VALUE = 120\+: A constant factor or value is not correctly used.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+MISSING\+\_\+\+OPERATOR = 121\+: An operator is missing for operands.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+OUT\+\_\+\+OF\+\_\+\+MEMORY = 122\+: Analysis out of memory.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+UNKNOWN\+\_\+\+OBJECT\+\_\+\+TYPE = 124\+: An invalid object-\/type was passed.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+MEMORY\+\_\+\+CLEANUP = 126\+: An error has occured in the memory cleanup.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+USER\+\_\+\+ABORT = 127\+: The analysis was aborted by the user.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+MATH\+\_\+\+OS\+\_\+\+NOT\+\_\+\+SUPPORTED = 128\+: The operating system may not be supported due to known mathematical errors.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+ANALYSIS\+\_\+\+NO\+\_\+\+COMMUNITY\+\_\+\+FEATURE = 130\+: This feature is not supported in the free version of paceval.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+HANDLE\+\_\+\+INVALID = 140\+: An invalid handle was passed.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+MULTIPLICATION = 141\+: A multiplication causes an error.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+DIVISION = 142\+: A division causes an error.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+FUNCTION = 143\+: The result of the calculation is not valid.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+ADDITION = 144\+: An addition causes an error.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+SUBTRACTION = 145\+: A subtraction causes an error.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+UNSPECIFIED = 150\+: A not specified user-\/function causes an error.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+INTERVAL\+\_\+\+RESULT = 151\+: The interval result of the calculation is not trusted.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+USER\+\_\+\+ABORT = 152\+: The calculation was aborted by the user.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+RESULT = 153\+: The result of the calculation is not trusted.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+BUSY = 154\+: The referenced computation object is busy.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+USER\+\_\+\+COMPILER\+\_\+\+NOT\+\_\+\+SUPPORTS\+\_\+\+LONG\+\_\+\+DOUBLE = 160\+: Your compiler does not support long double floating-\/point data type.
+\item PACEVAL\+\_\+\+ERR\+\_\+\+COMPUTATION\+\_\+\+PRECHECK\+\_\+\+MULTIPLE = 161\+: Precheck failed for multiple operations, e.\+g. a handle may only occur once.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em last\+Error\+\_\+str\+Operator\+\_\+out} & buffer to get the operator causing the error (annotation\+: maximum size of the retrieved null-\/terminated string is 255 per "{}\#define PACEVAL\+\_\+\+MAXERR 255"{}, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}) \\
+\hline
+{\em last\+Error\+\_\+e\+Position\+\_\+out} & position in the function where the error occurred\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_ac0cc5e90a94ccdb637747d559cafe3bd}{paceval\+\_\+\+Get\+Error\+Information()} (Windows DLLs and static libraries)\+: returns the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error type value\+: possible errors are analysis and computation errors (errors during the analysis should be checked after creation of the object like \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} while errors during the computation should be checked after a calculation, e.\+g. paceval\+Library\+\_\+\+Get\+Computation\+Result()) -\/ the return value is the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types and you can retrieve further information for the error type via \doxylink{paceval__main_8cpp_a213cfb83c7e76883eef6c9417fd4aeee}{paceval\+Library\+\_\+\+Create\+Error\+Information\+Text()}, e.\+g. to present this to the user\+:
 \begin{DoxyItemize}
 \item PACEVAL\+\_\+\+ERR\+\_\+\+NO\+\_\+\+ERROR = 0\+: No error occured for this computation object.
 \item PACEVAL\+\_\+\+ERR\+\_\+\+FATAL\+\_\+\+INITIALIZE\+\_\+\+LIBRARY\+\_\+\+NOT\+\_\+\+CALLED = 10\+: Initialization of paceval. with \doxylink{paceval__main_8cpp_aad60cbad108b9e96511355e605d6ffaa}{paceval\+\_\+\+Initialize\+Library()} is missing.
@@ -914,6 +1277,13 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a5cd9aa
 \begin{DoxyParams}{Parameters}
 {\em error\+Type\+\_\+in} & specifies the the error type value \\
 \hline
+{\em error\+Type\+\_\+str\+Message\+\_\+out} & buffer to get message describing the error (annotation\+: maximum size of the retrieved null-\/terminated string is 255 per "{}\#define PACEVAL\+\_\+\+MAXERR 255"{}, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h})\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a5cd9aa61dffec4c9a1edc7ff9f5cb7da}{paceval\+\_\+\+Get\+Error\+Type\+Message()} (Windows DLLs and static libraries)\+: a helper function to create an error message in text from an error type and It can be used to provide more information to the user -\/ the return value is the length of last\+Error\+\_\+str\+Message\+\_\+out 
+\begin{DoxyParams}{Parameters}
+{\em error\+Type\+\_\+in} & specifies the the error type value \\
+\hline
 {\em error\+Type\+\_\+str\+Message\+\_\+out} & buffer to get message describing the error (annotation\+: maximum size of the retrieved null-\/terminated string is 255 per "{}\#define PACEVAL\+\_\+\+MAXERR 255"{}, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}) \\
 \hline
 \end{DoxyParams}
@@ -923,7 +1293,12 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a5cd9aa
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_GetIsError()}{pacevalLibrary\_GetIsError()}}
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Get\+Is\+Error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_aeb160cc6b1cd758372a45264f3e92ee7}{paceval\+\_\+\+Get\+Is\+Error()} (Windows)\+: determines whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} -\/ if an error has occurred, the return value is TRUE, otherwise it is FALSE 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_aeb160cc6b1cd758372a45264f3e92ee7}{paceval\+\_\+\+Get\+Is\+Error()} (Windows)\+: determines whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} -\/ if an error has occurred, the return value is TRUE, otherwise it is FALSE 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_aeb160cc6b1cd758372a45264f3e92ee7}{paceval\+\_\+\+Get\+Is\+Error()} (Windows DLLs and static libraries)\+: determines whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} -\/ if an error has occurred, the return value is TRUE, otherwise it is FALSE 
 \begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
 \hline
@@ -959,7 +1334,12 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_Initialize()}{pacevalLibrary\_Initialize()}}
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Initialize (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{init\+String\+\_\+in }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_aad60cbad108b9e96511355e605d6ffaa}{paceval\+\_\+\+Initialize\+Library()} (Windows)\+: initializes the paceval-\/library -\/ you must call \doxylink{paceval__c_computation_8h_a02d68e2866a1f8c4228805d6479f9197}{paceval\+Library\+\_\+\+Initialize()} before you use paceval-\/\+API function calls in your code -\/ if the function succeeds, the return value is TRUE, otherwise it is FALSE 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_aad60cbad108b9e96511355e605d6ffaa}{paceval\+\_\+\+Initialize\+Library()} (Windows)\+: initializes the paceval-\/library -\/ you must call \doxylink{paceval__main_8cpp_a02d68e2866a1f8c4228805d6479f9197}{paceval\+Library\+\_\+\+Initialize()} before you use paceval-\/\+API function calls in your code -\/ if the function succeeds, the return value is TRUE, otherwise it is FALSE 
+\begin{DoxyParams}{Parameters}
+{\em init\+String\+\_\+in} & specifies a string that can be used for additional parameterization of the library, e.\+g. a string for licensing (annotation\+: if the string is not used, NULL can be passed)\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_aad60cbad108b9e96511355e605d6ffaa}{paceval\+\_\+\+Initialize\+Library()} (Windows DLLs and static libraries)\+: initializes the paceval-\/library -\/ you must call \doxylink{paceval__main_8cpp_a02d68e2866a1f8c4228805d6479f9197}{paceval\+Library\+\_\+\+Initialize()} before you use paceval-\/\+API function calls in your code -\/ if the function succeeds, the return value is TRUE, otherwise it is FALSE 
 \begin{DoxyParams}{Parameters}
 {\em init\+String\+\_\+in} & specifies a string that can be used for additional parameterization of the library, e.\+g. a string for licensing (annotation\+: if the string is not used, NULL can be passed) \\
 \hline
@@ -1013,6 +1393,13 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a2b65fe
 \begin{DoxyParams}{Parameters}
 {\em destination\+String\+\_\+in} & points to the buffer that will receive the string of the coverted floating point number (annotation\+: in case of an error the buffer is not specified) \\
 \hline
+{\em float\+\_\+in} & the floating point number with precision long double to convert\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a2b65fedcf0fe473b8fa8c7cb1ffe2d04}{paceval\+\_\+ld\+Convert\+Float\+To\+String()} (Windows DLLs and static libraries)\+: converts a floating point number with precision long double to a string -\/ if the function succeeds, the return value is \texorpdfstring{$>$}{>}0 and gives the precision of the conversion, otherwise the return value is \texorpdfstring{$<$}{<}0 
+\begin{DoxyParams}{Parameters}
+{\em destination\+String\+\_\+in} & points to the buffer that will receive the string of the coverted floating point number (annotation\+: in case of an error the buffer is not specified) \\
+\hline
 {\em float\+\_\+in} & the floating point number with precision long double to convert \\
 \hline
 \end{DoxyParams}
@@ -1026,7 +1413,22 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a8b350b
 \begin{DoxyParams}{Parameters}
 {\em source\+String\+\_\+in} & the string to convert \\
 \hline
-{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em err\+Position\+\_\+out} & position in the string where the error occurred \\
+\hline
+{\em use\+Interval\+\_\+in} & enables or disables the Trusted Interval Computation, TINC (paceval specific) for the conversion \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & if Trusted Interval Computation was enabled this retrieves the minimum/lower interval limit of the conversion (annotation\+: in case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & if Trusted Interval Computation was enabled this retrieves the maximum/upper interval limit of the conversion (annotation\+: in case of an error the value is not specified)\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a8b350b303088c466d8e33af2cb993da1}{paceval\+\_\+ld\+Convert\+String\+To\+Float()} (Windows DLLs and static libraries)\+: converts a string to a floating point number with precision long double (in case a caluclation is given in the string the result is converted) -\/ if the function succeeds, the return value is the result of the conversion (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em source\+String\+\_\+in} & the string to convert \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 {\em err\+Position\+\_\+out} & position in the string where the error occurred \\
 \hline
@@ -1043,7 +1445,18 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a8b350b
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldGetComputationResult()}{pacevalLibrary\_ldGetComputationResult()}}
 {\footnotesize\ttfamily long double paceval\+Library\+\_\+ld\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a25b7909057621f8ec8c52312b692f80a}{paceval\+\_\+ld\+Get\+Computation\+Result()} (Windows)\+: performs a calculation with precision long double on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a25b7909057621f8ec8c52312b692f80a}{paceval\+\_\+ld\+Get\+Computation\+Result()} (Windows)\+: performs a calculation with precision long double on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
+\hline
+{\em values\+\_\+in} & array of long double defining the values of the variables \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & this buffer retrieves the maximum/upper limit of the computation (annotation\+: In case of an error the value is not specified)\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a25b7909057621f8ec8c52312b692f80a}{paceval\+\_\+ld\+Get\+Computation\+Result()} (Windows DLLs and static libraries)\+: performs a calculation with precision long double on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
 \begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
 \hline
@@ -1060,7 +1473,7 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a25b790
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldGetComputationResultExt()}{pacevalLibrary\_ldGetComputationResultExt()}}
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+ld\+Get\+Computation\+Result\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_aa1ced7b5bfb432bc46e7c77ec7e70a08}{paceval\+\_\+ld\+Get\+Computation\+Result\+Ext()} (Windows)\+: performs multiple calculations with precision long double in parallel on a single \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_aa1ced7b5bfb432bc46e7c77ec7e70a08}{paceval\+\_\+ld\+Get\+Computation\+Result\+Ext()} (Windows)\+: performs multiple calculations with precision long double in parallel on a single \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} with the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
 \begin{DoxyParams}{Parameters}
 {\em values\+\_\+in} & array of long double defining the multiple values of the variables \\
 \hline
@@ -1072,7 +1485,22 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_aa1ced7
 \hline
 {\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
 \hline
-{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_aa1ced7b5bfb432bc46e7c77ec7e70a08}{paceval\+\_\+ld\+Get\+Computation\+Result\+Ext()} (Windows DLLs and static libraries)\+: performs multiple calculations with precision long double in parallel on a single \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} with the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em values\+\_\+in} & array of long double defining the multiple values of the variables \\
+\hline
+{\em number\+Of\+Calculations\+\_\+in} & specifies the number of different calculations you want to run and this number specifies the size of the array values\+\_\+in, e.\+g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values\+\_\+in must be 50\texorpdfstring{$\ast$}{*}1000 (the order of the array values\+\_\+in must be variable values for the first calculation, then variable values for the second calculation and so on) \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the computation with the multiple values of the variables (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 \end{DoxyParams}
 \Hypertarget{paceval__c_computation_8h_a6de3623e77430fdd803d71c09f05aba6}\label{paceval__c_computation_8h_a6de3623e77430fdd803d71c09f05aba6} 
@@ -1081,7 +1509,7 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_aa1ced7
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldGetMultipleComputationsResults()}{pacevalLibrary\_ldGetMultipleComputationsResults()}}
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+ld\+Get\+Multiple\+Computations\+Results (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{long double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_afabef4b584a635a79afdc5034a1397af}{paceval\+\_\+ld\+Get\+Multiple\+Computations\+Results()} (Windows)\+: performs multiple calculations with precision long double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with the same set of values for these variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_afabef4b584a635a79afdc5034a1397af}{paceval\+\_\+ld\+Get\+Multiple\+Computations\+Results()} (Windows)\+: performs multiple calculations with precision long double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with the same set of values for these variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
 \begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
 \hline
@@ -1095,7 +1523,24 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_afabef4
 \hline
 {\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
 \hline
-{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_afabef4b584a635a79afdc5034a1397af}{paceval\+\_\+ld\+Get\+Multiple\+Computations\+Results()} (Windows DLLs and static libraries)\+: performs multiple calculations with precision long double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with the same set of values for these variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em values\+\_\+in} & array of long double defining the values of the variables \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the multiple computations (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 \end{DoxyParams}
 \Hypertarget{paceval__c_computation_8h_a190c7daca86f625b5d42b538faa5dfb4}\label{paceval__c_computation_8h_a190c7daca86f625b5d42b538faa5dfb4} 
@@ -1104,7 +1549,7 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_afabef4
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldGetMultipleComputationsResultsExt()}{pacevalLibrary\_ldGetMultipleComputationsResultsExt()}}
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+ld\+Get\+Multiple\+Computations\+Results\+Ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Ofpaceval\+Computations\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]},  }\item[{unsigned long}]{number\+Of\+Calculations\+\_\+in,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Results\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Results\+\_\+out,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Types\+\_\+out }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ac5dc620a3ba9d03ca3f80f47900fff7d}{paceval\+\_\+ld\+Get\+Multiple\+Computations\+Results\+Ext()} (Windows)\+: performs multiple calculations with precision long double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ac5dc620a3ba9d03ca3f80f47900fff7d}{paceval\+\_\+ld\+Get\+Multiple\+Computations\+Results\+Ext()} (Windows)\+: performs multiple calculations with precision long double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
 \begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
 \hline
@@ -1120,7 +1565,26 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ac5dc62
 \hline
 {\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
 \hline
-{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_ac5dc620a3ba9d03ca3f80f47900fff7d}{paceval\+\_\+ld\+Get\+Multiple\+Computations\+Results\+Ext()} (Windows DLLs and static libraries)\+: performs multiple calculations with precision long double in parallel on multiple \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects using the variables declared by \doxylink{paceval__main_8cpp_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with multiple sets of values for those variables -\/ the return value indicates \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors and you should check the array error\+Types\+\_\+out in this case 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computations\+\_\+in} & array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em number\+Ofpaceval\+Computations\+\_\+in} & specifies the number of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} objects \\
+\hline
+{\em values\+\_\+in} & array of long double defining the values of the variables \\
+\hline
+{\em number\+Of\+Calculations\+\_\+in} & specifies the number of different calculations you want to run and this number specifies the size of the array values\+\_\+in, e.\+g. if the number of variables declared is 50 and the number of calculations is 1000 the size of the array values\+\_\+in must be 50\texorpdfstring{$\ast$}{*}1000 (the order of the array values\+\_\+in must be variable values for the first calculation, then variable values for the second calculation and so on) \\
+\hline
+{\em results\+\_\+out} & pointer to an array for the results of the multiple computations (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Min\+Results\+\_\+out} & pointer to an array for the minimum/lower interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em trusted\+Max\+Results\+\_\+out} & pointer to an array for the maximum/upper interval limits (annotation\+: in case of an error the values are not specified) \\
+\hline
+{\em error\+Types\+\_\+out} & pointer to an array of the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object errors, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 \end{DoxyParams}
 \Hypertarget{paceval__c_computation_8h_aa40621a97f021de5879436c70a9946d5}\label{paceval__c_computation_8h_aa40621a97f021de5879436c70a9946d5} 
@@ -1129,11 +1593,26 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_ac5dc62
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldmathv()}{pacevalLibrary\_ldmathv()}}
 {\footnotesize\ttfamily long double paceval\+Library\+\_\+ldmathv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a64525f2fbe1a343cc5d8fb1d4061c595}{paceval\+\_\+ldmathv()} (Windows)\+: a convenience function to get results of computations in a single step with precision long double -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a64525f2fbe1a343cc5d8fb1d4061c595}{paceval\+\_\+ldmathv()} (Windows)\+: a convenience function to get results of computations in a single step with precision long double -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
 \begin{DoxyParams}{Parameters}
-{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
 \hline
-{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em values\+\_\+in} & array of long double defining the values of the variables\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a64525f2fbe1a343cc5d8fb1d4061c595}{paceval\+\_\+ldmathv()} (Windows DLLs and static libraries)\+: a convenience function to get results of computations in a single step with precision long double -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 {\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
 \hline
@@ -1150,11 +1629,30 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a64525f
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_ldmathvi()}{pacevalLibrary\_ldmathvi()}}
 {\footnotesize\ttfamily long double paceval\+Library\+\_\+ldmathvi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function\+String\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Variables\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{variables\+\_\+in,  }\item[{long double}]{values\+\_\+in\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
-Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a4c9f944fc645a20a49b19a6a8077c478}{paceval\+\_\+ldmathvi()} (Windows)\+: a convenience function to get results of computations in a single step with precision long double and with Trusted Interval Computation, TINC (paceval specific) -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__c_computation_8h_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a4c9f944fc645a20a49b19a6a8077c478}{paceval\+\_\+ldmathvi()} (Windows)\+: a convenience function to get results of computations in a single step with precision long double and with Trusted Interval Computation, TINC (paceval specific) -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
 \begin{DoxyParams}{Parameters}
-{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__c_computation_8h_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
 \hline
-{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__c_computation_8h_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
+\hline
+{\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em trusted\+Max\+Result\+\_\+out} & this buffer retrieves the maximum/upper limit of the computation (annotation\+: In case of an error the value is not specified) \\
+\hline
+{\em function\+String\+\_\+in} & points to a null-\/terminated string to be used as the function to work with \\
+\hline
+{\em number\+Of\+Variables\+\_\+in} & specifies the number of variables to work with (e.\+g. if the variables are "{}x\+Value y\+Value z\+Value"{} or "{}x y z"{} number\+Of\+Variables\+\_\+in must be set to 3) \\
+\hline
+{\em variables\+\_\+in} & points to a null-\/terminated string specifying the names of the working variables (generally the variables must be separated by a blank, e.\+g. the variables x\+Value, y\+Value, z\+Value must be set with "{}x\+Value y\+Value z\+Value"{} or the variables x, y, z must be set with "{}x y z"{}) \\
+\hline
+{\em values\+\_\+in} & array of long double defining the values of the variables\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a4c9f944fc645a20a49b19a6a8077c478}{paceval\+\_\+ldmathvi()} (Windows DLLs and static libraries)\+: a convenience function to get results of computations in a single step with precision long double and with Trusted Interval Computation, TINC (paceval specific) -\/ if the function succeeds, the return value is the result of the computation (\doxylink{paceval__main_8cpp_ab8edc967f7ef2d67b95c3139d9343204}{paceval\+Library\+\_\+\+Get\+Is\+Error()} should be called to check whether an error has occurred and to get more information about the error, call \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()}) (annotation\+: in case of an error the return value is not specified) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in} & pointer to a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object (if handle\+\_\+paceval\+Computation\+\_\+out\+\_\+in is not NULL this buffer will retrieve the created \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and can be used again and this will improve the performance -\/\texorpdfstring{$>$}{>} in this case the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object will not be deleted and you must call \doxylink{paceval__main_8cpp_a3b5857bde82baf2316dd2a674436055f}{paceval\+Library\+\_\+\+Delete\+Computation()}) \\
+\hline
+{\em error\+Type\+\_\+out} & points to the buffer that will receive the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object error, see also paceval\+\_\+e\+Error\+Types or \doxylink{paceval__main_8cpp_ad9f3742517b681da6b76a03cd3e6df5d}{paceval\+Library\+\_\+\+Get\+Error\+Information()} \\
 \hline
 {\em trusted\+Min\+Result\+\_\+out} & this buffer retrieves the minimum/lower interval limit of the computation (annotation\+: In case of an error the value is not specified) \\
 \hline
@@ -1193,6 +1691,27 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a27886e
 \hline
 {\em values\+String\+\_\+out} & points to the buffer for the values seperated by semicolons (;) in one string (set values\+String\+\_\+out to NULL to receive the length at first with values\+String\+Length\+\_\+out) \\
 \hline
+{\em use\+Interval\+\_\+out} & points to the buffer specifying whether Trusted Interval Computation is enabled or not\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a27886e80efbb9b9b3d18cc34ed90168d}{paceval\+\_\+\+Read\+Parameters\+From\+XML()} (Windows DLLs and static libraries)\+: a helper function to read XML data representing a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object and you can use it to read data representing a computation from a file system or to receive it via a network or channel -\/ in case of an error the return value is \texorpdfstring{$<$}{<}0 
+\begin{DoxyParams}{Parameters}
+{\em paceval\+\_\+str\+XML\+\_\+in} & pointer to the XML data \\
+\hline
+{\em function\+String\+Length\+\_\+out} & the length of the function string \\
+\hline
+{\em variables\+String\+Length\+\_\+out} & the length of the variable names in one string \\
+\hline
+{\em number\+Of\+Variables\+\_\+out} & the number of variables \\
+\hline
+{\em values\+String\+Length\+\_\+out} & the length of the values seperated by blanks in one string \\
+\hline
+{\em function\+String\+\_\+out} & points to the buffer for the function string (set function\+String\+\_\+out to NULL to receive the length at first with function\+String\+Length\+\_\+out) \\
+\hline
+{\em variables\+\_\+out} & points to the buffer for the variable names in one string (set variables\+\_\+out to NULL to receive the length at first with variables\+String\+Length\+\_\+out) \\
+\hline
+{\em values\+String\+\_\+out} & points to the buffer for the values seperated by semicolons (;) in one string (set values\+String\+\_\+out to NULL to receive the length at first with values\+String\+Length\+\_\+out) \\
+\hline
 {\em use\+Interval\+\_\+out} & points to the buffer specifying whether Trusted Interval Computation is enabled or not \\
 \hline
 \end{DoxyParams}
@@ -1203,6 +1722,15 @@ Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a27886e
 {\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Set\+Callback\+User\+Function (\begin{DoxyParamCaption}\item[{unsigned int}]{number\+User\+Function\+\_\+in,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{single\+Function\+String\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_a0d991e803d57a927030e18b762b6aae5}{paceval\+\_\+callback\+User\+Function\+Type}} \texorpdfstring{$\ast$}{*}}]{paceval\+\_\+callback\+User\+Function\+\_\+in }\end{DoxyParamCaption})}
 
 Foreign function interface (FFI) version of \doxylink{paceval__main_8cpp_a61afdee8752fab8e20c5982959ee9bcd}{paceval\+\_\+\+Set\+Callback\+User\+Function()} (Windows)\+: allows the definition of up to 1000 custom user functions. Depending on your requirements, you could a) add mathematical functions that enable new functions or b) add faster mathematical functions that are not as accurate as those used by paceval -\/ if the function succeeds, the return value is TRUE, otherwise it is FALSE 
+\begin{DoxyParams}{Parameters}
+{\em number\+User\+Function\+\_\+in} & specifies the number of the user function to set the single function for, e.\+g. 1 \\
+\hline
+{\em single\+Function\+String\+\_\+in} & points to a null-\/terminated string specifying the user-\/defined single function, e.\+g. "{}my\+\_\+function1"{} \\
+\hline
+{\em paceval\+\_\+callback\+User\+Function\+\_\+in} & a user-\/defined callback function to handle the computation for the specific single function, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}\\
+\hline
+\end{DoxyParams}
+Foreign function interface (FFI -\/ shared libraries) version of \doxylink{paceval__main_8cpp_a61afdee8752fab8e20c5982959ee9bcd}{paceval\+\_\+\+Set\+Callback\+User\+Function()} (Windows DLLs and static libraries)\+: allows the definition of up to 1000 custom user functions. Depending on your requirements, you could a) add mathematical functions that enable new functions or b) add faster mathematical functions that are not as accurate as those used by paceval -\/ if the function succeeds, the return value is TRUE, otherwise it is FALSE 
 \begin{DoxyParams}{Parameters}
 {\em number\+User\+Function\+\_\+in} & specifies the number of the user function to set the single function for, e.\+g. 1 \\
 \hline
