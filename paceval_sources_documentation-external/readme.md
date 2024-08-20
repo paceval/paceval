@@ -1,6 +1,7 @@
 # paceval. the system independent mathematical engine 4.25
 
-Documentation of the paceval. source-code, Copyright ©1994-2024. Version 1.x, 2.x, 3.x, 4.x ©1994-2024 Joerg Koenning & paceval.[Registered Trade Mark]  
+Documentation of the paceval. source-code, Copyright ©1994-2024. Version 1.x, 2.x, 3.x, 4.x 
+©1994-2024 Joerg Koenning & paceval.[Registered Trade Mark]  
 All rights reserved., Author(s) : Joerg Koenning
 
 External documentation -
