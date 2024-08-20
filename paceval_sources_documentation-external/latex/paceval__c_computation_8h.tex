@@ -39,7 +39,7 @@ bool \mbox{\hyperlink{paceval__c_computation_8h_a12793cbe05b3744dd4095b6d40f7f47
 \item 
 bool \mbox{\hyperlink{paceval__c_computation_8h_aa89c24d1a11baea7ef75d421f640c494}{paceval\+\_\+precheck\+Multiple\+Computations}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computations\+\_\+in\mbox{[}$\,$\mbox{]}, unsigned long number\+Ofpaceval\+Computations\+\_\+in)
 \item 
-bool \mbox{\hyperlink{paceval__c_computation_8h_a5aec719c96dcaf284f4de22b5a2994a4}{paceval\+Library\+\_\+\+Internal\+Get\+Computation\+Result}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, unsigned long number\+Of\+Threads\+In\+Use\+\_\+in, \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}} use\+Calculation\+Precision\+\_\+in, void \texorpdfstring{$\ast$}{*}values\+\_\+in, void \texorpdfstring{$\ast$}{*}result\+\_\+out, unsigned int size\+Of\+Long\+Double\+\_\+in, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
+bool \mbox{\hyperlink{paceval__c_computation_8h_ad96cc6b391a94b94e0c11c8d5c04be20}{paceval\+Library\+\_\+\+Internal\+Get\+Computation\+Result}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, unsigned long number\+Of\+Threads\+To\+Use\+\_\+in, \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}} use\+Calculation\+Precision\+\_\+in, void \texorpdfstring{$\ast$}{*}values\+\_\+in, void \texorpdfstring{$\ast$}{*}result\+\_\+out, unsigned int size\+Of\+Long\+Double\+\_\+in, long double \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, long double \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
 \item 
 bool \mbox{\hyperlink{paceval__c_computation_8h_ac9544af8b2008642a290551bbfb31d7b}{paceval\+\_\+c\+Computation\+\_\+do\+Computation}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, const bool single\+Calculation\+\_\+in, const unsigned long start\+Specific\+At\+Node\+\_\+in, const unsigned long end\+Specific\+At\+Node\+\_\+in, const unsigned int size\+Of\+Long\+Double\+\_\+in, const \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}} use\+Calculation\+Precision\+\_\+in, void \texorpdfstring{$\ast$}{*}result\+\_\+out, const unsigned long stack\+Number, bool \texorpdfstring{$\ast$}{*}error\+\_\+out, void \texorpdfstring{$\ast$}{*}error\+Information\+\_\+out, void \texorpdfstring{$\ast$}{*}trusted\+Min\+Result\+\_\+out, void \texorpdfstring{$\ast$}{*}trusted\+Max\+Result\+\_\+out)
 \item 
@@ -1344,17 +1344,17 @@ Foreign function interface (FFI -\/ shared libraries) version of \doxylink{pacev
 {\em init\+String\+\_\+in} & specifies a string that can be used for additional parameterization of the library, e.\+g. a string for licensing (annotation\+: if the string is not used, NULL can be passed) \\
 \hline
 \end{DoxyParams}
-\Hypertarget{paceval__c_computation_8h_a5aec719c96dcaf284f4de22b5a2994a4}\label{paceval__c_computation_8h_a5aec719c96dcaf284f4de22b5a2994a4} 
+\Hypertarget{paceval__c_computation_8h_ad96cc6b391a94b94e0c11c8d5c04be20}\label{paceval__c_computation_8h_ad96cc6b391a94b94e0c11c8d5c04be20} 
 \index{paceval\_cComputation.h@{paceval\_cComputation.h}!pacevalLibrary\_InternalGetComputationResult@{pacevalLibrary\_InternalGetComputationResult}}
 \index{pacevalLibrary\_InternalGetComputationResult@{pacevalLibrary\_InternalGetComputationResult}!paceval\_cComputation.h@{paceval\_cComputation.h}}
 \doxysubsubsection{\texorpdfstring{pacevalLibrary\_InternalGetComputationResult()}{pacevalLibrary\_InternalGetComputationResult()}}
-{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Internal\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Threads\+In\+Use\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}}}]{use\+Calculation\+Precision\+\_\+in,  }\item[{void \texorpdfstring{$\ast$}{*}}]{values\+\_\+in,  }\item[{void \texorpdfstring{$\ast$}{*}}]{result\+\_\+out,  }\item[{unsigned int}]{size\+Of\+Long\+Double\+\_\+in,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool paceval\+Library\+\_\+\+Internal\+Get\+Computation\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}}}]{handle\+\_\+paceval\+Computation\+\_\+in,  }\item[{unsigned long}]{number\+Of\+Threads\+To\+Use\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}}}]{use\+Calculation\+Precision\+\_\+in,  }\item[{void \texorpdfstring{$\ast$}{*}}]{values\+\_\+in,  }\item[{void \texorpdfstring{$\ast$}{*}}]{result\+\_\+out,  }\item[{unsigned int}]{size\+Of\+Long\+Double\+\_\+in,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
 
 performs a calculation on a \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object with the variables declared by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} and with a set of values for those variables 
 \begin{DoxyParams}{Parameters}
 {\em handle\+\_\+paceval\+Computation\+\_\+in} & identifies the \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \\
 \hline
-{\em number\+Of\+Threads\+In\+Use\+\_\+in} & specifies the number of threads already in use for \doxylink{paceval__main_8cpp_a7ee63b91471db048e4e8c7c9940a0b14}{paceval\+\_\+d\+Get\+Multiple\+Computations\+Results()} \mbox{[}\doxylink{paceval__main_8cpp_afabef4b584a635a79afdc5034a1397af}{paceval\+\_\+ld\+Get\+Multiple\+Computations\+Results()}, \doxylink{paceval__main_8cpp_ad33a118f90a1313031e7724839c6c025}{paceval\+\_\+f\+Get\+Multiple\+Computations\+Results()}\mbox{]} \\
+{\em number\+Of\+Threads\+To\+Use\+\_\+in} & specifies the number of threads to use for \doxylink{paceval__main_8cpp_a7ee63b91471db048e4e8c7c9940a0b14}{paceval\+\_\+d\+Get\+Multiple\+Computations\+Results()} \mbox{[}\doxylink{paceval__main_8cpp_afabef4b584a635a79afdc5034a1397af}{paceval\+\_\+ld\+Get\+Multiple\+Computations\+Results()}, \doxylink{paceval__main_8cpp_ad33a118f90a1313031e7724839c6c025}{paceval\+\_\+f\+Get\+Multiple\+Computations\+Results()}\mbox{]} \\
 \hline
 {\em use\+Calculation\+Precision\+\_\+in} & specifies the precision with which the calculation should be performed \\
 \hline
@@ -1373,14 +1373,14 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{paceval__c_computation_8h_a5aec719c96dcaf284f4de22b5a2994a4_cgraph}
+\includegraphics[width=350pt]{paceval__c_computation_8h_ad96cc6b391a94b94e0c11c8d5c04be20_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{paceval__c_computation_8h_a5aec719c96dcaf284f4de22b5a2994a4_icgraph}
+\includegraphics[width=350pt]{paceval__c_computation_8h_ad96cc6b391a94b94e0c11c8d5c04be20_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{paceval__c_computation_8h_a6632f82a8ba27e0c930f3191a77c60d5}\label{paceval__c_computation_8h_a6632f82a8ba27e0c930f3191a77c60d5} 

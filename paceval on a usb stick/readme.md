@@ -40,7 +40,7 @@ The following measurements provide reference figures for the USB stick with **pa
 |----------|-------------------------|-----------------------|
 | 0.4 Watt | 0.9 Watt                | 1.2 Watt              |
 
-The neural network of our Example 6 for recognizing handwritten numbers is then **executed in less than 1 second on the USB stick** using the paceval-service. And all of this **at an average of around 1 Watt**:![Ein Bild, das Text, Screenshot, Rechteck, Design enthält. Automatisch generierte Beschreibung](media/f9a044f125170f7d39c350150c4c0892.png)
+The neural network of our Example 6 for recognizing handwritten numbers is then **executed in less than 1 second on the USB stick** using the paceval-service. And all of this **at an average of around 1 Watt**: ![Ein Bild, das Text, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung](media/f683f3d0eb45e18a5bbb73c395913756.png)
 
 ## HOW CAN I SET UP A MATHEMATICAL ENGINE ON A VERY SMALL EFFICIENT HARDWARE SYSTEM?
 
