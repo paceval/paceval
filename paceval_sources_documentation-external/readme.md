@@ -1,7 +1,9 @@
-**paceval. the system independent mathematical engine 4.25**
+# paceval. the system independent mathematical engine 4.25
 
-Documentation of the paceval. source-code, Copyright ©1994-2024. Version 1.x, 2.x, 3.x, 4.x ©1994-2024 Joerg Koenning & paceval.[Registered Trade Mark]   
+Documentation of the paceval. source-code, Copyright ©1994-2024. Version 1.x, 2.x, 3.x, 4.x ©1994-2024 Joerg Koenning & paceval.[Registered Trade Mark]  
 All rights reserved., Author(s) : Joerg Koenning
+
+External documentation -
 
 <https://paceval.com/paceval_sources_documentation-external/html/index.html>
 
@@ -32,7 +34,7 @@ The source code performs this processing (this corresponds to the standard cycle
 
 Essentially **only two steps are necessary to perform calculations**. A computation object is first created ("Create" step) by the user passing a function and the set of variable identifiers. Concrete calculations can then be carried out again and again ("Calculate" step) with the object that has been created by the user passing the values for the variables.
 
-![](media/560437e86c2c4b4a7efaf7ae7590233b.png)
+![](media/d62631566ae77c40ec0764e5a0983a4e.png)
 
 In the **"Create" step**, a list of the individual atomic calculation rules is created with the computation object and aligned for maximum parallelizability. The user receives back a unique ID or "token" for the created object. Any number of computation objects can be created. In addition, there is no limit to the length of the function and the number of variables.
 
@@ -62,22 +64,22 @@ The following operators, partial functions and symbols are currently supported:
 ## The list of the main API
 
 -   [paceval_CreateComputation()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ae04cf0ab1cdbd57df334d660578bfdc3) : Creates a computation object for the mathematical function f and the variables x1,x2,...,xn, i.e. in mathematical notation  
-    ![Ein Bild, das Handschrift, Schrift, Text, Kalligrafie enthält. Automatisch generierte Beschreibung](media/1838b2b07c59989d49a88af7cac9a24a.jpeg)  
+    ![](media/c70e08e810984475827c1afd72e9ad7f.png)  
     The user can also set whether calculations should be carried out with or without interval arithmetic. The reference returned when calling CreateComputation is an ID or "token" that uniquely represents the created calculation object, which is managed by paceval. This token can then be used to carry out calculations and queries on the calculation object without having to retransmit the possibly very long function again.
 -   [paceval_dGetComputationResult()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#acbc57bb0edcafb8811d082617b6b1531) [paceval_ldGetComputationResult(), [paceval_fGetComputationResult()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a608786d2771854226f6326ebd9c9c0ab)] : Performs a calculation on a computation object with the variables declared by [paceval_CreateComputation()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ae04cf0ab1cdbd57df334d660578bfdc3) and with a set of values a1,a2,...,an for these variables, i.e. in mathematical notation  
-    ![Ein Bild, das Schrift, Handschrift, Kalligrafie, Typografie enthält. Automatisch generierte Beschreibung](media/b21077775963a2183fe2c11913db8fd6.jpeg)
--   [paceval_dGetComputationResultExt()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a355e632ee48694f62cf038b77b6ca6ac) [paceval_ldGetComputationResultExt(), [paceval_fGetComputationResultExt()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ac0f2e206cb7c87cffa8bb334ee2832d1)] : Performs multiple calculations in parallel on a computation object with the variables declared by [paceval_CreateComputation()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ae04cf0ab1cdbd57df334d660578bfdc3) and with multiple sets of values a11,a12,...,a1n, a21,a22,...,a2n, ..., am1,am2,...,amn for these variables, i.e. in mathematical notation   
-    ![Ein Bild, das Text, Schrift, Handschrift, Kalligrafie enthält. Automatisch generierte Beschreibung](media/14b8a638789f9c7668e3d513e2d457f8.jpeg)  
+    ![](media/3d74dbe750166623d3a0de306efd0af3.png)
+-   [paceval_dGetComputationResultExt()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a355e632ee48694f62cf038b77b6ca6ac) [paceval_ldGetComputationResultExt(), [paceval_fGetComputationResultExt()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ac0f2e206cb7c87cffa8bb334ee2832d1)] : Performs multiple calculations in parallel on a computation object with the variables declared by [paceval_CreateComputation()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ae04cf0ab1cdbd57df334d660578bfdc3) and with multiple sets of values a11,a12,...,a1n, a21,a22,...,a2n, ..., am1,am2,...,amn for these variables, i.e. in mathematical notation  
+    ![](media/5477f65c835763fc2fb69266095cdad0.png)  
     (Annotation: [paceval_dGetComputationResultExt()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a355e632ee48694f62cf038b77b6ca6ac) should be used to get many results at once with a single call. This is useful, for example, when many different values need to be analyzed very quickly or when you plot 2D- or 3D-functions and graphics very fast.)  
-    ![](media/6e0019d9fdb7b3b8ad503a73f0c18886.png)
+    ![](media/84d486f231c3b41d1f1d7897b74f0a1b.png)
 -   [paceval_dGetMultipleComputationsResults()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a7ee63b91471db048e4e8c7c9940a0b14) [paceval_ldGetMultipleComputationsResults(), [paceval_fGetMultipleComputationsResults()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ad33a118f90a1313031e7724839c6c025)] : Performs multiple calculations in parallel on multiple computation objects with the variables declared by [paceval_CreateComputation()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ae04cf0ab1cdbd57df334d660578bfdc3) and with the same set of values a1,a2,...,an for these variables, i.e. in mathematical notation  
-    ![Ein Bild, das Schrift, Handschrift, Text, Kalligrafie enthält. Automatisch generierte Beschreibung](media/354ea78f4a53a0254de8b628ee7553a6.jpeg)  
+    ![Ein Bild, das Schrift, Handschrift, Text, Kalligrafie enthält. Automatisch generierte Beschreibung](media/cfc11bc906e263d706973c4bc5bd74c6.png)  
     (Annotation: [paceval_dGetMultipleComputationsResults()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a7ee63b91471db048e4e8c7c9940a0b14) should be used to obtain results for several computation objects at the same time, e.g. for artificial neural network functions or decision trees, in which several functions with the same variable values are calculated in one step in order to decide on an object.)
 
     ![](media/8a02c70a7f18905d35a61cef9ef427e9.png)
 
 -   [paceval_dGetMultipleComputationsResultsExt()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a5cc7887ed6b733722bd93a7669cf7a34) [paceval_ldGetMultipleComputationsResultsExt(), [paceval_fGetMultipleComputationsResultsExt()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ad459ea225b88689869085d7995c8b0d8)] : Performs multiple calculations in parallel on multiple computation objects using the variables declared by [paceval_CreateComputation()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ae04cf0ab1cdbd57df334d660578bfdc3) and with multiple sets of values a11,a12,...,a1n, a21,a22,...,a2n, ..., am1,am2,...,amn for these variables, i.e. in mathematical notation  
-    ![Ein Bild, das Text, Schrift, Handschrift, weiß enthält. Automatisch generierte Beschreibung](media/b409a1e8ccf4cfaedb059df31cd5e3c5.jpeg)  
+    ![Ein Bild, das Schrift, Text, Handschrift, weiß enthält. Automatisch generierte Beschreibung](media/929ec3a9301d7eff83dc2fe5a59ce126.png)  
     (Annotation: [paceval_dGetMultipleComputationsResultsExt()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a5cc7887ed6b733722bd93a7669cf7a34) should be used to obtain results for several computation objects at the same time and to carry out as many different evaluations as possible at once, e.g. for artificial neural network functions or decision trees, in which several functions with different variable values are calculated in one step in order to decide on several objects at the same time.
 -   [paceval_DeleteComputation()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a0a5a920a210ff6914dd5742f096635a2) : Deletes a computation object with the given token.
 
