@@ -1,5 +1,21 @@
 var searchData=
 [
-  ['zerocachingjump_0',['zeroCachingJump',['../structpaceval__s_node_specific_data.html#a40e60877d68f379cd56e511c3a668f11',1,'paceval_sNodeSpecificData']]],
-  ['zerocachingjumpavailable_1',['zeroCachingJumpAvailable',['../structpaceval__s_node_specific_data.html#a8ebc779f8d2e12a815f1757b4bddb9b2',1,'paceval_sNodeSpecificData']]]
+  ['valueasdoubleforstack_0',['valueAsDoubleForStack',['../structpaceval__s_f_p_g_a_value_field_for_stacks.html#a652e3d454d159e2e259ee71aa241f770',1,'paceval_sFPGAValueFieldForStacks']]],
+  ['valueasfloatforstack_1',['valueAsFloatForStack',['../structpaceval__s_f_p_g_a_value_field_for_stacks.html#ad8d9c58bb50eb80d847d192428b41a80',1,'paceval_sFPGAValueFieldForStacks']]],
+  ['valuefield1_2',['valueField1',['../structpaceval__s_f_p_g_a_node_data.html#a4c51f77d14773f5e8e97d65b74719bef',1,'paceval_sFPGANodeData']]],
+  ['valuefield2_3',['valueField2',['../structpaceval__s_f_p_g_a_node_data.html#a1f41f21fa5ca76948375e38b0ebeffd3',1,'paceval_sFPGANodeData']]],
+  ['valuelevelmultithreadasdouble_4',['valueLevelMultithreadAsDouble',['../structpaceval__s_lookahead_cache_data.html#addcaf81c86ce603ff07e4344b207aa12',1,'paceval_sLookaheadCacheData']]],
+  ['valuelevelmultithreadasfloat_5',['valueLevelMultithreadAsFloat',['../structpaceval__s_lookahead_cache_data.html#a19984fa6c950ddf62d212cc0f627b567',1,'paceval_sLookaheadCacheData']]],
+  ['valuelevelmultithreadaslongdouble_6',['valueLevelMultithreadAsLongDouble',['../structpaceval__s_lookahead_cache_data.html#a0be243f20f48cf2900255832d027e6fd',1,'paceval_sLookaheadCacheData']]],
+  ['valuelevelmultithreadmaxvalue_7',['valueLevelMultithreadMaxValue',['../structpaceval__s_lookahead_cache_data.html#a2b6635bea092bdaee158690132255d75',1,'paceval_sLookaheadCacheData']]],
+  ['valuelevelmultithreadminvalue_8',['valueLevelMultithreadMinValue',['../structpaceval__s_lookahead_cache_data.html#a68f33655800ba136506d37dd660872da',1,'paceval_sLookaheadCacheData']]],
+  ['valuenode1_9',['valueNode1',['../structpaceval__s_node_base_data.html#ad64604321ab1177e58a65a51c0752f6b',1,'paceval_sNodeBaseData']]],
+  ['valuenode2_10',['valueNode2',['../structpaceval__s_node_base_data.html#a187cbf9fce72a1df381599e8a5ab016e',1,'paceval_sNodeBaseData']]],
+  ['valueoperatorasdouble_11',['valueOperatorAsDouble',['../structpaceval__s_value_operator_as_data.html#a450ecab2bed1783928401576fee0b82c',1,'paceval_sValueOperatorAsData']]],
+  ['valueoperatorasdoubleistrusted_12',['valueOperatorAsDoubleIsTrusted',['../structpaceval__s_value_operator_as_data.html#ae60c9adf1b0dd6a3952bfca4f53b889e',1,'paceval_sValueOperatorAsData']]],
+  ['valueoperatorasfloat_13',['valueOperatorAsFloat',['../structpaceval__s_value_operator_as_data.html#a9828d9a91097ee749ebc0d95e8a297d4',1,'paceval_sValueOperatorAsData']]],
+  ['valueoperatorasfloatistrusted_14',['valueOperatorAsFloatIsTrusted',['../structpaceval__s_value_operator_as_data.html#a79ce529b11483a5e15e208f7c11fc5c9',1,'paceval_sValueOperatorAsData']]],
+  ['valueoperatoraslongdouble_15',['valueOperatorAsLongDouble',['../structpaceval__s_value_operator_as_data.html#a14000a3ff2b0f574e4ac66c7537a291b',1,'paceval_sValueOperatorAsData']]],
+  ['valueoperatoraslongdoubleistrusted_16',['valueOperatorAsLongDoubleIsTrusted',['../structpaceval__s_value_operator_as_data.html#a554c57932771e0351811b60e7c9e85b1',1,'paceval_sValueOperatorAsData']]],
+  ['values_5fin_17',['values_in',['../structpaceval__sld_create_computations_thread_data.html#a463fdcf4315d8550199d1e8361e585ad',1,'paceval_sldCreateComputationsThreadData::values_in'],['../structpaceval__sd_create_computations_thread_data.html#aa7a43be9e82d436eba1309dd1cbc41bf',1,'paceval_sdCreateComputationsThreadData::values_in'],['../structpaceval__sf_create_computations_thread_data.html#a94c29457e8d2eb958ed3d972482eb636',1,'paceval_sfCreateComputationsThreadData::values_in']]]
 ];

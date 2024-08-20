@@ -12,5 +12,6 @@ var searchData=
   ['boolean_5fxnor_5fcharacter_9',['BOOLEAN_XNOR_CHARACTER',['../paceval__c_scanner_8h.html#a2763daf22d5fa5706d9799cd78e4f45baa60619e561e83bd3335f2566e2844029',1,'paceval_cScanner.h']]],
   ['boolean_5fxnor_5fsign_10',['BOOLEAN_XNOR_SIGN',['../paceval__c_common_data_8h.html#ad9735d0e77b3ab4d3f71e690c5832670af458840c540ef1e07923b4cb1c4d08a3',1,'paceval_cCommonData.h']]],
   ['boolean_5fxor_5fcharacter_11',['BOOLEAN_XOR_CHARACTER',['../paceval__c_scanner_8h.html#a2763daf22d5fa5706d9799cd78e4f45ba52baaa07d718553a74cc46f14ad0da93',1,'paceval_cScanner.h']]],
-  ['boolean_5fxor_5fsign_12',['BOOLEAN_XOR_SIGN',['../paceval__c_common_data_8h.html#ad9735d0e77b3ab4d3f71e690c5832670a9091678e654f98143f7ebe68e8171540',1,'paceval_cCommonData.h']]]
+  ['boolean_5fxor_5fsign_12',['BOOLEAN_XOR_SIGN',['../paceval__c_common_data_8h.html#ad9735d0e77b3ab4d3f71e690c5832670a9091678e654f98143f7ebe68e8171540',1,'paceval_cCommonData.h']]],
+  ['bracketscounter_13',['bracketsCounter',['../classpaceval__c_scanner.html#a14896ab24be7adb365fe58260d45ca25',1,'paceval_cScanner']]]
 ];

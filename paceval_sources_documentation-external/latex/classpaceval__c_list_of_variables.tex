@@ -15,7 +15,7 @@ Inheritance diagram for paceval\+\_\+c\+List\+Of\+Variables\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=278pt]{classpaceval__c_list_of_variables__inherit__graph}
+\includegraphics[height=550pt]{classpaceval__c_list_of_variables__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -54,6 +54,16 @@ long \mbox{\hyperlink{classpaceval__c_list_of_variables_a5e42c1290df8cddf0476214
 void \mbox{\hyperlink{classpaceval__c_registered_object_a342114d4bb2f86b2c4cfecb300925878}{set\+Register\+Position}} (unsigned long register\+Position\+\_\+in)
 \item 
 unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a98739f041c398e860d9c7f9118fcfe0f}{get\+Register\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_list_of_variables_ab36ee815251468c00540ad9d9ee98ffe}{get\+Variable}} (unsigned long position\+\_\+in)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpaceval__c_list_of_pointer}{paceval\+\_\+c\+List\+Of\+Pointer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_list_of_variables_ac207c73c3989429801a6aac175aa6472}{list\+Of\+Pointers}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
@@ -168,6 +178,31 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classpaceval__c_list_of_variables_acb131838a64a3759c095b51aeeb80fad_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{classpaceval__c_list_of_variables_ab36ee815251468c00540ad9d9ee98ffe}\label{classpaceval__c_list_of_variables_ab36ee815251468c00540ad9d9ee98ffe} 
+\index{paceval\_cListOfVariables@{paceval\_cListOfVariables}!getVariable@{getVariable}}
+\index{getVariable@{getVariable}!paceval\_cListOfVariables@{paceval\_cListOfVariables}}
+\doxysubsubsection{\texorpdfstring{getVariable()}{getVariable()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} paceval\+\_\+c\+List\+Of\+Variables\+::get\+Variable (\begin{DoxyParamCaption}\item[{unsigned long}]{position\+\_\+in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+gets the variable identifier at a position in the list 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+in} & specifies the position in the list \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_variables_ab36ee815251468c00540ad9d9ee98ffe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_variables_ab36ee815251468c00540ad9d9ee98ffe_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classpaceval__c_list_of_variables_a5e42c1290df8cddf0476214f88361125}\label{classpaceval__c_list_of_variables_a5e42c1290df8cddf0476214f88361125} 
 \index{paceval\_cListOfVariables@{paceval\_cListOfVariables}!identifyVariablePositionfromString@{identifyVariablePositionfromString}}
 \index{identifyVariablePositionfromString@{identifyVariablePositionfromString}!paceval\_cListOfVariables@{paceval\_cListOfVariables}}
@@ -214,6 +249,15 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{center}
 \end{figure}
 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classpaceval__c_list_of_variables_ac207c73c3989429801a6aac175aa6472}\label{classpaceval__c_list_of_variables_ac207c73c3989429801a6aac175aa6472} 
+\index{paceval\_cListOfVariables@{paceval\_cListOfVariables}!listOfPointers@{listOfPointers}}
+\index{listOfPointers@{listOfPointers}!paceval\_cListOfVariables@{paceval\_cListOfVariables}}
+\doxysubsubsection{\texorpdfstring{listOfPointers}{listOfPointers}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpaceval__c_list_of_pointer}{paceval\+\_\+c\+List\+Of\+Pointer}}\texorpdfstring{$\ast$}{*} paceval\+\_\+c\+List\+Of\+Variables\+::list\+Of\+Pointers\hspace{0.3cm}{\ttfamily [private]}}
+
+the list of pointers to the variable identifier strings 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

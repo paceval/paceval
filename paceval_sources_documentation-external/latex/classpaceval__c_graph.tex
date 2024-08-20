@@ -67,6 +67,30 @@ void \mbox{\hyperlink{classpaceval__c_registered_object_a342114d4bb2f86b2c4cfecb
 \item 
 unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a98739f041c398e860d9c7f9118fcfe0f}{get\+Register\+Position}} ()
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+long \mbox{\hyperlink{classpaceval__c_graph_a760c52c269f1cedffbf4a92d8b32d265}{identify\+Outer\+Caching\+Opportunity}} (\mbox{\hyperlink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation}} \texorpdfstring{$\ast$}{*}handle\+\_\+c\+Atomic\+Graph\+Node\+\_\+in, unsigned long handle\+\_\+handle\+\_\+\+Atomic\+Graph\+Position\+\_\+in)
+\item 
+bool \mbox{\hyperlink{classpaceval__c_graph_aff4c05abe7e1e35065a04d67144a0561}{identify\+Multiply\+By\+Zero\+Caching\+Opportunity}} (\mbox{\hyperlink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node}} \texorpdfstring{$\ast$}{*}handle\+\_\+c\+Atomic\+Graph\+Node\+\_\+in, unsigned long handle\+\_\+handle\+\_\+\+Atomic\+Graph\+Position\+\_\+in)
+\item 
+bool \mbox{\hyperlink{classpaceval__c_graph_a2e688868f7350a4288e211507efe15f2}{identify\+Multithread\+Opportunity}} (\mbox{\hyperlink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node}} \texorpdfstring{$\ast$}{*}handle\+\_\+c\+Atomic\+Graph\+Node\+\_\+in, unsigned long handle\+\_\+handle\+\_\+\+Atomic\+Graph\+Position\+\_\+in)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} \mbox{\hyperlink{classpaceval__c_graph_ac3cd6744ef79f0a8b450214e6848579d}{handle\+\_\+paceval\+Computation}}
+\item 
+\mbox{\hyperlink{classpaceval__c_list_of_pointer}{paceval\+\_\+c\+List\+Of\+Pointer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_graph_a5969d0270aad94349b31ad495a35c7a3}{list\+Ofc\+Atomic\+Graph\+Nodes}}
+\item 
+long \mbox{\hyperlink{classpaceval__c_graph_a3ec7574a856b76a1fc24ed3348af03a2}{number\+Of\+Position\+Levels}}
+\item 
+long \mbox{\hyperlink{classpaceval__c_graph_af47335b6fc07e6cfefbf57184a2d958b}{max\+To\+Do\+Level\+Multithread\+Position}}
+\item 
+pthread\+\_\+mutex\+\_\+t \mbox{\hyperlink{classpaceval__c_graph_ad238d659493888494f3691289ddc7ad5}{handle\+\_\+lock\+To\+Do\+Level\+Multithread\+Mutex\+Object}}
+\item 
+\mbox{\hyperlink{classpaceval__c_unsigned_long_list}{paceval\+\_\+c\+Unsigned\+Long\+List}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_graph_a3ef95bcabc82105f062ef4d5019b261c}{list\+Of\+Level\+Multithread\+Positions}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
 \begin{DoxyCompactItemize}
@@ -80,7 +104,7 @@ unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a6a4cbc3ca8ae59
 \doxysubsection{Detailed Description}
 The class \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} is derived from \doxylink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object} and encapsulates the management of the node list as well as the identification and management of parallelization options for caching. 
 
-For example the identify\+Multithread\+Opportunity() function of the \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} class looks for opportunities for parallelization. These opportunities are taken into account when processing the node list later with \doxylink{classpaceval__c_computation_a2cde08aa8ee7a3cd0da75fe4e296b6b9}{paceval\+\_\+c\+Computation\+::do\+Computation()}. Parentheses levels such as (1/x) in the function -\/sin(x\texorpdfstring{$\ast$}{*}cos(cos(x))\texorpdfstring{$^\wedge$}{\string^}(1/x) can then be calculated in parallel in advance in a separate thread, which saves significant time. 
+For example the \doxylink{classpaceval__c_graph_a2e688868f7350a4288e211507efe15f2}{identify\+Multithread\+Opportunity()} function of the \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} class looks for opportunities for parallelization. These opportunities are taken into account when processing the node list later with \doxylink{classpaceval__c_computation_a2cde08aa8ee7a3cd0da75fe4e296b6b9}{paceval\+\_\+c\+Computation\+::do\+Computation()}. Parentheses levels such as (1/x) in the function -\/sin(x\texorpdfstring{$\ast$}{*}cos(cos(x))\texorpdfstring{$^\wedge$}{\string^}(1/x) can then be calculated in parallel in advance in a separate thread, which saves significant time. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classpaceval__c_graph_ae16f0292b7dbe6b33b5b469da02b9d4a}\label{classpaceval__c_graph_ae16f0292b7dbe6b33b5b469da02b9d4a} 
@@ -239,6 +263,87 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classpaceval__c_graph_a19f5d1d557d65cac5a6117fbab513eb8_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{classpaceval__c_graph_aff4c05abe7e1e35065a04d67144a0561}\label{classpaceval__c_graph_aff4c05abe7e1e35065a04d67144a0561} 
+\index{paceval\_cGraph@{paceval\_cGraph}!identifyMultiplyByZeroCachingOpportunity@{identifyMultiplyByZeroCachingOpportunity}}
+\index{identifyMultiplyByZeroCachingOpportunity@{identifyMultiplyByZeroCachingOpportunity}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{identifyMultiplyByZeroCachingOpportunity()}{identifyMultiplyByZeroCachingOpportunity()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+Graph\+::identify\+Multiply\+By\+Zero\+Caching\+Opportunity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+c\+Atomic\+Graph\+Node\+\_\+in,  }\item[{unsigned long}]{handle\+\_\+handle\+\_\+\+Atomic\+Graph\+Position\+\_\+in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+identifies the zero caching capabilities for this \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node} object and returns whether such caching capability exists (true) or not (false) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+c\+Atomic\+Graph\+Node\+\_\+in} & specifies the \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node} to examine \\
+\hline
+{\em handle\+\_\+handle\+\_\+\+Atomic\+Graph\+Position\+\_\+in} & specifies the position of this \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node} object in the list of nodes \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_aff4c05abe7e1e35065a04d67144a0561_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_aff4c05abe7e1e35065a04d67144a0561_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_graph_a2e688868f7350a4288e211507efe15f2}\label{classpaceval__c_graph_a2e688868f7350a4288e211507efe15f2} 
+\index{paceval\_cGraph@{paceval\_cGraph}!identifyMultithreadOpportunity@{identifyMultithreadOpportunity}}
+\index{identifyMultithreadOpportunity@{identifyMultithreadOpportunity}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{identifyMultithreadOpportunity()}{identifyMultithreadOpportunity()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+Graph\+::identify\+Multithread\+Opportunity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+c\+Atomic\+Graph\+Node\+\_\+in,  }\item[{unsigned long}]{handle\+\_\+handle\+\_\+\+Atomic\+Graph\+Position\+\_\+in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+identifies the multithreaded lookahead caching capabilities for this \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node} object and returns whether such caching capability exists (true) or not (false) 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+c\+Atomic\+Graph\+Node\+\_\+in} & specifies the \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node} to examine \\
+\hline
+{\em handle\+\_\+handle\+\_\+\+Atomic\+Graph\+Position\+\_\+in} & specifies the position of this \doxylink{classpaceval__c_base_atomic_graph_node}{paceval\+\_\+c\+Base\+Atomic\+Graph\+Node} object in the list of nodes \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a2e688868f7350a4288e211507efe15f2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a2e688868f7350a4288e211507efe15f2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_graph_a760c52c269f1cedffbf4a92d8b32d265}\label{classpaceval__c_graph_a760c52c269f1cedffbf4a92d8b32d265} 
+\index{paceval\_cGraph@{paceval\_cGraph}!identifyOuterCachingOpportunity@{identifyOuterCachingOpportunity}}
+\index{identifyOuterCachingOpportunity@{identifyOuterCachingOpportunity}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{identifyOuterCachingOpportunity()}{identifyOuterCachingOpportunity()}}
+{\footnotesize\ttfamily long paceval\+\_\+c\+Graph\+::identify\+Outer\+Caching\+Opportunity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation}} \texorpdfstring{$\ast$}{*}}]{handle\+\_\+c\+Atomic\+Graph\+Node\+\_\+in,  }\item[{unsigned long}]{handle\+\_\+handle\+\_\+\+Atomic\+Graph\+Position\+\_\+in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+identifies the outer caching capabilities for this \doxylink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation} object and returns the position of the corresponding inner caching node 
+\begin{DoxyParams}{Parameters}
+{\em handle\+\_\+c\+Atomic\+Graph\+Node\+\_\+in} & specifies the \doxylink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation} to examine \\
+\hline
+{\em handle\+\_\+handle\+\_\+\+Atomic\+Graph\+Position\+\_\+in} & specifies the position of this \doxylink{classpaceval__c_atomic_graph_node_operation}{paceval\+\_\+c\+Atomic\+Graph\+Node\+Operation} object in the list of nodes \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a760c52c269f1cedffbf4a92d8b32d265_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_graph_a760c52c269f1cedffbf4a92d8b32d265_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classpaceval__c_graph_a0a2f71f7fd8337190c3e801178943fbd}\label{classpaceval__c_graph_a0a2f71f7fd8337190c3e801178943fbd} 
 \index{paceval\_cGraph@{paceval\_cGraph}!initializeData@{initializeData}}
 \index{initializeData@{initializeData}!paceval\_cGraph@{paceval\_cGraph}}
@@ -355,6 +460,45 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{center}
 \end{figure}
 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classpaceval__c_graph_ad238d659493888494f3691289ddc7ad5}\label{classpaceval__c_graph_ad238d659493888494f3691289ddc7ad5} 
+\index{paceval\_cGraph@{paceval\_cGraph}!handle\_lockToDoLevelMultithreadMutexObject@{handle\_lockToDoLevelMultithreadMutexObject}}
+\index{handle\_lockToDoLevelMultithreadMutexObject@{handle\_lockToDoLevelMultithreadMutexObject}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{handle\_lockToDoLevelMultithreadMutexObject}{handle\_lockToDoLevelMultithreadMutexObject}}
+{\footnotesize\ttfamily pthread\+\_\+mutex\+\_\+t paceval\+\_\+c\+Graph\+::handle\+\_\+lock\+To\+Do\+Level\+Multithread\+Mutex\+Object\hspace{0.3cm}{\ttfamily [private]}}
+
+the POSIX mutex of this object, which is needed for a short time to change the paceval-\/specific variables to lock a node \Hypertarget{classpaceval__c_graph_ac3cd6744ef79f0a8b450214e6848579d}\label{classpaceval__c_graph_ac3cd6744ef79f0a8b450214e6848579d} 
+\index{paceval\_cGraph@{paceval\_cGraph}!handle\_pacevalComputation@{handle\_pacevalComputation}}
+\index{handle\_pacevalComputation@{handle\_pacevalComputation}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{handle\_pacevalComputation}{handle\_pacevalComputation}}
+{\footnotesize\ttfamily \mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} paceval\+\_\+c\+Graph\+::handle\+\_\+paceval\+Computation\hspace{0.3cm}{\ttfamily [private]}}
+
+the associated \doxylink{classpaceval__c_computation}{paceval\+\_\+c\+Computation} object \Hypertarget{classpaceval__c_graph_a5969d0270aad94349b31ad495a35c7a3}\label{classpaceval__c_graph_a5969d0270aad94349b31ad495a35c7a3} 
+\index{paceval\_cGraph@{paceval\_cGraph}!listOfcAtomicGraphNodes@{listOfcAtomicGraphNodes}}
+\index{listOfcAtomicGraphNodes@{listOfcAtomicGraphNodes}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{listOfcAtomicGraphNodes}{listOfcAtomicGraphNodes}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpaceval__c_list_of_pointer}{paceval\+\_\+c\+List\+Of\+Pointer}}\texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Graph\+::list\+Ofc\+Atomic\+Graph\+Nodes\hspace{0.3cm}{\ttfamily [private]}}
+
+stores the list of nodes \Hypertarget{classpaceval__c_graph_a3ef95bcabc82105f062ef4d5019b261c}\label{classpaceval__c_graph_a3ef95bcabc82105f062ef4d5019b261c} 
+\index{paceval\_cGraph@{paceval\_cGraph}!listOfLevelMultithreadPositions@{listOfLevelMultithreadPositions}}
+\index{listOfLevelMultithreadPositions@{listOfLevelMultithreadPositions}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{listOfLevelMultithreadPositions}{listOfLevelMultithreadPositions}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpaceval__c_unsigned_long_list}{paceval\+\_\+c\+Unsigned\+Long\+List}}\texorpdfstring{$\ast$}{*} paceval\+\_\+c\+Graph\+::list\+Of\+Level\+Multithread\+Positions\hspace{0.3cm}{\ttfamily [private]}}
+
+stores list of positions for multithreading (each parentheses level position in the function uses 3 unsigned integers -\/ \#1 marks the beginning, \#2 is the level start node position, \#3 is the level end node position) \Hypertarget{classpaceval__c_graph_af47335b6fc07e6cfefbf57184a2d958b}\label{classpaceval__c_graph_af47335b6fc07e6cfefbf57184a2d958b} 
+\index{paceval\_cGraph@{paceval\_cGraph}!maxToDoLevelMultithreadPosition@{maxToDoLevelMultithreadPosition}}
+\index{maxToDoLevelMultithreadPosition@{maxToDoLevelMultithreadPosition}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{maxToDoLevelMultithreadPosition}{maxToDoLevelMultithreadPosition}}
+{\footnotesize\ttfamily long paceval\+\_\+c\+Graph\+::max\+To\+Do\+Level\+Multithread\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+stores the position in the list of nodes of the maximum parentheses level at which a thread is currently working (the next parentheses level is then used for the next thread) \Hypertarget{classpaceval__c_graph_a3ec7574a856b76a1fc24ed3348af03a2}\label{classpaceval__c_graph_a3ec7574a856b76a1fc24ed3348af03a2} 
+\index{paceval\_cGraph@{paceval\_cGraph}!numberOfPositionLevels@{numberOfPositionLevels}}
+\index{numberOfPositionLevels@{numberOfPositionLevels}!paceval\_cGraph@{paceval\_cGraph}}
+\doxysubsubsection{\texorpdfstring{numberOfPositionLevels}{numberOfPositionLevels}}
+{\footnotesize\ttfamily long paceval\+\_\+c\+Graph\+::number\+Of\+Position\+Levels\hspace{0.3cm}{\ttfamily [private]}}
+
+the number of positions for multithreading (i.\+e. lookahead caching) that are assigned to parentheses levels in the function 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

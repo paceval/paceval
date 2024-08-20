@@ -57,6 +57,28 @@ void \mbox{\hyperlink{classpaceval__c_registered_object_a342114d4bb2f86b2c4cfecb
 \item 
 unsigned long \mbox{\hyperlink{classpaceval__c_registered_object_a98739f041c398e860d9c7f9118fcfe0f}{get\+Register\+Position}} ()
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classpaceval__c_list_of_pointer_a18f94bc4091e7b20918236a8a2293ba6}{do\+Increase\+Size}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{classpaceval__c_list_of_pointer_a2d8eb65065a953abe91c49dccd499d62}{size\+\_\+void\+Pointer}}
+\item 
+unsigned int \mbox{\hyperlink{classpaceval__c_list_of_pointer_a90638a70fe2fc4d8b9ffcd90cd36f0e0}{size\+\_\+e\+List\+Of\+Pointer\+Types}}
+\item 
+void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_list_of_pointer_ae3142c23a7ebbfb0ad4e263fe15287d0}{array\+Of\+Pointer}}
+\item 
+\mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbe}{paceval\+\_\+e\+List\+Of\+Pointer\+Types}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classpaceval__c_list_of_pointer_a2f601ebd71279dc4e4e1faa862ee277c}{array\+Of\+Pointer\+Types}}
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_list_of_pointer_ab9b33a8cc1257496693955afadbd7b52}{size\+\_\+array\+Of\+Pointer}}
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_list_of_pointer_a89ff40b9f662d7c89284f5d061a2ee13}{size\+Used\+\_\+array\+Of\+Pointer}}
+\item 
+unsigned long \mbox{\hyperlink{classpaceval__c_list_of_pointer_ab8279f7548e0958aca9c54ac2fe3f770}{increase\+Counter}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classpaceval__c_registered_object}{paceval\+\_\+c\+Registered\+Object}}}
 \begin{DoxyCompactItemize}
@@ -106,11 +128,31 @@ adds a pointer to the list and returns whether this was successful (true) or not
 {\em pointer\+Position\+\_\+out} & this buffer retrieves the position of the added pointer in the list \\
 \hline
 \end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{classpaceval__c_list_of_pointer_ad74398541ab7d61635915ddb928bdf79_cgraph}
+\end{center}
+\end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classpaceval__c_list_of_pointer_ad74398541ab7d61635915ddb928bdf79_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classpaceval__c_list_of_pointer_a18f94bc4091e7b20918236a8a2293ba6}\label{classpaceval__c_list_of_pointer_a18f94bc4091e7b20918236a8a2293ba6} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!doIncreaseSize@{doIncreaseSize}}
+\index{doIncreaseSize@{doIncreaseSize}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{doIncreaseSize()}{doIncreaseSize()}}
+{\footnotesize\ttfamily bool paceval\+\_\+c\+List\+Of\+Pointer\+::do\+Increase\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+increases the size of the array of pointers Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpaceval__c_list_of_pointer_a18f94bc4091e7b20918236a8a2293ba6_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{classpaceval__c_list_of_pointer_a9981ad68db585a734c12d0c337e3c35d}\label{classpaceval__c_list_of_pointer_a9981ad68db585a734c12d0c337e3c35d} 
@@ -206,6 +248,51 @@ returns the size of the list of pointers, i.\+e. the number of pointers stored i
 \end{center}
 \end{figure}
 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classpaceval__c_list_of_pointer_ae3142c23a7ebbfb0ad4e263fe15287d0}\label{classpaceval__c_list_of_pointer_ae3142c23a7ebbfb0ad4e263fe15287d0} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!arrayOfPointer@{arrayOfPointer}}
+\index{arrayOfPointer@{arrayOfPointer}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{arrayOfPointer}{arrayOfPointer}}
+{\footnotesize\ttfamily void\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} paceval\+\_\+c\+List\+Of\+Pointer\+::array\+Of\+Pointer\hspace{0.3cm}{\ttfamily [private]}}
+
+the dynamic array of pointers \Hypertarget{classpaceval__c_list_of_pointer_a2f601ebd71279dc4e4e1faa862ee277c}\label{classpaceval__c_list_of_pointer_a2f601ebd71279dc4e4e1faa862ee277c} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!arrayOfPointerTypes@{arrayOfPointerTypes}}
+\index{arrayOfPointerTypes@{arrayOfPointerTypes}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{arrayOfPointerTypes}{arrayOfPointerTypes}}
+{\footnotesize\ttfamily \mbox{\hyperlink{paceval__c_cleanup_handler_8h_a4947e73a2e15def7890dc07bfb9adcbe}{paceval\+\_\+e\+List\+Of\+Pointer\+Types}}\texorpdfstring{$\ast$}{*} paceval\+\_\+c\+List\+Of\+Pointer\+::array\+Of\+Pointer\+Types\hspace{0.3cm}{\ttfamily [private]}}
+
+the dynamic array of pointer types associated with the array of pointers \Hypertarget{classpaceval__c_list_of_pointer_ab8279f7548e0958aca9c54ac2fe3f770}\label{classpaceval__c_list_of_pointer_ab8279f7548e0958aca9c54ac2fe3f770} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!increaseCounter@{increaseCounter}}
+\index{increaseCounter@{increaseCounter}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{increaseCounter}{increaseCounter}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+List\+Of\+Pointer\+::increase\+Counter\hspace{0.3cm}{\ttfamily [private]}}
+
+stores the counter of how many times the array of pointers was increased \Hypertarget{classpaceval__c_list_of_pointer_ab9b33a8cc1257496693955afadbd7b52}\label{classpaceval__c_list_of_pointer_ab9b33a8cc1257496693955afadbd7b52} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!size\_arrayOfPointer@{size\_arrayOfPointer}}
+\index{size\_arrayOfPointer@{size\_arrayOfPointer}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{size\_arrayOfPointer}{size\_arrayOfPointer}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+List\+Of\+Pointer\+::size\+\_\+array\+Of\+Pointer\hspace{0.3cm}{\ttfamily [private]}}
+
+the current size of the array of pointers \Hypertarget{classpaceval__c_list_of_pointer_a90638a70fe2fc4d8b9ffcd90cd36f0e0}\label{classpaceval__c_list_of_pointer_a90638a70fe2fc4d8b9ffcd90cd36f0e0} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!size\_eListOfPointerTypes@{size\_eListOfPointerTypes}}
+\index{size\_eListOfPointerTypes@{size\_eListOfPointerTypes}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{size\_eListOfPointerTypes}{size\_eListOfPointerTypes}}
+{\footnotesize\ttfamily unsigned int paceval\+\_\+c\+List\+Of\+Pointer\+::size\+\_\+e\+List\+Of\+Pointer\+Types\hspace{0.3cm}{\ttfamily [private]}}
+
+stores the size of paceval\+\_\+e\+List\+Of\+Pointer\+Types in this system, means sizeof(paceval\+\_\+e\+List\+Of\+Pointer\+Types) \Hypertarget{classpaceval__c_list_of_pointer_a2d8eb65065a953abe91c49dccd499d62}\label{classpaceval__c_list_of_pointer_a2d8eb65065a953abe91c49dccd499d62} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!size\_voidPointer@{size\_voidPointer}}
+\index{size\_voidPointer@{size\_voidPointer}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{size\_voidPointer}{size\_voidPointer}}
+{\footnotesize\ttfamily unsigned int paceval\+\_\+c\+List\+Of\+Pointer\+::size\+\_\+void\+Pointer\hspace{0.3cm}{\ttfamily [private]}}
+
+stores the size of a pointer in this system, means sizeof(void\texorpdfstring{$\ast$}{*}) \Hypertarget{classpaceval__c_list_of_pointer_a89ff40b9f662d7c89284f5d061a2ee13}\label{classpaceval__c_list_of_pointer_a89ff40b9f662d7c89284f5d061a2ee13} 
+\index{paceval\_cListOfPointer@{paceval\_cListOfPointer}!sizeUsed\_arrayOfPointer@{sizeUsed\_arrayOfPointer}}
+\index{sizeUsed\_arrayOfPointer@{sizeUsed\_arrayOfPointer}!paceval\_cListOfPointer@{paceval\_cListOfPointer}}
+\doxysubsubsection{\texorpdfstring{sizeUsed\_arrayOfPointer}{sizeUsed\_arrayOfPointer}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+c\+List\+Of\+Pointer\+::size\+Used\+\_\+array\+Of\+Pointer\hspace{0.3cm}{\ttfamily [private]}}
+
+the currently used size of the array of pointers 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

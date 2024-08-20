@@ -1,13 +1,17 @@
 <map id="paceval_cGraph" name="paceval_cGraph">
-<area shape="rect" id="Node000001" title="The class paceval_cGraph is derived from paceval_cRegisteredObject and encapsulates the management of..." alt="" coords="5,252,345,977"/>
-<area shape="rect" id="Node000002" href="$classpaceval__c_registered_object.html" title="The base class paceval_cRegisteredObject encapsulates the management of the register position of the ..." alt="" coords="331,5,553,203"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="383,217,378,228,348,285,343,282,373,225,379,215"/>
-<area shape="rect" id="Node000003" href="$classpaceval__c_cleanup_handler.html" title="The class paceval_cCleanupHandler is derived from paceval_cRegisteredObject and encapsulates the mana..." alt="" coords="513,1041,773,2081"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="415,218,410,252,386,456,373,616,373,693,379,775,391,868,410,977,429,1060,455,1142,516,1300,511,1302,450,1144,424,1061,405,978,385,869,373,776,368,693,368,616,380,456,405,252,410,217"/>
-<area shape="rect" id="Node000005" href="$classpaceval__c_list_of_pointer.html" title="The class paceval_cListOfPointer is derived from paceval_cRegisteredObject and encapsulates the stora..." alt="" coords="419,425,671,804"/>
-<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="467,216,509,425,504,426,462,217"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="697,1041,698,1017,711,847,725,626,726,514,721,410,706,321,695,284,681,253,659,222,631,196,600,173,566,154,569,149,602,169,634,192,663,219,686,251,700,282,711,320,726,410,731,514,730,626,716,847,703,1018,702,1042"/>
-<area shape="rect" id="Node000004" href="$structpaceval__s_error_information.html" title="The struct paceval_sErrorInformation is used to store the specific error information in case of a pac..." alt="" coords="890,543,1055,687"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="958,687,921,823,874,978,782,1230,777,1228,869,976,916,821,953,686"/>
-<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="557,803,574,1017,575,1024,570,1025,569,1018,552,804"/>
+<area shape="rect" id="Node000001" title="The class paceval_cGraph is derived from paceval_cRegisteredObject and encapsulates the management of..." alt="" coords="142,908,482,2017"/>
+<area shape="rect" id="Node000002" href="$classpaceval__c_registered_object.html" title="The base class paceval_cRegisteredObject encapsulates the management of the register position of the ..." alt="" coords="357,5,579,203"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="353,216,333,253,325,287,318,341,309,496,305,693,305,908,300,908,300,693,304,495,313,340,319,286,328,251,349,213"/>
+<area shape="rect" id="Node000003" href="$classpaceval__c_cleanup_handler.html" title="The class paceval_cCleanupHandler is derived from paceval_cRegisteredObject and encapsulates the mana..." alt="" coords="646,943,906,1983"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="595,125,651,143,708,169,760,204,783,226,802,251,827,301,845,368,857,447,863,536,864,633,862,735,847,943,842,943,856,734,859,633,858,536,852,447,840,369,822,303,798,253,779,230,757,209,705,174,649,148,593,130"/>
+<area shape="rect" id="Node000005" href="$classpaceval__c_list_of_pointer.html" title="The class paceval_cListOfPointer is derived from paceval_cRegisteredObject and encapsulates the stora..." alt="" coords="342,252,594,844"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="471,217,471,252,465,252,465,217"/>
+<area shape="rect" id="Node000006" href="$classpaceval__c_unsigned_long_list.html" title="The class paceval_cUnsignedLongList is derived from paceval_cRegisteredObject and encapsulates the ma..." alt="" coords="5,319,245,777"/>
+<area shape="poly" id="edge9_Node000006_Node000002" title=" " alt="" coords="347,182,295,228,261,272,230,320,225,317,256,269,291,225,343,178"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="878,943,906,726,915,620,919,520,917,428,908,346,891,279,879,251,865,228,848,213,824,198,757,171,677,148,596,130,597,125,678,143,759,166,826,193,852,208,869,225,883,249,896,277,913,346,922,427,924,520,920,621,911,727,883,943"/>
+<area shape="rect" id="Node000004" href="$structpaceval__s_error_information.html" title="The struct paceval_sErrorInformation is used to store the specific error information in case of a pac..." alt="" coords="623,476,788,620"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="706,620,705,743,709,884,712,925,707,926,704,884,699,743,700,620"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="366,844,361,869,356,892,351,891,355,867,361,843"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="560,843,574,883,643,1086,638,1088,568,885,555,845"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="114,777,111,868,112,921,118,974,140,1079,135,1080,112,974,107,921,106,868,109,777"/>
 </map>

@@ -1,0 +1,15 @@
+<map id="paceval_cGraph::identifyMultiplyByZeroCachingOpportunity" name="paceval_cGraph::identifyMultiplyByZeroCachingOpportunity">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,139,227,181"/>
+<area shape="rect" id="Node000002" href="$classpaceval__c_graph.html#abdb07a85124c6ffd66bbe0aabc2225ca" title=" " alt="" coords="277,5,457,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,136,204,97,273,58,286,52,288,57,276,62,207,102,149,140"/>
+<area shape="rect" id="Node000004" href="$classpaceval__c_base_atomic_graph_node.html#a1e7c4fe8967f66126ea99607a47340a9" title=" " alt="" coords="275,72,459,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="198,136,269,117,270,122,200,141"/>
+<area shape="rect" id="Node000005" href="$classpaceval__c_base_atomic_graph_node.html#a5ac6181e96507f53677b04e2c7086518" title=" " alt="" coords="275,139,459,181"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="227,157,259,157,259,163,227,163"/>
+<area shape="rect" id="Node000006" href="$classpaceval__c_base_atomic_graph_node.html#a60f903dd458864c76bb8c54abfd01837" title=" " alt="" coords="275,205,459,248"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="200,179,270,198,269,203,198,184"/>
+<area shape="rect" id="Node000007" href="$classpaceval__c_base_atomic_graph_node.html#a5883b0c6edd573e7b8eab5acff1579e5" title=" " alt="" coords="275,272,459,315"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="149,180,207,218,276,258,288,263,286,268,273,262,204,223,146,184"/>
+<area shape="rect" id="Node000003" href="$classpaceval__c_list_of_pointer.html#a9981ad68db585a734c12d0c337e3c35d" title=" " alt="" coords="507,5,660,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="457,24,491,24,491,29,457,29"/>
+</map>

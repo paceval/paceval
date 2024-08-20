@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['display_5ffunctionstring50chars_0',['display_functionString50Chars',['../classpaceval__c_computation.html#a02f3aa210fdb1352e93441ee5f3be371',1,'paceval_cComputation']]],
-  ['display_5flengthfunctionstring_1',['display_lengthfunctionString',['../classpaceval__c_computation.html#aabcd0dc5ecea6a5e2bcd90c94aa2684c',1,'paceval_cComputation']]]
+  ['counter_5fallpacevalobjects_5fin_5fccleanuphandler_0',['counter_allpacevalObjects_in_cCleanupHandler',['../paceval__f_self_test_main_8cpp.html#a0b5e8913a29cb9a04fa794e9301177c7',1,'counter_allpacevalObjects_in_cCleanupHandler:&#160;paceval_fSelfTestMain.cpp'],['../paceval__f_self_test_main_8h.html#a0b5e8913a29cb9a04fa794e9301177c7',1,'counter_allpacevalObjects_in_cCleanupHandler:&#160;paceval_fSelfTestMain.cpp']]],
+  ['currentatomicgraphnode_1',['currentAtomicGraphNode',['../classpaceval__c_syntactic_analysis.html#a8ea8528478e9455128845322a12b2fec',1,'paceval_cSyntacticAnalysis']]],
+  ['currentstatus_2',['currentStatus',['../classpaceval__c_cleanup_handler.html#a3f25627e5af9718a263fc294b1d375d4',1,'paceval_cCleanupHandler']]]
 ];

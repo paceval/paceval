@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['singlecalculationposition_0',['singleCalculationPosition',['../classpaceval__c_computation.html#af619d72837b4793f7cf48b6ed23a0d11',1,'paceval_cComputation']]],
-  ['size_5farrayofunsignedlong_1',['size_arrayOfUnsignedLong',['../classpaceval__c_unsigned_long_list.html#ac135f1cb4cd7dca44c27d0134e046951',1,'paceval_cUnsignedLongList']]],
-  ['sizeoflongdouble_5fin_2',['sizeOfLongDouble_in',['../structpaceval__sld_create_computations_thread_data.html#a69033adbc1c0f1e19d10d544f42ee297',1,'paceval_sldCreateComputationsThreadData::sizeOfLongDouble_in'],['../structpaceval__sd_create_computations_thread_data.html#aef9c9251c424f24043ee9fced1536874',1,'paceval_sdCreateComputationsThreadData::sizeOfLongDouble_in'],['../structpaceval__sf_create_computations_thread_data.html#a973522bac460ee60ee9f19172a8dd73e',1,'paceval_sfCreateComputationsThreadData::sizeOfLongDouble_in'],['../structpaceval__s_get_computation_result_thread_data.html#a64d1be5752a26bf524a3921c0ff5a3e5',1,'paceval_sGetComputationResultThreadData::sizeOfLongDouble_in']]],
-  ['sizeused_5farrayofunsignedlong_3',['sizeUsed_arrayOfUnsignedLong',['../classpaceval__c_unsigned_long_list.html#aed8304b693bc706784c6e2458f7bcf7f',1,'paceval_cUnsignedLongList']]],
-  ['stacknumber_5fin_4',['stackNumber_in',['../structpaceval__s_get_computation_result_thread_data.html#a98d06324fd471e008fc40ed08df34c64',1,'paceval_sGetComputationResultThreadData']]]
+  ['registerposition_0',['registerPosition',['../classpaceval__c_registered_object.html#a6a4cbc3ca8ae598995e763fc2005b69f',1,'paceval_cRegisteredObject']]],
+  ['resultcachedasdoubleforstack_1',['resultCachedAsDoubleForStack',['../structpaceval__s_f_p_g_a_node_cache_status_for_stacks.html#aa7a83c571a58df599244d1eeca14eff9',1,'paceval_sFPGANodeCacheStatusForStacks']]],
+  ['resultcachedasfloatforstack_2',['resultCachedAsFloatForStack',['../structpaceval__s_f_p_g_a_node_cache_status_for_stacks.html#a4babd574affa521ca1d8f64fded4eac3',1,'paceval_sFPGANodeCacheStatusForStacks']]],
+  ['resultcachestatusforstack_3',['resultCacheStatusForStack',['../structpaceval__s_f_p_g_a_node_cache_status_for_stacks.html#a4d043488e817c4bef6645809f1088436',1,'paceval_sFPGANodeCacheStatusForStacks']]],
+  ['resultfield_4',['resultField',['../structpaceval__s_f_p_g_a_node_data.html#a15968b77cb268c8b74085ec87f5c4009',1,'paceval_sFPGANodeData']]],
+  ['resultnode_5',['resultNode',['../structpaceval__s_node_specific_data.html#aecd26747e67981706ba71b327d7f5f2d',1,'paceval_sNodeSpecificData']]],
+  ['results_5fout_6',['results_out',['../structpaceval__sld_create_computations_thread_data.html#a9158e0c91c99fdc8ec7fbf2d01830a33',1,'paceval_sldCreateComputationsThreadData::results_out'],['../structpaceval__sd_create_computations_thread_data.html#a0817159b36de59f051526241f9de99e5',1,'paceval_sdCreateComputationsThreadData::results_out'],['../structpaceval__sf_create_computations_thread_data.html#a1898692d623f7396eef4b69fcbd0b030',1,'paceval_sfCreateComputationsThreadData::results_out']]]
 ];
