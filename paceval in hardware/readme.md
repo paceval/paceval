@@ -76,9 +76,9 @@ If you want to access Linux on the hardware,
 the username is: **paceval**  
 and the password is: **paceval**
 
-**Please note:** These images were created with paceval version 4.04. The version 4.04 libraries in the images have already expired. **To solve this, however, you simply need to copy the current paceval libraries for ARM 32bit and ARM 64bit into the /home/paceval/sambashare directory on your hardware. And if you want, the appropriate examples too.**
+**Please note:** These images were created with **pace***val.* version 4.04. The version 4.04 libraries in the images have already expired. **To solve this, however, you simply need to copy the current paceval libraries for ARM 32bit and ARM 64bit into the /home/paceval/sambashare directory on your hardware. And if you want, the appropriate examples too.**
 
-All currently valid and executable libraries and examples can be found in our current paceval SDK on our homepage <https://paceval.com> and also on our paceval Github in these directories  
+All currently valid and executable libraries and examples can be found in our current **pace***val.* SDK on our homepage <https://paceval.com> and also on our paceval Github in these directories  
 <https://github.com/paceval/paceval/tree/main/paceval%20libraries>  
 <https://github.com/paceval/paceval/tree/main/demo%20and%20examples>
 
@@ -129,11 +129,11 @@ Then export the hardware including the bitstream in Vivado.
 We have put simple hardware designs for the Digilent Arty Z7-20, the Xilinx ZC706 and the Xilinx ZCU104 on our GitHub:
 
 -   Digilent Arty Z7-20  
-    <https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20/manual%20setup> File “Vivado 2022.2 project-Digilent Arty Z7-20.zip”
+    https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Digilent%20Arty%20Z7-20/manual%20setup File “Vivado 2022.2 project-Digilent Arty Z7-20.zip”
 -   Xilinx ZC706  
-    <https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZC706/manual%20setup> File “Vivado 2022.2 project-Xilinx ZC706.zip”
+    https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZC706/manual%20setup File “Vivado 2022.2 project-Xilinx ZC706.zip”
 -   Xilinx ZCU104  
-    <https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104/manual%20setup> File “Vivado 2022.2 project-Xilinx ZCU104.zip”
+    https://github.com/paceval/paceval/tree/main/paceval%20in%20hardware/Xilinx%20ZCU104/manual%20setup File “Vivado 2022.2 project-Xilinx ZCU104.zip”
 
 ## Step 1 - Create the PetaLinux Project
 

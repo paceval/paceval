@@ -1,7 +1,6 @@
 # paceval. the system independent mathematical engine 4.25
 
-Documentation of the paceval. source-code, Copyright ©1994-2024. Version 1.x, 2.x, 3.x, 4.x<br> 
-©1994-2024 Joerg Koenning & paceval.[Registered Trade Mark]  
+Documentation of the paceval. source-code, Copyright ©1994-2024. Version 1.x, 2.x, 3.x, 4.x ©1994-2024 Joerg Koenning & paceval.[Registered Trade Mark]  
 All rights reserved., Author(s) : Joerg Koenning
 
 External documentation -
@@ -14,13 +13,13 @@ External documentation -
 
 Expressions can contain **any number of placeholders (variables)**. Calculations are performed in selectable precision (single, double and extended) and **distributed across all available processors** for maximum speed and effectiveness.
 
-Additionally, paceval can also output an interval indicating the error limits due to the limited precision of floating point number formats.
+Additionally, **pace***val.* can also output an interval indicating the error limits due to the limited precision of floating point number formats.
 
 ## How does paceval work internally?
 
-paceval internally **creates and processes linked lists of atomic calculations** that represent the user's mathematical expressions. The usual approach is to create an expression tree from a text expression, see <https://en.wikipedia.org/wiki/Binary_expression_tree>. This has the well-known disadvantages such as memory consumption and the overhead and speed loss when creating and traversing the expression tree. Creating and processing an expression as a linked list offers many advantages over the usual approach, especially speed. The processing of the linked list when actually performing a calculation with values for the variables is done in a single C function that is called by each thread of the underlying system.
+**pace***val.* internally **creates and processes linked lists of atomic calculations** that represent the user's mathematical expressions. The usual approach is to create an expression tree from a text expression, see <https://en.wikipedia.org/wiki/Binary_expression_tree>. This has the well-known disadvantages such as memory consumption and the overhead and speed loss when creating and traversing the expression tree. Creating and processing an expression as a linked list offers many advantages over the usual approach, especially speed. The processing of the linked list when actually performing a calculation with values for the variables is done in a single C function that is called by each thread of the underlying system.
 
-paceval uses multithreading intensively to achieve maximum performance and energy efficiency of the respective hardware system. The main handling of multithreading in paceval in software is in the file [paceval_fThreadHandling.cpp](https://paceval.com/paceval_sources_documentation-external/html/paceval__f_thread_handling_8cpp.html). paceval can also be used as a hardware driver for a new type of energy-efficient coprocessor. To do this, only the handling in the file [paceval_fFPGAHandling.cpp](https://paceval.com/paceval_sources_documentation-external/html/paceval__f_f_p_g_a_handling_8cpp.html) has to be adapted to address the customer-specific hardware such as an FPGA.
+**pace***val.* uses multithreading intensively to achieve maximum performance and energy efficiency of the respective hardware system. The main handling of multithreading in **pace***val.* in software is in the file [paceval_fThreadHandling.cpp](https://paceval.com/paceval_sources_documentation-external/html/paceval__f_thread_handling_8cpp.html). **pace***val.* can also be used as a hardware driver for a new type of energy-efficient coprocessor. To do this, only the handling in the file [paceval_fFPGAHandling.cpp](https://paceval.com/paceval_sources_documentation-external/html/paceval__f_f_p_g_a_handling_8cpp.html) has to be adapted to address the customer-specific hardware such as an FPGA.
 
 The source code performs this processing (this corresponds to the standard cycle used by all types of processors):
 
@@ -66,7 +65,7 @@ The following operators, partial functions and symbols are currently supported:
 
 -   [paceval_CreateComputation()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ae04cf0ab1cdbd57df334d660578bfdc3) : Creates a computation object for the mathematical function f and the variables x1,x2,...,xn, i.e. in mathematical notation  
     ![](media/c70e08e810984475827c1afd72e9ad7f.png)  
-    The user can also set whether calculations should be carried out with or without interval arithmetic. The reference returned when calling CreateComputation is an ID or "token" that uniquely represents the created calculation object, which is managed by paceval. This token can then be used to carry out calculations and queries on the calculation object without having to retransmit the possibly very long function again.
+    The user can also set whether calculations should be carried out with or without interval arithmetic. The reference returned when calling CreateComputation is an ID or "token" that uniquely represents the created calculation object, which is managed by **pace***val.* This token can then be used to carry out calculations and queries on the calculation object without having to retransmit the possibly very long function again.
 -   [paceval_dGetComputationResult()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#acbc57bb0edcafb8811d082617b6b1531) [paceval_ldGetComputationResult(), [paceval_fGetComputationResult()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a608786d2771854226f6326ebd9c9c0ab)] : Performs a calculation on a computation object with the variables declared by [paceval_CreateComputation()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ae04cf0ab1cdbd57df334d660578bfdc3) and with a set of values a1,a2,...,an for these variables, i.e. in mathematical notation  
     ![](media/3d74dbe750166623d3a0de306efd0af3.png)
 -   [paceval_dGetComputationResultExt()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a355e632ee48694f62cf038b77b6ca6ac) [paceval_ldGetComputationResultExt(), [paceval_fGetComputationResultExt()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ac0f2e206cb7c87cffa8bb334ee2832d1)] : Performs multiple calculations in parallel on a computation object with the variables declared by [paceval_CreateComputation()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#ae04cf0ab1cdbd57df334d660578bfdc3) and with multiple sets of values a11,a12,...,a1n, a21,a22,...,a2n, ..., am1,am2,...,amn for these variables, i.e. in mathematical notation  
