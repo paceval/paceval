@@ -698,7 +698,7 @@
     },
     "/GetMultipleComputationsResultsExt" : {
       "get" : {
-        "description" : "<b>Solves multiple computations with multiple values for the variables declared by /CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations with different variables at once (e.g. for sets of Artificial neural network functions or Decision trees).",
+        "description" : "<b>Solves multiple computations with multiple values for the variables declared by /CreateComputation.</b> <br>You should use /GetMultipleComputationsResultsExt to get results for multiple computations at the same time and to carry out as many different evaluations as possible at once (e.g. for artificial neural network functions or decision trees in which several functions with different variable values are calculated in one step for several objects at the same time to decide).<br><b>Annotation</b> You must use the same number of variables and the same declared variables. To do so you can simply declare all variables in each of the the calls for /CreateComputation. There is no performance issue in case a variable is declared but not used by a computation object.",
         "parameters" : [ {
           "name" : "handle_pacevalComputations",
           "in" : "query",
@@ -762,7 +762,7 @@
         } ]
       },
       "post" : {
-        "description" : "<b>Solves multiple computations with multiple values for the variables declared by /CreateComputation.</b> <br>You should use /GetMultipleComputationsResults to get results for multiple computations with different variables at once (e.g. for sets of Artificial neural network functions or Decision trees).",
+        "description" : "<b>Solves multiple computations with multiple values for the variables declared by /CreateComputation.</b> <br>You should use /GetMultipleComputationsResultsExt to get results for multiple computations at the same time and to carry out as many different evaluations as possible at once (e.g. for artificial neural network functions or decision trees in which several functions with different variable values are calculated in one step for several objects at the same time to decide).<br><b>Annotation</b> You must use the same number of variables and the same declared variables. To do so you can simply declare all variables in each of the the calls for /CreateComputation. There is no performance issue in case a variable is declared but not used by a computation object.",
         "parameters" : [ {
           "name" : "handle_pacevalComputations",
           "in" : "query",
