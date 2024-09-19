@@ -14,6 +14,7 @@ External documentation -
 Expressions can contain **any number of placeholders (variables)**. Calculations are performed in selectable precision (single, double and extended) and **distributed across all available processors** for maximum speed and effectiveness.
 
 Additionally, **pace***val.* can also output an interval indicating the error limits due to the limited precision of floating point number formats.
+The source code of **pace***val.* is in accordance with the ISO standard (ISO/IEC 14882:1998) and therefore runs on every compiler since the 1990s. The library itself is particularly small and, thanks to its narrow programming interface, can be run immediately on the most important computer systems with little programming effort. The simple interface enables it to be used in all common programming languages ​​via the foreign function interface (FFI).
 
 ## How does paceval work internally?
 
