@@ -13,17 +13,17 @@ Many connected devices or so-called IoT solutions require **complex mathematical
 ## HOW CAN I USE CALCULATIONS WITH THIS MATHEMATICAL ENGINE?
 
 To create a calculation the device simply calls the following function:
-
+```
 paceval.Demo("http://paceval-service.com", "-sin(x\\\*cos(x))\^(1/y)", "2", "x;y","0.5;2", "yes")
-
+```
 This creates a calculation object for the function "-sin(x\*cos(x))\^(1/y)" and immediately performs the calculation with the "2" variables "x; y" for the values "0.5; 2". Variables and values are always separated by a ";". With "interval=yes" it is indicated that **in addition to the computer-precise calculation, the upper and lower interval of the calculation is also given**. The exact value of the calculation is then in this interval.
 
 Of course you can specify any mathematical function and any number of variables and also other and longer variable names. : )
 
 In addition, with the calculation you receive a reference to the generated calculation object for the function. From now on you can simply use this reference to get calculations for further values. **References are valid for 1 hour**, which is extended to 1 hour from the time of access each time a reference is accessed. If only the reference to a calculation object is used, the sometimes very long function does not have to be passed every time. **That saves time and computing power.** For example, if you have received a reference "handle_Computation: 115626720", simply call up the following function for a further calculation with the values 0.46577 for x and 2.61 for y.
-
+```
 paceval.GetComputationResult("http://paceval-service.com", "115626720", "0.46577;2.61")
-
+```
 This allows you to **perform complex calculations of any length and with any number of variables on the server**. Please note that this is our test server. : )
 
 This test server is a 4-core ARM64 Linux server with only 4GB of memory, although it's pretty fast.
@@ -33,37 +33,36 @@ This test server is a 4-core ARM64 Linux server with only 4GB of memory, althoug
 Just run this command line in the terminal to get and start the service with Docker:
 
 **LINUX FOR x64 PROCESSORS (Intel and AMD)**
-
+```
 sudo docker pull paceval/paceval-service_linux_x64:latest
 
 sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_x64
-
+```
 **LINUX FOR ARM64 PROCESSORS (e.g. Raspberry Pi or APPLE M1/M2)**
-
+```
 sudo docker pull paceval/paceval-service_linux_arm64:latest
 
 sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_arm64
-
+```
 [paceval. - website](https://paceval.com)
 
 [Send email to paceval](mailto:info@paceval.com)
 
 ## Code example
-
+```
 import paceval
 
 import json
 
 from types import SimpleNamespace
 
-\#paceval Server
-
+#paceval Server
 url = "http://paceval-service.com"
 
 demoResponse = paceval.Demo(url, "-sin(x\*cos(x))\^(1/y)", "2", "x;y","0.5;2", "yes").text
 
 print(demoResponse)
-
+```
 **Return:  
 {  
 "handle_pacevalComputation":140660720254832,  
@@ -77,11 +76,11 @@ print(demoResponse)
 "time-calculate":"0.000859s",  
 "version-number":4.25  
 }**
-
+```
 createComputationResponse = paceval.CreateComputation(url, "-sin(x\*cos(x))\^(1/y)", "2", "x;y", "yes").text
 
 print(createComputationResponse)
-
+```
 **Return:  
 {  
 "handle_pacevalComputation":140660720337664,  
@@ -94,11 +93,11 @@ print(createComputationResponse)
 "time-create":"0.000253s",  
 "version-number":4.25  
 }**
-
+```
 getComputationResultResponse = paceval.GetComputationResult(url, "140660720254832", "0.5;2").text
 
 print(getComputationResultResponse)
-
+```
 **Return:  
 {  
 "handle_pacevalComputation":140660720254832,  
@@ -112,11 +111,11 @@ print(getComputationResultResponse)
 "time-calculate":"0.000264s",  
 "version-number":4.25  
 }**
-
+```
 getErrorInformationResponse = paceval.GetErrorInformation(url, "140660720254832").text
 
 print(getErrorInformationResponse)
-
+```
 **Return:  
 {  
 "handle_pacevalComputation":140660720254832,  
@@ -128,11 +127,11 @@ print(getErrorInformationResponse)
 "error-message":"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).",  
 "version-number":4.25  
 }**
-
+```
 getComputationResultExtResponse = paceval.GetComputationResultExt(url, "140660720254832", "3", "0.5;2;0.4;2;0.3;2").text
 
 print(getComputationResultExtResponse)
-
+```
 **Return:  
 {  
 "number-of-multiple-values":3, "handle_pacevalComputation":140660720254832,  
@@ -144,22 +143,22 @@ print(getComputationResultExtResponse)
 "time-calculate":"0.000502s",  
 "version-number":4.25  
 }**
-
+```
 getComputationInformationXMLResponse = paceval.GetComputationInformationXML(url, "140660720254832").text
 
 print(getComputationInformationXMLResponse)
-
+```
 **Return:  
 {  
 "handle_pacevalComputation":140660720254832,  
 "information-XML":"\<br\>\<br\>\<paceval.-Computation\>\<br\>\<br\>\\ \<version\>4.04\</version\>\<br\>\<br\> \<function50Characters\>-sin(x\*cos(x))\^(1/y)\</function50Characters\>\<br\>\<br\> \<functionLength\>20\</functionLength\>\<br\>\<br\> \<numberOfVariables\>2\</numberOfVariables\>\<br\>\<br\> \<useInterval\>true\</useInterval\>\<br\>\<br\> \<errorMessage\>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\</errorMessage\>\<br\>\<br\> \<errorDetails\>[NO ERROR]\</errorDetails\>\<br\>\<br\> \<maxPrecisionType\>long double\</maxPrecisionType\>\<br\>\<br\> \<numberOfNodes\>11\</numberOfNodes\>\<br\>\<br\> \<numberOfCores\>20\</numberOfCores\>\<br\>\<br\> \<numberOfThreads\>1\</numberOfThreads\>\<br\>\<br\> \<numberOfThreadsFailure\>0\</numberOfThreadsFailure\>\<br\>\<br\> \<cacheTypes\>Inner Caching, Outer Caching, Lookahead Caching\</cacheTypes\>\<br\>\<br\> \<cacheHitsACC\>3\</cacheHitsACC\>\<br\>\<br\>\</paceval.-Computation\>\<br\>\<br\>", "version-details":"[libpaceval_linux_staticLIB.a] and [libpaceval_linux_sharedLIB.so][4.25, 64 bit] developer version (non-commercial use only) - Copyright 2015-2024. - All rights reserved. (paceval.[Registered Trade Mark])",  
 "version-number":4.25  
 }**
-
+```
 getMultipleComputationsResultsResponse = paceval.GetMultipleComputationsResults(url, "989554800;988662768", "2", "0.5;2;0.4;2").text
 
 print(getMultipleComputationsResultsResponse)
-
+```
 **Return:  
 {  
 "number-of-multiple-computations":2,  
@@ -171,11 +170,11 @@ print(getMultipleComputationsResultsResponse)
 "time-calculate":"0.000675s",  
 "version-number":4.25  
 }**
-
+```
 getMultipleComputationsResultsExtResponse = paceval.GetMultipleComputationsResultsExt(url, "117867040;118054176", "2", "3", "0.61;3.1;53.21;0.62;3.2;53.22;0.63;3.3;53.23").text
 
 print(getMultipleComputationsResultsExtResponse)
-
+```
 **Return:  
 {  
 "number-of-multiple-computations":2,  
