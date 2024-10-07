@@ -1,0 +1,10 @@
+LICENSE
+pyproject.toml
+readme.md
+setup.cfg
+paceval.egg-info/PKG-INFO
+paceval.egg-info/SOURCES.txt
+paceval.egg-info/dependency_links.txt
+paceval.egg-info/requires.txt
+paceval.egg-info/top_level.txt
+paceval/src/paceval.py

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paceval"
+version = "4.25.1"
+authors = [
+    {name = "paceval", email = "info@paceval.com"},
+]
+description = "paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)"
+readme = "readme.md"
+requires-python = ">=3.6"
+dependencies = [
+    "requests",
+    'importlib-metadata; python_version<"3.10"',
+]
+classifiers = [
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+        "Operating System :: OS Independent",
+]
