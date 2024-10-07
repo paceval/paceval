@@ -7,4 +7,5 @@ paceval.egg-info/SOURCES.txt
 paceval.egg-info/dependency_links.txt
 paceval.egg-info/requires.txt
 paceval.egg-info/top_level.txt
+paceval/src/__init__.py
 paceval/src/paceval.py
