@@ -56,8 +56,7 @@ import json
 
 from types import SimpleNamespace
 
-\#paceval Server
-
+#paceval Server
 url = "http://paceval-service.com"
 
 demoResponse = paceval.Demo(url, "-sin(x\*cos(x))\^(1/y)", "2", "x;y","0.5;2", "yes").text
