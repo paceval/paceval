@@ -6,11 +6,10 @@
 # Documentation: https://pypi.org/project/paceval/
 #---------------------------------------------------------------------------
 
-import requests
-
 
 # see https://app.swaggerhub.com/apis/paceval/paceval-service/4.25#/default/post_Demo_
 def Demo(mainUrl, functionString, numberOfVariables, variables, values, interval):
+    import requests
 
     url = mainUrl + "/Demo/"
     payload = {
@@ -28,6 +27,7 @@ def Demo(mainUrl, functionString, numberOfVariables, variables, values, interval
 
 # see https://app.swaggerhub.com/apis/paceval/paceval-service/4.25#/default/post_CreateComputation_
 def CreateComputation(mainUrl, functionString, numberOfVariables, variables, interval):
+    import requests
 
     url = mainUrl + "/CreateComputation/"
     payload = {
@@ -44,6 +44,7 @@ def CreateComputation(mainUrl, functionString, numberOfVariables, variables, int
 
 # see https://app.swaggerhub.com/apis/paceval/paceval-service/4.25#/default/post_GetComputationResult_
 def GetComputationResult(mainUrl, handle_pacevalComputation, values):
+    import requests
 
     url = mainUrl + "/GetComputationResult/"
     payload = {
@@ -58,6 +59,7 @@ def GetComputationResult(mainUrl, handle_pacevalComputation, values):
 
 # see https://app.swaggerhub.com/apis/paceval/paceval-service/4.25#/default/post_GetErrorInformation_
 def GetErrorInformation(mainUrl, handle_pacevalComputation):
+    import requests
 
     url = mainUrl + "/GetErrorInformation/"
     payload = {
@@ -71,6 +73,7 @@ def GetErrorInformation(mainUrl, handle_pacevalComputation):
 
 # see https://app.swaggerhub.com/apis/paceval/paceval-service/4.25#/default/post_GetComputationResultExt_
 def GetComputationResultExt(mainUrl, handle_pacevalComputation, numberOfCalculations, values):
+    import requests
 
     url = mainUrl + "/GetComputationResultExt/"
     payload = {
@@ -86,6 +89,7 @@ def GetComputationResultExt(mainUrl, handle_pacevalComputation, numberOfCalculat
 
 # see https://app.swaggerhub.com/apis/paceval/paceval-service/4.25#/default/post_GetMultipleComputationsResults_
 def GetMultipleComputationsResults(mainUrl, handle_pacevalComputations, numberOfpacevalComputations, values):
+    import requests
 
     url = mainUrl + "/GetMultipleComputationsResults/"
     payload = {
@@ -101,6 +105,7 @@ def GetMultipleComputationsResults(mainUrl, handle_pacevalComputations, numberOf
 
 # see https://app.swaggerhub.com/apis/paceval/paceval-service/4.25#/default/post_GetMultipleComputationsResultsExt
 def GetMultipleComputationsResultsExt(mainUrl, handle_pacevalComputations, numberOfpacevalComputations, numberOfCalculations, values):
+    import requests
 
     url = mainUrl + "/GetMultipleComputationsResultsExt/"
     payload = {
@@ -117,6 +122,7 @@ def GetMultipleComputationsResultsExt(mainUrl, handle_pacevalComputations, numbe
 
 # see https://app.swaggerhub.com/apis/paceval/paceval-service/4.25#/default/post_GetComputationInformationXML_
 def GetComputationInformationXML(mainUrl, handle_pacevalComputation):
+    import requests
 
     url = mainUrl + "/GetComputationInformationXML/"
     payload = {

@@ -1,13 +1,13 @@
 Metadata-Version: 2.1
 Name: paceval
-Version: 4.25.1
+Version: 4.25.4
 Summary: paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)
 Author-email: paceval <info@paceval.com>
 Project-URL: Homepage, https://paceval.com
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
 Classifier: Operating System :: OS Independent
-Requires-Python: >=3.6
+Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: requests

@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "paceval"
-version = "4.25.1"
+version = "4.25.4"
 authors = [
     {name = "paceval", email = "info@paceval.com"},
 ]
 description = "paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)"
 readme = "readme.md"
-requires-python = ">=3.6"
+requires-python = ">=3.8"
 dependencies = [
     "requests",
     'importlib-metadata; python_version<"3.10"',
