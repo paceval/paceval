@@ -21,9 +21,9 @@ This creates a calculation object for the function "-sin(x\*cos(x))\^(1/y)" and 
 Of course you can specify any mathematical function and any number of variables and also other and longer variable names. : )
 
 In addition, with the calculation you receive a reference to the generated calculation object for the function. From now on you can simply use this reference to get calculations for further values. **References are valid for 1 hour**, which is extended to 1 hour from the time of access each time a reference is accessed. If only the reference to a calculation object is used, the sometimes very long function does not have to be passed every time. **That saves time and computing power.** For example, if you have received a reference "handle_Computation: 115626720", simply call up the following function for a further calculation with the values 0.46577 for x and 2.61 for y.
-
+```
 paceval.GetComputationResult("http://paceval-service.com", "115626720", "0.46577;2.61")
-
+```
 This allows you to **perform complex calculations of any length and with any number of variables on the server**. Please note that this is our test server. : )
 
 This test server is a 4-core ARM64 Linux server with only 4GB of memory, although it's pretty fast.
@@ -33,17 +33,17 @@ This test server is a 4-core ARM64 Linux server with only 4GB of memory, althoug
 Just run this command line in the terminal to get and start the service with Docker:
 
 **LINUX FOR x64 PROCESSORS (Intel and AMD)**
-
+```
 sudo docker pull paceval/paceval-service_linux_x64:latest
 
 sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_x64
-
+```
 **LINUX FOR ARM64 PROCESSORS (e.g. Raspberry Pi or APPLE M1/M2)**
-
+```
 sudo docker pull paceval/paceval-service_linux_arm64:latest
 
 sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_arm64
-
+```
 [paceval. - website](https://paceval.com)
 
 [Send email to paceval](mailto:info@paceval.com)
