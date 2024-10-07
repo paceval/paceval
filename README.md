@@ -92,6 +92,7 @@ Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.<br>
     - Eclipse/GCC (ARM32 32bit)<br><br>
     for Node.js - paceval-service is the Linux mathematical server for APPLE, ARM64, ARM32, Intel and AMD processors<br>
      this includes the ["Guide for deploying the Kubernetes native paceval-service on any cluster"](https://github.com/paceval/paceval/blob/main/examples_sources/NodeJS_examples/k8s/doc/Readme.md)<br><br>
+    for Python - the [PyPi distribution package "paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)(https://github.com/paceval/paceval/blob/main/examples_sources/Python_examples/paceval%20with%20Python-the%20Mathematical%20Engine%20as%20a%20Service%20(e.g.%20for%20multi-party%20computations).pdf)"]<br>
     for PHP - a simple mathematical engine, e.g. to offload battery-operated IoT devices and other examples<br>
     
 •   <b>[other programming languages](https://paceval.com/api/#any_programming_language) via Foreign function interface (FFI)<br></b>
@@ -116,7 +117,7 @@ Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.<br>
     - Pascal<br>
     - Perl<br>
     - PHP (incl. paceval. example)<br>
-    - Python<br>
+    - Python (see above paceval. PyPi distribution package)<br>
     - R<br>
     - Ruby<br>
     - Rust<br>
