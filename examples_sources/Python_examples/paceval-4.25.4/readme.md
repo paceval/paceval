@@ -49,7 +49,7 @@ sudo docker run -p 8080:8080 -d paceval/paceval-service_linux_arm64
 [Send email to paceval](mailto:info@paceval.com)
 
 ## Code example
-
+```
 import paceval
 
 import json
@@ -63,7 +63,7 @@ url = "http://paceval-service.com"
 demoResponse = paceval.Demo(url, "-sin(x\*cos(x))\^(1/y)", "2", "x;y","0.5;2", "yes").text
 
 print(demoResponse)
-
+```
 **Return:  
 {  
 "handle_pacevalComputation":140660720254832,  
@@ -77,11 +77,11 @@ print(demoResponse)
 "time-calculate":"0.000859s",  
 "version-number":4.25  
 }**
-
+```
 createComputationResponse = paceval.CreateComputation(url, "-sin(x\*cos(x))\^(1/y)", "2", "x;y", "yes").text
 
 print(createComputationResponse)
-
+```
 **Return:  
 {  
 "handle_pacevalComputation":140660720337664,  
@@ -94,11 +94,11 @@ print(createComputationResponse)
 "time-create":"0.000253s",  
 "version-number":4.25  
 }**
-
+```
 getComputationResultResponse = paceval.GetComputationResult(url, "140660720254832", "0.5;2").text
 
 print(getComputationResultResponse)
-
+```
 **Return:  
 {  
 "handle_pacevalComputation":140660720254832,  
@@ -112,11 +112,11 @@ print(getComputationResultResponse)
 "time-calculate":"0.000264s",  
 "version-number":4.25  
 }**
-
+```
 getErrorInformationResponse = paceval.GetErrorInformation(url, "140660720254832").text
 
 print(getErrorInformationResponse)
-
+```
 **Return:  
 {  
 "handle_pacevalComputation":140660720254832,  
@@ -128,11 +128,11 @@ print(getErrorInformationResponse)
 "error-message":"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).",  
 "version-number":4.25  
 }**
-
+```
 getComputationResultExtResponse = paceval.GetComputationResultExt(url, "140660720254832", "3", "0.5;2;0.4;2;0.3;2").text
 
 print(getComputationResultExtResponse)
-
+```
 **Return:  
 {  
 "number-of-multiple-values":3, "handle_pacevalComputation":140660720254832,  
@@ -144,22 +144,22 @@ print(getComputationResultExtResponse)
 "time-calculate":"0.000502s",  
 "version-number":4.25  
 }**
-
+```
 getComputationInformationXMLResponse = paceval.GetComputationInformationXML(url, "140660720254832").text
 
 print(getComputationInformationXMLResponse)
-
+```
 **Return:  
 {  
 "handle_pacevalComputation":140660720254832,  
 "information-XML":"\<br\>\<br\>\<paceval.-Computation\>\<br\>\<br\>\\ \<version\>4.04\</version\>\<br\>\<br\> \<function50Characters\>-sin(x\*cos(x))\^(1/y)\</function50Characters\>\<br\>\<br\> \<functionLength\>20\</functionLength\>\<br\>\<br\> \<numberOfVariables\>2\</numberOfVariables\>\<br\>\<br\> \<useInterval\>true\</useInterval\>\<br\>\<br\> \<errorMessage\>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\</errorMessage\>\<br\>\<br\> \<errorDetails\>[NO ERROR]\</errorDetails\>\<br\>\<br\> \<maxPrecisionType\>long double\</maxPrecisionType\>\<br\>\<br\> \<numberOfNodes\>11\</numberOfNodes\>\<br\>\<br\> \<numberOfCores\>20\</numberOfCores\>\<br\>\<br\> \<numberOfThreads\>1\</numberOfThreads\>\<br\>\<br\> \<numberOfThreadsFailure\>0\</numberOfThreadsFailure\>\<br\>\<br\> \<cacheTypes\>Inner Caching, Outer Caching, Lookahead Caching\</cacheTypes\>\<br\>\<br\> \<cacheHitsACC\>3\</cacheHitsACC\>\<br\>\<br\>\</paceval.-Computation\>\<br\>\<br\>", "version-details":"[libpaceval_linux_staticLIB.a] and [libpaceval_linux_sharedLIB.so][4.25, 64 bit] developer version (non-commercial use only) - Copyright 2015-2024. - All rights reserved. (paceval.[Registered Trade Mark])",  
 "version-number":4.25  
 }**
-
+```
 getMultipleComputationsResultsResponse = paceval.GetMultipleComputationsResults(url, "989554800;988662768", "2", "0.5;2;0.4;2").text
 
 print(getMultipleComputationsResultsResponse)
-
+```
 **Return:  
 {  
 "number-of-multiple-computations":2,  
@@ -171,11 +171,11 @@ print(getMultipleComputationsResultsResponse)
 "time-calculate":"0.000675s",  
 "version-number":4.25  
 }**
-
+```
 getMultipleComputationsResultsExtResponse = paceval.GetMultipleComputationsResultsExt(url, "117867040;118054176", "2", "3", "0.61;3.1;53.21;0.62;3.2;53.22;0.63;3.3;53.23").text
 
 print(getMultipleComputationsResultsExtResponse)
-
+```
 **Return:  
 {  
 "number-of-multiple-computations":2,  
