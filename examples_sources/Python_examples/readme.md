@@ -1,8 +1,8 @@
 # paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)
 
-paceval at PyPI
+[paceval at PyPI](https://pypi.org/project/paceval/)
 
-paceval at SwaggerHub
+[paceval at SwaggerHub](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/)
 
 ## WHY DO I NEED A MATHEMATICAL ENGINE?
 
@@ -64,7 +64,7 @@ demoResponse = paceval.Demo(url, "-sin(x\*cos(x))\^(1/y)", "2", "x;y","0.5;2", "
 
 print(demoResponse)
 
-**Return:**  
+**Return:  
 {  
 "handle_pacevalComputation":140660720254832,  
 "result":"-0.651801782452278",  
@@ -76,13 +76,13 @@ print(demoResponse)
 "error-message":"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).",  
 "time-calculate":"0.000859s",  
 "version-number":4.25  
-}
+}**
 
 createComputationResponse = paceval.CreateComputation(url, "-sin(x\*cos(x))\^(1/y)", "2", "x;y", "yes").text
 
 print(createComputationResponse)
 
-**Return:**  
+**Return:  
 {  
 "handle_pacevalComputation":140660720337664,  
 "function-10chars":"-sin(x\*cos(...)",  
@@ -93,13 +93,13 @@ print(createComputationResponse)
 "error-message":"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).",  
 "time-create":"0.000253s",  
 "version-number":4.25  
-}
+}**
 
 getComputationResultResponse = paceval.GetComputationResult(url, "140660720254832", "0.5;2").text
 
 print(getComputationResultResponse)
 
-**Return:**  
+**Return:  
 {  
 "handle_pacevalComputation":140660720254832,  
 "result":"-0.651801782452278",  
@@ -111,13 +111,13 @@ print(getComputationResultResponse)
 "error-message":"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).",  
 "time-calculate":"0.000264s",  
 "version-number":4.25  
-}
+}**
 
 getErrorInformationResponse = paceval.GetErrorInformation(url, "140660720254832").text
 
 print(getErrorInformationResponse)
 
-**Return:**  
+**Return:  
 {  
 "handle_pacevalComputation":140660720254832,  
 "hasError":false,  
@@ -127,13 +127,13 @@ print(getErrorInformationResponse)
 "error-type":"[NO ERROR]",  
 "error-message":"No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).",  
 "version-number":4.25  
-}
+}**
 
 getComputationResultExtResponse = paceval.GetComputationResultExt(url, "140660720254832", "3", "0.5;2;0.4;2;0.3;2").text
 
 print(getComputationResultExtResponse)
 
-**Return:**  
+**Return:  
 {  
 "number-of-multiple-values":3, "handle_pacevalComputation":140660720254832,  
 "hasError":false,  
@@ -143,24 +143,24 @@ print(getComputationResultExtResponse)
 "error-type-numbers": [0,0,0],  
 "time-calculate":"0.000502s",  
 "version-number":4.25  
-}
+}**
 
 getComputationInformationXMLResponse = paceval.GetComputationInformationXML(url, "140660720254832").text
 
 print(getComputationInformationXMLResponse)
 
-**Return:**  
+**Return:  
 {  
 "handle_pacevalComputation":140660720254832,  
 "information-XML":"\<br\>\<br\>\<paceval.-Computation\>\<br\>\<br\>\\ \<version\>4.04\</version\>\<br\>\<br\> \<function50Characters\>-sin(x\*cos(x))\^(1/y)\</function50Characters\>\<br\>\<br\> \<functionLength\>20\</functionLength\>\<br\>\<br\> \<numberOfVariables\>2\</numberOfVariables\>\<br\>\<br\> \<useInterval\>true\</useInterval\>\<br\>\<br\> \<errorMessage\>No error has occurred for this computation object (PACEVAL_ERR_NO_ERROR).\</errorMessage\>\<br\>\<br\> \<errorDetails\>[NO ERROR]\</errorDetails\>\<br\>\<br\> \<maxPrecisionType\>long double\</maxPrecisionType\>\<br\>\<br\> \<numberOfNodes\>11\</numberOfNodes\>\<br\>\<br\> \<numberOfCores\>20\</numberOfCores\>\<br\>\<br\> \<numberOfThreads\>1\</numberOfThreads\>\<br\>\<br\> \<numberOfThreadsFailure\>0\</numberOfThreadsFailure\>\<br\>\<br\> \<cacheTypes\>Inner Caching, Outer Caching, Lookahead Caching\</cacheTypes\>\<br\>\<br\> \<cacheHitsACC\>3\</cacheHitsACC\>\<br\>\<br\>\</paceval.-Computation\>\<br\>\<br\>", "version-details":"[libpaceval_linux_staticLIB.a] and [libpaceval_linux_sharedLIB.so][4.25, 64 bit] developer version (non-commercial use only) - Copyright 2015-2024. - All rights reserved. (paceval.[Registered Trade Mark])",  
 "version-number":4.25  
-}
+}**
 
 getMultipleComputationsResultsResponse = paceval.GetMultipleComputationsResults(url, "989554800;988662768", "2", "0.5;2;0.4;2").text
 
 print(getMultipleComputationsResultsResponse)
 
-**Return:**  
+**Return:  
 {  
 "number-of-multiple-computations":2,  
 "handle_pacevalComputations":[ 989554800, 988662768 ], "hasError":false,  
@@ -170,34 +170,24 @@ print(getMultipleComputationsResultsResponse)
 "error-type-numbers":[0,0],  
 "time-calculate":"0.000675s",  
 "version-number":4.25  
-}
+}**
 
 getMultipleComputationsResultsExtResponse = paceval.GetMultipleComputationsResultsExt(url, "117867040;118054176", "2", "3", "0.61;3.1;53.21;0.62;3.2;53.22;0.63;3.3;53.23").text
 
 print(getMultipleComputationsResultsExtResponse)
 
-**Return:**  
+**Return:  
 {  
-"number-of-multiple-computations":2,
-
-"number-of-multiple-calculations":3,
-
-"handle_pacevalComputations":[ 117867040, 118054176],
-
-"hasError":false,
-
-"results":[ "-51.319", "-51.236", "-51.151", "-164.341", "-169.684", "-175.029" ],
-
-"interval-min-results":[ "-51.319", "-51.236", "-51.151", "-164.341", "-169.684", "-175.029" ],
-
-"interval-max-results":[ "-51.319", "-51.236", "-51.151", "-164.341", "-169.684", "-175.029" ],
-
-"error-type-numbers":[ 0, 0, 0, 0, 0, 0 ],
-
-"time-calculate":"0.000728s",
-
-"version-number":4.25,
-
-}
+"number-of-multiple-computations":2,  
+"number-of-multiple-calculations":3,  
+"handle_pacevalComputations":[ 117867040, 118054176],  
+"hasError":false,  
+"results":[ "-51.319", "-51.236", "-51.151", "-164.341", "-169.684", "-175.029" ],  
+"interval-min-results":[ "-51.319", "-51.236", "-51.151", "-164.341", "-169.684", "-175.029" ],  
+"interval-max-results":[ "-51.319", "-51.236", "-51.151", "-164.341", "-169.684", "-175.029" ],  
+"error-type-numbers":[ 0, 0, 0, 0, 0, 0 ],  
+"time-calculate":"0.000728s",  
+"version-number":4.25,  
+}**
 
 Copyright © 2015-2024 paceval.® All rights reserved. mailto:info@paceval.com
