@@ -4,7 +4,7 @@ paceval and artificial intelligence GitHub - <https://github.com/paceval/paceval
 
 paceval at SwaggerHub - https://app.swaggerhub.com/apis-docs/paceval/paceval-service
 
-detailed example for AI (see above): folder <b>geometric shapes classification and export to paceval"</b><br>
+detailed example for AI (see above): folder <b>geometric shapes classification and export to paceval</b><br>
 other examples for AI<br>
     1. detects "fashion" in images (see above): <b>fashion</b><br>
     2. detects "skin cancer" in images (see above): <b>skin cancer</b><br>
