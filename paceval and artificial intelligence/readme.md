@@ -2,7 +2,13 @@
 
 paceval and artificial intelligence GitHub - <https://github.com/paceval/paceval/tree/main/paceval%20and%20artificial%20intelligence>
 
-paceval at SwaggerHub - https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.23
+paceval at SwaggerHub - https://app.swaggerhub.com/apis-docs/paceval/paceval-service
+
+detailed example for AI (see above): folder "geometric shapes classification and export to paceval"
+other examples for AI 
+    1. detects "fashion" in images (see above): "fashion"
+    2. detects "skin cancer" in images (see above): "skin cancer"
+    3. detects "faces" in images (see above): "faces"
 
 ![Ein Bild, das Text, Diagramm, Schrift enthält. Automatisch generierte Beschreibung](media/1941db52f2159618073380b9242eb700.png)
 
