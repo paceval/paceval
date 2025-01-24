@@ -1,6 +1,6 @@
-# paceval. the system independent mathematical engine 4.25
+# paceval. the system independent mathematical engine 4.26
 
-Documentation of the paceval. source-code, Copyright ©1994-2024. Version 1.x, 2.x, 3.x, 4.x ©1994-2024 Joerg Koenning & paceval.[Registered Trade Mark]  
+Documentation of the paceval. source-code, Copyright ©1994-2025. Version 1.x, 2.x, 3.x, 4.x ©1994-2025 Joerg Koenning & paceval UG [Registered Trade Mark]  
 All rights reserved., Author(s) : Joerg Koenning
 
 External documentation -
@@ -85,4 +85,4 @@ The following operators, partial functions and symbols are currently supported:
     (Annotation: [paceval_dGetMultipleComputationsResultsExt()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a5cc7887ed6b733722bd93a7669cf7a34) should be used to obtain results for several computation objects at the same time and to carry out as many different evaluations as possible at once, e.g. for artificial neural network functions or decision trees, in which several functions with different variable values are calculated in one step in order to decide on several objects at the same time.
 -   [paceval_DeleteComputation()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a0a5a920a210ff6914dd5742f096635a2) : Deletes a computation object with the given token.
 
-Copyright © 2015-2024 paceval.® All rights reserved. mailto:info@paceval.com
+Copyright © 2015-2025 paceval.® All rights reserved. mailto:info@paceval.com
