@@ -18,6 +18,10 @@ Include dependency graph for paceval\+\_\+c\+Graph.\+cpp\+:\nopagebreak
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+bool \mbox{\hyperlink{paceval__c_graph_8cpp_af161dee2e3b9da21dae33ba48d7781ea}{paceval\+\_\+lock\+Global\+Variables\+Mutex\+Object}} ()
+\item 
+void \mbox{\hyperlink{paceval__c_graph_8cpp_a407c4b19785069024572df18ebf4b40a}{paceval\+\_\+unlock\+Global\+Variables\+Mutex\+Object}} ()
+\item 
 unsigned long \mbox{\hyperlink{paceval__c_graph_8cpp_aa3dae93074d28c6e76a1272f09aae34c}{paceval\+\_\+get\+Thread\+Step}} ()
 \item 
 unsigned long \mbox{\hyperlink{paceval__c_graph_8cpp_a5d8d84c513e2fbc5a4c3a1f512d2f6d5}{get\+Number\+Of\+Prefetched\+Double\+Work}} ()
@@ -47,7 +51,15 @@ the class \doxylink{classpaceval__c_graph}{paceval\+\_\+c\+Graph} manages the li
 \doxysubsubsection{\texorpdfstring{getNumberOfPrefetchedDamaged()}{getNumberOfPrefetchedDamaged()}}
 {\footnotesize\ttfamily unsigned long get\+Number\+Of\+Prefetched\+Damaged (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-gets the number of times the a lookahead cache was damaged (this number should be 0) Here is the caller graph for this function\+:\nopagebreak
+gets the number of times the a lookahead cache was damaged (this number should be 0) Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_graph_8cpp_afff514abfbd42536891411a02682f966_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -60,7 +72,15 @@ gets the number of times the a lookahead cache was damaged (this number should b
 \doxysubsubsection{\texorpdfstring{getNumberOfPrefetchedDoubleWork()}{getNumberOfPrefetchedDoubleWork()}}
 {\footnotesize\ttfamily unsigned long get\+Number\+Of\+Prefetched\+Double\+Work (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-gets the number of times work was doubled, meaning that a partial computation was performed by a secondary thread for the lookahead cache, but was also computed by the main thread (this number should be very small or 0) Here is the caller graph for this function\+:\nopagebreak
+gets the number of times work was doubled, meaning that a partial computation was performed by a secondary thread for the lookahead cache, but was also computed by the main thread (this number should be very small or 0) Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_graph_8cpp_a5d8d84c513e2fbc5a4c3a1f512d2f6d5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -73,11 +93,47 @@ gets the number of times work was doubled, meaning that a partial computation wa
 \doxysubsubsection{\texorpdfstring{paceval\_getThreadStep()}{paceval\_getThreadStep()}}
 {\footnotesize\ttfamily unsigned long paceval\+\_\+get\+Thread\+Step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-gets the default step size of nodes for parallel partial computations via threads for lookahead caching Here is the caller graph for this function\+:\nopagebreak
+gets the default step size of nodes for parallel partial computations via threads for lookahead caching Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_graph_8cpp_aa3dae93074d28c6e76a1272f09aae34c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{paceval__c_graph_8cpp_aa3dae93074d28c6e76a1272f09aae34c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_graph_8cpp_af161dee2e3b9da21dae33ba48d7781ea}\label{paceval__c_graph_8cpp_af161dee2e3b9da21dae33ba48d7781ea} 
+\index{paceval\_cGraph.cpp@{paceval\_cGraph.cpp}!paceval\_lockGlobalVariablesMutexObject@{paceval\_lockGlobalVariablesMutexObject}}
+\index{paceval\_lockGlobalVariablesMutexObject@{paceval\_lockGlobalVariablesMutexObject}!paceval\_cGraph.cpp@{paceval\_cGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_lockGlobalVariablesMutexObject()}{paceval\_lockGlobalVariablesMutexObject()}}
+{\footnotesize\ttfamily bool paceval\+\_\+lock\+Global\+Variables\+Mutex\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_graph_8cpp_af161dee2e3b9da21dae33ba48d7781ea_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_graph_8cpp_a407c4b19785069024572df18ebf4b40a}\label{paceval__c_graph_8cpp_a407c4b19785069024572df18ebf4b40a} 
+\index{paceval\_cGraph.cpp@{paceval\_cGraph.cpp}!paceval\_unlockGlobalVariablesMutexObject@{paceval\_unlockGlobalVariablesMutexObject}}
+\index{paceval\_unlockGlobalVariablesMutexObject@{paceval\_unlockGlobalVariablesMutexObject}!paceval\_cGraph.cpp@{paceval\_cGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_unlockGlobalVariablesMutexObject()}{paceval\_unlockGlobalVariablesMutexObject()}}
+{\footnotesize\ttfamily void paceval\+\_\+unlock\+Global\+Variables\+Mutex\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_graph_8cpp_a407c4b19785069024572df18ebf4b40a_icgraph}
 \end{center}
 \end{figure}
 

@@ -30,9 +30,9 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-unsigned long \mbox{\hyperlink{paceval__d_test_debug_8h_aca6a6e91b9816392c0bbab78704fefcd}{paceval\+\_\+get\+Logging\+Enabled}} ()
+bool \mbox{\hyperlink{paceval__d_test_debug_8h_a58667ec9fc9539b040e7808829b4ec85}{paceval\+\_\+is\+Logging\+Enabled}} ()
 \item 
-bool \mbox{\hyperlink{paceval__d_test_debug_8h_a3e728815e8c7607100ab2b9b31ee7bd2}{paceval\+\_\+set\+Logging\+Enabled}} (unsigned long logging\+Enabled\+\_\+in)
+bool \mbox{\hyperlink{paceval__d_test_debug_8h_a8b4e06c2ab361081fd3616f76888531f}{paceval\+\_\+set\+Logging\+Enabled}} (bool logging\+Enabled\+\_\+in)
 \end{DoxyCompactItemize}
 
 
@@ -81,34 +81,36 @@ defines whether the feature is set to perform a extended mathematical test by pa
 defines whether the feature is set to perform a memory test by paceval (default is 1 = feature is used, see \doxylink{paceval__f_self_test_main_8cpp}{paceval\+\_\+f\+Self\+Test\+Main.\+cpp}) 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{paceval__d_test_debug_8h_aca6a6e91b9816392c0bbab78704fefcd}\label{paceval__d_test_debug_8h_aca6a6e91b9816392c0bbab78704fefcd} 
-\index{paceval\_dTestDebug.h@{paceval\_dTestDebug.h}!paceval\_getLoggingEnabled@{paceval\_getLoggingEnabled}}
-\index{paceval\_getLoggingEnabled@{paceval\_getLoggingEnabled}!paceval\_dTestDebug.h@{paceval\_dTestDebug.h}}
-\doxysubsubsection{\texorpdfstring{paceval\_getLoggingEnabled()}{paceval\_getLoggingEnabled()}}
-{\footnotesize\ttfamily unsigned long paceval\+\_\+get\+Logging\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\Hypertarget{paceval__d_test_debug_8h_a58667ec9fc9539b040e7808829b4ec85}\label{paceval__d_test_debug_8h_a58667ec9fc9539b040e7808829b4ec85} 
+\index{paceval\_dTestDebug.h@{paceval\_dTestDebug.h}!paceval\_isLoggingEnabled@{paceval\_isLoggingEnabled}}
+\index{paceval\_isLoggingEnabled@{paceval\_isLoggingEnabled}!paceval\_dTestDebug.h@{paceval\_dTestDebug.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_isLoggingEnabled()}{paceval\_isLoggingEnabled()}}
+{\footnotesize\ttfamily bool paceval\+\_\+is\+Logging\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-gets whether log information to file should be used (annotation\+: this also depends on the feature flag paceval\+\_\+\+ENABLE\+\_\+\+LOGGING\+\_\+\+TO\+\_\+\+FILE) Here is the caller graph for this function\+:\nopagebreak
+gets whether log information to file should be used (annotation\+: this also depends on the feature flag paceval\+\_\+\+ENABLE\+\_\+\+LOGGING\+\_\+\+TO\+\_\+\+FILE) Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{paceval__d_test_debug_8h_aca6a6e91b9816392c0bbab78704fefcd_icgraph}
+\includegraphics[width=350pt]{paceval__d_test_debug_8h_a58667ec9fc9539b040e7808829b4ec85_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{paceval__d_test_debug_8h_a3e728815e8c7607100ab2b9b31ee7bd2}\label{paceval__d_test_debug_8h_a3e728815e8c7607100ab2b9b31ee7bd2} 
+\Hypertarget{paceval__d_test_debug_8h_a8b4e06c2ab361081fd3616f76888531f}\label{paceval__d_test_debug_8h_a8b4e06c2ab361081fd3616f76888531f} 
 \index{paceval\_dTestDebug.h@{paceval\_dTestDebug.h}!paceval\_setLoggingEnabled@{paceval\_setLoggingEnabled}}
 \index{paceval\_setLoggingEnabled@{paceval\_setLoggingEnabled}!paceval\_dTestDebug.h@{paceval\_dTestDebug.h}}
 \doxysubsubsection{\texorpdfstring{paceval\_setLoggingEnabled()}{paceval\_setLoggingEnabled()}}
-{\footnotesize\ttfamily bool paceval\+\_\+set\+Logging\+Enabled (\begin{DoxyParamCaption}\item[{unsigned long}]{logging\+Enabled\+\_\+in }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool paceval\+\_\+set\+Logging\+Enabled (\begin{DoxyParamCaption}\item[{bool}]{logging\+Enabled\+\_\+in }\end{DoxyParamCaption})}
 
 sets whether log information to file should be used (annotation\+: this also depends on the feature flag paceval\+\_\+\+ENABLE\+\_\+\+LOGGING\+\_\+\+TO\+\_\+\+FILE) 
 \begin{DoxyParams}{Parameters}
-{\em logging\+Enabled\+\_\+in} & specifies whether log information to file should be used \\
+{\em logging\+Enabled\+\_\+in} & specifies whether log information to file or buffer should be used \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{paceval__d_test_debug_8h_a3e728815e8c7607100ab2b9b31ee7bd2_icgraph}
+\includegraphics[width=350pt]{paceval__d_test_debug_8h_a8b4e06c2ab361081fd3616f76888531f_icgraph}
 \end{center}
 \end{figure}

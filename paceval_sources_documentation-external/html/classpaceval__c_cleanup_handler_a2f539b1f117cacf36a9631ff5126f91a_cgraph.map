@@ -1,7 +1,11 @@
 <map id="paceval_cCleanupHandler::getLastError" name="paceval_cCleanupHandler::getLastError">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,175,48"/>
-<area shape="rect" id="Node000002" href="$paceval__c_cleanup_handler_8cpp.html#a259feffba4d85fd7c759418dbc4ca1a5" title=" " alt="" coords="223,5,385,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,24,207,24,207,29,175,29"/>
-<area shape="rect" id="Node000003" href="$paceval__f_math_8cpp.html#a42260395ee9d414c37552c8d268c3daa" title=" " alt="" coords="433,13,661,40"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="386,24,417,24,417,29,386,29"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,175,99"/>
+<area shape="rect" id="Node000002" href="$paceval__c_cleanup_handler_8cpp.html#a259feffba4d85fd7c759418dbc4ca1a5" title=" " alt="" coords="223,56,385,99"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,75,207,75,207,80,175,80"/>
+<area shape="rect" id="Node000003" href="$paceval__f_math_8cpp.html#a9e866727341b43918494561e617d6846" title=" " alt="" coords="433,5,661,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="385,53,432,41,466,33,468,39,434,47,386,59"/>
+<area shape="rect" id="Node000004" href="$paceval__c_computation_8cpp.html#af161dee2e3b9da21dae33ba48d7781ea" title=" " alt="" coords="454,56,640,99"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="386,75,438,75,438,80,386,80"/>
+<area shape="rect" id="Node000005" href="$paceval__c_computation_8cpp.html#a407c4b19785069024572df18ebf4b40a" title=" " alt="" coords="447,123,647,165"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="385,97,453,115,451,121,384,102"/>
 </map>

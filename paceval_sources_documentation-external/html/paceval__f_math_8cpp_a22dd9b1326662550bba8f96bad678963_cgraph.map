@@ -1,16 +1,16 @@
 <map id="paceval_pow10l" name="paceval_pow10l">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,117,55"/>
-<area shape="rect" id="Node000002" href="$paceval__f_math_8cpp.html#a0d4ab18045023a65ac4671fdb2d4d5df" title=" " alt="" coords="534,29,753,55"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,25,164,14,255,5,325,3,487,14,557,23,556,28,486,19,325,8,255,10,165,19,109,31"/>
-<area shape="rect" id="Node000003" href="$paceval__f_math_8cpp.html#a3e1229891a8bdf1a8120d5c1c62578ab" title=" " alt="" coords="165,29,327,55"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,47,149,48,149,53,117,53"/>
-<area shape="poly" id="edge9_Node000003_Node000001" title=" " alt="" coords="164,36,132,36,132,30,164,30"/>
-<area shape="rect" id="Node000004" href="$paceval__f_math_8cpp.html#af5ab3fb26ead2f533992e1c52847ad28" title=" " alt="" coords="377,29,485,55"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="328,48,361,48,361,53,328,53"/>
-<area shape="rect" id="Node000005" href="$paceval__f_math_8cpp.html#a6f201552db831f21c2617a0b21715b56" title=" " alt="" coords="375,79,486,106"/>
-<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="274,53,361,79,359,85,273,58"/>
-<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="485,39,519,39,519,45,485,45"/>
-<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="376,36,343,36,343,30,376,31"/>
-<area shape="poly" id="edge7_Node000005_Node000002" title=" " alt="" coords="486,77,569,57,570,62,487,82"/>
-<area shape="poly" id="edge8_Node000005_Node000003" title=" " alt="" coords="402,81,341,62,343,57,404,76"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,117,83"/>
+<area shape="rect" id="Node000002" href="$paceval__f_math_8cpp.html#a3e1229891a8bdf1a8120d5c1c62578ab" title=" " alt="" coords="165,56,327,83"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,75,149,76,149,81,117,80"/>
+<area shape="rect" id="Node000004" href="$paceval__f_math_8cpp.html#a54aa621011748600a9256d26c87d0dca" title=" " alt="" coords="534,56,745,83"/>
+<area shape="poly" id="edge9_Node000001_Node000004" title=" " alt="" coords="109,81,165,92,255,101,325,103,486,92,554,83,555,89,487,97,325,108,255,106,164,97,108,86"/>
+<area shape="poly" id="edge8_Node000002_Node000001" title=" " alt="" coords="164,63,132,63,132,58,164,58"/>
+<area shape="rect" id="Node000003" href="$paceval__f_math_8cpp.html#af5ab3fb26ead2f533992e1c52847ad28" title=" " alt="" coords="377,5,485,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="327,53,388,35,389,40,328,58"/>
+<area shape="rect" id="Node000005" href="$paceval__f_math_8cpp.html#a6f201552db831f21c2617a0b21715b56" title=" " alt="" coords="375,56,486,83"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="328,76,359,75,359,81,328,81"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="377,28,289,53,287,48,375,23"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="486,29,567,49,566,54,484,34"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="374,64,343,63,343,58,374,58"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="487,67,519,67,519,72,487,72"/>
 </map>

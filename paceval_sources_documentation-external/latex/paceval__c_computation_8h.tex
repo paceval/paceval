@@ -123,6 +123,10 @@ int \mbox{\hyperlink{paceval__c_computation_8h_a876a5e418214b421cea1cbfef3a75e93
 \item 
 unsigned long \mbox{\hyperlink{paceval__c_computation_8h_ac37970c25d5fd5156100e2ef91f84922}{paceval\+Library\+\_\+\+Get\+Computation\+Information\+XML}} (\mbox{\hyperlink{paceval__main_8h_a6f1065aa80751e736be247a901a6258f}{PACEVAL\+\_\+\+HANDLE}} handle\+\_\+paceval\+Computation\+\_\+in, char \texorpdfstring{$\ast$}{*}paceval\+\_\+str\+XML\+\_\+out)
 \item 
+bool \mbox{\hyperlink{paceval__c_computation_8h_af161dee2e3b9da21dae33ba48d7781ea}{paceval\+\_\+lock\+Global\+Variables\+Mutex\+Object}} ()
+\item 
+void \mbox{\hyperlink{paceval__c_computation_8h_a407c4b19785069024572df18ebf4b40a}{paceval\+\_\+unlock\+Global\+Variables\+Mutex\+Object}} ()
+\item 
 void \mbox{\hyperlink{paceval__c_computation_8h_a6373eabc0e6805c3f6192e4bb6834010}{increase\+Paceval\+Library\+Number\+Computations}} ()
 \item 
 void \mbox{\hyperlink{paceval__c_computation_8h_a0580b994a37a99aa07a0a18cdf4a126d}{increase\+Paceval\+Library\+Number\+Threads\+Used}} ()
@@ -143,7 +147,15 @@ specification of the main interface of paceval\textquotesingle{}s API and the ma
 \doxysubsubsection{\texorpdfstring{increasePacevalLibraryNumberComputations()}{increasePacevalLibraryNumberComputations()}}
 {\footnotesize\ttfamily void increase\+Paceval\+Library\+Number\+Computations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-increases the counter for the number of calculations performed by 1 Here is the caller graph for this function\+:\nopagebreak
+increases the counter for the number of calculations performed by 1 Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8h_a6373eabc0e6805c3f6192e4bb6834010_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -156,7 +168,15 @@ increases the counter for the number of calculations performed by 1 Here is the 
 \doxysubsubsection{\texorpdfstring{increasePacevalLibraryNumberThreadsFailure()}{increasePacevalLibraryNumberThreadsFailure()}}
 {\footnotesize\ttfamily void increase\+Paceval\+Library\+Number\+Threads\+Failure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-increases the count of the number of failed threads by 1 Here is the caller graph for this function\+:\nopagebreak
+increases the count of the number of failed threads by 1 Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8h_a23d0271201cf10a0b956559ef1eed3c1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -169,7 +189,15 @@ increases the count of the number of failed threads by 1 Here is the caller grap
 \doxysubsubsection{\texorpdfstring{increasePacevalLibraryNumberThreadsUsed()}{increasePacevalLibraryNumberThreadsUsed()}}
 {\footnotesize\ttfamily void increase\+Paceval\+Library\+Number\+Threads\+Used (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-increases the counter for the number of threads used by 1 Here is the caller graph for this function\+:\nopagebreak
+increases the counter for the number of threads used by 1 Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8h_a0580b994a37a99aa07a0a18cdf4a126d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -318,7 +346,8 @@ this is the list of implemented constants that can be used in functions\+:
 {\em constant\+Value\+As\+Float\+\_\+out} & the buffer that retrieves the value of the constant with the precision float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -330,6 +359,20 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{paceval__c_computation_8h_a12793cbe05b3744dd4095b6d40f7f477_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8h_af161dee2e3b9da21dae33ba48d7781ea}\label{paceval__c_computation_8h_af161dee2e3b9da21dae33ba48d7781ea} 
+\index{paceval\_cComputation.h@{paceval\_cComputation.h}!paceval\_lockGlobalVariablesMutexObject@{paceval\_lockGlobalVariablesMutexObject}}
+\index{paceval\_lockGlobalVariablesMutexObject@{paceval\_lockGlobalVariablesMutexObject}!paceval\_cComputation.h@{paceval\_cComputation.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_lockGlobalVariablesMutexObject()}{paceval\_lockGlobalVariablesMutexObject()}}
+{\footnotesize\ttfamily bool paceval\+\_\+lock\+Global\+Variables\+Mutex\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Uses the mutex object to lock global variables or accesses during multithreading to protect them and returns true on success. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8h_af161dee2e3b9da21dae33ba48d7781ea_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{paceval__c_computation_8h_aa89c24d1a11baea7ef75d421f640c494}\label{paceval__c_computation_8h_aa89c24d1a11baea7ef75d421f640c494} 
@@ -350,6 +393,20 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{paceval__c_computation_8h_aa89c24d1a11baea7ef75d421f640c494_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_computation_8h_a407c4b19785069024572df18ebf4b40a}\label{paceval__c_computation_8h_a407c4b19785069024572df18ebf4b40a} 
+\index{paceval\_cComputation.h@{paceval\_cComputation.h}!paceval\_unlockGlobalVariablesMutexObject@{paceval\_unlockGlobalVariablesMutexObject}}
+\index{paceval\_unlockGlobalVariablesMutexObject@{paceval\_unlockGlobalVariablesMutexObject}!paceval\_cComputation.h@{paceval\_cComputation.h}}
+\doxysubsubsection{\texorpdfstring{paceval\_unlockGlobalVariablesMutexObject()}{paceval\_unlockGlobalVariablesMutexObject()}}
+{\footnotesize\ttfamily void paceval\+\_\+unlock\+Global\+Variables\+Mutex\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Uses the mutex object to unlock global variables or accesses during multithreading. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_computation_8h_a407c4b19785069024572df18ebf4b40a_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}\label{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68} 
@@ -946,7 +1003,8 @@ returns the string of the logging information -\/ the return value is the length
 {\em paceval\+\_\+logging\+Information\+\_\+out} & points to the buffer that will receive the string (set paceval\+\_\+str\+Version\+\_\+in to NULL to receive the length of the logging string) \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -989,7 +1047,8 @@ performs a calculation on a \doxylink{classpaceval__c_computation}{paceval\+\_\+
 {\em trusted\+Max\+Result\+\_\+out} & if Trusted Interval Computation was enabled by \doxylink{paceval__c_computation_8h_a86035087b6238a298436d26e6ba95a68}{paceval\+Library\+\_\+\+Create\+Computation()} this retrieves the maximum/upper interval limit limit of the computation (annotation\+: in case of an error the value is not specified) \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

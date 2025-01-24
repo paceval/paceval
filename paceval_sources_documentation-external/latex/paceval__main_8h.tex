@@ -17,7 +17,7 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \item 
 \#define \mbox{\hyperlink{paceval__main_8h_adff3231ed7be17f42658c7a1c0ae12be}{paceval\+\_\+main\+Version\+String}}~"{}4"{}
 \item 
-\#define \mbox{\hyperlink{paceval__main_8h_a3580a3d4a77d5d501b521f538b7698da}{paceval\+\_\+sub\+Version\+String}}~"{}25"{}
+\#define \mbox{\hyperlink{paceval__main_8h_a3580a3d4a77d5d501b521f538b7698da}{paceval\+\_\+sub\+Version\+String}}~"{}26"{}
 \item 
 \#define \mbox{\hyperlink{paceval__main_8h_a09c4fa95754d4be39824ff7075988ed0}{PACEVAL\+\_\+\+MAXVER}}~255
 \item 
@@ -225,7 +225,7 @@ the paceval. application programming interface -\/ for documentation please go t
 \index{paceval\_main.h@{paceval\_main.h}!paceval\_subVersionString@{paceval\_subVersionString}}
 \index{paceval\_subVersionString@{paceval\_subVersionString}!paceval\_main.h@{paceval\_main.h}}
 \doxysubsubsection{\texorpdfstring{paceval\_subVersionString}{paceval\_subVersionString}}
-{\footnotesize\ttfamily \#define paceval\+\_\+sub\+Version\+String~"{}25"{}}
+{\footnotesize\ttfamily \#define paceval\+\_\+sub\+Version\+String~"{}26"{}}
 
 \Hypertarget{paceval__main_8h_a5d57777450dab7225724b873a05adf47}\label{paceval__main_8h_a5d57777450dab7225724b873a05adf47} 
 \index{paceval\_main.h@{paceval\_main.h}!paceval\_use\_dll@{paceval\_use\_dll}}
@@ -509,7 +509,8 @@ Creates a paceval.-\/Computation object for a mathematical function and its vari
 {\em paceval\+\_\+callback\+Status\+\_\+in} & A user-\/defined callback function to give status information of the paceval.-\/Computation object.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_CreateComputation}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Create\+Computation}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_CreateComputation}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Create\+Computation}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -531,7 +532,8 @@ The \doxylink{paceval__main_8h_ad4fb9e86602b96735b49ca4ce737d55f}{paceval\+\_\+\
 {\em last\+Error\+\_\+str\+Details\+\_\+out} & Buffer to get details like error type as a number, the operator and the position in the function. Annotation\+: Maximum size of the retrieved null-\/terminated string is 255 per “\+::define PACEVAL\+\_\+\+MAXERR 255”, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_CreateErrorInformationText}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Create\+Error\+Information\+Text}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_CreateErrorInformationText}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Create\+Error\+Information\+Text}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -561,7 +563,8 @@ Creates paceval.-\/Computation objects for multiple mathematical functions and o
 {\em paceval\+\_\+callback\+Status\+\_\+in} & A user-\/defined callback function to give status information of the paceval.-\/Computation objects.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_CreateMultipleComputations}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Create\+Multiple\+Computations}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_CreateMultipleComputations}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Create\+Multiple\+Computations}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -622,7 +625,7 @@ see \href{https://paceval.com/api/\#paceval_dConvertFloatToString}{\texttt{ http
 \doxysubsubsection{\texorpdfstring{paceval\_dConvertStringToFloat()}{paceval\_dConvertStringToFloat()}}
 {\footnotesize\ttfamily double paceval\+\_\+d\+Convert\+String\+To\+Float (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{source\+String\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{long \texorpdfstring{$\ast$}{*}}]{err\+Position\+\_\+out,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
 
-Converts a to a string to a floating point number (double). In case a caluclation is given in the string the result is converted. If the function succeeds, the return value is the result of the conversion. Annotation\+: In case of an error the return value is not specified. 
+Converts a string to a floating point number (double). In case a caluclation is given in the string the result is converted. If the function succeeds, the return value is the result of the conversion. Annotation\+: In case of an error the return value is not specified. 
 \begin{DoxyParams}{Parameters}
 {\em source\+String\+\_\+in} & The string to convert. \\
 \hline
@@ -637,7 +640,8 @@ Converts a to a string to a floating point number (double). In case a caluclatio
 {\em trusted\+Max\+Result\+\_\+out} & If Trusted Interval Computation was enabled this retrieves the maximum/upper interval limit of the conversion. Annotation\+: In case of an error the value is not specified.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dConvertStringToFloat}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Convert\+String\+To\+Float}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dConvertStringToFloat}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Convert\+String\+To\+Float}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -655,7 +659,8 @@ Deletes a paceval.-\/Computation object. If the function succeeds, the return va
 {\em handle\+\_\+paceval\+Computation\+\_\+in} & Identifies the paceval.-\/Computation object to delete.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_DeleteComputation}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Delete\+Computation}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_DeleteComputation}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Delete\+Computation}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -679,7 +684,8 @@ Performs a calculation (double) on a paceval.-\/Computation object with the vari
 {\em trusted\+Max\+Result\+\_\+out} & This buffer retrieves the maximum/upper interval limit of the computation. Annotation\+: In case of an error the value is not specified.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_GetComputationResult}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Get\+Computation\+Result}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_GetComputationResult}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Get\+Computation\+Result}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -709,7 +715,8 @@ Performs multiple calculations (double) in parallel on a single paceval.-\/Compu
 {\em error\+Types\+\_\+out} & Pointer to an array of the paceval.-\/Computation object errors, see also paceval\+\_\+e\+Error\+Types in \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h} or \doxylink{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786}{paceval\+\_\+\+Get\+Error\+Information()}.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dGetComputationResultExt}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Computation\+Result\+Ext}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dGetComputationResultExt}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Computation\+Result\+Ext}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -739,7 +746,8 @@ Performs multiple calculations (double) in parallel on multiple paceval.-\/Compu
 {\em error\+Types\+\_\+out} & Pointer to an array of the paceval.-\/Computation object errors, see also paceval\+\_\+e\+Error\+Types in \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h} or \doxylink{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786}{paceval\+\_\+\+Get\+Error\+Information()}.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dGetMultipleComputationsResults}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Multiple\+Computations\+Results}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dGetMultipleComputationsResults}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Multiple\+Computations\+Results}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -771,7 +779,8 @@ Performs multiple calculations (double) in parallel on multiple paceval.-\/Compu
 {\em error\+Types\+\_\+out} & Pointer to an array of the paceval.-\/Computation object errors, see also paceval\+\_\+e\+Error\+Types in \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h} or \doxylink{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786}{paceval\+\_\+\+Get\+Error\+Information()}.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dGetMultipleComputationsResultsExt}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dGetMultipleComputationsResultsExt}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -799,7 +808,8 @@ A convenience function to get results (double) of computations in a single step.
 {\em ...} & Parameters comma seperated will be interpreted as double values for the variables.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dmathv}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+dmathv}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dmathv}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+dmathv}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -831,7 +841,8 @@ A convenience function to get results (double) of computations in a single step 
 {\em ...} & Parameters comma seperated will be interpreted as double values for the variables.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dmathvi}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+dmathvi}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dmathvi}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+dmathvi}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -849,7 +860,8 @@ Determines whether a particular paceval.-\/Computation object has been created. 
 {\em handle\+\_\+paceval\+Computation\+\_\+in} & Identifies the paceval.-\/Computation object to be questioned.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_ExistComputation}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Exist\+Computation}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_ExistComputation}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Exist\+Computation}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -882,7 +894,7 @@ see \href{https://paceval.com/api/\#paceval_dConvertFloatToString}{\texttt{ http
 \doxysubsubsection{\texorpdfstring{paceval\_fConvertStringToFloat()}{paceval\_fConvertStringToFloat()}}
 {\footnotesize\ttfamily float paceval\+\_\+f\+Convert\+String\+To\+Float (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{source\+String\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{long \texorpdfstring{$\ast$}{*}}]{err\+Position\+\_\+out,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{float \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
 
-Converts a to a string to a floating point number (float). In case a caluclation is given in the string the result is converted. If the function succeeds, the return value is the result of the conversion. Annotation\+: In case of an error the return value is not specified. 
+Converts a string to a floating point number (float). In case a caluclation is given in the string the result is converted. If the function succeeds, the return value is the result of the conversion. Annotation\+: In case of an error the return value is not specified. 
 \begin{DoxyParams}{Parameters}
 {\em source\+String\+\_\+in} & The string to convert. \\
 \hline
@@ -897,7 +909,8 @@ Converts a to a string to a floating point number (float). In case a caluclation
 {\em trusted\+Max\+Result\+\_\+out} & If Trusted Interval Computation was enabled this retrieves the maximum/upper interval limit of the conversion. Annotation\+: In case of an error the value is not specified.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dConvertStringToFloat}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Convert\+String\+To\+Float}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dConvertStringToFloat}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Convert\+String\+To\+Float}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -921,7 +934,8 @@ Performs a calculation (float) on a paceval.-\/Computation object with the varia
 {\em trusted\+Max\+Result\+\_\+out} & This buffer retrieves the maximum/upper interval limit of the computation. Annotation\+: In case of an error the value is not specified.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_GetComputationResult}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Get\+Computation\+Result}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_GetComputationResult}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Get\+Computation\+Result}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -951,7 +965,8 @@ Performs multiple calculations (float) in parallel on a single paceval.-\/Comput
 {\em error\+Types\+\_\+out} & Pointer to an array of the paceval.-\/Computation object errors, see also paceval\+\_\+e\+Error\+Types in \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h} or \doxylink{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786}{paceval\+\_\+\+Get\+Error\+Information()}.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dGetComputationResultExt}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Computation\+Result\+Ext}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dGetComputationResultExt}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Computation\+Result\+Ext}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -981,7 +996,8 @@ Performs multiple calculations (float) in parallel on multiple paceval.-\/Comput
 {\em error\+Types\+\_\+out} & Pointer to an array of the paceval.-\/Computation object errors, see also paceval\+\_\+e\+Error\+Types in \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h} or \doxylink{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786}{paceval\+\_\+\+Get\+Error\+Information()}.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dGetMultipleComputationsResults}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Multiple\+Computations\+Results}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dGetMultipleComputationsResults}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Multiple\+Computations\+Results}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1013,7 +1029,8 @@ Performs multiple calculations (float) in parallel on multiple paceval.-\/Comput
 {\em error\+Types\+\_\+out} & Pointer to an array of the paceval.-\/Computation object errors, see also paceval\+\_\+e\+Error\+Types in \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h} or \doxylink{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786}{paceval\+\_\+\+Get\+Error\+Information()}.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dGetMultipleComputationsResultsExt}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dGetMultipleComputationsResultsExt}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1041,7 +1058,8 @@ A convenience function to get results (float) of computations in a single step. 
 {\em ...} & Parameters comma seperated will be interpreted as float values for the variables.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dmathv}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+dmathv}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dmathv}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+dmathv}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1073,7 +1091,8 @@ A convenience function to get results (float) of computations in a single step w
 {\em ...} & Parameters comma seperated will be interpreted as float values for the variables.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dmathvi}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+dmathvi}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dmathvi}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+dmathvi}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1088,7 +1107,8 @@ see \href{https://paceval.com/api/\#paceval_dmathvi}{\texttt{ https\+://paceval.
 
 You must call \doxylink{paceval__main_8h_a36703ae7d9e3998f7a60e8295ec92427}{paceval\+\_\+\+Free\+Library()} at the end of your application. Annotation\+: In case you use the standard Windows library version this frees the paceval\+\_\+win32.\+dll for 32bit Windows-\/\+Applications (x86) or paceval\+\_\+win64i.\+dll for 64bit Windows-\/\+Applications (x64). If the function succeeds, the return value is true. Otherwise it is false.
 
-see \href{https://paceval.com/api/\#paceval_FreeLibrary}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Free\+Library}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_FreeLibrary}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Free\+Library}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1108,7 +1128,8 @@ A helper function for getting data from a paceval.-\/Computation object, such as
 {\em paceval\+\_\+str\+XML\+\_\+out} & Pointer to a buffer for the XML data. Set paceval\+\_\+str\+XML\+\_\+out to NULL to receive the length of the version string.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_GetComputationInformationXML}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Get\+Computation\+Information\+XML}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_GetComputationInformationXML}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Get\+Computation\+Information\+XML}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1186,7 +1207,8 @@ The \doxylink{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786}{paceval\+\_\+\
 {\em handle\+\_\+paceval\+Computation\+\_\+in} & Identifies the paceval.-\/Computation object.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_GetErrorInformation}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Get\+Error\+Information}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_GetErrorInformation}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Get\+Error\+Information}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1224,7 +1246,8 @@ Determines whether an error has occurred. To get more information about the erro
 {\em handle\+\_\+paceval\+Computation\+\_\+in} & Identifies the paceval.-\/Computation object.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_GetIsError}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Get\+Is\+Error}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_GetIsError}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Get\+Is\+Error}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1242,7 +1265,8 @@ You must call \doxylink{paceval__main_8h_aad60cbad108b9e96511355e605d6ffaa}{pace
 {\em init\+String\+\_\+in} & This parameter is not used in the non-\/commercial version. Just pass NULL pointer (e.\+g. "{}paceval\+\_\+\+Initialize\+Library(\+NULL);"{}).\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_InitializeLibrary}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Initialize\+Library}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_InitializeLibrary}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Initialize\+Library}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1275,7 +1299,7 @@ see \href{https://paceval.com/api/\#paceval_dConvertFloatToString}{\texttt{ http
 \doxysubsubsection{\texorpdfstring{paceval\_ldConvertStringToFloat()}{paceval\_ldConvertStringToFloat()}}
 {\footnotesize\ttfamily long double paceval\+\_\+ld\+Convert\+String\+To\+Float (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{source\+String\+\_\+in,  }\item[{int \texorpdfstring{$\ast$}{*}}]{error\+Type\+\_\+out,  }\item[{long \texorpdfstring{$\ast$}{*}}]{err\+Position\+\_\+out,  }\item[{bool}]{use\+Interval\+\_\+in,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Min\+Result\+\_\+out,  }\item[{long double \texorpdfstring{$\ast$}{*}}]{trusted\+Max\+Result\+\_\+out }\end{DoxyParamCaption})}
 
-Converts a to a string to a floating point number (long double). In case a caluclation is given in the string the result is converted. If the function succeeds, the return value is the result of the conversion. Annotation\+: In case of an error the return value is not specified. 
+Converts a string to a floating point number (long double). In case a caluclation is given in the string the result is converted. If the function succeeds, the return value is the result of the conversion. Annotation\+: In case of an error the return value is not specified. 
 \begin{DoxyParams}{Parameters}
 {\em source\+String\+\_\+in} & The string to convert. \\
 \hline
@@ -1290,7 +1314,8 @@ Converts a to a string to a floating point number (long double). In case a caluc
 {\em trusted\+Max\+Result\+\_\+out} & If Trusted Interval Computation was enabled this retrieves the maximum/upper interval limit of the conversion. Annotation\+: In case of an error the value is not specified.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dConvertStringToFloat}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Convert\+String\+To\+Float}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dConvertStringToFloat}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Convert\+String\+To\+Float}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1314,7 +1339,8 @@ Performs a calculation (long double) on a paceval.-\/Computation object with the
 {\em trusted\+Max\+Result\+\_\+out} & This buffer retrieves the maximum/upper interval limit of the computation. Annotation\+: In case of an error the value is not specified.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_GetComputationResult}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Get\+Computation\+Result}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_GetComputationResult}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Get\+Computation\+Result}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1344,7 +1370,8 @@ Performs multiple calculations (long double) in parallel on a single paceval.-\/
 {\em error\+Types\+\_\+out} & Pointer to an array of the paceval.-\/Computation object errors, see also paceval\+\_\+e\+Error\+Types in \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h} or \doxylink{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786}{paceval\+\_\+\+Get\+Error\+Information()}.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dGetComputationResultExt}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Computation\+Result\+Ext}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dGetComputationResultExt}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Computation\+Result\+Ext}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1374,7 +1401,8 @@ Performs multiple calculations (long double) in parallel on multiple paceval.-\/
 {\em error\+Types\+\_\+out} & Pointer to an array of the paceval.-\/Computation object errors, see also paceval\+\_\+e\+Error\+Types in \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h} or \doxylink{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786}{paceval\+\_\+\+Get\+Error\+Information()}.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dGetMultipleComputationsResults}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Multiple\+Computations\+Results}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dGetMultipleComputationsResults}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Multiple\+Computations\+Results}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1406,7 +1434,8 @@ Performs multiple calculations (long double) in parallel on multiple paceval.-\/
 {\em error\+Types\+\_\+out} & Pointer to an array of the paceval.-\/Computation object errors, see also paceval\+\_\+e\+Error\+Types in \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h} or \doxylink{paceval__main_8h_adc01bfddb15a63daae444828d3d7f786}{paceval\+\_\+\+Get\+Error\+Information()}.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dGetMultipleComputationsResultsExt}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dGetMultipleComputationsResultsExt}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+d\+Get\+Multiple\+Computations\+Results\+Ext}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1434,7 +1463,8 @@ A convenience function to get results (long double) of computations in a single 
 {\em ...} & Parameters comma seperated will be interpreted as long double values for the variables.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dmathv}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+dmathv}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dmathv}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+dmathv}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1466,7 +1496,8 @@ A convenience function to get results (long double) of computations in a single 
 {\em ...} & Parameters comma seperated will be interpreted as long double values for the variables.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_dmathvi}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+dmathvi}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_dmathvi}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+dmathvi}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1500,7 +1531,8 @@ A helper function to read XML data representing a paceval.-\/Computation object.
 {\em use\+Interval\+\_\+out} & Points to the buffer specifying whether Trusted Interval Computation is enabled or not.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_ReadParametersFromXML}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Read\+Parameters\+From\+XML}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_ReadParametersFromXML}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Read\+Parameters\+From\+XML}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1522,7 +1554,8 @@ Allows the definition of up to 1000 custom user functions. Depending on your req
 {\em paceval\+\_\+callback\+User\+Function\+\_\+in} & A user-\/defined callback function to handle the computation for the specific single function, see \doxylink{paceval__main_8h}{paceval\+\_\+main.\+h}.\\
 \hline
 \end{DoxyParams}
-see \href{https://paceval.com/api/\#paceval_SetCallbackUserFunction}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Set\+Callback\+User\+Function}} for more information Here is the call graph for this function\+:\nopagebreak
+see \href{https://paceval.com/api/\#paceval_SetCallbackUserFunction}{\texttt{ https\+://paceval.\+com/api/\#paceval\+\_\+\+Set\+Callback\+User\+Function}} for more information Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

@@ -20,6 +20,10 @@ Include dependency graph for paceval\+\_\+f\+Math.\+cpp\+:\nopagebreak
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+bool \mbox{\hyperlink{paceval__f_math_8cpp_af161dee2e3b9da21dae33ba48d7781ea}{paceval\+\_\+lock\+Global\+Variables\+Mutex\+Object}} ()
+\item 
+void \mbox{\hyperlink{paceval__f_math_8cpp_a407c4b19785069024572df18ebf4b40a}{paceval\+\_\+unlock\+Global\+Variables\+Mutex\+Object}} ()
+\item 
 void \mbox{\hyperlink{paceval__f_math_8cpp_a3e1229891a8bdf1a8120d5c1c62578ab}{paceval\+\_\+handle\+\_\+\+POW10}} (const \mbox{\hyperlink{paceval__main_8h_af9beba80b657f547c9610aa0bb40e11e}{paceval\+\_\+e\+Calculation\+Precision\+Types}} use\+Calculation\+Precision\+\_\+in, const void \texorpdfstring{$\ast$}{*}handle\+\_\+content\+Value\+Field1\+\_\+in, long double \texorpdfstring{$\ast$}{*}result\+As\+Long\+Double\+\_\+out, double \texorpdfstring{$\ast$}{*}result\+As\+Double\+\_\+out, float \texorpdfstring{$\ast$}{*}result\+As\+Float\+\_\+out)
 \item 
 long double \mbox{\hyperlink{paceval__f_math_8cpp_a22dd9b1326662550bba8f96bad678963}{paceval\+\_\+pow10l}} (long double handle\+\_\+content\+Value\+Field1\+\_\+in)
@@ -28,7 +32,7 @@ double \mbox{\hyperlink{paceval__f_math_8cpp_af5ab3fb26ead2f533992e1c52847ad28}{
 \item 
 float \mbox{\hyperlink{paceval__f_math_8cpp_a6f201552db831f21c2617a0b21715b56}{paceval\+\_\+pow10f}} (float handle\+\_\+content\+Value\+Field1\+\_\+in)
 \item 
-bool \mbox{\hyperlink{paceval__f_math_8cpp_a42260395ee9d414c37552c8d268c3daa}{paceval\+\_\+is\+Callback\+User\+Function\+Set}} (\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}} e\+Operator\+\_\+in)
+bool \mbox{\hyperlink{paceval__f_math_8cpp_a9e866727341b43918494561e617d6846}{paceval\+\_\+is\+Callback\+User\+Function\+Set}} (bool mutex\+Enabled\+\_\+in, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}} e\+Operator\+\_\+in)
 \item 
 bool \mbox{\hyperlink{paceval__f_math_8cpp_a818d026b774d4db214e6f1b4221928a7}{paceval\+\_\+set\+Callback\+User\+Function}} (\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}} e\+Operator\+\_\+in, \mbox{\hyperlink{paceval__main_8h_a0d991e803d57a927030e18b762b6aae5}{paceval\+\_\+callback\+User\+Function\+Type}} \texorpdfstring{$\ast$}{*}paceval\+\_\+callback\+User\+Function\+\_\+in)
 \item 
@@ -164,7 +168,7 @@ void \mbox{\hyperlink{paceval__f_math_8cpp_aa73727f52484d063666d15fd90045a39}{pa
 \item 
 bool \mbox{\hyperlink{paceval__f_math_8cpp_a75edd8b0c150aceea85d9e4514393944}{paceval\+\_\+is\+Math\+Operating\+System\+Supported}} ()
 \item 
-bool \mbox{\hyperlink{paceval__f_math_8cpp_a0d4ab18045023a65ac4671fdb2d4d5df}{paceval\+\_\+get\+POW10\+Bugfix\+Enabled}} ()
+bool \mbox{\hyperlink{paceval__f_math_8cpp_a54aa621011748600a9256d26c87d0dca}{paceval\+\_\+is\+POW10\+Bugfix\+Enabled}} ()
 \item 
 void \mbox{\hyperlink{paceval__f_math_8cpp_aabe18ede3cfad7c4df96c4f3923caf83}{paceval\+\_\+set\+POW10\+Bugfix\+Enabled}} (const bool pow10\+\_\+bugfix\+\_\+enabled\+\_\+in)
 \item 
@@ -247,19 +251,21 @@ bool \mbox{\hyperlink{paceval__f_math_8cpp_a65ca1f69a6f6a6290df9ebd6d55e50a0}{pa
 \item 
 bool \mbox{\hyperlink{paceval__f_math_8cpp_a2319960b7f43b4a87433a1f6ec30e8dc}{paceval\+\_\+library\+\_\+initialize\+\_\+library\+\_\+done}} = false
 \item 
-bool \mbox{\hyperlink{paceval__f_math_8cpp_a1982d076737af8e064c01d24ca6e9e74}{paceval\+\_\+library\+\_\+math\+\_\+constants\+\_\+init\+\_\+done}} = false
-\item 
 bool \mbox{\hyperlink{paceval__f_math_8cpp_adf97ad81b9d3addb674bd4dc0bd080ba}{paceval\+\_\+library\+\_\+long\+\_\+double\+\_\+supported}} = false
 \item 
 bool \mbox{\hyperlink{paceval__f_math_8cpp_a0bdb14fb62be6f090079da4e0b972ba4}{paceval\+\_\+library\+\_\+math\+\_\+os\+\_\+supported}} = false
 \item 
 bool \mbox{\hyperlink{paceval__f_math_8cpp_a85515471e9a3ae2e0d245712a9555e2b}{paceval\+\_\+library\+\_\+pow10\+\_\+bugfix\+\_\+enabled}} = false
 \item 
-unsigned int \mbox{\hyperlink{paceval__f_math_8cpp_a7bc81f2b918017c0e08ee3e7079fb309}{paceval\+\_\+library\+\_\+main\+\_\+control87}} = 0
+bool \mbox{\hyperlink{paceval__f_math_8cpp_af26cab936a9f13fb7ab1adafe02f01db}{paceval\+\_\+library\+\_\+max\+\_\+number\+\_\+of\+\_\+cores\+\_\+init\+\_\+done}} = false
 \item 
 unsigned long \mbox{\hyperlink{paceval__f_math_8cpp_a61d2d9399aac7d3d378a24adaff3f8c4}{paceval\+\_\+library\+\_\+number\+\_\+of\+\_\+cores}} = 0
 \item 
-unsigned long \mbox{\hyperlink{paceval__f_math_8cpp_ad0fd1d0fbbad84de93473067e1ff03e1}{paceval\+\_\+system\+\_\+max\+\_\+number\+\_\+threads}} = 0
+bool \mbox{\hyperlink{paceval__f_math_8cpp_a1119ba574f49aa39a4f176b6bce2b566}{paceval\+\_\+library\+\_\+max\+\_\+number\+\_\+of\+\_\+threads\+\_\+init\+\_\+done}} = false
+\item 
+unsigned long \mbox{\hyperlink{paceval__f_math_8cpp_a4128cfe71f546e9e65d62cf746c3d928}{paceval\+\_\+library\+\_\+max\+\_\+number\+\_\+threads}} = 0
+\item 
+bool \mbox{\hyperlink{paceval__f_math_8cpp_a1982d076737af8e064c01d24ca6e9e74}{paceval\+\_\+library\+\_\+math\+\_\+constants\+\_\+init\+\_\+done}} = false
 \item 
 long double \mbox{\hyperlink{paceval__f_math_8cpp_a989d4218da104119c34873a354be4484}{paceval\+\_\+library\+\_\+ld\+\_\+max\+\_\+calc\+\_\+value\+\_\+const}} = 0
 \item 
@@ -343,7 +349,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{paceval\_getInitializeLibraryDone()}{paceval\_getInitializeLibraryDone()}}
 {\footnotesize\ttfamily bool paceval\+\_\+get\+Initialize\+Library\+Done (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-this is a helper function that returns whether paceval initialization was performed (true) (i.\+e. whether paceval\+\_\+\+Initialize\+Library was called) or not (false) Here is the caller graph for this function\+:\nopagebreak
+this is a helper function that returns whether paceval initialization was performed (true) or not (false) (i.\+e. whether paceval\+\_\+\+Initialize\+Library was called (true) or not (false) Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -380,7 +386,8 @@ gets the representation of a result with a specific given precision as a precisi
 {\em result\+As\+Float\+\_\+in} & specifies the value to convert as float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -407,7 +414,8 @@ gets the representation of a value with the precision long double
 {\em value\+\_\+in} & specifies the value to convert \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -479,7 +487,8 @@ gets the maximum constant value for precision long double Here is the caller gra
 \doxysubsubsection{\texorpdfstring{paceval\_getMaxNumberOfCalculationThreads()}{paceval\_getMaxNumberOfCalculationThreads()}}
 {\footnotesize\ttfamily unsigned long paceval\+\_\+get\+Max\+Number\+Of\+Calculation\+Threads (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-this is a helper function that returns the maximum number of threads for a computation for this system Here is the call graph for this function\+:\nopagebreak
+this is a helper function that returns the maximum number of threads for a computation for this system Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -499,7 +508,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{paceval\_getNumberOfCores()}{paceval\_getNumberOfCores()}}
 {\footnotesize\ttfamily unsigned long paceval\+\_\+get\+Number\+Of\+Cores (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-this is a helper function that returns the number of cores available in the system Here is the call graph for this function\+:\nopagebreak
+this is a helper function that returns the number of cores available in the system Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -550,19 +560,6 @@ gets the maximum precision for long double (e.\+g. 19 digits) Here is the caller
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{paceval__f_math_8cpp_a91f0fc2a9882f7ec112f66c3b91231d6_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{paceval__f_math_8cpp_a0d4ab18045023a65ac4671fdb2d4d5df}\label{paceval__f_math_8cpp_a0d4ab18045023a65ac4671fdb2d4d5df} 
-\index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_getPOW10BugfixEnabled@{paceval\_getPOW10BugfixEnabled}}
-\index{paceval\_getPOW10BugfixEnabled@{paceval\_getPOW10BugfixEnabled}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
-\doxysubsubsection{\texorpdfstring{paceval\_getPOW10BugfixEnabled()}{paceval\_getPOW10BugfixEnabled()}}
-{\footnotesize\ttfamily bool paceval\+\_\+get\+POW10\+Bugfix\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-gets whether the pow10 bug fix has been enabled (true) or not (false) (annotation\+: this pow10 error, which causes inaccuracies, occurs in some compiler environments) Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{paceval__f_math_8cpp_a0d4ab18045023a65ac4671fdb2d4d5df_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{paceval__f_math_8cpp_a6ebedfd04bc1c1ae835bca1dbf8d39c5}\label{paceval__f_math_8cpp_a6ebedfd04bc1c1ae835bca1dbf8d39c5} 
@@ -887,7 +884,8 @@ this function returns the result of the area hyperbolic cosine function (e.\+g. 
 {\em result\+As\+Float\+\_\+out} & the buffer that retrieves the result of the calculation with the precision float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -946,7 +944,8 @@ this function returns the result of the area hyperbolic sine function (e.\+g. "{
 {\em result\+As\+Float\+\_\+out} & the buffer that retrieves the result of the calculation with the precision float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1307,7 +1306,8 @@ this function returns the result of whether two floating point numbers are equal
 {\em result\+As\+Float\+\_\+out} & the buffer that retrieves the result of the calculation with the precision float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1429,7 +1429,8 @@ this function returns the result of whether a floating-\/point number is greater
 {\em result\+As\+Float\+\_\+out} & the buffer that retrieves the result of the calculation with the precision float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1648,7 +1649,8 @@ this function returns the result of whether a floating point number is less than
 {\em result\+As\+Float\+\_\+out} & the buffer that retrieves the result of the calculation with the precision float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1957,7 +1959,8 @@ this function returns the result of the normalize value function (e.\+g. "{}norm
 {\em result\+As\+Float\+\_\+out} & the buffer that retrieves the result of the calculation with the precision float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1992,7 +1995,8 @@ this function returns the result of whether two floating point numbers are not e
 {\em result\+As\+Float\+\_\+out} & the buffer that retrieves the result of the calculation with the precision float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -2025,7 +2029,8 @@ this function returns the result of a floating point number to the power of 10 (
 {\em result\+As\+Float\+\_\+out} & the buffer that retrieves the result of the calculation with the precision float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -2060,7 +2065,8 @@ this function returns the result of a floating-\/point number to the power of an
 {\em result\+As\+Float\+\_\+out} & the buffer that retrieves the result of the calculation with the precision float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -2093,7 +2099,8 @@ this function returns the result of the random value function (e.\+g. "{}rand(x)
 {\em result\+As\+Float\+\_\+out} & the buffer that retrieves the result of the calculation with the precision float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -2126,7 +2133,8 @@ this function returns the result of the rounding value function (e.\+g. "{}round
 {\em result\+As\+Float\+\_\+out} & the buffer that retrieves the result of the calculation with the precision float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -2237,7 +2245,8 @@ this function returns the result of the square function (e.\+g. "{}sqr(x)"{}) wi
 {\em result\+As\+Float\+\_\+out} & the buffer that retrieves the result of the calculation with the precision float \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -2366,22 +2375,25 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{paceval__f_math_8cpp_a60b9eaab15ffecb3435ce38b168a48cf_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{paceval__f_math_8cpp_a42260395ee9d414c37552c8d268c3daa}\label{paceval__f_math_8cpp_a42260395ee9d414c37552c8d268c3daa} 
+\Hypertarget{paceval__f_math_8cpp_a9e866727341b43918494561e617d6846}\label{paceval__f_math_8cpp_a9e866727341b43918494561e617d6846} 
 \index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_isCallbackUserFunctionSet@{paceval\_isCallbackUserFunctionSet}}
 \index{paceval\_isCallbackUserFunctionSet@{paceval\_isCallbackUserFunctionSet}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
 \doxysubsubsection{\texorpdfstring{paceval\_isCallbackUserFunctionSet()}{paceval\_isCallbackUserFunctionSet()}}
-{\footnotesize\ttfamily bool paceval\+\_\+is\+Callback\+User\+Function\+Set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}}}]{e\+Operator\+\_\+in }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool paceval\+\_\+is\+Callback\+User\+Function\+Set (\begin{DoxyParamCaption}\item[{bool}]{mutex\+Enabled\+\_\+in,  }\item[{\mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}}}]{e\+Operator\+\_\+in }\end{DoxyParamCaption})}
 
 this function returns whether a user-\/defined mathematical function was set (true) or not (false) 
 \begin{DoxyParams}{Parameters}
+{\em mutex\+Enabled\+\_\+in} & specifies whether a mutex is set when this function is called, which may need to be handled to avoid locking the same mutex again \\
+\hline
 {\em e\+Operator\+\_\+in} & specifies the position of the queried user-\/defined mathematical function in the range USER1\+\_\+\+FUNCTION to USER1000\+\_\+\+FUNCTION \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{paceval__f_math_8cpp_a42260395ee9d414c37552c8d268c3daa_icgraph}
+\includegraphics[width=350pt]{paceval__f_math_8cpp_a9e866727341b43918494561e617d6846_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{paceval__f_math_8cpp_a7eca32a63f1e4844859a3ea1243f6462}\label{paceval__f_math_8cpp_a7eca32a63f1e4844859a3ea1243f6462} 
@@ -2424,6 +2436,34 @@ gets whether the mathematics is supported on the operating system (true) or not 
 \includegraphics[width=350pt]{paceval__f_math_8cpp_a75edd8b0c150aceea85d9e4514393944_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{paceval__f_math_8cpp_a54aa621011748600a9256d26c87d0dca}\label{paceval__f_math_8cpp_a54aa621011748600a9256d26c87d0dca} 
+\index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_isPOW10BugfixEnabled@{paceval\_isPOW10BugfixEnabled}}
+\index{paceval\_isPOW10BugfixEnabled@{paceval\_isPOW10BugfixEnabled}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_isPOW10BugfixEnabled()}{paceval\_isPOW10BugfixEnabled()}}
+{\footnotesize\ttfamily bool paceval\+\_\+is\+POW10\+Bugfix\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+gets whether the pow10 bug fix has been enabled (true) or not (false) (annotation\+: this pow10 error, which causes inaccuracies, occurs in some compiler environments) Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_math_8cpp_a54aa621011748600a9256d26c87d0dca_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__f_math_8cpp_af161dee2e3b9da21dae33ba48d7781ea}\label{paceval__f_math_8cpp_af161dee2e3b9da21dae33ba48d7781ea} 
+\index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_lockGlobalVariablesMutexObject@{paceval\_lockGlobalVariablesMutexObject}}
+\index{paceval\_lockGlobalVariablesMutexObject@{paceval\_lockGlobalVariablesMutexObject}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_lockGlobalVariablesMutexObject()}{paceval\_lockGlobalVariablesMutexObject()}}
+{\footnotesize\ttfamily bool paceval\+\_\+lock\+Global\+Variables\+Mutex\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_math_8cpp_af161dee2e3b9da21dae33ba48d7781ea_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{paceval__f_math_8cpp_af5ab3fb26ead2f533992e1c52847ad28}\label{paceval__f_math_8cpp_af5ab3fb26ead2f533992e1c52847ad28} 
 \index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_pow10@{paceval\_pow10}}
 \index{paceval\_pow10@{paceval\_pow10}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
@@ -2435,7 +2475,8 @@ this function returns the result of a floating point number to the power of 10 (
 {\em handle\+\_\+content\+Value\+Field1\+\_\+in} & specifies the operand for the calculation \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -2460,7 +2501,8 @@ this function returns the result of a floating point number to the power of 10 (
 {\em handle\+\_\+content\+Value\+Field1\+\_\+in} & specifies the operand for the calculation \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -2485,7 +2527,8 @@ this function returns the result of a floating point number to the power of 10 (
 {\em handle\+\_\+content\+Value\+Field1\+\_\+in} & specifies the operand for the calculation \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -2550,7 +2593,8 @@ processes a concrete individual calculation of the node list, see also \doxylink
 {\em reference\+Pecision\+Cut\+\_\+in} & specifies the maximum number of digits that are not trusted for this individual calculation \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -2585,7 +2629,8 @@ rounds a value with a specific precision (long double, double or float) to a spe
 {\em precision\+Digits\+\_\+in} & specifies the precision in digits for rounding \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -2620,7 +2665,8 @@ rounds a value with a specific precision (long double, double or float) to a spe
 {\em precision\+Digits\+\_\+in} & specifies the precision in digits for rounding \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -2647,7 +2693,8 @@ this function sets the user-\/defined mathematical function and returns whether 
 {\em paceval\+\_\+callback\+User\+Function\+\_\+in} & specifies a user-\/defined callback function for the user-\/defined mathematical function \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -2703,7 +2750,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{paceval\_setMathConstantsInitDone()}{paceval\_setMathConstantsInitDone()}}
 {\footnotesize\ttfamily void paceval\+\_\+set\+Math\+Constants\+Init\+Done (\begin{DoxyParamCaption}\item[{bool}]{math\+Constants\+Init\+Done\+\_\+in }\end{DoxyParamCaption})}
 
-sets whether an initialization of the mathematical constants was carried out or not 
+sets whether an initialization of the mathematical constants was carried out (true) or not (false) 
 \begin{DoxyParams}{Parameters}
 {\em math\+Constants\+Init\+Done\+\_\+in} & specifies the status of the initialization of the mathematical constants \\
 \hline
@@ -2827,7 +2874,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_setPOW10BugfixEnabled@{paceval\_setPOW10BugfixEnabled}}
 \index{paceval\_setPOW10BugfixEnabled@{paceval\_setPOW10BugfixEnabled}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
 \doxysubsubsection{\texorpdfstring{paceval\_setPOW10BugfixEnabled()}{paceval\_setPOW10BugfixEnabled()}}
-{\footnotesize\ttfamily void paceval\+\_\+set\+POW10\+Bugfix\+Enabled (\begin{DoxyParamCaption}\item[{const bool}]{pow10\+\_\+bugfix\+\_\+enabled\+\_\+in }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void paceval\+\_\+set\+POW10\+Bugfix\+Enabled (\begin{DoxyParamCaption}\item[{bool}]{pow10\+\_\+bugfix\+\_\+enabled\+\_\+in }\end{DoxyParamCaption})}
 
 sets whether the pow10 bug fix has been enabled (true) or not (false) (annotation\+: automatically determines the need for this bug fix) 
 \begin{DoxyParams}{Parameters}
@@ -3003,6 +3050,20 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{paceval__f_math_8cpp_a7563b7c065f3a0820bcda0e738abbfda_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{paceval__f_math_8cpp_a407c4b19785069024572df18ebf4b40a}\label{paceval__f_math_8cpp_a407c4b19785069024572df18ebf4b40a} 
+\index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_unlockGlobalVariablesMutexObject@{paceval\_unlockGlobalVariablesMutexObject}}
+\index{paceval\_unlockGlobalVariablesMutexObject@{paceval\_unlockGlobalVariablesMutexObject}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_unlockGlobalVariablesMutexObject()}{paceval\_unlockGlobalVariablesMutexObject()}}
+{\footnotesize\ttfamily void paceval\+\_\+unlock\+Global\+Variables\+Mutex\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__f_math_8cpp_a407c4b19785069024572df18ebf4b40a_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Variable Documentation}
@@ -3159,12 +3220,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{paceval\_library\_long\_double\_supported}{paceval\_library\_long\_double\_supported}}
 {\footnotesize\ttfamily bool paceval\+\_\+library\+\_\+long\+\_\+double\+\_\+supported = false}
 
-\Hypertarget{paceval__f_math_8cpp_a7bc81f2b918017c0e08ee3e7079fb309}\label{paceval__f_math_8cpp_a7bc81f2b918017c0e08ee3e7079fb309} 
-\index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_library\_main\_control87@{paceval\_library\_main\_control87}}
-\index{paceval\_library\_main\_control87@{paceval\_library\_main\_control87}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
-\doxysubsubsection{\texorpdfstring{paceval\_library\_main\_control87}{paceval\_library\_main\_control87}}
-{\footnotesize\ttfamily unsigned int paceval\+\_\+library\+\_\+main\+\_\+control87 = 0}
-
 \Hypertarget{paceval__f_math_8cpp_a1982d076737af8e064c01d24ca6e9e74}\label{paceval__f_math_8cpp_a1982d076737af8e064c01d24ca6e9e74} 
 \index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_library\_math\_constants\_init\_done@{paceval\_library\_math\_constants\_init\_done}}
 \index{paceval\_library\_math\_constants\_init\_done@{paceval\_library\_math\_constants\_init\_done}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
@@ -3177,6 +3232,24 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{paceval\_library\_math\_os\_supported}{paceval\_library\_math\_os\_supported}}
 {\footnotesize\ttfamily bool paceval\+\_\+library\+\_\+math\+\_\+os\+\_\+supported = false}
 
+\Hypertarget{paceval__f_math_8cpp_af26cab936a9f13fb7ab1adafe02f01db}\label{paceval__f_math_8cpp_af26cab936a9f13fb7ab1adafe02f01db} 
+\index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_library\_max\_number\_of\_cores\_init\_done@{paceval\_library\_max\_number\_of\_cores\_init\_done}}
+\index{paceval\_library\_max\_number\_of\_cores\_init\_done@{paceval\_library\_max\_number\_of\_cores\_init\_done}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_max\_number\_of\_cores\_init\_done}{paceval\_library\_max\_number\_of\_cores\_init\_done}}
+{\footnotesize\ttfamily bool paceval\+\_\+library\+\_\+max\+\_\+number\+\_\+of\+\_\+cores\+\_\+init\+\_\+done = false}
+
+\Hypertarget{paceval__f_math_8cpp_a1119ba574f49aa39a4f176b6bce2b566}\label{paceval__f_math_8cpp_a1119ba574f49aa39a4f176b6bce2b566} 
+\index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_library\_max\_number\_of\_threads\_init\_done@{paceval\_library\_max\_number\_of\_threads\_init\_done}}
+\index{paceval\_library\_max\_number\_of\_threads\_init\_done@{paceval\_library\_max\_number\_of\_threads\_init\_done}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_max\_number\_of\_threads\_init\_done}{paceval\_library\_max\_number\_of\_threads\_init\_done}}
+{\footnotesize\ttfamily bool paceval\+\_\+library\+\_\+max\+\_\+number\+\_\+of\+\_\+threads\+\_\+init\+\_\+done = false}
+
+\Hypertarget{paceval__f_math_8cpp_a4128cfe71f546e9e65d62cf746c3d928}\label{paceval__f_math_8cpp_a4128cfe71f546e9e65d62cf746c3d928} 
+\index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_library\_max\_number\_threads@{paceval\_library\_max\_number\_threads}}
+\index{paceval\_library\_max\_number\_threads@{paceval\_library\_max\_number\_threads}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_library\_max\_number\_threads}{paceval\_library\_max\_number\_threads}}
+{\footnotesize\ttfamily unsigned long paceval\+\_\+library\+\_\+max\+\_\+number\+\_\+threads = 0}
+
 \Hypertarget{paceval__f_math_8cpp_a61d2d9399aac7d3d378a24adaff3f8c4}\label{paceval__f_math_8cpp_a61d2d9399aac7d3d378a24adaff3f8c4} 
 \index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_library\_number\_of\_cores@{paceval\_library\_number\_of\_cores}}
 \index{paceval\_library\_number\_of\_cores@{paceval\_library\_number\_of\_cores}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
@@ -3188,10 +3261,4 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{paceval\_library\_pow10\_bugfix\_enabled@{paceval\_library\_pow10\_bugfix\_enabled}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
 \doxysubsubsection{\texorpdfstring{paceval\_library\_pow10\_bugfix\_enabled}{paceval\_library\_pow10\_bugfix\_enabled}}
 {\footnotesize\ttfamily bool paceval\+\_\+library\+\_\+pow10\+\_\+bugfix\+\_\+enabled = false}
-
-\Hypertarget{paceval__f_math_8cpp_ad0fd1d0fbbad84de93473067e1ff03e1}\label{paceval__f_math_8cpp_ad0fd1d0fbbad84de93473067e1ff03e1} 
-\index{paceval\_fMath.cpp@{paceval\_fMath.cpp}!paceval\_system\_max\_number\_threads@{paceval\_system\_max\_number\_threads}}
-\index{paceval\_system\_max\_number\_threads@{paceval\_system\_max\_number\_threads}!paceval\_fMath.cpp@{paceval\_fMath.cpp}}
-\doxysubsubsection{\texorpdfstring{paceval\_system\_max\_number\_threads}{paceval\_system\_max\_number\_threads}}
-{\footnotesize\ttfamily unsigned long paceval\+\_\+system\+\_\+max\+\_\+number\+\_\+threads = 0}
 

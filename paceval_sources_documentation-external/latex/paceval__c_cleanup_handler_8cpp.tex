@@ -33,6 +33,10 @@ Include dependency graph for paceval\+\_\+c\+Cleanup\+Handler.\+cpp\+:\nopagebre
 \item 
 int \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_aa44192a2ad678e74a387defe8057bfdd}{paceval\+Library\+\_\+\+Get\+Logging\+Information}} (char \texorpdfstring{$\ast$}{*}paceval\+\_\+logging\+Information\+\_\+out)
 \item 
+bool \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_af161dee2e3b9da21dae33ba48d7781ea}{paceval\+\_\+lock\+Global\+Variables\+Mutex\+Object}} ()
+\item 
+void \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_a407c4b19785069024572df18ebf4b40a}{paceval\+\_\+unlock\+Global\+Variables\+Mutex\+Object}} ()
+\item 
 \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}} \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_a042fff3baa254afc470f45eb1ad7229b}{paceval\+\_\+identify\+Operator\+From\+Mathematical\+Character}} (\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45b}{paceval\+\_\+e\+Mathematical\+Character\+Types}} e\+Mathematical\+Character\+Type\+\_\+in)
 \item 
 void \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_a259feffba4d85fd7c759418dbc4ca1a5}{paceval\+\_\+identify\+Operator\+From\+Operator\+Type}} (char \texorpdfstring{$\ast$}{*}operator\+\_\+out, \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}} e\+Return\+Operator\+\_\+in)
@@ -53,8 +57,6 @@ unsigned long \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_aad285407cbade8ce
 char \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_a1068e0d57e1349c1c0dbaacbbde76d3a}{paceval\+\_\+callback\+User\+Function\+String}} \mbox{[}\mbox{\hyperlink{paceval__c_common_data_8h_acb44a6c44cd59a44e156e7bede33bf08}{paceval\+\_\+max\+\_\+user\+\_\+functions}}\mbox{]}\mbox{[}25\mbox{]}
 \item 
 char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_a81cdc2c0945571544955b417af1f2bb6}{paceval\+\_\+logging\+Memory}} = NULL
-\item 
-void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_af660ab7d93ecb1a0713abf3d120a0024}{paceval\+\_\+logging\+Memory\+Mutex}} = NULL
 \end{DoxyCompactItemize}
 
 
@@ -79,7 +81,15 @@ implementation of the data types, objects and classes required in paceval that a
 \doxysubsubsection{\texorpdfstring{paceval\_deleteLoggingMemory()}{paceval\_deleteLoggingMemory()}}
 {\footnotesize\ttfamily bool paceval\+\_\+delete\+Logging\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-deletes the memory buffer used for logging, which empties it Here is the caller graph for this function\+:\nopagebreak
+deletes the memory buffer used for logging, which empties it Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8cpp_a10040d7f8cd6d48679c8a3f9dca66fab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -130,7 +140,8 @@ identifies the operator (e.\+g. "{}+"{}) from the type of operator (e.\+g. ADDIT
 {\em e\+Return\+Operator\+\_\+in} & specifies the type of operator to look for \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -159,7 +170,8 @@ identifies the type of operator (e.\+g. ADDITION\+\_\+\+SIGN) based on the assoc
 {\em value\+Operator\+\_\+in} & specifies the numerical value to convert when "{}\+:=$<$floating point number$>$"{} (SET\+\_\+\+TO\+\_\+\+VALUE\+\_\+\+SIGN) \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -171,6 +183,20 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{paceval__c_cleanup_handler_8cpp_ab24920e49e587d2ad2f58fd542190fab_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_cleanup_handler_8cpp_af161dee2e3b9da21dae33ba48d7781ea}\label{paceval__c_cleanup_handler_8cpp_af161dee2e3b9da21dae33ba48d7781ea} 
+\index{paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}!paceval\_lockGlobalVariablesMutexObject@{paceval\_lockGlobalVariablesMutexObject}}
+\index{paceval\_lockGlobalVariablesMutexObject@{paceval\_lockGlobalVariablesMutexObject}!paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_lockGlobalVariablesMutexObject()}{paceval\_lockGlobalVariablesMutexObject()}}
+{\footnotesize\ttfamily bool paceval\+\_\+lock\+Global\+Variables\+Mutex\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8cpp_af161dee2e3b9da21dae33ba48d7781ea_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{paceval__c_cleanup_handler_8cpp_a708622c1e260da79a58dade45afa0682}\label{paceval__c_cleanup_handler_8cpp_a708622c1e260da79a58dade45afa0682} 
@@ -186,11 +212,33 @@ allows the definition of up to 1000 custom user functions (see \doxylink{paceval
 {\em single\+Function\+String\+\_\+in} & specifies the user-\/defined single function (e.\+g. "{}my\+\_\+function1"{}) \\
 \hline
 \end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8cpp_a708622c1e260da79a58dade45afa0682_cgraph}
+\end{center}
+\end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{paceval__c_cleanup_handler_8cpp_a708622c1e260da79a58dade45afa0682_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{paceval__c_cleanup_handler_8cpp_a407c4b19785069024572df18ebf4b40a}\label{paceval__c_cleanup_handler_8cpp_a407c4b19785069024572df18ebf4b40a} 
+\index{paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}!paceval\_unlockGlobalVariablesMutexObject@{paceval\_unlockGlobalVariablesMutexObject}}
+\index{paceval\_unlockGlobalVariablesMutexObject@{paceval\_unlockGlobalVariablesMutexObject}!paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_unlockGlobalVariablesMutexObject()}{paceval\_unlockGlobalVariablesMutexObject()}}
+{\footnotesize\ttfamily void paceval\+\_\+unlock\+Global\+Variables\+Mutex\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8cpp_a407c4b19785069024572df18ebf4b40a_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{paceval__c_cleanup_handler_8cpp_aac304504fe9019598bd2f4f9d60e6e79}\label{paceval__c_cleanup_handler_8cpp_aac304504fe9019598bd2f4f9d60e6e79} 
@@ -204,7 +252,8 @@ writes data for logging with a time stamp into a memory buffer and, if paceval\+
 {\em logging\+String\+\_\+in} & specifies the string to add to logging \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -229,7 +278,8 @@ returns the string of the logging information -\/ the return value is the length
 {\em paceval\+\_\+logging\+Information\+\_\+out} & points to the buffer that will receive the string (set paceval\+\_\+str\+Version\+\_\+in to NULL to receive the length of the logging string) \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -250,10 +300,4 @@ Here is the call graph for this function\+:\nopagebreak
 \index{paceval\_loggingMemory@{paceval\_loggingMemory}!paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}}
 \doxysubsubsection{\texorpdfstring{paceval\_loggingMemory}{paceval\_loggingMemory}}
 {\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} paceval\+\_\+logging\+Memory = NULL}
-
-\Hypertarget{paceval__c_cleanup_handler_8cpp_af660ab7d93ecb1a0713abf3d120a0024}\label{paceval__c_cleanup_handler_8cpp_af660ab7d93ecb1a0713abf3d120a0024} 
-\index{paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}!paceval\_loggingMemoryMutex@{paceval\_loggingMemoryMutex}}
-\index{paceval\_loggingMemoryMutex@{paceval\_loggingMemoryMutex}!paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}}
-\doxysubsubsection{\texorpdfstring{paceval\_loggingMemoryMutex}{paceval\_loggingMemoryMutex}}
-{\footnotesize\ttfamily void\texorpdfstring{$\ast$}{*} paceval\+\_\+logging\+Memory\+Mutex = NULL}
 

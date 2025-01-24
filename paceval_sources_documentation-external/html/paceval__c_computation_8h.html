@@ -25,9 +25,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="81245979.png"/></td>
   <td id="projectalign">
-   <div id="projectname">paceval.<span id="projectnumber">&#160;4.25</span>
+   <div id="projectname">paceval.<span id="projectnumber">&#160;4.26</span>
    </div>
-   <div id="projectbrief">Documentation of the paceval. source-code, Copyright ©1994-2024. Version 1.x, 2.x, 3.x, 4.x ©1994-2024 Joerg Koenning &amp; paceval.[Registered Trade Mark] All rights reserved., Author(s) : Joerg Koenning</div>
+   <div id="projectbrief">Documentation of the paceval. source-code, Copyright ©1994-2024. Version 1.x, 2.x, 3.x, 4.x ©1994-2025 Joerg Koenning &amp; paceval UG [Registered Trade Mark] All rights reserved., Author(s) : Joerg Koenning</div>
   </td>
  </tr>
  </tbody>
@@ -275,6 +275,10 @@ Functions</h2></td></tr>
 <tr class="separator:a876a5e418214b421cea1cbfef3a75e93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac37970c25d5fd5156100e2ef91f84922" id="r_ac37970c25d5fd5156100e2ef91f84922"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac37970c25d5fd5156100e2ef91f84922">pacevalLibrary_GetComputationInformationXML</a> (<a class="el" href="paceval__main_8h.html#a6f1065aa80751e736be247a901a6258f">PACEVAL_HANDLE</a> handle_pacevalComputation_in, char *paceval_strXML_out)</td></tr>
 <tr class="separator:ac37970c25d5fd5156100e2ef91f84922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af161dee2e3b9da21dae33ba48d7781ea" id="r_af161dee2e3b9da21dae33ba48d7781ea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af161dee2e3b9da21dae33ba48d7781ea">paceval_lockGlobalVariablesMutexObject</a> ()</td></tr>
+<tr class="separator:af161dee2e3b9da21dae33ba48d7781ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a407c4b19785069024572df18ebf4b40a" id="r_a407c4b19785069024572df18ebf4b40a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a407c4b19785069024572df18ebf4b40a">paceval_unlockGlobalVariablesMutexObject</a> ()</td></tr>
+<tr class="separator:a407c4b19785069024572df18ebf4b40a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6373eabc0e6805c3f6192e4bb6834010" id="r_a6373eabc0e6805c3f6192e4bb6834010"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6373eabc0e6805c3f6192e4bb6834010">increasePacevalLibraryNumberComputations</a> ()</td></tr>
 <tr class="separator:a6373eabc0e6805c3f6192e4bb6834010"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0580b994a37a99aa07a0a18cdf4a126d" id="r_a0580b994a37a99aa07a0a18cdf4a126d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0580b994a37a99aa07a0a18cdf4a126d">increasePacevalLibraryNumberThreadsUsed</a> ()</td></tr>
@@ -300,6 +304,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>increases the counter for the number of calculations performed by 1 </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="paceval__c_computation_8h_a6373eabc0e6805c3f6192e4bb6834010_cgraph.png" border="0" usemap="#apaceval__c_computation_8h_a6373eabc0e6805c3f6192e4bb6834010_cgraph" alt=""/></div>
+<map name="apaceval__c_computation_8h_a6373eabc0e6805c3f6192e4bb6834010_cgraph" id="apaceval__c_computation_8h_a6373eabc0e6805c3f6192e4bb6834010_cgraph">
+<area shape="rect" title=" " alt="" coords="5,39,205,81"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#af161dee2e3b9da21dae33ba48d7781ea" title=" " alt="" coords="260,5,446,48"/>
+<area shape="poly" title=" " alt="" coords="205,44,244,39,245,44,205,49"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a407c4b19785069024572df18ebf4b40a" title=" " alt="" coords="253,72,453,115"/>
+<area shape="poly" title=" " alt="" coords="205,71,238,75,237,80,205,76"/>
+</map>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -459,6 +475,18 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>increases the count of the number of failed threads by 1 </p>
 <div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="paceval__c_computation_8h_a23d0271201cf10a0b956559ef1eed3c1_cgraph.png" border="0" usemap="#apaceval__c_computation_8h_a23d0271201cf10a0b956559ef1eed3c1_cgraph" alt=""/></div>
+<map name="apaceval__c_computation_8h_a23d0271201cf10a0b956559ef1eed3c1_cgraph" id="apaceval__c_computation_8h_a23d0271201cf10a0b956559ef1eed3c1_cgraph">
+<area shape="rect" title=" " alt="" coords="5,39,205,81"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#af161dee2e3b9da21dae33ba48d7781ea" title=" " alt="" coords="260,5,446,48"/>
+<area shape="poly" title=" " alt="" coords="205,44,244,39,245,44,205,49"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a407c4b19785069024572df18ebf4b40a" title=" " alt="" coords="253,72,453,115"/>
+<area shape="poly" title=" " alt="" coords="205,71,238,75,237,80,205,76"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="paceval__c_computation_8h_a23d0271201cf10a0b956559ef1eed3c1_icgraph.png" border="0" usemap="#apaceval__c_computation_8h_a23d0271201cf10a0b956559ef1eed3c1_icgraph" alt=""/></div>
@@ -532,6 +560,18 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <p>increases the counter for the number of threads used by 1 </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="paceval__c_computation_8h_a0580b994a37a99aa07a0a18cdf4a126d_cgraph.png" border="0" usemap="#apaceval__c_computation_8h_a0580b994a37a99aa07a0a18cdf4a126d_cgraph" alt=""/></div>
+<map name="apaceval__c_computation_8h_a0580b994a37a99aa07a0a18cdf4a126d_cgraph" id="apaceval__c_computation_8h_a0580b994a37a99aa07a0a18cdf4a126d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,39,205,81"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#af161dee2e3b9da21dae33ba48d7781ea" title=" " alt="" coords="260,5,446,48"/>
+<area shape="poly" title=" " alt="" coords="205,44,244,39,245,44,205,49"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a407c4b19785069024572df18ebf4b40a" title=" " alt="" coords="253,72,453,115"/>
+<area shape="poly" title=" " alt="" coords="205,71,238,75,237,80,205,76"/>
+</map>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1249,62 +1289,76 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="paceval__c_computation_8h_a12793cbe05b3744dd4095b6d40f7f477_cgraph.png" border="0" usemap="#apaceval__c_computation_8h_a12793cbe05b3744dd4095b6d40f7f477_cgraph" alt=""/></div>
 <map name="apaceval__c_computation_8h_a12793cbe05b3744dd4095b6d40f7f477_cgraph" id="apaceval__c_computation_8h_a12793cbe05b3744dd4095b6d40f7f477_cgraph">
-<area shape="rect" title=" " alt="" coords="5,669,170,712"/>
-<area shape="rect" href="paceval__c_graph_8cpp.html#afff514abfbd42536891411a02682f966" title=" " alt="" coords="229,5,443,32"/>
-<area shape="poly" title=" " alt="" coords="87,669,97,541,120,352,137,255,158,165,184,92,199,64,216,42,218,40,222,43,220,46,204,66,189,94,163,167,142,256,125,353,103,541,93,669"/>
-<area shape="rect" href="paceval__c_graph_8cpp.html#a5d8d84c513e2fbc5a4c3a1f512d2f6d5" title=" " alt="" coords="221,56,451,83"/>
-<area shape="poly" title=" " alt="" coords="88,669,99,550,123,376,140,287,161,205,186,138,200,112,216,93,219,90,223,94,220,96,205,115,191,141,166,207,145,288,128,377,104,550,93,669"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#a1026811362c2a19c5e764cef6c5358bd" title=" " alt="" coords="243,107,429,149"/>
-<area shape="poly" title=" " alt="" coords="89,669,102,562,128,409,146,331,166,259,189,200,216,160,227,149,231,154,220,163,194,202,171,261,151,332,134,411,108,563,94,669"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#aa90ba43fb3ed64d1ca67d828d7fd789c" title=" " alt="" coords="243,173,429,216"/>
-<area shape="poly" title=" " alt="" coords="85,669,87,587,92,531,102,468,118,404,141,339,173,279,216,226,227,216,231,221,220,230,178,282,146,342,123,405,107,470,98,531,92,588,91,669"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#a5a6cef93985c76367c9c13c7e6913500" title=" " alt="" coords="238,240,434,283"/>
-<area shape="poly" title=" " alt="" coords="87,668,94,598,113,500,129,446,151,393,180,344,216,299,228,289,232,293,220,303,184,347,156,396,134,448,118,501,99,599,92,669"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#aca6a6e91b9816392c0bbab78704fefcd" title=" " alt="" coords="790,425,972,452"/>
-<area shape="poly" title=" " alt="" coords="86,669,92,602,110,512,126,464,149,418,178,377,216,343,238,332,265,325,333,320,414,325,503,339,681,378,822,418,820,423,679,384,502,344,413,331,333,325,266,330,240,337,219,348,182,380,153,421,131,466,115,513,97,603,92,669"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#aa144dfbe42d92e65450473f5f1d878d1" title=" " alt="" coords="225,357,447,384"/>
-<area shape="poly" title=" " alt="" coords="89,668,100,613,122,538,139,499,159,460,185,425,216,394,222,390,225,394,219,398,189,428,164,463,143,501,127,540,105,614,94,669"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#a2a3da8846105ac2d1ef0d186f3f26f17" title=" " alt="" coords="227,408,445,435"/>
-<area shape="poly" title=" " alt="" coords="91,668,105,621,129,560,166,497,189,469,216,445,223,440,226,444,219,449,193,473,170,500,134,562,110,623,96,669"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#a7095c20f9d2c38ccb5c110e0436e7b6b" title=" " alt="" coords="224,459,448,485"/>
-<area shape="poly" title=" " alt="" coords="94,668,111,630,137,583,172,535,193,514,216,495,224,490,227,495,219,500,196,518,176,539,141,586,116,633,99,670"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#a1b66b2a380082d6eeec7477c4da53342" title=" " alt="" coords="218,509,454,552"/>
-<area shape="poly" title=" " alt="" coords="105,667,152,618,183,592,216,568,240,556,243,561,219,573,186,596,156,622,109,671"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#a452ff69cc5ef638f5eee1ecf5e4a16ec" title=" " alt="" coords="532,576,713,603"/>
-<area shape="poly" title=" " alt="" coords="119,666,164,640,217,619,294,601,372,590,448,585,516,583,516,589,448,590,373,595,295,606,218,624,166,645,122,671"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#a02448d1a69cf4d775c0152b66b8fd221" title=" " alt="" coords="796,593,966,636"/>
-<area shape="poly" title=" " alt="" coords="170,671,217,663,371,645,524,631,780,616,780,621,525,637,371,650,218,668,170,676"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#a0d4ab18045023a65ac4671fdb2d4d5df" title=" " alt="" coords="227,677,445,704"/>
-<area shape="poly" title=" " alt="" coords="170,688,211,688,211,693,170,693"/>
-<area shape="rect" href="paceval__f_self_test_main_8cpp.html#ad307d07bb3c9d664441952fa22a3ed6f" title=" " alt="" coords="246,728,426,755"/>
-<area shape="poly" title=" " alt="" coords="171,705,253,722,252,727,170,710"/>
-<area shape="rect" href="paceval__c_graph_8cpp.html#aa3dae93074d28c6e76a1272f09aae34c" title=" " alt="" coords="258,779,414,805"/>
-<area shape="poly" title=" " alt="" coords="121,710,166,738,219,764,244,773,242,778,217,769,163,743,118,715"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#aaff23aab57f04a4fc4349c5a3b83f96e" title=" " alt="" coords="244,829,428,856"/>
-<area shape="poly" title=" " alt="" coords="106,711,153,764,184,792,219,815,232,821,230,826,216,820,181,796,149,768,102,714"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#a3da0433c67b21e2411809c81ab3c0ea2" title=" " alt="" coords="246,880,426,907"/>
-<area shape="poly" title=" " alt="" coords="100,711,118,746,144,788,178,830,219,866,233,873,230,878,216,870,174,834,139,791,113,748,96,713"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#a1d620fb2d5173b13b698e0ff8869182b" title=" " alt="" coords="242,931,430,957"/>
-<area shape="poly" title=" " alt="" coords="97,712,112,756,136,812,172,869,194,895,219,917,230,923,227,928,216,921,190,898,168,872,132,814,107,758,92,713"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#a993ffbeb7e73da8eb5dff7d08998057a" title=" " alt="" coords="242,981,430,1008"/>
-<area shape="poly" title=" " alt="" coords="95,712,106,765,129,834,146,871,166,907,190,939,219,967,230,975,227,979,216,971,186,943,161,909,141,873,124,836,101,766,90,713"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#a02a382c78c0aa1d94a9d19f06b7f17d7" title=" " alt="" coords="244,1032,428,1059"/>
-<area shape="poly" title=" " alt="" coords="93,712,102,773,122,857,139,901,160,944,187,984,219,1018,232,1027,229,1031,216,1022,182,987,155,947,134,903,117,858,96,774,88,713"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#a3f700cc3ddd9f7a70633b06a2e615af0" title=" " alt="" coords="258,1083,414,1125"/>
-<area shape="poly" title=" " alt="" coords="92,712,99,781,117,877,134,929,156,980,184,1027,219,1069,245,1085,242,1090,216,1073,180,1030,151,982,129,931,112,878,93,782,87,713"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#a4df97f9a01f333c1ae7af402b9197cee" title=" " alt="" coords="243,1149,429,1192"/>
-<area shape="poly" title=" " alt="" coords="91,712,94,792,99,846,109,905,125,967,148,1028,179,1085,220,1135,231,1145,227,1149,216,1139,175,1088,143,1031,120,969,104,906,94,847,88,792,86,713"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#a675e6a0daf9be92a148d7d5728ea9b40" title=" " alt="" coords="243,1216,429,1259"/>
-<area shape="poly" title=" " alt="" coords="94,712,108,815,135,963,152,1039,172,1108,195,1164,220,1202,231,1212,228,1216,216,1206,190,1167,167,1110,147,1040,129,964,103,816,89,713"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#a3e728815e8c7607100ab2b9b31ee7bd2" title=" " alt="" coords="245,1283,427,1309"/>
-<area shape="poly" title=" " alt="" coords="93,712,105,828,129,996,146,1083,167,1162,191,1226,205,1251,220,1269,233,1279,230,1283,216,1273,201,1254,187,1228,162,1163,141,1084,124,997,100,829,88,713"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#ac71c6138c6b7e8f004154c639d44dd0d" title=" " alt="" coords="251,1333,421,1376"/>
-<area shape="poly" title=" " alt="" coords="93,712,104,837,127,1020,144,1114,165,1201,190,1272,205,1299,220,1319,239,1334,235,1338,216,1323,200,1302,186,1274,160,1202,139,1115,122,1020,99,837,88,713"/>
-<area shape="rect" href="paceval__f_thread_handling_8cpp.html#a86997a446a1eecac643c2871673a8bfe" title=" " alt="" coords="502,509,742,552"/>
-<area shape="poly" title=" " alt="" coords="455,528,487,528,487,533,455,533"/>
-<area shape="poly" title=" " alt="" coords="444,550,539,570,538,575,443,555"/>
-<area shape="poly" title=" " alt="" coords="712,573,741,562,776,540,808,514,857,462,861,466,811,518,779,544,744,566,714,578"/>
-<area shape="poly" title=" " alt="" coords="714,596,781,602,780,608,713,601"/>
+<area shape="rect" title=" " alt="" coords="5,816,170,859"/>
+<area shape="rect" href="paceval__c_graph_8cpp.html#afff514abfbd42536891411a02682f966" title=" " alt="" coords="515,83,729,110"/>
+<area shape="poly" title=" " alt="" coords="87,816,97,686,119,495,136,396,157,305,184,231,199,202,216,180,245,155,278,134,314,118,351,106,427,91,499,86,499,92,428,96,353,111,316,123,281,139,248,159,220,184,203,205,188,233,162,307,141,397,124,496,102,687,93,816"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#af161dee2e3b9da21dae33ba48d7781ea" title=" " alt="" coords="797,160,984,203"/>
+<area shape="poly" title=" " alt="" coords="87,816,94,675,114,464,131,355,152,255,181,173,197,141,216,117,277,65,338,29,398,9,459,3,523,8,591,22,743,69,777,84,809,104,860,147,857,151,806,108,775,88,741,74,589,27,522,13,459,8,399,15,340,34,280,69,220,121,202,144,185,175,158,256,136,356,119,465,99,676,92,816"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a407c4b19785069024572df18ebf4b40a" title=" " alt="" coords="790,244,991,287"/>
+<area shape="poly" title=" " alt="" coords="89,816,104,720,131,587,149,519,169,457,191,407,216,373,245,359,296,344,443,317,617,293,775,275,775,280,618,299,444,323,297,350,247,364,219,377,196,410,174,459,154,521,136,588,110,721,94,816"/>
+<area shape="rect" href="paceval__c_graph_8cpp.html#a5d8d84c513e2fbc5a4c3a1f512d2f6d5" title=" " alt="" coords="507,184,737,211"/>
+<area shape="poly" title=" " alt="" coords="87,816,97,694,120,516,136,425,158,342,184,274,199,248,216,229,253,203,295,184,339,173,385,167,474,168,551,178,550,184,474,173,385,172,340,178,297,189,256,207,219,233,204,251,189,276,163,343,142,426,125,517,103,695,93,816"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#a5a6cef93985c76367c9c13c7e6913500" title=" " alt="" coords="238,606,434,648"/>
+<area shape="poly" title=" " alt="" coords="96,815,114,781,141,738,175,695,216,658,223,654,226,658,219,663,179,699,145,741,119,783,101,817"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#aa144dfbe42d92e65450473f5f1d878d1" title=" " alt="" coords="225,672,447,699"/>
+<area shape="poly" title=" " alt="" coords="102,814,149,761,181,732,216,709,230,702,232,707,219,713,184,737,153,765,106,818"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#a2a3da8846105ac2d1ef0d186f3f26f17" title=" " alt="" coords="227,723,445,750"/>
+<area shape="poly" title=" " alt="" coords="118,814,163,785,217,759,238,752,240,757,219,764,166,790,121,818"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#a7095c20f9d2c38ccb5c110e0436e7b6b" title=" " alt="" coords="224,774,448,800"/>
+<area shape="poly" title=" " alt="" coords="170,818,252,802,253,807,171,824"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#a1b66b2a380082d6eeec7477c4da53342" title=" " alt="" coords="218,387,454,430"/>
+<area shape="poly" title=" " alt="" coords="87,816,94,746,113,647,129,594,151,541,180,491,216,447,228,436,232,440,220,450,184,494,156,543,134,595,118,648,99,746,92,816"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#a452ff69cc5ef638f5eee1ecf5e4a16ec" title=" " alt="" coords="532,454,713,480"/>
+<area shape="poly" title=" " alt="" coords="87,816,94,751,113,664,129,617,151,572,180,531,216,497,238,485,268,476,345,465,432,461,516,460,516,466,432,466,345,470,270,481,240,490,219,501,184,535,156,575,134,619,118,665,99,752,92,816"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a58667ec9fc9539b040e7808829b4ec85" title=" " alt="" coords="804,464,977,491"/>
+<area shape="poly" title=" " alt="" coords="89,815,99,760,121,688,138,650,159,613,185,580,217,551,285,540,438,522,788,485,788,491,438,527,286,545,219,556,189,583,164,616,143,652,126,690,105,762,94,816"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#aaca7563aa1b9f0184ebcbac5b4414398" title=" " alt="" coords="809,536,972,579"/>
+<area shape="poly" title=" " alt="" coords="90,815,103,767,126,705,143,673,163,642,188,614,216,592,262,572,323,558,398,549,479,545,648,544,794,549,793,554,648,549,480,550,398,555,324,564,263,577,219,596,191,618,168,645,148,675,131,707,108,769,95,817"/>
+<area shape="rect" href="paceval__f_self_test_main_8cpp.html#ad307d07bb3c9d664441952fa22a3ed6f" title=" " alt="" coords="246,824,426,851"/>
+<area shape="poly" title=" " alt="" coords="170,835,230,835,230,840,170,840"/>
+<area shape="rect" href="paceval__c_graph_8cpp.html#aa3dae93074d28c6e76a1272f09aae34c" title=" " alt="" coords="545,235,700,262"/>
+<area shape="poly" title=" " alt="" coords="88,816,99,703,123,540,140,456,161,381,186,319,200,296,216,278,254,253,295,234,340,223,385,217,475,218,551,229,551,234,474,223,386,222,341,228,297,239,256,257,219,282,205,299,191,322,166,382,145,458,128,541,105,703,93,816"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#aaff23aab57f04a4fc4349c5a3b83f96e" title=" " alt="" coords="244,875,428,902"/>
+<area shape="poly" title=" " alt="" coords="171,852,253,869,252,874,170,857"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#a3da0433c67b21e2411809c81ab3c0ea2" title=" " alt="" coords="246,926,426,952"/>
+<area shape="poly" title=" " alt="" coords="121,857,166,885,219,911,240,919,238,924,217,916,163,890,118,862"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#a1d620fb2d5173b13b698e0ff8869182b" title=" " alt="" coords="242,976,430,1003"/>
+<area shape="poly" title=" " alt="" coords="106,858,153,911,184,939,219,962,232,968,230,973,216,967,181,943,149,915,102,861"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#a993ffbeb7e73da8eb5dff7d08998057a" title=" " alt="" coords="242,1027,430,1054"/>
+<area shape="poly" title=" " alt="" coords="100,858,118,893,144,935,178,978,219,1013,230,1019,227,1024,216,1017,174,981,139,938,113,895,96,860"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#a02a382c78c0aa1d94a9d19f06b7f17d7" title=" " alt="" coords="244,1078,428,1104"/>
+<area shape="poly" title=" " alt="" coords="97,859,112,903,136,959,172,1016,194,1042,219,1064,231,1071,228,1076,216,1068,190,1045,168,1019,132,961,107,905,92,861"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#a3f700cc3ddd9f7a70633b06a2e615af0" title=" " alt="" coords="258,1128,414,1171"/>
+<area shape="poly" title=" " alt="" coords="95,859,107,911,131,980,147,1017,167,1053,191,1086,219,1114,245,1130,242,1135,216,1119,187,1089,163,1055,142,1019,126,982,102,913,90,860"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#ac74a72cde6f9fd73ab21af451b4d0b2c" title=" " alt="" coords="247,1195,425,1238"/>
+<area shape="poly" title=" " alt="" coords="93,859,101,923,122,1010,138,1056,160,1102,186,1144,219,1181,234,1192,231,1197,216,1185,182,1147,155,1104,133,1058,117,1011,96,924,88,860"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a8a442f8cd0ba0e16e5d3c2c683444900" title=" " alt="" coords="247,1262,425,1304"/>
+<area shape="poly" title=" " alt="" coords="92,859,96,933,113,1038,130,1094,152,1150,182,1202,220,1248,235,1259,231,1264,216,1252,177,1205,147,1152,124,1096,108,1039,91,934,86,860"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#a54aa621011748600a9256d26c87d0dca" title=" " alt="" coords="231,1328,441,1355"/>
+<area shape="poly" title=" " alt="" coords="94,859,109,957,136,1095,153,1165,173,1229,195,1280,220,1315,223,1318,220,1322,216,1318,191,1283,168,1230,148,1166,131,1096,104,958,89,860"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#ab41ee46e720061bab2642040b1c93032" title=" " alt="" coords="243,1379,429,1422"/>
+<area shape="poly" title=" " alt="" coords="94,859,108,965,134,1118,151,1196,171,1268,194,1326,220,1365,231,1375,227,1379,216,1369,189,1328,166,1269,146,1198,128,1119,102,966,89,860"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a1b8992ce57c16895bd51dbd5f3051577" title=" " alt="" coords="243,1446,429,1488"/>
+<area shape="poly" title=" " alt="" coords="93,859,105,977,129,1150,147,1239,167,1320,192,1387,205,1413,220,1432,231,1442,227,1446,216,1436,201,1416,187,1389,162,1322,141,1240,124,1151,100,978,88,860"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a8b4e06c2ab361081fd3616f76888531f" title=" " alt="" coords="245,1512,427,1539"/>
+<area shape="poly" title=" " alt="" coords="93,860,102,990,124,1183,141,1283,162,1374,188,1449,203,1477,220,1499,233,1509,229,1513,216,1502,199,1480,183,1451,157,1376,136,1284,119,1184,97,991,87,860"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a052035e66fca1d6e7661f61d4b874f1c" title=" " alt="" coords="251,1563,421,1606"/>
+<area shape="poly" title=" " alt="" coords="92,859,101,998,122,1206,139,1314,161,1413,187,1494,203,1526,220,1549,238,1564,235,1568,216,1553,198,1529,182,1496,155,1414,134,1315,117,1206,96,998,87,860"/>
+<area shape="poly" title=" " alt="" coords="680,108,743,126,819,152,817,157,742,131,678,113"/>
+<area shape="poly" title=" " alt="" coords="649,108,744,170,768,192,792,213,828,235,826,239,789,217,764,196,741,175,646,113"/>
+<area shape="poly" title=" " alt="" coords="738,188,782,186,782,191,738,194"/>
+<area shape="poly" title=" " alt="" coords="693,209,743,221,804,237,802,242,742,226,692,214"/>
+<area shape="poly" title=" " alt="" coords="342,386,362,338,394,277,416,246,440,217,469,191,501,170,537,155,576,144,615,139,655,137,732,142,801,154,800,159,732,147,655,142,616,144,577,150,539,160,503,175,472,195,444,220,420,249,399,280,367,340,347,388"/>
+<area shape="poly" title=" " alt="" coords="454,421,522,423,595,420,670,410,741,389,777,371,809,347,860,297,864,301,812,351,779,375,743,394,671,415,595,426,522,428,454,426"/>
+<area shape="rect" href="paceval__f_thread_handling_8cpp.html#a86997a446a1eecac643c2871673a8bfe" title=" " alt="" coords="502,336,742,379"/>
+<area shape="poly" title=" " alt="" coords="454,385,486,379,487,384,455,390"/>
+<area shape="poly" title=" " alt="" coords="444,428,539,448,538,453,443,433"/>
+<area shape="poly" title=" " alt="" coords="657,451,701,426,722,409,740,390,753,369,759,349,763,311,767,272,774,252,788,231,813,209,817,213,792,234,779,254,772,273,768,311,765,350,758,371,744,393,726,413,703,430,659,455"/>
+<area shape="poly" title=" " alt="" coords="701,451,741,433,780,403,815,367,866,299,870,302,819,371,784,407,744,437,703,456"/>
+<area shape="poly" title=" " alt="" coords="714,468,788,471,788,476,713,473"/>
+<area shape="poly" title=" " alt="" coords="665,479,811,528,810,533,664,484"/>
+<area shape="poly" title=" " alt="" coords="692,232,742,221,800,205,801,210,743,226,693,237"/>
+<area shape="poly" title=" " alt="" coords="701,251,775,256,774,261,700,256"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1427,6 +1481,252 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="af161dee2e3b9da21dae33ba48d7781ea" name="af161dee2e3b9da21dae33ba48d7781ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af161dee2e3b9da21dae33ba48d7781ea">&#9670;&#160;</a></span>paceval_lockGlobalVariablesMutexObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool paceval_lockGlobalVariablesMutexObject </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Uses the mutex object to lock global variables or accesses during multithreading to protect them and returns true on success. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="paceval__c_computation_8h_af161dee2e3b9da21dae33ba48d7781ea_icgraph.png" border="0" usemap="#apaceval__c_computation_8h_af161dee2e3b9da21dae33ba48d7781ea_icgraph" alt=""/></div>
+<map name="apaceval__c_computation_8h_af161dee2e3b9da21dae33ba48d7781ea_icgraph" id="apaceval__c_computation_8h_af161dee2e3b9da21dae33ba48d7781ea_icgraph">
+<area shape="rect" title=" " alt="" coords="4609,644,4796,687"/>
+<area shape="rect" href="classpaceval__c_computation.html#a2cde08aa8ee7a3cd0da75fe4e296b6b9" title=" " alt="" coords="4382,468,4533,511"/>
+<area shape="poly" title=" " alt="" coords="4674,634,4625,578,4594,550,4560,525,4532,511,4535,506,4563,520,4597,545,4629,574,4678,630"/>
+<area shape="rect" href="classpaceval__c_computation.html#ac165e9072d68bb3b44b506563807743e" title=" " alt="" coords="4353,535,4561,577"/>
+<area shape="poly" title=" " alt="" coords="4645,639,4560,598,4517,580,4519,575,4562,594,4647,634"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a6373eabc0e6805c3f6192e4bb6834010" title=" " alt="" coords="1582,699,1782,741"/>
+<area shape="poly" title=" " alt="" coords="4594,685,4412,707,4308,716,4204,719,2170,719,1782,721,1782,716,2170,713,4204,713,4308,710,4412,702,4594,680"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a23d0271201cf10a0b956559ef1eed3c1" title=" " alt="" coords="1833,567,2032,609"/>
+<area shape="poly" title=" " alt="" coords="4594,651,4412,629,4308,620,4204,617,2402,617,2205,611,2032,600,2033,594,2205,606,2402,612,4204,612,4308,615,4412,623,4594,645"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a0580b994a37a99aa07a0a18cdf4a126d" title=" " alt="" coords="1833,633,2032,676"/>
+<area shape="poly" title=" " alt="" coords="4594,668,4204,668,2402,668,2032,661,2032,656,2402,663,4204,663,4594,663"/>
+<area shape="rect" href="classpaceval__c_computation.html#af5eaa11251638f4b159cb13a25b5bf23" title=" " alt="" coords="2784,753,2948,796"/>
+<area shape="poly" title=" " alt="" coords="4655,697,4611,719,4562,737,4464,762,4385,772,4306,774,4204,773,3395,773,2948,776,2948,771,3395,768,4204,768,4306,769,4385,767,4463,756,4561,732,4609,714,4652,692"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a12793cbe05b3744dd4095b6d40f7f477" title=" " alt="" coords="4375,879,4539,921"/>
+<area shape="poly" title=" " alt="" coords="4670,699,4483,880,4479,876,4666,695"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#ac37970c25d5fd5156100e2ef91f84922" title=" " alt="" coords="4101,535,4305,577"/>
+<area shape="poly" title=" " alt="" coords="4337,559,4306,559,4306,553,4337,553"/>
+<area shape="rect" href="paceval__main_8cpp.html#a3ee97cad992bf2e26a88765ce587dfb7" title=" " alt="" coords="3799,547,4053,573"/>
+<area shape="poly" title=" " alt="" coords="4085,560,4053,561,4053,556,4085,555"/>
+<area shape="rect" href="paceval__main_8cpp.html#aad60cbad108b9e96511355e605d6ffaa" title=" " alt="" coords="41,757,199,784"/>
+<area shape="poly" title=" " alt="" coords="4085,541,4052,537,3849,518,3645,512,1681,512,1282,510,1120,512,970,520,821,538,664,568,488,614,284,679,241,696,202,718,140,759,138,755,199,713,239,691,282,673,487,609,663,563,820,533,969,515,1120,507,1282,505,1681,507,3645,507,3849,512,4053,532,4086,536"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#ad96cc6b391a94b94e0c11c8d5c04be20" title=" " alt="" coords="1358,724,1531,767"/>
+<area shape="poly" title=" " alt="" coords="1567,735,1532,739,1531,733,1567,730"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#aa5a6e82d9a88d0385e7823eef6686fb6" title=" " alt="" coords="571,317,744,360"/>
+<area shape="poly" title=" " alt="" coords="1566,704,1379,671,1158,626,1050,599,952,572,869,543,808,514,762,479,723,437,692,396,669,362,674,359,696,393,727,434,766,475,811,510,871,538,953,567,1051,594,1159,620,1380,666,1567,699"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a4c4ea05d9207def52c8fa9ec3a68d51d" title=" " alt="" coords="1083,792,1294,835"/>
+<area shape="poly" title=" " alt="" coords="1347,774,1272,794,1271,789,1346,769"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#acf6e000373965eae6c69cbc1c7584bd8" title=" " alt="" coords="1085,1548,1292,1591"/>
+<area shape="poly" title=" " alt="" coords="1404,779,1380,804,1360,835,1332,913,1321,983,1322,1048,1329,1109,1337,1172,1341,1238,1334,1310,1313,1393,1291,1439,1265,1483,1212,1549,1208,1546,1260,1480,1287,1437,1307,1391,1329,1309,1335,1237,1332,1172,1324,1110,1317,1048,1316,983,1327,912,1356,832,1375,801,1400,775"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#aa8979ad66d74f0a3f9e34bfad384f7ac" title=" " alt="" coords="1067,429,1310,472"/>
+<area shape="poly" title=" " alt="" coords="1413,714,1206,474,1210,471,1417,710"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a20e3063a85a7ff4dc39260f464212b22" title=" " alt="" coords="1081,1012,1296,1055"/>
+<area shape="poly" title=" " alt="" coords="1413,779,1360,835,1274,934,1209,1014,1205,1010,1270,931,1356,832,1409,776"/>
+<area shape="poly" title=" " alt="" coords="1132,787,1078,762,1018,740,948,724,860,711,652,693,545,689,443,689,354,694,283,704,244,715,207,729,146,759,144,754,205,724,243,710,282,699,354,689,443,684,545,684,652,687,860,705,949,719,1019,735,1080,757,1135,782"/>
+<area shape="rect" href="paceval__main_8cpp.html#acbc57bb0edcafb8811d082617b6b1531" title=" " alt="" coords="809,648,1019,675"/>
+<area shape="poly" title=" " alt="" coords="1149,784,1089,739,1017,696,971,678,973,673,1020,691,1092,734,1152,780"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a1163f0350a18955da879ce4b5d9e8fee" title=" " alt="" coords="817,917,1011,960"/>
+<area shape="poly" title=" " alt="" coords="1140,845,1083,877,1020,908,990,919,988,914,1018,903,1081,872,1138,840"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#aa8f87bb363a07eefb308dbcad12fd3b1" title=" " alt="" coords="838,1101,990,1128"/>
+<area shape="poly" title=" " alt="" coords="1159,848,929,1103,925,1099,1155,845"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#ab42ba2be711d7cfc57ee395b14a6d37b" title=" " alt="" coords="837,867,991,893"/>
+<area shape="poly" title=" " alt="" coords="1084,841,973,869,972,863,1082,836"/>
+<area shape="poly" title=" " alt="" coords="821,915,761,900,449,834,199,787,200,782,450,828,762,895,823,910"/>
+<area shape="rect" href="paceval__main_8cpp.html#a9bece1ed849041ccae24ab45211f015c" title=" " alt="" coords="573,976,742,1019"/>
+<area shape="poly" title=" " alt="" coords="804,967,743,981,742,975,803,961"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a876a5e418214b421cea1cbfef3a75e93" title=" " alt="" coords="554,909,761,952"/>
+<area shape="poly" title=" " alt="" coords="801,938,762,937,762,931,801,932"/>
+<area shape="poly" title=" " alt="" coords="538,936,478,933,412,926,346,913,282,893,235,870,193,840,133,786,136,782,196,836,238,865,284,888,347,908,413,921,478,928,538,931"/>
+<area shape="rect" href="paceval__main_8cpp.html#a27886e80efbb9b9b3d18cc34ed90168d" title=" " alt="" coords="283,960,506,987"/>
+<area shape="poly" title=" " alt="" coords="539,953,481,962,481,957,538,947"/>
+<area shape="poly" title=" " alt="" coords="837,1100,761,1084,687,1073,623,1070,511,1070,458,1067,404,1057,346,1036,281,1001,250,977,222,950,176,888,143,828,124,785,129,783,148,826,180,885,226,946,254,973,284,996,348,1031,405,1052,459,1062,511,1065,623,1064,688,1068,762,1079,838,1095"/>
+<area shape="rect" href="paceval__main_8cpp.html#a265cdc9fd945d8bb8a0a9784db853691" title=" " alt="" coords="602,1160,714,1187"/>
+<area shape="poly" title=" " alt="" coords="838,1135,715,1163,714,1158,837,1129"/>
+<area shape="rect" href="paceval__f_self_test_main_8cpp.html#a5cb77a00a63daa84c4771e62df42e5a1" title=" " alt="" coords="570,1093,745,1136"/>
+<area shape="poly" title=" " alt="" coords="823,1117,746,1117,746,1112,823,1112"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a02d68e2866a1f8c4228805d6479f9197" title=" " alt="" coords="316,1097,473,1124"/>
+<area shape="poly" title=" " alt="" coords="554,1116,473,1115,473,1109,554,1110"/>
+<area shape="poly" title=" " alt="" coords="307,1093,281,1077,246,1042,216,1003,190,960,169,917,138,839,122,785,127,784,143,837,174,915,195,958,220,1000,250,1039,284,1073,310,1089"/>
+<area shape="poly" title=" " alt="" coords="834,863,808,850,793,836,784,822,775,809,760,798,715,784,653,774,499,764,336,764,199,769,199,764,336,759,499,759,653,769,716,779,763,794,779,805,788,819,797,833,811,846,836,859"/>
+<area shape="rect" href="paceval__main_8cpp.html#a2bef25d6ed8b72b759afb46a6691e640" title=" " alt="" coords="600,808,715,835"/>
+<area shape="poly" title=" " alt="" coords="837,865,715,837,716,832,839,860"/>
+<area shape="poly" title=" " alt="" coords="1069,1569,597,1550,384,1535,315,1526,281,1517,259,1493,240,1459,206,1372,179,1265,158,1147,131,924,119,785,125,784,136,924,163,1147,185,1264,212,1371,245,1457,264,1489,284,1512,316,1521,385,1530,598,1544,1069,1563"/>
+<area shape="rect" href="paceval__main_8cpp.html#a608786d2771854226f6326ebd9c9c0ab" title=" " alt="" coords="811,1480,1017,1507"/>
+<area shape="poly" title=" " alt="" coords="1093,1546,964,1510,966,1505,1095,1541"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#affaeb85db37fa944918439917e462889" title=" " alt="" coords="819,1653,1009,1696"/>
+<area shape="poly" title=" " alt="" coords="1118,1599,973,1655,971,1650,1116,1594"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#ae4d88e556f80fafddcad8e401e671936" title=" " alt="" coords="840,1771,988,1797"/>
+<area shape="poly" title=" " alt="" coords="1152,1603,1020,1710,937,1772,933,1768,1017,1706,1148,1599"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#ad20a2c12de8c3781d5d2ea61903208a7" title=" " alt="" coords="839,1581,989,1608"/>
+<area shape="poly" title=" " alt="" coords="1069,1583,990,1590,990,1585,1069,1578"/>
+<area shape="poly" title=" " alt="" coords="803,1683,664,1686,509,1680,435,1672,370,1660,317,1642,281,1618,258,1589,238,1550,220,1502,204,1448,176,1325,155,1191,140,1058,129,939,119,784,125,784,134,938,145,1058,160,1190,181,1324,209,1447,225,1501,243,1547,263,1586,284,1614,320,1637,372,1654,436,1667,509,1675,664,1680,803,1678"/>
+<area shape="rect" href="paceval__main_8cpp.html#a6a7e917c734528161907f55960230eb5" title=" " alt="" coords="575,1733,740,1776"/>
+<area shape="poly" title=" " alt="" coords="829,1704,729,1735,728,1730,828,1699"/>
+<area shape="poly" title=" " alt="" coords="830,1803,704,1816,630,1817,553,1812,476,1798,403,1773,369,1756,337,1736,307,1711,281,1683,259,1650,239,1606,205,1495,178,1361,157,1217,130,948,119,785,125,784,135,947,162,1216,183,1360,210,1493,244,1604,264,1647,285,1680,311,1707,340,1731,371,1752,405,1768,478,1793,554,1807,630,1812,704,1811,829,1798"/>
+<area shape="rect" href="paceval__main_8cpp.html#aead1793c054ebf5a99e1fe7af37cc77e" title=" " alt="" coords="604,1851,712,1877"/>
+<area shape="poly" title=" " alt="" coords="855,1805,762,1835,705,1853,703,1847,761,1829,854,1800"/>
+<area shape="poly" title=" " alt="" coords="824,1606,685,1614,525,1616,448,1611,378,1602,321,1587,299,1577,281,1565,258,1539,238,1504,219,1460,203,1410,176,1295,155,1170,139,1045,129,931,119,784,125,784,134,931,144,1044,160,1169,181,1294,208,1409,224,1458,243,1501,263,1536,284,1561,301,1572,323,1582,379,1597,448,1606,525,1610,685,1609,823,1600"/>
+<area shape="rect" href="paceval__main_8cpp.html#ad42ee7b6c31f01b9ed159719c165a850" title=" " alt="" coords="602,1632,713,1659"/>
+<area shape="poly" title=" " alt="" coords="829,1614,714,1637,713,1632,828,1609"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a0e3863b09cec5cd3ae187477118750cb" title=" " alt="" coords="821,296,1007,339"/>
+<area shape="poly" title=" " alt="" coords="1141,423,1084,387,1018,353,989,342,991,337,1020,348,1086,383,1144,418"/>
+<area shape="poly" title=" " alt="" coords="1112,480,1046,496,968,507,887,506,847,499,808,486,763,461,725,427,693,392,671,362,675,359,697,389,728,423,767,457,810,482,848,494,888,500,968,501,1045,491,1111,474"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a68c14f048baa12d21a6b9213e90a1da6" title=" " alt="" coords="823,363,1005,405"/>
+<area shape="poly" title=" " alt="" coords="1082,428,1004,409,1005,403,1084,423"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a312c31d57c21cbccac510fef91b467ea" title=" " alt="" coords="820,429,1008,472"/>
+<area shape="poly" title=" " alt="" coords="1051,453,1009,453,1009,448,1051,448"/>
+<area shape="poly" title=" " alt="" coords="806,329,745,334,744,329,806,324"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#aa2b13bf07326969afc0646bb12e3b72d" title=" " alt="" coords="289,339,500,381"/>
+<area shape="poly" title=" " alt="" coords="556,350,501,354,500,349,555,344"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a4b7907fe40d8f2f9f332a572b8ffda40" title=" " alt="" coords="303,405,486,448"/>
+<area shape="poly" title=" " alt="" coords="585,368,507,396,471,407,469,402,505,391,583,363"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a3930b10a5fe345f1a5112ea035921dfa" title=" " alt="" coords="303,472,486,515"/>
+<area shape="poly" title=" " alt="" coords="626,373,573,419,507,462,481,474,479,469,505,458,569,415,622,369"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#aa459fc5d99a99829cf710547da04fe61" title=" " alt="" coords="291,539,498,581"/>
+<area shape="poly" title=" " alt="" coords="640,375,617,411,587,453,550,494,508,529,486,541,484,536,504,524,546,490,583,449,613,408,635,372"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a1f7a7fee6838b93d4f840bce4a92cd42" title=" " alt="" coords="305,5,484,48"/>
+<area shape="poly" title=" " alt="" coords="644,303,626,250,597,184,557,118,532,88,504,62,483,49,486,44,508,58,536,85,561,115,602,182,631,248,649,302"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#ae89257d9402f64f08f9fcfe9c92f0256" title=" " alt="" coords="305,72,484,115"/>
+<area shape="poly" title=" " alt="" coords="638,305,617,264,587,216,549,169,504,129,483,117,486,112,508,125,553,166,591,213,621,261,643,302"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a9bcd79663939f622ca862829cdb376d7" title=" " alt="" coords="287,139,502,181"/>
+<area shape="poly" title=" " alt="" coords="628,307,575,250,541,221,505,196,481,184,483,179,507,191,544,217,578,246,632,304"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a6de3623e77430fdd803d71c09f05aba6" title=" " alt="" coords="301,205,488,248"/>
+<area shape="poly" title=" " alt="" coords="605,312,505,262,474,251,476,246,507,258,607,307"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a190c7daca86f625b5d42b538faa5dfb4" title=" " alt="" coords="301,272,488,315"/>
+<area shape="poly" title=" " alt="" coords="555,324,488,312,489,307,556,319"/>
+<area shape="poly" title=" " alt="" coords="287,393,285,395,267,418,257,440,252,461,251,483,251,530,247,557,237,586,212,638,183,687,134,759,130,756,178,684,207,636,232,584,241,556,245,530,246,483,247,460,252,438,262,415,281,392,283,389"/>
+<area shape="rect" href="paceval__main_8cpp.html#a355e632ee48694f62cf038b77b6ca6ac" title=" " alt="" coords="5,347,235,373"/>
+<area shape="poly" title=" " alt="" coords="273,363,235,363,235,357,273,357"/>
+<area shape="poly" title=" " alt="" coords="291,456,285,462,263,490,255,518,250,550,237,586,181,686,133,758,129,755,176,683,232,584,245,548,250,517,258,488,281,458,288,452"/>
+<area shape="rect" href="paceval__main_8cpp.html#a7ee63b91471db048e4e8c7c9940a0b14" title=" " alt="" coords="8,405,232,448"/>
+<area shape="poly" title=" " alt="" coords="287,429,232,429,232,424,287,424"/>
+<area shape="poly" title=" " alt="" coords="291,524,284,529,256,564,211,631,132,758,127,755,207,628,251,561,281,525,288,520"/>
+<area shape="rect" href="paceval__main_8cpp.html#a5cc7887ed6b733722bd93a7669cf7a34" title=" " alt="" coords="8,472,232,515"/>
+<area shape="poly" title=" " alt="" coords="287,496,232,496,232,491,287,491"/>
+<area shape="poly" title=" " alt="" coords="305,590,284,602,235,641,191,685,133,759,129,755,187,682,231,637,281,598,303,586"/>
+<area shape="rect" href="paceval__main_8cpp.html#ac0f2e206cb7c87cffa8bb334ee2832d1" title=" " alt="" coords="7,547,233,573"/>
+<area shape="poly" title=" " alt="" coords="275,563,233,563,233,557,275,557"/>
+<area shape="poly" title=" " alt="" coords="294,53,285,62,273,81,263,105,252,165,247,237,247,315,250,469,247,535,237,586,215,639,186,688,135,758,131,755,182,685,210,637,232,585,242,534,245,469,242,315,242,237,246,164,258,103,268,78,281,58,290,49"/>
+<area shape="rect" href="paceval__main_8cpp.html#ad33a118f90a1313031e7724839c6c025" title=" " alt="" coords="10,5,230,48"/>
+<area shape="poly" title=" " alt="" coords="289,29,230,29,230,24,289,24"/>
+<area shape="poly" title=" " alt="" coords="294,120,285,128,274,145,266,166,255,218,250,281,249,349,250,484,246,541,237,586,214,639,186,688,135,758,131,755,181,685,210,636,232,585,241,541,244,484,244,349,245,281,250,218,261,164,269,143,281,125,290,116"/>
+<area shape="rect" href="paceval__main_8cpp.html#ad459ea225b88689869085d7995c8b0d8" title=" " alt="" coords="10,72,230,115"/>
+<area shape="poly" title=" " alt="" coords="289,96,230,96,230,91,289,91"/>
+<area shape="poly" title=" " alt="" coords="286,193,285,195,268,227,258,272,253,325,251,384,249,499,245,548,237,586,214,639,186,688,135,758,131,755,181,685,209,636,232,585,240,547,244,498,246,383,248,325,253,271,263,225,280,192,282,190"/>
+<area shape="rect" href="paceval__main_8cpp.html#aa1ced7b5bfb432bc46e7c77ec7e70a08" title=" " alt="" coords="32,139,208,181"/>
+<area shape="poly" title=" " alt="" coords="272,163,208,163,208,157,272,157"/>
+<area shape="poly" title=" " alt="" coords="290,256,285,262,258,301,244,339,241,375,244,412,252,492,250,537,237,586,214,639,185,688,135,758,130,755,181,685,209,636,232,584,244,536,247,492,239,413,236,375,239,338,253,299,281,258,286,252"/>
+<area shape="rect" href="paceval__main_8cpp.html#afabef4b584a635a79afdc5034a1397af" title=" " alt="" coords="6,205,234,248"/>
+<area shape="poly" title=" " alt="" coords="285,229,234,229,234,224,285,224"/>
+<area shape="poly" title=" " alt="" coords="290,323,285,328,262,360,251,389,247,418,248,448,252,511,248,547,237,586,213,638,184,687,135,758,130,755,180,684,208,636,232,584,243,546,246,511,242,448,242,418,246,388,258,357,281,325,286,319"/>
+<area shape="rect" href="paceval__main_8cpp.html#ac5dc620a3ba9d03ca3f80f47900fff7d" title=" " alt="" coords="6,272,234,315"/>
+<area shape="poly" title=" " alt="" coords="285,296,234,296,234,291,285,291"/>
+<area shape="poly" title=" " alt="" coords="807,368,744,357,745,351,808,363"/>
+<area shape="poly" title=" " alt="" coords="824,426,808,420,748,391,695,363,698,358,750,387,810,415,826,421"/>
+<area shape="poly" title=" " alt="" coords="1162,1001,1102,927,1062,889,1017,857,988,843,962,835,915,831,866,827,838,819,808,806,793,795,784,784,775,773,760,764,681,738,599,723,515,718,432,719,354,726,283,736,173,759,172,754,282,731,354,721,432,714,515,712,599,718,683,733,762,759,778,769,788,780,797,791,811,802,840,814,867,821,915,825,963,830,990,838,1020,852,1066,885,1106,923,1166,997"/>
+<area shape="rect" href="paceval__main_8cpp.html#a25b7909057621f8ec8c52312b692f80a" title=" " alt="" coords="826,749,1002,792"/>
+<area shape="poly" title=" " alt="" coords="1166,1000,1141,957,1107,907,1065,857,1017,813,986,795,989,790,1020,809,1069,853,1112,904,1146,954,1171,997"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a23d85c4350a4451b6cb71799857bb900" title=" " alt="" coords="832,1232,996,1275"/>
+<area shape="poly" title=" " alt="" coords="1150,1067,944,1234,941,1229,1146,1063"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#aa40621a97f021de5879436c70a9946d5" title=" " alt="" coords="837,1328,991,1355"/>
+<area shape="poly" title=" " alt="" coords="1173,1070,1148,1118,1114,1175,1071,1235,1020,1289,987,1313,953,1330,950,1325,984,1308,1017,1285,1067,1231,1109,1172,1144,1115,1168,1068"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a21fc1db30295e57985e8ac86c779e13b" title=" " alt="" coords="835,1379,993,1405"/>
+<area shape="poly" title=" " alt="" coords="1182,1071,1163,1135,1132,1216,1110,1258,1085,1299,1055,1336,1020,1369,995,1383,992,1378,1017,1365,1051,1333,1081,1296,1106,1255,1127,1214,1158,1134,1177,1069"/>
+<area shape="poly" title=" " alt="" coords="817,1249,679,1236,521,1214,445,1199,377,1182,321,1162,281,1138,240,1097,207,1049,180,998,159,945,132,849,120,785,126,784,137,848,164,943,185,995,211,1046,244,1094,284,1134,323,1157,379,1177,446,1194,522,1209,679,1231,817,1244"/>
+<area shape="rect" href="paceval__main_8cpp.html#a8b350b303088c466d8e33af2cb993da1" title=" " alt="" coords="572,1261,744,1304"/>
+<area shape="poly" title=" " alt="" coords="817,1267,745,1275,744,1270,816,1262"/>
+<area shape="poly" title=" " alt="" coords="829,1361,762,1369,613,1377,550,1374,492,1363,438,1344,386,1314,334,1272,281,1215,240,1159,207,1097,180,1033,159,969,132,857,120,785,125,784,137,856,164,968,185,1031,211,1095,245,1156,285,1212,337,1268,389,1310,440,1339,493,1358,550,1369,613,1372,761,1364,829,1355"/>
+<area shape="rect" href="paceval__main_8cpp.html#a64525f2fbe1a343cc5d8fb1d4061c595" title=" " alt="" coords="600,1328,715,1355"/>
+<area shape="poly" title=" " alt="" coords="821,1344,716,1344,716,1339,821,1339"/>
+<area shape="poly" title=" " alt="" coords="822,1414,811,1420,797,1432,788,1445,779,1459,763,1470,690,1497,623,1514,561,1519,502,1513,445,1495,390,1466,335,1424,281,1370,251,1334,226,1295,185,1212,156,1124,136,1036,125,953,119,881,118,785,123,784,125,880,130,953,142,1035,161,1122,190,1210,231,1293,256,1331,285,1366,339,1420,393,1461,447,1490,503,1508,561,1514,623,1509,689,1492,760,1466,775,1455,784,1442,792,1428,808,1415,820,1409"/>
+<area shape="rect" href="paceval__main_8cpp.html#a4c9f944fc645a20a49b19a6a8077c478" title=" " alt="" coords="599,1429,717,1456"/>
+<area shape="poly" title=" " alt="" coords="829,1412,718,1434,717,1428,827,1406"/>
+<area shape="poly" title=" " alt="" coords="1908,555,1842,462,1794,405,1738,348,1674,295,1603,251,1566,234,1527,222,1487,214,1446,211,1187,211,995,206,912,214,865,225,810,242,774,258,740,278,685,319,682,315,737,274,772,253,808,238,864,220,911,209,995,201,1187,205,1446,205,1488,208,1528,216,1568,229,1606,247,1677,291,1741,344,1798,402,1846,459,1913,552"/>
+<area shape="rect" href="paceval__f_thread_handling_8cpp.html#a667addb574523872f6d9b239fe680ffa" title=" " alt="" coords="1579,632,1785,675"/>
+<area shape="poly" title=" " alt="" coords="1834,616,1767,634,1766,629,1833,611"/>
+<area shape="poly" title=" " alt="" coords="1598,683,1580,689,1493,726,1491,721,1578,684,1596,678"/>
+<area shape="poly" title=" " alt="" coords="1850,630,1832,624,1707,573,1604,524,1431,432,1347,390,1255,352,1148,317,1018,287,960,277,914,274,868,277,810,287,756,301,707,319,705,314,754,296,809,281,868,272,914,268,961,271,1019,281,1150,312,1257,347,1349,386,1433,427,1606,519,1709,568,1834,619,1851,625"/>
+<area shape="poly" title=" " alt="" coords="1817,657,1785,657,1785,651,1817,651"/>
+<area shape="rect" href="classpaceval__c_computation.html#a33ae77141f8e59873a756128913b2c4c" title=" " alt="" coords="1369,845,1520,888"/>
+<area shape="poly" title=" " alt="" coords="2768,780,2404,784,1931,784,1818,790,1707,806,1605,827,1522,848,1520,843,1604,822,1706,801,1818,785,1931,779,2404,779,2768,774"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a86035087b6238a298436d26e6ba95a68" title=" " alt="" coords="1078,1353,1299,1380"/>
+<area shape="poly" title=" " alt="" coords="1428,903,1199,1354,1194,1352,1423,900"/>
+<area shape="poly" title=" " alt="" coords="1166,1393,1116,1456,1090,1495,1069,1537,1057,1577,1053,1614,1058,1680,1060,1712,1056,1744,1045,1777,1021,1811,979,1854,935,1892,890,1924,844,1950,796,1970,748,1984,699,1992,650,1995,601,1992,552,1983,504,1968,456,1947,410,1921,365,1889,322,1851,281,1807,255,1770,233,1720,213,1661,196,1593,168,1441,147,1276,134,1114,125,968,119,785,124,784,130,968,139,1113,153,1275,173,1440,201,1592,218,1659,238,1718,260,1767,285,1804,326,1847,368,1885,413,1916,459,1943,506,1963,553,1978,601,1986,650,1990,698,1987,747,1979,794,1965,841,1945,887,1919,932,1888,975,1851,1017,1808,1040,1774,1051,1743,1054,1712,1053,1681,1048,1614,1052,1576,1064,1535,1086,1492,1112,1452,1162,1390"/>
+<area shape="poly" title=" " alt="" coords="1169,1342,1104,1232,1016,1091,929,962,933,959,1021,1088,1109,1229,1174,1339"/>
+<area shape="poly" title=" " alt="" coords="1159,1344,928,1130,932,1126,1163,1341"/>
+<area shape="poly" title=" " alt="" coords="1173,1340,1123,1223,1064,1067,1054,1019,1051,979,1043,943,1033,926,1017,907,990,891,993,887,1020,903,1037,923,1048,941,1056,978,1059,1019,1069,1066,1128,1221,1177,1338"/>
+<area shape="poly" title=" " alt="" coords="1170,1394,1123,1458,1069,1537,1056,1561,1048,1581,1038,1601,1021,1622,997,1640,971,1655,969,1651,994,1636,1017,1618,1034,1598,1043,1579,1051,1559,1064,1535,1118,1455,1165,1391"/>
+<area shape="poly" title=" " alt="" coords="1167,1394,1118,1457,1092,1496,1069,1537,1054,1584,1049,1625,1043,1664,1035,1686,1021,1710,1004,1729,984,1747,945,1772,942,1768,981,1742,1000,1726,1016,1706,1030,1684,1038,1663,1044,1624,1048,1583,1064,1535,1087,1493,1113,1454,1162,1390"/>
+<area shape="poly" title=" " alt="" coords="1163,1393,1099,1452,1020,1521,937,1583,934,1579,1017,1517,1096,1448,1160,1389"/>
+<area shape="poly" title=" " alt="" coords="1139,1349,967,1278,969,1273,1141,1344"/>
+<area shape="poly" title=" " alt="" coords="1062,1358,991,1351,992,1346,1062,1352"/>
+<area shape="poly" title=" " alt="" coords="1062,1381,994,1387,993,1382,1062,1376"/>
+<area shape="rect" href="paceval__main_8cpp.html#ae04cf0ab1cdbd57df334d660578bfdc3" title=" " alt="" coords="823,1429,1005,1456"/>
+<area shape="poly" title=" " alt="" coords="1129,1388,1019,1420,975,1431,974,1426,1018,1415,1128,1383"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#a58be84d3b8a96b24215143c226e47ba9" title=" " alt="" coords="3305,972,3488,1015"/>
+<area shape="poly" title=" " alt="" coords="4375,929,4227,970,4140,989,4053,1003,3898,1015,3743,1016,3602,1012,3488,1004,3488,999,3602,1006,3743,1011,3898,1009,4052,997,4139,983,4225,965,4374,924"/>
+<area shape="rect" href="classpaceval__c_base_atomic_graph_node.html#a95de3e34e6d06e1f028641c1cebed177" title=" " alt="" coords="4111,879,4295,921"/>
+<area shape="poly" title=" " alt="" coords="4359,903,4295,903,4295,897,4359,897"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#a6b028992d3620e3b47cde592607de063" title=" " alt="" coords="3039,921,3223,964"/>
+<area shape="poly" title=" " alt="" coords="3289,976,3223,963,3224,958,3290,970"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#afcfb28524d9d1849f9ba9b9f8a9134b2" title=" " alt="" coords="2774,921,2957,964"/>
+<area shape="poly" title=" " alt="" coords="3024,945,2958,945,2958,940,3024,940"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#abf1b0e7180f028db80f0c9c8dff41768" title=" " alt="" coords="2543,921,2726,964"/>
+<area shape="poly" title=" " alt="" coords="2759,945,2727,945,2727,940,2759,940"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#ab6c891357bf0d13196b002d7670c392b" title=" " alt="" coords="2311,896,2495,939"/>
+<area shape="poly" title=" " alt="" coords="2527,934,2495,930,2495,925,2528,928"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#ac830fb825738bd288776030ee77ab952" title=" " alt="" coords="2080,845,2263,888"/>
+<area shape="poly" title=" " alt="" coords="2296,897,2263,889,2264,884,2297,891"/>
+<area shape="poly" title=" " alt="" coords="2279,865,2584,876,2771,888,2958,907,3039,920,3038,925,2957,912,2771,893,2584,881,2279,870"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#a5dd030d583098f92081518328ffd1f92" title=" " alt="" coords="1841,845,2024,888"/>
+<area shape="poly" title=" " alt="" coords="2064,869,2025,869,2025,864,2064,864"/>
+<area shape="rect" href="classpaceval__c_computation.html#af018b5decaeb3edeafa1a5ff18888d42" title=" " alt="" coords="1597,845,1767,888"/>
+<area shape="poly" title=" " alt="" coords="1825,869,1768,869,1768,864,1825,864"/>
+<area shape="poly" title=" " alt="" coords="1581,869,1521,869,1521,864,1581,864"/>
+<area shape="rect" href="classpaceval__c_atomic_graph_node_add_value.html#a1758d488f2b4874e0fc47a798cf634a5" title=" " alt="" coords="3818,879,4034,921"/>
+<area shape="poly" title=" " alt="" coords="4095,903,4034,903,4034,897,4095,897"/>
+<area shape="rect" href="classpaceval__c_atomic_graph_node_add_value.html#a6ca9b3e8bfc8c639cbdf72b792275844" title=" " alt="" coords="3811,812,4041,855"/>
+<area shape="poly" title=" " alt="" coords="4096,877,4017,858,4018,853,4097,872"/>
+<area shape="rect" href="classpaceval__c_atomic_graph_node_operation.html#abb57bd8003c9171fbec6face13cfaadd" title=" " alt="" coords="3834,945,4018,988"/>
+<area shape="poly" title=" " alt="" coords="4097,928,4018,947,4017,942,4096,923"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#ac6f7e3d71e9271c04639df6f3244ca0d" title=" " alt="" coords="3552,896,3735,939"/>
+<area shape="poly" title=" " alt="" coords="3803,910,3736,914,3736,909,3803,905"/>
+<area shape="poly" title=" " alt="" coords="3558,946,3469,974,3467,969,3556,941"/>
+<area shape="poly" title=" " alt="" coords="3537,925,3223,941,3223,936,3537,920"/>
+<area shape="poly" title=" " alt="" coords="3537,909,3348,894,3132,887,2864,887,2666,894,2495,910,2495,904,2666,889,2864,881,3132,881,3349,889,3537,904"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#a2f01dee4bbfb8659f296ee9a08cab939" title=" " alt="" coords="3552,812,3735,855"/>
+<area shape="poly" title=" " alt="" coords="3796,836,3736,836,3736,831,3796,831"/>
+<area shape="poly" title=" " alt="" coords="3538,858,3223,926,3222,921,3537,853"/>
+<area shape="rect" href="classpaceval__c_atomic_graph_node_operation.html#a4642ca295f388c685c20817405250691" title=" " alt="" coords="3536,1084,3751,1127"/>
+<area shape="poly" title=" " alt="" coords="3868,998,3690,1086,3688,1081,3866,993"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#a67505cc902e68f0fda3c94dbeaf784f4" title=" " alt="" coords="3005,1009,3257,1052"/>
+<area shape="poly" title=" " alt="" coords="3581,1135,3522,1155,3452,1171,3377,1175,3340,1171,3304,1163,3257,1141,3214,1112,3178,1081,3150,1054,3154,1051,3181,1077,3217,1108,3259,1136,3306,1157,3341,1166,3377,1170,3451,1165,3520,1150,3579,1130"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#a865d05ca173971c19f9227f67cd28311" title=" " alt="" coords="3305,1105,3488,1148"/>
+<area shape="poly" title=" " alt="" coords="3520,1119,3489,1121,3488,1116,3520,1113"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#aa407f6c1bceec6ccfc648f7cc6910fe0" title=" " alt="" coords="3305,1039,3488,1081"/>
+<area shape="poly" title=" " alt="" coords="3520,1085,3488,1079,3489,1074,3521,1080"/>
+<area shape="poly" title=" " alt="" coords="3049,1006,2931,967,2933,962,3051,1001"/>
+<area shape="poly" title=" " alt="" coords="2989,1015,2773,979,2721,967,2722,962,2775,973,2990,1009"/>
+<area shape="poly" title=" " alt="" coords="2989,1035,2890,1031,2776,1022,2658,1005,2542,979,2492,961,2447,942,2449,937,2494,956,2543,973,2659,1000,2777,1016,2890,1026,2990,1029"/>
+<area shape="poly" title=" " alt="" coords="3307,1099,3303,1095,3285,1071,3278,1046,3271,1023,3255,999,3231,981,3203,967,3206,962,3233,976,3259,995,3276,1021,3283,1045,3289,1068,3307,1092,3310,1094"/>
+<area shape="poly" title=" " alt="" coords="3316,1035,3303,1029,3255,1000,3185,967,3187,962,3258,995,3306,1024,3318,1030"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="aa89c24d1a11baea7ef75d421f640c494" name="aa89c24d1a11baea7ef75d421f640c494"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa89c24d1a11baea7ef75d421f640c494">&#9670;&#160;</a></span>paceval_precheckMultipleComputations()</h2>
 
@@ -1489,6 +1789,252 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="282,357,279,354,267,340,260,326,255,298,249,271,243,258,231,246,215,236,197,229,199,224,217,231,234,242,247,255,254,269,260,297,265,324,271,337,283,350,286,353"/>
 <area shape="rect" href="paceval__main_8cpp.html#ac5dc620a3ba9d03ca3f80f47900fff7d" title=" " alt="" coords="5,389,233,432"/>
 <area shape="poly" title=" " alt="" coords="265,399,233,402,233,397,265,393"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a407c4b19785069024572df18ebf4b40a" name="a407c4b19785069024572df18ebf4b40a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a407c4b19785069024572df18ebf4b40a">&#9670;&#160;</a></span>paceval_unlockGlobalVariablesMutexObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void paceval_unlockGlobalVariablesMutexObject </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Uses the mutex object to unlock global variables or accesses during multithreading. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="paceval__c_computation_8h_a407c4b19785069024572df18ebf4b40a_icgraph.png" border="0" usemap="#apaceval__c_computation_8h_a407c4b19785069024572df18ebf4b40a_icgraph" alt=""/></div>
+<map name="apaceval__c_computation_8h_a407c4b19785069024572df18ebf4b40a_icgraph" id="apaceval__c_computation_8h_a407c4b19785069024572df18ebf4b40a_icgraph">
+<area shape="rect" title=" " alt="" coords="4609,644,4810,687"/>
+<area shape="rect" href="classpaceval__c_computation.html#a2cde08aa8ee7a3cd0da75fe4e296b6b9" title=" " alt="" coords="4382,468,4533,511"/>
+<area shape="poly" title=" " alt="" coords="4680,634,4628,578,4595,550,4560,525,4532,511,4534,507,4563,520,4599,546,4632,575,4684,631"/>
+<area shape="rect" href="classpaceval__c_computation.html#ac165e9072d68bb3b44b506563807743e" title=" " alt="" coords="4353,535,4561,577"/>
+<area shape="poly" title=" " alt="" coords="4650,639,4560,598,4516,580,4518,575,4562,594,4652,635"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a6373eabc0e6805c3f6192e4bb6834010" title=" " alt="" coords="1582,699,1782,741"/>
+<area shape="poly" title=" " alt="" coords="4595,686,4412,708,4308,716,4204,719,2170,719,1782,721,1782,716,2170,713,4204,713,4307,710,4411,702,4594,681"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a23d0271201cf10a0b956559ef1eed3c1" title=" " alt="" coords="1833,567,2032,609"/>
+<area shape="poly" title=" " alt="" coords="4594,650,4411,628,4307,620,4204,617,2402,617,2205,611,2032,600,2033,594,2205,606,2402,612,4204,612,4308,615,4412,623,4595,645"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a0580b994a37a99aa07a0a18cdf4a126d" title=" " alt="" coords="1833,633,2032,676"/>
+<area shape="poly" title=" " alt="" coords="4593,668,4204,668,2402,668,2032,661,2032,656,2402,663,4204,663,4593,663"/>
+<area shape="rect" href="classpaceval__c_computation.html#af5eaa11251638f4b159cb13a25b5bf23" title=" " alt="" coords="2784,753,2948,796"/>
+<area shape="poly" title=" " alt="" coords="4659,697,4613,719,4562,737,4464,761,4385,771,4306,774,4204,773,3395,773,2948,776,2948,771,3395,768,4204,768,4306,768,4385,766,4463,756,4561,732,4611,714,4656,692"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a12793cbe05b3744dd4095b6d40f7f477" title=" " alt="" coords="4375,879,4539,921"/>
+<area shape="poly" title=" " alt="" coords="4676,699,4484,880,4480,876,4672,695"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#ac37970c25d5fd5156100e2ef91f84922" title=" " alt="" coords="4101,535,4305,577"/>
+<area shape="poly" title=" " alt="" coords="4337,559,4306,559,4306,553,4337,553"/>
+<area shape="rect" href="paceval__main_8cpp.html#a3ee97cad992bf2e26a88765ce587dfb7" title=" " alt="" coords="3799,547,4053,573"/>
+<area shape="poly" title=" " alt="" coords="4085,560,4053,561,4053,556,4085,555"/>
+<area shape="rect" href="paceval__main_8cpp.html#aad60cbad108b9e96511355e605d6ffaa" title=" " alt="" coords="41,757,199,784"/>
+<area shape="poly" title=" " alt="" coords="4085,541,4052,537,3849,518,3645,512,1681,512,1282,510,1120,512,970,520,821,538,664,568,488,614,284,679,241,696,202,718,140,759,138,755,199,713,239,691,282,673,487,609,663,563,820,533,969,515,1120,507,1282,505,1681,507,3645,507,3849,512,4053,532,4086,536"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#ad96cc6b391a94b94e0c11c8d5c04be20" title=" " alt="" coords="1358,724,1531,767"/>
+<area shape="poly" title=" " alt="" coords="1567,735,1532,739,1531,733,1567,730"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#aa5a6e82d9a88d0385e7823eef6686fb6" title=" " alt="" coords="571,317,744,360"/>
+<area shape="poly" title=" " alt="" coords="1566,704,1379,671,1158,626,1050,599,952,572,869,543,808,514,762,479,723,437,692,396,669,362,674,359,696,393,727,434,766,475,811,510,871,538,953,567,1051,594,1159,620,1380,666,1567,699"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a4c4ea05d9207def52c8fa9ec3a68d51d" title=" " alt="" coords="1083,792,1294,835"/>
+<area shape="poly" title=" " alt="" coords="1347,774,1272,794,1271,789,1346,769"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#acf6e000373965eae6c69cbc1c7584bd8" title=" " alt="" coords="1085,1548,1292,1591"/>
+<area shape="poly" title=" " alt="" coords="1404,779,1380,804,1360,835,1332,913,1321,983,1322,1048,1329,1109,1337,1172,1341,1238,1334,1310,1313,1393,1291,1439,1265,1483,1212,1549,1208,1546,1260,1480,1287,1437,1307,1391,1329,1309,1335,1237,1332,1172,1324,1110,1317,1048,1316,983,1327,912,1356,832,1375,801,1400,775"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#aa8979ad66d74f0a3f9e34bfad384f7ac" title=" " alt="" coords="1067,429,1310,472"/>
+<area shape="poly" title=" " alt="" coords="1413,714,1206,474,1210,471,1417,710"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a20e3063a85a7ff4dc39260f464212b22" title=" " alt="" coords="1081,1012,1296,1055"/>
+<area shape="poly" title=" " alt="" coords="1413,779,1360,835,1274,934,1209,1014,1205,1010,1270,931,1356,832,1409,776"/>
+<area shape="poly" title=" " alt="" coords="1132,787,1078,762,1018,740,948,724,860,711,652,693,545,689,443,689,354,694,283,704,244,715,207,729,146,759,144,754,205,724,243,710,282,699,354,689,443,684,545,684,652,687,860,705,949,719,1019,735,1080,757,1135,782"/>
+<area shape="rect" href="paceval__main_8cpp.html#acbc57bb0edcafb8811d082617b6b1531" title=" " alt="" coords="809,648,1019,675"/>
+<area shape="poly" title=" " alt="" coords="1149,784,1089,739,1017,696,971,678,973,673,1020,691,1092,734,1152,780"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a1163f0350a18955da879ce4b5d9e8fee" title=" " alt="" coords="817,917,1011,960"/>
+<area shape="poly" title=" " alt="" coords="1140,845,1083,877,1020,908,990,919,988,914,1018,903,1081,872,1138,840"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#aa8f87bb363a07eefb308dbcad12fd3b1" title=" " alt="" coords="838,1101,990,1128"/>
+<area shape="poly" title=" " alt="" coords="1159,848,929,1103,925,1099,1155,845"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#ab42ba2be711d7cfc57ee395b14a6d37b" title=" " alt="" coords="837,867,991,893"/>
+<area shape="poly" title=" " alt="" coords="1084,841,973,869,972,863,1082,836"/>
+<area shape="poly" title=" " alt="" coords="821,915,761,900,449,834,199,787,200,782,450,828,762,895,823,910"/>
+<area shape="rect" href="paceval__main_8cpp.html#a9bece1ed849041ccae24ab45211f015c" title=" " alt="" coords="573,976,742,1019"/>
+<area shape="poly" title=" " alt="" coords="804,967,743,981,742,975,803,961"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a876a5e418214b421cea1cbfef3a75e93" title=" " alt="" coords="554,909,761,952"/>
+<area shape="poly" title=" " alt="" coords="801,938,762,937,762,931,801,932"/>
+<area shape="poly" title=" " alt="" coords="538,936,478,933,412,926,346,913,282,893,235,870,193,840,133,786,136,782,196,836,238,865,284,888,347,908,413,921,478,928,538,931"/>
+<area shape="rect" href="paceval__main_8cpp.html#a27886e80efbb9b9b3d18cc34ed90168d" title=" " alt="" coords="283,960,506,987"/>
+<area shape="poly" title=" " alt="" coords="539,953,481,962,481,957,538,947"/>
+<area shape="poly" title=" " alt="" coords="837,1100,761,1084,687,1073,623,1070,511,1070,458,1067,404,1057,346,1036,281,1001,250,977,222,950,176,888,143,828,124,785,129,783,148,826,180,885,226,946,254,973,284,996,348,1031,405,1052,459,1062,511,1065,623,1064,688,1068,762,1079,838,1095"/>
+<area shape="rect" href="paceval__main_8cpp.html#a265cdc9fd945d8bb8a0a9784db853691" title=" " alt="" coords="602,1160,714,1187"/>
+<area shape="poly" title=" " alt="" coords="838,1135,715,1163,714,1158,837,1129"/>
+<area shape="rect" href="paceval__f_self_test_main_8cpp.html#a5cb77a00a63daa84c4771e62df42e5a1" title=" " alt="" coords="570,1093,745,1136"/>
+<area shape="poly" title=" " alt="" coords="823,1117,746,1117,746,1112,823,1112"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a02d68e2866a1f8c4228805d6479f9197" title=" " alt="" coords="316,1097,473,1124"/>
+<area shape="poly" title=" " alt="" coords="554,1116,473,1115,473,1109,554,1110"/>
+<area shape="poly" title=" " alt="" coords="307,1093,281,1077,246,1042,216,1003,190,960,169,917,138,839,122,785,127,784,143,837,174,915,195,958,220,1000,250,1039,284,1073,310,1089"/>
+<area shape="poly" title=" " alt="" coords="834,863,808,850,793,836,784,822,775,809,760,798,715,784,653,774,499,764,336,764,199,769,199,764,336,759,499,759,653,769,716,779,763,794,779,805,788,819,797,833,811,846,836,859"/>
+<area shape="rect" href="paceval__main_8cpp.html#a2bef25d6ed8b72b759afb46a6691e640" title=" " alt="" coords="600,808,715,835"/>
+<area shape="poly" title=" " alt="" coords="837,865,715,837,716,832,839,860"/>
+<area shape="poly" title=" " alt="" coords="1069,1569,597,1550,384,1535,315,1526,281,1517,259,1493,240,1459,206,1372,179,1265,158,1147,131,924,119,785,125,784,136,924,163,1147,185,1264,212,1371,245,1457,264,1489,284,1512,316,1521,385,1530,598,1544,1069,1563"/>
+<area shape="rect" href="paceval__main_8cpp.html#a608786d2771854226f6326ebd9c9c0ab" title=" " alt="" coords="811,1480,1017,1507"/>
+<area shape="poly" title=" " alt="" coords="1093,1546,964,1510,966,1505,1095,1541"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#affaeb85db37fa944918439917e462889" title=" " alt="" coords="819,1653,1009,1696"/>
+<area shape="poly" title=" " alt="" coords="1118,1599,973,1655,971,1650,1116,1594"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#ae4d88e556f80fafddcad8e401e671936" title=" " alt="" coords="840,1771,988,1797"/>
+<area shape="poly" title=" " alt="" coords="1152,1603,1020,1710,937,1772,933,1768,1017,1706,1148,1599"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#ad20a2c12de8c3781d5d2ea61903208a7" title=" " alt="" coords="839,1581,989,1608"/>
+<area shape="poly" title=" " alt="" coords="1069,1583,990,1590,990,1585,1069,1578"/>
+<area shape="poly" title=" " alt="" coords="803,1683,664,1686,509,1680,435,1672,370,1660,317,1642,281,1618,258,1589,238,1550,220,1502,204,1448,176,1325,155,1191,140,1058,129,939,119,784,125,784,134,938,145,1058,160,1190,181,1324,209,1447,225,1501,243,1547,263,1586,284,1614,320,1637,372,1654,436,1667,509,1675,664,1680,803,1678"/>
+<area shape="rect" href="paceval__main_8cpp.html#a6a7e917c734528161907f55960230eb5" title=" " alt="" coords="575,1733,740,1776"/>
+<area shape="poly" title=" " alt="" coords="829,1704,729,1735,728,1730,828,1699"/>
+<area shape="poly" title=" " alt="" coords="830,1803,704,1816,630,1817,553,1812,476,1798,403,1773,369,1756,337,1736,307,1711,281,1683,259,1650,239,1606,205,1495,178,1361,157,1217,130,948,119,785,125,784,135,947,162,1216,183,1360,210,1493,244,1604,264,1647,285,1680,311,1707,340,1731,371,1752,405,1768,478,1793,554,1807,630,1812,704,1811,829,1798"/>
+<area shape="rect" href="paceval__main_8cpp.html#aead1793c054ebf5a99e1fe7af37cc77e" title=" " alt="" coords="604,1851,712,1877"/>
+<area shape="poly" title=" " alt="" coords="855,1805,762,1835,705,1853,703,1847,761,1829,854,1800"/>
+<area shape="poly" title=" " alt="" coords="824,1606,685,1614,525,1616,448,1611,378,1602,321,1587,299,1577,281,1565,258,1539,238,1504,219,1460,203,1410,176,1295,155,1170,139,1045,129,931,119,784,125,784,134,931,144,1044,160,1169,181,1294,208,1409,224,1458,243,1501,263,1536,284,1561,301,1572,323,1582,379,1597,448,1606,525,1610,685,1609,823,1600"/>
+<area shape="rect" href="paceval__main_8cpp.html#ad42ee7b6c31f01b9ed159719c165a850" title=" " alt="" coords="602,1632,713,1659"/>
+<area shape="poly" title=" " alt="" coords="829,1614,714,1637,713,1632,828,1609"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a0e3863b09cec5cd3ae187477118750cb" title=" " alt="" coords="821,296,1007,339"/>
+<area shape="poly" title=" " alt="" coords="1141,423,1084,387,1018,353,989,342,991,337,1020,348,1086,383,1144,418"/>
+<area shape="poly" title=" " alt="" coords="1112,480,1046,496,968,507,887,506,847,499,808,486,763,461,725,427,693,392,671,362,675,359,697,389,728,423,767,457,810,482,848,494,888,500,968,501,1045,491,1111,474"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a68c14f048baa12d21a6b9213e90a1da6" title=" " alt="" coords="823,363,1005,405"/>
+<area shape="poly" title=" " alt="" coords="1082,428,1004,409,1005,403,1084,423"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a312c31d57c21cbccac510fef91b467ea" title=" " alt="" coords="820,429,1008,472"/>
+<area shape="poly" title=" " alt="" coords="1051,453,1009,453,1009,448,1051,448"/>
+<area shape="poly" title=" " alt="" coords="806,329,745,334,744,329,806,324"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#aa2b13bf07326969afc0646bb12e3b72d" title=" " alt="" coords="289,339,500,381"/>
+<area shape="poly" title=" " alt="" coords="556,350,501,354,500,349,555,344"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a4b7907fe40d8f2f9f332a572b8ffda40" title=" " alt="" coords="303,405,486,448"/>
+<area shape="poly" title=" " alt="" coords="585,368,507,396,471,407,469,402,505,391,583,363"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a3930b10a5fe345f1a5112ea035921dfa" title=" " alt="" coords="303,472,486,515"/>
+<area shape="poly" title=" " alt="" coords="626,373,573,419,507,462,481,474,479,469,505,458,569,415,622,369"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#aa459fc5d99a99829cf710547da04fe61" title=" " alt="" coords="291,539,498,581"/>
+<area shape="poly" title=" " alt="" coords="640,375,617,411,587,453,550,494,508,529,486,541,484,536,504,524,546,490,583,449,613,408,635,372"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a1f7a7fee6838b93d4f840bce4a92cd42" title=" " alt="" coords="305,5,484,48"/>
+<area shape="poly" title=" " alt="" coords="644,303,626,250,597,184,557,118,532,88,504,62,483,49,486,44,508,58,536,85,561,115,602,182,631,248,649,302"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#ae89257d9402f64f08f9fcfe9c92f0256" title=" " alt="" coords="305,72,484,115"/>
+<area shape="poly" title=" " alt="" coords="638,305,617,264,587,216,549,169,504,129,483,117,486,112,508,125,553,166,591,213,621,261,643,302"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a9bcd79663939f622ca862829cdb376d7" title=" " alt="" coords="287,139,502,181"/>
+<area shape="poly" title=" " alt="" coords="628,307,575,250,541,221,505,196,481,184,483,179,507,191,544,217,578,246,632,304"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a6de3623e77430fdd803d71c09f05aba6" title=" " alt="" coords="301,205,488,248"/>
+<area shape="poly" title=" " alt="" coords="605,312,505,262,474,251,476,246,507,258,607,307"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a190c7daca86f625b5d42b538faa5dfb4" title=" " alt="" coords="301,272,488,315"/>
+<area shape="poly" title=" " alt="" coords="555,324,488,312,489,307,556,319"/>
+<area shape="poly" title=" " alt="" coords="287,393,285,395,267,418,257,440,252,461,251,483,251,530,247,557,237,586,212,638,183,687,134,759,130,756,178,684,207,636,232,584,241,556,245,530,246,483,247,460,252,438,262,415,281,392,283,389"/>
+<area shape="rect" href="paceval__main_8cpp.html#a355e632ee48694f62cf038b77b6ca6ac" title=" " alt="" coords="5,347,235,373"/>
+<area shape="poly" title=" " alt="" coords="273,363,235,363,235,357,273,357"/>
+<area shape="poly" title=" " alt="" coords="291,456,285,462,263,490,255,518,250,550,237,586,181,686,133,758,129,755,176,683,232,584,245,548,250,517,258,488,281,458,288,452"/>
+<area shape="rect" href="paceval__main_8cpp.html#a7ee63b91471db048e4e8c7c9940a0b14" title=" " alt="" coords="8,405,232,448"/>
+<area shape="poly" title=" " alt="" coords="287,429,232,429,232,424,287,424"/>
+<area shape="poly" title=" " alt="" coords="291,524,284,529,256,564,211,631,132,758,127,755,207,628,251,561,281,525,288,520"/>
+<area shape="rect" href="paceval__main_8cpp.html#a5cc7887ed6b733722bd93a7669cf7a34" title=" " alt="" coords="8,472,232,515"/>
+<area shape="poly" title=" " alt="" coords="287,496,232,496,232,491,287,491"/>
+<area shape="poly" title=" " alt="" coords="305,590,284,602,235,641,191,685,133,759,129,755,187,682,231,637,281,598,303,586"/>
+<area shape="rect" href="paceval__main_8cpp.html#ac0f2e206cb7c87cffa8bb334ee2832d1" title=" " alt="" coords="7,547,233,573"/>
+<area shape="poly" title=" " alt="" coords="275,563,233,563,233,557,275,557"/>
+<area shape="poly" title=" " alt="" coords="294,53,285,62,273,81,263,105,252,165,247,237,247,315,250,469,247,535,237,586,215,639,186,688,135,758,131,755,182,685,210,637,232,585,242,534,245,469,242,315,242,237,246,164,258,103,268,78,281,58,290,49"/>
+<area shape="rect" href="paceval__main_8cpp.html#ad33a118f90a1313031e7724839c6c025" title=" " alt="" coords="10,5,230,48"/>
+<area shape="poly" title=" " alt="" coords="289,29,230,29,230,24,289,24"/>
+<area shape="poly" title=" " alt="" coords="294,120,285,128,274,145,266,166,255,218,250,281,249,349,250,484,246,541,237,586,214,639,186,688,135,758,131,755,181,685,210,636,232,585,241,541,244,484,244,349,245,281,250,218,261,164,269,143,281,125,290,116"/>
+<area shape="rect" href="paceval__main_8cpp.html#ad459ea225b88689869085d7995c8b0d8" title=" " alt="" coords="10,72,230,115"/>
+<area shape="poly" title=" " alt="" coords="289,96,230,96,230,91,289,91"/>
+<area shape="poly" title=" " alt="" coords="286,193,285,195,268,227,258,272,253,325,251,384,249,499,245,548,237,586,214,639,186,688,135,758,131,755,181,685,209,636,232,585,240,547,244,498,246,383,248,325,253,271,263,225,280,192,282,190"/>
+<area shape="rect" href="paceval__main_8cpp.html#aa1ced7b5bfb432bc46e7c77ec7e70a08" title=" " alt="" coords="32,139,208,181"/>
+<area shape="poly" title=" " alt="" coords="272,163,208,163,208,157,272,157"/>
+<area shape="poly" title=" " alt="" coords="290,256,285,262,258,301,244,339,241,375,244,412,252,492,250,537,237,586,214,639,185,688,135,758,130,755,181,685,209,636,232,584,244,536,247,492,239,413,236,375,239,338,253,299,281,258,286,252"/>
+<area shape="rect" href="paceval__main_8cpp.html#afabef4b584a635a79afdc5034a1397af" title=" " alt="" coords="6,205,234,248"/>
+<area shape="poly" title=" " alt="" coords="285,229,234,229,234,224,285,224"/>
+<area shape="poly" title=" " alt="" coords="290,323,285,328,262,360,251,389,247,418,248,448,252,511,248,547,237,586,213,638,184,687,135,758,130,755,180,684,208,636,232,584,243,546,246,511,242,448,242,418,246,388,258,357,281,325,286,319"/>
+<area shape="rect" href="paceval__main_8cpp.html#ac5dc620a3ba9d03ca3f80f47900fff7d" title=" " alt="" coords="6,272,234,315"/>
+<area shape="poly" title=" " alt="" coords="285,296,234,296,234,291,285,291"/>
+<area shape="poly" title=" " alt="" coords="807,368,744,357,745,351,808,363"/>
+<area shape="poly" title=" " alt="" coords="824,426,808,420,748,391,695,363,698,358,750,387,810,415,826,421"/>
+<area shape="poly" title=" " alt="" coords="1162,1001,1102,927,1062,889,1017,857,988,843,962,835,915,831,866,827,838,819,808,806,793,795,784,784,775,773,760,764,681,738,599,723,515,718,432,719,354,726,283,736,173,759,172,754,282,731,354,721,432,714,515,712,599,718,683,733,762,759,778,769,788,780,797,791,811,802,840,814,867,821,915,825,963,830,990,838,1020,852,1066,885,1106,923,1166,997"/>
+<area shape="rect" href="paceval__main_8cpp.html#a25b7909057621f8ec8c52312b692f80a" title=" " alt="" coords="826,749,1002,792"/>
+<area shape="poly" title=" " alt="" coords="1166,1000,1141,957,1107,907,1065,857,1017,813,986,795,989,790,1020,809,1069,853,1112,904,1146,954,1171,997"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a23d85c4350a4451b6cb71799857bb900" title=" " alt="" coords="832,1232,996,1275"/>
+<area shape="poly" title=" " alt="" coords="1150,1067,944,1234,941,1229,1146,1063"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#aa40621a97f021de5879436c70a9946d5" title=" " alt="" coords="837,1328,991,1355"/>
+<area shape="poly" title=" " alt="" coords="1173,1070,1148,1118,1114,1175,1071,1235,1020,1289,987,1313,953,1330,950,1325,984,1308,1017,1285,1067,1231,1109,1172,1144,1115,1168,1068"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a21fc1db30295e57985e8ac86c779e13b" title=" " alt="" coords="835,1379,993,1405"/>
+<area shape="poly" title=" " alt="" coords="1182,1071,1163,1135,1132,1216,1110,1258,1085,1299,1055,1336,1020,1369,995,1383,992,1378,1017,1365,1051,1333,1081,1296,1106,1255,1127,1214,1158,1134,1177,1069"/>
+<area shape="poly" title=" " alt="" coords="817,1249,679,1236,521,1214,445,1199,377,1182,321,1162,281,1138,240,1097,207,1049,180,998,159,945,132,849,120,785,126,784,137,848,164,943,185,995,211,1046,244,1094,284,1134,323,1157,379,1177,446,1194,522,1209,679,1231,817,1244"/>
+<area shape="rect" href="paceval__main_8cpp.html#a8b350b303088c466d8e33af2cb993da1" title=" " alt="" coords="572,1261,744,1304"/>
+<area shape="poly" title=" " alt="" coords="817,1267,745,1275,744,1270,816,1262"/>
+<area shape="poly" title=" " alt="" coords="829,1361,762,1369,613,1377,550,1374,492,1363,438,1344,386,1314,334,1272,281,1215,240,1159,207,1097,180,1033,159,969,132,857,120,785,125,784,137,856,164,968,185,1031,211,1095,245,1156,285,1212,337,1268,389,1310,440,1339,493,1358,550,1369,613,1372,761,1364,829,1355"/>
+<area shape="rect" href="paceval__main_8cpp.html#a64525f2fbe1a343cc5d8fb1d4061c595" title=" " alt="" coords="600,1328,715,1355"/>
+<area shape="poly" title=" " alt="" coords="821,1344,716,1344,716,1339,821,1339"/>
+<area shape="poly" title=" " alt="" coords="822,1414,811,1420,797,1432,788,1445,779,1459,763,1470,690,1497,623,1514,561,1519,502,1513,445,1495,390,1466,335,1424,281,1370,251,1334,226,1295,185,1212,156,1124,136,1036,125,953,119,881,118,785,123,784,125,880,130,953,142,1035,161,1122,190,1210,231,1293,256,1331,285,1366,339,1420,393,1461,447,1490,503,1508,561,1514,623,1509,689,1492,760,1466,775,1455,784,1442,792,1428,808,1415,820,1409"/>
+<area shape="rect" href="paceval__main_8cpp.html#a4c9f944fc645a20a49b19a6a8077c478" title=" " alt="" coords="599,1429,717,1456"/>
+<area shape="poly" title=" " alt="" coords="829,1412,718,1434,717,1428,827,1406"/>
+<area shape="poly" title=" " alt="" coords="1908,555,1842,462,1794,405,1738,348,1674,295,1603,251,1566,234,1527,222,1487,214,1446,211,1187,211,995,206,912,214,865,225,810,242,774,258,740,278,685,319,682,315,737,274,772,253,808,238,864,220,911,209,995,201,1187,205,1446,205,1488,208,1528,216,1568,229,1606,247,1677,291,1741,344,1798,402,1846,459,1913,552"/>
+<area shape="rect" href="paceval__f_thread_handling_8cpp.html#a667addb574523872f6d9b239fe680ffa" title=" " alt="" coords="1579,632,1785,675"/>
+<area shape="poly" title=" " alt="" coords="1834,616,1767,634,1766,629,1833,611"/>
+<area shape="poly" title=" " alt="" coords="1598,683,1580,689,1493,726,1491,721,1578,684,1596,678"/>
+<area shape="poly" title=" " alt="" coords="1850,630,1832,624,1707,573,1604,524,1431,432,1347,390,1255,352,1148,317,1018,287,960,277,914,274,868,277,810,287,756,301,707,319,705,314,754,296,809,281,868,272,914,268,961,271,1019,281,1150,312,1257,347,1349,386,1433,427,1606,519,1709,568,1834,619,1851,625"/>
+<area shape="poly" title=" " alt="" coords="1817,657,1785,657,1785,651,1817,651"/>
+<area shape="rect" href="classpaceval__c_computation.html#a33ae77141f8e59873a756128913b2c4c" title=" " alt="" coords="1369,845,1520,888"/>
+<area shape="poly" title=" " alt="" coords="2768,780,2404,784,1931,784,1818,790,1707,806,1605,827,1522,848,1520,843,1604,822,1706,801,1818,785,1931,779,2404,779,2768,774"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a86035087b6238a298436d26e6ba95a68" title=" " alt="" coords="1078,1353,1299,1380"/>
+<area shape="poly" title=" " alt="" coords="1428,903,1199,1354,1194,1352,1423,900"/>
+<area shape="poly" title=" " alt="" coords="1166,1393,1116,1456,1090,1495,1069,1537,1057,1577,1053,1614,1058,1680,1060,1712,1056,1744,1045,1777,1021,1811,979,1854,935,1892,890,1924,844,1950,796,1970,748,1984,699,1992,650,1995,601,1992,552,1983,504,1968,456,1947,410,1921,365,1889,322,1851,281,1807,255,1770,233,1720,213,1661,196,1593,168,1441,147,1276,134,1114,125,968,119,785,124,784,130,968,139,1113,153,1275,173,1440,201,1592,218,1659,238,1718,260,1767,285,1804,326,1847,368,1885,413,1916,459,1943,506,1963,553,1978,601,1986,650,1990,698,1987,747,1979,794,1965,841,1945,887,1919,932,1888,975,1851,1017,1808,1040,1774,1051,1743,1054,1712,1053,1681,1048,1614,1052,1576,1064,1535,1086,1492,1112,1452,1162,1390"/>
+<area shape="poly" title=" " alt="" coords="1169,1342,1104,1232,1016,1091,929,962,933,959,1021,1088,1109,1229,1174,1339"/>
+<area shape="poly" title=" " alt="" coords="1159,1344,928,1130,932,1126,1163,1341"/>
+<area shape="poly" title=" " alt="" coords="1173,1340,1123,1223,1064,1067,1054,1019,1051,979,1043,943,1033,926,1017,907,990,891,993,887,1020,903,1037,923,1048,941,1056,978,1059,1019,1069,1066,1128,1221,1177,1338"/>
+<area shape="poly" title=" " alt="" coords="1170,1394,1123,1458,1069,1537,1056,1561,1048,1581,1038,1601,1021,1622,997,1640,971,1655,969,1651,994,1636,1017,1618,1034,1598,1043,1579,1051,1559,1064,1535,1118,1455,1165,1391"/>
+<area shape="poly" title=" " alt="" coords="1167,1394,1118,1457,1092,1496,1069,1537,1054,1584,1049,1625,1043,1664,1035,1686,1021,1710,1004,1729,984,1747,945,1772,942,1768,981,1742,1000,1726,1016,1706,1030,1684,1038,1663,1044,1624,1048,1583,1064,1535,1087,1493,1113,1454,1162,1390"/>
+<area shape="poly" title=" " alt="" coords="1163,1393,1099,1452,1020,1521,937,1583,934,1579,1017,1517,1096,1448,1160,1389"/>
+<area shape="poly" title=" " alt="" coords="1139,1349,967,1278,969,1273,1141,1344"/>
+<area shape="poly" title=" " alt="" coords="1062,1358,991,1351,992,1346,1062,1352"/>
+<area shape="poly" title=" " alt="" coords="1062,1381,994,1387,993,1382,1062,1376"/>
+<area shape="rect" href="paceval__main_8cpp.html#ae04cf0ab1cdbd57df334d660578bfdc3" title=" " alt="" coords="823,1429,1005,1456"/>
+<area shape="poly" title=" " alt="" coords="1129,1388,1019,1420,975,1431,974,1426,1018,1415,1128,1383"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#a58be84d3b8a96b24215143c226e47ba9" title=" " alt="" coords="3305,972,3488,1015"/>
+<area shape="poly" title=" " alt="" coords="4375,929,4227,970,4140,989,4053,1003,3898,1015,3743,1016,3602,1012,3488,1004,3488,999,3602,1006,3743,1011,3898,1009,4052,997,4139,983,4225,965,4374,924"/>
+<area shape="rect" href="classpaceval__c_base_atomic_graph_node.html#a95de3e34e6d06e1f028641c1cebed177" title=" " alt="" coords="4111,879,4295,921"/>
+<area shape="poly" title=" " alt="" coords="4359,903,4295,903,4295,897,4359,897"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#a6b028992d3620e3b47cde592607de063" title=" " alt="" coords="3039,921,3223,964"/>
+<area shape="poly" title=" " alt="" coords="3289,976,3223,963,3224,958,3290,970"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#afcfb28524d9d1849f9ba9b9f8a9134b2" title=" " alt="" coords="2774,921,2957,964"/>
+<area shape="poly" title=" " alt="" coords="3024,945,2958,945,2958,940,3024,940"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#abf1b0e7180f028db80f0c9c8dff41768" title=" " alt="" coords="2543,921,2726,964"/>
+<area shape="poly" title=" " alt="" coords="2759,945,2727,945,2727,940,2759,940"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#ab6c891357bf0d13196b002d7670c392b" title=" " alt="" coords="2311,896,2495,939"/>
+<area shape="poly" title=" " alt="" coords="2527,934,2495,930,2495,925,2528,928"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#ac830fb825738bd288776030ee77ab952" title=" " alt="" coords="2080,845,2263,888"/>
+<area shape="poly" title=" " alt="" coords="2296,897,2263,889,2264,884,2297,891"/>
+<area shape="poly" title=" " alt="" coords="2279,865,2584,876,2771,888,2958,907,3039,920,3038,925,2957,912,2771,893,2584,881,2279,870"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#a5dd030d583098f92081518328ffd1f92" title=" " alt="" coords="1841,845,2024,888"/>
+<area shape="poly" title=" " alt="" coords="2064,869,2025,869,2025,864,2064,864"/>
+<area shape="rect" href="classpaceval__c_computation.html#af018b5decaeb3edeafa1a5ff18888d42" title=" " alt="" coords="1597,845,1767,888"/>
+<area shape="poly" title=" " alt="" coords="1825,869,1768,869,1768,864,1825,864"/>
+<area shape="poly" title=" " alt="" coords="1581,869,1521,869,1521,864,1581,864"/>
+<area shape="rect" href="classpaceval__c_atomic_graph_node_add_value.html#a1758d488f2b4874e0fc47a798cf634a5" title=" " alt="" coords="3818,879,4034,921"/>
+<area shape="poly" title=" " alt="" coords="4095,903,4034,903,4034,897,4095,897"/>
+<area shape="rect" href="classpaceval__c_atomic_graph_node_add_value.html#a6ca9b3e8bfc8c639cbdf72b792275844" title=" " alt="" coords="3811,812,4041,855"/>
+<area shape="poly" title=" " alt="" coords="4096,877,4017,858,4018,853,4097,872"/>
+<area shape="rect" href="classpaceval__c_atomic_graph_node_operation.html#abb57bd8003c9171fbec6face13cfaadd" title=" " alt="" coords="3834,945,4018,988"/>
+<area shape="poly" title=" " alt="" coords="4097,928,4018,947,4017,942,4096,923"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#ac6f7e3d71e9271c04639df6f3244ca0d" title=" " alt="" coords="3552,896,3735,939"/>
+<area shape="poly" title=" " alt="" coords="3803,910,3736,914,3736,909,3803,905"/>
+<area shape="poly" title=" " alt="" coords="3558,946,3469,974,3467,969,3556,941"/>
+<area shape="poly" title=" " alt="" coords="3537,925,3223,941,3223,936,3537,920"/>
+<area shape="poly" title=" " alt="" coords="3537,909,3348,894,3132,887,2864,887,2666,894,2495,910,2495,904,2666,889,2864,881,3132,881,3349,889,3537,904"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#a2f01dee4bbfb8659f296ee9a08cab939" title=" " alt="" coords="3552,812,3735,855"/>
+<area shape="poly" title=" " alt="" coords="3796,836,3736,836,3736,831,3796,831"/>
+<area shape="poly" title=" " alt="" coords="3538,858,3223,926,3222,921,3537,853"/>
+<area shape="rect" href="classpaceval__c_atomic_graph_node_operation.html#a4642ca295f388c685c20817405250691" title=" " alt="" coords="3536,1084,3751,1127"/>
+<area shape="poly" title=" " alt="" coords="3868,998,3690,1086,3688,1081,3866,993"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#a67505cc902e68f0fda3c94dbeaf784f4" title=" " alt="" coords="3005,1009,3257,1052"/>
+<area shape="poly" title=" " alt="" coords="3581,1135,3522,1155,3452,1171,3377,1175,3340,1171,3304,1163,3257,1141,3214,1112,3178,1081,3150,1054,3154,1051,3181,1077,3217,1108,3259,1136,3306,1157,3341,1166,3377,1170,3451,1165,3520,1150,3579,1130"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#a865d05ca173971c19f9227f67cd28311" title=" " alt="" coords="3305,1105,3488,1148"/>
+<area shape="poly" title=" " alt="" coords="3520,1119,3489,1121,3488,1116,3520,1113"/>
+<area shape="rect" href="classpaceval__c_syntactic_analysis.html#aa407f6c1bceec6ccfc648f7cc6910fe0" title=" " alt="" coords="3305,1039,3488,1081"/>
+<area shape="poly" title=" " alt="" coords="3520,1085,3488,1079,3489,1074,3521,1080"/>
+<area shape="poly" title=" " alt="" coords="3049,1006,2931,967,2933,962,3051,1001"/>
+<area shape="poly" title=" " alt="" coords="2989,1015,2773,979,2721,967,2722,962,2775,973,2990,1009"/>
+<area shape="poly" title=" " alt="" coords="2989,1035,2890,1031,2776,1022,2658,1005,2542,979,2492,961,2447,942,2449,937,2494,956,2543,973,2659,1000,2777,1016,2890,1026,2990,1029"/>
+<area shape="poly" title=" " alt="" coords="3307,1099,3303,1095,3285,1071,3278,1046,3271,1023,3255,999,3231,981,3203,967,3206,962,3233,976,3259,995,3276,1021,3283,1045,3289,1068,3307,1092,3310,1094"/>
+<area shape="poly" title=" " alt="" coords="3316,1035,3303,1029,3255,1000,3185,967,3187,962,3258,995,3306,1024,3318,1030"/>
 </map>
 </div>
 
@@ -2943,9 +3489,13 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="paceval__c_computation_8h_aa44192a2ad678e74a387defe8057bfdd_cgraph.png" border="0" usemap="#apaceval__c_computation_8h_aa44192a2ad678e74a387defe8057bfdd_cgraph" alt=""/></div>
 <map name="apaceval__c_computation_8h_aa44192a2ad678e74a387defe8057bfdd_cgraph" id="apaceval__c_computation_8h_aa44192a2ad678e74a387defe8057bfdd_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,182,48"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#aca6a6e91b9816392c0bbab78704fefcd" title=" " alt="" coords="230,13,411,40"/>
-<area shape="poly" title=" " alt="" coords="182,24,214,24,214,29,182,29"/>
+<area shape="rect" title=" " alt="" coords="5,56,182,99"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a58667ec9fc9539b040e7808829b4ec85" title=" " alt="" coords="243,5,417,32"/>
+<area shape="poly" title=" " alt="" coords="181,53,257,34,259,39,182,58"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#af161dee2e3b9da21dae33ba48d7781ea" title=" " alt="" coords="237,56,423,99"/>
+<area shape="poly" title=" " alt="" coords="182,75,221,75,221,80,182,80"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a407c4b19785069024572df18ebf4b40a" title=" " alt="" coords="230,123,430,165"/>
+<area shape="poly" title=" " alt="" coords="172,97,237,115,236,120,171,102"/>
 </map>
 </div>
 
@@ -3040,80 +3590,88 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="paceval__c_computation_8h_ad96cc6b391a94b94e0c11c8d5c04be20_cgraph.png" border="0" usemap="#apaceval__c_computation_8h_ad96cc6b391a94b94e0c11c8d5c04be20_cgraph" alt=""/></div>
 <map name="apaceval__c_computation_8h_ad96cc6b391a94b94e0c11c8d5c04be20_cgraph" id="apaceval__c_computation_8h_ad96cc6b391a94b94e0c11c8d5c04be20_cgraph">
-<area shape="rect" title=" " alt="" coords="5,619,179,661"/>
-<area shape="rect" href="classpaceval__c_computation.html#acc2fcd0d7b11d8bb5db12484e06371e1" title=" " alt="" coords="256,52,408,95"/>
-<area shape="poly" title=" " alt="" coords="93,618,108,511,136,357,154,278,175,206,198,146,225,105,241,92,244,96,229,108,203,148,180,207,159,279,141,358,114,512,99,619"/>
-<area shape="rect" href="classpaceval__c_computation.html#ad7706e30800df8c76f04a90966151436" title=" " alt="" coords="256,119,408,161"/>
-<area shape="poly" title=" " alt="" coords="90,618,93,536,99,480,110,417,126,351,150,287,182,225,225,171,240,159,244,163,229,175,187,228,155,289,131,353,115,418,104,480,98,537,95,619"/>
-<area shape="rect" href="classpaceval__c_computation.html#ae19e9c2737a5e6d1c8dad02e4202a52d" title=" " alt="" coords="229,185,435,244"/>
-<area shape="poly" title=" " alt="" coords="94,618,108,556,133,471,171,376,196,330,225,288,263,251,267,255,229,291,200,333,176,379,138,473,113,558,100,619"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#a6373eabc0e6805c3f6192e4bb6834010" title=" " alt="" coords="232,301,432,344"/>
-<area shape="poly" title=" " alt="" coords="95,618,108,565,132,494,171,419,196,384,225,354,229,351,232,355,228,358,200,388,175,422,137,496,113,566,100,619"/>
-<area shape="rect" href="paceval__f_thread_handling_8cpp.html#abba8633f92fd29c261d9facfd5bbae6d" title=" " alt="" coords="229,368,435,411"/>
-<area shape="poly" title=" " alt="" coords="98,617,115,576,142,523,178,468,200,443,225,421,230,417,234,421,228,425,204,446,183,471,146,526,120,578,103,619"/>
-<area shape="rect" href="paceval__f_thread_handling_8cpp.html#a667addb574523872f6d9b239fe680ffa" title=" " alt="" coords="229,435,435,477"/>
-<area shape="poly" title=" " alt="" coords="106,616,155,556,188,523,225,494,246,482,248,487,228,498,192,527,159,560,111,620"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#ac9544af8b2008642a290551bbfb31d7b" title=" " alt="" coords="814,576,965,619"/>
-<area shape="poly" title=" " alt="" coords="112,616,160,574,192,553,226,538,285,519,334,510,358,510,383,515,438,538,456,555,464,576,470,595,486,611,518,625,547,632,573,634,598,631,653,620,721,611,798,605,799,610,722,616,654,625,599,637,573,639,546,638,517,630,484,616,466,598,458,578,452,558,436,542,381,520,357,515,334,515,286,524,228,542,194,558,163,578,115,620"/>
-<area shape="rect" href="paceval__f_thread_handling_8cpp.html#ac2f7ec87dbf00e9b59f0d43cd4ad93c6" title=" " alt="" coords="229,552,435,595"/>
-<area shape="poly" title=" " alt="" coords="170,616,237,597,239,602,172,621"/>
-<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a83d9969420ce07a22eaff3e1cfc3ad40" title=" " alt="" coords="241,619,423,661"/>
-<area shape="poly" title=" " alt="" coords="179,637,226,637,226,643,179,643"/>
-<area shape="rect" href="classpaceval__c_cleanup_handler.html#a2cbc511bb6eed81f612c72a5de0af80f" title=" " alt="" coords="247,685,417,728"/>
-<area shape="poly" title=" " alt="" coords="172,659,239,678,237,683,170,664"/>
-<area shape="rect" href="classpaceval__c_graph.html#a9eb81815bdabaafb35c97ede7299b964" title=" " alt="" coords="236,752,428,795"/>
-<area shape="poly" title=" " alt="" coords="119,660,167,699,228,738,240,743,237,748,225,742,164,703,116,664"/>
-<area shape="rect" href="classpaceval__c_computation.html#a92ae81fe375cb7dc197270eded89b0ba" title=" " alt="" coords="229,819,435,861"/>
-<area shape="poly" title=" " alt="" coords="107,660,154,731,188,771,228,805,235,809,232,813,225,809,185,774,150,734,103,663"/>
-<area shape="rect" href="classpaceval__c_computation.html#ae31a45db2d6df558b1d1ff117e04238a" title=" " alt="" coords="256,885,408,928"/>
-<area shape="poly" title=" " alt="" coords="102,661,118,705,144,762,181,821,203,848,228,871,243,881,240,886,225,875,199,851,177,824,140,764,113,707,97,663"/>
-<area shape="rect" href="classpaceval__c_cleanup_handler.html#a05e45bff130a110951d6b8c1fb28e9a4" title=" " alt="" coords="247,952,417,995"/>
-<area shape="poly" title=" " alt="" coords="99,661,112,717,135,791,152,831,173,870,199,906,228,938,235,944,232,948,225,942,194,910,169,873,148,833,130,793,106,718,94,662"/>
-<area shape="rect" href="classpaceval__c_computation.html#aabe86a83bd743c2655489804a964f625" title=" " alt="" coords="227,1019,437,1061"/>
-<area shape="poly" title=" " alt="" coords="97,661,106,728,127,820,144,870,166,919,194,965,229,1005,231,1007,227,1011,225,1009,190,968,161,921,139,872,122,821,101,729,92,662"/>
-<area shape="rect" href="classpaceval__c_computation.html#ac6ab17d4d358588a9b8d3a07f800b4b5" title=" " alt="" coords="232,1085,432,1128"/>
-<area shape="poly" title=" " alt="" coords="96,662,101,739,119,849,135,908,159,967,189,1023,229,1072,231,1074,227,1078,225,1075,185,1026,154,970,130,910,114,850,96,739,91,662"/>
-<area shape="rect" href="classpaceval__c_computation.html#a4f9a379d5b38688e1580f935c413d8b8" title=" " alt="" coords="230,1156,434,1215"/>
-<area shape="poly" title=" " alt="" coords="95,661,98,747,104,807,115,873,131,943,155,1013,187,1079,229,1138,234,1144,230,1148,225,1142,182,1082,150,1015,126,944,109,874,99,807,93,747,90,662"/>
-<area shape="rect" href="classpaceval__c_computation.html#af3e406f8285f7b287e046be7c8d1c902" title=" " alt="" coords="509,152,697,211"/>
-<area shape="poly" title=" " alt="" coords="435,199,493,192,493,197,435,205"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#a1b66b2a380082d6eeec7477c4da53342" title=" " alt="" coords="485,85,721,128"/>
-<area shape="poly" title=" " alt="" coords="412,182,436,171,459,154,484,138,498,131,500,136,486,142,462,158,438,176,415,187"/>
-<area shape="rect" href="paceval__f_math_8cpp.html#a452ff69cc5ef638f5eee1ecf5e4a16ec" title=" " alt="" coords="799,35,980,61"/>
-<area shape="poly" title=" " alt="" coords="420,183,435,171,445,159,451,147,457,120,463,95,471,82,483,71,522,50,564,35,608,25,652,20,738,20,812,29,811,34,738,25,652,25,609,30,566,40,525,55,487,76,475,86,468,97,462,122,456,148,450,162,439,175,424,187"/>
-<area shape="rect" href="classpaceval__c_graph.html#a43c83d05a0635cdf2d134b384e18a5b4" title=" " alt="" coords="797,160,982,203"/>
-<area shape="poly" title=" " alt="" coords="698,179,782,179,782,184,698,184"/>
-<area shape="rect" href="paceval__f_thread_handling_8cpp.html#a86997a446a1eecac643c2871673a8bfe" title=" " alt="" coords="769,85,1010,128"/>
-<area shape="poly" title=" " alt="" coords="722,104,754,104,754,109,722,109"/>
-<area shape="poly" title=" " alt="" coords="710,82,805,62,806,68,711,87"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#aca6a6e91b9816392c0bbab78704fefcd" title=" " alt="" coords="1058,5,1239,32"/>
-<area shape="poly" title=" " alt="" coords="980,35,1042,28,1043,33,981,40"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#a02448d1a69cf4d775c0152b66b8fd221" title=" " alt="" coords="1063,56,1234,99"/>
-<area shape="poly" title=" " alt="" coords="981,56,1048,63,1047,69,980,61"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#a23d0271201cf10a0b956559ef1eed3c1" title=" " alt="" coords="504,301,703,344"/>
-<area shape="poly" title=" " alt="" coords="416,432,435,421,451,405,458,388,467,371,483,354,490,349,493,354,487,358,471,374,463,390,455,408,439,425,419,436"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#a0580b994a37a99aa07a0a18cdf4a126d" title=" " alt="" coords="504,368,703,411"/>
-<area shape="poly" title=" " alt="" coords="421,431,498,412,499,418,422,437"/>
-<area shape="rect" href="paceval__f_thread_handling_8cpp.html#adc86f3d76b74d83828f26d596f80470d" title=" " alt="" coords="524,435,683,477"/>
-<area shape="poly" title=" " alt="" coords="435,453,508,453,508,459,435,459"/>
-<area shape="poly" title=" " alt="" coords="406,476,439,494,454,510,462,526,471,541,486,554,524,571,564,585,646,601,727,606,798,605,798,610,727,612,646,606,562,590,522,576,484,558,467,544,458,529,450,513,435,498,404,480"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#a423f40ebe965a83505d70389f3d2c8d0" title=" " alt="" coords="525,501,681,544"/>
-<area shape="poly" title=" " alt="" coords="422,475,511,497,509,502,421,481"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#a9a590114239f93077a473a7d1a9f23e6" title=" " alt="" coords="510,235,697,277"/>
-<area shape="poly" title=" " alt="" coords="420,432,435,421,448,405,455,389,458,355,462,321,469,304,483,287,494,279,498,283,487,291,474,307,467,323,463,356,460,390,452,407,439,425,424,436"/>
-<area shape="poly" title=" " alt="" coords="684,468,723,487,740,506,748,526,755,544,771,562,800,578,798,583,768,566,751,547,743,528,735,509,720,491,682,472"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#ac873f84001354aa1681be8dc468d73c1" title=" " alt="" coords="793,344,986,387"/>
-<area shape="poly" title=" " alt="" coords="682,433,720,420,768,396,787,389,789,394,770,401,722,425,684,438"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#a007c831108c6a79b8dc1bb7228a2ad6e" title=" " alt="" coords="780,411,999,469"/>
-<area shape="poly" title=" " alt="" coords="683,449,764,444,765,450,683,454"/>
-<area shape="rect" href="paceval__c_computation_8cpp.html#ace46d58892548a7577c82bc537b9c7cc" title=" " alt="" coords="795,493,984,552"/>
-<area shape="poly" title=" " alt="" coords="684,472,780,495,779,500,683,477"/>
-<area shape="rect" href="classpaceval__c_values_stack.html#a441b8f1ab6c57fe99bf96b47884937d5" title=" " alt="" coords="506,995,700,1053"/>
-<area shape="poly" title=" " alt="" coords="437,1031,490,1028,490,1033,438,1036"/>
-<area shape="rect" href="classpaceval__c_values_stack.html#a32f8aad309fbb3ed719ca55f31403f12" title=" " alt="" coords="506,1077,700,1136"/>
-<area shape="poly" title=" " alt="" coords="432,1104,490,1104,490,1109,432,1109"/>
-<area shape="rect" href="classpaceval__c_values_stack.html#a80ae623ff332b0916f58c1f2903b363b" title=" " alt="" coords="506,1160,700,1219"/>
-<area shape="poly" title=" " alt="" coords="434,1184,491,1185,491,1190,434,1190"/>
+<area shape="rect" title=" " alt="" coords="5,637,179,680"/>
+<area shape="rect" href="classpaceval__c_computation.html#acc2fcd0d7b11d8bb5db12484e06371e1" title=" " alt="" coords="256,120,408,163"/>
+<area shape="poly" title=" " alt="" coords="90,637,92,552,97,493,108,428,124,360,148,293,181,229,225,173,241,160,244,164,229,177,186,232,153,295,129,362,113,429,103,494,97,552,95,637"/>
+<area shape="rect" href="classpaceval__c_computation.html#ad7706e30800df8c76f04a90966151436" title=" " alt="" coords="256,187,408,229"/>
+<area shape="poly" title=" " alt="" coords="91,637,97,562,115,456,132,398,156,341,186,287,225,239,241,227,244,231,229,243,190,290,160,343,137,400,121,457,102,563,96,637"/>
+<area shape="rect" href="classpaceval__c_computation.html#ae19e9c2737a5e6d1c8dad02e4202a52d" title=" " alt="" coords="229,253,435,312"/>
+<area shape="poly" title=" " alt="" coords="94,636,106,577,130,496,147,452,168,408,194,366,225,329,235,319,239,323,229,333,198,369,173,410,152,454,135,498,111,578,99,637"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a6373eabc0e6805c3f6192e4bb6834010" title=" " alt="" coords="790,349,989,392"/>
+<area shape="poly" title=" " alt="" coords="93,636,104,580,126,507,143,468,165,432,192,399,225,372,268,355,326,343,395,337,472,336,632,342,775,355,774,360,632,347,472,341,395,343,326,348,269,360,228,377,196,403,170,435,148,471,131,509,109,582,98,637"/>
+<area shape="rect" href="paceval__f_thread_handling_8cpp.html#abba8633f92fd29c261d9facfd5bbae6d" title=" " alt="" coords="229,387,435,429"/>
+<area shape="poly" title=" " alt="" coords="99,636,117,596,144,545,180,492,225,446,242,434,245,439,228,450,184,496,148,548,122,598,104,638"/>
+<area shape="rect" href="paceval__f_thread_handling_8cpp.html#a667addb574523872f6d9b239fe680ffa" title=" " alt="" coords="229,504,435,547"/>
+<area shape="poly" title=" " alt="" coords="116,635,164,595,225,556,237,551,240,555,228,561,167,600,119,639"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#ac9544af8b2008642a290551bbfb31d7b" title=" " alt="" coords="814,551,965,593"/>
+<area shape="poly" title=" " alt="" coords="101,636,120,602,147,562,183,522,225,490,261,472,293,461,322,456,350,454,410,456,485,456,552,449,605,442,657,442,722,456,761,472,797,493,856,538,853,542,794,497,758,477,721,461,657,447,605,447,552,454,485,461,410,462,350,460,323,461,294,466,263,477,228,494,186,526,152,565,125,605,106,638"/>
+<area shape="rect" href="paceval__f_thread_handling_8cpp.html#ac2f7ec87dbf00e9b59f0d43cd4ad93c6" title=" " alt="" coords="229,571,435,613"/>
+<area shape="poly" title=" " alt="" coords="170,634,237,615,239,621,172,639"/>
+<area shape="rect" href="paceval__c_syntactic_analysis_8cpp.html#a83d9969420ce07a22eaff3e1cfc3ad40" title=" " alt="" coords="241,637,423,680"/>
+<area shape="poly" title=" " alt="" coords="179,656,226,656,226,661,179,661"/>
+<area shape="rect" href="classpaceval__c_cleanup_handler.html#a2cbc511bb6eed81f612c72a5de0af80f" title=" " alt="" coords="247,704,417,747"/>
+<area shape="poly" title=" " alt="" coords="172,678,239,697,237,702,170,683"/>
+<area shape="rect" href="classpaceval__c_graph.html#a9eb81815bdabaafb35c97ede7299b964" title=" " alt="" coords="236,771,428,813"/>
+<area shape="poly" title=" " alt="" coords="119,678,167,718,228,756,240,762,237,767,225,761,164,722,116,683"/>
+<area shape="rect" href="classpaceval__c_computation.html#a92ae81fe375cb7dc197270eded89b0ba" title=" " alt="" coords="229,837,435,880"/>
+<area shape="poly" title=" " alt="" coords="107,679,154,750,188,789,228,823,235,827,232,832,225,827,185,793,150,753,103,682"/>
+<area shape="rect" href="classpaceval__c_computation.html#ae31a45db2d6df558b1d1ff117e04238a" title=" " alt="" coords="256,904,408,947"/>
+<area shape="poly" title=" " alt="" coords="102,680,118,724,144,781,181,839,203,866,228,890,243,900,240,904,225,894,199,870,177,843,140,783,113,726,97,681"/>
+<area shape="rect" href="classpaceval__c_cleanup_handler.html#a05e45bff130a110951d6b8c1fb28e9a4" title=" " alt="" coords="247,971,417,1013"/>
+<area shape="poly" title=" " alt="" coords="99,680,112,735,135,810,152,850,173,889,199,925,228,957,235,962,232,966,225,961,194,928,169,891,148,852,130,812,106,737,94,681"/>
+<area shape="rect" href="classpaceval__c_computation.html#aabe86a83bd743c2655489804a964f625" title=" " alt="" coords="227,1037,437,1080"/>
+<area shape="poly" title=" " alt="" coords="97,680,106,746,127,839,144,888,166,937,194,983,229,1023,231,1026,227,1030,225,1027,190,986,161,940,139,890,122,840,101,747,92,681"/>
+<area shape="rect" href="classpaceval__c_computation.html#ac6ab17d4d358588a9b8d3a07f800b4b5" title=" " alt="" coords="232,1104,432,1147"/>
+<area shape="poly" title=" " alt="" coords="96,680,101,757,119,867,135,927,159,986,189,1041,229,1090,231,1093,227,1096,225,1094,185,1044,154,988,130,929,114,868,96,758,91,681"/>
+<area shape="rect" href="classpaceval__c_computation.html#a4f9a379d5b38688e1580f935c413d8b8" title=" " alt="" coords="230,1175,434,1233"/>
+<area shape="poly" title=" " alt="" coords="95,680,98,766,104,825,115,892,131,962,155,1031,187,1097,229,1157,234,1163,230,1166,225,1160,182,1100,150,1033,126,963,109,893,99,826,93,766,90,680"/>
+<area shape="rect" href="classpaceval__c_computation.html#af3e406f8285f7b287e046be7c8d1c902" title=" " alt="" coords="509,253,697,312"/>
+<area shape="poly" title=" " alt="" coords="435,280,493,280,493,285,435,285"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#a1b66b2a380082d6eeec7477c4da53342" title=" " alt="" coords="485,165,721,208"/>
+<area shape="poly" title=" " alt="" coords="416,250,525,211,527,216,418,255"/>
+<area shape="rect" href="paceval__f_math_8cpp.html#a452ff69cc5ef638f5eee1ecf5e4a16ec" title=" " alt="" coords="799,64,980,91"/>
+<area shape="poly" title=" " alt="" coords="420,251,435,239,451,218,457,195,465,173,483,151,518,130,555,112,633,88,712,75,783,71,784,76,712,80,635,93,557,117,520,134,487,155,469,175,463,197,456,220,439,243,423,255"/>
+<area shape="rect" href="classpaceval__c_graph.html#a43c83d05a0635cdf2d134b384e18a5b4" title=" " alt="" coords="797,283,982,325"/>
+<area shape="poly" title=" " alt="" coords="698,287,782,293,781,299,698,292"/>
+<area shape="rect" href="paceval__f_thread_handling_8cpp.html#a86997a446a1eecac643c2871673a8bfe" title=" " alt="" coords="769,165,1010,208"/>
+<area shape="poly" title=" " alt="" coords="722,184,754,184,754,189,722,189"/>
+<area shape="poly" title=" " alt="" coords="645,162,703,134,768,107,813,93,814,98,770,112,705,139,647,167"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#af161dee2e3b9da21dae33ba48d7781ea" title=" " alt="" coords="1065,224,1251,267"/>
+<area shape="poly" title=" " alt="" coords="702,206,770,217,915,232,1049,240,1049,245,915,237,769,223,701,211"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a407c4b19785069024572df18ebf4b40a" title=" " alt="" coords="1058,123,1258,165"/>
+<area shape="poly" title=" " alt="" coords="698,162,769,151,911,141,1042,139,1042,144,911,146,770,156,699,167"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a58667ec9fc9539b040e7808829b4ec85" title=" " alt="" coords="1071,5,1245,32"/>
+<area shape="poly" title=" " alt="" coords="954,61,1078,33,1079,38,955,66"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#aaca7563aa1b9f0184ebcbac5b4414398" title=" " alt="" coords="1077,56,1239,99"/>
+<area shape="poly" title=" " alt="" coords="981,75,1061,75,1061,80,981,80"/>
+<area shape="poly" title=" " alt="" coords="914,89,1111,213,1108,218,911,93"/>
+<area shape="poly" title=" " alt="" coords="947,89,1055,116,1054,121,946,94"/>
+<area shape="poly" title=" " alt="" coords="978,346,1009,335,1065,305,1114,273,1117,278,1067,310,1011,340,980,351"/>
+<area shape="poly" title=" " alt="" coords="988,349,1008,335,1021,321,1028,307,1034,277,1038,245,1044,228,1056,210,1076,189,1099,172,1102,176,1079,193,1060,214,1049,230,1043,246,1039,278,1033,308,1025,324,1011,339,991,353"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a23d0271201cf10a0b956559ef1eed3c1" title=" " alt="" coords="504,471,703,513"/>
+<area shape="poly" title=" " alt="" coords="435,510,487,503,488,509,435,515"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a0580b994a37a99aa07a0a18cdf4a126d" title=" " alt="" coords="504,537,703,580"/>
+<area shape="poly" title=" " alt="" coords="435,535,488,542,487,547,435,541"/>
+<area shape="rect" href="paceval__f_thread_handling_8cpp.html#adc86f3d76b74d83828f26d596f80470d" title=" " alt="" coords="524,655,683,697"/>
+<area shape="poly" title=" " alt="" coords="420,545,439,557,456,576,464,596,471,615,487,634,511,649,508,653,483,638,466,618,459,598,451,579,435,561,418,550"/>
+<area shape="poly" title=" " alt="" coords="411,545,438,556,462,575,472,583,486,589,525,599,566,606,649,609,729,602,798,591,799,597,729,608,649,614,566,611,524,605,484,595,469,587,459,579,436,561,409,550"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a423f40ebe965a83505d70389f3d2c8d0" title=" " alt="" coords="525,721,681,764"/>
+<area shape="poly" title=" " alt="" coords="424,545,439,557,454,576,461,596,463,634,466,672,473,690,487,707,512,724,509,729,483,711,468,692,461,673,458,634,456,597,449,579,435,561,421,549"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a9a590114239f93077a473a7d1a9f23e6" title=" " alt="" coords="510,788,697,831"/>
+<area shape="poly" title=" " alt="" coords="425,545,439,557,458,585,466,613,466,641,463,668,460,695,461,722,469,748,487,774,498,784,494,788,483,778,464,750,456,722,455,695,458,667,461,640,460,614,453,587,435,560,422,549"/>
+<area shape="poly" title=" " alt="" coords="676,652,720,634,744,618,768,603,798,591,800,596,771,608,747,623,723,638,678,657"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#ac873f84001354aa1681be8dc468d73c1" title=" " alt="" coords="793,617,986,660"/>
+<area shape="poly" title=" " alt="" coords="683,663,777,651,777,656,683,668"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#a007c831108c6a79b8dc1bb7228a2ad6e" title=" " alt="" coords="780,684,999,743"/>
+<area shape="poly" title=" " alt="" coords="683,684,765,694,764,700,683,689"/>
+<area shape="rect" href="paceval__c_computation_8cpp.html#ace46d58892548a7577c82bc537b9c7cc" title=" " alt="" coords="795,767,984,825"/>
+<area shape="poly" title=" " alt="" coords="684,690,723,707,738,718,748,730,757,741,771,752,782,759,779,763,768,757,753,745,743,733,734,722,720,712,682,695"/>
+<area shape="rect" href="classpaceval__c_values_stack.html#a441b8f1ab6c57fe99bf96b47884937d5" title=" " alt="" coords="506,1013,700,1072"/>
+<area shape="poly" title=" " alt="" coords="437,1050,490,1047,490,1052,438,1055"/>
+<area shape="rect" href="classpaceval__c_values_stack.html#a32f8aad309fbb3ed719ca55f31403f12" title=" " alt="" coords="506,1096,700,1155"/>
+<area shape="poly" title=" " alt="" coords="432,1123,490,1123,490,1128,432,1128"/>
+<area shape="rect" href="classpaceval__c_values_stack.html#a80ae623ff332b0916f58c1f2903b363b" title=" " alt="" coords="506,1179,700,1237"/>
+<area shape="poly" title=" " alt="" coords="434,1203,491,1204,491,1209,434,1208"/>
 </map>
 </div>
 <div class="dynheader">

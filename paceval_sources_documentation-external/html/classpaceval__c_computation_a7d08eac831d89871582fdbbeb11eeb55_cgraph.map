@@ -1,7 +1,11 @@
 <map id="paceval_cComputation::createOptimizedFunctionString" name="paceval_cComputation::createOptimizedFunctionString">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,214,48"/>
-<area shape="rect" id="Node000002" href="$classpaceval__c_computation.html#aae7ed71f252e1354c5e1f644ab072ab3" title=" " alt="" coords="262,5,461,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,24,246,24,246,29,214,29"/>
-<area shape="rect" id="Node000003" href="$paceval__c_graph_8cpp.html#aa3dae93074d28c6e76a1272f09aae34c" title=" " alt="" coords="509,13,664,40"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="462,24,493,24,493,29,462,29"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,214,81"/>
+<area shape="rect" id="Node000002" href="$classpaceval__c_computation.html#aae7ed71f252e1354c5e1f644ab072ab3" title=" " alt="" coords="262,39,461,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,57,246,57,246,63,214,63"/>
+<area shape="rect" id="Node000003" href="$paceval__c_graph_8cpp.html#aa3dae93074d28c6e76a1272f09aae34c" title=" " alt="" coords="509,47,664,73"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="462,57,493,57,493,63,462,63"/>
+<area shape="rect" id="Node000004" href="$paceval__c_computation_8cpp.html#af161dee2e3b9da21dae33ba48d7781ea" title=" " alt="" coords="719,5,906,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="664,46,704,40,704,45,665,51"/>
+<area shape="rect" id="Node000005" href="$paceval__c_computation_8cpp.html#a407c4b19785069024572df18ebf4b40a" title=" " alt="" coords="712,72,913,115"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="665,69,697,74,697,79,664,74"/>
 </map>
