@@ -1,7 +1,7 @@
 <map id="paceval_deleteLoggingMemory" name="paceval_deleteLoggingMemory">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,47,204,73"/>
-<area shape="rect" id="Node000002" href="$paceval__c_computation_8cpp.html#af161dee2e3b9da21dae33ba48d7781ea" title=" " alt="" coords="259,5,445,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,44,243,39,244,44,205,49"/>
-<area shape="rect" id="Node000003" href="$paceval__c_computation_8cpp.html#a407c4b19785069024572df18ebf4b40a" title=" " alt="" coords="252,72,452,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,71,236,75,236,80,204,76"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,204,57"/>
+<area shape="rect" id="Node000002" href="$paceval__c_computation_8cpp.html#a1a5effc24f3110ed5743f91beb866139" title=" " alt="" coords="259,5,445,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,31,243,27,243,32,205,36"/>
+<area shape="rect" id="Node000003" href="$paceval__c_computation_8cpp.html#ab976ff35aa09ac3234d5ba7092b60bd4" title=" " alt="" coords="252,56,452,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,52,236,55,236,60,204,57"/>
 </map>

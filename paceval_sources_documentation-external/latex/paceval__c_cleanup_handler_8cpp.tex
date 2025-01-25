@@ -33,9 +33,9 @@ Include dependency graph for paceval\+\_\+c\+Cleanup\+Handler.\+cpp\+:\nopagebre
 \item 
 int \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_aa44192a2ad678e74a387defe8057bfdd}{paceval\+Library\+\_\+\+Get\+Logging\+Information}} (char \texorpdfstring{$\ast$}{*}paceval\+\_\+logging\+Information\+\_\+out)
 \item 
-bool \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_af161dee2e3b9da21dae33ba48d7781ea}{paceval\+\_\+lock\+Global\+Variables\+Mutex\+Object}} ()
+bool \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_a1a5effc24f3110ed5743f91beb866139}{paceval\+\_\+lock\+Global\+Variables}} ()
 \item 
-void \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_a407c4b19785069024572df18ebf4b40a}{paceval\+\_\+unlock\+Global\+Variables\+Mutex\+Object}} ()
+void \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_ab976ff35aa09ac3234d5ba7092b60bd4}{paceval\+\_\+unlock\+Global\+Variables}} ()
 \item 
 \mbox{\hyperlink{paceval__c_common_data_8h_ad9735d0e77b3ab4d3f71e690c5832670}{paceval\+\_\+e\+Operator\+Types}} \mbox{\hyperlink{paceval__c_cleanup_handler_8cpp_a042fff3baa254afc470f45eb1ad7229b}{paceval\+\_\+identify\+Operator\+From\+Mathematical\+Character}} (\mbox{\hyperlink{paceval__c_scanner_8h_a2763daf22d5fa5706d9799cd78e4f45b}{paceval\+\_\+e\+Mathematical\+Character\+Types}} e\+Mathematical\+Character\+Type\+\_\+in)
 \item 
@@ -185,18 +185,18 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{paceval__c_cleanup_handler_8cpp_ab24920e49e587d2ad2f58fd542190fab_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{paceval__c_cleanup_handler_8cpp_af161dee2e3b9da21dae33ba48d7781ea}\label{paceval__c_cleanup_handler_8cpp_af161dee2e3b9da21dae33ba48d7781ea} 
-\index{paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}!paceval\_lockGlobalVariablesMutexObject@{paceval\_lockGlobalVariablesMutexObject}}
-\index{paceval\_lockGlobalVariablesMutexObject@{paceval\_lockGlobalVariablesMutexObject}!paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}}
-\doxysubsubsection{\texorpdfstring{paceval\_lockGlobalVariablesMutexObject()}{paceval\_lockGlobalVariablesMutexObject()}}
-{\footnotesize\ttfamily bool paceval\+\_\+lock\+Global\+Variables\+Mutex\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\Hypertarget{paceval__c_cleanup_handler_8cpp_a1a5effc24f3110ed5743f91beb866139}\label{paceval__c_cleanup_handler_8cpp_a1a5effc24f3110ed5743f91beb866139} 
+\index{paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}!paceval\_lockGlobalVariables@{paceval\_lockGlobalVariables}}
+\index{paceval\_lockGlobalVariables@{paceval\_lockGlobalVariables}!paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_lockGlobalVariables()}{paceval\_lockGlobalVariables()}}
+{\footnotesize\ttfamily bool paceval\+\_\+lock\+Global\+Variables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{paceval__c_cleanup_handler_8cpp_af161dee2e3b9da21dae33ba48d7781ea_icgraph}
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8cpp_a1a5effc24f3110ed5743f91beb866139_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{paceval__c_cleanup_handler_8cpp_a708622c1e260da79a58dade45afa0682}\label{paceval__c_cleanup_handler_8cpp_a708622c1e260da79a58dade45afa0682} 
@@ -212,14 +212,6 @@ allows the definition of up to 1000 custom user functions (see \doxylink{paceval
 {\em single\+Function\+String\+\_\+in} & specifies the user-\/defined single function (e.\+g. "{}my\+\_\+function1"{}) \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{paceval__c_cleanup_handler_8cpp_a708622c1e260da79a58dade45afa0682_cgraph}
-\end{center}
-\end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -227,18 +219,18 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{paceval__c_cleanup_handler_8cpp_a708622c1e260da79a58dade45afa0682_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{paceval__c_cleanup_handler_8cpp_a407c4b19785069024572df18ebf4b40a}\label{paceval__c_cleanup_handler_8cpp_a407c4b19785069024572df18ebf4b40a} 
-\index{paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}!paceval\_unlockGlobalVariablesMutexObject@{paceval\_unlockGlobalVariablesMutexObject}}
-\index{paceval\_unlockGlobalVariablesMutexObject@{paceval\_unlockGlobalVariablesMutexObject}!paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}}
-\doxysubsubsection{\texorpdfstring{paceval\_unlockGlobalVariablesMutexObject()}{paceval\_unlockGlobalVariablesMutexObject()}}
-{\footnotesize\ttfamily void paceval\+\_\+unlock\+Global\+Variables\+Mutex\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\Hypertarget{paceval__c_cleanup_handler_8cpp_ab976ff35aa09ac3234d5ba7092b60bd4}\label{paceval__c_cleanup_handler_8cpp_ab976ff35aa09ac3234d5ba7092b60bd4} 
+\index{paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}!paceval\_unlockGlobalVariables@{paceval\_unlockGlobalVariables}}
+\index{paceval\_unlockGlobalVariables@{paceval\_unlockGlobalVariables}!paceval\_cCleanupHandler.cpp@{paceval\_cCleanupHandler.cpp}}
+\doxysubsubsection{\texorpdfstring{paceval\_unlockGlobalVariables()}{paceval\_unlockGlobalVariables()}}
+{\footnotesize\ttfamily void paceval\+\_\+unlock\+Global\+Variables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{paceval__c_cleanup_handler_8cpp_a407c4b19785069024572df18ebf4b40a_icgraph}
+\includegraphics[width=350pt]{paceval__c_cleanup_handler_8cpp_ab976ff35aa09ac3234d5ba7092b60bd4_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{paceval__c_cleanup_handler_8cpp_aac304504fe9019598bd2f4f9d60e6e79}\label{paceval__c_cleanup_handler_8cpp_aac304504fe9019598bd2f4f9d60e6e79} 

@@ -1,9 +1,9 @@
 <map id="pacevalLibrary_GetLoggingInformation" name="pacevalLibrary_GetLoggingInformation">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,182,99"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,48,182,91"/>
 <area shape="rect" id="Node000002" href="$paceval__c_computation_8cpp.html#a58667ec9fc9539b040e7808829b4ec85" title=" " alt="" coords="243,5,417,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,53,257,34,259,39,182,58"/>
-<area shape="rect" id="Node000003" href="$paceval__c_computation_8cpp.html#af161dee2e3b9da21dae33ba48d7781ea" title=" " alt="" coords="237,56,423,99"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,75,221,75,221,80,182,80"/>
-<area shape="rect" id="Node000004" href="$paceval__c_computation_8cpp.html#a407c4b19785069024572df18ebf4b40a" title=" " alt="" coords="230,123,430,165"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="172,97,237,115,236,120,171,102"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,48,249,33,250,38,182,53"/>
+<area shape="rect" id="Node000003" href="$paceval__c_computation_8cpp.html#a1a5effc24f3110ed5743f91beb866139" title=" " alt="" coords="237,56,423,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,67,221,67,221,72,182,72"/>
+<area shape="rect" id="Node000004" href="$paceval__c_computation_8cpp.html#ab976ff35aa09ac3234d5ba7092b60bd4" title=" " alt="" coords="230,107,430,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="182,86,250,100,249,105,181,91"/>
 </map>
