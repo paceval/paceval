@@ -1,6 +1,46 @@
 ![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2021/06/paceval_github-1.jpg)<br>
 https://www.paceval.com<br>
 
+# paceval.® – The High-Performance Mathematical Engine
+
+![C++](https://img.shields.io/badge/C%2B%2B-17-blue.svg)
+![Cross-Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Embedded-brightgreen)
+![License: AGPL](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)
+![Performance](https://img.shields.io/badge/cores-192%2B-orange)
+![Made in Germany](https://img.shields.io/badge/made%20in-Germany-black)
+
+**paceval.®** is a lightweight, lightning-fast mathematical engine for real-time evaluation of complex mathematical expressions – built for AI, edge computing, robotics, embedded systems, finance, medical tech, and beyond.
+
+## Why paceval.?
+
+- Real-time performance without frameworks  
+- Cross-platform: Windows, Linux, macOS, embedded  
+- Ultra-low memory footprint  
+- Scales across 192+ cores (Intel, AMD, ARM, RISC-V)  
+- Runs even offline – ideal for IoT, AI on-device, and battery-critical applications  
+
+## Use Cases
+
+- Autonomous systems  
+- Industrial AI  
+- Smart devices & wearables  
+- Financial & scientific modeling  
+- Hardware-near inference with minimal latency  
+
+## Supported Languages
+
+C, C++, Python, Node.js, PHP, Fortran, MATLAB, Julia, Kotlin, Rust, Delphi, and many more (via FFI)
+
+## Get Started
+
+- [paceval.com](https://paceval.com)  
+- [Download SDK 4.25](https://paceval.com/product-demo/)  
+- [Documentation & Examples](https://paceval.com/product-demo/)
+
+> Designed in Germany. Used worldwide.  
+> **Create value fast. paceval.®**
+
+
 # <i><b>pace</b>val.</i>
 <b>the system independent mathematical engine</b><br>
 [paceval-Mathematical Engine-Motivation.pdf](https://github.com/paceval/paceval/files/6521237/paceval-Mathematical.Engine-Motivation.pdf) and
