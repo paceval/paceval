@@ -20,7 +20,7 @@ https://www.paceval.com<br>
 - Runs even offline – ideal for IoT, AI on-device, and battery-critical applications  
 
 ## Use Cases
-
+ 
 - Autonomous systems  
 - Industrial AI  
 - Smart devices & wearables  
