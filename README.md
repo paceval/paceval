@@ -35,7 +35,7 @@ C, C++, Python, Node.js, PHP, Fortran, MATLAB, Julia, Kotlin, Rust, Delphi, and 
 
 - [paceval.com](https://paceval.com)  
 - [Download SDK 4.25](https://paceval.com/product-demo/)  
-- [Documentation & Examples](https://paceval.com/product-demo/)
+- [Documentation & Examples](https://paceval.com/api/)
 
 > Designed in Germany. Used worldwide.  
 > **Create value fast. paceval.®**
