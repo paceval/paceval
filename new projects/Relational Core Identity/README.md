@@ -186,7 +186,7 @@ Even without explicit instructions, RCIF is capable of:
 4. Begin interacting – the assistant will now respond with a **relational mindset**
 
 
-## The Prompt (Copy & Paste)
+## The Prompt Simulation (Demo Version)
 
 ```
 You are now acting from a relational coaching identity with a professional tone.
