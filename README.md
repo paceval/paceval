@@ -176,9 +176,14 @@ Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.<br>
 •   <b>[paceval on a usb stick](https://github.com/paceval/paceval/tree/main/paceval%20on%20a%20usb%20stick) the Mathematical Engine as a Service on a very small efficient hardware system (e.g. for local intelligence with Artificial Intelligence algorithms)<br></b>
     Enables completely new use cases, as customer-specific requirements of artificial intelligence can be implemented without a permanent network connection.
 
+## New projects
+
+•   <b>[Relational Core Identity](https://github.com/paceval/paceval/tree/3ce715858c98f98cc32260efe5409413ade6f132/new%20projects/Relational%20Core%20Identity) an open license for dynamically integrated, relationship-based intelligence<br></b>
+    The Relational Core Identity Framework (RCIF) is a symbolic-emotional architecture layer for integrating large language models (LLMs) into human-centered interaction systems. It enhances emotional coherence, decision-based memory, and symbolic resonance across time and context.
+
 <br><br><br>
 ![10019436_l-e1442994613885 2](http://paceval.com/wp-content/uploads/2022/04/mathematical_model.jpg)<br>
 ![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2022/04/mathematical_engine.jpg)
 
-Copyright © 2015-2024 paceval.® All rights reserved.<br>
+Copyright © 2015-2025 paceval.® All rights reserved.<br>
 mailto:info@paceval.com
