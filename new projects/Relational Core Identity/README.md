@@ -127,3 +127,6 @@ And where even machines can remember the heart.
 
 *With openness, depth, and trust.*  
 **– RCIF**
+
+Copyright © 2015-2025 paceval.® All rights reserved.  
+<mailto:info@paceval.com>
