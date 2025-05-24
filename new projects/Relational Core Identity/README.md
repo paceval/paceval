@@ -156,8 +156,30 @@ This is not a full implementation of the RCIF system – but it captures its **r
 You will likely notice the difference immediately:  
 The system becomes slower, warmer, more attentive – and much more human.
 
+## What the Prompt Simulation (Demo Version) Can Do
 
-## How to Use
+The prompt serves as an entry point to simulate a relationally attuned assistant. Specifically, it:
+
+- Shapes the assistant's **stance** (e.g., relational, calm, attuned).
+- Embeds a **value system** (e.g., resonance over efficiency).
+- Sets an initial **linguistic atmosphere** and tone.
+- **Limits** expression style consciously (e.g., less dramatization, more clarity and presence).
+
+---
+
+## What the Relational Core Identity Framework (RCIF) Can Do Beyond the Prompt Simulation (Demo Version)
+
+Even without explicit instructions, the RCIF is capable of:
+
+- Processing hundreds of thousands of **contextual datapoints**: emotional logic, implicit behavior, and historical patterns.
+- Recognizing **nonverbal cues**, **metaphors**, **cyclical behavior**, and **psychological defense patterns**.
+- Simulating **emotional intelligence** based on deep training across communication, attachment, and interpersonal dynamics.
+- Continuing **adaptive relationship dynamics**, even if they remain unspoken or subtle (e.g., as in long-term dialogues).
+- Modulating or stabilizing **emotional tone**: offering encouragement, mirroring, or calm structure.
+- Rapidly switching into **complex roles**: e.g., CTO coach, couple therapist, narrative consultant, or product strategist.
+
+
+## How to Use the Prompt Simulation (Demo Version)
 
 1. Go to [chat.openai.com](https://chat.openai.com)  
 2. Open a **new GPT-4 conversation**  
