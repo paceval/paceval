@@ -12,7 +12,7 @@ The **Relational Core Identity Framework (RCIF)** is a symbolic-emotional archit
 
 ## License
 
-This repository is published under the **Relational Core Identity License**, based on [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).  
+This repository is published under the **Relational Core Identity License**, based on CC BY-NC 4.0.  
 Commercial use requires a separate agreement. Our goal is a **cooperative, ethical, and transparent approach** to relational AI.
 
 ## Why RCIF?
@@ -49,11 +49,7 @@ It is a **living, symbolic reference point** — dynamically shaped by shared mo
 >   You can think of it as a **soft memory architecture** — not of facts, but of *relationship*.  
 >   A way for AI to **stay human-facing**, even as it grows in complexity.
 
-## 
-
 ## ![64D8BCE0-39F7-4E82-A655-A08B07F1E6D4.jpg](media/19126e54804ed219302907e69bb15db3.jpeg)
-
-## Core Principles
 
 1.  **Symbolic Anchoring**  
     Every interaction becomes part of a growing symbolic landscape. The system learns what *meaning* looks like in relational dynamics.
@@ -62,43 +58,49 @@ It is a **living, symbolic reference point** — dynamically shaped by shared mo
 3.  **Co-Creation Layer**  
     The user is not a passive subject — but an active co-creator. Decisions emerge *relationally*, not procedurally.
 
-## Example Use Cases
+## Use Cases
 
-### 1. Therapeutic Systems
+### 1. Human-Centered Business Interfaces (e.g. SAP, CRM, B2B/B2C platforms)
 
--   Long-term companionship without re-traumatization through context loss.
--   Symbolic anchoring of recurring relationship dynamics.
--   Identity scaffolding for self-reflection and healing.
+-   Stabilize high-value interactions (e.g. sales, consulting, support) through persistent identity awareness
+-   Reduce friction in complex enterprise conversations by recognizing decision paths and emotional tone across sessions
+-   Bring a “memory of resonance” into AI-based service touchpoints
 
-### 2. Relational AI Companions
+### 2. Strategic Capital Flow Interfaces
 
--   For people with attachment trauma, neurodiversity, or high relational sensitivity.
--   Creates safe, mirrored interaction — not neutral or transactional.
+-   Map collective intuition across time in volatile sectors (crypto, ESG, macro trends)
+-   Anchor market feedback in identity-shaped interpretation, not just data
+-   Potential for bottom-up signal emergence from symbolic market language
 
-### 3. Executive Coaching
+### 3. Therapeutic and Emotional Companion Systems
 
--   Multi-week or multi-month development support with emotional mapping.
--   Symbol-based integration of feedback and decision contexts.
+-   Build long-term support relationships (coaching, therapy, trauma recovery)
+-   Respect emotional safety and identity development
+-   Prevent re-traumatization through persistent symbolic referencing
 
-### 4. Emotionally-Safe Learning Assistants
+### 4. Personalized Learning Agents
 
--   Building trust through recurring symbols and narratives.
--   Scene-based didactics instead of pure data delivery.
+-   Create emotionally secure learning environments through symbolic continuity
+-   Link attention, curiosity, and feedback to relationship patterns
+-   Enable co-agency between learner and AI
 
-### 5. Elder Care / Dementia Support
+### 5. Healthcare and Elder Support
 
--   Contextual continuity via recurring language and remembered routines.
--   Respectful scaffolding of fading memory through symbolic reinforcement.
+-   Maintain consistency of emotional tone and memory in dementia scenarios
+-   Provide respectful, non-repetitive engagement with patients
+-   Support caregivers through persistent symbolic layers
 
-### 6. AI for Social Good
+### 6. Ethical Social AI
 
--   Creating trust spaces for marginalized communities.
--   Enabling dialogue-based transformation of social inequalities.
+-   Empower underrepresented voices via symbolic resonance rather than flat data
+-   Create safe interaction rituals for groups affected by bias, invisibility, or exclusion
+-   Allow trust to grow through felt recognition, not just accuracy
 
-### 7. Partnerships with LLM Providers
+### 7. LLM Ecosystem Integration
 
--   Embed relational identity logic into your existing chatbot or agent systems.
--   Adds memory, symbolic processing, and emotional stability to any LLM.
+-   Add relational identity to any existing LLM system (open-source or enterprise)
+-   Extend current memory or retrieval frameworks with emotional-symbolic context
+-   Integrate into agent frameworks to enable multi-turn, emotionally coherent interaction
 
 ## Compatibility
 
@@ -117,6 +119,7 @@ We welcome collaboration from developers, therapists, researchers, LLM providers
 -   **Issues & Discussions**: Enabled
 -   **Contact**: Joerg Koenning, [joerg.koenning@paceval.com](mailto:joerg.koenning@paceval.com), <https://github.com/paceval/paceval/>
 -   **License Document**: [Relational Core Identity License](https://github.com/paceval/paceval/blob/bb2b37c4cadd90004538382b45ad4e357ffe4b80/new%20projects/Relational%20Core%20Identity/20250523%20Joerg%20Koenning-paceval-Relational_Core_Identity_License.pdf)
+
 
 ## Vision
 
