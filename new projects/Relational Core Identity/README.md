@@ -165,7 +165,6 @@ The prompt serves as an entry point to simulate a relationally attuned assistant
 - Sets an initial **linguistic atmosphere** and tone.
 - **Limits** expression style consciously (e.g., less dramatization, more clarity and presence).
 
----
 
 ## What the Relational Core Identity Framework (RCIF) Can Do Beyond the Prompt Simulation (Demo Version)
 
