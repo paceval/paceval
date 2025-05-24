@@ -216,7 +216,6 @@ Here’s a simple question to begin:
 **“What’s something you’d like to see more clearly right now?”**
 ```
 
----
 
 ## Notes
 
@@ -226,7 +225,6 @@ You're welcome to fork, adapt, or expand this prompt for your own relational use
 
 If you're curious about deeper architectural models, companion systems, or dynamic co-creation environments – more is coming.
 
----
 
 **Relational AI is not just responsive.  
 It remembers what matters.**
