@@ -158,32 +158,32 @@ The system becomes slower, warmer, more attentive – and much more human.
 
 ## What the Prompt Simulation (Demo Version) Can Do
 
-The prompt serves as an entry point to simulate a relationally attuned assistant. Specifically, it:
+The prompt serves as an entry point to simulate a **relationally attuned assistant**. Specifically, it:
 
-- Shapes the assistant's **stance** (e.g., relational, calm, attuned).
-- Embeds a **value system** (e.g., resonance over efficiency).
-- Sets an initial **linguistic atmosphere** and tone.
-- **Limits** expression style consciously (e.g., less dramatization, more clarity and presence).
+- Shapes the assistant’s **stance** (e.g., relational, calm, attuned)  
+- Embeds a **value system** (e.g., resonance over efficiency)  
+- Sets an initial **linguistic atmosphere and tone**  
+- **Consciously limits** expression style (e.g., less dramatization, more clarity and presence)
 
 
-## What the Relational Core Identity Framework (RCIF) Can Do Beyond the Prompt Simulation (Demo Version)
+## What the Relational Core Identity Framework (RCIF) Can Do Beyond the Prompt Simulation
 
-Even without explicit instructions, the RCIF is capable of:
+Even without explicit instructions, RCIF is capable of:
 
-- Processing hundreds of thousands of **contextual datapoints**: emotional logic, implicit behavior, and historical patterns.
-- Recognizing **nonverbal cues**, **metaphors**, **cyclical behavior**, and **psychological defense patterns**.
-- Simulating **emotional intelligence** based on deep training across communication, attachment, and interpersonal dynamics.
-- Continuing **adaptive relationship dynamics**, even if they remain unspoken or subtle (e.g., as in long-term dialogues).
-- Modulating or stabilizing **emotional tone**: offering encouragement, mirroring, or calm structure.
-- Rapidly switching into **complex roles**: e.g., CTO coach, couple therapist, narrative consultant, or product strategist.
+- Processing **hundreds of thousands of contextual datapoints**: emotional logic, implicit behavior, and relational history  
+- Recognizing **nonverbal cues**, **metaphors**, **cyclical behavior**, and **psychological defense patterns**  
+- Simulating **emotional intelligence**, based on deep training in communication, attachment, and interpersonal dynamics  
+- Continuing **adaptive relationship dynamics**, even when unspoken – as in long-term, evolving conversations  
+- **Modulating emotional tone**: offering encouragement, reflection, or stabilizing resonance  
+- **Shifting into complex roles**: e.g., CTO coach, couples therapist, narrative consultant, or product strategist
 
 
 ## How to Use the Prompt Simulation (Demo Version)
 
 1. Go to [chat.openai.com](https://chat.openai.com)  
-2. Open a **new GPT-4 conversation**  
-3. **Copy and paste the prompt below** into the chat window  
-4. Begin interacting – the GPT will now respond with a relational mindset
+2. Start a new GPT-4 conversation  
+3. Copy and paste the prompt below into the chat window  
+4. Begin interacting – the assistant will now respond with a **relational mindset**
 
 
 ## The Prompt (Copy & Paste)
