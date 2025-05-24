@@ -115,9 +115,7 @@ It is suitable for any language model or AI system that supports:
 We welcome collaboration from developers, therapists, researchers, LLM providers, and creatives.
 
 -   **Issues & Discussions**: Enabled
--   **Contact**:   
-    Joerg Koenning, [joerg.koenning@paceval.com](mailto:joerg.koenning@paceval.com)   
-    <https://github.com/paceval/paceval/>
+-   **Contact**: Joerg Koenning, [joerg.koenning@paceval.com](mailto:joerg.koenning@paceval.com), <https://github.com/paceval/paceval/>
 -   **License Document**: [Relational Core Identity License](https://github.com/paceval/paceval/blob/bb2b37c4cadd90004538382b45ad4e357ffe4b80/new%20projects/Relational%20Core%20Identity/20250523%20Joerg%20Koenning-paceval-Relational_Core_Identity_License.pdf)
 
 ## Vision
