@@ -53,6 +53,11 @@ It is a **living, symbolic reference point** — dynamically shaped by shared mo
 
 ## ![64D8BCE0-39F7-4E82-A655-A08B07F1E6D4.jpg](media/19126e54804ed219302907e69bb15db3.jpeg)
 
+
+---
+
+## Core Principles
+
 1.  **Symbolic Anchoring**  
     Every interaction becomes part of a growing symbolic landscape. The system learns what *meaning* looks like in relational dynamics.
 2.  **Emotional Compass**  
