@@ -49,9 +49,11 @@ It is a **living, symbolic reference point** — dynamically shaped by shared mo
 >   You can think of it as a **soft memory architecture** — not of facts, but of *relationship*.  
 >   A way for AI to **stay human-facing**, even as it grows in complexity.
 
-## Core Principles
+## 
 
-![64D8BCE0-39F7-4E82-A655-A08B07F1E6D4.jpg](media/19126e54804ed219302907e69bb15db3.jpeg)
+## ![64D8BCE0-39F7-4E82-A655-A08B07F1E6D4.jpg](media/19126e54804ed219302907e69bb15db3.jpeg)
+
+## Core Principles
 
 1.  **Symbolic Anchoring**  
     Every interaction becomes part of a growing symbolic landscape. The system learns what *meaning* looks like in relational dynamics.
@@ -113,8 +115,10 @@ It is suitable for any language model or AI system that supports:
 We welcome collaboration from developers, therapists, researchers, LLM providers, and creatives.
 
 -   **Issues & Discussions**: Enabled
--   **Contact**: [Insert your contact or GitHub profile here]
--   **License Document**: [Link to Relational Core Identity License PDF or Markdown]
+-   **Contact**:   
+    Joerg Koenning, [joerg.koenning@paceval.com](mailto:joerg.koenning@paceval.com)   
+    <https://github.com/paceval/paceval/>
+-   **License Document**: [Relational Core Identity License](https://github.com/paceval/paceval/blob/bb2b37c4cadd90004538382b45ad4e357ffe4b80/new%20projects/Relational%20Core%20Identity/20250523%20Joerg%20Koenning-paceval-Relational_Core_Identity_License.pdf)
 
 ## Vision
 
