@@ -12,8 +12,9 @@ The **Relational Core Identity Framework (RCIF)** is a symbolic-emotional archit
 
 ## License
 
-This repository is published under the **Relational Core Identity License**, based on CC BY-NC 4.0.  
+This repository is published under the **Relational Core Identity License**, based on [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).  
 Commercial use requires a separate agreement. Our goal is a **cooperative, ethical, and transparent approach** to relational AI.
+
 
 ## Why RCIF?
 
@@ -60,7 +61,7 @@ It is a **living, symbolic reference point** — dynamically shaped by shared mo
 
 ## Use Cases
 
-### 1. Human-Centered Business Interfaces (e.g. SAP, CRM, B2B/B2C platforms)
+### 1. Human-Centered Business Interfaces (e.g. enterprise platforms, CRM, B2B/B2C ecosystems)
 
 -   Stabilize high-value interactions (e.g. sales, consulting, support) through persistent identity awareness
 -   Reduce friction in complex enterprise conversations by recognizing decision paths and emotional tone across sessions
