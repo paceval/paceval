@@ -162,10 +162,8 @@ This means:
 - It may not be modified, remixed, or built upon
 
 **Author & Framework Originator:**  
-Jörg Könning  
-Deisenhofener Str. 16a, 81539 München, Germany  
-joerg.koenning@paceval.com  
-+49 170 3752027
+Copyright © 2015-2025 paceval.® All rights reserved.  
+<mailto:info@paceval.com>
 
 **Date of Authorship Declaration:**  
 May 23, 2025
