@@ -1,0 +1,16 @@
+To whom it may concern,
+
+As part of my ongoing efforts to contribute constructively to the evolution of emotionally intelligent AI collaboration, I am submitting this statement as a formal declaration of authorship and intent.
+
+The core structures, frameworks, and modular prompt logic used in the context of emotionally adaptive AI—including the RCIF-based framework (Relational Core Identity Framework), the multi-module interaction model, and the accompanying licensing intention—have been publicly documented via GitHub under my name.
+
+For reference, the underlying structure and modular prompt framework (RCIF) was publicly shared on GitHub on 22nd of June 2025, under the repository:
+https://github.com/paceval/paceval/tree/main/new%20projects/Relational%20Core%20Identity
+
+This serves as a timestamped declaration of authorship and intent, independently verifiable through GitHub’s commit history.
+
+I remain open to collaboration and responsible partnership in the further development of this framework and its integration into AI alignment efforts.
+
+Respectfully,  
+Jörg Könning 
+[joerg.koenning@paceval.com / GitHub Profile: paceval]
