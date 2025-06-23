@@ -9,7 +9,7 @@ This includes:
 - Custom-engineered Master Prompts that operationalize emotional alignment, relational resonance, and contextual memory.
 - Architectural blueprints of identity-based prompt layering and phase-sensitive interaction cycles.
 - The original version of the "Relational Core Identity Framework" (RCIF), including schematics and behavior models.
-- Prototypes and live-tested scripts deployed between March 2024 and June 2025 within the context of applied emotional AI.
+- Prototypes and live-tested scripts deployed between March 2025 and June 2025 within the context of applied emotional AI.
 - Attached documentation and prompt structures as reference.
 
 This submission was made with the intent to invite ethical collaboration, and under the principle of open innovation, while maintaining authorship and traceability.
