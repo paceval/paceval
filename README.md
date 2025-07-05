@@ -181,6 +181,9 @@ Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.<br>
 •   <b>[Relational Core Identity](https://github.com/paceval/paceval/tree/main/new%20projects/Relational%20Core%20Identity) an open license for dynamically integrated, relationship-based intelligence<br></b>
     The Relational Core Identity Framework (RCIF) is a symbolic-emotional architecture layer for integrating large language models (LLMs) into human-centered interaction systems. It enhances emotional coherence, decision-based memory, and symbolic resonance across time and context.
 
+•   <b>[NYSE Skyscr8per – Stock Tracker](https://github.com/paceval/paceval/tree/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker) is a cutting-edge visualization tool that lets you see the entire New York Stock Exchange in one immersive view.<br></b>
+    This technology demo transforms traditional financial data into a spatial experience — intuitive, interactive, and instantly comprehensible.
+
 <br><br><br>
 ![10019436_l-e1442994613885 2](http://paceval.com/wp-content/uploads/2022/04/mathematical_model.jpg)<br>
 ![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2022/04/mathematical_engine.jpg)
