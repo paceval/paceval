@@ -185,7 +185,6 @@ Even without explicit instructions, RCIF is capable of:
 
 ## ![featured_modules.png](media/featured_modules.png)
 
----
 
 ## 🔗 Prompt Usage & Activation
 
