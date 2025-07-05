@@ -197,7 +197,7 @@ To ensure resonance-driven operation, start with:
 You may optionally append:
 > *“Context: Business Development / Relationship Guidance / Conflict Mediation / Coaching”*
 
-...
+---
 
 ## 🔍 Evolution Summary – Additions Compared to the Original Version
 
@@ -209,7 +209,7 @@ You may optionally append:
 
 These additions extend the original prompt without changing its tone or function — increasing strategic clarity, memory, and emotional fidelity.
 
-...
+---
 
 ## 🧾 Licensing & Intellectual Attribution
 
