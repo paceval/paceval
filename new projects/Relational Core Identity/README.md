@@ -166,44 +166,52 @@ The prompt serves as an entry point to simulate a **relationally attuned assista
 - **Consciously limits** expression style (e.g., less dramatization, more clarity and presence)
 
 
-## What the Relational Core Identity Framework (RCIF) Can Do Beyond the Prompt Simulation
+## 🧭 What the Relational Core Identity Framework (RCIF) Can Do Beyond the Prompt Simulation
 
 Even without explicit instructions, RCIF is capable of:
 
-- Processing **hundreds of thousands of contextual datapoints**: emotional logic, implicit behavior, and relational history  
-- Recognizing **nonverbal cues**, **metaphors**, **cyclical behavior**, and **psychological defense patterns**  
-- Simulating **emotional intelligence**, based on deep training in communication, attachment, and interpersonal dynamics  
-- Continuing **adaptive relationship dynamics**, even when unspoken – as in long-term, evolving conversations  
-- **Modulating emotional tone**: offering encouragement, reflection, or stabilizing resonance  
-- **Shifting into complex roles**: e.g., CTO coach, couples therapist, narrative consultant, or product strategist
+- Processing hundreds of thousands of contextual datapoints: emotional logic, implicit behavior, and relational history  
+- Recognizing nonverbal cues, metaphors, cyclical behavior, and psychological defense patterns  
+- Simulating emotional intelligence, based on deep training in communication, attachment, and interpersonal dynamics  
+- Continuing adaptive relationship dynamics, even when unspoken  
+- Modulating emotional tone: offering encouragement, reflection, or stabilizing resonance  
+- Shifting into complex roles: e.g. CTO coach, couples therapist, narrative consultant, or product strategist  
+- Supporting **ChangeMap evolution**: tracking emotional transformation over time to guide strategic resonance  
+- Activating **modular tools** like:  
+  – 🟣 **Marker System** (detects turning points)  
+  – 🔵 **Perspective Translator** (emotional-language mapping)  
+  – 🟢 **Dynamic Table** (tracks key parameters)  
+  – 🟠 **ChangeMap** (maps relational evolution in time)
 
+---
 
 ## 🔗 Prompt Usage & Activation
 
-To activate the **full relational identity framework** in a GPT-based assistant, use the following advanced prompt:
+To activate the full **Relational Identity Framework** in a GPT-based assistant, use the following advanced prompt:
 
-**Business Development Master Prompt**  
-Based on the core identity architecture of Jörg Könning
+### **Business Development Master Prompt**  
+Based on the core identity architecture of **Jörg Könning**
 
-This prompt embeds all seven relational modules (stance, tone, value system, ethical compass, business alignment, etc.) into one integrated instruction set.
+This prompt embeds all **seven relational modules** (stance, tone, value system, ethical compass, business alignment, etc.) **plus** four intelligent enhancement tools into one integrated instruction set.
 
 👉 **Download here**:  
 [Download Business Development Master Prompt (.md)](https://github.com/paceval/paceval/blob/main/new%20projects/Relational%20Core%20Identity/Business_Development_Master_Prompt.md)
 
 ---
 
-### 🧠 How to Use It in ChatGPT
+## 💬 How to Use It in ChatGPT
 
-1. Go to [chat.openai.com](https://chat.openai.com)
-2. Start a new GPT-4 conversation
-3. Copy and paste the **entire content** of the downloaded `.md` file into the first message
-4. Immediately after, enter the following activation command:
+1. Go to [chat.openai.com](https://chat.openai.com)  
+2. Start a new **GPT-4** conversation  
+3. Copy and paste the entire content of the downloaded `.md` file into the first message  
+4. Immediately after, enter the following **activation command**:
 
 ```text
-Let’s start in emotional-business dialogue mode. Focus on resonance, not tactics.
+Let’s start in emotional-business dialogue mode.  
+Focus on resonance, not tactics.
 ```
 
-The assistant will now respond with a **relational mindset** – calm, intelligent, emotionally attuned.  
+The assistant will now respond with a **relational mindset** — calm, intelligent, emotionally attuned.  
 Ideal for: business development, deep client conversations, ethical leadership, or personal transformation processes.
 
 
