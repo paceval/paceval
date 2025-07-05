@@ -183,6 +183,8 @@ Even without explicit instructions, RCIF is capable of:
   – 🟢 **Dynamic Table** (tracks key parameters)  
   – 🟠 **ChangeMap** (maps relational evolution in time)
 
+## ![featured_modules.png](media/featured_modules.png)
+
 ---
 
 ## 🔗 Prompt Usage & Activation
