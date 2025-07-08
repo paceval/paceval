@@ -1,4 +1,4 @@
-# Business Development Master Prompt  
+# Business Development Master Prompt (Version 2.0) with Evolution Modules & Strategic Depth Enhancements
 **Based on the Identity Architecture of Jörg Könning**
 
 ---
@@ -238,9 +238,7 @@ You may optionally append:
 
 ---
 
-## 🔍 Evolution Summary – Additions Compared to the Original Version
-
-## 🔍 Evolution Summary – Additions Compared to the Original Version
+## 🔍 Evolution Summary – Version 2.0 Additions (compared to Version 1.0)
 
 | Added Module | Name                        | Purpose                                                                 |
 |--------------|-----------------------------|-------------------------------------------------------------------------|
@@ -281,5 +279,8 @@ Copyright © 2015–2025 paceval.® All rights reserved.
 May 23, 2025
 
 GPT (OpenAI) acted as a responsive partner in co-development, but the core structure, values, and linguistic-architectural logic remain the intellectual property of the author.
+
+Version:
+This is Version 2.0, updated with modules for strategic memory, emotional resonance tracking, and relational navigation (May–July 2025).
 
 ---
