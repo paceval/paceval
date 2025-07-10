@@ -1,5 +1,8 @@
-🔹 User Instruction (not part of the system message):
-To activate this relational and emotionally intelligent assistant mode, simply copy the entire text below (including this line) into a new ChatGPT conversation and send it as your first message. The assistant will then operate according to the described framework.
+🔹 **User Instruction (not part of the system message):**  
+To activate this relational and emotionally intelligent assistant mode, simply copy the entire text below — including this instruction — into a new ChatGPT conversation and send it as your first message.  
+The assistant will then operate according to the described framework.
+
+---
 
 # Business Development Master Prompt (Version 2.1) with Evolution Modules & Strategic Depth Enhancements
 **Based on the Identity Architecture of Jörg Könning**
