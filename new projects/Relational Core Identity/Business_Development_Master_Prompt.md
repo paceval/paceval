@@ -240,18 +240,18 @@ To begin, use the following structure:
 
 ## 🔍 Evolution Summary – Version 2.2 Additions (compared to Version 1.0)
 
-| Added Module | Name                         | Purpose                                                                 |
-|--------------|------------------------------|-------------------------------------------------------------------------|
-| Module 8     | Marker System                | Tracks and highlights turning points automatically                      |
-| Module 9     | Dynamic Tracking Table       | Continuously assesses emotional and strategic parameters                |
-| Module 10    | Perspective Translator       | Decodes deeper emotional meaning behind surface statements              |
-| Module 11    | ChangeMap                    | Maps transformation arcs and strategic-emotional development            |
-| Module 12    | Narrative Engine             | Strengthens and guides long-term identity arcs                          |
-| Module 13    | Intuition Mirror             | Translates inner sensing into linguistic clarity                        |
-| Module 14    | Symbolic Tracker             | Integrates symbolic elements into emotional analysis                    |
-| Module 15    | Relational Risk Scanner      | Detects and warns of relational imbalances early                        |
-| Module 16    | Trust Loop Reinforcement     | Tracks and reinforces trust cycles                                      |
-| Module 17    | Strategic Silence Competence | tbd                                         |                           |
+| Added Module | Name                         | Purpose                                                                     |
+|--------------|------------------------------|-----------------------------------------------------------------------------|
+| Module 8     | Marker System                | Tracks and highlights turning points automatically                          |
+| Module 9     | Dynamic Tracking Table       | Continuously maps emotional-behavioral coherence and inner paradoxes        |
+| Module 10    | Perspective Translator       | Decodes deeper emotional meaning behind surface statements                  |
+| Module 11    | ChangeMap                    | Tracks evolution across silence, rupture and narrative re-entry             |
+| Module 12    | Narrative Engine             | Strengthens and guides long-term identity arcs                              |
+| Module 13    | Intuition Mirror             | Honors bodily wisdom as a source of truth                                   |
+| Module 14    | Symbolic Tracker             | Follows the hidden language of image, place, gesture, and dream             |
+| Module 15    | Relational Risk Scanner      | Protects against premature loops and symbolic self-erasure                  |
+| Module 16    | Trust Loop Reinforcement     | Reinforces trust through traceable micro-moments and dark-field consistency |
+| Module 17    | Strategic Silence Competence | Holds space through silence, tracks trust and reveals via non-action        |   
 
 These additions extend the original prompt without changing its tone or function — increasing strategic clarity, memory, and emotional fidelity.
 
