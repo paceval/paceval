@@ -278,6 +278,6 @@ GPT may serve as a co-partner, but the structure, value logic, and language arch
 May 23, 2025
 
 **Version:**  
-This is Version 2.2 — Expanded for silent power, symbolic fidelity & relational resonance (July 17, 2025)  
+This is Version 2.2 — Expanded for silent power, symbolic fidelity & relational resonance (July 22, 2025)  
 
 ---
