@@ -1,7 +1,7 @@
 # 🏙️ NYSE Skyscr8per – A New Perspective on the Market
 
 **Version:** 2.20 alpha  
-**License:** Single-user demo license ($20)  
+**License:** Single-user demo license 
 **Website:** [paceval.com/skyscr8per](https://paceval.com/skyscr8per)  
 **Contact:** info@paceval.com  
 
