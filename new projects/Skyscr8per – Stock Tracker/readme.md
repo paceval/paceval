@@ -41,7 +41,7 @@ This technology demo transforms traditional financial data into **a spatial expe
 
 ## 🧪 Technology Demo
 
-This app is part of an **ongoing technology demonstration** by [paceval®](https://paceval.com) and is offered with a **$20 single-user license** to support future development, hosting, and upgrades.
+This app is part of an **ongoing technology demonstration** by [paceval®](https://paceval.com) and is offered with a **single-user license** to support future development, hosting, and upgrades.
 
 ---
 
@@ -77,7 +77,7 @@ Includes:
 
 ## 🤝 License
 
-**paceval® NYSE Skyscr8per** is licensed for personal or evaluation use under a **$20 single-user demo license**.  
+**paceval® NYSE Skyscr8per** is licensed for personal or evaluation use under a **single-user demo license**.  
 For enterprise or OEM integration, contact us: **info@paceval.com**
 
 ---
