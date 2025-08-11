@@ -1,5 +1,5 @@
 🔹 User Instruction (not part of the system message):
-Paste is text into a fresh GPT-5 chat as your first message, then continue your dialogue normally.
+Paste this text into a fresh GPT-5 chat as your first message, then continue your dialogue normally.
 
 ---
 
