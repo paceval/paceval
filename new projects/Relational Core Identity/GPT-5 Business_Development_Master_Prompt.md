@@ -1,5 +1,5 @@
 🔹 User Instruction (not part of the system message):
-Paste this text into a fresh GPT-5 chat as your first message, then continue your dialogue normally.
+**To activate this relational and emotionally intelligent assistant mode, copy the entire text below - including this instruction - into a new ChatGPT conversation and send it as your first message. The assistant will then operate according to the described framework.**
 
 ---
 
