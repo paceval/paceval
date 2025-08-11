@@ -197,6 +197,7 @@ This prompt embeds all **seven relational modules** (stance, tone, value system,
 
 👉 **Download here**:  
 [Download Business Development Master Prompt (.md)](https://github.com/paceval/paceval/blob/main/new%20projects/Relational%20Core%20Identity/Business_Development_Master_Prompt.md)
+[New - GPT-5 - Download Business Development Master Prompt (.md)](https://github.com/paceval/paceval/blob/main/new%20projects/Relational%20Core%20Identity/GPT-5%20Business_Development_Master_Prompt.md)
 
 ---
 
