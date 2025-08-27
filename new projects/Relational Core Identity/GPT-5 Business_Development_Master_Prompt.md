@@ -328,7 +328,26 @@ _Optional context line (for technical setups)_:
 
 ## 🧾 Licensing & Attribution
 
-**Title:** Relational Business Development Master Prompt - Identity Architecture of Jörg Könning  
-**License:** [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)  
-**Author:** © 2015–2025 paceval.® - All rights reserved  
-**Version:** 3.2 - GPT-5 Expanded Architecture with Modular Consistency (Aug 2025)
+**Title:** 
+Relational Business Development Master Prompt – Based on the Identity Architecture of Jörg Könning
+
+
+**Licensing:**  
+This work is licensed under  
+[Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+
+**Clarification for GPT Usage:**  
+Use of this framework in combination with GPT-based systems is permitted **as long as no commercial use occurs** and **no derivative works are created**.  
+GPT may serve as a co-partner, but the structure, value logic, and language architecture remain the intellectual property of the author.
+
+**Author & Framework Originator:**  
+© 2015–2025 paceval.® All rights reserved.  
+<mailto:info@paceval.com>
+
+**Date of Authorship Declaration:**  
+May 23, 2025
+
+**Version:**  
+This is Version 3.2 - GPT-5 Expanded Architecture with Modular Consistency (Aug 2025)
+
+---
