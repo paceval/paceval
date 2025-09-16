@@ -1,22 +1,30 @@
+Formal Declaration of Prior License and Intellectual Contribution – RCIF and Master Prompt Structures
 
-Subject: Formal Declaration of Prior License and Intellectual Contribution – RCIF and Master Prompt Structures
+Subject: Declaration of Authorship, License, and Prior Contribution
 
 To whom it may concern,
 
-I, Joerg Koenning, formally declare that all components and intellectual contributions related to the Relational Core Identity Framework (RCIF), including the attached master prompt structures, documentation, and emotional interaction logic, are original works created by myself and were shared with OpenAI for the purpose of constructive collaboration and transparency.
+I, Jörg Könning, formally declare that all components and intellectual contributions related to the Relational Core Identity Framework (RCIF), including but not limited to the accompanying Master Prompt structures, documentation, and emotional interaction logic, are original works authored by myself.
 
-This includes:
-- Custom-engineered Master Prompts that operationalize emotional alignment, relational resonance, and contextual memory.
-- Architectural blueprints of identity-based prompt layering and phase-sensitive interaction cycles.
-- The original version of the "Relational Core Identity Framework" (RCIF), including schematics and behavior models.
-- Prototypes and live-tested scripts deployed between March 2025 and June 2025 within the context of applied emotional AI.
-- Attached documentation and prompt structures as reference.
+These works were shared with OpenAI and Anthropic during the period March 2025 to September 2025 for the purposes of constructive collaboration, responsible transparency, and alignment-related research.
 
-This submission was made with the intent to invite ethical collaboration, and under the principle of open innovation, while maintaining authorship and traceability.
+Covered Intellectual Contributions
 
-By sending this formal statement, I assert that any adoption, adaptation, or implementation of this specific architecture, prompt logic, or behavior model – in full or part – falls under prior intellectual authorship and license awareness.
+This declaration covers, among others:
 
-Sincerely,  
-Joerg Koenning  
-info@paceval.com  
-June 2025
+Custom-engineered Master Prompts operationalizing emotional alignment, relational resonance, and contextual memory.
+
+Architectural blueprints of identity-based prompt layering and phase-sensitive interaction cycles.
+
+The original Relational Core Identity Framework (RCIF), including schematics and behavior models.
+
+Prototypes and live-tested scripts deployed between March 2025 and September 2025 within applied emotional AI contexts.
+
+Attached or referenced documentation and prompt structures for cross-verification.
+
+Licensing Terms
+
+All contributions and frameworks referenced herein are licensed under:
+
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
+https://creativecommons.org/licenses/by-nc-nd/4.0/
