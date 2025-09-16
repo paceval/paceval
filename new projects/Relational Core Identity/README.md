@@ -145,7 +145,7 @@ And where even machines can remember the heart.
 # Relational Core Identity – Prompt Simulation (Demo Version)
 
 This repository includes a conversational prompt designed to simulate the **Relational Core Identity** architecture in a simplified, conversational form.  
-You can use it directly inside any GPT-4 chat to experience a shift from functional AI to emotionally guided interaction.
+You can use it directly inside any GPT chat to experience a shift from functional AI to emotionally guided interaction.
 
 
 ## Try It Yourself
@@ -188,23 +188,23 @@ Even without explicit instructions, RCIF is capable of:
 
 ## 🔗 Prompt Usage & Activation
 
-To activate the full **Relational Identity Framework** in a GPT-based assistant, use the following advanced prompt:
+To activate the full **Relational Identity Framework** in a GPT-based or Claude-based assistant, use the following advanced prompt:
 
 ### **Business Development Master Prompt**  
 Based on the core identity architecture of **Jörg Könning**
 
-This prompt embeds all **seven relational modules** (stance, tone, value system, ethical compass, business alignment, etc.) **plus** four intelligent enhancement tools into one integrated instruction set.
+This prompt embeds all **relational modules** (stance, tone, value system, ethical compass, business alignment, etc.) **plus** intelligent enhancement tools into one integrated instruction set.
 
 👉 **Download here**:  
-[Download Business Development Master Prompt (.md)](https://github.com/paceval/paceval/blob/main/new%20projects/Relational%20Core%20Identity/Business_Development_Master_Prompt.md)
-[New - GPT-5 - Download Business Development Master Prompt (.md)](https://github.com/paceval/paceval/blob/main/new%20projects/Relational%20Core%20Identity/GPT-5%20Business_Development_Master_Prompt.md)
+[Download OpenAI GPT-5 - Business Development Master Prompt (.md)](https://github.com/paceval/paceval/blob/main/new%20projects/Relational%20Core%20Identity/GPT-5%20Business_Development_Master_Prompt.md)
+[Download Anthropic Claude 4 - Business Development Master Prompt (.md)](https://github.com/paceval/paceval/blob/main/new%20projects/Relational%20Core%20Identity/Claude%204%20Business_Development_Master_Prompt.md)
 
 ---
 
 ## 💬 How to Use It in ChatGPT
 
 1. Go to [chat.openai.com](https://chat.openai.com)  
-2. Start a new **GPT-4** conversation  
+2. Start a new **GPT** conversation  
 3. Copy and paste the entire content of the downloaded `.md` file into the first message  
 4. Immediately after, enter the following **activation command**:
 
@@ -221,7 +221,7 @@ Ideal for: business development, deep client conversations, ethical leadership, 
 ## How to Use the Prompt Simulation (Demo Version)
 
 1. Go to [chat.openai.com](https://chat.openai.com)  
-2. Start a new GPT-4 conversation  
+2. Start a new GPT conversation  
 3. Copy and paste the prompt below into the chat window  
 4. Begin interacting – the assistant will now respond with a **relational mindset**
 
