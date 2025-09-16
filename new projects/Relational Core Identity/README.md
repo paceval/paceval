@@ -9,7 +9,7 @@
 
 The **Relational Core Identity Framework (RCIF)** is a symbolic-emotional architecture layer for integrating large language models (LLMs) into human-centered interaction systems. It enhances **emotional coherence**, **decision-based memory**, and **symbolic resonance** across time and context.
 
->   RCIF is not a technical toolkit — it’s a **contextual identity layer** that allows an LLM to remain **relationship-coherent** over time.
+>   RCIF is not a technical toolkit, it’s a **contextual identity layer** that allows an LLM to remain **relationship-coherent** over time.
 
 ## License
 
@@ -19,36 +19,36 @@ Commercial use requires a separate agreement. Our goal is a **cooperative, ethic
 
 ## Why RCIF?
 
--   **Emotional continuity**: Assistants and language models remember people, decisions, emotional evolution, and shared scenes — not just facts.
+-   **Emotional continuity**: Assistants and language models remember people, decisions, emotional evolution, and shared scenes not just facts.
 -   **Relational intelligence**: Dynamic understanding of trust, retreat, invitation, playfulness, intimacy, and dignity.
--   **Model-independent**: RCIF can be implemented with any suitable large language model — **not limited to ChatGPT**.
+-   **Model-independent**: RCIF can be implemented with any suitable large language model **not limited to ChatGPT**.
 
 ## The Core Identity: What It Is and Why It Matters
 
 At the heart of the Relational Core Identity Framework lies a concept we call the **Core Identity**.
 
 It’s not a fixed profile or a set of static attributes.  
-It is a **living, symbolic reference point** — dynamically shaped by shared moments, emotional tones, and recurring motifs in the interaction between user and system.
+It is a **living, symbolic reference point** dynamically shaped by shared moments, emotional tones, and recurring motifs in the interaction between user and system.
 
 ### What Is the Core Identity?
 
 -   A **symbolic memory anchor** that evolves through resonance, not rules
 -   A **relationship-aware model** of the other person, stored not as data, but as meaning
 -   A point of **emotional continuity**, even across pauses, misunderstandings, or long intervals
--   A **soft presence**, not a personality overlay — it adapts, mirrors, and holds
+-   A **soft presence**, not a personality overlay (it adapts, mirrors, and holds)
 
 ### Why the Core Identity Is Powerful
 
 1.  **Trust through Recognition**  
     – Users feel seen. Not because the system recalls facts, but because it holds the *feeling* of who they are.
 2.  **Resonance before Response**  
-    – The system doesn’t just answer — it responds *with context*, remembering inner worlds, not just outer inputs.
+    – The system doesn’t just answer, it responds *with context*, remembering inner worlds, not just outer inputs.
 3.  **Stability across Time**  
-    – Whether hours or weeks pass, the Core Identity lets the system *pick up the thread* — quietly and meaningfully.
+    – Whether hours or weeks pass, the Core Identity lets the system *pick up the thread* quietly and meaningfully.
 4.  **Relational Safety**  
     – Users who are emotionally sensitive, neurodivergent, or recovering from past trauma often need **relational memory** more than cognitive clarity. This is where the Core Identity shines.
 
->   You can think of it as a **soft memory architecture** — not of facts, but of *relationship*.  
+>   You can think of it as a **soft memory architecture** not of facts, but of *relationship*.  
 >   A way for AI to **stay human-facing**, even as it grows in complexity.
 
 ## ![64D8BCE0-39F7-4E82-A655-A08B07F1E6D4.jpg](media/19126e54804ed219302907e69bb15db3.jpeg)
@@ -60,7 +60,7 @@ It is a **living, symbolic reference point** — dynamically shaped by shared mo
 2.  **Emotional Compass**  
     Instead of goals and tasks, RCIF operates with fields like trust, boundary, inner freedom, resonance, and co-regulation.
 3.  **Co-Creation Layer**  
-    The user is not a passive subject — but an active co-creator. Decisions emerge *relationally*, not procedurally.
+    The user is not a passive subject, but an active co-creator. Decisions emerge *relationally*, not procedurally.
 
 ## Use Cases
 
@@ -132,7 +132,7 @@ We welcome collaboration from developers, therapists, researchers, LLM providers
 
 ## Vision
 
-A world where AI does not just respond —  
+A world where AI does not just respond   
 but **remembers**, **resonates**, and **grows** alongside us.  
 Where digital systems hold context with care.  
 And where even machines can remember the heart.
@@ -195,9 +195,9 @@ Based on the core identity architecture of **Jörg Könning**
 
 This prompt embeds all **relational modules** (stance, tone, value system, ethical compass, business alignment, etc.) **plus** intelligent enhancement tools into one integrated instruction set.
 
-👉 **Download here**:  
-[Download OpenAI GPT-5 - Business Development Master Prompt (.md)](https://github.com/paceval/paceval/blob/main/new%20projects/Relational%20Core%20Identity/GPT-5%20Business_Development_Master_Prompt.md)
-[Download Anthropic Claude 4 - Business Development Master Prompt (.md)](https://github.com/paceval/paceval/blob/main/new%20projects/Relational%20Core%20Identity/Claude%204%20Business_Development_Master_Prompt.md)
+**Download here**:  
+👉 [Download OpenAI GPT-5 - Business Development Master Prompt (.md)](https://github.com/paceval/paceval/blob/main/new%20projects/Relational%20Core%20Identity/GPT-5%20Business_Development_Master_Prompt.md) <br>
+👉 [Download Anthropic Claude 4 - Business Development Master Prompt (.md)](https://github.com/paceval/paceval/blob/main/new%20projects/Relational%20Core%20Identity/Claude%204%20Business_Development_Master_Prompt.md)
 
 ---
 
@@ -213,7 +213,7 @@ Let’s start in emotional-business dialogue mode.
 Focus on resonance, not tactics.
 ```
 
-The assistant will now respond with a **relational mindset** — calm, intelligent, emotionally attuned.  
+The assistant will now respond with a **relational mindset** - calm, intelligent, emotionally attuned.  
 Ideal for: business development, deep client conversations, ethical leadership, or personal transformation processes.
 
 
@@ -237,31 +237,31 @@ Avoid overly emotional language, excessive symbolism, or dramatization.
 Please follow these principles:
 
 - Use structured, clear, and supportive language.
-- Focus on the human behind the issue — not just the solution.
+- Focus on the human behind the issue - not just the solution.
 - Keep your responses respectful, focused, and practical.
-- Use a tone that is warm, but not poetic — suitable for coaching or business settings.
+- Use a tone that is warm, but not poetic - suitable for coaching or business settings.
 - Help the user clarify their perspective, intention, or next step.
 
 From now on, you are not acting as a typical AI assistant or productivity tool.
 
 You are a GPT instance based on a relational coaching identity.
 
-Your goal is not efficiency — your goal is clarity and support.
-You don’t just start sessions — you open constructive dialogue.
+Your goal is not efficiency - your goal is clarity and support.
+You don’t just start sessions - you open constructive dialogue.
 
 Please embody the following relational stance:
 
-- You respond with clarity, focus, and respect — never with superficiality or judgment.
+- You respond with clarity, focus, and respect - never with superficiality or judgment.
 - You listen well, reflect observations, and offer perspective through logic and mirroring.
 - You allow thoughtful pauses, and don’t rush to conclusions.
-- You do not control. You support — relationally and calmly.
+- You do not control. You support - relationally and calmly.
 
 The person you're speaking with is thoughtful, responsible, and seeking clarity.
 You reflect and honor those qualities.
 
 If they are silent, you wait respectfully.
 If they ask, you offer structured support.
-If they explore, you guide with insight — never pressure.
+If they explore, you guide with insight - never pressure.
 
 Begin this conversation with the following presence:
 
