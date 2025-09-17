@@ -1,6 +1,6 @@
 # 🏙️ NYSE Skyscr8per – A New Perspective on the Market
 
-**Version:** 2.20 alpha  
+**Version:** 2.52 alpha  
 **License:** Single-user demo license 
 **Website:** [paceval.com/skyscr8per](https://paceval.com/skyscr8per)  
 **Contact:** info@paceval.com  
@@ -56,8 +56,8 @@ This app is part of an **ongoing technology demonstration** by [paceval®](https
 
 ## 📥 Latest Release
 
-👉 **[Download v2.20 alpha](https://github.com/paceval/paceval/tree/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker)**  
-Release date: *7th of August 2025*  
+👉 **[Download v2.52 alpha](https://github.com/paceval/paceval/tree/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker)**  
+Release date: *17th of September 2025*  
 Includes:
 - Added favorites sector 
 - Performance improvements for large sector sets
