@@ -34,7 +34,7 @@
 
 ---
 
-## 📈 Evolution Summary (v2.2 → v3.4)
+## 📈 Evolution Summary (v3.2 → v3.4)
 
 | Area / Module | Change Type | What Changed | Rationale |
 |---|---|---|---|
