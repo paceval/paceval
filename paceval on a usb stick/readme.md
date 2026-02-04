@@ -80,4 +80,6 @@ Other useful links:
 <https://wiki.elvis.science/index.php?title=USB_Armory>  
 <https://groups.google.com/g/usbarmory/c/LTqt_fgQY7w>
 
-Copyright © 2015-2024 paceval.® All rights reserved. mailto:info@paceval.com
+Copyright © 2015-2026 paceval.® All rights reserved.<br>
+mailto:info@paceval.com
+

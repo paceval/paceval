@@ -188,5 +188,5 @@ Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.<br>
 ![10019436_l-e1442994613885 2](http://paceval.com/wp-content/uploads/2022/04/mathematical_model.jpg)<br>
 ![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2022/04/mathematical_engine.jpg)
 
-Copyright © 2015-2025 paceval.® All rights reserved.<br>
+Copyright © 2015-2026 paceval.® All rights reserved.<br>
 mailto:info@paceval.com

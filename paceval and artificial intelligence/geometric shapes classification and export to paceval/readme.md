@@ -11,4 +11,6 @@ Julia. The created formulas are stored in the folder "formulas".
 To evaluate and use the created formulas we use the python libary of paceval in the python notebook "evaluate_formulas.ipynb". Here the formulas are applied
 to a custom use case, that works by using the calculated probabilities of the formulas. The custom file "evaluation_class.py" is also used in the notebook.
 
+Copyright © 2015-2026 paceval.® All rights reserved.<br>
+mailto:info@paceval.com
 

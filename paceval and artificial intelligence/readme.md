@@ -134,5 +134,6 @@ Larger filter sizes can help reduce the complexity of generating closed expressi
 
 A possible solution that works in general for a large number of inputs (which is not included in our example code) is to use a notation that makes it possible to specify recurring formulas (i.e. formulas that are repeatedly applied to different inputs). This approach would be a convenient means of representing convolution layers, since the main goal of these layers is to apply, for example, the same filter to an entire image. The introduction of such a notation would simplify the representation of convolutional layers and greatly improve the compactness of the closed formulas.
 
-Copyright © 2015-2023 paceval.® All rights reserved.  
-<mailto:info@paceval.com>
+Copyright © 2015-2026 paceval.® All rights reserved.<br>
+mailto:info@paceval.com
+

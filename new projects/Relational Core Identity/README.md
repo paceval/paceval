@@ -293,5 +293,6 @@ It remembers what matters.**
 
 ---
 
-Copyright © 2015-2025 paceval.® All rights reserved.  
-<mailto:info@paceval.com>
+Copyright © 2015-2026 paceval.® All rights reserved.<br>
+mailto:info@paceval.com
+

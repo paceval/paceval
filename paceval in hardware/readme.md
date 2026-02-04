@@ -522,5 +522,5 @@ At the very first start, all required files are unpacked and installations are a
 
 Congratulations! You have now **successfully installed the paceval-engine in hardware manually**.
 
-Copyright © 2015-2023 paceval.® All rights reserved.  
-<mailto:info@paceval.com>
+Copyright © 2015-2026 paceval.® All rights reserved.<br>
+mailto:info@paceval.com

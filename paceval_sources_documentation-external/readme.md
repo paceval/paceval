@@ -85,4 +85,6 @@ The following operators, partial functions and symbols are currently supported:
     (Annotation: [paceval_dGetMultipleComputationsResultsExt()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a5cc7887ed6b733722bd93a7669cf7a34) should be used to obtain results for several computation objects at the same time and to carry out as many different evaluations as possible at once, e.g. for artificial neural network functions or decision trees, in which several functions with different variable values are calculated in one step in order to decide on several objects at the same time.
 -   [paceval_DeleteComputation()](https://paceval.com/paceval_sources_documentation-external/html/paceval__main_8cpp.html#a0a5a920a210ff6914dd5742f096635a2) : Deletes a computation object with the given token.
 
-Copyright © 2015-2025 paceval.® All rights reserved. mailto:info@paceval.com
+Copyright © 2015-2026 paceval.® All rights reserved.<br>
+mailto:info@paceval.com
+

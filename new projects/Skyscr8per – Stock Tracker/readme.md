@@ -91,4 +91,6 @@ More at: [paceval.com](https://paceval.com)
 
 ---
 
-© 2025 paceval® – All rights reserved.
+Copyright © 2015-2026 paceval.® All rights reserved.<br>
+mailto:info@paceval.com
+
