@@ -17,7 +17,7 @@ https://www.paceval.com<br>
 - Cross-platform: Windows, Linux, macOS, embedded  
 - Ultra-low memory footprint  
 - Scales across 192+ cores (Intel, AMD, ARM, RISC-V)  
-- Runs even offline – ideal for IoT, AI on-device, and battery-critical applications  
+- Runs even offline and is ideal for IoT, AI-based devices and battery-critical applications
 
 ## Use Cases
  
@@ -182,7 +182,7 @@ Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.<br>
     The Relational Core Identity Framework (RCIF) is a symbolic-emotional architecture layer for integrating large language models (LLMs) into human-centered interaction systems. It enhances emotional coherence, decision-based memory, and symbolic resonance across time and context.
 
 •   <b>[NYSE Skyscr8per – Stock Tracker](https://github.com/paceval/paceval/tree/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker) is a cutting-edge visualization tool that lets you see the entire New York Stock Exchange in one immersive view.<br></b>
-    This technology demo transforms traditional financial data into a spatial experience — intuitive, interactive, and instantly comprehensible.
+    This technology demo transforms traditional financial data into a spatial experience that is intuitive, interactive, and instantly understandable.
 
 <br><br><br>
 ![10019436_l-e1442994613885 2](http://paceval.com/wp-content/uploads/2022/04/mathematical_model.jpg)<br>
