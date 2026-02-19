@@ -43,7 +43,7 @@ A one time single user license unlocks the AI functionality and supports ongoing
 
 Download the Windows version here:
   
-👉 **[Skyscr8per v4.26.12 alpha]([https://github.com/paceval/paceval/tree/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker](https://github.com/paceval/paceval/blob/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker/paceval-NYSE_Skyscr8per.exe))**  
+👉 **[Skyscr8per v4.26.12 alpha](https://github.com/paceval/paceval/blob/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker/paceval-NYSE_Skyscr8per.exe)**  
 
 ---
 
