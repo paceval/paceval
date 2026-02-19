@@ -66,7 +66,7 @@ Download the Windows version here:
 
 ## 🖼️ Example Visuals
 
-| Skyscraper Market Map | Sector Focus |
+| Skyscr8per Market Map | Sector Focus |
 |-----------------------|--------------|
 | ![Skyscraper View](./screenshots/skyscr8per1.png) | ![Sector Zoom](./screenshots/skyscr8per2.png) |
 
