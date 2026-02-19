@@ -41,9 +41,9 @@ A one time single user license unlocks the AI functionality and supports ongoing
 
 ## Download
 
-Download the Windows version above and find information about the current official version here:
+Download the Windows version here:
   
-https://paceval.com/skyscr8per/
+👉 **[Skyscr8per v4.26.12 alpha]([https://github.com/paceval/paceval/tree/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker](https://github.com/paceval/paceval/blob/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker/paceval-NYSE_Skyscr8per.exe))**  
 
 ---
 
@@ -94,7 +94,7 @@ Users are solely responsible for any decisions made based on the information pro
 
 ## 🚀 Getting Started
 
-1. Download the latest release from the [**Releases**](https://paceval.com/skyscr8per/) page  
+1. Download the latest release from the [**Releases**]([https://paceval.com/skyscr8per/](https://github.com/paceval/paceval/blob/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker/paceval-NYSE_Skyscr8per.exe)) page  
 2. Run `paceval-NYSE_Skyscr8per.exe` (Windows only, for now)  
 3. Explore the NYSE from a completely new perspective  
 4. License activation happens in-app (demo mode available)
@@ -103,7 +103,7 @@ Users are solely responsible for any decisions made based on the information pro
 
 ## 📥 Latest Release
 
-👉 **[Download v4.26.12 alpha](https://github.com/paceval/paceval/tree/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker)**  
+👉 **[Download v4.26.12 alpha]([https://github.com/paceval/paceval/tree/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker](https://github.com/paceval/paceval/blob/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker/paceval-NYSE_Skyscr8per.exe))**  
 Release date: *19th of February 2026*  
 Includes:
 - Added dedicated color scheme for ETFs to improve visual differentiation  
