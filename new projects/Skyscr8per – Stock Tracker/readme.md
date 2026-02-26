@@ -95,7 +95,7 @@ Users are solely responsible for any decisions made based on the information pro
 ## 🚀 Getting Started
 
 1. Download the latest release from the [**Releases**](https://github.com/paceval/paceval/tree/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker) page  
-2. Run `Skyscr8per%20Installer.exe` (Windows only, for now)  
+2. Run `Skyscr8per Installer.exe` (Windows only, for now)  
 3. Explore the NYSE from a completely new perspective  
 4. License activation happens in-app (demo mode available)
 
