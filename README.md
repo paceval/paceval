@@ -1,7 +1,11 @@
 ![10019436_l-e1442994613885 2](https://paceval.com/wp-content/uploads/2021/06/paceval_github-1.jpg)<br>
 https://www.paceval.com<br>
 
-# paceval.® – The High-Performance Mathematical Engine
+# paceval.® 
+## Deterministic Decision Runtime for Real-Time, Explainable and Edge Computation
+
+**Ultra‑short description (GitHub header):**  
+Deterministic decision runtime for real-time, explainable and energy‑efficient computation.
 
 ![C++](https://img.shields.io/badge/C%2B%2B-17-blue.svg)
 ![Cross-Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Embedded-brightgreen)
@@ -9,37 +13,166 @@ https://www.paceval.com<br>
 ![Performance](https://img.shields.io/badge/cores-192%2B-orange)
 ![Made in Germany](https://img.shields.io/badge/made%20in-Germany-black)
 
-**paceval.®** is a lightweight, lightning-fast mathematical engine for real-time evaluation of complex mathematical expressions – built for AI, edge computing, robotics, embedded systems, finance, medical tech, and beyond.
+**paceval.®** is a high‑performance mathematical runtime engine for executing complex decision logic in real time.
+
+It enables transparent, explainable and energy‑efficient computation across multi‑core CPUs, edge devices and industrial systems. paceval is designed for applications where predictability, auditability and real‑time performance are critical.
+
+---
+
+## 🚀 Core Positioning
+
+paceval is a:
+
+- deterministic decision engine  
+- explainable AI runtime  
+- real‑time decision computation platform  
+- edge decision runtime  
+- energy‑efficient inference engine  
+- transparent decision logic system  
+
+---
+
+## The Problem
+
+Modern AI systems often rely on opaque neural networks that are difficult to explain, audit or deploy efficiently on edge devices.
+
+Industrial, safety‑critical and regulated environments require deterministic, transparent and real‑time decision logic.
+
+paceval addresses this gap by enabling deterministic execution of decision models with predictable latency, full explainability and energy‑efficient computation.
+
+---
 
 ## Why paceval.?
 
-- Real-time performance without frameworks  
-- Cross-platform: Windows, Linux, macOS, embedded  
-- Ultra-low memory footprint  
-- Scales across 192+ cores (Intel, AMD, ARM, RISC-V)  
-- Runs even offline and is ideal for IoT, AI-based devices and battery-critical applications
+- Real‑time performance without heavy frameworks  
+- Deterministic execution with predictable latency  
+- Ultra‑low memory footprint  
+- Sc ales across 192+ CPU cores  
+- Runs offline – ideal for IoT and edge systems  
+- Transparent and auditable decision logic  
+- Energy‑efficient computation  
+- Performance per watt optimized  
 
-## Use Cases
- 
-- Autonomous systems  
-- Industrial AI  
-- Smart devices & wearables  
-- Financial & scientific modeling  
-- Hardware-near inference with minimal latency  
+---
 
-## Supported Languages
+## When to Use paceval
 
-C, C++, Python, Node.js, PHP, Fortran, MATLAB, Julia, Kotlin, Rust, Delphi, and many more (via FFI)
+Use paceval when you need:
 
-## Get Started
+- deterministic decision logic  
+- explainable and auditable AI decisions  
+- real‑time computation with predictable latency  
+- energy‑efficient execution on edge devices  
+- transparent risk scoring or optimization  
+- safety‑critical or regulated decision systems  
+- embedded decision engine capabilities  
 
-- [paceval.com](https://paceval.com)  
-- [Download SDK 4.25](https://paceval.com/product-demo/)  
-- [Documentation & Examples](https://paceval.com/api/)
+---
 
-> Designed in Germany. Used worldwide.  
-> **Create value fast. paceval.®**
+## Typical Applications
 
+- industrial automation and robotics  
+- autonomous systems and robotics control  
+- edge AI and embedded intelligence  
+- financial risk scoring & optimization  
+- real‑time decision control systems  
+- safety‑critical and regulated environments  
+- smart infrastructure & IoT systems  
+
+---
+
+## How paceval Differs
+
+Unlike neural network inference frameworks, paceval executes deterministic mathematical models that provide:
+
+- transparent decision logic  
+- predictable runtime behavior  
+- explainable AI decisions  
+- lower energy consumption  
+- compliance‑ready decision processes  
+
+Compared to symbolic math systems, paceval focuses on high‑performance execution suitable for real‑time and embedded environments.
+
+---
+
+## Performance & Efficiency
+
+paceval minimizes memory usage and maximizes **performance per watt**, enabling real‑time decision computation even on resource‑constrained devices.
+
+Key advantages:
+
+- predictable latency  
+- low memory footprint  
+- edge and embedded suitability  
+- deterministic runtime behavior  
+
+---
+
+## Optimized for Multi‑Core and Edge Architectures (Intel‑relevant)
+
+paceval enables deterministic real‑time decision workloads that scale efficiently across multi‑core CPUs and edge systems.
+
+Its predictable runtime behavior and high performance‑per‑watt make it suitable for industrial automation, robotics and edge AI applications.
+
+The runtime can be accelerated via FPGA and integrated into energy‑efficient compute architectures.
+
+---
+
+## Key Capabilities
+
+- deterministic decision model execution  
+- multi‑core parallel scaling  
+- low memory footprint  
+- edge and embedded suitability  
+- reproducible and explainable results  
+- cross‑platform runtime  
+- auditable AI decision logic  
+
+---
+
+## Platforms
+
+Windows • Linux • macOS • ARM • RISC‑V • iOS • Android • Embedded Systems
+
+---
+
+## Programming Languages
+
+C/C++, Python, Rust, Java, Node.js, MATLAB, Julia and many more via FFI.
+
+---
+
+## Getting Started
+
+- Documentation: [paceval.com](https://paceval.com)   
+- SDK & Examples: [Download SDK 4.25](https://paceval.com/product-demo/)  
+- Python Package: [PyPI](https://pypi.org/project/paceval/)
+- API & Cloud APIs: [Documentation & Examples](https://paceval.com/api/)  
+
+---
+
+## Advanced Capabilities
+
+- export neural networks into transparent mathematical expressions  
+- FPGA acceleration and hardware integration  
+- edge deployment without permanent network connectivity  
+- mathematical engine as a service (cloud & on‑device)  
+- deterministic AI for safety‑critical systems  
+
+---
+
+## Keywords & Concepts
+
+deterministic decision engine • explainable AI • real‑time decision computation • edge decision runtime • energy‑efficient computation • performance per watt • predictable latency • transparent decision logic • auditable AI • embedded decision engine • compliance‑ready AI
+
+---
+
+## Related Projects
+
+- Relational Core Identity Framework (RCIF)  
+- NYSE Skyscr8per visualization platform  
+
+---
 
 # <i><b>pace</b>val.</i>
 <b>the system independent mathematical engine</b><br>
