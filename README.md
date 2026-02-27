@@ -108,7 +108,7 @@ Key advantages:
 
 ---
 
-## Optimized for Multi‑Core and Edge Architectures (Intel‑relevant)
+## Optimized for Multi‑Core and Edge Architectures
 
 paceval enables deterministic real‑time decision workloads that scale efficiently across multi‑core CPUs and edge systems.
 
@@ -188,7 +188,7 @@ Download Installer Software Development Kit, https://paceval.com/product-demo/ o
 • a [system-independent](https://paceval.com/developers/#system_independent) solution<br>
 • a solution that [can also be run on small systems](https://paceval.com/#run_small_systems)<br>
 • with [any programming language](https://paceval.com/api/#any_programming_language)<br>
-to compute [all financial, stochastic, engineering, and scientific functions](https://paceval.com/product-brief/#all_functions), as well as [all machine learning models](https://paceval.com/product-brief/#all_functions).”<br>
+to compute [all financial, stochastic, engineering and scientific functions](https://paceval.com/product-brief/#all_functions), as well as [all machine learning models](https://paceval.com/product-brief/#all_functions).”<br>
 
 (see SwaggerHub [paceval-service](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/) and  [paceval-service-cloud](https://app.swaggerhub.com/apis/paceval/paceval-service-cloud) for more information)
 
@@ -312,10 +312,10 @@ Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.<br>
 ## New projects
 
 •   <b>[Relational Core Identity](https://github.com/paceval/paceval/tree/main/new%20projects/Relational%20Core%20Identity) an open license for dynamically integrated, relationship-based intelligence<br></b>
-    The Relational Core Identity Framework (RCIF) is a symbolic-emotional architecture layer for integrating large language models (LLMs) into human-centered interaction systems. It enhances emotional coherence, decision-based memory, and symbolic resonance across time and context.
+    The Relational Core Identity Framework (RCIF) is a symbolic-emotional architecture layer for integrating large language models (LLMs) into human-centered interaction systems. It enhances emotional coherence, decision-based memory and symbolic resonance across time and context.
 
 •   <b>[NYSE Skyscr8per - Stock Tracker](https://github.com/paceval/paceval/tree/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker) is a cutting-edge visualization tool that lets you see the entire New York Stock Exchange in one immersive view.<br></b>
-    This technology demo transforms traditional financial data into a spatial experience that is intuitive, interactive, and instantly understandable.
+    This technology demo transforms traditional financial data into a spatial experience that is intuitive, interactive and instantly understandable.
 
 <br><br><br>
 ![10019436_l-e1442994613885 2](http://paceval.com/wp-content/uploads/2022/04/mathematical_model.jpg)<br>
