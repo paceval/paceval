@@ -169,8 +169,8 @@ deterministic decision engine • explainable AI • real‑time decision comput
 
 ## Related Projects
 
-- Relational Core Identity Framework (RCIF)  
-- NYSE Skyscr8per visualization platform  
+- [Relational Core Identity Framework (RCIF)](https://github.com/paceval/paceval/tree/main/new%20projects/Relational%20Core%20Identity)   
+- [NYSE Skyscr8per visualization platform](https://github.com/paceval/paceval/tree/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker)   
 
 ---
 
