@@ -11,6 +11,9 @@ Deterministic decision runtime for real-time, explainable and energy‑efficient
 ![Cross-Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Embedded-brightgreen)
 ![License: AGPL](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)
 ![Performance](https://img.shields.io/badge/cores-192%2B-orange)
+![Deterministic AI](https://img.shields.io/badge/AI-deterministic-blue)
+![Explainable AI](https://img.shields.io/badge/AI-explainable-green)
+![Edge Computing](https://img.shields.io/badge/compute-edge-orange)
 ![Made in Germany](https://img.shields.io/badge/made%20in-Germany-black)
 
 **paceval.®** is a high‑performance mathematical runtime engine for executing complex decision logic in real time.
@@ -47,7 +50,7 @@ paceval addresses this gap by enabling deterministic execution of decision model
 - Real‑time performance without heavy frameworks  
 - Deterministic execution with predictable latency  
 - Ultra‑low memory footprint  
-- Sc ales across 192+ CPU cores  
+- Scales across 192+ CPU cores  
 - Runs offline – ideal for IoT and edge systems  
 - Transparent and auditable decision logic  
 - Energy‑efficient computation  
@@ -105,6 +108,13 @@ Key advantages:
 - low memory footprint  
 - edge and embedded suitability  
 - deterministic runtime behavior  
+
+---
+
+## How it works
+
+paceval parses mathematical expressions once and converts them into an optimized execution graph.  
+This graph can then be evaluated repeatedly with different inputs, enabling deterministic, parallel and high-performance computation.
 
 ---
 
@@ -192,15 +202,15 @@ to compute [all financial, stochastic, engineering and scientific functions](htt
 
 (see SwaggerHub [paceval-service](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/) and  [paceval-service-cloud](https://app.swaggerhub.com/apis/paceval/paceval-service-cloud) for more information)
 
-## Release-content – paceval.-Software Development Kit [SDK] 4.25
+## Release-content – paceval-Software Development Kit [SDK] 4.25
 developer version – non-commercial use only<br> 
 License - paceval source code GNU Affero General Public License (AGPL) (see [paceval sources (external) documentation](https://github.com/paceval/paceval/tree/main/paceval_sources_documentation-external))<br>
-Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.<br>
+Copyright 2015-2024 paceval[Registered Trade Mark] All rights reserved.<br>
 [Installer paceval-Software Development Kit 4.25](https://github.com/paceval/paceval/raw/main/_released/_Installer%204.25%20Software%20Development%20Kit/paceval-Software_Development_Kit.exe)
 
 •   <b>["demo and examples"](https://github.com/paceval/paceval/tree/main/demo%20and%20examples) folder<br></b>
     includes the executables<br>
-    - paceval. demo application “calculation” (folder "AppCalculation")<br>
+    - paceval demo application “calculation” (folder "AppCalculation")<br>
     - 6 paceval examples (folder "example1" to "example6")<br>
     - example6 is our artificial intelligence example with the identification of handwritten numbers with a transparent (human readable) neural network, see paceval_CNN_functionStringforNumber_0.txt 
     <br>for <br>
@@ -289,8 +299,8 @@ Copyright 2015-2024 paceval.[Registered Trade Mark] All rights reserved.<br>
     - Octave<br>
     - Pascal<br>
     - Perl<br>
-    - PHP (incl. paceval. example)<br>
-    - Python (see above paceval. PyPI distribution package)<br>
+    - PHP (incl. paceval example)<br>
+    - Python (see above paceval PyPI distribution package)<br>
     - R<br>
     - Ruby<br>
     - Rust<br>
