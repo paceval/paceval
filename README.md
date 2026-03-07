@@ -193,7 +193,7 @@ deterministic decision engine • explainable AI • real‑time decision comput
 
 ## Validated in the SPRIN-D New Computing context
 
-paceval was validated through a [SPRIN-D](https://www.sprind.org/en) project focused on faster mathematics with lower energy consumption implemented as a mathematical engine in hardware and software. The work resulted in a reference design, an external feasibility study by [OFFIS](https://www.offis.de/en/offis/about-us.html) and documented methods for converting selected neural networks into transparent mathematical expressions. Read the full [validation report](https://github.com/paceval/paceval/blob/main/research%20and%20development/2023JUL%20Update%202e%20final%20SPRIN-D%20Validierungsauftrag%20-%20Abschlussbericht%20paceval.%20-%20Schnellere%20Mathematik%20mit%20noch%20geringerem%20Stromverbrauch.pdf).
+paceval was validated through a [SPRIN-D](https://www.sprind.org/en) project focused on faster mathematics with lower energy consumption implemented as a mathematical engine in hardware and software. The work resulted in a reference design, an external feasibility study by [OFFIS](https://www.offis.de/en/offis/about-us.html) and documented methods for converting selected neural networks into transparent mathematical expressions. Read the full [validation report](https://github.com/paceval/paceval/tree/main/research%20and%20development).
 
 The work produced:
 - a hardware and software reference design built around ARM and programmable logic
