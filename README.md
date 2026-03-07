@@ -2,10 +2,7 @@
 https://www.paceval.com<br>
 
 # paceval.® 
-## Deterministic Decision Runtime for Real-Time, Explainable and Edge Computation
-
-**Ultra‑short description (GitHub header):**  
-Deterministic decision runtime for real-time, explainable and energy‑efficient computation.
+## a high-performance mathematical runtime for deterministic AI and energy-efficient edge computing.
 
 ![C++](https://img.shields.io/badge/C%2B%2B-17-blue.svg)
 ![Cross-Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Embedded-brightgreen)
@@ -22,7 +19,16 @@ It enables transparent, explainable and energy‑efficient computation across mu
 
 ---
 
-## 🚀 Core Positioning
+## Why paceval exists
+
+Our mission is to make complex computation transparent, predictable and deployable everywhere.
+
+Modern software increasingly relies on complex mathematical models, from artificial intelligence to engineering simulations.
+paceval was created to execute these models deterministically, efficiently and in real time across platforms ranging from embedded devices to large-scale computing systems.
+
+---
+
+## Core Positioning
 
 paceval is a:
 
@@ -31,7 +37,7 @@ paceval is a:
 - real‑time decision computation platform  
 - edge decision runtime  
 - energy‑efficient inference engine  
-- transparent decision logic system  
+- transparent decision logic system
 
 ---
 
@@ -45,7 +51,7 @@ paceval addresses this gap by enabling deterministic execution of decision model
 
 ---
 
-## Why paceval.?
+## Why paceval?
 
 - Real‑time performance without heavy frameworks  
 - Deterministic execution with predictable latency  
@@ -62,13 +68,14 @@ paceval addresses this gap by enabling deterministic execution of decision model
 
 Use paceval when you need:
 
-- deterministic decision logic  
+- deterministic decision logic and execution  
 - explainable and auditable AI decisions  
 - real‑time computation with predictable latency  
 - energy‑efficient execution on edge devices  
 - transparent risk scoring or optimization  
 - safety‑critical or regulated decision systems  
-- embedded decision engine capabilities  
+- trusted interval computing
+- scalable from embedded systems to hyperscale computing
 
 ---
 
@@ -111,7 +118,7 @@ Key advantages:
 
 ---
 
-## How it works
+## How paceval works
 
 paceval parses mathematical expressions once and converts them into an optimized execution graph.  
 This graph can then be evaluated repeatedly with different inputs, enabling deterministic, parallel and high-performance computation.
@@ -181,6 +188,18 @@ deterministic decision engine • explainable AI • real‑time decision comput
 
 - [Relational Core Identity Framework (RCIF)](https://github.com/paceval/paceval/tree/main/new%20projects/Relational%20Core%20Identity)   
 - [NYSE Skyscr8per visualization platform](https://github.com/paceval/paceval/tree/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker)   
+
+---
+
+## Validated in the SPRIN-D New Computing context
+
+paceval was validated through a [SPRIN-D](https://www.sprind.org/en) project focused on faster mathematics with lower energy consumption implemented as [a mathematical engine in hardware and software](https://github.com/paceval/paceval/blob/main/research%20and%20development/2023JUL%20Update%202e%20final%20SPRIN-D%20Validierungsauftrag%20-%20Abschlussbericht%20paceval.%20-%20Schnellere%20Mathematik%20mit%20noch%20geringerem%20Stromverbrauch.pdf).
+
+The work produced:
+- an FPGA-based reference design built around ARM and programmable logic
+- an external feasibility study for hardware implementation
+- documented methods for exporting selected neural networks into transparent closed-form mathematical expressions
+- a clear pathway toward deterministic, explainable and energy-efficient AI execution
 
 ---
 
