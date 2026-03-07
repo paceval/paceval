@@ -57,10 +57,10 @@ paceval addresses this gap by enabling deterministic execution of decision model
 - Deterministic execution with predictable latency  
 - Ultra‑low memory footprint  
 - Scales across 192+ CPU cores  
-- Runs offline – ideal for IoT and edge systems  
+- Runs offline (ideal for IoT and edge systems)
 - Transparent and auditable decision logic  
 - Energy‑efficient computation  
-- Performance per watt optimized  
+- Optimized for performance per watt 
 
 ---
 
