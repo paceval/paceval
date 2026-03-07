@@ -17,6 +17,14 @@ https://www.paceval.com<br>
 
 It enables transparent, explainable and energy‑efficient computation across multi‑core CPUs, edge devices and industrial systems. paceval is designed for applications where predictability, auditability and real‑time performance are critical.
 
+## Research basis
+
+The architecture and positioning of paceval build on work related to:
+- machine learning output adjustment through mathematical functions
+- hardware drivers for efficient arithmetic
+- conversion of selected neural networks into closed-form mathematical expressions
+- FPGA feasibility studies for deterministic mathematical runtime execution
+
 ---
 
 ## Why paceval exists
@@ -44,10 +52,9 @@ paceval is a:
 ## The Problem
 
 Modern AI systems often rely on opaque neural networks that are difficult to explain, audit or deploy efficiently on edge devices.
-
 Industrial, safety‑critical and regulated environments require deterministic, transparent and real‑time decision logic.
 
-paceval addresses this gap by enabling deterministic execution of decision models with predictable latency, full explainability and energy‑efficient computation.
+paceval addresses this gap by enabling deterministic execution of decision models with predictable latency, energy-efficient computation and explicit mathematical control layers. These control layers can contain readable guardrails, thresholds, correction functions and constraints that make decision-relevant logic easier to inspect, version, audit and certify.
 
 ---
 
@@ -60,7 +67,7 @@ paceval addresses this gap by enabling deterministic execution of decision model
 - Runs offline (ideal for IoT and edge systems)
 - Transparent and auditable decision logic  
 - Energy‑efficient computation  
-- Optimized for performance per watt 
+- Optimized for performance per watt
 
 ---
 
@@ -93,15 +100,17 @@ Use paceval when you need:
 
 ## How paceval Differs
 
-Unlike neural network inference frameworks, paceval executes deterministic mathematical models that provide:
+Unlike neural network inference frameworks, paceval executes deterministic mathematical models and explicit mathematical control layers that provide:
 
-- transparent decision logic  
-- predictable runtime behavior  
-- explainable AI decisions  
-- lower energy consumption  
-- compliance‑ready decision processes  
+- transparent decision logic
+- predictable runtime behavior
+- readable guardrails and thresholds
+- auditable correction and post-processing logic
+- lower energy consumption
+- compliance-ready decision processes
 
 Compared to symbolic math systems, paceval focuses on high‑performance execution suitable for real‑time and embedded environments.
+Rather than claiming that every complex neural network automatically becomes fully human-readable, paceval makes the decision-relevant mathematical logic around model behavior explicit, versionable and auditable. 
 
 ---
 
@@ -120,8 +129,10 @@ Key advantages:
 
 ## How paceval works
 
-paceval parses mathematical expressions once and converts them into an optimized execution graph.  
+paceval parses mathematical expressions once and converts them into an optimized execution graph.
 This graph can then be evaluated repeatedly with different inputs, enabling deterministic, parallel and high-performance computation.
+
+The same runtime can also execute readable mathematical guardrails, thresholds, correction functions and constraints around model outputs.
 
 ---
 
