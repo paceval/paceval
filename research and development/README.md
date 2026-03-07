@@ -1,0 +1,1 @@
+# SPRIN-D validation summary (English)
