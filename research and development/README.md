@@ -111,10 +111,6 @@ This makes paceval relevant for:
 - finance
 - regulated and safety-critical systems
 
-This does not imply that every complex neural network can always be reduced to a simple human-readable formula.
-
-The more practical contribution of paceval lies in making the decision-relevant mathematical logic around model behavior explicit. This includes readable guardrails, thresholds, correction functions and other mathematical control layers that can be versioned, audited and executed deterministically. In this sense, paceval strengthens explainability not only through mathematical expressions themselves, but through transparent and controllable execution logic around AI outputs.
-
 ---
 
 ## Strategic significance
@@ -122,10 +118,10 @@ The more practical contribution of paceval lies in making the decision-relevant 
 The project strengthened paceval in three dimensions.
 
 ### Explainability
-Mathematical expressions and exported neural models can be executed in a way that is transparent and easier to audit than conventional black-box inference pipelines.
-paceval does not depend on the assumption that every complex neural network automatically becomes fully human-readable.
+Mathematical expressions and exported neural models can be executed in a way that is more transparent and easier to audit than conventional black-box inference pipelines.
+paceval does not depend on the assumption that every complex neural network automatically becomes fully human-readable. Its practical contribution to explainable AI is more specific: it enables explicit mathematical control layers around model behavior, including readable guardrails, thresholds, correction functions and constraints.
 
-Its practical contribution to explainable AI is more specific: it enables explicit mathematical control layers around model behavior, including readable guardrails, thresholds, correction functions and constraints. These layers are versionable, auditable and deterministic at runtime, which makes decision-relevant logic easier to inspect, validate and certify even when the underlying model remains complex.
+These layers are versionable, auditable and deterministic at runtime, which makes decision-relevant logic easier to inspect, validate and certify even when the underlying model remains complex.
 
 ### Energy efficiency
 The hardware pathway shows strong potential to reduce power consumption significantly for selected workloads.
