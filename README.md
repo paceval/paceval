@@ -172,11 +172,12 @@ C/C++, Python, Rust, Java, Node.js, MATLAB, Julia and many more via FFI.
 
 ## Getting Started
 
-- Documentation: [paceval.com](https://paceval.com)   
-- Software Development Kit: [Download SDK 4.25](https://paceval.com/product-demo/)
-- Example: [simple code example](https://paceval.com/simple-code-example/)
-- Python Package: [PyPI](https://pypi.org/project/paceval/)
-- API & Cloud APIs: [Documentation & Examples](https://paceval.com/api/)  
+- Website: [paceval.com](https://paceval.com)
+- SDK download: [Download SDK 4.25](https://paceval.com/product-demo/)
+- Simple code example: [paceval.com/simple-code-example](https://paceval.com/simple-code-example/)
+- Python package: [PyPI](https://pypi.org/project/paceval/)
+- API and cloud APIs: [Documentation & Examples](https://paceval.com/api/)
+- Source code documentation: [paceval. source-code](https://github.com/paceval/paceval/tree/main/paceval_sources_documentation-external)
 
 ---
 
