@@ -70,7 +70,7 @@ A dedicated expert paper documented a method for converting selected neural netw
 
 This is strategically important because it enables:
 
-- transparent and human-readable model execution
+- more transparent and auditable model execution
 - deterministic inference
 - improved explainability
 - stronger certification and regulatory pathways
