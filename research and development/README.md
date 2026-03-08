@@ -156,3 +156,6 @@ In short, the SPRIN-D work confirmed that paceval can evolve from a software eng
 - paceval [SPRIN-D validation report](https://github.com/paceval/paceval/blob/main/research%20and%20development/2023JUL%20Update%202e%20final%20SPRIN-D%20Validierungsauftrag%20-%20Abschlussbericht%20paceval.%20-%20Schnellere%20Mathematik%20mit%20noch%20geringerem%20Stromverbrauch.pdf)
 - [OFFIS](https://www.offis.de/en/offis/about-us.html) feasibility study on FPGA implementation  
 - Expert paper on [converting neural networks into closed mathematical expressions](https://github.com/paceval/paceval/tree/main/paceval%20and%20artificial%20intelligence)
+
+Copyright © 2015-2026 paceval.® All rights reserved.<br>
+mailto:info@paceval.com
