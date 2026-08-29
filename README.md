@@ -335,7 +335,7 @@ Copyright © paceval.® All rights reserved.<br>
    
 •   <b>["examples_sources"](https://github.com/paceval/paceval/tree/main/examples_sources) folder<br></b>
     includes source-code, project files and executables of the demo and<br> 
-    examples (see "demo and examples" folder)<br>
+    examples (see "demo and examples" folder)<br><br>
     for C++ and compilers<br>
     - Apple Xcode (64bit)<br>
     - Microsoft Visual Studio (Windows 64bit and 32bit) (including paceval_server)<br>
@@ -347,10 +347,10 @@ Copyright © paceval.® All rights reserved.<br>
     - Eclipse/GCC (ARM32 32bit)<br><br>
     for Node.js - paceval-service is the Linux mathematical server for APPLE, ARM64, ARM32, Intel and AMD processors<br>
      this includes the ["Guide for deploying the Kubernetes native paceval-service on any cluster"](https://github.com/paceval/paceval/blob/main/examples_sources/NodeJS_examples/k8s/doc/Readme.md)<br><br>
-     for MCP / AI Agents and LLMs - the [**paceval. MCP Server**](https://github.com/paceval/paceval/tree/main/examples_sources/MCP_server) provides access to the paceval. Mathematical Engine through the **Model Context Protocol (MCP)**. It allows MCP-capable AI agents and Large Language Models to perform deterministic mathematical calculations, create reusable computation objects, reuse computation handles for new input values, execute batch calculations and optionally use Trusted Interval Computation.
+     for MCP / AI Agents and LLMs - the [**paceval. MCP Server**](https://github.com/paceval/paceval/tree/main/examples_sources/MCP_server) provides access to the paceval. Mathematical Engine through the **Model Context Protocol (MCP)**. It allows MCP-capable AI agents and Large Language Models to perform deterministic mathematical calculations, create reusable computation objects, reuse computation handles for new input values, execute batch calculations and optionally use Trusted Interval Computation.<br>
   **Public MCP endpoint:** `https://mcp.paceval-service.com/mcp`  
-  **Transport:** `Streamable HTTP`<br>
-    for Python - the [PyPI distribution package "paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)"](https://github.com/paceval/paceval/blob/main/examples_sources/Python_examples/paceval%20with%20Python-the%20Mathematical%20Engine%20as%20a%20Service%20(e.g.%20for%20multi-party%20computations).pdf)<br>
+  **Transport:** `Streamable HTTP`<br><br>
+    for Python - the [PyPI distribution package "paceval with Python - the Mathematical Engine as a Service (e.g. for multi-party computations)"](https://github.com/paceval/paceval/blob/main/examples_sources/Python_examples/paceval%20with%20Python-the%20Mathematical%20Engine%20as%20a%20Service%20(e.g.%20for%20multi-party%20computations).pdf)<br><br>
     for PHP - a simple mathematical engine, e.g. to offload battery-operated IoT devices and other examples<br>
     
 •   <b>[other programming languages](https://paceval.com/api/#any_programming_language) via Foreign function interface (FFI)<br></b>
