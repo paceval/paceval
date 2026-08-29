@@ -136,6 +136,45 @@ The same runtime can also execute readable mathematical guardrails, thresholds, 
 
 ---
 
+## MCP Server for AI Agents and LLMs
+
+paceval. can also be used directly by AI agents and Large Language Models through the **Model Context Protocol (MCP)**.
+
+The paceval MCP Server exposes the Mathematical Engine as standardized tools for deterministic mathematical execution. An agent can create a mathematical computation once, receive a reusable computation handle and subsequently evaluate the same computation with new input values without retransmitting and analyzing the complete mathematical expression again.
+
+Key capabilities include:
+
+* deterministic mathematical execution
+* reusable computation objects and handles
+* batch evaluation of multiple value sets
+* evaluation of multiple computations
+* optional Trusted Interval Computation
+* structured error information for AI agents
+
+**Public MCP endpoint:**  
+`https://mcp.paceval-service.com/mcp`
+
+**Transport:**  
+`Streamable HTTP`
+
+**MCP Server source code:**  
+[examples_sources/MCP_server](https://github.com/paceval/paceval/tree/main/examples_sources/MCP_server)
+
+**REST API and MCP documentation:**  
+[paceval-service on SwaggerHub](https://app.swaggerhub.com/apis-docs/paceval/paceval-service/4.25)
+
+The basic concept is:
+
+`AI Agent / LLM -> MCP -> paceval. Mathematical Engine -> deterministic result`
+
+For repeated calculations:
+
+`mathematical expression -> create computation -> handle -> repeated or batch evaluations`
+
+This allows AI agents to focus on understanding and orchestrating a task while paceval. performs the numerical execution.
+
+---
+
 ## Optimized for Multi‑Core and Edge Architectures
 
 paceval enables deterministic real‑time decision workloads that scale efficiently across multi‑core CPUs and edge systems.
@@ -177,6 +216,7 @@ C/C++, Python, Rust, Java, Node.js, MATLAB, Julia and many more via FFI.
 - Simple code example: [paceval.com/simple-code-example](https://paceval.com/simple-code-example/)
 - Python package: [PyPI](https://pypi.org/project/paceval/)
 - API and cloud APIs: [Documentation & Examples](https://paceval.com/api/)
+- MCP Server for AI Agents and LLMs: [paceval MCP Server](https://github.com/paceval/paceval/tree/main/examples_sources/MCP_server)
 - Source code documentation: [paceval. source-code](https://github.com/paceval/paceval/tree/main/paceval_sources_documentation-external)
 
 ---
