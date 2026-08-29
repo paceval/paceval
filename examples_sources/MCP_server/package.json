@@ -1,0 +1,36 @@
+{
+  "name": "paceval-mcp-server",
+  "version": "4.25",
+  "description": "MCP Streamable HTTP server for the paceval. mathematical engine, compatible with the paceval standard service API 4.25",
+  "main": "paceval-server-ext-mcp.js",
+  "scripts": {
+    "start": "node paceval-server-ext-mcp.js",
+    "check": "node --check paceval-server-ext-mcp.js",
+    "pm2:start": "pm2 start ./paceval-server-ext-mcp.js --name paceval-mcp --node-args=\"--max-old-space-size=6144\" --max-memory-restart 6G",
+    "pm2:restart": "pm2 restart paceval-mcp --update-env",
+    "pm2:logs": "pm2 logs paceval-mcp"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paceval"
+  },
+  "keywords": [
+    "paceval",
+    "mcp",
+    "model-context-protocol",
+    "mathematical",
+    "engine",
+    "agent",
+    "llm"
+  ],
+  "author": "paceval.",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.0.0",
+    "@modelcontextprotocol/node": "^2.0.0",
+    "zod": "^4.4.3"
+  }
+}
