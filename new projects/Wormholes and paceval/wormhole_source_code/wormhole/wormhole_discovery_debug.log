@@ -1,0 +1,643 @@
+[+0.000s] [INFO]  [INIT] Calling paceval_InitializeLibrary...
+[+0.086s] [INFO]  [INIT] paceval initialized successfully
+[+0.088s] [INFO]  ============================================================
+[+0.088s] [INFO]   paceval AUTONOMOUS WORMHOLE GEOMETRY DISCOVERY
+[+0.089s] [INFO]  ============================================================
+[+0.089s] [INFO]  Run tag       : 1793399222220
+[+0.090s] [INFO]  Seed          : 20261029
+[+0.090s] [INFO]  Population    : 20
+[+0.091s] [INFO]  Investigations: 100
+[+0.091s] [INFO]  Default start : no arguments needed
+[+0.092s] [INFO]  Generations   : 100
+[+0.092s] [INFO]  Elite         : 4
+[+0.093s] [INFO]  Max tree depth: 5
+[+0.094s] [INFO]  Coarse points : 72
+[+0.096s] [INFO]  Fine points   : 1200
+[+0.097s] [INFO]  TINC          : enabled
+[+0.097s] [INFO]  Adaptive TINC additional points: 256
+[+0.097s] [INFO]  Adaptive TINC wave size: 16
+[+0.098s] [INFO]  TINC batch size: 128 (user configurable; benchmark before optimizing)
+[+0.098s] [INFO]  Hardware threads (hint): 6
+[+0.099s] [INFO]  Batch evaluation: paceval_dGetComputationResultExt; 6 handles/candidate
+[+0.099s] [INFO]  Debug log     : wormhole_discovery_debug.log
+[+0.100s] [INFO]  [SIGN TEST] Checking equivalent formulas at r=1...
+[+0.101s] [INFO]  [SIGN TEST] (0-1) result=-1 expected=-1
+[+0.107s] [INFO]  [SIGN TEST] ((0-1)/(r*r)) result=-1 expected=-1
+[+0.118s] [INFO]  [SIGN TEST] (0-(1/(r*r))) result=-1 expected=-1
+[+0.119s] [INFO]  [SIGN TEST] (1/r) result=1 expected=1
+[+0.126s] [INFO]  [SIGN TEST] ((0-2)/(r*r*r)) result=-2 expected=-2
+[+0.127s] [INFO]  Pre-flight: evaluating analytic baseline b=1/r, Phi=0...
+[+0.127s] [INFO]  [DIAG BEGIN] evaluateGenome: radial_points=72
+[+0.129s] [DEBUG] shape core U(q) = (0)
+[+0.130s] [DEBUG] redshift V(q)   = (0)
+[+0.171s] [TRACE] b(r)   = ((1)/(r))
+[+0.171s] [TRACE] Phi(r) = 0
+[+0.171s] [INFO]  [CREATE BEGIN] index=0 name=b length=9 tinc=0
+[+0.214s] [DEBUG] [CREATE EXPR] b = ((1)/(r))
+[+0.251s] [INFO]  [CREATE TIME] b seconds=3.01e-05
+[+0.293s] [INFO]  [CREATE END] b SUCCESS
+[+0.336s] [INFO]  [CREATE BEGIN] index=1 name=b_prime length=21 tinc=0
+[+0.373s] [DEBUG] [CREATE EXPR] b_prime = ((0)-(((1)/((r*r)))))
+[+0.413s] [INFO]  [CREATE TIME] b_prime seconds=3.8000000000000002e-05
+[+0.464s] [INFO]  [CREATE END] b_prime SUCCESS
+[+0.500s] [INFO]  [CREATE BEGIN] index=3 name=Phi length=1 tinc=0
+[+0.537s] [DEBUG] [CREATE EXPR] Phi = 0
+[+0.579s] [INFO]  [CREATE TIME] Phi seconds=2.41e-05
+[+0.629s] [INFO]  [CREATE END] Phi SUCCESS
+[+0.682s] [INFO]  [CREATE BEGIN] index=9 name=8pi_NEC length=31 tinc=0
+[+0.686s] [DEBUG] [CREATE EXPR] 8pi_NEC = ((((0)-(((2)/(r)))))/((r*r*r)))
+[+0.735s] [INFO]  [CREATE TIME] 8pi_NEC seconds=9.6000000000000002e-05
+[+0.735s] [INFO]  [CREATE END] 8pi_NEC SUCCESS
+[+0.782s] [INFO]  [CREATE BEGIN] index=10 name=Ricci_R length=73 tinc=0
+[+0.786s] [DEBUG] [CREATE EXPR] Ricci_R = ((((4)*(((((0)-(((2)/(r)))))/((2*r*r*r))))))+(((2)*(((1)/((r*r*r*r)))))))
+[+0.834s] [INFO]  [CREATE TIME] Ricci_R seconds=7.9800000000000002e-05
+[+0.834s] [INFO]  [CREATE END] Ricci_R SUCCESS
+[+0.879s] [INFO]  [CREATE BEGIN] index=11 name=Kretschmann_K length=137 tinc=0
+[+0.880s] [DEBUG] [CREATE EXPR] Kretschmann_K = ((4)*(((((2)*(((((((0)-(((2)/(r)))))/((2*r*r*r))))*(((((0)-(((2)/(r)))))/((2*r*r*r))))))))+(((((1)/((r*r*r*r))))*(((1)/((r*r*r*r)))))))))
+[+0.917s] [INFO]  [CREATE TIME] Kretschmann_K seconds=0.0001182
+[+0.921s] [INFO]  [CREATE END] Kretschmann_K SUCCESS
+[+1.007s] [DEBUG] [EVAL] b_prime r=1 value=-1
+[+1.009s] [INFO]  [THROAT] b_prime(1)=-1 expected baseline=-1
+[+1.306s] [INFO]  [BATCH] points=72 functions=5 seconds=0.29708420000000002
+[+1.309s] [INFO]  [DIAG END] valid=1 score=0.97687612358738229 minNEC8=-1.9999992000001996 maxK=11.999990400004314 minExterior=1.9999997014075177e-07
+[+1.310s] [INFO]  Baseline passed. b'(1)=-1 minNEC8=-1.9999992000001996 maxK=11.999990400004314
+[+1.353s] [INFO]  Pre-flight: symbolic derivative sanity check...
+[+1.946s] [INFO]  Derivative sanity worst relative error = 7.9783180062520387e-11
+[+1.949s] [INFO]  Derivative sanity passed.
+[+1.986s] [INFO]  [VALIDATION] Stage 1 START: 12 analytic fields, tensor identities, TINC scalar/batch regression
+[+1.987s] [INFO]  [VALIDATION CASE] Ellis-type baseline U=0,V=0
+[+2.023s] [INFO]  [VALIDATION EXPRESSION] Ellis-type baseline U=0,V=0 b_prime=((0)-(((1)/((r*r))))) length=21
+[+4.373s] [INFO]  [VALIDATION PASS] Ellis-type baseline U=0,V=0 all 12 fields, scalar and batch TINC
+[+4.376s] [INFO]  [VALIDATION CASE] Nonzero redshift U=0,V=-0.75
+[+4.377s] [INFO]  [VALIDATION EXPRESSION] Nonzero redshift U=0,V=-0.75 b_prime=((0)-(((1)/((r*r))))) length=21
+[+8.299s] [INFO]  [VALIDATION PASS] Nonzero redshift U=0,V=-0.75 all 12 fields, scalar and batch TINC
+[+8.302s] [INFO]  [VALIDATION CASE] Nontrivial shape U=0.5,V=0.25
+[+8.302s] [INFO]  [VALIDATION EXPRESSION] Nontrivial shape U=0.5,V=0.25 b_prime=(((((((1/(r*r)))*((0.5))))/(r)))-(((((1)+(((((r-1)/r))*((0.5))))))/((r*r))))) length=77
+[+13.028s] [INFO]  [VALIDATION PASS] Nontrivial shape U=0.5,V=0.25 all 12 fields, scalar and batch TINC
+[+13.031s] [INFO]  [VALIDATION PASS] Stage 1: double=324 TINC_batch=216 TINC_scalar=216 seconds=11.0443373
+[+13.060s] [INFO]  [VALIDATION NOTE] Sampled TINC intervals do not establish continuum validity.
+[+13.096s] [DEBUG] Investigation 1/100 START (generation 0, candidate 0)
+[+13.648s] [DEBUG] Investigation 1/100 END: accepted score=2.8471604532565151 nodes=4
+[+13.651s] [DEBUG] Investigation 2/100 START (generation 0, candidate 1)
+[+14.208s] [DEBUG] Investigation 2/100 END: accepted score=0.48287320975015374 nodes=13
+[+14.210s] [DEBUG] Investigation 3/100 START (generation 0, candidate 2)
+[+14.847s] [DEBUG] Investigation 3/100 END: accepted score=2.7970129056327329 nodes=22
+[+14.850s] [DEBUG] Investigation 4/100 START (generation 0, candidate 3)
+[+15.351s] [DEBUG] Investigation 4/100 END: accepted score=2.7061313763696138 nodes=2
+[+15.353s] [DEBUG] Investigation 5/100 START (generation 0, candidate 4)
+[+16.134s] [DEBUG] Investigation 5/100 END: accepted score=0.97531157517229949 nodes=20
+[+16.136s] [DEBUG] Investigation 6/100 START (generation 0, candidate 5)
+[+17.029s] [DEBUG] Investigation 6/100 END: accepted score=5.21224878303775 nodes=32
+[+17.032s] [DEBUG] Investigation 7/100 START (generation 0, candidate 6)
+[+17.537s] [DEBUG] Investigation 7/100 END: accepted score=0.8342376971477945 nodes=6
+[+17.540s] [DEBUG] Investigation 8/100 START (generation 0, candidate 7)
+[+18.144s] [DEBUG] Investigation 8/100 END: accepted score=3.8406829841966736 nodes=19
+[+18.147s] [DEBUG] Investigation 9/100 START (generation 0, candidate 8)
+[+18.718s] [DEBUG] Investigation 9/100 END: accepted score=0.1262646616193443 nodes=34
+[+18.721s] [DEBUG] Investigation 10/100 START (generation 0, candidate 9)
+[+19.276s] [DEBUG] Investigation 10/100 END: accepted score=3.9280470240744347 nodes=9
+[+19.279s] [DEBUG] Investigation 11/100 START (generation 0, candidate 10)
+[+19.871s] [DEBUG] Investigation 11/100 END: accepted score=4.1749930834037476 nodes=26
+[+19.873s] [DEBUG] Investigation 12/100 START (generation 0, candidate 11)
+[+20.376s] [DEBUG] Investigation 12/100 END: accepted score=1.5760180249524582 nodes=10
+[+20.379s] [DEBUG] Investigation 13/100 START (generation 0, candidate 12)
+[+20.930s] [DEBUG] Investigation 13/100 END: accepted score=0.36698355097668145 nodes=23
+[+20.933s] [DEBUG] Investigation 14/100 START (generation 0, candidate 13)
+[+21.447s] [DEBUG] Investigation 14/100 END: accepted score=5.0555281868225048 nodes=2
+[+21.450s] [DEBUG] Investigation 15/100 START (generation 0, candidate 14)
+[+22.170s] [DEBUG] Investigation 15/100 END: accepted score=0.33047214746191017 nodes=34
+[+22.173s] [DEBUG] Investigation 16/100 START (generation 0, candidate 15)
+[+22.782s] [DEBUG] Investigation 16/100 END: accepted score=1.2793914245683982 nodes=21
+[+22.784s] [DEBUG] Investigation 17/100 START (generation 0, candidate 16)
+[+23.303s] [DEBUG] Investigation 17/100 END: accepted score=13.284326801444028 nodes=6
+[+23.305s] [DEBUG] Investigation 18/100 START (generation 0, candidate 17)
+[+24.062s] [DEBUG] Investigation 18/100 END: accepted score=0.75791848025592023 nodes=38
+[+24.064s] [DEBUG] Investigation 19/100 START (generation 0, candidate 18)
+[+24.610s] [DEBUG] Investigation 19/100 END: accepted score=2.9355384622507992 nodes=6
+[+24.613s] [DEBUG] Investigation 20/100 START (generation 0, candidate 19)
+[+25.232s] [DEBUG] Investigation 20/100 END: accepted score=1.215167636606336 nodes=15
+[+25.235s] [INFO]  ------------------------------------------------------------
+[+25.235s] [INFO]  Generation 0 evaluated in 12.138929600000001 s
+[+25.265s] [INFO]  Reject statistics: accepted=20 create=0 nonfinite=0 throat=0 exterior=0 curvature=0 redshift=0 complexity=0
+[+25.266s] [INFO]  Valid population: 20 / 20
+[+25.297s] [INFO]  GEN 0 BEST score=1.2626466162e-01 negNEC=1.2554180768e-01 bp0=-1.0923446763e+00 max|R|=5.9820008722e+00 maxK=2.7175372816e+01 nodes=34
+[+25.330s] [DEBUG] BEST U(q)=((((((((cos((0.83011919018593838)))/sqrt(1+(cos((0.83011919018593838)))*(cos((0.83011919018593838))))))/(1+((((((0.96717843115939595))-(((r-1)/r))))-((0-0.90062027351876162))))*((((((0.96717843115939595))-(((r-1)/r))))-((0-0.90062027351876162)))))))*(((sin(((((r-1)/r))-((0.89268746136294519)))))-((((((0-0.047020455274897073))/sqrt(1+((0-0.047020455274897073))*((0-0.047020455274897073)))))/(1+(exp((0-(((0.83818923010178559))*((0.83818923010178559))))))*(exp((0-(((0.83818923010178559))*((0.83818923010178559)))))))))))))-(((((((((((r-1)/r))-((0-0.53564607143707577))))*(((((r-1)/r))/(1+((0.37800710245239921))*((0.37800710245239921)))))))-(((r-1)/r))))/(1+(cos((1.8374950556316465)))*(cos((1.8374950556316465)))))))
+[+25.366s] [DEBUG] BEST V(q)=(0-1.8148603449638512)
+[+25.402s] [INFO]  [PARETO GENERATION] nondominated=7 (NEC and sampled static tidal curvature)
+[+25.433s] [INFO]  *** NEW ALL-TIME CHAMPION ***
+[+25.468s] [INFO]  U(q) = ((((((((cos((0.83011919018593838)))/sqrt(1+(cos((0.83011919018593838)))*(cos((0.83011919018593838))))))/(1+((((((0.96717843115939595))-(((r-1)/r))))-((0-0.90062027351876162))))*((((((0.96717843115939595))-(((r-1)/r))))-((0-0.90062027351876162)))))))*(((sin(((((r-1)/r))-((0.89268746136294519)))))-((((((0-0.047020455274897073))/sqrt(1+((0-0.047020455274897073))*((0-0.047020455274897073)))))/(1+(exp((0-(((0.83818923010178559))*((0.83818923010178559))))))*(exp((0-(((0.83818923010178559))*((0.83818923010178559)))))))))))))-(((((((((((r-1)/r))-((0-0.53564607143707577))))*(((((r-1)/r))/(1+((0.37800710245239921))*((0.37800710245239921)))))))-(((r-1)/r))))/(1+(cos((1.8374950556316465)))*(cos((1.8374950556316465)))))))
+[+25.506s] [INFO]  V(q) = (0-1.8148603449638512)
+[+25.543s] [DEBUG] b(r)   = ((((1)+(((((r-1)/r))*(((((((((cos((0.83011919018593838)))/(sqrt(((1)+(((cos((0.83011919018593838)))*(cos((0.83011919018593838))))))))))*(((1)/(((1)+((((((((0.96717843115939595))-(((r-1)/r))))-((0-0.90062027351876162))))*((((((0.96717843115939595))-(((r-1)/r))))-((0-0.90062027351876162))))))))))))*(((sin(((((r-1)/r))-((0.89268746136294519)))))-((((((0-0.047020455274897073))/(sqrt(((1)+((((0-0.047020455274897073))*((0-0.047020455274897073)))))))))*(((1)/(((1)+(((exp((0-((((0.83818923010178559))*((0.83818923010178559)))))))*(exp((0-((((0.83818923010178559))*((0.83818923010178559)))))))))))))))))))-(((((((((((r-1)/r))-((0-0.53564607143707577))))*(((((r-1)/r))*(((1)/(((1)+((((0.37800710245239921))*((0.37800710245239921))))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.8374950556316465)))*(cos((1.8374950556316465)))))))))))))))))/(r))
+[+25.579s] [DEBUG] Phi(r) = (((1/r))*((0-1.8148603449638512)))
+[+25.616s] [INFO]  Checkpoint written for generation 1
+[+25.661s] [DEBUG] Investigation 21/100 START (generation 1, candidate 4)
+[+26.282s] [DEBUG] Investigation 21/100 END: accepted score=0.21335503392921654 nodes=22
+[+26.284s] [DEBUG] Investigation 22/100 START (generation 1, candidate 5)
+[+27.006s] [DEBUG] Investigation 22/100 END: accepted score=0.8023769367165583 nodes=29
+[+27.008s] [DEBUG] Investigation 23/100 START (generation 1, candidate 6)
+[+27.680s] [DEBUG] Investigation 23/100 END: accepted score=0.5284998729986653 nodes=55
+[+27.683s] [DEBUG] Investigation 24/100 START (generation 1, candidate 7)
+[+28.213s] [DEBUG] Investigation 24/100 END: accepted score=3.0592391660755296 nodes=15
+[+28.215s] [DEBUG] Investigation 25/100 START (generation 1, candidate 8)
+[+28.789s] [DEBUG] Investigation 25/100 END: accepted score=0.23012823621874426 nodes=17
+[+28.791s] [DEBUG] Investigation 26/100 START (generation 1, candidate 9)
+[+29.315s] [DEBUG] Investigation 26/100 END: accepted score=1.0035471925529613 nodes=7
+[+29.317s] [DEBUG] Investigation 27/100 START (generation 1, candidate 10)
+[+29.891s] [DEBUG] Investigation 27/100 END: accepted score=0.12005671247051779 nodes=34
+[+29.893s] [DEBUG] Investigation 28/100 START (generation 1, candidate 11)
+[+30.484s] [DEBUG] Investigation 28/100 END: accepted score=1.738745443009087 nodes=21
+[+30.486s] [DEBUG] Investigation 29/100 START (generation 1, candidate 12)
+[+31.078s] [DEBUG] Investigation 29/100 END: accepted score=2.3704540966965739 nodes=15
+[+31.080s] [DEBUG] Investigation 30/100 START (generation 1, candidate 13)
+[+31.692s] [DEBUG] Investigation 30/100 END: accepted score=1.5110616329866022 nodes=29
+[+31.695s] [DEBUG] Investigation 31/100 START (generation 1, candidate 14)
+[+32.345s] [DEBUG] Investigation 31/100 END: accepted score=1.1910673376198255 nodes=34
+[+32.347s] [DEBUG] Investigation 32/100 START (generation 1, candidate 15)
+[+32.958s] [DEBUG] Investigation 32/100 END: accepted score=0.2607664175090284 nodes=21
+[+32.961s] [DEBUG] Investigation 33/100 START (generation 1, candidate 16)
+[+33.505s] [DEBUG] Investigation 33/100 END: accepted score=5.0245325474342399 nodes=21
+[+33.508s] [DEBUG] Investigation 34/100 START (generation 1, candidate 17)
+[+34.054s] [DEBUG] Investigation 34/100 END: accepted score=3.0440200429417059 nodes=4
+[+34.056s] [DEBUG] Investigation 35/100 START (generation 1, candidate 18)
+[+34.679s] [DEBUG] Investigation 35/100 END: accepted score=1.5163596444712328 nodes=38
+[+34.682s] [DEBUG] Investigation 36/100 START (generation 1, candidate 19)
+[+35.258s] [DEBUG] Investigation 36/100 END: accepted score=1.3939660100872397 nodes=3
+[+35.260s] [INFO]  ------------------------------------------------------------
+[+35.261s] [INFO]  Generation 1 evaluated in 9.5990789000000003 s
+[+35.290s] [INFO]  Reject statistics: accepted=20 create=0 nonfinite=0 throat=0 exterior=0 curvature=0 redshift=0 complexity=0
+[+35.317s] [INFO]  Valid population: 20 / 20
+[+35.351s] [INFO]  GEN 1 BEST score=1.2005671247e-01 negNEC=1.1932952049e-01 bp0=-1.0891157799e+00 max|R|=6.2093417397e+00 maxK=2.8978643334e+01 nodes=34
+[+35.383s] [DEBUG] BEST U(q)=((((((((cos((0.71722789821919419)))/sqrt(1+(cos((0.71722789821919419)))*(cos((0.71722789821919419))))))/(1+((((((1.0232633274296634))-(((r-1)/r))))-((0-0.90995223337508524))))*((((((1.0232633274296634))-(((r-1)/r))))-((0-0.90995223337508524)))))))*(((sin(((((r-1)/r))-((0.87069765353713557)))))-((((((0-0.083370430096856601))/sqrt(1+((0-0.083370430096856601))*((0-0.083370430096856601)))))/(1+(exp((0-(((0.76323078649434295))*((0.76323078649434295))))))*(exp((0-(((0.76323078649434295))*((0.76323078649434295)))))))))))))-(((((((((((r-1)/r))-((0-0.50315335223366198))))*(((((r-1)/r))/(1+((0.19382604398438222))*((0.19382604398438222)))))))-(((r-1)/r))))/(1+(cos((1.9100627575256262)))*(cos((1.9100627575256262)))))))
+[+35.419s] [DEBUG] BEST V(q)=(0-1.9295780580956239)
+[+35.455s] [INFO]  [PARETO GENERATION] nondominated=8 (NEC and sampled static tidal curvature)
+[+35.487s] [INFO]  *** NEW ALL-TIME CHAMPION ***
+[+35.519s] [INFO]  U(q) = ((((((((cos((0.71722789821919419)))/sqrt(1+(cos((0.71722789821919419)))*(cos((0.71722789821919419))))))/(1+((((((1.0232633274296634))-(((r-1)/r))))-((0-0.90995223337508524))))*((((((1.0232633274296634))-(((r-1)/r))))-((0-0.90995223337508524)))))))*(((sin(((((r-1)/r))-((0.87069765353713557)))))-((((((0-0.083370430096856601))/sqrt(1+((0-0.083370430096856601))*((0-0.083370430096856601)))))/(1+(exp((0-(((0.76323078649434295))*((0.76323078649434295))))))*(exp((0-(((0.76323078649434295))*((0.76323078649434295)))))))))))))-(((((((((((r-1)/r))-((0-0.50315335223366198))))*(((((r-1)/r))/(1+((0.19382604398438222))*((0.19382604398438222)))))))-(((r-1)/r))))/(1+(cos((1.9100627575256262)))*(cos((1.9100627575256262)))))))
+[+35.555s] [INFO]  V(q) = (0-1.9295780580956239)
+[+35.590s] [DEBUG] b(r)   = ((((1)+(((((r-1)/r))*(((((((((cos((0.71722789821919419)))/(sqrt(((1)+(((cos((0.71722789821919419)))*(cos((0.71722789821919419))))))))))*(((1)/(((1)+((((((((1.0232633274296634))-(((r-1)/r))))-((0-0.90995223337508524))))*((((((1.0232633274296634))-(((r-1)/r))))-((0-0.90995223337508524))))))))))))*(((sin(((((r-1)/r))-((0.87069765353713557)))))-((((((0-0.083370430096856601))/(sqrt(((1)+((((0-0.083370430096856601))*((0-0.083370430096856601)))))))))*(((1)/(((1)+(((exp((0-((((0.76323078649434295))*((0.76323078649434295)))))))*(exp((0-((((0.76323078649434295))*((0.76323078649434295)))))))))))))))))))-(((((((((((r-1)/r))-((0-0.50315335223366198))))*(((((r-1)/r))*(((1)/(((1)+((((0.19382604398438222))*((0.19382604398438222))))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.9100627575256262)))*(cos((1.9100627575256262)))))))))))))))))/(r))
+[+35.624s] [DEBUG] Phi(r) = (((1/r))*((0-1.9295780580956239)))
+[+35.659s] [INFO]  Checkpoint written for generation 2
+[+35.692s] [DEBUG] Investigation 37/100 START (generation 2, candidate 4)
+[+36.363s] [DEBUG] Investigation 37/100 END: accepted score=0.4017479241432465 nodes=44
+[+36.366s] [DEBUG] Investigation 38/100 START (generation 2, candidate 5)
+[+36.970s] [DEBUG] Investigation 38/100 END: accepted score=0.28156844259751984 nodes=29
+[+36.972s] [DEBUG] Investigation 39/100 START (generation 2, candidate 6)
+[+37.517s] [DEBUG] Investigation 39/100 END: accepted score=0.65441236569819994 nodes=4
+[+37.520s] [DEBUG] Investigation 40/100 START (generation 2, candidate 7)
+[+38.084s] [DEBUG] Investigation 40/100 END: accepted score=0.6528148979140892 nodes=21
+[+38.087s] [DEBUG] Investigation 41/100 START (generation 2, candidate 8)
+[+38.696s] [DEBUG] Investigation 41/100 END: accepted score=3.7388131119803045 nodes=36
+[+38.699s] [DEBUG] Investigation 42/100 START (generation 2, candidate 9)
+[+39.316s] [DEBUG] Investigation 42/100 END: accepted score=2.8433515629303581 nodes=34
+[+39.318s] [DEBUG] Investigation 43/100 START (generation 2, candidate 10)
+[+39.895s] [DEBUG] Investigation 43/100 END: accepted score=0.43931233287642468 nodes=15
+[+39.898s] [DEBUG] Investigation 44/100 START (generation 2, candidate 11)
+[+40.450s] [DEBUG] Investigation 44/100 END: accepted score=0.29552509004256994 nodes=7
+[+40.452s] [DEBUG] Investigation 45/100 START (generation 2, candidate 12)
+[+41.100s] [DEBUG] Investigation 45/100 END: accepted score=2.7751875134592661 nodes=42
+[+41.102s] [DEBUG] Investigation 46/100 START (generation 2, candidate 13)
+[+41.751s] [DEBUG] Investigation 46/100 END: accepted score=0.52167255764407783 nodes=17
+[+41.754s] [DEBUG] Investigation 47/100 START (generation 2, candidate 14)
+[+42.405s] [DEBUG] Investigation 47/100 END: accepted score=3.4624647036544869 nodes=11
+[+42.408s] [DEBUG] Investigation 48/100 START (generation 2, candidate 15)
+[+42.973s] [DEBUG] Investigation 48/100 END: accepted score=3.0457735788775526 nodes=2
+[+42.975s] [DEBUG] Investigation 49/100 START (generation 2, candidate 16)
+[+43.679s] [DEBUG] Investigation 49/100 END: accepted score=2.8995332692749658 nodes=24
+[+43.682s] [DEBUG] Investigation 50/100 START (generation 2, candidate 17)
+[+44.423s] [DEBUG] Investigation 50/100 END: accepted score=4.076654890174563 nodes=25
+[+44.425s] [DEBUG] Investigation 51/100 START (generation 2, candidate 18)
+[+45.161s] [DEBUG] Investigation 51/100 END: accepted score=0.37637061953498635 nodes=21
+[+45.164s] [DEBUG] Investigation 52/100 START (generation 2, candidate 19)
+[+46.004s] [DEBUG] Investigation 52/100 END: accepted score=0.36181469379798775 nodes=19
+[+46.006s] [INFO]  ------------------------------------------------------------
+[+46.006s] [INFO]  Generation 2 evaluated in 10.3138098 s
+[+46.033s] [INFO]  Reject statistics: accepted=20 create=0 nonfinite=0 throat=0 exterior=0 curvature=0 redshift=0 complexity=0
+[+46.064s] [INFO]  Valid population: 20 / 20
+[+46.094s] [INFO]  GEN 2 BEST score=1.2005671247e-01 negNEC=1.1932952049e-01 bp0=-1.0891157799e+00 max|R|=6.2093417397e+00 maxK=2.8978643334e+01 nodes=34
+[+46.127s] [DEBUG] BEST U(q)=((((((((cos((0.71722789821919419)))/sqrt(1+(cos((0.71722789821919419)))*(cos((0.71722789821919419))))))/(1+((((((1.0232633274296634))-(((r-1)/r))))-((0-0.90995223337508524))))*((((((1.0232633274296634))-(((r-1)/r))))-((0-0.90995223337508524)))))))*(((sin(((((r-1)/r))-((0.87069765353713557)))))-((((((0-0.083370430096856601))/sqrt(1+((0-0.083370430096856601))*((0-0.083370430096856601)))))/(1+(exp((0-(((0.76323078649434295))*((0.76323078649434295))))))*(exp((0-(((0.76323078649434295))*((0.76323078649434295)))))))))))))-(((((((((((r-1)/r))-((0-0.50315335223366198))))*(((((r-1)/r))/(1+((0.19382604398438222))*((0.19382604398438222)))))))-(((r-1)/r))))/(1+(cos((1.9100627575256262)))*(cos((1.9100627575256262)))))))
+[+46.161s] [DEBUG] BEST V(q)=(0-1.9295780580956239)
+[+46.204s] [INFO]  [PARETO GENERATION] nondominated=9 (NEC and sampled static tidal curvature)
+[+46.257s] [INFO]  Checkpoint written for generation 3
+[+46.288s] [DEBUG] Investigation 53/100 START (generation 3, candidate 4)
+[+47.000s] [DEBUG] Investigation 53/100 END: accepted score=2.9362422255137144 nodes=9
+[+47.002s] [DEBUG] Investigation 54/100 START (generation 3, candidate 5)
+[+47.758s] [DEBUG] Investigation 54/100 END: accepted score=3.0482578093639257 nodes=17
+[+47.761s] [DEBUG] Investigation 55/100 START (generation 3, candidate 6)
+[+48.477s] [DEBUG] Investigation 55/100 END: accepted score=0.10748083713453675 nodes=15
+[+48.479s] [DEBUG] Investigation 56/100 START (generation 3, candidate 7)
+[+49.178s] [DEBUG] Investigation 56/100 END: accepted score=4.1671081450424294 nodes=38
+[+49.181s] [DEBUG] Investigation 57/100 START (generation 3, candidate 8)
+[+49.857s] [DEBUG] Investigation 57/100 END: accepted score=4.744865077486037 nodes=12
+[+49.859s] [DEBUG] Investigation 58/100 START (generation 3, candidate 9)
+[+50.566s] [DEBUG] Investigation 58/100 END: accepted score=2.8608226628464335 nodes=39
+[+50.569s] [DEBUG] Investigation 59/100 START (generation 3, candidate 10)
+[+51.295s] [DEBUG] Investigation 59/100 END: accepted score=4.3229740541283075 nodes=10
+[+51.297s] [DEBUG] Investigation 60/100 START (generation 3, candidate 11)
+[+51.932s] [DEBUG] Investigation 60/100 END: accepted score=1.0820251029895604 nodes=5
+[+51.934s] [DEBUG] Investigation 61/100 START (generation 3, candidate 12)
+[+52.659s] [DEBUG] Investigation 61/100 END: accepted score=3.5278029314265824 nodes=11
+[+52.662s] [DEBUG] Investigation 62/100 START (generation 3, candidate 13)
+[+53.334s] [DEBUG] Investigation 62/100 END: accepted score=0.27478866573335858 nodes=9
+[+53.336s] [DEBUG] Investigation 63/100 START (generation 3, candidate 14)
+[+54.225s] [DEBUG] Investigation 63/100 END: accepted score=1.1477384729873725 nodes=25
+[+54.228s] [DEBUG] Investigation 64/100 START (generation 3, candidate 15)
+[+55.070s] [DEBUG] Investigation 64/100 END: accepted score=0.27650234195265511 nodes=5
+[+55.072s] [DEBUG] Investigation 65/100 START (generation 3, candidate 16)
+[+56.024s] [DEBUG] Investigation 65/100 END: accepted score=0.12560340260454708 nodes=15
+[+56.030s] [DEBUG] Investigation 66/100 START (generation 3, candidate 17)
+[+56.949s] [DEBUG] Investigation 66/100 END: accepted score=2.7167844783923614 nodes=13
+[+56.951s] [DEBUG] Investigation 67/100 START (generation 3, candidate 18)
+[+57.839s] [DEBUG] Investigation 67/100 END: accepted score=0.11955312622157088 nodes=17
+[+57.843s] [DEBUG] Investigation 68/100 START (generation 3, candidate 19)
+[+58.765s] [DEBUG] Investigation 68/100 END: accepted score=3.1038428656557739 nodes=20
+[+58.768s] [INFO]  ------------------------------------------------------------
+[+58.769s] [INFO]  Generation 3 evaluated in 12.479652 s
+[+58.802s] [INFO]  Reject statistics: accepted=20 create=0 nonfinite=0 throat=0 exterior=0 curvature=0 redshift=0 complexity=0
+[+58.803s] [INFO]  Valid population: 20 / 20
+[+58.840s] [INFO]  GEN 3 BEST score=1.0748083713e-01 negNEC=1.0713840090e-01 bp0=-1.0000000000e+00 max|R|=5.5846376338e+00 maxK=2.4849614916e+01 nodes=15
+[+58.841s] [DEBUG] BEST U(q)=((((r-1)/r))-((((((((((0-0.2672536378551858))-((0-0.5307484159280037))))*(((((r-1)/r))/(1+((0.090424257012774775))*((0.090424257012774775)))))))-(((r-1)/r))))/(1+(cos((1.9435781559188923)))*(cos((1.9435781559188923)))))))
+[+58.881s] [DEBUG] BEST V(q)=(0-1.7923200971301279)
+[+58.936s] [INFO]  [PARETO GENERATION] nondominated=6 (NEC and sampled static tidal curvature)
+[+58.937s] [INFO]  *** NEW ALL-TIME CHAMPION ***
+[+58.972s] [INFO]  U(q) = ((((r-1)/r))-((((((((((0-0.2672536378551858))-((0-0.5307484159280037))))*(((((r-1)/r))/(1+((0.090424257012774775))*((0.090424257012774775)))))))-(((r-1)/r))))/(1+(cos((1.9435781559188923)))*(cos((1.9435781559188923)))))))
+[+59.005s] [INFO]  V(q) = (0-1.7923200971301279)
+[+59.039s] [DEBUG] b(r)   = ((((1)+(((((r-1)/r))*(((((r-1)/r))-((((((((((0-0.2672536378551858))-((0-0.5307484159280037))))*(((((r-1)/r))*(((1)/(((1)+((((0.090424257012774775))*((0.090424257012774775))))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.9435781559188923)))*(cos((1.9435781559188923)))))))))))))))))/(r))
+[+59.043s] [DEBUG] Phi(r) = (((1/r))*((0-1.7923200971301279)))
+[+59.083s] [INFO]  Checkpoint written for generation 4
+[+59.129s] [DEBUG] Investigation 69/100 START (generation 4, candidate 4)
+[+59.982s] [DEBUG] Investigation 69/100 END: accepted score=0.12937766010529808 nodes=15
+[+59.984s] [DEBUG] Investigation 70/100 START (generation 4, candidate 5)
+[+60.842s] [DEBUG] Investigation 70/100 END: accepted score=0.10504994194360998 nodes=11
+[+60.845s] [DEBUG] Investigation 71/100 START (generation 4, candidate 6)
+[+61.606s] [DEBUG] Investigation 71/100 END: accepted score=0.23761825200824868 nodes=12
+[+61.609s] [DEBUG] Investigation 72/100 START (generation 4, candidate 7)
+[+62.480s] [DEBUG] Investigation 72/100 END: accepted score=0.11497365908816225 nodes=21
+[+62.482s] [DEBUG] Investigation 73/100 START (generation 4, candidate 8)
+[+63.179s] [DEBUG] Investigation 73/100 END: accepted score=2.524356021812328 nodes=37
+[+63.184s] [DEBUG] Investigation 74/100 START (generation 4, candidate 9)
+[+64.009s] [DEBUG] Investigation 74/100 END: accepted score=1.2727994384707764 nodes=17
+[+64.012s] [DEBUG] Investigation 75/100 START (generation 4, candidate 10)
+[+64.885s] [DEBUG] Investigation 75/100 END: accepted score=0.28349871290735412 nodes=31
+[+64.887s] [DEBUG] Investigation 76/100 START (generation 4, candidate 11)
+[+65.678s] [DEBUG] Investigation 76/100 END: accepted score=2.731044871274138 nodes=4
+[+65.681s] [DEBUG] Investigation 77/100 START (generation 4, candidate 12)
+[+66.461s] [DEBUG] Investigation 77/100 END: accepted score=1.7219165066669426 nodes=22
+[+66.463s] [DEBUG] Investigation 78/100 START (generation 4, candidate 13)
+[+67.344s] [DEBUG] Investigation 78/100 END: accepted score=0.99906818797232155 nodes=34
+[+67.347s] [DEBUG] Investigation 79/100 START (generation 4, candidate 14)
+[+68.045s] [DEBUG] Investigation 79/100 END: accepted score=1.0763833246148327 nodes=18
+[+68.047s] [DEBUG] Investigation 80/100 START (generation 4, candidate 15)
+[+68.764s] [DEBUG] Investigation 80/100 END: accepted score=2.4729882731188253 nodes=3
+[+68.766s] [DEBUG] Investigation 81/100 START (generation 4, candidate 16)
+[+69.574s] [DEBUG] Investigation 81/100 END: accepted score=3.4486589831711707 nodes=13
+[+69.576s] [DEBUG] Investigation 82/100 START (generation 4, candidate 17)
+[+70.220s] [DEBUG] Investigation 82/100 END: accepted score=0.17514614201797801 nodes=2
+[+70.222s] [DEBUG] Investigation 83/100 START (generation 4, candidate 18)
+[+71.033s] [DEBUG] Investigation 83/100 END: accepted score=0.98717025046304174 nodes=25
+[+71.035s] [DEBUG] Investigation 84/100 START (generation 4, candidate 19)
+[+71.833s] [DEBUG] Investigation 84/100 END: accepted score=0.22493567149480231 nodes=22
+[+71.836s] [INFO]  ------------------------------------------------------------
+[+71.836s] [INFO]  Generation 4 evaluated in 12.7067084 s
+[+71.866s] [INFO]  Reject statistics: accepted=20 create=0 nonfinite=0 throat=0 exterior=0 curvature=0 redshift=0 complexity=0
+[+71.904s] [INFO]  Valid population: 20 / 20
+[+71.934s] [INFO]  GEN 4 BEST score=1.0504994194e-01 negNEC=1.0477984263e-01 bp0=-1.0000000000e+00 max|R|=5.9870066876e+00 maxK=2.7896207979e+01 nodes=11
+[+71.966s] [DEBUG] BEST U(q)=((((r-1)/r))-(((((((((r-1)/r))/(1+(((r-1)/r))*(((r-1)/r)))))-(((r-1)/r))))/(1+(cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))
+[+72.001s] [DEBUG] BEST V(q)=(0-1.9935043450750545)
+[+72.031s] [INFO]  [PARETO GENERATION] nondominated=10 (NEC and sampled static tidal curvature)
+[+72.062s] [INFO]  *** NEW ALL-TIME CHAMPION ***
+[+72.095s] [INFO]  U(q) = ((((r-1)/r))-(((((((((r-1)/r))/(1+(((r-1)/r))*(((r-1)/r)))))-(((r-1)/r))))/(1+(cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))
+[+72.099s] [INFO]  V(q) = (0-1.9935043450750545)
+[+72.130s] [DEBUG] b(r)   = ((((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/(r))
+[+72.161s] [DEBUG] Phi(r) = (((1/r))*((0-1.9935043450750545)))
+[+72.193s] [INFO]  Checkpoint written for generation 5
+[+72.227s] [DEBUG] Investigation 85/100 START (generation 5, candidate 4)
+[+73.045s] [DEBUG] Investigation 85/100 END: accepted score=0.14373045488408814 nodes=7
+[+73.047s] [DEBUG] Investigation 86/100 START (generation 5, candidate 5)
+[+73.909s] [DEBUG] Investigation 86/100 END: accepted score=3.1080012688782168 nodes=20
+[+73.912s] [DEBUG] Investigation 87/100 START (generation 5, candidate 6)
+[+74.744s] [DEBUG] Investigation 87/100 END: accepted score=0.67231935056690262 nodes=25
+[+74.746s] [DEBUG] Investigation 88/100 START (generation 5, candidate 7)
+[+75.574s] [DEBUG] Investigation 88/100 END: accepted score=2.7704485157710201 nodes=8
+[+75.576s] [DEBUG] Investigation 89/100 START (generation 5, candidate 8)
+[+76.416s] [DEBUG] Investigation 89/100 END: accepted score=2.0305391950300691 nodes=25
+[+76.418s] [DEBUG] Investigation 90/100 START (generation 5, candidate 9)
+[+77.216s] [DEBUG] Investigation 90/100 END: accepted score=0.11740532427913086 nodes=12
+[+77.218s] [DEBUG] Investigation 91/100 START (generation 5, candidate 10)
+[+77.930s] [DEBUG] Investigation 91/100 END: accepted score=3.6570312841418287 nodes=8
+[+77.932s] [DEBUG] Investigation 92/100 START (generation 5, candidate 11)
+[+78.694s] [DEBUG] Investigation 92/100 END: accepted score=0.64887328235724695 nodes=5
+[+78.697s] [DEBUG] Investigation 93/100 START (generation 5, candidate 12)
+[+79.570s] [DEBUG] Investigation 93/100 END: accepted score=1.1679368785146551 nodes=25
+[+79.572s] [DEBUG] Investigation 94/100 START (generation 5, candidate 13)
+[+80.533s] [DEBUG] Investigation 94/100 END: accepted score=0.1708748106952262 nodes=22
+[+80.535s] [DEBUG] Investigation 95/100 START (generation 5, candidate 14)
+[+81.481s] [DEBUG] Investigation 95/100 END: accepted score=0.28801843727488241 nodes=28
+[+81.483s] [DEBUG] Investigation 96/100 START (generation 5, candidate 15)
+[+82.352s] [DEBUG] Investigation 96/100 END: accepted score=0.22085382498546488 nodes=5
+[+82.354s] [DEBUG] Investigation 97/100 START (generation 5, candidate 16)
+[+83.313s] [DEBUG] Investigation 97/100 END: accepted score=3.3972639006790737 nodes=20
+[+83.315s] [DEBUG] Investigation 98/100 START (generation 5, candidate 17)
+[+84.224s] [DEBUG] Investigation 98/100 END: accepted score=1.6318283345590354 nodes=29
+[+84.226s] [DEBUG] Investigation 99/100 START (generation 5, candidate 18)
+[+85.074s] [DEBUG] Investigation 99/100 END: accepted score=0.19722437624553624 nodes=5
+[+85.076s] [DEBUG] Investigation 100/100 START (generation 5, candidate 19)
+[+85.843s] [DEBUG] Investigation 100/100 END: accepted score=2.2108713730572447 nodes=5
+[+85.845s] [INFO]  ------------------------------------------------------------
+[+85.846s] [INFO]  Generation 5 evaluated in 13.6185282 s
+[+85.871s] [INFO]  Reject statistics: accepted=20 create=0 nonfinite=0 throat=0 exterior=0 curvature=0 redshift=0 complexity=0
+[+85.899s] [INFO]  Valid population: 20 / 20
+[+85.925s] [INFO]  GEN 5 BEST score=1.0504994194e-01 negNEC=1.0477984263e-01 bp0=-1.0000000000e+00 max|R|=5.9870066876e+00 maxK=2.7896207979e+01 nodes=11
+[+85.955s] [DEBUG] BEST U(q)=((((r-1)/r))-(((((((((r-1)/r))/(1+(((r-1)/r))*(((r-1)/r)))))-(((r-1)/r))))/(1+(cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))
+[+85.990s] [DEBUG] BEST V(q)=(0-1.9935043450750545)
+[+86.021s] [INFO]  [PARETO GENERATION] nondominated=6 (NEC and sampled static tidal curvature)
+[+86.055s] [INFO]  Checkpoint written for generation 6
+[+86.085s] [INFO]  ============================================================
+[+86.086s] [INFO]  SEARCH COMPLETE
+[+86.119s] [INFO]  Investigations performed: 100 / 100
+[+86.119s] [INFO]  Total seconds: 72.989489899999995
+[+86.150s] [INFO]  Fine-grid re-evaluation of champion...
+[+86.150s] [INFO]  [DIAG BEGIN] evaluateGenome: radial_points=1200
+[+86.181s] [DEBUG] shape core U(q) = ((((r-1)/r))-(((((((((r-1)/r))/(1+(((r-1)/r))*(((r-1)/r)))))-(((r-1)/r))))/(1+(cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))
+[+86.210s] [DEBUG] redshift V(q)   = (0-1.9935043450750545)
+[+86.241s] [TRACE] b(r)   = ((((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/(r))
+[+86.241s] [TRACE] Phi(r) = (((1/r))*((0-1.9935043450750545)))
+[+86.241s] [INFO]  [CREATE BEGIN] index=0 name=b length=201 tinc=0
+[+86.272s] [DEBUG] [CREATE EXPR] b = ((((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/(r))
+[+86.301s] [INFO]  [CREATE TIME] b seconds=0.00022719999999999999
+[+86.333s] [INFO]  [CREATE END] b SUCCESS
+[+86.362s] [INFO]  [CREATE BEGIN] index=1 name=b_prime length=745 tinc=0
+[+86.390s] [DEBUG] [CREATE EXPR] b_prime = (((((((((1/(r*r)))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))+(((((r-1)/r))*((((1/(r*r)))-((((((((((1/(r*r)))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))+(((((r-1)/r))*((((0-1))*(((((2)*(((((r-1)/r))*((1/(r*r)))))))/(((((1)+(((((r-1)/r))*(((r-1)/r))))))*(((1)+(((((r-1)/r))*(((r-1)/r))))))))))))))))-((1/(r*r)))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/(r)))-(((((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/((r*r)))))
+[+86.423s] [INFO]  [CREATE TIME] b_prime seconds=0.00033050000000000001
+[+86.451s] [INFO]  [CREATE END] b_prime SUCCESS
+[+86.478s] [INFO]  [CREATE BEGIN] index=3 name=Phi length=34 tinc=0
+[+86.505s] [DEBUG] [CREATE EXPR] Phi = (((1/r))*((0-1.9935043450750545)))
+[+86.534s] [INFO]  [CREATE TIME] Phi seconds=3.8800000000000001e-05
+[+86.562s] [INFO]  [CREATE END] Phi SUCCESS
+[+86.589s] [INFO]  [CREATE BEGIN] index=9 name=8pi_NEC length=1052 tinc=0
+[+86.619s] [DEBUG] [CREATE EXPR] 8pi_NEC = (((((((((((1/(r*r)))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))+(((((r-1)/r))*((((1/(r*r)))-((((((((((1/(r*r)))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))+(((((r-1)/r))*((((0-1))*(((((2)*(((((r-1)/r))*((1/(r*r)))))))/(((((1)+(((((r-1)/r))*(((r-1)/r))))))*(((1)+(((((r-1)/r))*(((r-1)/r))))))))))))))))-((1/(r*r)))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))-(((((2)*(((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))))/(r)))))+(((2)*((((((r*r))*(((((((r-1)/r))*(((((r)*(((r)+(1)))))-(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/((r*r))))))*(((((0-1)/(r*r)))*((0-1.9935043450750545))))))))))/((r*r*r)))
+[+86.654s] [INFO]  [CREATE TIME] 8pi_NEC seconds=0.00051270000000000005
+[+86.684s] [INFO]  [CREATE END] 8pi_NEC SUCCESS
+[+86.712s] [INFO]  [CREATE BEGIN] index=10 name=Ricci_R length=2482 tinc=0
+[+86.743s] [DEBUG] [CREATE EXPR] Ricci_R = (((((((0-2))*(((((((((((r-1)/r))*(((((r)*(((r)+(1)))))-(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/((r*r))))*((((((2/(r*r*r)))*((0-1.9935043450750545))))+(((((((0-1)/(r*r)))*((0-1.9935043450750545))))*(((((0-1)/(r*r)))*((0-1.9935043450750545))))))))))-(((((((((0-1)/(r*r)))*((0-1.9935043450750545))))*((((((((1/(r*r)))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))+(((((r-1)/r))*((((1/(r*r)))-((((((((((1/(r*r)))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))+(((((r-1)/r))*((((0-1))*(((((2)*(((((r-1)/r))*((1/(r*r)))))))/(((((1)+(((((r-1)/r))*(((r-1)/r))))))*(((1)+(((((r-1)/r))*(((r-1)/r))))))))))))))))-((1/(r*r)))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))-(((((2)*(((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))))/(r)))))))/((2*r*r))))))))+((((0-4))*(((((((((r-1)/r))*(((((r)*(((r)+(1)))))-(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/((r*r))))*(((((((0-1)/(r*r)))*((0-1.9935043450750545))))/(r)))))))))+(((((4)*((((((((((1/(r*r)))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))+(((((r-1)/r))*((((1/(r*r)))-((((((((((1/(r*r)))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))+(((((r-1)/r))*((((0-1))*(((((2)*(((((r-1)/r))*((1/(r*r)))))))/(((((1)+(((((r-1)/r))*(((r-1)/r))))))*(((1)+(((((r-1)/r))*(((r-1)/r))))))))))))))))-((1/(r*r)))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))-(((((2)*(((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))))/(r)))))/((2*r*r*r))))))+(((2)*(((((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/((r*r*r*r)))))))))
+[+86.780s] [INFO]  [CREATE TIME] Ricci_R seconds=0.0014655
+[+86.807s] [INFO]  [CREATE END] Ricci_R SUCCESS
+[+86.808s] [INFO]  [CREATE BEGIN] index=11 name=Kretschmann_K length=4915 tinc=0
+[+86.836s] [DEBUG] [CREATE EXPR] Kretschmann_K = ((4)*(((((((((((((((((r-1)/r))*(((((r)*(((r)+(1)))))-(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/((r*r))))*((((((2/(r*r*r)))*((0-1.9935043450750545))))+(((((((0-1)/(r*r)))*((0-1.9935043450750545))))*(((((0-1)/(r*r)))*((0-1.9935043450750545))))))))))-(((((((((0-1)/(r*r)))*((0-1.9935043450750545))))*((((((((1/(r*r)))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))+(((((r-1)/r))*((((1/(r*r)))-((((((((((1/(r*r)))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))+(((((r-1)/r))*((((0-1))*(((((2)*(((((r-1)/r))*((1/(r*r)))))))/(((((1)+(((((r-1)/r))*(((r-1)/r))))))*(((1)+(((((r-1)/r))*(((r-1)/r))))))))))))))))-((1/(r*r)))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))-(((((2)*(((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))))/(r)))))))/((2*r*r))))))*(((((((((((r-1)/r))*(((((r)*(((r)+(1)))))-(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/((r*r))))*((((((2/(r*r*r)))*((0-1.9935043450750545))))+(((((((0-1)/(r*r)))*((0-1.9935043450750545))))*(((((0-1)/(r*r)))*((0-1.9935043450750545))))))))))-(((((((((0-1)/(r*r)))*((0-1.9935043450750545))))*((((((((1/(r*r)))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))+(((((r-1)/r))*((((1/(r*r)))-((((((((((1/(r*r)))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))+(((((r-1)/r))*((((0-1))*(((((2)*(((((r-1)/r))*((1/(r*r)))))))/(((((1)+(((((r-1)/r))*(((r-1)/r))))))*(((1)+(((((r-1)/r))*(((r-1)/r))))))))))))))))-((1/(r*r)))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))-(((((2)*(((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))))/(r)))))))/((2*r*r))))))))+(((2)*(((((((((((r-1)/r))*(((((r)*(((r)+(1)))))-(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/((r*r))))*(((((((0-1)/(r*r)))*((0-1.9935043450750545))))/(r)))))*(((((((((r-1)/r))*(((((r)*(((r)+(1)))))-(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/((r*r))))*(((((((0-1)/(r*r)))*((0-1.9935043450750545))))/(r)))))))))))+(((((2)*((((((((((((1/(r*r)))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))+(((((r-1)/r))*((((1/(r*r)))-((((((((((1/(r*r)))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))+(((((r-1)/r))*((((0-1))*(((((2)*(((((r-1)/r))*((1/(r*r)))))))/(((((1)+(((((r-1)/r))*(((r-1)/r))))))*(((1)+(((((r-1)/r))*(((r-1)/r))))))))))))))))-((1/(r*r)))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))-(((((2)*(((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))))/(r)))))/((2*r*r*r))))*((((((((((1/(r*r)))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))+(((((r-1)/r))*((((1/(r*r)))-((((((((((1/(r*r)))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))+(((((r-1)/r))*((((0-1))*(((((2)*(((((r-1)/r))*((1/(r*r)))))))/(((((1)+(((((r-1)/r))*(((r-1)/r))))))*(((1)+(((((r-1)/r))*(((r-1)/r))))))))))))))))-((1/(r*r)))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))-(((((2)*(((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))))/(r)))))/((2*r*r*r))))))))+(((((((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/((r*r*r*r))))*(((((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/((r*r*r*r)))))))))))
+[+86.912s] [INFO]  [CREATE TIME] Kretschmann_K seconds=0.0020774000000000001
+[+86.941s] [INFO]  [CREATE END] Kretschmann_K SUCCESS
+[+87.025s] [DEBUG] [EVAL] b_prime r=1 value=-1
+[+87.028s] [INFO]  [THROAT] b_prime(1)=-1 expected baseline=-1
+[+87.539s] [INFO]  [BATCH] points=1200 functions=5 seconds=0.48310219999999998
+[+87.542s] [INFO]  [DIAG END] valid=1 score=0.10380972050449939 minNEC8=-1.9999982025989995 maxK=27.896207978563247 minExterior=1.9999996014874455e-07
+[+87.543s] [INFO]  ============================================================
+[+87.576s] [INFO]  FINAL FINE-GRID CANDIDATE
+[+87.577s] [INFO]  ============================================================
+[+87.605s] [INFO]  score             = 0.10380972050449939
+[+87.605s] [INFO]  negative NEC      = 0.10353962119525634
+[+87.641s] [INFO]  signed VIQ        = 6.775611822607857
+[+87.641s] [INFO]  min NEC8          = -1.9999982025989995
+[+87.675s] [INFO]  b'(r0)            = -1
+[+87.676s] [INFO]  max |R|           = 5.9870066875691457
+[+87.676s] [INFO]  max K             = 27.896207978563247
+[+87.716s] [INFO]  max |Phi|         = 1.9935041457246399
+[+87.717s] [INFO]  min (1-b/r)       = 1.9999996014874455e-07
+[+87.748s] [INFO]  tree nodes        = 11
+[+87.782s] [INFO]  tree depth        = 5
+[+87.816s] [INFO]  ------------------------------------------------------------
+[+87.848s] [INFO]  DISCOVERED SHAPE CORE U(q):
+[+87.885s] [INFO]  ((((r-1)/r))-(((((((((r-1)/r))/(1+(((r-1)/r))*(((r-1)/r)))))-(((r-1)/r))))/(1+(cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))
+[+87.918s] [INFO]  DISCOVERED REDSHIFT CORE V(q):
+[+87.951s] [INFO]  (0-1.9935043450750545)
+[+87.987s] [INFO]  ------------------------------------------------------------
+[+88.018s] [INFO]  FULL b(r):
+[+88.048s] [INFO]  ((((1)+(((((r-1)/r))*(((((r-1)/r))-(((((((((r-1)/r))*(((1)/(((1)+(((((r-1)/r))*(((r-1)/r))))))))))-(((r-1)/r))))*(((1)/(((1)+(((cos((1.7573959995777177)))*(cos((1.7573959995777177)))))))))))))))))/(r))
+[+88.080s] [INFO]  FULL Phi(r):
+[+88.109s] [INFO]  (((1/r))*((0-1.9935043450750545)))
+[+88.139s] [INFO]  Final expressions written to wormhole_final_candidate.txt
+[+88.170s] [INFO]  [TINC] Batch interval verification starting; points=1024
+[+88.171s] [INFO]  [TINC] Stable symbolic forms: factorized exterior, direct Delta, common-denominator NEC.
+[+88.200s] [INFO]  [TINC] Metric expressions built in 0.00016110000000000001 s
+[+88.201s] [INFO]  [CREATE BEGIN] index=0 name=b length=201 tinc=1
+[+88.232s] [INFO]  [CREATE TIME] b seconds=0.0001239
+[+88.233s] [INFO]  [CREATE END] b SUCCESS
+[+88.262s] [INFO]  [CREATE BEGIN] index=1 name=b_prime length=745 tinc=1
+[+88.263s] [INFO]  [CREATE TIME] b_prime seconds=0.00038539999999999999
+[+88.294s] [INFO]  [CREATE END] b_prime SUCCESS
+[+88.295s] [INFO]  [CREATE BEGIN] index=3 name=Phi length=34 tinc=1
+[+88.327s] [INFO]  [CREATE TIME] Phi seconds=4.5399999999999999e-05
+[+88.359s] [INFO]  [CREATE END] Phi SUCCESS
+[+88.394s] [INFO]  [CREATE BEGIN] index=9 name=8pi_NEC length=1052 tinc=1
+[+88.428s] [INFO]  [CREATE TIME] 8pi_NEC seconds=0.00045810000000000002
+[+88.460s] [INFO]  [CREATE END] 8pi_NEC SUCCESS
+[+88.493s] [INFO]  [CREATE BEGIN] index=10 name=Ricci_R length=2482 tinc=1
+[+88.527s] [INFO]  [CREATE TIME] Ricci_R seconds=0.0011004999999999999
+[+88.556s] [INFO]  [CREATE END] Ricci_R SUCCESS
+[+88.557s] [INFO]  [CREATE BEGIN] index=11 name=Kretschmann_K length=4915 tinc=1
+[+88.588s] [INFO]  [CREATE TIME] Kretschmann_K seconds=0.0021207999999999999
+[+88.617s] [INFO]  [CREATE END] Kretschmann_K SUCCESS
+[+88.617s] [INFO]  [TINC] Handles created in 0.41649740000000002 s
+[+88.650s] [INFO]  [TINC BATCH] chunk_size=128 functions=4 (b,NEC,Ricci,Kretschmann)
+[+88.650s] [INFO]  [TINC BATCH BEGIN] points 1-128/1024
+[+88.769s] [INFO]  [TINC BATCH FIELD] b seconds=0.089404600000000001 api_error=1
+[+88.772s] [WARN]  [TINC RAW ERROR] b index=47 r=1.009600777178201 code=144
+[+88.866s] [INFO]  [TINC SCALAR RECOVERED] b index=47
+[+88.988s] [INFO]  [TINC BATCH FIELD] 8pi_NEC seconds=0.11835900000000001 api_error=1
+[+88.991s] [WARN]  [TINC RAW ERROR] 8pi_NEC index=47 r=1.009600777178201 code=144
+[+89.068s] [INFO]  [TINC SCALAR RECOVERED] 8pi_NEC index=47
+[+89.190s] [INFO]  [TINC BATCH FIELD] Ricci_R seconds=0.1199023 api_error=1
+[+89.193s] [WARN]  [TINC RAW ERROR] Ricci_R index=47 r=1.009600777178201 code=144
+[+89.277s] [INFO]  [TINC SCALAR RECOVERED] Ricci_R index=47
+[+89.426s] [INFO]  [TINC BATCH FIELD] Kretschmann_K seconds=0.1462434 api_error=1
+[+89.428s] [WARN]  [TINC RAW ERROR] Kretschmann_K index=47 r=1.009600777178201 code=144
+[+89.513s] [INFO]  [TINC SCALAR RECOVERED] Kretschmann_K index=47
+[+89.516s] [INFO]  [TINC BATCH PROGRESS] 128/1024 (12.5%) elapsed=0.86588019999999999 s
+[+89.516s] [INFO]  [TINC BATCH BEGIN] points 129-256/1024
+[+89.644s] [INFO]  [TINC BATCH FIELD] b seconds=0.097852499999999995 api_error=0
+[+89.741s] [INFO]  [TINC BATCH FIELD] 8pi_NEC seconds=0.093133400000000005 api_error=0
+[+89.875s] [INFO]  [TINC BATCH FIELD] Ricci_R seconds=0.13188079999999999 api_error=0
+[+90.012s] [INFO]  [TINC BATCH FIELD] Kretschmann_K seconds=0.13389760000000001 api_error=0
+[+90.014s] [INFO]  [TINC BATCH PROGRESS] 256/1024 (25%) elapsed=1.3644951000000001 s
+[+90.015s] [INFO]  [TINC BATCH BEGIN] points 257-384/1024
+[+90.130s] [INFO]  [TINC BATCH FIELD] b seconds=0.086044599999999999 api_error=0
+[+90.233s] [INFO]  [TINC BATCH FIELD] 8pi_NEC seconds=0.1009158 api_error=0
+[+90.352s] [INFO]  [TINC BATCH FIELD] Ricci_R seconds=0.11674519999999999 api_error=0
+[+90.496s] [INFO]  [TINC BATCH FIELD] Kretschmann_K seconds=0.14182790000000001 api_error=0
+[+90.498s] [INFO]  [TINC BATCH PROGRESS] 384/1024 (37.5%) elapsed=1.8482376 s
+[+90.499s] [INFO]  [TINC BATCH BEGIN] points 385-512/1024
+[+90.625s] [INFO]  [TINC BATCH FIELD] b seconds=0.097284099999999998 api_error=0
+[+90.725s] [INFO]  [TINC BATCH FIELD] 8pi_NEC seconds=0.097653900000000002 api_error=0
+[+90.818s] [INFO]  [TINC BATCH FIELD] Ricci_R seconds=0.089907100000000004 api_error=0
+[+90.976s] [INFO]  [TINC BATCH FIELD] Kretschmann_K seconds=0.15673870000000001 api_error=0
+[+90.982s] [INFO]  [TINC BATCH PROGRESS] 512/1024 (50%) elapsed=2.3325743999999999 s
+[+90.983s] [INFO]  [TINC BATCH BEGIN] points 513-640/1024
+[+91.130s] [INFO]  [TINC BATCH FIELD] b seconds=0.11250590000000001 api_error=0
+[+91.238s] [INFO]  [TINC BATCH FIELD] 8pi_NEC seconds=0.10505059999999999 api_error=0
+[+91.369s] [INFO]  [TINC BATCH FIELD] Ricci_R seconds=0.12830159999999999 api_error=0
+[+91.526s] [INFO]  [TINC BATCH FIELD] Kretschmann_K seconds=0.15393609999999999 api_error=0
+[+91.527s] [INFO]  [TINC BATCH PROGRESS] 640/1024 (62.5%) elapsed=2.8774508000000001 s
+[+91.562s] [INFO]  [TINC BATCH BEGIN] points 641-768/1024
+[+91.714s] [INFO]  [TINC BATCH FIELD] b seconds=0.1134391 api_error=0
+[+91.846s] [INFO]  [TINC BATCH FIELD] 8pi_NEC seconds=0.12990389999999999 api_error=0
+[+91.967s] [INFO]  [TINC BATCH FIELD] Ricci_R seconds=0.1183593 api_error=0
+[+92.108s] [INFO]  [TINC BATCH FIELD] Kretschmann_K seconds=0.13858690000000001 api_error=0
+[+92.110s] [INFO]  [TINC BATCH PROGRESS] 768/1024 (75%) elapsed=3.4601210999999998 s
+[+92.141s] [INFO]  [TINC BATCH BEGIN] points 769-896/1024
+[+92.272s] [INFO]  [TINC BATCH FIELD] b seconds=0.096071599999999993 api_error=0
+[+92.394s] [INFO]  [TINC BATCH FIELD] 8pi_NEC seconds=0.1198118 api_error=0
+[+92.508s] [INFO]  [TINC BATCH FIELD] Ricci_R seconds=0.1110237 api_error=0
+[+92.668s] [INFO]  [TINC BATCH FIELD] Kretschmann_K seconds=0.15833359999999999 api_error=0
+[+92.671s] [INFO]  [TINC BATCH PROGRESS] 896/1024 (87.5%) elapsed=4.0214062999999998 s
+[+92.705s] [INFO]  [TINC BATCH BEGIN] points 897-1024/1024
+[+92.851s] [INFO]  [TINC BATCH FIELD] b seconds=0.1104902 api_error=0
+[+92.971s] [INFO]  [TINC BATCH FIELD] 8pi_NEC seconds=0.117199 api_error=0
+[+93.117s] [INFO]  [TINC BATCH FIELD] Ricci_R seconds=0.14360020000000001 api_error=0
+[+93.265s] [INFO]  [TINC BATCH FIELD] Kretschmann_K seconds=0.14547089999999999 api_error=0
+[+93.268s] [INFO]  [TINC BATCH PROGRESS] 1024/1024 (100%) elapsed=4.6180903000000004 s
+[+93.269s] [INFO]  [TINC] Batch evaluations finished in 4.6189352000000001 s
+[+93.304s] [INFO]  [TINC ALTERNATE SUMMARY] attempted=0 recovered=0 unresolved=0
+[+93.305s] [INFO]  TINC sampled points          : 1024
+[+93.338s] [INFO]  TINC exterior verified       : 1024 / 1024
+[+93.373s] [INFO]  TINC curvature verified      : 1024 / 1024
+[+93.406s] [INFO]  TINC NEC definitely negative : 142
+[+93.437s] [INFO]  TINC NEC inconclusive        : 0
+[+93.469s] [INFO]  TINC NEC nonnegative         : 882
+[+93.504s] [INFO]  TINC NEC classified          : 1024 / 1024
+[+93.537s] [INFO]  TINC widest NEC interval     : 5.4845017416482733e-13
+[+93.570s] [INFO]  [TINC FIELD SUMMARY] b raw_errors=1 scalar_recovered=1 unresolved=0
+[+93.602s] [INFO]  [TINC FIELD SUMMARY] 8pi_NEC raw_errors=1 scalar_recovered=1 unresolved=0
+[+93.635s] [INFO]  [TINC FIELD SUMMARY] Ricci_R raw_errors=1 scalar_recovered=1 unresolved=0
+[+93.666s] [INFO]  [TINC FIELD SUMMARY] Kretschmann_K raw_errors=1 scalar_recovered=1 unresolved=0
+[+93.698s] [INFO]  [TINC] All sampled points passed the implemented interval geometry checks.
+[+93.734s] [INFO]  [TINC] Total time (excluding handle destruction)=5.5644647000000003 s
+[+93.770s] [WARN]  TINC report covers discrete radial samples only, not continuous radial intervals.
+[+93.802s] [INFO]  [ADAPTIVE TINC] Starting paceval-only adaptive POINTWISE validation; budget=256 initial_points=17 wave_size=16 TINC_chunk=128
+[+94.873s] [INFO]  [ADAPTIVE TINC PROGRESS] new=32/256 tested=49 waves=2 API_calls=12
+[+95.562s] [INFO]  [ADAPTIVE TINC PROGRESS] new=64/256 tested=81 waves=4 API_calls=20
+[+96.236s] [INFO]  [ADAPTIVE TINC PROGRESS] new=96/256 tested=113 waves=6 API_calls=28
+[+96.855s] [INFO]  [ADAPTIVE TINC PROGRESS] new=128/256 tested=145 waves=8 API_calls=36
+[+97.484s] [INFO]  [ADAPTIVE TINC PROGRESS] new=160/256 tested=177 waves=10 API_calls=44
+[+98.198s] [INFO]  [ADAPTIVE TINC PROGRESS] new=192/256 tested=209 waves=12 API_calls=52
+[+98.865s] [INFO]  [ADAPTIVE TINC PROGRESS] new=224/256 tested=241 waves=14 API_calls=60
+[+99.579s] [INFO]  [ADAPTIVE TINC PROGRESS] new=256/256 tested=273 waves=16 API_calls=68
+[+99.581s] [INFO]  [ADAPTIVE TINC SUMMARY] points=273 refined=256 errors=0 exterior=273 curvature=273 NEC_negative=84 NEC_nonnegative=189 NEC_inconclusive=0 seconds=5.7796655000000001 waves=16 TINC_batch_API_calls=68
+[+99.608s] [INFO]  [ADAPTIVE TINC STOP] reason=requested additional-point budget exhausted unbisectable_intervals=0
+[+99.636s] [WARN]  [ADAPTIVE TINC] POINTWISE only. No theorem for untested r; continuous validity NOT certified.
+[+100.125s] [INFO]  [REFERENCE COMPARISON] Start, r0=1, r in [1+1e-7,100]
+[+100.127s] [INFO]  [REFERENCE COMPARISON] Morris-Thorne denotes a metric framework, not a unique reference solution.
+[+100.128s] [INFO]  [REFERENCE COMPARISON] Near-flare-out examples are constructed comparisons, NOT literature attributions.
+[+104.945s] [INFO]  [REFERENCE COMPARISON] Ellis-Bronnikov_r0=1 valid=1 negNEC=0.99001188178969057 bp0=-1 maxK=11.999990400004314 properLength=99.995011350749323 radialTidal=0 angularTidal=0
+[+104.950s] [INFO]  [REFERENCE COMPARISON] Ellis_redshift_deformation valid=1 negNEC=0.26355841555167625 bp0=-1 maxK=14.249987025006872 properLength=99.995011350749323 radialTidal=0.75 angularTidal=0.13942739940976012
+[+104.982s] [INFO]  [REFERENCE COMPARISON] Constructed_near_flareout_U1.9 valid=1 negNEC=1.4461487421616877 bp0=0.89999999999999991 maxK=4.0199985320006677 properLength=102.23682808876542 radialTidal=0 angularTidal=0
+[+105.012s] [INFO]  [REFERENCE COMPARISON] Constructed_near_flareout_U1.99 valid=1 negNEC=1.4677552250214134 bp0=0.98999999999999999 maxK=4.000198415720857 properLength=103.61297490235241 radialTidal=0 angularTidal=0
+[+105.041s] [INFO]  [REFERENCE COMPARISON] paceval_discovered valid=1 negNEC=0.10353962119525634 bp0=-1 maxK=27.896207978563247 properLength=100.27745446638546 radialTidal=1.9935043450750545 angularTidal=0.34144157950140192
+[+105.074s] [INFO]  [REFERENCE COMPARISON] paceval minus Ellis: delta_negNEC=-0.88647226059443418 delta_maxRadialTidal=1.9935043450750545 delta_maxAngularTidal=0.34144157950140192
+[+105.110s] [INFO]  [REFERENCE COMPARISON] Saved wormhole_reference_comparison.csv
+[+105.145s] [INFO]  [REFERENCE COMPARISON] No universal ranking: NEC, tidal curvature and proper length trade off.
+[+105.146s] [INFO]  [REFERENCE COMPARISON] Literature's volume integral need not equal this program's radial NEC objective.
+[+105.184s] [INFO]  ============================================================
+[+105.223s] [INFO]  PARETO MULTIOBJECTIVE RESULT FOR THE USER
+[+105.224s] [INFO]  ============================================================
+[+105.254s] [INFO]  [PARETO] Objective 1: minimize sampled negative radial NEC integral
+[+105.284s] [INFO]  [PARETO] Objective 2: minimize maximum sampled static tidal Riemann component
+[+105.323s] [INFO]  [PARETO] No arbitrary weighted sum determines nondominance.
+[+105.357s] [INFO]  [PARETO] Fine-grid cap=24 (0=full scientific archive comparison; nonzero=fast preview)
+[+105.392s] [INFO]  [PARETO] Search evaluation count=100 missing_tidal_diagnostics=0
+[+105.431s] [INFO]  [PARETO FINE] archived=100 selected=24 grid=1200 mode=PREVIEW_COARSE_PREFILTER
+[+106.591s] [INFO]  [PARETO FINE PROGRESS] processed=1/24 accepted=1 invalid_geometry=0 invalid_physics=0 elapsed_s=1.1307157999999999 estimated_remaining_s=26.006463399999998
+[+110.671s] [INFO]  [PARETO FINE PROGRESS] processed=4/24 accepted=4 invalid_geometry=0 invalid_physics=0 elapsed_s=5.2103073999999996 estimated_remaining_s=26.051536999999996
+[+115.732s] [INFO]  [PARETO FINE PROGRESS] processed=8/24 accepted=8 invalid_geometry=0 invalid_physics=0 elapsed_s=10.2713778 estimated_remaining_s=20.5427556
+[+120.998s] [INFO]  [PARETO FINE PROGRESS] processed=12/24 accepted=12 invalid_geometry=0 invalid_physics=0 elapsed_s=15.537762799999999 estimated_remaining_s=15.537762799999999
+[+126.894s] [INFO]  [PARETO FINE PROGRESS] processed=16/24 accepted=16 invalid_geometry=0 invalid_physics=0 elapsed_s=21.433541300000002 estimated_remaining_s=10.716770650000001
+[+132.249s] [INFO]  [PARETO FINE PROGRESS] processed=20/24 accepted=20 invalid_geometry=0 invalid_physics=0 elapsed_s=26.7880675 estimated_remaining_s=5.3576135000000003
+[+137.549s] [INFO]  [PARETO FINE PROGRESS] processed=24/24 accepted=24 invalid_geometry=0 invalid_physics=0 elapsed_s=32.0882863 estimated_remaining_s=0
+[+137.553s] [INFO]  [PARETO FINE] elapsed_s=32.092429500000001
+[+137.586s] [INFO]  [PARETO FRONT] rank=1 NEC=0.10353962119525634 tidal=1.9935043450750545 legacy_score=0.10380972050449939 nodes=11
+[+137.620s] [INFO]  [PARETO FRONT] rank=2 NEC=0.10615238602861889 tidal=1.7923200971301279 legacy_score=0.10649482226577098 nodes=15
+[+137.653s] [INFO]  [PARETO FRONT] rank=3 NEC=0.11362894286563498 tidal=0.85192283030097837 legacy_score=0.11409801822396827 nodes=21
+[+137.683s] [INFO]  [PARETO FRONT] rank=4 NEC=0.12472075160486965 tidal=0.7675134853725708 legacy_score=0.12506434790773882 nodes=15
+[+137.715s] [INFO]  [PARETO FRONT] rank=5 NEC=0.12830799647939728 tidal=0.75415479716121903 legacy_score=0.12865077930340488 nodes=15
+[+137.747s] [INFO]  [PARETO FRONT] rank=6 NEC=0.16945768208824571 tidal=0.60052622417671242 legacy_score=0.16993212687688802 nodes=22
+[+137.782s] [INFO]  [PARETO FRONT] rank=7 NEC=0.21220407742187314 tidal=0.49712919372640357 legacy_score=0.21267397667930713 nodes=22
+[+137.817s] [INFO]  [PARETO FRONT] rank=8 NEC=0.22397808087256893 tidal=0.46825877591972936 legacy_score=0.22444686413510087 nodes=22
+[+137.852s] [INFO]  [PARETO FRONT] rank=9 NEC=0.22873842739173184 tidal=0.45914718521267972 legacy_score=0.22910687306891767 nodes=17
+[+137.883s] [INFO]  [PARETO FRONT] rank=10 NEC=0.23602729344613271 tidal=0.30883610762109481 legacy_score=0.23629437881129262 nodes=12
+[+137.914s] [INFO]  [PARETO FRONT] rank=11 NEC=0.360329718250051 tidal=0.28602765575127781 legacy_score=0.36073299715664597 nodes=19
+[+137.941s] [INFO]  [PARETO FRONT] rank=12 NEC=0.36541912959251782 tidal=0.285466482979923 legacy_score=0.36590239547504816 nodes=23
+[+137.979s] [INFO]  [PARETO FRONT] rank=13 NEC=0.37484421580520022 tidal=0.27772845860420864 legacy_score=0.37528730664968124 nodes=21
+[+138.012s] [INFO]  [PARETO FRONT] rank=14 NEC=0.43802587037535179 tidal=0.20860161245162162 legacy_score=0.43834762338280736 nodes=15
+[+138.050s] [INFO]  [PARETO FRONT] rank=15 NEC=0.51976435709009339 tidal=0.077200493850751062 legacy_score=0.52011495644845807 nodes=17
+[+138.054s] [INFO]  [PARETO FRONT] rank=16 NEC=0.97353517251795163 tidal=0.048341780489868834 legacy_score=0.97395282108869741 nodes=20
+[+138.088s] [INFO]  [PARETO FRONT] rank=17 NEC=0.99704812411622434 tidal=0.024971656437620976 legacy_score=0.99774815034869491 nodes=34
+[+138.120s] [INFO]  [PARETO FRONT] rank=18 NEC=1.028111446869356 tidal=0.014469490430941267 legacy_score=1.0282611097983811 nodes=7
+[+138.152s] [INFO]  [PARETO FRONT] rank=19 NEC=1.166019569848985 tidal=0.0023465048156930228 legacy_score=1.1665395711170909 nodes=25
+[+138.184s] [INFO]  [PARETO SUMMARY] fine_grid_survivors=24 nondominated=19
+[+138.221s] [INFO]  [PARETO SUMMARY] Minimum NEC option: NEC=0.10353962119525634 tidal=1.9935043450750545
+[+138.222s] [INFO]  [PARETO SUMMARY] Minimum tidal option: NEC=1.166019569848985 tidal=0.0023465048156930228
+[+138.261s] [INFO]  [PARETO SUMMARY] Legacy winner NEC=0.10353962119525634 (legacy scoring remains separately reported)
+[+138.297s] [INFO]  [PARETO SUMMARY] CSV: wormhole_pareto_front.csv
+[+138.298s] [WARN]  [PARETO CAUTION] PREVIEW front: only a coarse-selected subset was fine-checked; the complete fine-grid Pareto front can differ. Run --pareto-final-limit 0 for full comparison.
+[+138.334s] [INFO]  [PARETO CAUTION] Pareto front is ONLY relative to sampled candidates.
+[+138.368s] [INFO]  [PARETO CAUTION] Search maxima and integrals use doubles, not TINC-certified quadrature.
+[+138.369s] [INFO]  [PARETO CAUTION] TINC verification of legacy winner does NOT validate all Pareto points.
+[+138.404s] [INFO]  [PARETO CAUTION] No continuum proof, traveller safety, stability or matter model is established.
+[+138.405s] [INFO]  ============================================================
+[+138.439s] [INFO]  SCIENTIFIC INTERPRETATION
+[+138.439s] [INFO]  ============================================================
+[+138.472s] [INFO]  The program has evolved mathematical structures, not merely
+[+138.472s] [INFO]  parameters of one preselected wormhole function.
+[+138.502s] [INFO]  A low score is NOT evidence that a physical wormhole exists.
+[+138.533s] [INFO]  Before any novelty claim, independently verify the tensor
+[+138.563s] [INFO]  equations, continuum behavior, proper-distance/traversal
+[+138.597s] [INFO]  properties, stability, QEI constraints, and literature novelty.
+[+138.633s] [INFO]  Full diagnostic trace: wormhole_discovery_debug.log
+[+138.666s] [INFO]  ============================================================
+[+138.699s] [INFO]  CONCLUSION FOR THE USER
+[+138.731s] [INFO]  ============================================================
+[+138.761s] [INFO]  [CANDIDATE SUMMARY] Investigations       : 100
+[+138.788s] [INFO]  [CANDIDATE SUMMARY] Fine-grid points    : 1200
+[+138.818s] [INFO]  [CANDIDATE SUMMARY] Fine-grid radius    : 1+1e-7 to 100 (r0=1 units)
+[+138.852s] [INFO]  [CANDIDATE SUMMARY] Fitness score       : 0.10380972050449939
+[+138.852s] [INFO]  [CANDIDATE SUMMARY] Negative NEC integral: 0.10353962119525634
+[+138.886s] [INFO]  [CANDIDATE SUMMARY] Signed VIQ          : 6.775611822607857
+[+138.887s] [INFO]  [CANDIDATE SUMMARY] Min 8pi(rho+pr)    : -1.9999982025989995
+[+138.919s] [INFO]  [CANDIDATE SUMMARY] Throat b'(r0)       : -1
+[+138.919s] [INFO]  [CANDIDATE SUMMARY] Max abs(Ricci)     : 5.9870066875691457
+[+138.950s] [INFO]  [CANDIDATE SUMMARY] Max Kretschmann    : 27.896207978563247
+[+138.951s] [INFO]  [CANDIDATE SUMMARY] Max abs(Phi)       : 1.9935041457246399
+[+138.983s] [INFO]  [CANDIDATE SUMMARY] Min (1-b/r)        : 1.9999996014874455e-07
+[+138.983s] [INFO]  [CANDIDATE SUMMARY] Expression nodes   : 11
+[+139.014s] [INFO]  [CANDIDATE SUMMARY] Expression depth   : 5
+[+139.040s] [INFO]  [VALIDATION SUMMARY] Stage 1          : PASSED (3 analytic references, 12 fields)
+[+139.072s] [INFO]  [TINC SUMMARY] Pointwise status       : PASSED
+[+139.105s] [INFO]  [TINC SUMMARY] Radius samples         : 1024
+[+139.139s] [INFO]  [TINC SUMMARY] Exterior passed        : 1024
+[+139.173s] [INFO]  [TINC SUMMARY] Curvature passed       : 1024
+[+139.203s] [INFO]  [TINC SUMMARY] NEC negative           : 142
+[+139.236s] [INFO]  [TINC SUMMARY] NEC nonnegative        : 882
+[+139.268s] [INFO]  [TINC SUMMARY] NEC inconclusive       : 0
+[+139.303s] [INFO]  [TINC SUMMARY] NEC evaluated          : 1024
+[+139.336s] [INFO]  [TINC SUMMARY] Unresolved evaluations : 0
+[+139.369s] [INFO]  [TINC SUMMARY] Widest NEC interval    : 5.4845017416482733e-13
+[+139.400s] [INFO]  [TINC SUMMARY] Batch calculation [s] : 4.6189352000000001
+[+139.428s] [INFO]  [PHYSICS] Proper radial length r=1..100 (r0 units): 100.27745446638546
+[+139.458s] [INFO]  [PHYSICS] Max static radial Riemann tidal term : 1.9935043450750545
+[+139.487s] [INFO]  [PHYSICS] Max static angular Riemann tidal term: 0.34144157950140192
+[+139.519s] [INFO]  [PHYSICS] Max abs(Phi prime)               : 1.9935043450750545
+[+139.553s] [INFO]  [PHYSICS] Negative NEC radial quadrature   : 0.10356062635634017
+[+139.585s] [INFO]  [PHYSICS] Quadrature status               : ESTIMATE, not TINC-certified
+[+139.616s] [INFO]  [PHYSICS] Asymptotics                     : guaranteed for finite grammar trees
+[+139.645s] [INFO]  [PHYSICS] Note: traveller tidal forces need speed and physical throat radius
+[+139.673s] [INFO]  [ADAPTIVE SUMMARY] Additional tested points : 273
+[+139.701s] [INFO]  [ADAPTIVE SUMMARY] TINC numerical failures : 0
+[+139.732s] [INFO]  [ADAPTIVE SUMMARY] Exterior/curvature pass: 273/273
+[+139.767s] [INFO]  [ADAPTIVE SUMMARY] New points inserted      : 256
+[+139.800s] [INFO]  [ADAPTIVE SUMMARY] Stop reason              : requested additional-point budget exhausted
+[+139.834s] [INFO]  [ADAPTIVE SUMMARY] Continuous proof       : NOT ESTABLISHED
+[+139.865s] [INFO]  [PARETO SUMMARY] Independent NEC/tidal front: wormhole_pareto_front.csv
+[+139.895s] [INFO]  [CANDIDATE SUMMARY] Full formulas: wormhole_final_candidate.txt
+[+139.924s] [INFO]  ------------------------------------------------------------
+[+139.957s] [INFO]  The search found a Morris-Thorne geometry candidate that passed
+[+139.995s] [INFO]  the implemented classical GR checks and pointwise TINC interval
+[+140.026s] [INFO]  checks at all sampled radii. This does not establish continuum
+[+140.057s] [INFO]  validity, dynamical stability, quantum realizability or a real wormhole.
+[+140.086s] [INFO]  In all cases, a low negative-NEC score measures the chosen model
+[+140.113s] [INFO]  objective only; it is NOT evidence that a physical wormhole exists.

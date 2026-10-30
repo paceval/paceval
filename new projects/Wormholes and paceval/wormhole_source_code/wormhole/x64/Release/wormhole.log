@@ -1,0 +1,8 @@
+﻿  paceval_main.cpp
+g:\onedrive - paceval.com\paceval-sdk_4_25\examples_sources\c++_examples\windows\microsoft visual_studio\x64_and_x86\more_examples\system-independent\source_public\paceval_main.cpp(1479): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+g:\onedrive - paceval.com\paceval-sdk_4_25\examples_sources\c++_examples\windows\microsoft visual_studio\x64_and_x86\more_examples\system-independent\source_public\paceval_main.cpp(1573): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  wormhole.cpp
+  Generating code
+  All 1942 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  wormhole.vcxproj -> G:\OneDrive - paceval.com\paceval-sdk_4_25\examples_sources\C++_examples\Windows\Microsoft Visual_Studio\x64_and_x86\more_examples\wormhole_TINC_ext_final_opt\x64\Release\wormhole.exe
