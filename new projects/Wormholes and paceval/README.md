@@ -182,7 +182,7 @@ The **methodological research question** is instead whether automatically genera
 
 ## 7. Reproducibility and repository contents
 
-This directory contains (including research code, one archived log, and the previously prepared German scientific report):
+This directory contains the research code, an archived execution log, and the English-language research report:
 
 ```text
 README.md
@@ -197,8 +197,10 @@ pareto_points.csv                # Exact values transcribed from run log
 generate_figures.py              # Portable figure-generation script (NumPy, SciPy, Matplotlib, Pillow)
 wormhole_research.cpp            # Stage-8 C++ research prototype, original paceval SDK dependency
 documented_run_2026-10-30.log   # Archived console output from the reported run
-research_report_DE.pdf           # German exploratory research report
+paceval_Wormhole_Research_Report_EN.pdf  # English research report
 ```
+
+**Research report:** [Wormhole Research Report (English, PDF)](https://github.com/paceval/paceval/blob/main/new%20projects/Wormholes%20and%20paceval/paceval_Wormhole_Research_Report_EN.pdf)
 
 To regenerate the data-driven figures in a separate Python visualization environment:
 
