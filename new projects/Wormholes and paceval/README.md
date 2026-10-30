@@ -89,13 +89,13 @@ This family gives `b(1)=1` and, for the selected candidate, `b′(1)=-1`. These 
 For the above metric, the radial null energy condition is expressed through
 
 $$
-8\pi(\rho+p_r)=\frac{b'(r)}{r^2}-\frac{b(r)}{r^3}+\frac{2}{r}\left(1-\frac{b(r)}r\right)\Phi'(r).
+8\pi(\rho+p_r)=\frac{b'(r)}{r^2}-\frac{b(r)}{r^3}+\frac{2}{r}\bigl(1-\frac{b(r)}r\bigr)\Phi'(r).
 $$
 
 The optimization reports a **program-defined negative-NEC radial metric**:
 
 $$
-\boxed{J_{\mathrm{NEC}}=\int_{1}^{100}\frac{r^2}{2}\max\!\left(0,-8\pi(\rho+p_r)\right)\,dr.}
+\boxed{J_{\mathrm{NEC}}=\int_{1}^{100}\frac{r^2}{2}\max\!\bigl(0,-8\pi(\rho+p_r)\bigr)\,dr.}
 $$
 
 The numerical result is produced through sampled quadrature, not a TINC-certified integral enclosure. This diagnostic must not be identified without qualification with a physically complete quantity of exotic matter, a universal volume-integral quantifier, or a meaningful physical mass in the absence of dimensional scaling and additional assumptions.
@@ -138,8 +138,8 @@ The integrable throat singularity is handled numerically by substituting $r=1+s^
 A single NEC objective obscures competing requirements. We therefore consider the two-dimensional objective vector
 
 $$
-\min\big(J_{\mathrm{NEC}},\ T_{\mathrm{static}}\big),\qquad
-T_{\mathrm{static}}=\max_r\left\{\left|R_{\hat t\hat r\hat t\hat r}\right|,\left|R_{\hat t\hat\theta\hat t\hat\theta}\right|\right\}.
+\min\bigl(J_{\mathrm{NEC}},\ T_{\mathrm{static}}\bigr),\qquad
+T_{\mathrm{static}}=\max_r\bigl(\lvert R_{\hat t\hat r\hat t\hat r}\rvert ,\lvert R_{\hat t\hat\theta\hat t\hat\theta}\rvert \bigr).
 $$
 
 A candidate is *Pareto dominated* if another evaluated candidate is no worse on both objectives and strictly better on at least one. An exploratory evolutionary run collected candidate geometries; a preview-stage fine-grid assessment selected **24 candidates**, of which **19 were non-dominated within that assessed subset**. The 19 pairs have been transcribed from the run log into [`pareto_points.csv`](pareto_points.csv).
