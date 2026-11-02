@@ -249,3 +249,15 @@ Relevant public resources: [paceval GitHub repository](https://github.com/paceva
 ---
 
 **Takeaway:** This study demonstrates an autonomous workflow for generating, comparing, and pointwise checking mathematical wormhole candidates. The observed improvement is specific to a clearly defined radial NEC objective and an Ellis baseline. It is an encouraging computational result, **not yet a demonstration of a physically realizable wormhole or a new global bound on exotic matter**.
+
+---
+
+## 🧠 Created with paceval®
+
+This application uses the **paceval® mathematical core engine**, designed for **fast, precise, and symbolic numeric computation**.  
+More at: [paceval.com](https://paceval.com)
+
+---
+
+Copyright © 2015-2026 paceval.® All rights reserved.<br>
+mailto:info@paceval.com
