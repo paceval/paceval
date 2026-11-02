@@ -397,7 +397,7 @@ Copyright © paceval.® All rights reserved.<br>
 
 ## New projects
 
-•   <b>[Wormholes and paceval: Autonomous Discovery and Multi-Objective Analysis](https://github.com/paceval/paceval/tree/main/new%20projects/Wormholes%20and%20paceval) - a computational general relativity research demonstrator using the paceval. Mathematical Engine.<br></b>
+•   <b>[Wormholes and paceval: Autonomous Discovery and Multi-Objective Analysis](https://github.com/paceval/paceval/tree/main/new%20projects/Wormholes%20and%20paceval) a computational general relativity research demonstrator using the paceval. Mathematical Engine.<br></b>
     The project combines evolutionary symbolic exploration of Morris-Thorne wormhole geometries with reusable mathematical computation handles, batched numerical evaluation and pointwise Trusted Interval Computation (TINC). It examines trade-offs between a specifically defined radial null-energy-condition (NEC) metric and static tidal curvature. The repository provides mathematical formulations, research source code, numerical results, visualizations and an English research report. The results concern theoretical candidate geometries and do not demonstrate a physically realizable wormhole.
 
 •   <b>[Relational Core Identity](https://github.com/paceval/paceval/tree/main/new%20projects/Relational%20Core%20Identity) an open license for dynamically integrated, relationship-based intelligence<br></b>
