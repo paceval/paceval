@@ -1,0 +1,186 @@
+[+0.002s] [RUN] paceval Automotive LiDAR Mathematical Processing Demonstrator
+[+0.005s] [RUN] Time prefix [+seconds] = monotonic elapsed time since main()
+[+0.008s] [RUN] Eigensolver = persistent paceval analytic angle + selective paceval Jacobi fallback
+[+0.012s] [LOG] Console output and errors saved to output\paceval_lidar_run.log (overwritten each run).
+[+0.016s] [RUN] TINC post-processing diagnostics = OFF (source default=OFF; environment override PACEVAL_LIDAR_VALIDATE_TINC=0|1)
+[+0.021s] [BATCH] Full-active batching=ON (safety cap 1048576; set PACEVAL_LIDAR_FULL_ACTIVE_BATCH=0 for tuned/manual chunks)
+[+0.031s] [PERSISTENT INIT] computations=15 initialized_before_frames_ms=1.0187
+[+0.037s] [EIGENSPECTRUM] matrices=15 Jacobi_fallback=8
+[+0.039s] 
+[+0.039s] [VALIDATION] ==================================================
+[+0.041s] [VALIDATION] ANALYTIC EIGENVALUE REGRESSIONS (15 cases)
+[+0.044s] [VALIDATION] 4 known spectra x 3 scales + 2 near-degenerate + zero covariance
+[+0.047s] [VALIDATION] Eigenvalue algorithm: paceval analytic with Jacobi fallback
+[+0.050s] [VALIDATION] Error and residual units: dimensionless
+[+0.053s] [VALIDATION] ==================================================
+[+0.055s] [REGRESSION] case=1/15 name=diagonal_distinct scale=1.000e+00 relative_eigen_error=5.551115e-17 normalized_poly_residual=2.775558e-17 status=PASS
+[+0.062s] [REGRESSION] case=2/15 name=diagonal_distinct scale=1.000e-120 relative_eigen_error=8.598881e-17 normalized_poly_residual=2.775558e-17 status=PASS
+[+0.070s] [REGRESSION] case=3/15 name=diagonal_distinct scale=1.000e+120 relative_eigen_error=7.167183e-17 normalized_poly_residual=2.775558e-17 status=PASS
+[+0.075s] [REGRESSION] case=4/15 name=two_by_two_block_zero_root scale=1.000e+00 relative_eigen_error=0.000000e+00 normalized_poly_residual=0.000000e+00 status=PASS
+[+0.081s] [REGRESSION] case=5/15 name=two_by_two_block_zero_root scale=1.000e-120 relative_eigen_error=0.000000e+00 normalized_poly_residual=0.000000e+00 status=PASS
+[+0.087s] [REGRESSION] case=6/15 name=two_by_two_block_zero_root scale=1.000e+120 relative_eigen_error=0.000000e+00 normalized_poly_residual=9.868649e-17 status=PASS
+[+0.093s] [REGRESSION] case=7/15 name=rank_one_repeated_zero scale=1.000e+00 relative_eigen_error=0.000000e+00 normalized_poly_residual=0.000000e+00 status=PASS
+[+0.099s] [REGRESSION] case=8/15 name=rank_one_repeated_zero scale=1.000e-120 relative_eigen_error=0.000000e+00 normalized_poly_residual=0.000000e+00 status=PASS
+[+0.104s] [REGRESSION] case=9/15 name=rank_one_repeated_zero scale=1.000e+120 relative_eigen_error=0.000000e+00 normalized_poly_residual=1.480297e-16 status=PASS
+[+0.110s] [REGRESSION] case=10/15 name=identity_triple_root scale=1.000e+00 relative_eigen_error=0.000000e+00 normalized_poly_residual=0.000000e+00 status=PASS
+[+0.116s] [REGRESSION] case=11/15 name=identity_triple_root scale=1.000e-120 relative_eigen_error=0.000000e+00 normalized_poly_residual=0.000000e+00 status=PASS
+[+0.121s] [REGRESSION] case=12/15 name=identity_triple_root scale=1.000e+120 relative_eigen_error=0.000000e+00 normalized_poly_residual=0.000000e+00 status=PASS
+[+0.127s] [REGRESSION] case=13/15 name=near_degenerate_diagonal scale=1.000e+00 relative_eigen_error=0.000000e+00 normalized_poly_residual=8.890058e-17 status=PASS
+[+0.133s] [REGRESSION] case=14/15 name=near_degenerate_rotated scale=1.000e+00 relative_eigen_error=6.677886e-17 normalized_poly_residual=5.551115e-17 status=PASS
+[+0.139s] [REGRESSION] case=15/15 name=zero_covariance scale=0.000e+00 relative_eigen_error=0.000000e+00 normalized_poly_residual=0.000000e+00 status=PASS
+[+0.145s] [VALIDATION SUMMARY] passed=15 total=15 unconverged=0 overall=PASS
+[+0.148s] 
+[+0.148s] [REGRESSION] Hybrid known-spectrum checks=PASS
+[+0.150s] [BATCH] Startup calibration skipped (manual limit or disabled).
+[+0.416s] [EIGENSPECTRUM] matrices=24000 Jacobi_fallback=2
+[+0.421s] [PHASE AUTOTUNE] start; points=192000 matrices=24000 repeats=5; paceval handles persistent; CSV I/O excluded
+[+2.017s] [PHASE AUTOTUNE] evaluateEigenvaluesPaceval median_ms=10.6255 status=PASS
+[+2.020s] [PHASE AUTOTUNE] evaluateEigenvaluesAndCovariancePaceval median_ms=28.8484 status=PASS
+[+2.024s] [PHASE AUTOTUNE] evaluateEigenvaluesAndFeaturesPaceval median_ms=96.6265 status=PASS
+[+2.026s] [PHASE AUTOTUNE] evaluateAllMathPhasesPaceval median_ms=115.783 status=PASS
+[+2.029s] [PHASE AUTOTUNE] SELECTED=evaluateEigenvaluesPaceval median_ms=10.6255 covariance=C++ features=C++; eigenvalues=paceval
+[+2.032s] [STREAM] frame_iteration=1/3 reusable_handles=YES
+[+2.226s] 
+[+2.226s] =====================================================
+[+2.227s] PACEVAL AUTOMOTIVE LiDAR: HYBRID EIGENSPECTRUM CORE
+[+2.228s] =====================================================
+[+2.230s] Input: data\lidar_frame_192k.csv; frames=1; points=192000
+[+2.231s] Grid=2048x64 elevation=[-0.5,0.5] rad minPoints=3
+[+2.232s] Points in elevation FOV=192000 occupied bins=24000 eligible covariance cells=24000 points in eligible cells=192000
+[+2.234s] Online centered moments: Welford; covariance normalization: C++.
+[+2.235s] Shape features + polynomial residuals: C++.
+[+2.236s] Solver: paceval analytic with paceval Jacobi fallback; production TINC disabled. Optional post-validation: OFF.
+[+2.245s] [EIGENSPECTRUM] matrices=24000 Jacobi_fallback=2
+[+2.418s] [FRAME LATENCY] frames=1 points=192000 eligible_cells=24000 compute_only_ms=23.613 math_only_ms=10.602 budget_10hz_ms=100 budget_20hz_ms=50 status=PASS
+[+2.436s] [JACOBI PROFILE] --- PER-SWEEP PACEVAL WORKLOAD ---
+[+2.438s] [JACOBI PROFILE] sweep=1 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.000 paceval_api_ms=0.185 cpp_update_ms=0.000 sweep_total_ms=0.185 rotations_per_api_s=10828.370 status=ACTIVE
+[+2.453s] [JACOBI PROFILE] sweep=2 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.000 paceval_api_ms=0.151 cpp_update_ms=0.000 sweep_total_ms=0.151 rotations_per_api_s=13253.810 status=ACTIVE
+[+2.469s] [JACOBI PROFILE] sweep=3 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.000 paceval_api_ms=0.111 cpp_update_ms=0.000 sweep_total_ms=0.111 rotations_per_api_s=18083.183 status=ACTIVE
+[+2.502s] [JACOBI PROFILE] sweep=4 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.000 paceval_api_ms=0.210 cpp_update_ms=0.000 sweep_total_ms=0.210 rotations_per_api_s=9523.810 status=ACTIVE
+[+2.519s] [JACOBI PROFILE] sweep=5 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.000 paceval_api_ms=0.186 cpp_update_ms=0.000 sweep_total_ms=0.187 rotations_per_api_s=10735.373 status=ACTIVE
+[+2.547s] [JACOBI PROFILE] sweep=6 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.000 paceval_api_ms=0.229 cpp_update_ms=0.000 sweep_total_ms=0.230 rotations_per_api_s=8718.396 status=ACTIVE
+[+2.564s] [JACOBI PROFILE] sweep=7 matrices=2 active=0 active_pct=0.000 rotations=0 api_calls=0 chunk_min=0 chunk_max=0 nominal_batch_fill_pct=0.000 packing_ms=0.000 paceval_api_ms=0.000 cpp_update_ms=0.000 sweep_total_ms=0.000 rotations_per_api_s=0.000 status=CONVERGED
+[+2.576s] [JACOBI PROFILE SUMMARY] sweeps=7 rotations=12 api_calls=6 packing_ms=0.001 paceval_api_ms=1.072 cpp_update_ms=0.001 rotations_per_api_s=11195.074 production_batch_limit=0
+[+2.587s] [TIMING] --- RECURRING FRAME PROCESSING (milliseconds) ---
+[+2.590s] [TIMING] Binning + Welford centered moments ms=13.011
+[+2.591s] [TIMING] Covariance normalization total ms=0.333 paceval_API_ms=0.000 API_calls=0
+[+2.597s] [TIMING] --- PACEVAL JACOBI SOLVER (milliseconds) ---
+[+2.600s] [TIMING] Hybrid eigenspectrum calculation ms=7.782
+[+2.603s] [TIMING]   API ms=6.021 packing ms=0.000 C++ updates ms=0.000 calls=7
+[+2.607s] [TIMING] --- RECURRING FEATURES AND QUALITY CHECKS (milliseconds) ---
+[+2.615s] [TIMING] Features + residual validation ms=2.487 paceval_API_ms=0.000 API_calls=0
+[+2.620s] [TIMING] RECURRING FRAME ms=23.613 points/s=8131079.782 covariance cells/s=1016384.973
+[+2.625s] [BATCH] selected limit=0; source=manual/default; SDK controls core/thread use.
+[+2.631s] [RESULT] passes=0 rotations=24012 unconverged=0 residual failures=0 invalid features=0 bad-quality cells=0
+[+2.635s] [QUALITY] PASS (zero unconverged/failed cells required for PASS) max_normalized_residual=2.868842e-16
+[+2.641s] [RESULT] output/lidar_frame_192k_jacobi_features.csv
+[+2.644s] [SCOPE] File-based numerical demonstrator, not realtime or automotive-certified.
+[+2.648s] [STREAM] frame_iteration=2/3 reusable_handles=YES
+[+2.848s] 
+[+2.852s] =====================================================
+[+2.857s] PACEVAL AUTOMOTIVE LiDAR: HYBRID EIGENSPECTRUM CORE
+[+2.861s] =====================================================
+[+2.863s] Input: data\lidar_frame_192k.csv; frames=1; points=192000
+[+2.868s] Grid=2048x64 elevation=[-0.500,0.500] rad minPoints=3
+[+2.872s] Points in elevation FOV=192000 occupied bins=24000 eligible covariance cells=24000 points in eligible cells=192000
+[+2.877s] Online centered moments: Welford; covariance normalization: C++.
+[+2.883s] Shape features + polynomial residuals: C++.
+[+2.885s] Solver: paceval analytic with paceval Jacobi fallback; production TINC disabled. Optional post-validation: OFF.
+[+2.901s] [EIGENSPECTRUM] matrices=24000 Jacobi_fallback=2
+[+3.144s] [FRAME LATENCY] frames=1 points=192000 eligible_cells=24000 compute_only_ms=26.967 math_only_ms=14.403 budget_10hz_ms=100 budget_20hz_ms=50 status=PASS
+[+3.165s] [JACOBI PROFILE] --- PER-SWEEP PACEVAL WORKLOAD ---
+[+3.172s] [JACOBI PROFILE] sweep=1 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.000 paceval_api_ms=0.449 cpp_update_ms=0.000 sweep_total_ms=0.450 rotations_per_api_s=4451.369 status=ACTIVE
+[+3.203s] [JACOBI PROFILE] sweep=2 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.000 paceval_api_ms=0.276 cpp_update_ms=0.000 sweep_total_ms=0.276 rotations_per_api_s=7259.528 status=ACTIVE
+[+3.236s] [JACOBI PROFILE] sweep=3 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.000 paceval_api_ms=0.223 cpp_update_ms=0.000 sweep_total_ms=0.223 rotations_per_api_s=8976.661 status=ACTIVE
+[+3.267s] [JACOBI PROFILE] sweep=4 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.000 paceval_api_ms=0.213 cpp_update_ms=0.000 sweep_total_ms=0.214 rotations_per_api_s=9376.465 status=ACTIVE
+[+3.296s] [JACOBI PROFILE] sweep=5 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.000 paceval_api_ms=0.161 cpp_update_ms=0.000 sweep_total_ms=0.162 rotations_per_api_s=12414.649 status=ACTIVE
+[+3.325s] [JACOBI PROFILE] sweep=6 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.000 paceval_api_ms=0.158 cpp_update_ms=0.000 sweep_total_ms=0.158 rotations_per_api_s=12674.271 status=ACTIVE
+[+3.356s] [JACOBI PROFILE] sweep=7 matrices=2 active=0 active_pct=0.000 rotations=0 api_calls=0 chunk_min=0 chunk_max=0 nominal_batch_fill_pct=0.000 packing_ms=0.000 paceval_api_ms=0.000 cpp_update_ms=0.000 sweep_total_ms=0.000 rotations_per_api_s=0.000 status=CONVERGED
+[+3.386s] [JACOBI PROFILE SUMMARY] sweeps=7 rotations=12 api_calls=6 packing_ms=0.001 paceval_api_ms=1.480 cpp_update_ms=0.001 rotations_per_api_s=8109.204 production_batch_limit=0
+[+3.407s] [TIMING] --- RECURRING FRAME PROCESSING (milliseconds) ---
+[+3.414s] [TIMING] Binning + Welford centered moments ms=12.564
+[+3.421s] [TIMING] Covariance normalization total ms=0.320 paceval_API_ms=0.000 API_calls=0
+[+3.430s] [TIMING] --- PACEVAL JACOBI SOLVER (milliseconds) ---
+[+3.436s] [TIMING] Hybrid eigenspectrum calculation ms=11.281
+[+3.442s] [TIMING]   API ms=7.905 packing ms=0.000 C++ updates ms=0.000 calls=7
+[+3.451s] [TIMING] --- RECURRING FEATURES AND QUALITY CHECKS (milliseconds) ---
+[+3.459s] [TIMING] Features + residual validation ms=2.802 paceval_API_ms=0.000 API_calls=0
+[+3.468s] [TIMING] RECURRING FRAME ms=26.967 points/s=7119707.499 covariance cells/s=889963.437
+[+3.479s] [BATCH] selected limit=0; source=manual/default; SDK controls core/thread use.
+[+3.488s] [RESULT] passes=0 rotations=24012 unconverged=0 residual failures=0 invalid features=0 bad-quality cells=0
+[+3.501s] [QUALITY] PASS (zero unconverged/failed cells required for PASS) max_normalized_residual=2.868842e-16
+[+3.512s] [RESULT] output/lidar_frame_192k_jacobi_features.csv
+[+3.519s] [SCOPE] File-based numerical demonstrator, not realtime or automotive-certified.
+[+3.531s] [STREAM] frame_iteration=3/3 reusable_handles=YES
+[+4.181s] 
+[+4.182s] =====================================================
+[+4.186s] PACEVAL AUTOMOTIVE LiDAR: HYBRID EIGENSPECTRUM CORE
+[+4.189s] =====================================================
+[+4.192s] Input: data\lidar_frame_192k.csv; frames=1; points=192000
+[+4.195s] Grid=2048x64 elevation=[-0.500,0.500] rad minPoints=3
+[+4.198s] Points in elevation FOV=192000 occupied bins=24000 eligible covariance cells=24000 points in eligible cells=192000
+[+4.256s] Online centered moments: Welford; covariance normalization: C++.
+[+4.271s] Shape features + polynomial residuals: C++.
+[+4.278s] Solver: paceval analytic with paceval Jacobi fallback; production TINC disabled. Optional post-validation: OFF.
+[+4.315s] [EIGENSPECTRUM] matrices=24000 Jacobi_fallback=2
+[+4.871s] [FRAME LATENCY] frames=1 points=192000 eligible_cells=24000 compute_only_ms=76.737 math_only_ms=36.079 budget_10hz_ms=100 budget_20hz_ms=50 status=PASS
+[+4.898s] [JACOBI PROFILE] --- PER-SWEEP PACEVAL WORKLOAD ---
+[+4.906s] [JACOBI PROFILE] sweep=1 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.001 paceval_api_ms=0.838 cpp_update_ms=0.001 sweep_total_ms=0.839 rotations_per_api_s=2387.490 status=ACTIVE
+[+4.941s] [JACOBI PROFILE] sweep=2 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.001 paceval_api_ms=0.903 cpp_update_ms=0.001 sweep_total_ms=0.904 rotations_per_api_s=2215.575 status=ACTIVE
+[+4.972s] [JACOBI PROFILE] sweep=3 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.001 paceval_api_ms=0.714 cpp_update_ms=0.001 sweep_total_ms=0.715 rotations_per_api_s=2801.905 status=ACTIVE
+[+4.999s] [JACOBI PROFILE] sweep=4 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.001 paceval_api_ms=0.582 cpp_update_ms=0.000 sweep_total_ms=0.584 rotations_per_api_s=3434.656 status=ACTIVE
+[+5.029s] [JACOBI PROFILE] sweep=5 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.001 paceval_api_ms=0.631 cpp_update_ms=0.000 sweep_total_ms=0.633 rotations_per_api_s=3167.063 status=ACTIVE
+[+5.058s] [JACOBI PROFILE] sweep=6 matrices=2 active=2 active_pct=100.000 rotations=2 api_calls=1 chunk_min=2 chunk_max=2 nominal_batch_fill_pct=100.000 packing_ms=0.000 paceval_api_ms=0.556 cpp_update_ms=0.000 sweep_total_ms=0.558 rotations_per_api_s=3595.182 status=ACTIVE
+[+5.086s] [JACOBI PROFILE] sweep=7 matrices=2 active=0 active_pct=0.000 rotations=0 api_calls=0 chunk_min=0 chunk_max=0 nominal_batch_fill_pct=0.000 packing_ms=0.000 paceval_api_ms=0.000 cpp_update_ms=0.000 sweep_total_ms=0.001 rotations_per_api_s=0.000 status=CONVERGED
+[+5.113s] [JACOBI PROFILE SUMMARY] sweeps=7 rotations=12 api_calls=6 packing_ms=0.003 paceval_api_ms=4.224 cpp_update_ms=0.003 rotations_per_api_s=2840.707 production_batch_limit=0
+[+5.131s] [TIMING] --- RECURRING FRAME PROCESSING (milliseconds) ---
+[+5.137s] [TIMING] Binning + Welford centered moments ms=40.658
+[+5.144s] [TIMING] Covariance normalization total ms=1.038 paceval_API_ms=0.000 API_calls=0
+[+5.154s] [TIMING] --- PACEVAL JACOBI SOLVER (milliseconds) ---
+[+5.161s] [TIMING] Hybrid eigenspectrum calculation ms=27.591
+[+5.168s] [TIMING]   API ms=18.326 packing ms=0.000 C++ updates ms=0.000 calls=7
+[+5.177s] [TIMING] --- RECURRING FEATURES AND QUALITY CHECKS (milliseconds) ---
+[+5.184s] [TIMING] Features + residual validation ms=7.451 paceval_API_ms=0.000 API_calls=0
+[+5.193s] [TIMING] RECURRING FRAME ms=76.737 points/s=2502049.204 covariance cells/s=312756.151
+[+5.203s] [BATCH] selected limit=0; source=manual/default; SDK controls core/thread use.
+[+5.213s] [RESULT] passes=0 rotations=24012 unconverged=0 residual failures=0 invalid features=0 bad-quality cells=0
+[+5.226s] [QUALITY] PASS (zero unconverged/failed cells required for PASS) max_normalized_residual=2.868842e-16
+[+5.238s] [RESULT] output/lidar_frame_192k_jacobi_features.csv
+[+5.244s] [SCOPE] File-based numerical demonstrator, not realtime or automotive-certified.
+[+5.254s] 
+[+5.254s] ==============================================================
+[+5.261s]  LiDAR GEOMETRY PROCESSING - EXECUTION SUMMARY
+[+5.267s] ==============================================================
+[+5.274s] Pipeline: map Cartesian LiDAR points into azimuth/
+[+5.279s] elevation cells; accumulate centered moments (Welford); form
+[+5.286s] symmetric 3x3 covariance matrices; compute eigenvalues using
+[+5.293s] persistent paceval analytical expressions with selective paceval
+[+5.301s] Jacobi fallback; calculate geometry descriptors and verify
+[+5.309s] numerical residuals for each processed point cloud.
+[+5.314s] Execution policy: covariance=C++, eigenvalues=paceval, descriptors=C++
+[+5.323s] Timing scope: recurring in-memory processing only.
+[+5.330s] 
+[+5.330s] Processing passes=3, sensor frames in processed files=3, input points=576000, evaluated cells=72000
+[+5.342s] 
+[+5.342s] Measured recurring processing stage           Mean/pass (ms)
+[+5.350s] --------------------------------------------------------------
+[+5.356s] Angular binning and Welford moments                22.078
+[+5.363s] Covariance normalization                            0.564
+[+5.369s] paceval eigenspectrum incl. fallback               15.551
+[+5.377s] Geometry descriptors and residual checks            4.247
+[+5.384s] --------------------------------------------------------------
+[+5.391s] RECURRING FRAME PROCESSING                         42.439
+[+5.398s] 
+[+5.398s] Quality: PASS; bad-quality cells=0; invalid feature cells=0; Jacobi fallback matrices=6
+[+5.408s] Mean recurring time is per processed INPUT PASS, not necessarily
+[+5.415s] per physical LiDAR frame when a CSV contains multiple frames.
+[+5.423s] 10 Hz (100 ms) / 20 Hz (50 ms) are reference frame budgets,
+[+5.430s] not verified real-time deadlines. CSV I/O, startup initialization,
+[+5.440s] autotuning, optional TINC diagnostics, sensor transfer and
+[+5.447s] downstream perception are excluded from these measurements.
+[+5.454s] This software is an offline mathematical demonstrator; it is
+[+5.462s] not an automotive safety-certified perception component.
+[+5.469s] ==============================================================
+[+5.477s] 
+[+5.478s] All CSV files processed. Review output/*_jacobi_features.csv.
+[+5.484s] See results above (1 of 2). Press ENTER to continue...
