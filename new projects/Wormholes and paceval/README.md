@@ -18,6 +18,8 @@ For one documented run (random seed `20261029`, **100 evaluated candidates**, no
 
 The selected geometry also has higher static tidal-curvature components than the Ellis reference, illustrating an important competing objective rather than a universal improvement.
 
+**Physical interpretation of the trade-off.** In the investigated numerical setup, the selected geometry exhibits a substantially smaller *finite-interval, program-defined measure of negative radial null-energy-condition (NEC) violation* than the massless Ellis reference, but larger sampled *static orthonormal tidal-curvature components*. This does **not** establish that a physical wormhole would require proportionally less exotic matter. Nor does greater static curvature, by itself, quantify the accelerations or mechanical stresses experienced by a traveler: those depend on the physical throat scale, the traveler's trajectory and velocity, and the relevant locally measured frame. The result is therefore a trade-off between the two specified numerical objectives, **not** a demonstrated improvement in physical traversability.
+
 ## 1. What paceval contributes
 
 [paceval](https://github.com/paceval/paceval) is a system-independent mathematical engine for evaluating explicit expressions. An input expression is processed into an internal computation structure that can be reused for many subsequent assignments of its input variables. This architecture is useful when one model must be evaluated across many points or parameter sets, as in numerical physics, engineering, and scientific computing.
