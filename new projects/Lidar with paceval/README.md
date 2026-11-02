@@ -343,3 +343,15 @@ This repository is a **numerical engineering demonstrator**. It is not:
 - or a full real-time automotive ECU implementation.
 
 Its purpose is to evaluate the mathematical processing core and the architectural role of paceval in a LiDAR-oriented workflow.
+
+---
+
+## 🧠 Created with paceval®
+
+This application uses the **paceval® mathematical core engine**, designed for **fast, precise, and symbolic numeric computation**.  
+More at: [paceval.com](https://paceval.com)
+
+---
+
+Copyright © 2015–2026 paceval.® All rights reserved.  
+[info@paceval.com](mailto:info@paceval.com)
