@@ -50,7 +50,7 @@ Here `b(r)` denotes the **shape function** and `Φ(r)` the **redshift function**
 For this particular candidate, introduce
 
 $$
-q(r)=\frac{r-1}{r},\qquad a=1.7573959995777177,\qquad \gamma=1.9935043450750545.
+q(r)=\frac{r-1}{r},\qquad a=1.7573959995777182,\qquad \gamma=1.9935043450750545.
 $$
 
 The application-generated expression is algebraically equivalent to the compact representation
@@ -71,7 +71,7 @@ $$
 ```text
 q = (r - 1) / r
 U = q + (q*q*q) / ((1 + q*q) * (1 + cos(a)*cos(a)))
-a = 1.7573959995777177
+a = 1.7573959995777182
 gamma = 1.9935043450750545
 b = (1 + q*U) / r
 Phi = -gamma / r
@@ -80,7 +80,7 @@ Phi = -gamma / r
 Equivalently, without symbolic parameters:
 
 ```text
-b = (1 + ((r-1)/r) * (((r-1)/r) + (((r-1)/r)*((r-1)/r)*((r-1)/r)) / ((1+((r-1)/r)*((r-1)/r))*(1+cos(1.7573959995777177)*cos(1.7573959995777177))))) / r
+b = (1 + ((r-1)/r) * (((r-1)/r) + (((r-1)/r)*((r-1)/r)*((r-1)/r)) / ((1+((r-1)/r)*((r-1)/r))*(1+cos(1.7573959995777182)*cos(1.7573959995777182))))) / r
 Phi = -1.9935043450750545 / r
 ```
 
@@ -119,7 +119,7 @@ The program reports a fitness estimate derived from sampled numerical integratio
 | Proper radial distance, `1 ≤ r ≤ 100` | **≈ 100.27745** | Numerical value in throat-radius units |
 | Expression nodes | **11** | Complexity of the selected generated expression |
 
-**Numerical provenance and interpretation.** The original [`wormhole_reference_comparison.csv`](wormhole_reference_comparison.csv) distinguishes `negative_NEC_fitness` (0.10353962119525634 for the selected candidate) from `negative_NEC_quadrature` (0.10356062635634017). The corresponding Ellis values are 0.99001188178969057 and 0.99002294791025836. These are two numerical estimates under the implementation's respective evaluation paths, **not identical exact values**. The approximately 89.5% relative reduction is calculated from the two **fitness** values, not across mixed columns. Neither integral has a continuum-certified TINC enclosure.
+**Numerical provenance and interpretation.** The separate `wormhole_reference_comparison.csv` (supplementary comparison from a separately archived run; not included in this Stage-8 repository snapshot) distinguishes `negative_NEC_fitness` (0.10353962119525634 for the selected candidate) from `negative_NEC_quadrature` (0.10356062635634017). The corresponding Ellis values are 0.99001188178969057 and 0.99002294791025836. These are two numerical estimates under the implementation's respective evaluation paths, **not identical exact values**. The approximately 89.5% relative reduction is calculated from the two **fitness** values, not across mixed columns. Neither integral has a continuum-certified TINC enclosure.
 
 The reference is the **massless Ellis geometry** `b(r)=1/r, Φ(r)=0` in the same coordinate normalization. It is not the entirety of the Ellis–Bronnikov family. A different redshift, stress-energy model, throat radius, integration interval, or objective may change the ranking.
 
@@ -163,7 +163,7 @@ $$
 T_{\mathrm{static}}=\max_r\bigl(\lvert R_{\hat t\hat r\hat t\hat r}\rvert ,\lvert R_{\hat t\hat\theta\hat t\hat\theta}\rvert \bigr).
 $$
 
-A candidate is *Pareto dominated* if another evaluated candidate is no worse on both objectives and strictly better on at least one. An exploratory evolutionary run collected candidate geometries; a preview-stage fine-grid assessment selected **24 candidates**, of which **19 were non-dominated within that assessed subset**. The original 19-point records from the successful run are provided unchanged in [`wormhole_pareto_front.csv`](wormhole_pareto_front.csv).
+A candidate is *Pareto dominated* if another evaluated candidate is no worse on both objectives and strictly better on at least one. An exploratory evolutionary run collected candidate geometries; a preview-stage fine-grid assessment selected **24 candidates**, of which **19 were non-dominated within that assessed subset**. The 19-point records reproduced from the documented Stage-8 run are provided in [`pareto_points.csv`](pareto_points.csv).
 
 ![Run-derived Pareto front](assets/02_pareto_front.png)
 
@@ -208,19 +208,17 @@ This directory contains the research code, an archived execution log, and the En
 ```text
 README.md
 assets/
-  01_wormhole_schematic.png       # Editorial illustration; not metric-exact
-  02_pareto_front.png             # 19 Pareto points from original run CSV
-  03_embedding_comparison.png     # Computed shared-scale embeddings + z(r) and Δz(r)
-  04_computation_workflow.png     # Engine and application responsibilities
-  05_tinc_scope.png              # Model-derived curve, illustrative sample markers
-  06_physics_diagnostics.png     # NEC and static tidal components from model
-wormhole_pareto_front.csv        # Original Pareto CSV from the successful run
-generate_figures.py              # Portable figure-generation script (NumPy, SciPy, Matplotlib, Pillow)
-wormhole.cpp                     # Original C++ research prototype from the successful run
-wormhole_discovery_debug.log     # Original complete console/debug log of the reported run
-wormhole_final_candidate.txt     # Original expanded formulas of the selected candidate
-wormhole_reference_comparison.csv # Original reference-model diagnostics and both NEC estimates
-paceval_Wormhole_Research_Report_EN.pdf  # English research report
+  01_wormhole_schematic.png
+  02_pareto_front.png
+  03_embedding_comparison.png
+  04_computation_workflow.png
+  05_tinc_scope.png
+  06_physics_diagnostics.png
+wormhole_research.cpp            # Stage-8 C++ source
+pareto_points.csv                # 19 documented Pareto points
+documented_run_2026-10-30.log   # Stage-8 execution log; add from this patch archive
+generate_figures.py              # Reproduces plots; does not modify CSV input
+paceval_Wormhole_Research_Report_EN.pdf # English report already on GitHub
 ```
 
 **Updated research report:** [Wormhole Research Report (English, PDF)](https://github.com/paceval/paceval/blob/main/new%20projects/Wormholes%20and%20paceval/paceval_Wormhole_Research_Report_EN.pdf)
@@ -232,7 +230,7 @@ python -m pip install numpy scipy matplotlib pillow
 python generate_figures.py
 ```
 
-**Reproduction note:** The plot script reads the original `wormhole_pareto_front.csv` and produces the data-derived figures without access to a previous chat, local absolute paths or the paceval SDK. The included C++ research prototype requires the separate paceval SDK and its documented API. The archived `wormhole_discovery_debug.log` records the successfully completed run (seed `20261029`, 100 investigations, 24 fine-grid Pareto candidates) corresponding to the original `wormhole_final_candidate.txt`. The original expression parameter is `a = 1.7573959995777177` (the last few digits may differ from earlier independently formatted versions). The logged execution describes a specific Windows run; its timings and outcomes are not guaranteed on other machines. Python is used **only to regenerate visualization**, not to implement the autonomous search or TINC. The 3D hero image remains an editorial schematic, not a numerically exact rendering.
+**Reproduction note:** The plot script reads `pareto_points.csv` without modifying it and produces the data-derived figures without access to a previous chat, local absolute paths or the paceval SDK. The included C++ research prototype requires the separate paceval SDK and its documented API. The archived `documented_run_2026-10-30.log` records the Stage-8 run (seed `20261029`, 100 investigations, 24 fine-grid Pareto-preview candidates). The reported compact expression parameter for that run is `a = 1.7573959995777182`; a later separately recorded run used `1.7573959995777177`. These are distinct run records and must not be conflated. The logged execution describes a specific Windows run; its timings and outcomes are not guaranteed on other machines. Python is used **only to regenerate visualization**, not to implement the autonomous search or TINC. The 3D hero image remains an editorial schematic, not a numerically exact rendering.
 
 Relevant public resources: [paceval GitHub repository](https://github.com/paceval/paceval) · [paceval website](https://paceval.com/) · [Example source code](https://github.com/paceval/paceval/tree/main/examples_sources)
 

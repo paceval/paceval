@@ -36,9 +36,6 @@ with (ROOT/'pareto_points.csv').open(newline='',encoding='utf-8') as fp:
  values=[(int(row['rank']),float(row['negative_nec_radial_metric']),float(row['max_static_tidal_component'])) for row in csv.DictReader(fp)]
 assert len(values)==19, values
 values.sort()
-with (ROOT/'pareto_points.csv').open('w') as f:
- f.write('rank,negative_nec_radial_metric,max_static_tidal_component\n')
- for rank,n,t in values:f.write(f'{rank},{n:.17g},{t:.17g}\n')
 fig,ax=plt.subplots(figsize=(9,5.1));x=np.array([v[1] for v in values]);y=np.array([v[2] for v in values]);ax.plot(x,y,'-o',linewidth=1.6,markersize=4,color='#2369a4');ax.scatter([x[0]],[y[0]],s=130,c='#ef8c3a',zorder=5,label='Minimum NEC metric');ax.scatter([x[-1]],[y[-1]],s=130,c='#21866a',zorder=5,label='Minimum static tidal metric');ax.set(xlabel='Negative radial NEC metric (lower is better)',ylabel='Max. sampled static tidal curvature (lower is better)',title='Sampled multi-objective Pareto front');ax.legend();ax.grid(alpha=.25);fig.text(.5,-.01,'19 non-dominated solutions among 24 fine-grid evaluated candidates (preview subset; not globally optimal).',ha='center',fontsize=9);save('02_pareto_front.png')
 # Figure 3: spatial embedding, both surfaces on identical scales; lower panel exposes their difference.
 s=np.linspace(0,np.sqrt(11),1250)
