@@ -242,6 +242,7 @@ deterministic decision engine • explainable AI • real‑time decision comput
 - [Relational Core Identity Framework (RCIF)](https://github.com/paceval/paceval/tree/main/new%20projects/Relational%20Core%20Identity)   
 - [Wormholes and paceval: Autonomous Wormhole Discovery](https://github.com/paceval/paceval/tree/main/new%20projects/Wormholes%20and%20paceval)
 - [NYSE Skyscr8per visualization platform](https://github.com/paceval/paceval/tree/main/new%20projects/Skyscr8per%20%E2%80%93%20Stock%20Tracker)   
+- [LiDAR with paceval: Automotive LiDAR Mathematical Processing Demonstrator](https://github.com/paceval/paceval/tree/main/new%20projects/Lidar%20with%20paceval)
 
 ---
 
@@ -399,6 +400,9 @@ Copyright © paceval.® All rights reserved.<br>
 
 •   <b>[Wormholes and paceval: Autonomous Discovery and Multi-Objective Analysis](https://github.com/paceval/paceval/tree/main/new%20projects/Wormholes%20and%20paceval) a computational general relativity research demonstrator using the paceval. Mathematical Engine.<br></b>
     The project combines evolutionary symbolic exploration of Morris-Thorne wormhole geometries with reusable mathematical computation handles, batched numerical evaluation and pointwise Trusted Interval Computation (TINC). It examines trade-offs between a specifically defined radial null-energy-condition (NEC) metric and static tidal curvature. The repository provides mathematical formulations, research source code, numerical results, visualizations and an English research report. The results concern theoretical candidate geometries and do not demonstrate a physically realizable wormhole.
+
+•   <b>[LiDAR with paceval: Automotive LiDAR Mathematical Processing Demonstrator](https://github.com/paceval/paceval/tree/main/new%20projects/Lidar%20with%20paceval) demonstrates mathematical processing of automotive LiDAR point clouds using the paceval. Mathematical Engine.<br></b>
+    The Microsoft Visual C++ demonstrator computes covariance matrices, eigenvalues and geometric features using reusable computation graphs. It includes measured CPU reference benchmarks and explores integrated FPGA streaming with combined paceval execution graphs for higher throughput.
 
 •   <b>[Relational Core Identity](https://github.com/paceval/paceval/tree/main/new%20projects/Relational%20Core%20Identity) an open license for dynamically integrated, relationship-based intelligence<br></b>
     The Relational Core Identity Framework (RCIF) is a symbolic-emotional architecture layer for integrating large language models (LLMs) into human-centered interaction systems. It enhances emotional coherence, decision-based memory and symbolic resonance across time and context.
