@@ -54,14 +54,14 @@ $$
 The application-generated expression is algebraically equivalent to the compact representation
 
 $$
-\boxed{U(q)=q+\frac{q^3}{(1+q^2)(1+\cos^2 a)}}
+U(q)=q+\frac{q^3}{(1+q^2)(1+\cos^2 a)}
 $$
 
 and
 
 $$
-\boxed{b(r)=\frac{1+q(r)U(q(r))}{r}},\qquad
-\boxed{\Phi(r)=-\frac{\gamma}{r}}.
+b(r)=\frac{1+q(r)U(q(r))}{r},\qquad
+\Phi(r)=-\frac{\gamma}{r}.
 $$
 
 **Text expressions for reproducibility** (the variables and substitutions below are shown explicitly; this is readable expression notation, not a standalone source-code file):
@@ -95,7 +95,7 @@ $$
 The optimization reports a **program-defined negative-NEC radial metric**:
 
 $$
-\boxed{J_{\mathrm{NEC}}=\int_{1}^{100}\frac{r^2}{2}\max\!\bigl(0,-8\pi(\rho+p_r)\bigr)\,dr.}
+J_{\mathrm{NEC}}=\int_{1}^{100}\frac{r^2}{2}\max\!\bigl(0,-8\pi(\rho+p_r)\bigr)\,dr.
 $$
 
 The numerical result is produced through sampled quadrature, not a TINC-certified integral enclosure. This diagnostic must not be identified without qualification with a physically complete quantity of exotic matter, a universal volume-integral quantifier, or a meaningful physical mass in the absence of dimensional scaling and additional assumptions.
