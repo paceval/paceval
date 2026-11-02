@@ -6,7 +6,7 @@
 
 ![Illustrative 3D wormhole visualization with annotated results](assets/01_wormhole_schematic.png)
 
-*Figure 1. Editorial 3D schematic of a two-sided wormhole with annotations from the reported run. **This image is an illustration, not a geometrically exact rendering of the metric.** Use Figure 3 for numerically integrated embedding surfaces. Physical units and traveler-specific tidal accelerations have not been established.*
+**Figure 1.** Editorial 3D schematic of a two-sided wormhole with annotations from the reported run. **This image is an illustration, not a geometrically exact rendering of the metric.** Use Figure 3 for numerically integrated embedding surfaces. Physical units and traveler-specific tidal accelerations have not been established.
 
 ## In brief
 
@@ -33,7 +33,7 @@ In this research application:
 
 ![Computation workflow](assets/04_computation_workflow.png)
 
-*Figure 2. Division of responsibilities between evolutionary symbolic search, computation-graph reuse, batched numerical evaluation, and pointwise TINC checking. The symbolic search is application logic; it is not presented as an inherent feature of the paceval runtime.*
+**Figure 2.** Division of responsibilities between evolutionary symbolic search, computation-graph reuse, batched numerical evaluation, and pointwise TINC checking. The symbolic search is application logic; it is not presented as an inherent feature of the paceval runtime.
 
 ## 2. Mathematical formulation
 
@@ -119,7 +119,15 @@ The reference is the **massless Ellis geometry** `b(r)=1/r, Φ(r)=0` in the same
 
 ![Corrected shared-scale comparison with embedding-height difference](assets/03_embedding_comparison.png)
 
-*Figure 3. Computed equatorial, constant-time Euclidean embeddings using the **same axes** and areal-radius range, $1\le r\le12$. The lower panel plots both embedding heights and the directly calculated difference $\Delta z(r)=z_{\mathrm{paceval}}(r)-z_{\mathrm{Ellis}}(r)$ with $z(1)=0$. At $r=12$, $\Delta z\approx0.792\,r_0$. The figures show a spatial slice, not a four-dimensional spacetime, physical traversability, or an amount of exotic matter.*
+**Figure 3.** Computed equatorial, constant-time Euclidean embeddings using identical coordinate axes and the same areal-radius range (1 ≤ r ≤ 12).
+
+The lower panel shows both embedding heights and their directly calculated difference:
+
+**Δz(r) = z_paceval(r) − z_Ellis(r)**
+
+Both embedding heights are normalized to z(1) = 0. At r = 12, the difference is approximately **Δz = 0.792 r₀**.
+
+These figures represent spatial slices, not the complete four-dimensional spacetime. They do not establish physical traversability or quantify the amount of exotic matter.
 
 For these spatial embeddings, the Euclidean embedding height is computed from the shape function,
 
@@ -127,11 +135,18 @@ $$
 \frac{dz}{dr}=\sqrt{\frac{b(r)}{r-b(r)}},\qquad z(r_0)=0,\qquad r_0=1.
 $$
 
-The integrable throat singularity is handled numerically by substituting $r=1+s^2$, so that $dz/ds=2s\sqrt{b(r)/(r-b(r))}$. Both sides are drawn as $+z(r)$ and $-z(r)$. The heights depend on a shared additive convention, and differences are interpreted only at matched areal radius.
+The integrable throat singularity is handled numerically using the substitution
+
+$$
+r=1+s^2,\qquad
+\frac{dz}{ds}=2s\sqrt{\frac{b(r)}{r-b(r)}}.
+$$
+
+Both sides are drawn as the positive and negative embedding heights, +z(r) and −z(r). The heights use the same additive convention, and their difference is compared only at matched areal radii.
 
 ![Computed NEC and tidal components](assets/06_physics_diagnostics.png)
 
-*Figure 4. Profiles calculated directly from the stated compact analytic functions, including the massless Ellis NEC expression `8π(ρ+pᵣ) = −2/r⁴`. The tidal-curvature panel presents selected absolute **static orthonormal Riemann components**, not the acceleration felt by a traveler. These plots were independently regenerated from the published equations for visualization and are **not** themselves paceval/TINC output.*
+**Figure 4.** Profiles calculated directly from the stated compact analytic functions, including the massless Ellis NEC expression `8π(ρ+pᵣ) = −2/r⁴`. The tidal-curvature panel presents selected absolute **static orthonormal Riemann components**, not the acceleration felt by a traveler. These plots were independently regenerated from the published equations for visualization and are **not** themselves paceval/TINC output.
 
 ## 4. Multi-objective exploration
 
@@ -146,7 +161,7 @@ A candidate is *Pareto dominated* if another evaluated candidate is no worse on 
 
 ![Run-derived Pareto front](assets/02_pareto_front.png)
 
-*Figure 5. Non-dominated points among the 24 fine-grid assessed geometries. The front is conditional on the explored candidate set and the sampled numerical metrics. It is not the globally optimal Pareto front, and the plotted points have not all received the selected winner's pointwise TINC checks.*
+**Figure 5.** Non-dominated points among the 24 fine-grid assessed geometries. The front is conditional on the explored candidate set and the sampled numerical metrics. It is not the globally optimal Pareto front, and the plotted points have not all received the selected winner's pointwise TINC checks.
 
 The lowest sampled NEC value among these candidates is `≈ 0.10354`, with a maximum sampled static tidal component of `≈ 1.99350`; the lowest tidal value in this subset is `≈ 0.00235`, at a higher NEC metric of `≈ 1.16602`. Neither extreme is a universal recommendation: the physically appropriate choice requires specifications for throat scale, traveler motion, matter content, and stability.
 
@@ -164,7 +179,7 @@ At one sampled radius, the primary expression triggered an engine diagnostic. An
 
 ![Scope of pointwise verification](assets/05_tinc_scope.png)
 
-*Figure 6. A model-derived NEC curve with **illustrative** sampling markers showing why isolated validated input values do not constitute a rigorous enclosure over every point of an interval. The actual numerical TINC lower/upper values were not available to draw statistically or numerically meaningful error bars; none have been invented.*
+**Figure 6.** A model-derived NEC curve with **illustrative** sampling markers showing why isolated validated input values do not constitute a rigorous enclosure over every point of an interval. The actual numerical TINC lower/upper values were not available to draw statistically or numerically meaningful error bars; none have been invented.
 
 **Important distinctions:**
 
