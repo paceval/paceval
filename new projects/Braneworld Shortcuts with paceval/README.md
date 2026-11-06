@@ -113,23 +113,6 @@ results may vary in their last few digits across floating-point environments.
 See [reproducibility](docs/REPRODUCIBILITY.md) and
 [package publication checklist](docs/PUBLISH_CHECKLIST.md).
 
-## Repository contents
-
-```text
-README.md                        Main English GitHub landing page
-report/                          PDF and complete editable English report
-src/                             Four C++ sources and paceval runtime wrapper
-sdk/                             paceval header and attribution (no runtime binary)
-reference_python/                Original geometry reference (NumPy/SciPy)
-validation/                      Independent check scripts and curated outputs
-scripts/                         Smoke/full tests and package link validation
-results/                         Numerical CSV tables and iteration evidence
-figures/                         English illustrations and plot-generation script
-data/historical/                 Historical source scan CSV data
-docs/                            Scientific status, licensing, publication notes
-CMakeLists.txt                    Build four C++ executables
-```
-
 ## Interpreting the plots
 
 ![Geometric arrival-time advance in a separate 40-Mpc cosmological toy example](figures/05_model_delay_vs_ell.png)
