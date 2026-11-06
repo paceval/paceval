@@ -63,7 +63,7 @@ validation and figures**, never linked into the production calculation.
 
 ## Read the scientific report
 
-- **[Complete English research report (PDF)](/Braneworld_Shortcuts_Complete_Research_Report_EN.pdf)**
+- **[Complete English research report (PDF)](Braneworld_Shortcuts_Complete_Research_Report_EN.pdf)**
 
 ## Build and run
 
