@@ -1,0 +1,2 @@
+ell_Mpc,a_emission,z_emission,geometric_advance_seconds,x_gap,S,D_dimensionless,Hbar_today,bulk_distance_derivative,chi2_fixed_intrinsic0,chi2_intrinsic_0_to_max,chi2_intrinsic_unrestricted,unrestricted_implied_intrinsic_sec,profiled_intrinsic_sec,richardson_error_estimate_seconds,N_used
+0.10000000000000001,0.99106837637415257,0.0090121164581236091,1.5951740489240649,1.5497919747133293e-13,1.2398335797706637e-10,400,2.2482220016355452e-05,1.0000000000000009,8.389822442019657,0,0,0.1448259510759351,0.1448259510759351,1.7725028767697399e-05,300

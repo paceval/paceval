@@ -1,0 +1,20 @@
+COSMO_V15 ell_Mpc=0.1 advance_seconds=1.595014523666 chi2_intrinsic0=8.408315339086 chi2_intrinsic_0to10=0 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.535 advance_seconds=45.65330288495 chi2_intrinsic0=771351.2681061 chi2_intrinsic_0to10=771351.2681061 chi2_intrinsic_free=0
+PACEVAL_V15 scalar_calls=1808 batch_calls=20 evaluated_points=11708 distance_Mpc=40 grid_N=100 obs_lag_sec=1.74 sigma_sec=0.05
+WARNING: idealized geometric maximum, NOT a propagated GW signal or physical radius bound.
+COSMO_V15 ell_Mpc=0.1 advance_seconds=1.595148524882 chi2_intrinsic0=8.392779937514 chi2_intrinsic_0to10=0 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.535 advance_seconds=45.65713833471 chi2_intrinsic0=771486.0158041 chi2_intrinsic_0to10=771486.0158041 chi2_intrinsic_free=0
+PACEVAL_V15 scalar_calls=4508 batch_calls=122 evaluated_points=66758 distance_Mpc=40 grid_N=250 obs_lag_sec=1.74 sigma_sec=0.05
+WARNING: idealized geometric maximum, NOT a propagated GW signal or physical radius bound.
+COSMO_V15 ell_Mpc=0.1 advance_seconds=1.595167667913 chi2_intrinsic0=8.390561767069 chi2_intrinsic_0to10=0 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.535 advance_seconds=45.65768625611 chi2_intrinsic0=771505.266436 chi2_intrinsic_0to10=771505.266436 chi2_intrinsic_free=0
+PACEVAL_V15 scalar_calls=9008 batch_calls=488 evaluated_points=258508 distance_Mpc=40 grid_N=500 obs_lag_sec=1.74 sigma_sec=0.05
+WARNING: idealized geometric maximum, NOT a propagated GW signal or physical radius bound.
+COSMO_V15 ell_Mpc=0.1 advance_seconds=1.59517245367 chi2_intrinsic0=8.390007270348 chi2_intrinsic_0to10=0 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.535 advance_seconds=45.65782323647 chi2_intrinsic0=771510.0791319 chi2_intrinsic_0to10=771510.0791319 chi2_intrinsic_free=0
+PACEVAL_V15 scalar_calls=18008 batch_calls=1952 evaluated_points=1017008 distance_Mpc=40 grid_N=1000 obs_lag_sec=1.74 sigma_sec=0.05
+WARNING: idealized geometric maximum, NOT a propagated GW signal or physical radius bound.
+COSMO_V15 ell_Mpc=0.1 advance_seconds=1.595173650112 chi2_intrinsic0=8.389868648789 chi2_intrinsic_0to10=0 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.535 advance_seconds=45.65785748155 chi2_intrinsic0=771511.2823081 chi2_intrinsic_0to10=771511.2823081 chi2_intrinsic_free=0
+PACEVAL_V15 scalar_calls=36008 batch_calls=7810 evaluated_points=4034008 distance_Mpc=40 grid_N=2000 obs_lag_sec=1.74 sigma_sec=0.05
+WARNING: idealized geometric maximum, NOT a propagated GW signal or physical radius bound.

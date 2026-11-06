@@ -1,0 +1,4 @@
+Braneworld Shortcuts v1.3: 5D null-curve numerical research DEMONSTRATOR
+Dimensionless model only; no claim of real-world FTL or GW detection
+TINC/paceval batch mismatch: i=67 t=1.0509803921568628 rho0=1 w=1 paceval=0 native=0.024669903436790888 lo=0 hi=0 error=144
+FAIL: paceval batch/native H mismatch at index 67

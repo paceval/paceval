@@ -1,0 +1,15 @@
+COSMO_V15 ell_Mpc=0.005 advance_seconds=0.003987910197493 chi2_intrinsic0=1205.495190376 chi2_intrinsic_0to10=0 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.007380492090404 advance_seconds=0.008689124093278 chi2_intrinsic0=1198.974939613 chi2_intrinsic_0to10=0 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.0108943326993 advance_seconds=0.01893244174751 chi2_intrinsic0=1184.829416028 chi2_intrinsic_0to10=0 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.01608110726349 advance_seconds=0.04125126384136 chi2_intrinsic0=1154.29890744 chi2_intrinsic_0to10=0 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.02373729699262 advance_seconds=0.08988099851019 chi2_intrinsic0=1089.157087631 chi2_intrinsic_0to10=0 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.03503858654031 advance_seconds=0.1958387002198 chi2_intrinsic0=953.7736478955 chi2_intrinsic_0to10=0 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.05172040216394 advance_seconds=0.4267063911031 chi2_intrinsic0=689.8960412678 chi2_intrinsic_0to10=0 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.0763444038167 advance_seconds=0.9297362778451 chi2_intrinsic0=262.6109197761 chi2_intrinsic_0to10=0 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.1126918537031 advance_seconds=2.025771266339 chi2_intrinsic0=32.66608666605 chi2_intrinsic_0to10=32.66608666605 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.1663442669818 advance_seconds=4.413885227967 chi2_intrinsic0=2859.864884937 chi2_intrinsic_0to10=2859.864884937 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.2455405093486 advance_seconds=9.617266826075 chi2_intrinsic0=24820.53305967 chi2_intrinsic_0to10=24820.53305967 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.3624419574242 advance_seconds=20.95474085461 chi2_intrinsic0=147682.5064439 chi2_intrinsic_0to10=147682.5064439 chi2_intrinsic_free=0
+COSMO_V15 ell_Mpc=0.535 advance_seconds=45.65758352085 chi2_intrinsic0=771501.6569244 chi2_intrinsic_0to10=771501.6569244 chi2_intrinsic_free=0
+PACEVAL_V15 scalar_calls=46852 batch_calls=2028 evaluated_points=1084252 distance_Mpc=40 grid_N=400 obs_lag_sec=1.74 sigma_sec=0.05
+WARNING: idealized geometric maximum, NOT a propagated GW signal or physical radius bound.

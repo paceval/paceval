@@ -1,0 +1,94 @@
+{
+  "v15": {
+    "100": {
+      "0.1": {
+        "paceval_seconds": 1.595014523666284,
+        "absolute_error_seconds": 0.00015952525729523437
+      },
+      "0.535": {
+        "paceval_seconds": 45.65330288494955,
+        "absolute_error_seconds": 0.00456601163497794
+      }
+    },
+    "250": {
+      "0.1": {
+        "paceval_seconds": 1.5951485248822623,
+        "absolute_error_seconds": 2.5524041316948853e-05
+      },
+      "0.535": {
+        "paceval_seconds": 45.65713833471297,
+        "absolute_error_seconds": 0.00073056187155629
+      }
+    },
+    "500": {
+      "0.1": {
+        "paceval_seconds": 1.5951676679132984,
+        "absolute_error_seconds": 6.3810102808314895e-06
+      },
+      "0.535": {
+        "paceval_seconds": 45.6576862561097,
+        "absolute_error_seconds": 0.00018264047482574597
+      }
+    },
+    "1000": {
+      "0.1": {
+        "paceval_seconds": 1.5951724536703369,
+        "absolute_error_seconds": 1.5952532423924026e-06
+      },
+      "0.535": {
+        "paceval_seconds": 45.65782323647051,
+        "absolute_error_seconds": 4.5660114011525366e-05
+      }
+    },
+    "2000": {
+      "0.1": {
+        "paceval_seconds": 1.5951736501116818,
+        "absolute_error_seconds": 3.988118975062349e-07
+      },
+      "0.535": {
+        "paceval_seconds": 45.65785748155472,
+        "absolute_error_seconds": 1.1415029803174548e-05
+      }
+    }
+  },
+  "v14": {
+    "static_dt_0.006": {
+      "max_error": 1.5908103168094099e-09,
+      "end_error": 4.05948386017485e-10
+    },
+    "static_dt_0.003": {
+      "max_error": 9.906309106355592e-11,
+      "end_error": 2.4167778889250254e-11
+    },
+    "static_dt_0.0015": {
+      "max_error": 6.217470982505802e-12,
+      "end_error": 1.4815926263622714e-12
+    },
+    "pulse_ny_81": {
+      "brane_final": -0.0114454626438664,
+      "quarter_final": -0.0102752756503303,
+      "energy_final": 0.0002021633383041
+    },
+    "moving_constant_ny_81": {
+      "max_error": 0.0
+    },
+    "pulse_ny_161": {
+      "brane_final": -0.0114416839122578,
+      "quarter_final": -0.0107305622800433,
+      "energy_final": 0.0002010608796334
+    },
+    "moving_constant_ny_161": {
+      "max_error": 0.0
+    },
+    "pulse_ny_321": {
+      "brane_final": -0.0114419971398003,
+      "quarter_final": -0.0108015617255183,
+      "energy_final": 0.0002008677092186
+    },
+    "moving_constant_ny_321": {
+      "max_error": 0.0
+    },
+    "independent_scipy_ny_81": 2.405835354234165e-07,
+    "independent_scipy_ny_161": 7.746301693839497e-09
+  }
+}

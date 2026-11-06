@@ -1,0 +1,8 @@
+Braneworld Shortcuts v1.3: 5D null-curve numerical research DEMONSTRATOR
+Dimensionless model only; no claim of real-world FTL or GW detection
+NATIVE C++17: cases=50 excluded=4 deSitter=7 nonpositive(w>-1)=0
+  rho0=10 w=-0.5 D=1: tau_brane=4.950270244958566 tau_bulk=3.912555368265594 delta=1.037714876692972 relative_pct=20.96279244046923
+  max |null residual|=1.887379141862766e-15 max |Israel residual|=6.661338147750939e-16
+FAIL: unexpected scan count or sign
+Command exited with non-zero status 1
+elapsed=0.07 s mem=1920 KiB

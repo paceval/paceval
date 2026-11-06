@@ -1,0 +1,19 @@
+{
+  "reference": {
+    "scipy_brane": -0.011441691658559494,
+    "scipy_quarter": -0.010730556191648295,
+    "scipy_half": -2.3078706847643952e-20,
+    "scipy_threequarter": -7.920724991752339e-57,
+    "scipy_edge": 5.764815434635139e-103,
+    "scipy_lna": 0.17310987592170465,
+    "nfev": 4094
+  },
+  "diff": {
+    "scipy_brane": 7.746301693839497e-09,
+    "scipy_quarter": -6.0883950051687785e-09,
+    "scipy_half": 5.823760909858596e-22,
+    "scipy_threequarter": 1.9562646534796303e-57,
+    "scipy_edge": -8.078573470271773e-103
+  },
+  "max_abs_difference": 7.746301693839497e-09
+}

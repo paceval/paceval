@@ -1,0 +1,50 @@
+{
+  "native": {
+    "validated_archived_rows": 47,
+    "additional_de_sitter_cases": [
+      [
+        0.1,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        0.1
+      ],
+      [
+        10.0,
+        -1.0,
+        0.1
+      ]
+    ],
+    "max_abs_advance_discrepancy_v12": 2.7898749976884574e-09,
+    "max_abs_relative_pct_discrepancy_v12": 1.624473409123084e-07,
+    "key_advance": 1.0377148766929718,
+    "key_relative_pct": 20.96279244046923
+  },
+  "paceval": {
+    "validated_archived_rows": 47,
+    "additional_de_sitter_cases": [
+      [
+        0.1,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        0.1
+      ],
+      [
+        10.0,
+        -1.0,
+        0.1
+      ]
+    ],
+    "max_abs_advance_discrepancy_v12": 2.7898749976884574e-09,
+    "max_abs_relative_pct_discrepancy_v12": 1.624473409123084e-07,
+    "key_advance": 1.0377148766929754,
+    "key_relative_pct": 20.962792440469304
+  }
+}

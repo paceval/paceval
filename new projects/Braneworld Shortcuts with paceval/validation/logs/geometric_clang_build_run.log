@@ -1,0 +1,13 @@
+Braneworld Shortcuts v1.3: 5D null-curve numerical research DEMONSTRATOR
+Dimensionless model only; no claim of real-world FTL or GW detection
+NATIVE C++17: cases=50 excluded=4 deSitter=7 nonpositive(w>-1)=0
+  rho0=10 w=-0.5 D=1: tau_brane=4.950270244958728 tau_bulk=3.912555368265248 delta=1.03771487669348 relative_pct=20.9627924404788
+  max |null residual|=3.996802888650564e-15 max |Israel residual|=8.881784197001252e-16
+  elapsed 0.011387776 seconds
+PASS paceval batch API: 256 evaluations against native H
+PACEVAL C++17: cases=50 excluded=4 deSitter=7 nonpositive(w>-1)=0
+  rho0=10 w=-0.5 D=1: tau_brane=4.950270244958729 tau_bulk=3.912555368265249 delta=1.037714876693481 relative_pct=20.96279244047882
+  max |null residual|=3.996802888650564e-15 max |Israel residual|=8.881784197001252e-16
+  paceval scalar H evaluations=8918 batch calls=72 elapsed 0.9948192380000001 seconds
+PASS native vs paceval max abs advance difference=8.881784197e-16
+PASS C++17 reproducibility checks
