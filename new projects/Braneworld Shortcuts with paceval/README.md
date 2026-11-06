@@ -63,13 +63,7 @@ validation and figures**, never linked into the production calculation.
 
 ## Read the scientific report
 
-- **[Complete English research report (PDF)](report/Braneworld_Shortcuts_Complete_Research_Report_EN.pdf)**
-- [Report source (Markdown)](report/Braneworld_Shortcuts_Complete_Research_Report_EN.md)
-- [Rebuilding the report PDF](docs/REPORT_BUILD.md)
-- [Scientific scope and supported claims](docs/SUPPORTED_CLAIMS.md)
-- [Validation and unresolved scientific issues](docs/SCIENTIFIC_STATUS.md)
-- [Publication build, link and numerical QA](docs/FINAL_PUBLICATION_QA.md)
-- [Prior full-report review](docs/FINAL_REVIEW.md)
+- **[Complete English research report (PDF)](/Braneworld_Shortcuts_Complete_Research_Report_EN.pdf)**
 
 ## Build and run
 
@@ -110,8 +104,6 @@ bash scripts/run_full_validation.sh /path/to/libpaceval.so
 
 The bundled historic data and test outputs are suitable for comparison;
 results may vary in their last few digits across floating-point environments.
-See [reproducibility](docs/REPRODUCIBILITY.md) and
-[package publication checklist](docs/PUBLISH_CHECKLIST.md).
 
 ## Interpreting the plots
 
