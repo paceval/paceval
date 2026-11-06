@@ -162,3 +162,9 @@ that repository's root `LICENSE` (AGPLv3) and the additional source-file
 notices. The geometric C++ source retains its historical MIT SPDX declaration.
 The separately licensed paceval runtime binary is not included.
 Read [licensing and redistribution notes](docs/LICENSE_AND_REDISTRIBUTION.md).
+
+---
+
+Built with **paceval®** · [paceval.com](https://paceval.com) · [info@paceval.com](mailto:info@paceval.com)  
+Copyright © 2015–2026 paceval.® All rights reserved.
+
