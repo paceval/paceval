@@ -1,0 +1,13 @@
+backend,method,repetitions,median_ms,min_ms,max_ms,checksums_consistent
+native,fused_mass_weight,7,10.56741,9.908255,12.625363,yes
+native,mass_direct,7,2.780572,2.472857,3.135385,yes
+native,mass_stable,7,3.060793,2.763366,3.565695,yes
+native,synthetic_weight,7,8.047488,7.782251,9.836417,yes
+native,weight_5_variations,7,42.012224,38.442519,44.945692,yes
+real_paceval,fused_mass_weight,7,204.943714,200.780221,208.713659,yes
+real_paceval,mass_direct,7,55.700969,54.081454,59.640778,yes
+real_paceval,mass_stable,7,80.952091,78.549553,83.0291,yes
+real_paceval,synthetic_weight,7,144.650195,139.93109,146.420102,yes
+real_paceval,three_graph_multi,7,232.657272,222.946402,238.679358,yes
+real_paceval,weight_5_variations,7,722.507499,704.854597,755.891664,yes
+real_paceval,weight_5_variations_flat,7,687.157558,671.577853,728.825296,yes
