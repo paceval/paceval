@@ -1,0 +1,9 @@
+build/
+*.o
+*.so
+*.a
+__pycache__/
+*.pyc
+/quantum_results.csv
+/tinc_samples.csv
+/example_results.csv
