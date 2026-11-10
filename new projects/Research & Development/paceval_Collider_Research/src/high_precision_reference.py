@@ -1,7 +1,7 @@
-"""Independent, reproducible 100-digit decimal numerical check of massless invariant m^2.
+"""Independent, reproducible 110-digit decimal numerical check of massless invariant m^2.
 
 Does not use paceval. mpmath is required (pip install mpmath).
-If passed a TINC CSV from real paceval, checks sampled enclosure of 100-digit
+If passed a TINC CSV from real paceval, checks sampled enclosure of 110-digit
 reference. This is an empirical check only: Arb/FLINT would be needed to
 certify rigorous enclosures under stated rounding assumptions.
 """

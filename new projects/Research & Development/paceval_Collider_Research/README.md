@@ -1,80 +1,71 @@
 # Collider Research with paceval
 
-![paceval Collider Research: reusable execution graphs for high-energy physics](figures/00_collider_research_hero.png)
+![paceval Collider Research: mathematically defined collider-analysis kernels, reusable graphs and validation](figures/00_collider_research_hero.png)
 
-*Concept illustration, not a CERN event display. Multi-core and FPGA/ASIC execution are future architecture options, not measured implementations.*
+*Conceptual illustration of high-energy physics analysis; it does not depict an actual measured CERN collision event.*
 
-**Reusable mathematical execution graphs for collider-inspired calculations | C++ research demonstrator**  
-**Verified on the original paceval Linux runtime | 10 November 2026**
+**A validated C++ feasibility demonstrator for reusable mathematical execution in collider-inspired analysis.**  
+**Executed with the original paceval Linux library | 10 November 2026**
 
-This repository contains a compact, reproducible demonstration of **paceval** for repeated collider-kinematics calculations, parametrized event weights and numerical diagnostics. It includes the original C++ implementation, example inputs, concise measurement evidence, visual explanations, and one updated scientific white paper.
+This repository demonstrates that selected **classical mathematical kernels relevant to collider analysis can be implemented, repeatedly executed and independently checked using paceval**. It contains the real C++ integration, input fixtures, independent numerical checks, four technical figures and one scientific white paper. The demonstrator uses **synthetic events**, not CERN collision measurements or detector calibrations.
 
-**[Read the scientific white paper (PDF)](paceval_Collider_Research_Whitepaper_EN.pdf)**
+**[Scientific white paper (PDF)](paceval_Collider_Research_Whitepaper_EN.pdf)**
 
-![Collider kinematic observables: two-body invariant mass and stable formulation](figures/01_kinematics.png)
+## Successfully implemented with paceval
 
-## What paceval actually computes
+The C++ program creates **four persistent calculation graphs and two additional TINC-enabled graphs** using the original paceval shared runtime.
 
-Four persistent mathematical graphs are created **once per program run**, then evaluated for many independent event inputs:
-
-| Graph | Meaning | Concrete computation |
+| Graph | Implemented computation | Verification |
 |:--|:--|:--|
-| G1 | Direct massless two-particle invariant mass squared | `2*pt1*pt2*(cosh(deta)-cos(dphi))` |
-| G2 | Numerically stable, equivalent invariant mass squared | `4*pt1*pt2*(sinh(deta/2)^2+sin(dphi/2)^2)` |
-| G3 | Synthetic parameterized event weight | `W(pt1,pt2,deta,dphi,a,b,c,d)` |
-| G4 | Fused stable mass squared × weight | `(G2)*(G3)` as a **single explicit expression** |
+| G1 | Direct squared invariant mass for two massless particles | Native C++ reference and numerical edge cases |
+| G2 | Algebraically equivalent, numerically stable squared invariant mass | Native and independent high-precision reference |
+| G3 | Synthetic parametrized event weight | Native C++ reference and five parameter variations |
+| G4 | Fused stable mass squared multiplied by the event weight | Native result and direct graph agreement |
+| T1, T2 | TINC-enabled graphs for both mass formulations | Independently checked interval samples |
 
-Two additional graphs enable **Trusted Interval Computing (TINC)** for both mass formulas. `G3` is reused across **five parameter variations** without rebuilding its graph. The weight is a synthetic workload, not a validated detector calibration.
+The evaluated massless-particle expressions, with transverse momenta in GeV, are:
 
-paceval APIs actually executed: `pacevalLibrary_CreateComputation`, `pacevalLibrary_dGetComputationResultExt`, `pacevalLibrary_dGetMultipleComputationsResultsExt`, `pacevalLibrary_dGetComputationResult` (TINC), and the documented initialization, status and cleanup APIs. The correct paceval syntax for natural logarithm is `ln(...)`.
+```text
+m²_direct = 2 * pt1 * pt2 * (cosh(deta) - cos(dphi))
+m²_stable = 4 * pt1 * pt2 * (sinh(deta/2)^2 + sin(dphi/2)^2)
+```
 
-![How formula creation, batch reuse, multi-graph calls, systematic variations and TINC work together](figures/02_graph_reuse.png)
+The synthetic parameterized weight, **not an experimentally calibrated correction**, is:
 
-## Measured benefits of the paceval implementation
+```text
+W = (1 + a*exp(-abs(deta))*cos(dphi)
+       + b*ln(1+pt1/100)
+       + c*sin(pt2/30)^2)
+    * (1 + d*tanh((pt1+pt2-100)/60))
+```
 
-The **original Linux runtime** was tested on **120,000 deterministic synthetic events** (seed `20261110`) at batch size **16,384**, with **seven independent process runs**. Numbers are paired median ratios between alternative **paceval** execution strategies.
+The same graph G3 is reused for five parameter settings. The program also exercises single-graph batch evaluation, **simultaneous evaluation of three distinct graphs**, and the combined formula G4. The natural logarithm is written `ln(...)` in the paceval expression syntax.
 
-| Verified execution improvement | Median speed factor | Implementation |
-|:--|--:|:--|
-| Three graphs through one multi-graph API invocation | **1.21×** | `dGetMultipleComputationsResultsExt` |
-| Fused mass and weight in one execution graph | **1.10×** | Persistent fused formula |
-| Five parameter variations packed into larger input batches | **1.05×** | One reused weight handle; flattened events |
+![Real paceval calculation paths: reusable graphs, batched events, parameter variations and TINC](figures/02_graph_reuse.png)
 
-**Additional verification:** no correctness mismatches beyond the defined tolerances; **24/24** sampled TINC intervals enclosed independent 110-digit reference values. All timing inputs are preserved as compact [seven-run measurements](examples/benchmark_runs.csv) and a [summary](examples/benchmark_summary.csv).
+### Actual paceval interfaces exercised
 
-![Seven-run gains for alternative paceval computation strategies](figures/06_paceval_strategies.png)
+The implementation calls `pacevalLibrary_Initialize`, `pacevalLibrary_CreateComputation`, `pacevalLibrary_dGetComputationResultExt`, `pacevalLibrary_dGetMultipleComputationsResultsExt`, `pacevalLibrary_dGetComputationResult` (for TINC), error/status interfaces, `pacevalLibrary_DeleteComputation`, and `pacevalLibrary_Free`. All calls are made through the supplied real shared library, loaded with `dlopen` on Linux. The [complete implementation](src/collider.cpp) contains the function signatures and input packing.
 
-The gain factors above measure **better use of paceval**, not an overall paceval-vs-native C++ acceleration. This distinction is important for scientific reproducibility.
+## Scientific validation
 
-## Numerical value in collider-inspired event analysis
+The test program independently evaluates the same mathematics in native C++ and checks the paceval results. For near-collinear particle directions, the direct mass formula can lose meaningful digits through subtraction. The alternative form avoids that particular cancellation. This is a mathematical property of the expression; paceval allows **both** forms to be managed and evaluated consistently as reusable graphs.
 
-Near-collinear particles can lead to cancellation in `cosh(deta)-cos(dphi)`. The stable equivalent avoids this particular subtraction. The source evaluates **both expressions with paceval**, compares them with native C++, and runs independent high-precision checks. A representative synthetic selection test identified eight threshold decisions that changed with the unstable formulation.
+![Kinematic setting for the two-particle invariant mass](figures/01_kinematics.png)
 
-![Error of direct and stable two-particle formulas versus 110-digit independent reference](figures/03_precision.png)
+![Independent 110-digit numerical reference: direct and stable mass expressions](figures/03_precision.png)
 
-![Actual TINC interval widths produced by the original paceval runtime](figures/04_tinc.png)
+The [high-precision reference script](src/high_precision_reference.py) uses `mpmath` at **110 decimal digits** and checks 14 angle cases from `10^-2` to `10^-15`. It also tests interval containment for the 24 sample outputs in [examples/tinc_samples.csv](examples/tinc_samples.csv). All **24 of 24** sampled TINC intervals enclosed the independently computed reference values in the recorded real-runtime test.
 
-TINC was tested on 24 selected points; empirical enclosure is not a general formal proof of rigorous interval arithmetic. Source/reference data: [TINC samples](examples/tinc_samples.csv), [110-digit numerical samples](examples/high_precision_reference.csv).
+![Numerical TINC interval diagnostics from the original paceval library](figures/04_tinc.png)
 
-## Measured environment and scalability outlook
+These sampled inclusion checks demonstrate the behavior of the supplied runtime for the selected inputs. They do **not** constitute a universal mathematical proof of rigorous TINC enclosure. The [retained high-precision edge-case values](examples/high_precision_reference.csv) support the precision figure. For source-level reproducibility, the C++ application generates its own deterministic test events (seed `20261110`) or reads externally supplied event kinematics from CSV.
 
-The benchmark was executed on **Debian GNU/Linux 13 (trixie), Linux x86-64**, using a **KVM virtualized AMD EPYC 9V74** with **5 visible virtual CPUs**. The environment also reported a CPU quota corresponding to **4 CPU-equivalents** (`cpu.max: 400000 100000`). The C++ program was built with **GCC 14.2, C++17, `-O3`**; separate compilation checks used **Clang 17**. The paceval runtime hash is recorded in the white paper.
+## Build and reproduce (Linux x86-64)
 
-The present benchmark invokes evaluation **sequentially within one process**. Because collider-event batches and many parameter scenarios can be partitioned into independent work units, **multiple CPU workers on machines with more available cores offer a natural path to materially higher aggregate throughput**. This future multicore speedup was **not** measured here and is not implied by the five visible vCPUs.
+Prerequisites: CMake 3.12+, GCC or Clang with C++17, and a **separately supplied compatible original paceval Linux shared library**. The proprietary library is **not included** in this GitHub package. ROOT is not required for the enclosed examples. The source CMake file lives in [`src/CMakeLists.txt`](src/CMakeLists.txt).
 
-The same explicit graphs are also promising candidates for **pipelined and replicated FPGA/ASIC mathematical hardware**. Hardware execution could significantly increase throughput when sufficient parallel data and suitable arithmetic resources are available; no FPGA/ASIC speed factor is claimed without implementing and measuring it.
-
-![Conceptual future CPU worker and FPGA/ASIC graph pipeline architectures. Not a measured performance diagram.](figures/07_parallel_hardware_outlook.png)
-
-An exploratory real-runtime batch sweep also showed substantial gains from fewer API calls with larger batches:
-
-![Effect of batch size on original paceval runtime performance](figures/05_batch_tuning.png)
-
-## Build and run (Linux x86-64)
-
-The project builds with **C++17, GCC or Clang and CMake 3.12+**. The paceval Linux runtime is **not included** in this public-source package. Supply the original `libpaceval_linux_sharedLIB.so` from your authorized paceval installation as an **external file**; the application loads it dynamically with `dlopen`. ROOT is not needed for the supplied demonstration.
-
-At the repository root, set the path to your own library (replace the placeholder with an actual **absolute** path):
+From the repository root:
 
 ```bash
 export PACEVAL_LIB=/absolute/path/to/libpaceval_linux_sharedLIB.so
@@ -83,61 +74,59 @@ cmake --build build --parallel
 ctest --test-dir build --output-on-failure
 ```
 
-Providing `PACEVAL_RUNTIME` enables the second CTest case that runs the **real** paceval example. Without it, the code still builds and its native mathematical self-test runs; it cannot demonstrate real paceval performance until a runtime is supplied.
+When an absolute `PACEVAL_RUNTIME` is provided, CTest includes a real-runtime integration test in addition to the native mathematical self-test. Without a library, the native self-test remains available, but paceval integration cannot be exercised.
 
-**Full synthetic study (120,000 deterministic events):**
+**Run using supplied example events:**
 
 ```bash
 mkdir -p out
 ./build/collider --library "$PACEVAL_LIB" --require-paceval \
-  --events 120000 --batch 16384 --csv out/benchmark.csv
+  --input-csv examples/example_events.csv --batch 16 \
+  --csv out/example_validation.csv
 ```
 
-**Example event inputs:**
+**Run a larger deterministic synthetic set:**
 
 ```bash
 ./build/collider --library "$PACEVAL_LIB" --require-paceval \
-  --input-csv examples/example_events.csv --batch 16 \
-  --csv out/example_results.csv
+  --events 120000 --batch 16384 --csv out/synthetic_validation.csv
 ```
 
-The CSV adapter accepts `pt1,pt2,deta,dphi` with optional `a,b,c,d`. `pt1` and `pt2` are in GeV and `dphi` is an azimuthal angle difference in radians. The supplied [four-column sample](examples/example_4col.csv) and [eight-column sample](examples/example_events.csv) require no ROOT installation.
-
-**Independent 110-digit reference check** (requires `python3 -m pip install mpmath`):
+The event fixture uses `pt1,pt2,deta,dphi` plus optional parameters `a,b,c,d`. Both [four-column](examples/example_4col.csv) and [eight-column](examples/example_events.csv) formats are provided. Transverse momenta are expressed in GeV and the angular differences in radians. The command also writes `out/tinc_samples.csv`, which can be audited with:
 
 ```bash
+python3 -m pip install mpmath
 python3 src/high_precision_reference.py \
-  --tinc-csv examples/tinc_samples.csv --strict-tinc \
-  --out out/precision_check.csv
+  --tinc-csv out/tinc_samples.csv --strict-tinc \
+  --out out/high_precision_audit.csv
 ```
 
-**Repeat the real-runtime benchmark** (standard Python only):
+The application continues to emit internal diagnostic information in its CSV output; this public report is specifically about **implementation feasibility and numerical verification**.
 
-```bash
-python3 src/repeat_benchmarks.py \
-  --exe build/collider --library "$PACEVAL_LIB" \
-  --events 120000 --batch 16384 --repeats 7 --out out/repeats
+## Reproducibility and boundaries
+
+The supplied implementation was validated with the original paceval Linux library under Debian GNU/Linux 13 (x86-64, KVM-virtualized AMD EPYC 9V74) using GCC 14.2 and Clang 17. The verification exercise used a sequential C++ process and externally loaded library. Matching the original vendor library can be checked with SHA-256:
+
+```text
+acf63a87df0ee822b467edbca887393d31ec0ea03562e1abf802d2512a5bfb12
 ```
 
-The programs generate their own output CSV files under `out/` (not committed). Benchmark timing changes with the processor, concurrency, virtual-machine quota, numerical settings, and paceval runtime version; the original recorded run data remain in `examples/`.
+The C++ demonstrator is **not** a replacement for ROOT, CMS reconstruction, particle tracking or detector simulation. Its verified result is an optional mathematical execution component suitable for evaluating explicitly defined scalar formulas and validation probes. Incorporating a physics-approved correction function and real open collider data would be a separate follow-up study.
 
 ## Repository contents
 
 ```text
-README.md                                      Overview, figures and instructions
-paceval_Collider_Research_Whitepaper_EN.pdf    Updated scientific white paper
-src/CMakeLists.txt                             CMake configuration and CTest integration
-src/collider.cpp                               Real paceval C++ demonstrator and native checks
-src/high_precision_reference.py               Independent high-precision TINC audit
-src/repeat_benchmarks.py                      Reproducible benchmark repetition runner
-examples/                                     Event input CSVs and measured/referenced CSV evidence
-figures/                                      Marketing hero and seven scientific charts/diagrams
+README.md                                    Project overview and documentation
+paceval_Collider_Research_Whitepaper_EN.pdf  Scientific feasibility white paper
+src/CMakeLists.txt                           CMake build and CTest integration
+src/collider.cpp                             Full C++ source and real paceval API usage
+src/high_precision_reference.py             Independent 110-digit numerical checks
+examples/example_4col.csv                   Minimal external event input
+examples/example_events.csv                 Parametrized external event input
+examples/tinc_samples.csv                   Original paceval interval sample output
+examples/high_precision_reference.csv       Independent reference values
+figures/                                     One README hero and four scientific diagrams
+.gitignore                                   Local build/output exclusions
 ```
 
-### Scientific status and distribution
-
-The demonstrator was previously executed with the **original paceval Linux runtime** and synthetic collider-inspired events, not CMS measurements. The source is independent of ROOT, though the CSV interface can accept preselected exported kinematics. This repository intentionally **does not redistribute the proprietary paceval shared library**. A compatible runtime is necessary for the paceval execution and performance portions of the program.
-
-The five visible virtual CPUs reported for the original environment were not five active benchmark workers: all measured paceval timings use sequential calls. Future CPU-worker parallelism and FPGA/ASIC accelerators are architectural possibilities, not measured speed factors.
-
-Further documentation: [paceval API](https://paceval.com/api/) · [CERN Open Data](https://opendata.cern.ch/) · [ROOT](https://root.cern.ch/).
+Scientific context: [paceval API](https://paceval.com/api/) · [CERN Open Data](https://opendata.cern.ch/) · [ROOT](https://root.cern.ch/). This independent demonstrator does not imply a CERN or CMS collaboration.
