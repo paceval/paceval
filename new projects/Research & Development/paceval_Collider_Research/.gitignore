@@ -1,6 +1,0 @@
-build/
-out/
-results/
-__pycache__/
-*.pyc
-.DS_Store

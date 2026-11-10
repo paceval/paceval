@@ -1,42 +1,47 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.16)
 project(paceval_collider_research LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(collider collider.cpp)
-if(UNIX AND NOT APPLE)
-  target_link_libraries(collider PRIVATE ${CMAKE_DL_LIBS})
-endif()
-if(MSVC)
-  target_compile_options(collider PRIVATE /W4 /O2)
-else()
-  target_compile_options(collider PRIVATE -O3 -Wall -Wextra -Wpedantic)
+# This tested release builds for Linux with the original vendor shared object.
+# paceval_main.cpp is ONLY the supplied C/C++ API forwarding layer, not the
+# mathematical computation engine. It calls pacevalLibrary_* in the external .so.
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  message(FATAL_ERROR "This example is tested with Linux and its original paceval .so")
 endif()
 
-enable_testing()
-add_test(NAME native_self_test COMMAND collider --self-test)
-
-# The vendor runtime is provided by the developer, not committed to GitHub.
-# Supply an absolute filename with -DPACEVAL_RUNTIME=/path/to/libpaceval_linux_sharedLIB.so
-# or export PACEVAL_LIB=/path/to/libpaceval_linux_sharedLIB.so before configuring.
+# A user-supplied absolute path is needed at CONFIGURE time. Do not copy the
+# proprietary binary into this GitHub repository.
 if(NOT PACEVAL_RUNTIME AND DEFINED ENV{PACEVAL_LIB})
   set(PACEVAL_RUNTIME "$ENV{PACEVAL_LIB}")
 endif()
-
-if(PACEVAL_RUNTIME)
-  if(NOT EXISTS "${PACEVAL_RUNTIME}" OR IS_DIRECTORY "${PACEVAL_RUNTIME}")
-    message(FATAL_ERROR "PACEVAL_RUNTIME must identify an existing shared-library file: ${PACEVAL_RUNTIME}")
-  endif()
-  if(NOT IS_ABSOLUTE "${PACEVAL_RUNTIME}")
-    message(FATAL_ERROR "PACEVAL_RUNTIME must be an absolute path")
-  endif()
-  add_test(NAME real_paceval_sample
-    COMMAND collider --library "${PACEVAL_RUNTIME}" --require-paceval
-    --input-csv "${CMAKE_CURRENT_SOURCE_DIR}/../examples/example_events.csv"
-    --events 100 --batch 16 --csv "${CMAKE_CURRENT_BINARY_DIR}/example_measurement.csv")
-  message(STATUS "Actual paceval runtime test enabled: ${PACEVAL_RUNTIME}")
-else()
-  message(STATUS "paceval runtime was not specified; only the native self-test is registered")
+if(NOT PACEVAL_RUNTIME OR NOT IS_ABSOLUTE "${PACEVAL_RUNTIME}" OR NOT EXISTS "${PACEVAL_RUNTIME}" OR IS_DIRECTORY "${PACEVAL_RUNTIME}")
+  message(FATAL_ERROR "Set PACEVAL_RUNTIME or absolute env PACEVAL_LIB to an original Linux .so file")
 endif()
+
+# The imported target asks the linker to verify exported symbols and lets
+# CMake generate a build-tree RUNPATH for the supplied shared library.
+add_library(paceval_vendor SHARED IMPORTED GLOBAL)
+set_target_properties(paceval_vendor PROPERTIES IMPORTED_LOCATION "${PACEVAL_RUNTIME}")
+
+# Compile BOTH the C++ research application and the original API adapter.
+# paceval_main.h is included by each translation unit; never compile a header.
+add_executable(collider collider.cpp paceval_main.cpp)
+target_include_directories(collider PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+target_link_libraries(collider PRIVATE paceval_vendor)
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+  target_compile_options(collider PRIVATE -O3 -Wall -Wextra -Wpedantic)
+endif()
+
+# There is no silent native-only fallback: the real runtime is a build dependency.
+# The self-test only checks mathematical native reference values; the second
+# test exercises the linked SDK and real paceval graph/batch/TINC paths.
+enable_testing()
+add_test(NAME native_formula_self_test COMMAND collider --self-test)
+add_test(NAME real_paceval_collider_integration COMMAND collider
+  --input-csv "${CMAKE_CURRENT_SOURCE_DIR}/../examples/example_events.csv"
+  --events 100 --batch 16 --csv "${CMAKE_CURRENT_BINARY_DIR}/validation_test.csv")
+message(STATUS "Original paceval SDK + real runtime configured: ${PACEVAL_RUNTIME}")
