@@ -60,56 +60,55 @@ paceval evaluates **both equivalent formulas as persistent execution graphs**. A
 
 ![Exact two-qubit expectation map](figures/02_quantum_circuit_fourier.png)
 
-## What paceval specifically does
+## Direct integration of the original paceval C++ SDK
 
-The [C++ source](src/quantum.cpp) dynamically loads an **externally supplied original** paceval Linux shared library and calls these C-API entry points:
+The [research application](src/quantum.cpp) includes the supplied [paceval API header](src/paceval_main.h). The paired, supplied [SDK forwarding implementation](src/paceval_main.cpp) is compiled alongside the C++ research application through [src/CMakeLists.txt](src/CMakeLists.txt). That implementation links to the **actual, externally provided** `libpaceval_linux_sharedLIB.so` at build time. The SDK source files are **not** the numerical engine and the compiled `.so` is **not** included in this repository.
 
-| paceval API | Implemented operation |
+No handwritten `dlopen`/`dlsym` function-pointer declarations, substitute implementation, or runtime-only library CLI argument are needed. The build checks the original vendor symbols. The application calls these **typed, declared API functions**:
+
+| Direct paceval C/C++ API | Demonstrated implementation |
 | --- | --- |
-| `pacevalLibrary_CreateComputation` | Construct five persistent computational graphs and two additional TINC graphs |
-| `pacevalLibrary_dGetComputationResultExt` | Batch-evaluate Ramsey, likelihood, frequency-derivative and circuit formulas; reuse a graph for frequency studies |
-| `pacevalLibrary_dGetMultipleComputationsResultsExt` | Evaluate three Ramsey graphs with one combined API call |
-| `pacevalLibrary_dGetComputationResult` | Obtain value, lower bound and upper bound for TINC sample checks |
-| `pacevalLibrary_GetIsError`, `pacevalLibrary_GetErrorInformation` | Check and report engine errors |
-| `pacevalLibrary_DeleteComputation`, `pacevalLibrary_Initialize`, `pacevalLibrary_Free` | Manage engine initialization and graph lifetimes |
+| `paceval_InitializeLibrary`, `paceval_FreeLibrary` | Initialize and close the real runtime |
+| `paceval_CreateComputation`, `paceval_DeleteComputation` | Prepare five reusable mathematical graphs and two additional TINC graphs; release handles with RAII |
+| `paceval_dGetComputationResultExt` | Evaluate a graph for many Ramsey/circuit inputs and five frequency hypotheses |
+| `paceval_dGetMultipleComputationsResultsExt` | Evaluate three Ramsey-related graphs for the same input batch |
+| `paceval_dGetComputationResult` | Obtain point values and reported TINC lower/upper endpoints |
+| `paceval_GetIsError`, `paceval_GetErrorInformation` | Inspect graph state and diagnostic error codes |
 
-The high-precision interval check is implemented **independently in Python**, not by reusing paceval to verify itself. The two-qubit statevector check is implemented **independently in C++**.
+All seven graphs share the identical nine-variable declaration in a fixed order. Batch input data is arranged event-major and multi-graph results are graph-major. The application verifies both API status and per-element error codes, compares results to independent native expressions, and releases all computation handles before shutting down the engine. The independent [110-digit TINC checker](src/high_precision_reference.py) does **not** invoke paceval.
 
-## Build and verify on Linux
+**Source provenance and licensing.** The `paceval_main.h` and `paceval_main.cpp` files were taken from the original supplied paceval API v4.25 sources, converted to UTF-8 while retaining copyright/AGPL notices, and adjusted only for a project-local header include (`"paceval_main.h"`). These SDK adapter files have not been reimplemented. Any public distribution must comply with the applicable **GNU AGPL** obligations, as well as any separate terms for the externally supplied runtime binary.
 
-Requirements are CMake 3.12 or later, a C++17 compiler, and a compatible **original paceval Linux shared library supplied by the user**. The proprietary `.so` is not distributed in this repository. Python 3 and the third-party [`mpmath`](https://mpmath.org/) package are needed only for the additional independent high-precision check.
+## Build and independently verify on Linux
+
+Requirements: CMake **3.16+**, a Linux C++17 compiler (GCC or Clang), and an **original compatible paceval Linux shared library** supplied separately. Python 3 and third-party [`mpmath`](https://mpmath.org/) are needed only for the additional independent high-precision check.
 
 ```bash
-# From the repository root; CMakeLists.txt is in src/:
-cmake -S src -B build -DCMAKE_BUILD_TYPE=Release \\
-  -DPACEVAL_RUNTIME=/absolute/path/to/libpaceval_linux_sharedLIB.so
+# From the repository root; CMakeLists.txt lives in src/.
+export PACEVAL_LIB=/absolute/path/to/libpaceval_linux_sharedLIB.so
+cmake -S src -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j
 ctest --test-dir build --output-on-failure
 
-# Run the actual paceval runtime on the included example events:
-./build/quantum \\
-  --library /absolute/path/to/libpaceval_linux_sharedLIB.so \\
-  --require-paceval --input-csv examples/ramsey_circuit_sample.csv \\
+# Alternatively configure with the exact absolute path explicitly:
+# cmake -S src -B build -DCMAKE_BUILD_TYPE=Release \
+#   -DPACEVAL_RUNTIME=/absolute/path/to/libpaceval_linux_sharedLIB.so
+
+# Exercise the real paceval engine with the included example data.
+./build/quantum \
+  --input-csv examples/ramsey_circuit_sample.csv \
   --events 120 --batch 32 --csv example_results.csv
 
-# Independently validate the 24 TINC intervals generated next to the output CSV:
+# Validate new 24-point TINC output (written next to example_results.csv).
 python3 -m pip install mpmath
 python3 src/high_precision_reference.py tinc_samples.csv
 ```
 
-The integration test requires `PACEVAL_RUNTIME` to be an absolute path to an existing shared library. Alternatively, set the environment variable `PACEVAL_LIB` before configuring CMake. If the library is not available, the native C++ self-test can be compiled and run independently:
-
-```bash
-cmake -S src -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build -j
-ctest --test-dir build --output-on-failure
-```
-
-When reusing an existing `build/` folder, reconfigure it after changing the runtime path. The demonstrator also writes an auxiliary evaluation CSV for reproducible numerical auditing.
+Both tests in CTest require a real runtime at **build/link time**; there is no native-only fallback when it is missing. Test 1 verifies the native mathematical identities and test 2 exercises the original paceval SDK/library. Changing the library path requires a CMake reconfigure. The program writes CSV files with numerical results and internal timing diagnostics solely for reproducibility, **not as evidence of comparative performance**. Tests and figures in this research demonstrator use deterministic synthetic inputs, not quantum hardware measurements.
 
 ## Independently checked numerical results
 
-The [high-precision verification script](src/high_precision_reference.py) evaluates the same mathematical expressions using 110-decimal-digit `mpmath` arithmetic. It promotes the **actual stored binary64 input values** and the graph's rounded numerical constants before comparison with the paceval interval endpoints. The previous real-runtime experiment produced **24 of 24 contained point references**, archived in [the supplied TINC sample CSV](examples/tinc_samples.csv). The script can rerun this independent check on the archived samples or new outputs generated by the C++ program.
+The [high-precision verification script](src/high_precision_reference.py) evaluates the same mathematical expressions using 110-decimal-digit `mpmath` arithmetic. It promotes the **actual stored binary64 input values** and the graph's rounded numerical constants before comparison with the paceval interval endpoints. The independently verified real-runtime run produced **24 of 24 contained point references**, archived in [the supplied TINC sample CSV](examples/tinc_samples.csv). The script can rerun this independent check on the archived samples or new outputs generated by the C++ program.
 
 ![TINC pointwise interval examination](figures/04_tinc_validation.png)
 
@@ -125,6 +124,8 @@ paceval_Quantum_Research/
 ├── src/
 │   ├── CMakeLists.txt
 │   ├── quantum.cpp
+│   ├── paceval_main.h
+│   ├── paceval_main.cpp
 │   └── high_precision_reference.py
 ├── examples/
 │   ├── ramsey_circuit_sample.csv
@@ -137,7 +138,7 @@ paceval_Quantum_Research/
     └── 04_tinc_validation.png
 ```
 
-The [CMake project](src/CMakeLists.txt), [source code](src/quantum.cpp), [example input](examples/ramsey_circuit_sample.csv), [high-precision checker](src/high_precision_reference.py), [archived TINC results](examples/tinc_samples.csv), and all embedded figures are included. The original paceval runtime is intentionally external.
+The [CMake project](src/CMakeLists.txt), [source code](src/quantum.cpp), [original SDK header](src/paceval_main.h), [original SDK adapter source](src/paceval_main.cpp), [example input](examples/ramsey_circuit_sample.csv), [high-precision checker](src/high_precision_reference.py), [archived TINC results](examples/tinc_samples.csv), and all embedded figures are included. The original compiled paceval runtime is intentionally external; only the vendor API source adapter is included.
 
 ## Scope and scientific background
 
