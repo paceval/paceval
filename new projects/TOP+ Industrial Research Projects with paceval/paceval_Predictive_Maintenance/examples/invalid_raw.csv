@@ -1,0 +1,2 @@
+asset_id,window_id,split,label,temp_C,sample_index,accel_g
+0,0,train,0,60,0,NaN

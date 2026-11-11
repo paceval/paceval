@@ -1,0 +1,11 @@
+{
+  "precision_decimal_digits": 90,
+  "evaluations_checked": 28800,
+  "tolerance_violations": 0,
+  "max_absolute_difference": "2.3507024948849679e-16",
+  "tinc_samples_checked": 24,
+  "tinc_samples_containing_reference": 24,
+  "non_enclosing_sample_identifiers": [],
+  "research_scope": "Independent numerical checks on a synthetic, asset-disjoint cohort; no field fault-prediction claim",
+  "status": "PASS"
+}
