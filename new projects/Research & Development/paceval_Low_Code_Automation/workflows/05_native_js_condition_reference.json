@@ -1,0 +1,49 @@
+{
+  "name": "Native JS baseline | identical condition formula",
+  "nodes": [
+    {
+      "id": "start",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        180,
+        260
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "native",
+      "name": "Native JavaScript Formula",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        260
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const inputs=[[0.2, 0.1, 0, -0.4, 1.5, 0.8, 0.4], [0.7, 0.4, 0.2, -0.4, 1.5, 0.8, 0.4], [-0.3, 0, 0.1, -0.4, 1.5, 0.8, 0.4]];\nconst scores=inputs.map(v=>{\n  const [uT,uV,uI,b0,bT,bV,bI]=v;\n  return 1/(1+Math.exp(-(b0+bT*uT+bV*uV+bI*uI)));\n});\nreturn scores.map((score,index)=>({json:{index,score,alert:score>=0.65}}));"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Native JavaScript Formula",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "tags": []
+}

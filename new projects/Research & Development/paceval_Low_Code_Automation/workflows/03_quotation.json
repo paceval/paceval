@@ -1,0 +1,105 @@
+{
+  "name": "paceval | Versioned quotation calculations",
+  "nodes": [
+    {
+      "id": "start",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        180,
+        260
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "inputs",
+      "name": "Prepare Approved Inputs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        420,
+        260
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "return [{json:{\"model\":\"quotation\",\"version\":\"1.0\",\"rows\":[[100,0.1,0.05,2,5],[1000,0.2,0.03,5,20]]}}];"
+      }
+    },
+    {
+      "id": "request",
+      "name": "Local paceval REST",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        260
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8787/api/v1/evaluate",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 30000
+        }
+      }
+    },
+    {
+      "id": "decide",
+      "name": "Quotes",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        940,
+        260
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "\nreturn $json.results.map((quote,index)=>({json:{index,quote,model:$json.model,version:$json.version}}));\n"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Prepare Approved Inputs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Approved Inputs": {
+      "main": [
+        [
+          {
+            "node": "Local paceval REST",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Local paceval REST": {
+      "main": [
+        [
+          {
+            "node": "Quotes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "pinData": {},
+  "tags": []
+}

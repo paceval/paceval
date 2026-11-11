@@ -1,0 +1,105 @@
+{
+  "name": "paceval | Condition scoring and alert",
+  "nodes": [
+    {
+      "id": "start",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        180,
+        260
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "inputs",
+      "name": "Prepare Approved Inputs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        420,
+        260
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "return [{json:{\"model\":\"condition_score\",\"version\":\"1.0\",\"rows\":[[0.2,0.1,0,-0.4,1.5,0.8,0.4],[0.7,0.4,0.2,-0.4,1.5,0.8,0.4],[-0.3,0,0.1,-0.4,1.5,0.8,0.4]]}}];"
+      }
+    },
+    {
+      "id": "request",
+      "name": "Local paceval REST",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        260
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8787/api/v1/evaluate",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 30000
+        }
+      }
+    },
+    {
+      "id": "decide",
+      "name": "Scored Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        940,
+        260
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "\nconst values = $json.results;\nif (!Array.isArray(values)) throw new Error('Invalid paceval result');\nconst threshold = 0.65; // Synthetic condition threshold, not a failure probability.\nreturn values.map((score, index) => ({json:{index, score, threshold, alert:score>=threshold,\n  model:$json.model, version:$json.version}}));\n"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Prepare Approved Inputs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Approved Inputs": {
+      "main": [
+        [
+          {
+            "node": "Local paceval REST",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Local paceval REST": {
+      "main": [
+        [
+          {
+            "node": "Scored Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "pinData": {},
+  "tags": []
+}
