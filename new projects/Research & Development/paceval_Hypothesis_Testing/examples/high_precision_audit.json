@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "precision_decimal_digits": 110,
+  "candidate_count": 10000,
+  "selected_candidate_id": 0,
+  "independent_high_precision_candidate_samples": 144,
+  "independent_high_precision_selected_predictions": 288,
+  "max_abs_high_precision_difference": "9.3370575933743e-16",
+  "high_precision_numeric_tolerance_violations": 0,
+  "interval_samples": 24,
+  "interval_reference_containment_count": 24,
+  "interval_failure_indices": [],
+  "note": "TINC sample observations are not proof of a universal rigorous enclosure."
+}
