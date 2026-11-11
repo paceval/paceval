@@ -1,0 +1,9 @@
+{"request_id":"approved_first","status":"OK","result":0.5859922806794804,"native_reference":0.5859922806794804,"absolute_error":0,"reused_graph":false}
+{"request_id":"approved_reuse","status":"OK","result":0.5859922806794804,"native_reference":0.5859922806794804,"absolute_error":0,"reused_graph":true}
+{"request_id":"approved_different_inputs","status":"OK","result":0.7443989111763697,"native_reference":0.7443989111763697,"absolute_error":0,"reused_graph":true}
+{"request_id":"wrong_units","status":"UNIT_MISMATCH"}
+{"request_id":"wrong_formula","status":"MODEL_MISMATCH"}
+{"request_id":"invalid_k","status":"DOMAIN_ERROR"}
+{"request_id":"unknown_model","status":"UNKNOWN_CONTRACT"}
+{"request_id":"harmonic_first","status":"OK","result":0.6646424733950353,"native_reference":0.6646424733950353,"absolute_error":0,"reused_graph":false}
+{"request_id":"harmonic_reuse","status":"OK","result":0.6646424733950353,"native_reference":0.6646424733950353,"absolute_error":0,"reused_graph":true}

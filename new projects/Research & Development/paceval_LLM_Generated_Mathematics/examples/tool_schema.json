@@ -1,0 +1,16 @@
+{
+  "name":"evaluate_validated_formula",
+  "description":"Offline mathematical expression evaluation with a bounded allowlist; illustrative tool schema only, not an MCP server",
+  "inputSchema":{
+    "type":"object",
+    "additionalProperties":false,
+    "required":["request_id","expression","variables"],
+    "properties":{
+      "request_id":{"type":"string","minLength":1,"maxLength":64},
+      "expression":{"type":"string","minLength":1,"maxLength":180},
+      "variables":{"type":"object","additionalProperties":false,
+        "required":["x","y","t","k","w","c"],
+        "properties":{"x":{"type":"number"},"y":{"type":"number"},"t":{"type":"number"},"k":{"type":"number"},"w":{"type":"number"},"c":{"type":"number"}}}
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "name": "evaluate_approved_math",
+  "description": "Validate an LLM formula proposal against an approved scientific model and unit signature; compute it via a reusable paceval graph. Offline interface; not an MCP server.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "request_id",
+      "contract_id",
+      "expression",
+      "units",
+      "variables"
+    ],
+    "properties": {
+      "request_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 64
+      },
+      "contract_id": {
+        "type": "string",
+        "enum": [
+          "damped_signal_v1",
+          "harmonic_signal_v1"
+        ]
+      },
+      "expression": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 180
+      },
+      "units": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "x",
+          "y",
+          "t",
+          "k",
+          "w",
+          "c"
+        ],
+        "properties": {
+          "x": {
+            "const": "1"
+          },
+          "y": {
+            "const": "1"
+          },
+          "t": {
+            "const": "s"
+          },
+          "k": {
+            "const": "1/s"
+          },
+          "w": {
+            "const": "1/s"
+          },
+          "c": {
+            "const": "1"
+          }
+        }
+      },
+      "variables": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "x",
+          "y",
+          "t",
+          "k",
+          "w",
+          "c"
+        ],
+        "properties": {
+          "x": {
+            "type": "number",
+            "minimum": -1,
+            "maximum": 1
+          },
+          "y": {
+            "type": "number",
+            "minimum": -1,
+            "maximum": 1
+          },
+          "t": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 2
+          },
+          "k": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 2
+          },
+          "w": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 4
+          },
+          "c": {
+            "type": "number",
+            "minimum": -1,
+            "maximum": 1
+          }
+        }
+      }
+    }
+  }
+}

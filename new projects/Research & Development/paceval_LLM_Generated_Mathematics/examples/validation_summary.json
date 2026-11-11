@@ -1,0 +1,11 @@
+{
+  "working_digits": 110,
+  "checked": 2560,
+  "numerical_tolerance_failures": 0,
+  "max_absolute_error": "3.998806557e-16",
+  "rejected_cases": 40,
+  "tinc_samples": 30,
+  "tinc_contained": 30,
+  "tinc_not_contained": [],
+  "numeric_outliers": []
+}
