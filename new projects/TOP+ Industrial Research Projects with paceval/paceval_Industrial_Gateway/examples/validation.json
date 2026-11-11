@@ -1,0 +1,32 @@
+{
+  "replay_rows": 12000,
+  "channels": 50,
+  "rules": 100,
+  "candidate_evaluations": 24000,
+  "accepted": 23442,
+  "rejected": 558,
+  "quality_rejections": {
+    "BAD": 214,
+    "STALE": 336,
+    "MISSING": 8
+  },
+  "alert_rows": 856,
+  "result_statuses": {
+    "NO_DATA": 558,
+    "NORMAL": 22586,
+    "ALERT": 856
+  },
+  "native_max_absolute_difference": 0.0,
+  "high_precision_sampled": 600,
+  "high_precision_decimal_digits": 90,
+  "high_precision_max_absolute_difference": 7.081575196176072e-17,
+  "tinc_sample_count": 24,
+  "tinc_containment_count": 24,
+  "tinc_max_absolute_difference": 2.8507288314332517e-17,
+  "updated_rule_ids": [
+    17
+  ],
+  "updated_rule_output_rows": 240,
+  "high_precision_tolerance": "2e-11*(1+abs(reference))",
+  "test_scope": "synthetic replay only; no OPC UA or MQTT runtime, plant data, or safety qualification"
+}
