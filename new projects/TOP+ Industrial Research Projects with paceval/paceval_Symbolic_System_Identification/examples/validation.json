@@ -1,0 +1,8 @@
+{
+  "seed": 20261111, "timestep": 0.040000000000000001, "candidates_per_system": 1500,
+  "systems": [
+    {"name": "spring_mass", "ground_truth_family": 1, "selected_id": 0, "selected_family": 1, "training_mse": 7.8595881061008226e-08, "validation_mse": 1.0099653376990196e-07, "heldout_derivative_mse": 7.6261392775290821e-08, "heldout_trajectory_rmse_x": 7.5196086816170006e-08, "heldout_trajectory_rmse_v": 8.3182803582775222e-08},
+    {"name": "servo_actuator", "ground_truth_family": 4, "selected_id": 0, "selected_family": 4, "training_mse": 1.8427396758074361e-07, "validation_mse": 2.3108241683154072e-07, "heldout_derivative_mse": 1.6308717920556719e-07, "heldout_trajectory_rmse_x": 4.360465802911447e-08, "heldout_trajectory_rmse_v": 3.6683336843269235e-08}
+  ],
+  "native_cross_checks": 7325, "native_mismatches": 0, "max_native_absolute_difference": 0
+}

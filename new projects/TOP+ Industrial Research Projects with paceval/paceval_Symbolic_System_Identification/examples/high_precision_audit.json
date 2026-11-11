@@ -1,0 +1,10 @@
+{
+  "precision_decimal_digits": 110,
+  "rhs_samples_checked": 144,
+  "rhs_within_tolerance": 144,
+  "maximum_absolute_rhs_error": "2.791556388e-16",
+  "tinc_samples": 24,
+  "tinc_pointwise_containment": 24,
+  "tinc_noncontainment_details": [],
+  "tolerance_policy": "abs(error) <= 2e-9 * (1+abs(reference))"
+}
