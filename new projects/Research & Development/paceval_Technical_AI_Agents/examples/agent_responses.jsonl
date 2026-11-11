@@ -1,0 +1,4 @@
+{"model_id": "axial_stress", "request_id": "BEAM_001", "result": 50.0, "status": "OK", "unit": "MPa"}
+{"model_id": "electrical_power", "request_id": "POWER_001", "result": 36.0, "status": "OK", "unit": "W"}
+{"model_id": "axial_stress", "request_id": "BAD_UNIT", "result": null, "status": "UNIT_MISMATCH", "unit": null}
+{"line": 4, "reason": "inputs must contain exactly six ordered slots", "status": "SCHEMA_ERROR"}

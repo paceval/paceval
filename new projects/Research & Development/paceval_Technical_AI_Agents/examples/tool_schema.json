@@ -1,0 +1,53 @@
+{
+  "name": "evaluate_engineering_formula",
+  "description": "Offline, allowlisted engineering mathematical calculation with explicit input and output units. No physical-design certification.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "request_id",
+      "model_id",
+      "expression",
+      "output_unit",
+      "inputs"
+    ],
+    "properties": {
+      "request_id": {
+        "type": "string"
+      },
+      "model_id": {
+        "type": "string"
+      },
+      "expression": {
+        "type": "string"
+      },
+      "output_unit": {
+        "type": "string"
+      },
+      "inputs": {
+        "type": "array",
+        "minItems": 6,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "unit": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
