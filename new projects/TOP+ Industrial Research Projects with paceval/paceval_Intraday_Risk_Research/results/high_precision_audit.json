@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "precision_decimal_digits": 80,
+  "tested_rows": 500,
+  "max_abs_deviation_from_exported_decimals": "0.00000000000000010981191188003744855333204972143700075943639264129894079047706963666906194941466",
+  "input_interpretation": "exact exported decimal text; not reconstruction of binary64 input"
+}

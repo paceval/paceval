@@ -1,0 +1,14 @@
+WP029 reproduction manifest
+Input seed: 20261112
+Fixed covariance: [[0.0002,0.00012],[0.00012,0.00045]]
+Runtime used for execution: external compatible paceval Linux shared library (excluded)
+SDK build: CMake/CTest passed
+Completed replay: 20000 synthetic updates
+Validation: 500 independent 80-digit decimal sample tests passed
+Run: cmake -S src -B build -DPACEVAL_RUNTIME=/absolute/path/to/libpaceval_linux_sharedLIB.so
+Build: cmake --build build -j
+Test: ctest --test-dir build --output-on-failure
+Replay: ./build/intraday_risk --updates 20000 --out reproduced
+Figures: python3 src/make_figures.py
+Whitepaper: python3 src/make_whitepaper.py
+README: python3 src/check_readme_math.py
