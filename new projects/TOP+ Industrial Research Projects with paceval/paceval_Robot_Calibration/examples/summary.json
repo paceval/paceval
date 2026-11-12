@@ -1,0 +1,14 @@
+{
+  "train_poses":120,
+  "holdout_poses":48,
+  "degenerate_poses":24,
+  "external_measurements":false,
+  "paceval_regular_graphs":6,
+  "paceval_tinc_graphs":1,
+  "holdout_rmse_before_m":0.0088566532918547027,
+  "holdout_rmse_after_m":1.7796762749286034e-05,
+  "train_singular_min":1.2766420680906172,
+  "degenerate_singular_min":0,
+  "lm_accepted_steps":4,
+  "model_definition":"6R local-axis ZYYXYZ; position-only calibration; fixed base and tool frames"
+}

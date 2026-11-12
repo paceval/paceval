@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "reference_precision_decimal_digits": 100,
+  "coordinate_residual_comparisons": 1008,
+  "max_absolute_coordinate_residual_difference_m": 6.252417043612941e-16,
+  "raw_TINC_inclusions": 24,
+  "raw_TINC_total": 24,
+  "holdout_rmse_nominal_mm": 8.856653291854702,
+  "holdout_rmse_calibrated_mm": 0.017796762749286033,
+  "training_singular_value_min": 1.2766420680868618,
+  "degenerate_singular_value_min": 3.0466714779583617e-33,
+  "maximum_parameter_error": 9.533397263224858e-06,
+  "note": "TINC inclusions apply only to the specific tested smooth subexpression and binary64 sample values."
+}
