@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp022_build
+Test project /mnt/data/wp022_build
+    Start 1: orbit_propagation_and_sweeps
+1/1 Test #1: orbit_propagation_and_sweeps .....   Passed   13.17 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =  13.17 sec

@@ -1,0 +1,10 @@
+{
+  "status": "pass",
+  "number_of_scenarios": 10,
+  "parameter_grid_scenarios": 49,
+  "trajectory_rows": 3610,
+  "largest_native_position_difference_km": 4.0736479886981455e-10,
+  "largest_native_velocity_difference_km": 4.470699253901546e-13,
+  "two_body_six_hour_analytic_max_position_difference_km": 0.182722017050735,
+  "caveat": "Finite-step integration and analytical test are not a high-fidelity operational orbit validation."
+}

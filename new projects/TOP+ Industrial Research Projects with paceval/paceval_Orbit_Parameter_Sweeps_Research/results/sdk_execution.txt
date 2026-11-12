@@ -1,0 +1,11 @@
+two_body: altitude=499.993 km, RAAN=2.03185e-14 deg
+half_J2: altitude=497.306 km, RAAN=-0.603713 deg
+nominal_J2: altitude=494.747 km, RAAN=-1.21092 deg
+high_J2: altitude=492.316 km, RAAN=-1.82157 deg
+drag_only: altitude=499.829 km, RAAN=-8.35834e-07 deg
+J2_drag: altitude=494.728 km, RAAN=-1.21093 deg
+J2_drag_x10: altitude=494.563 km, RAAN=-1.21099 deg
+J2_drag_x100: altitude=492.885 km, RAAN=-1.21164 deg
+gravity_low: altitude=494.739 km, RAAN=-1.21082 deg
+gravity_high: altitude=494.755 km, RAAN=-1.21102 deg
+PASS graphs=3 scalar_audits=81360 batch_audits=96 maximum_component_difference=3.46945e-18 analytic_position_error_km=0.0954258

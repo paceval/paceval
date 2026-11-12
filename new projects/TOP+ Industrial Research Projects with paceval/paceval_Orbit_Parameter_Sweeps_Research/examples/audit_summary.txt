@@ -1,0 +1,9 @@
+Research status: SDK executed; all checks passed
+Reusable paceval graphs: 3
+Scalar acceleration component audits: 81360
+Batch component audits: 96
+Largest absolute component discrepancy (km/s^2): 3.4694469519536142e-18
+Circular two-body analytic position oracle max difference (km): 0.095425839830875409
+Scenario propagation: 10 scenarios, 6 hours, fixed RK4 60 s
+Parameter surface: 49 scenarios, 1 hour, fixed RK4 60 s
+Atmosphere: fixed-scale exponential density; not validated operational model
