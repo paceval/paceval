@@ -1,0 +1,13 @@
+{
+  "research_scope": "synthetic non-regulatory four-factor portfolio stress study",
+  "models": 100,
+  "distribution_scenarios": 4096,
+  "named_stress_scenarios": 6,
+  "runtime_evaluations": 410200,
+  "max_native_absolute_difference": 1.4551915228366852e-11,
+  "risk_estimator": "empirical nearest-rank VaR and mean of worst ceil(2.5% N) losses",
+  "seed": 20261112,
+  "batch": 512,
+  "version_update_rule_id": 17,
+  "tinc_samples": 24
+}

@@ -1,0 +1,7 @@
+scenario_id,narrative,model_scope
+4096,Illustrative equity drawdown with FX and credit stress,synthetic not calibrated
+4097,Illustrative recession and falling rates,synthetic not calibrated
+4098,Illustrative rates up with FX appreciation and credit widening,synthetic not calibrated
+4099,Illustrative equity rally with falling rates,synthetic not calibrated
+4100,Illustrative compounded extreme asset drawdown and credit widening,synthetic not calibrated
+4101,Illustrative FX-specific stress,synthetic not calibrated

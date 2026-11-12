@@ -1,0 +1,13 @@
+{
+  "model_versions": 100,
+  "distribution_scenarios": 4096,
+  "payoff_values_native_crosschecked": 409600,
+  "high_precision_100_digit_pnl_samples": 1000,
+  "max_high_precision_sample_abs_discrepancy": 7.529300508940687e-12,
+  "empirical_risk_statistics_independently_checked": 100,
+  "stress_values_high_precision_checked": 600,
+  "tinc_samples": 24,
+  "tinc_raw_point_contained": 0,
+  "tinc_host_one_ulp_contained": 24,
+  "note": "Sample-wise one-ULP host expansion is NOT a universal rigorous interval guarantee."
+}
