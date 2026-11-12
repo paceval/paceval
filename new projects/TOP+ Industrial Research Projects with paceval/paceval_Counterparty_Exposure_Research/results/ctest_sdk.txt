@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp028_build
+Test project /mnt/data/wp028_build
+    Start 1: counterparty_sdk_integration
+1/1 Test #1: counterparty_sdk_integration .....   Passed    1.22 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   1.22 sec

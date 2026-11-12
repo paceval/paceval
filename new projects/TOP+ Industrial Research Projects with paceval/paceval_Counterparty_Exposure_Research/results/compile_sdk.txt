@@ -1,0 +1,3 @@
+[ 33%] Building CXX object CMakeFiles/counterparty_exposure.dir/counterparty_exposure.cpp.o
+[ 66%] Linking CXX executable counterparty_exposure
+[100%] Built target counterparty_exposure

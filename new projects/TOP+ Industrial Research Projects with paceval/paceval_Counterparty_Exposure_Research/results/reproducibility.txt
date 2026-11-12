@@ -1,0 +1,8 @@
+Source: WP_028_Real_Time_Counterparty_Exposure_Functions.pdf (initial proposal).
+Execution: original paceval_main.h and paceval_main.cpp linked against user-supplied external Linux shared runtime.
+CMake/CTest: 1 of 1 passed; final full run: 20,000 market update iterations.
+The requested one-million-update scenario was attempted but not completed inside the execution window and is not asserted successful.
+The shipped examples/ outputs are produced from the successfully executed 20,000-update run.
+Validation: 200 sampled CSV decimal values checked against independently formulated 80-digit Python Decimal expressions.
+Visualizations: Eight numbered figures plotted only from shipped examples/ CSV.
+Known model limits: No SA-CCR EAD, PFE, ISDA SIMM, legal netting, market calibration, regulatory compliance, latency or speedup claim.

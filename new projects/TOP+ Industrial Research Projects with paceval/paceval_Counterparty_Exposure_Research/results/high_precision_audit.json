@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "precision_digits": 80,
+  "sampled_rows": 200,
+  "max_absolute_difference_internal": "2.048283443421143754E-15",
+  "input_representation": "CSV decimal values, not exact binary64 originals"
+}
