@@ -1,0 +1,10 @@
+{
+  "high_precision_digits": 110,
+  "formula_samples": 384,
+  "formula_within_tolerance": 384,
+  "max_absolute_error": "3.58044452246e-16",
+  "tinc_samples": 24,
+  "tinc_inclusions": 24,
+  "farm_summaries_checked": 9600,
+  "failures": []
+}
