@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp036_build_final
+Test project /mnt/data/wp036_build_final
+    Start 1: wearable_original_sdk
+1/1 Test #1: wearable_original_sdk ............   Passed    0.88 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.88 sec

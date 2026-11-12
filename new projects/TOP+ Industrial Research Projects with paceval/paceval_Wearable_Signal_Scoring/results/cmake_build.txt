@@ -1,0 +1,4 @@
+[ 33%] Building CXX object CMakeFiles/wearable_scoring.dir/wearable_scoring.cpp.o
+[ 66%] Building CXX object CMakeFiles/wearable_scoring.dir/paceval_main.cpp.o
+[100%] Linking CXX executable wearable_scoring
+[100%] Built target wearable_scoring

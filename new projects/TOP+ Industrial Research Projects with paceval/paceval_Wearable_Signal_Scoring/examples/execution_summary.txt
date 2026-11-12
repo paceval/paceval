@@ -1,0 +1,14 @@
+project=WP036
+status=PASS
+origin=original_paceval_linux_sdk
+window_samples=200
+sample_rate_hz=25
+raw_samples=2000000
+reusable_graphs=51
+formula_versions=2
+windows=10000
+scalar_evaluations=13923
+batch_results=1600
+nonclinical_screen_flags=420
+invalid_inputs_rejected=3
+max_abs_native_audit=0

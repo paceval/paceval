@@ -1,0 +1,34 @@
+{
+  "project": "WP036",
+  "reference_precision_decimal_digits": 80,
+  "score_values_verified": 500,
+  "max_absolute_difference_internal_only": "0.00000000000000013422359488445138031442988482611838607499065200788356746785695689515213474573759",
+  "synthetic_trace_recomputations": [
+    {
+      "trace_id": 1,
+      "samples": 200,
+      "feature_checks": 6,
+      "status": "PASS"
+    },
+    {
+      "trace_id": 2,
+      "samples": 200,
+      "feature_checks": 6,
+      "status": "PASS"
+    },
+    {
+      "trace_id": 3,
+      "samples": 200,
+      "feature_checks": 6,
+      "status": "PASS"
+    },
+    {
+      "trace_id": 4,
+      "samples": 200,
+      "feature_checks": 6,
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS",
+  "clinical_validation": "NOT PERFORMED"
+}
