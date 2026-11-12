@@ -1,0 +1,4 @@
+scene,terms,formula_characters,graph_count,grid_points,water_level,native_check_count,native_max_abs_difference,monolithic_samples,monolithic_max_abs_difference
+alpine_lake,2048,274877,10,1600,-0.12,95,3.219646771412954e-15,5,8.3266726846886741e-16
+volcanic_caldera,3072,412381,14,1600,0.080000000000000002,95,1.4432899320127035e-15,5,6.3837823915946501e-16
+canyon_ridges,4096,550086,18,1600,-0.32000000000000001,95,3.6637359812630166e-15,5,5.5511151231257827e-16

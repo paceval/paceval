@@ -1,0 +1,4 @@
+PASS alpine_lake: 274877 expression chars, 1600 paceval samples, 10 graphs
+PASS volcanic_caldera: 412381 expression chars, 1600 paceval samples, 14 graphs
+PASS canyon_ridges: 550086 expression chars, 1600 paceval samples, 18 graphs
+PASS original paceval SDK, total graphs=42 max difference=3.66374e-15

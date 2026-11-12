@@ -1,0 +1,4 @@
+[ 33%] Building CXX object CMakeFiles/extreme_terrain.dir/paceval_main.cpp.o
+[ 66%] Building CXX object CMakeFiles/extreme_terrain.dir/extreme_terrain.cpp.o
+[100%] Linking CXX executable extreme_terrain
+[100%] Built target extreme_terrain

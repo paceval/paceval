@@ -1,0 +1,20 @@
+{
+  "alpine_lake": {
+    "terrain_vertices": 1600,
+    "terrain_triangles": 3042,
+    "water_triangles": 820,
+    "glb": 2
+  },
+  "volcanic_caldera": {
+    "terrain_vertices": 1600,
+    "terrain_triangles": 3042,
+    "water_triangles": 1472,
+    "glb": 2
+  },
+  "canyon_ridges": {
+    "terrain_vertices": 1600,
+    "terrain_triangles": 3042,
+    "water_triangles": 744,
+    "glb": 2
+  }
+}
