@@ -1,0 +1,7 @@
+{
+  "checks": 500,
+  "passed": true,
+  "maximum_absolute_difference": "1.03231502348641168e-16",
+  "reference_digits": 80,
+  "scope": "independently specified synthetic score formulas; no clinical validation"
+}

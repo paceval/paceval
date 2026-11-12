@@ -1,0 +1,27 @@
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: /mnt/data/wp032_build
+[ 33%] Building CXX object CMakeFiles/ecg_rules.dir/paceval_main.cpp.o
+[ 66%] Building CXX object CMakeFiles/ecg_rules.dir/ecg_rules.cpp.o
+/mnt/data/paceval_ECG_Feature_Rules_Research/src/ecg_rules.cpp: In member function 'std::vector<double> {anonymous}::Engine::batch(void*, const std::vector<std::array<double, 4> >&)':
+/mnt/data/paceval_ECG_Feature_Rules_Research/src/ecg_rules.cpp:57:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+   57 |   for(size_t i=0;i<xs.size();++i)check(errors[i]==0&&std::isfinite(values[i]),"invalid paceval batch result");return values;}
+      |   ^~~
+/mnt/data/paceval_ECG_Feature_Rules_Research/src/ecg_rules.cpp:57:111: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+   57 |   for(size_t i=0;i<xs.size();++i)check(errors[i]==0&&std::isfinite(values[i]),"invalid paceval batch result");return values;}
+      |                                                                                                               ^~~~~~
+/mnt/data/paceval_ECG_Feature_Rules_Research/src/ecg_rules.cpp: In function 'void {anonymous}::run(const std::filesystem::__cxx11::path&, int)':
+/mnt/data/paceval_ECG_Feature_Rules_Research/src/ecg_rules.cpp:81:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+   81 |   for(double v:x)replay<<','<<v;replay<<','<<score<<','<<flag<<'\n';}
+      |   ^~~
+/mnt/data/paceval_ECG_Feature_Rules_Research/src/ecg_rules.cpp:81:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+   81 |   for(double v:x)replay<<','<<v;replay<<','<<score<<','<<flag<<'\n';}
+      |                                 ^~~~~~
+[100%] Linking CXX executable ecg_rules
+[100%] Built target ecg_rules

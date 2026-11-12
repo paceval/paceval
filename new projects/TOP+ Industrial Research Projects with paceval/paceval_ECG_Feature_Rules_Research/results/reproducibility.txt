@@ -1,0 +1,1 @@
+PASS: repeated full original paceval SDK run produced byte-identical five CSV/summary files.

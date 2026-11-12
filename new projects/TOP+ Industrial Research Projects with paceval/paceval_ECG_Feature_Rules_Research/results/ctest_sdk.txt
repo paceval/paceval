@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp032_build
+Test project /mnt/data/wp032_build
+    Start 1: ecg_sdk_integration
+1/1 Test #1: ecg_sdk_integration ..............   Passed    3.50 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   3.51 sec
