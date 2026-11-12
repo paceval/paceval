@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "candidate_rows": 6000,
+  "surface_rows": 3721,
+  "seven_day_rows": 168,
+  "version_points": 101,
+  "paceval_graphs": 23,
+  "execution_inventory_rows": 26,
+  "heat_energy_kwh": 1080.1947682614284,
+  "electric_energy_kwh": 331.1958637376746,
+  "energy_ratio": 3.2614983655623258
+}

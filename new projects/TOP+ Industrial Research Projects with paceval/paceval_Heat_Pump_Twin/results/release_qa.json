@@ -1,0 +1,20 @@
+{
+  "package": "WP038 Heat Pump Twin Research",
+  "state": "PASS",
+  "pdf_pages": 14,
+  "scientific_chart_count": 9,
+  "cover_pixels": [
+    2400,
+    1200
+  ],
+  "cover_icc_srgb": true,
+  "src_cmake": "src/CMakeLists.txt",
+  "sdk_runs": "PASS original paceval shared library",
+  "ctest": "PASS 1/1",
+  "independent_mpmath_values": 880,
+  "independent_cpp_values": 4963,
+  "replay_determinism": "PASS 7/7 byte-identical files",
+  "github_rendering": "structural syntax and local links checked; live GitHub rendering not performed",
+  "visual_pdf_pages": "14 rendered and contact sheet inspected; no visible overlap or clipping",
+  "total_files_before_report": 43
+}

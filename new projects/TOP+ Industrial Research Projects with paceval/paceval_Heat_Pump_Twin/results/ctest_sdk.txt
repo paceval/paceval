@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp038_build
+Test project /mnt/data/wp038_build
+    Start 1: heat_pump_twin_real_paceval
+1/1 Test #1: heat_pump_twin_real_paceval ......   Passed    0.10 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.10 sec

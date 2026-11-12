@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "digits": 80,
+  "rows_verified": 40,
+  "values_verified": 880,
+  "maximum_absolute_difference": "8.5819978465783179e-15",
+  "reference": "independent mpmath analytic implementation"
+}
