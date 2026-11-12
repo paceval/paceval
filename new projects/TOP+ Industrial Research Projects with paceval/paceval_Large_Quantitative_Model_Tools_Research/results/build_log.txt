@@ -1,0 +1,3 @@
+[ 33%] Building CXX object CMakeFiles/quant_tools.dir/quantitative_tools.cpp.o
+[ 66%] Linking CXX executable quant_tools
+[100%] Built target quant_tools

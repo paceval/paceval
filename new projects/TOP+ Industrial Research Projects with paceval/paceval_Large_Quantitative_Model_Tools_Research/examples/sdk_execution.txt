@@ -1,0 +1,9 @@
+sdk_executed=true
+models=50
+persistent_graphs=51
+scripted_requests=10000
+compositions=2000
+scalar_evaluations=15723
+batch_checked=1600
+surface_points=3721
+max_abs_difference=1.7763568394002505e-15

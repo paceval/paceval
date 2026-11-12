@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp024_build
+Test project /mnt/data/wp024_build
+    Start 1: sdk_quantitative_tools
+1/1 Test #1: sdk_quantitative_tools ...........   Passed    0.32 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.32 sec

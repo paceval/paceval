@@ -1,0 +1,8 @@
+{
+  "registry_rows": 51,
+  "requests": 10000,
+  "compositions_checked": 2000,
+  "surface_points_checked": 3721,
+  "max_request_oracle_discrepancy": 1.7763568394002505e-15,
+  "status": "PASS"
+}

@@ -1,0 +1,9 @@
+{
+  "reference": "80-digit mpmath, independent expression definitions",
+  "checked": 250,
+  "passed": 250,
+  "maximum_abs_error": 2.0698218039688344e-15,
+  "tolerance": "absolute error <=1e-10*(1+|oracle|)",
+  "sample": "every 40th scripted request",
+  "numeric_note": "CSV input strings are decimal representations of original double-precision binary values"
+}
