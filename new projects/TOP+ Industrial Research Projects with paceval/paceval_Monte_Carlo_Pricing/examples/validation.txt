@@ -1,0 +1,15 @@
+Research case: reusable payoff kernels in Monte Carlo pricing
+Synthetic GBM, S0=100, rate=0.03, volatility=0.2, maturity=1
+seed=20261112
+steps=16
+paths=1000000
+antithetic_pairs=500000
+contracts=100
+mathematical_graphs=5
+batch=8192
+payoff_validations=100000000
+max_payoff_abs_error=0
+european_analytic_checks=40
+max_analytic_deviation_in_standard_errors=1.4063361452219993
+tinc_samples=24
+model_update_checks=16

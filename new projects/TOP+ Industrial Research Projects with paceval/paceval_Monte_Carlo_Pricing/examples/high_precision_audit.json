@@ -1,0 +1,15 @@
+{
+  "method": "independent 100-decimal mpmath, binary64 input values",
+  "payoff_checks": 300,
+  "payoff_violations": 0,
+  "max_payoff_abs_error": 3.3273410751600504e-15,
+  "tinc_checks": 24,
+  "tinc_enclosures": 24,
+  "tinc_non_enclosures": [],
+  "max_tinc_point_abs_error": 8.951316208471633e-15,
+  "analytic_checks": 40,
+  "analytic_failures": 0,
+  "max_analytic_reference_abs_error": 2.130223794706172e-14,
+  "antithetic_pair_checks": 64,
+  "antithetic_pair_failures": 0
+}
