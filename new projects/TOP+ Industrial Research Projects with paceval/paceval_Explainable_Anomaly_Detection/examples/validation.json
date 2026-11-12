@@ -1,0 +1,17 @@
+{
+  "dataset": "synthetic labeled streams only",
+  "channels": 16,
+  "samples_per_channel": 256,
+  "candidate_rule_graphs": 100,
+  "explanation_graphs": 12,
+  "tinc_diagnostic_graphs": 1,
+  "evaluated_score_count": 408000,
+  "quality_skipped_rows": 16,
+  "native_max_absolute_difference": 7.1054273576010019e-15,
+  "validation_selected_test_tp": 100,
+  "validation_selected_test_fp": 0,
+  "validation_selected_test_fn": 24,
+  "test_events": 8,
+  "test_events_detected": 8,
+  "raw_score_alerts_across_all_splits": 389
+}

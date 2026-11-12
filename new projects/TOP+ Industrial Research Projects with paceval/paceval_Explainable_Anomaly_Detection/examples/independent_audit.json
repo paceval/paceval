@@ -1,0 +1,12 @@
+{
+  "audit_method": "110-digit Decimal; exact Decimal.from_float for supplied binary64 inputs",
+  "independent_score_samples": 200,
+  "selected_score_and_explanation_samples": 4080,
+  "independent_score_max_absolute_error": "1.2161991245973989955783976894565127767725837267387878580020119468361610736980020008717063372674E-15",
+  "independent_explanation_max_absolute_error": "2.3261906854816703965148416831760367202575231362782928997536864572122685103657897504345527277474E-15",
+  "raw_tinc_inclusions": 24,
+  "raw_tinc_tested": 24,
+  "heldout_test_events_detected": 8,
+  "heldout_test_events": 8,
+  "validation": "passed"
+}
