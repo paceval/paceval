@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp023_build
+Test project /mnt/data/wp023_build
+    Start 1: sdk_inventory_integration
+1/1 Test #1: sdk_inventory_integration ........   Passed   10.38 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =  10.38 sec

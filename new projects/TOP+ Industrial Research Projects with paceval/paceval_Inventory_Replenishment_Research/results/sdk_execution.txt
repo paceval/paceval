@@ -1,0 +1,11 @@
+WP023 paceval SDK synthetic inventory research
+policies=30
+persistent_graphs=60
+scenarios=105000
+scalar_audits=213721
+batch_audits=1920
+maximum_absolute_formula_error_units=0
+maximum_absolute_fill_rate_difference=0
+simulation_policy_sku_pairs=1440
+synthetic_data_only=true
+no_performance_claims=true

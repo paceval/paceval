@@ -1,0 +1,10 @@
+{
+  "precision_decimal_digits": 80,
+  "comparisons": 3600,
+  "within_tolerance": 3600,
+  "failed": 0,
+  "maximum_absolute_distance_units": "3.506313940084705403285867254357013911773973330222040808088044785E-13",
+  "oracle_input_interpretation": "released CSV decimals (not exact binary64 input replay)",
+  "source": "examples/scenario_samples.csv",
+  "failed_examples": []
+}
