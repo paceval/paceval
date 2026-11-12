@@ -1,0 +1,8 @@
+{
+  "rows_checked": 10000,
+  "decimal_precision": 80,
+  "max_absolute_pd_difference": "1.9810213895253419165316679037361508631706646033367311703434915021E-16",
+  "failures": 0,
+  "status": "PASS",
+  "interpretation": "numeric arithmetic agreement on exported synthetic inputs only"
+}

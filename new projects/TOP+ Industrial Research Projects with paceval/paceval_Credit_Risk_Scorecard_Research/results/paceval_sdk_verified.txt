@@ -1,0 +1,7 @@
+WP018 | Synthetic research only | paceval SDK execution PASS
+models=100 cases_per_model=100
+scalar_verified=10000 batch_verified=6400
+max_absolute_pd_difference=1.1102230246251565e-16
+paceval_result_checksum=5059.4639109254822
+exported_rows=10000
+No credit-risk calibration or regulatory compliance is claimed.
