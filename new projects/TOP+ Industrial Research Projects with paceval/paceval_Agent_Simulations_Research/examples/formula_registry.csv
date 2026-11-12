@@ -1,0 +1,7 @@
+handle_id,model,version,expression
+1,thermal_relaxation_rhs,1,"-p*(x-q)"
+2,damped_forced_response_rhs,1,"-p*x+q*sin(t)"
+3,logistic_population_rhs,1,"p*x*(1-x/q)"
+4,normalized_absolute_residual,1,"sqrt((x-obs)^2)/(sigma+0.000001)"
+5,normalized_squared_residual,1,"((x-obs)/(sigma+0.000001))^2"
+6,thermal_revision_v2,2,"-p*(x-q)-0.02*(x-q)^3"

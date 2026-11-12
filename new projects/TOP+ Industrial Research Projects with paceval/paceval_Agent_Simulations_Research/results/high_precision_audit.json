@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "precision_decimal_digits": 80,
+  "reference_checks": 449,
+  "max_abs_error_exported_decimal": "0.0000000000000021578203514970708577428521428988091765901950817076524362296980858684770721196961",
+  "scope": "selected residual grid points and full version-comparison CSV; no global error proof"
+}

@@ -1,0 +1,13 @@
+WP035 direct paceval SDK integration
+scenarios=100
+formula_graphs=6
+trace_rows=6400
+scalar_evaluations=38562
+batch_evaluations=5257
+reference_checks=43657
+retry_count=52
+accept=79
+review=21
+invalid_inputs_rejected=3
+max_abs_rhs_deviation=0
+PASS
