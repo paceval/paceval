@@ -1,0 +1,13 @@
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /mnt/data/wp030_build
+[ 66%] Building CXX object CMakeFiles/electric_propulsion.dir/paceval_main.cpp.o
+[ 66%] Building CXX object CMakeFiles/electric_propulsion.dir/electric_propulsion.cpp.o
+[100%] Linking CXX executable electric_propulsion
+[100%] Built target electric_propulsion

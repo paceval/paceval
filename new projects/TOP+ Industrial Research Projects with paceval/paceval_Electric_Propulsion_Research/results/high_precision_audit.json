@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "precision_digits": 80,
+  "samples": 500,
+  "max_absolute_diagnostic": "6.248087135090719107084997698452066936428123310191065277981147673E-13",
+  "method": "Independent decimal functions and exp/sqrt; exported input values"
+}
