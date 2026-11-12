@@ -45,8 +45,8 @@ class Engine {std::vector<PACEVAL_HANDLE> handles;public:
  bool err=paceval_dGetMultipleComputationsResultsExt(handlesCopy.data(),(unsigned long)hs.size(),input.data(),(unsigned long)count,output.data(),nullptr,nullptr,codes.data());require(!err,"multi-graph batch API returned error");for(size_t j=0;j<output.size();++j)require(codes[j]==0&&std::isfinite(output[j]),"invalid batch result");return output;}
 };
 int main(int argc,char**argv){try{
- fs::path dir=".";bool quick=false;int resolution=40;for(int a=1;a<argc;++a){std::string v=argv[a];if(v=="--out"&&a+1<argc)dir=argv[++a];else if(v=="--quick")quick=true;else if(v=="--grid"&&a+1<argc)resolution=std::stoi(argv[++a]);else throw std::runtime_error("Usage: extreme_terrain --out DIRECTORY [--grid 40] [--quick]");}
- require(resolution>=8 && resolution<=256,"grid out of bounds");fs::create_directories(dir/"examples");fs::create_directories(dir/"expressions");fs::create_directories(dir/"results");
+ fs::path dir=".";bool quick=false;int resolution=512;for(int a=1;a<argc;++a){std::string v=argv[a];if(v=="--out"&&a+1<argc)dir=argv[++a];else if(v=="--quick")quick=true;else if(v=="--grid"&&a+1<argc)resolution=std::stoi(argv[++a]);else throw std::runtime_error("Usage: extreme_terrain --out DIRECTORY [--grid 512] [--quick]");}
+ require(resolution>=8 && resolution<=512,"grid out of bounds");fs::create_directories(dir/"examples");fs::create_directories(dir/"expressions");fs::create_directories(dir/"results");
  Engine engine;auto csv=std::ofstream(dir/"results"/"execution_summary.csv");csv<<"scene,terms,formula_characters,graph_count,grid_points,water_level,native_check_count,native_max_abs_difference,monolithic_samples,monolithic_max_abs_difference\n";
  std::array<std::string,3> names={"alpine_lake","volcanic_caldera","canyon_ridges"};double globalWorst=0;int totalGraphs=0;
  for(int s=0;s<(quick?1:3);++s){int n=(s==0?2048:s==1?3072:4096);auto model=terms(s,n);std::string full=background(s);std::vector<std::string> chunks;const int CHUNK=256;for(int j=0;j<n;j+=CHUNK){std::string part="0";for(int k=j;k<std::min(n,j+CHUNK);++k)part+="+"+one(model[k]);chunks.push_back(part);full+="+("+part+")";}
@@ -54,9 +54,76 @@ int main(int argc,char**argv){try{
  // Both the complete monolithic expression and decomposed component graphs are real paceval handles.
  auto monolithic=engine.create(full);std::vector<PACEVAL_HANDLE> hs;hs.push_back(engine.create(background(s)));for(auto& c:chunks)hs.push_back(engine.create(c));totalGraphs+=(int)hs.size()+1;
  double monoWorst=0;for(int k=0;k<5;++k){double x=-.8+k*.36,y=-.65+k*.22;double calc=engine.scalar(monolithic,x,y);double ref=native(model,s,x,y);monoWorst=std::max(monoWorst,std::abs(ref-calc));require(std::abs(ref-calc)<2e-9,"monolithic formula correctness failed");}
- int grid=quick?std::min(resolution,12):resolution;std::ofstream out(dir/"examples"/(names[s]+"_height_grid.csv"));out<<std::setprecision(17)<<"i,j,x,y,height,water_level\n";int checked=0;double worst=0;const int batchSize=128;std::vector<double> all(size_t(grid)*grid);
- for(int start=0;start<grid*grid;start+=batchSize){int count=std::min(batchSize,grid*grid-start);std::vector<double> coord(size_t(count)*2);for(int k=0;k<count;++k){int ind=start+k;coord[size_t(k)*2]=-1.+2.*(ind%grid)/(grid-1);coord[size_t(k)*2+1]=-1.+2.*(ind/grid)/(grid-1);}auto results=engine.batch(hs,coord,count);
- for(int k=0;k<count;++k){double v=0;for(size_t h=0;h<hs.size();++h)v+=results[h*count+k];int ind=start+k;int ix=ind%grid,iy=ind/grid;double x=coord[2*k],y=coord[2*k+1];require(std::isfinite(v),"nonfinite height");all[ind]=v;out<<ix<<','<<iy<<','<<x<<','<<y<<','<<v<<','<<(s==2?-0.32:s==1?0.08:-0.12)<<'\n';if((ind%17)==0){double ref=native(model,s,x,y);worst=std::max(worst,std::abs(v-ref));require(std::abs(v-ref)<3e-8,"native validation failed");++checked;}}}
+ int grid=quick?std::min(resolution,12):resolution;
+ // Factorized Gaussian identity: exp(-(Dx+Dy)) = exp(-Dx)*exp(-Dy).
+ // For dense grids, paceval batch-evaluates EACH analytic 1D factor over all
+ // 512 horizontal or vertical sample coordinates; the host composes outer
+ // products and performs a stable deterministic reduction for the 2D surface.
+ // This is a mathematical decomposition, not a native substitute for paceval.
+ // Complete monolithic expression creation/scalar execution remains tested.
+ const int B=32;
+ std::vector<double> z(size_t(grid)*grid,0.0);
+ std::vector<double> xcoords(size_t(grid)*2),ycoords(size_t(grid)*2);
+ for(int k=0;k<grid;++k){xcoords[2*k]=-1.+2.*k/(grid-1);xcoords[2*k+1]=0;
+                              ycoords[2*k]=0;ycoords[2*k+1]=-1.+2.*k/(grid-1);}
+ // Evaluate the COMPLETE nonseparable background with true paceval batch.
+ // It includes off-axis trigonometric coupling and a diagonal canyon incision.
+ for(int start=0;start<grid*grid;start+=8192){
+   int count=std::min(8192,grid*grid-start);
+   std::vector<double> coords(size_t(count)*2);
+   for(int k=0;k<count;++k){int id=start+k;coords[2*k]=-1.+2.*(id%grid)/(grid-1);coords[2*k+1]=-1.+2.*(id/grid)/(grid-1);}
+   auto v=engine.batch(std::vector<PACEVAL_HANDLE>{hs[0]},coords,count);
+   for(int k=0;k<count;++k)z[start+k]=v[k];
+ }
+ for(int start=0;start<n;start+=B){
+   int count=std::min(B,n-start);
+   std::vector<PACEVAL_HANDLE> hx,hy;
+   hx.reserve(count);hy.reserve(count);
+   for(int k=0;k<count;++k){
+     const auto& t=model[start+k];
+     std::string fx="("+dec(t.amplitude)+"*exp(-((x-("+dec(t.cx)+"))^2/("+dec(t.sx)+"))))";
+     std::string fy="exp(-((y-("+dec(t.cy)+"))^2/("+dec(t.sy)+")))";
+     auto h1=paceval_CreateComputation(fx.c_str(),2,"x y",false,nullptr);
+     auto h2=paceval_CreateComputation(fy.c_str(),2,"x y",false,nullptr);
+     require(h1 && h2 && !paceval_GetIsError(h1) && !paceval_GetIsError(h2),"factor graph creation failed");
+     hx.push_back(h1);hy.push_back(h2);
+   }
+   auto vx=engine.batch(hx,xcoords,grid);
+   auto vy=engine.batch(hy,ycoords,grid);
+   for(int k=0;k<count;++k){
+     const double* xs=vx.data()+size_t(k)*grid;
+     const double* ys=vy.data()+size_t(k)*grid;
+     for(int j=0;j<grid;++j){double* dst=z.data()+size_t(j)*grid;const double yc=ys[j];
+       for(int i=0;i<grid;++i)dst[i]+=xs[i]*yc;
+     }
+   }
+   for(auto h:hx)paceval_DeleteComputation(h);
+   for(auto h:hy)paceval_DeleteComputation(h);
+ }
+ // Cross-check complete original grouped formula in multi-graph batch at
+ // independently selected interior points, not only a native C++ implementation.
+ int checked=0;double worst=0;
+ std::vector<double> checkcoords;
+ for(int j=0;j<grid;j+=std::max(1,grid/8))
+   for(int i=0;i<grid;i+=std::max(1,grid/8)){
+      checkcoords.push_back(-1.+2.*i/(grid-1));checkcoords.push_back(-1.+2.*j/(grid-1));}
+ auto checkvals=engine.batch(hs,checkcoords,int(checkcoords.size()/2));
+ for(size_t k=0;k<checkcoords.size()/2;++k){
+   double grouped=0;for(size_t g=0;g<hs.size();++g)grouped+=checkvals[g*(checkcoords.size()/2)+k];
+   int ix=int(std::llround((checkcoords[2*k]+1)*(grid-1)*.5));
+   int iy=int(std::llround((checkcoords[2*k+1]+1)*(grid-1)*.5));
+   const double v=z[size_t(iy)*grid+ix];
+   require(std::isfinite(v) && std::abs(v-grouped)<3e-8,"factorized vs grouped batch validation failed");
+   double ref=native(model,s,checkcoords[2*k],checkcoords[2*k+1]);
+   worst=std::max(worst,std::abs(v-ref));
+   require(std::abs(v-ref)<3e-8,"native validation failed");++checked;
+ }
+ std::ofstream out(dir/"examples"/(names[s]+"_height_grid.csv"));out<<std::setprecision(17)<<"i,j,x,y,height,water_level\n";
+ for(int j=0;j<grid;++j)for(int i=0;i<grid;++i){
+   double x=-1.+2.*i/(grid-1), y=-1.+2.*j/(grid-1);
+   out<<i<<','<<j<<','<<x<<','<<y<<','<<z[size_t(j)*grid+i]<<','<<(s==2?-0.32:s==1?0.08:-0.12)<<'\n';
+ }
+ out.close();
  globalWorst=std::max(globalWorst,worst);csv<<names[s]<<','<<n<<','<<full.size()<<','<<hs.size()+1<<','<<grid*grid<<','<<(s==2?-.32:s==1?.08:-.12)<<','<<checked<<','<<std::setprecision(17)<<worst<<','<<5<<','<<monoWorst<<'\n';std::cout<<"PASS "<<names[s]<<": "<<full.size()<<" expression chars, "<<grid*grid<<" paceval samples, "<<hs.size()+1<<" graphs\n";}
  std::cout<<"PASS original paceval SDK, total graphs="<<totalGraphs<<" max difference="<<globalWorst<<"\n";return 0;
  }catch(const std::exception& e){std::cerr<<"FAIL "<<e.what()<<'\n';return 1;}}

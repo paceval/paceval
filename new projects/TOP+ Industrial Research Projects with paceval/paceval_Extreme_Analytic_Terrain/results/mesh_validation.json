@@ -1,20 +1,23 @@
 {
   "alpine_lake": {
-    "terrain_vertices": 1600,
-    "terrain_triangles": 3042,
-    "water_triangles": 820,
-    "glb": 2
+    "terrain_vertices": 262144,
+    "terrain_triangles": 522242,
+    "water_triangles": 167526,
+    "glb": 2,
+    "surface_figure_stride": 4
   },
   "volcanic_caldera": {
-    "terrain_vertices": 1600,
-    "terrain_triangles": 3042,
-    "water_triangles": 1472,
-    "glb": 2
+    "terrain_vertices": 262144,
+    "terrain_triangles": 522242,
+    "water_triangles": 281310,
+    "glb": 2,
+    "surface_figure_stride": 4
   },
   "canyon_ridges": {
-    "terrain_vertices": 1600,
-    "terrain_triangles": 3042,
-    "water_triangles": 744,
-    "glb": 2
+    "terrain_vertices": 262144,
+    "terrain_triangles": 522242,
+    "water_triangles": 146938,
+    "glb": 2,
+    "surface_figure_stride": 4
   }
 }

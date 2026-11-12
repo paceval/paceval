@@ -1,8 +1,11 @@
-Internal ctest changing into directory: /mnt/data/wp_extreme_build
-Test project /mnt/data/wp_extreme_build
+[ 33%] Building CXX object CMakeFiles/extreme_terrain.dir/extreme_terrain.cpp.o
+[ 66%] Linking CXX executable extreme_terrain
+[100%] Built target extreme_terrain
+Internal ctest changing into directory: /mnt/data/paceval_Extreme_Analytic_Terrain_Research/build512
+Test project /mnt/data/paceval_Extreme_Analytic_Terrain_Research/build512
     Start 1: terrain_real_sdk
-1/1 Test #1: terrain_real_sdk .................   Passed    0.92 sec
+1/1 Test #1: terrain_real_sdk .................   Passed    1.02 sec
 
 100% tests passed, 0 tests failed out of 1
 
-Total Test time (real) =   0.92 sec
+Total Test time (real) =   1.03 sec

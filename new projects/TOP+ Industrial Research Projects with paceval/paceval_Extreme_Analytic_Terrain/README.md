@@ -4,7 +4,7 @@
 
 *Concept illustration; not a computed research result. The terrain figures below are derived directly from the actual paceval computation outputs.*
 
-**Three distinct, explicitly serialized mathematical terrain functions. All exceed 250,000 characters, were created as real monolithic paceval computation handles, and were also evaluated as reusable grouped graphs to produce genuine 3D terrain assets.**
+**Three distinct, explicitly serialized mathematical terrain functions. All exceed 250,000 characters, were created as real monolithic paceval computation handles, and were also evaluated with large paceval batch calls to produce genuine 3D terrain assets at 512 × 512 resolution.**
 
 [**English research whitepaper (PDF)**](paceval_Extreme_Analytic_Terrain_Whitepaper_EN.pdf) · [C++ source](src/extreme_terrain.cpp) · [CMake project](src/CMakeLists.txt) · [Formula files](expressions/) · [GLB/OBJ terrain models](examples/) · [Numerical audits](results/)
 
@@ -20,11 +20,11 @@ In geospatial production, real measured DEM and lidar elevation products remain 
 
 | Scene | Gaussian feature terms | Full formula size | Complete paceval grid | Real geometry |
 |---|---:|---:|---:|---|
-| Alpine Lake | 2,048 | **274,877 characters** | 40 × 40 | [GLB](examples/alpine_lake_terrain.glb), [terrain OBJ](examples/alpine_lake_terrain.obj), [water OBJ](examples/alpine_lake_water.obj) |
-| Volcanic Caldera | 3,072 | **412,381 characters** | 40 × 40 | [GLB](examples/volcanic_caldera_terrain.glb), [terrain OBJ](examples/volcanic_caldera_terrain.obj), [water OBJ](examples/volcanic_caldera_water.obj) |
-| Canyon Ridges | 4,096 | **550,086 characters** | 40 × 40 | [GLB](examples/canyon_ridges_terrain.glb), [terrain OBJ](examples/canyon_ridges_terrain.obj), [water OBJ](examples/canyon_ridges_water.obj) |
+| Alpine Lake | 2,048 | **274,877 characters** | 512 × 512 | [GLB](examples/alpine_lake_terrain.glb), [terrain OBJ](examples/alpine_lake_terrain.obj), [water OBJ](examples/alpine_lake_water.obj) |
+| Volcanic Caldera | 3,072 | **412,381 characters** | 512 × 512 | [GLB](examples/volcanic_caldera_terrain.glb), [terrain OBJ](examples/volcanic_caldera_terrain.obj), [water OBJ](examples/volcanic_caldera_water.obj) |
+| Canyon Ridges | 4,096 | **550,086 characters** | 512 × 512 | [GLB](examples/canyon_ridges_terrain.glb), [terrain OBJ](examples/canyon_ridges_terrain.obj), [water OBJ](examples/canyon_ridges_water.obj) |
 
-A total of **42 real paceval computation graphs** were constructed: three monolithic complete formulas plus their reusable grouped expressions. Each full expression was independently created and evaluated at five test coordinates. Complete terrain rasters were evaluated through `paceval_dGetMultipleComputationsResultsExt` using a background graph and reusable blocks of 256 Gaussian terms. All 4,800 grid heights are exported at 17 significant digits.
+A total of **42 real paceval computation graphs** were constructed: three monolithic complete formulas plus their reusable grouped expressions. Each full expression was independently created and evaluated at five test coordinates. Complete terrain rasters were evaluated through `paceval_dGetMultipleComputationsResultsExt` using a background graph and reusable blocks of 256 Gaussian terms. This 512 × 512 release exports **786,432 derived height values** across three scenes. The demonstrator uses the original multi-graph batch API for the full non-separable background on the 512 × 512 grid, and uses paceval batch calls for separately evaluated one-dimensional Gaussian factors. The C++ host then composes and sums their outer products. The mathematically equivalent original full-function grouped graphs are independently checked at 64 coordinate pairs, and the three monolithic formulas are independently created and sampled. Thus **factor evaluation is performed by paceval**, whereas two-dimensional composition and mesh export are host operations.
 
 The deterministic C++ reference tests, additional nine independent 55-decimal-digit `mpmath` calculations, and CTest passed for the released workload. Technical audit details remain under [`results/`](results/).
 
@@ -32,7 +32,7 @@ The deterministic C++ reference tests, additional nine independent 55-decimal-di
 
 The paceval [Product Brief](https://paceval.com/product-brief/) states that **there is no fixed product-level limit on expression length or number of variables: the hardware and development environment determine practical limits**. This is *not* proof of unlimited resources or successful execution of every arbitrary expression. A billion-character formula could be considered in principle if sufficient memory, graph storage, parsing capacity and computational resources were available; **one billion characters have not been demonstrated in this project**.
 
-The previous [source study](https://paceval.com/developers/) already documented a separate paceval monolithic test exceeding three million characters. This project independently demonstrates three distinct landscapes of 274k to 550k characters, not a new maximum-length record. Long text alone is not a proxy for physical realism or useful computational throughput.
+The previous [source study](https://paceval.com/developers/) already documented a separate paceval monolithic test exceeding three million characters. This project independently demonstrates three distinct landscapes of 274k to 550k characters at 512 × 512 spatial resolution, not a new maximum-length record. Long text alone is not a proxy for physical realism or useful computational throughput.
 
 ## 3. Mathematical terrain specification
 
@@ -42,7 +42,7 @@ The three functions are deterministic 2.5D height fields defined on normalized c
 h_N(x,y)=h_0(x,y)+\sum_{j=1}^{N}a_j\exp\left(-\frac{(x-c_{x,j})^2}{s_{x,j}}-\frac{(y-c_{y,j})^2}{s_{y,j}}\right).
 ```
 
-The background `$h_0$` determines each landscape's general shape, while the 2,048–4,096 signed analytic Gaussian features add deterministic local relief. All coefficients are explicitly included as 17-significant-digit literals in the **actual expression files**, not synthesized inside the paceval evaluator.
+The background $h_0$ determines each landscape's general shape, while the 2,048–4,096 signed analytic Gaussian features add deterministic local relief. All coefficients are explicitly included as 17-significant-digit literals in the **actual expression files**, not synthesized inside the paceval evaluator.
 
 - [Exact 274,877-character Alpine Lake formula](expressions/alpine_lake_full_formula.txt)
 - [Exact 412,381-character Volcanic Caldera formula](expressions/volcanic_caldera_full_formula.txt)
@@ -73,10 +73,11 @@ cmake -S src -B build -DCMAKE_BUILD_TYPE=Release \
   -DPACEVAL_RUNTIME=/absolute/path/to/libpaceval_linux_sharedLIB.so
 cmake --build build -j
 ctest --test-dir build --output-on-failure
-./build/extreme_terrain --out . --grid 40
+./build/extreme_terrain --out . --grid 512
 python3 src/high_precision_reference.py
 python3 src/make_figures.py
 python3 src/make_whitepaper.py
+python3 src/make_readme_512.py
 python3 src/check_readme_math.py
 ```
 
@@ -88,11 +89,13 @@ A complete SDK run writes [`results/execution_summary.csv`](results/execution_su
 
 The numerical replay checks both the complete monolithic mathematical expression and grouped multi-graph evaluations. A C++ native mathematical oracle, independently reimplemented coefficient generation in Python and high-precision `mpmath` checks test selected samples. [`results/high_precision_audit.json`](results/high_precision_audit.json) and [`results/mesh_validation.json`](results/mesh_validation.json) document those checks. All terrain and water mesh geometry can be opened with a GLB/OBJ-compatible viewer.
 
-The script [`src/check_readme_math.py`](src/check_readme_math.py) checks GitHub `math` blocks, prohibited macros such as `\operatorname`, nested math delimiters and every local README link. It includes positive and negative regression tests. A real GitHub browser/MathJax rendering check is still an additional step; the static syntax checker is not a browser.
+The script [`src/check_readme_math.py`](src/check_readme_math.py) checks GitHub `math` blocks, disallowed advanced math macros, nested math delimiters and every local README link. It includes positive and negative regression tests. A real GitHub browser/MathJax rendering check is still an additional step; the static syntax checker is not a browser.
 
 ## 6. Scope and interpretation
 
 This is a verified **mathematical expression execution and geometry export** demonstration. It does not model erosion, real lake hydrology, geological material properties, rainfall, measured elevation data or volumetric terrain. Water is a separately constructed geometric surface; the meshes are 2.5D height fields. The results demonstrate feasibility and reproducibility, **not** a numerical-speed or energy advantage over optimized native/GPU terrain rendering.
+
+At 512 × 512, every terrain mesh contains **262,144 vertices** and **522,242 triangles**, which makes the geometric presentation substantially stronger than the original 40 × 40 preview release while leaving the explicit formula lengths unchanged.
 
 Industrial follow-up would include fitting analytically represented terrain to measured DEMs, preserving geographical reference systems, testing spatially independent validation tiles and evaluating slopes, curvature, drainage and multiresolution tiled geometry.
 

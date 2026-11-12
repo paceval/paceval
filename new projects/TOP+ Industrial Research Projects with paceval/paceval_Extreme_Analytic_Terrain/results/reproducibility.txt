@@ -1,8 +1,1 @@
-PASS: 7 replay output files byte identical between two real paceval SDK runs.
-results/execution_summary.csv
-examples/alpine_lake_height_grid.csv
-examples/volcanic_caldera_height_grid.csv
-examples/canyon_ridges_height_grid.csv
-expressions/alpine_lake_full_formula.txt
-expressions/volcanic_caldera_full_formula.txt
-expressions/canyon_ridges_full_formula.txt
+PASS: repeated full 512x512 original paceval-SDK execution. 7 result and expression files are byte-identical.

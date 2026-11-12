@@ -3,21 +3,21 @@
     "scene": "alpine_lake",
     "precision_digits": 55,
     "points_verified": 3,
-    "max_abs_difference": 4.230234380862417e-17,
+    "max_abs_difference": 2.9873016429001354e-16,
     "status": "PASS"
   },
   {
     "scene": "volcanic_caldera",
     "precision_digits": 55,
     "points_verified": 3,
-    "max_abs_difference": 8.341035834961766e-17,
+    "max_abs_difference": 1.857802580156895e-16,
     "status": "PASS"
   },
   {
     "scene": "canyon_ridges",
     "precision_digits": 55,
     "points_verified": 3,
-    "max_abs_difference": 2.2739273260967936e-16,
+    "max_abs_difference": 3.666713330692111e-16,
     "status": "PASS"
   }
 ]

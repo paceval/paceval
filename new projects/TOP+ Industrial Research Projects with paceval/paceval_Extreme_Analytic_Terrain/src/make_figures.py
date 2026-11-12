@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render genuine paceval height-grid CSVs, export GLB/OBJ meshes and scientific charts."""
 from pathlib import Path
-import csv, json, numpy as np
+import csv, json, os, numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -27,14 +27,13 @@ def plotfig(fig,stem):
  plt.close(fig)
 
 def mesh(x,y,z,w,name):
- n=len(x); vs=np.stack([x.ravel(),y.ravel(),z.ravel()],axis=-1); fs=[];waterfaces=[];waterverts=[]
+ n=len(x); vs=np.stack([x.ravel(),y.ravel(),z.ravel()],axis=-1); fs=[];waterfaces=[];waterverts=np.stack([x.ravel(),y.ravel(),np.full(n*n,w)],axis=-1)
  for iy in range(n-1):
   for ix in range(n-1):
    a=iy*n+ix;b=a+1;c=a+n;d=c+1
    fs.extend(((a,b,c),(b,d,c)))
    if np.all(z[iy:iy+2,ix:ix+2]<w):
-    j=len(waterverts); waterverts.extend(((x[iy,ix],y[iy,ix],w),(x[iy,ix+1],y[iy,ix+1],w),(x[iy+1,ix],y[iy+1,ix],w),(x[iy+1,ix+1],y[iy+1,ix+1],w)))
-    waterfaces.extend(((j,j+1,j+2),(j+1,j+3,j+2)))
+    waterfaces.extend(((a,b,c),(b,d,c)))
  terrain=trimesh.Trimesh(vertices=vs,faces=fs,process=False)
  terrain.visual.vertex_colors=trimesh.visual.color.interpolate(z.ravel(),color_map=plt.get_cmap(COLORS[NAMES.index(name)]))
  scene=trimesh.Scene();scene.add_geometry(terrain,geom_name='paceval_height_field')
@@ -45,13 +44,15 @@ def mesh(x,y,z,w,name):
   lake.export(ROOT/'examples'/f'{name}_water.obj')
   scene.add_geometry(lake,geom_name='separate_constant_height_water_geometry')
  scene.export(ROOT/'examples'/f'{name}_terrain.glb')
- return dict(terrain_vertices=len(terrain.vertices),terrain_triangles=len(terrain.faces),water_triangles=len(waterfaces)//1,glb=scene.geometry.keys().__len__())
+ return dict(terrain_vertices=len(terrain.vertices),terrain_triangles=len(terrain.faces),water_triangles=len(waterfaces),glb=scene.geometry.keys().__len__(),surface_figure_stride=4)
 
-meta={}
+meta=json.loads((ROOT/'results'/'mesh_validation.json').read_text()) if (ROOT/'results'/'mesh_validation.json').exists() else {}
+selector=os.environ.get('PACEVAL_FIG_SCENE','all')
 for k,name in enumerate(NAMES):
+ if selector not in ('all',name):continue
  x,y,z,water=load(name);meta[name]=mesh(x,y,z,water,name)
- fig=plt.figure(figsize=(8.5,6.2));ax=fig.add_subplot(111,projection='3d');ax.plot_surface(x,y,z,cmap=COLORS[k],linewidth=0,antialiased=True,rstride=1,cstride=1)
- ax.set_title(LABELS[k]+' • actual paceval height field',fontsize=12,pad=13)
+ fig=plt.figure(figsize=(8.5,6.2));ax=fig.add_subplot(111,projection='3d');ax.plot_surface(x[::4,::4],y[::4,::4],z[::4,::4],cmap=COLORS[k],linewidth=0,antialiased=True,rstride=1,cstride=1)
+ ax.set_title(LABELS[k]+' - evaluated analytic height field (512 x 512)',fontsize=12,pad=13)
  ax.set(xlabel='normalized x',ylabel='normalized y',zlabel='synthetic height');ax.view_init(elev=32,azim=-61)
  fig.subplots_adjust(left=.02,right=.95,bottom=.08,top=.9)
  plotfig(fig,f'{2*k+1:02d}_{name}_surface')
@@ -67,4 +68,4 @@ ax.set_xlim(0,max(nums)/1000*1.28);fig.tight_layout();plotfig(fig,'07_verified_f
 (ROOT/'results'/'mesh_validation.json').write_text(json.dumps(meta,indent=2)+'\n')
 for name in NAMES:
  m=trimesh.load(ROOT/'examples'/f'{name}_terrain.glb',force='scene');assert len(m.geometry)>=1 and sum(len(g.faces) for g in m.geometry.values())>0
-print('PASS: 7 charts (PNG+PDF) and three genuine GLB/OBJ mesh sets')
+print('PASS: generated charts and GLB/OBJ mesh sets for '+selector)
