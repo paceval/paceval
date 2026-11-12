@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp026_build
+Test project /mnt/data/wp026_build
+    Start 1: sdk_auction_integration
+1/1 Test #1: sdk_auction_integration ..........   Passed    2.70 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   2.71 sec

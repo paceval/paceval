@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "checked": 500,
+  "decimal_precision": 80,
+  "max_absolute_difference_eur": "4.009668385029720592414442660320750134072479025517630072409202023E-14",
+  "reference": "independent Python Decimal model"
+}
