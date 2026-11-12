@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "screening_candidates": 8000,
+  "feasible_candidates": 5388,
+  "formula_graphs": 58,
+  "surface_points": 3721,
+  "revision_points": 101,
+  "checks": [
+    "counts",
+    "50 unique score formulas",
+    "independent screening decision reconstruction",
+    "finite surface",
+    "immutable distinct formula version"
+  ]
+}

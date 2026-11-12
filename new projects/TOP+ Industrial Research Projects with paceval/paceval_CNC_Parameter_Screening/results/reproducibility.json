@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "repeated_sdk_run": "byte-identical",
+  "checked_files": {
+    "formula_registry.csv": "ec9fc471beb7ad21a94fb44e35fbff954135c14a01e9d7063d4e0ed18f340444",
+    "screening_candidates.csv": "b5f245269fcbf71ae052e0a61a5ff4d9df6eb6bb9773d2911401f918b575b724",
+    "cnc_response_surface.csv": "a6215dc47da8b2c6145a9d42525c723487f1e82f115c3f16b39d19db4ee0e896",
+    "formula_revision.csv": "eaad6036042ba6147f87e32cb59657ea07dd7570d372bf2b23ac427c69a67d70",
+    "sdk_audit.txt": "45fdee068b02777c0d44ea39dc9381faaedfe6b325c5d31243ad4a34b5c3b430"
+  }
+}

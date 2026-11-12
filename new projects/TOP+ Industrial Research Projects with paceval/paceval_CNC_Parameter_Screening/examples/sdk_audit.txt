@@ -1,0 +1,13 @@
+WP034 direct paceval SDK scientific demonstration
+metric_graphs=7
+score_v1_graphs=50
+formula_revision_graphs=1
+graphs_total=58
+screened_candidates=8000
+feasible_candidates=5388
+surface_points=3721
+scalar_evaluations=64707
+batch_evaluations=12955
+reference_checks=77157
+max_absolute_reference_difference=9.0949470177292824e-13
+PASS

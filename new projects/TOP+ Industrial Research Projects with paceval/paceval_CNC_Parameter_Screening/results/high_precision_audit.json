@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "precision_digits": 80,
+  "selected_candidates": 423,
+  "values_checked": 3384,
+  "max_abs_difference_exported_decimal": "0.00000000000085813975884239730395367259259174711138928183189588382743578223439803444158343671",
+  "scope": "Internal independent formula reference; NOT measurement or material calibration"
+}

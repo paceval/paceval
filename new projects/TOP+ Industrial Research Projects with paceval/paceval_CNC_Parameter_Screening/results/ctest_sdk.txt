@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp034_work/build
+Test project /mnt/data/wp034_work/build
+    Start 1: cnc_sdk_integration
+1/1 Test #1: cnc_sdk_integration ..............   Passed    7.46 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   7.46 sec
