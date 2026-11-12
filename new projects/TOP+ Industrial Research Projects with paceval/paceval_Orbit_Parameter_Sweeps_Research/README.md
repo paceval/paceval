@@ -24,44 +24,44 @@ Satellite operations, spacecraft mission design, constellation planning and flig
 
 Earth-centered inertial Cartesian state, using **km, km/s and seconds**:
 
-\[
+```math
 \dot{\mathbf r}=\mathbf v,\qquad
 \dot{\mathbf v}=\mathbf a_0+\mathbf a_{J2}+\mathbf a_D.
-\]
+```
 
-Set \(r=\|\mathbf r\|\), \(q=z^2/r^2\), \(R_e=6378.137\,\mathrm{km}\), \(\mu=398600.4418\,\mathrm{km^3/s^2}\) and \(J_2=1.08262668\times 10^{-3}\). The reference constants are *frozen model inputs*, not a gravity-field realization at a particular epoch.
+Set $`r=\|\mathbf r\|`$, $`q=z^2/r^2`$, $`R_e=6378.137\,\mathrm{km}`$, $`\mu=398600.4418\,\mathrm{km^3/s^2}`$ and $`J_2=1.08262668\times 10^{-3}`$. The reference constants are *frozen model inputs*, not a gravity-field realization at a particular epoch.
 
-\[
+```math
 \mathbf a_0=-\mu\,\mathbf r/r^3,\quad
  g=\frac{3\mu J_2 R_e^2}{2r^5},\quad
 \mathbf a_{J2}=g\begin{bmatrix}
  x(5q-1)\\ y(5q-1)\\ z(5q-3)
 \end{bmatrix}.
-\]
+```
 
-The source strings explicitly encode all operations as supported paceval mathematical expressions. Different values of \(\mu\) and \(J_2\) are passed to **the same** handles, not implemented by rebuilding or silently switching the expression.
+The source strings explicitly encode all operations as supported paceval mathematical expressions. Different values of $`\mu`$ and $`J_2`$ are passed to **the same** handles, not implemented by rebuilding or silently switching the expression.
 
 ### 2.2 Simplified atmosphere and drag
 
-The research-domain model assumes an exponentially declining density at geocentric altitude \(h=r-R_e\), **not a measured atmospheric forecast**:
+The research-domain model assumes an exponentially declining density at geocentric altitude $`h=r-R_e`$, **not a measured atmospheric forecast**:
 
-\[
+```math
 \rho(h)=4\times10^{-12}\,\exp\!\left(-\frac{h-400\,\mathrm{km}}{60\,\mathrm{km}}\right)\,\mathrm{kg/m^3}.
-\]
+```
 
-Atmospheric co-rotation uses \(\boldsymbol\omega=(0,0,7.2921150\times10^{-5})\,\mathrm{rad/s}\) and \(\mathbf v_{rel}=\mathbf v-\boldsymbol\omega\times\mathbf r\). The aerodynamic force is
+Atmospheric co-rotation uses $`\boldsymbol\omega=(0,0,7.2921150\times10^{-5})\,\mathrm{rad/s}`$ and $`\mathbf v_{rel}=\mathbf v-\boldsymbol\omega\times\mathbf r`$. The aerodynamic force is
 
-\[
+```math
 \mathbf a_D=-\tfrac12(C_dA/m)\rho(h)\,\|\mathbf v_{rel}\|\mathbf v_{rel},\qquad C_dA/m=0.02\,\mathrm{m^2/kg}.
-\]
+```
 
 The C++/paceval expression converts m/s to km/s consistently: it multiplies the km/s velocity products by 1000 in the conversion of SI acceleration to km/s². Density multipliers 0, 1, 10 and 100 are **artificial sensitivity settings**, not physical estimates from satellite observations.
 
 ### 2.3 Propagation and numerical checks
 
-The host integrates with classical **RK4**, fixed \(\Delta t=60\,\mathrm{s}\). Every stage of the paceval computation is checked against an *independently coded* Cartesian native C++ right-hand side. Both paths are numerically integrated using the same fixed RK4 algorithm, and their 6D states are compared at every exported trajectory step. A point-mass case is also compared against the exact circular-orbit solution.
+The host integrates with classical **RK4**, fixed $`\Delta t=60\,\mathrm{s}`$. Every stage of the paceval computation is checked against an *independently coded* Cartesian native C++ right-hand side. Both paths are numerically integrated using the same fixed RK4 algorithm, and their 6D states are compared at every exported trajectory step. A point-mass case is also compared against the exact circular-orbit solution.
 
-The no-drag potential is \(U=-\mu/r+\mu J_2R_e^2P_2(z/r)/r^3\), with \(P_2(u)=(3u^2-1)/2\). The code checks specific mechanical energy conservation for the conservative models. **It does not apply that conservation assertion when drag is enabled.** Angular momentum conservation is checked only in the point-mass two-body case, not for the noncentral J2 force.
+The no-drag potential is $`U=-\mu/r+\mu J_2R_e^2P_2(z/r)/r^3`$, with $`P_2(u)=(3u^2-1)/2`$. The code checks specific mechanical energy conservation for the conservative models. **It does not apply that conservation assertion when drag is enabled.** Angular momentum conservation is checked only in the point-mass two-body case, not for the noncentral J2 force.
 
 ## 3. Executed results with the original paceval SDK
 
@@ -117,11 +117,14 @@ cmake --build build -j
 ctest --test-dir build --output-on-failure
 ./build/orbit_sweeps --out reproduced
 python3 src/verify_results.py
+python3 src/check_readme_math.py
 python3 src/make_figures.py
 python3 src/make_whitepaper.py
 ```
 
 **Command qualification:** `verify_results.py`, `make_figures.py` and `make_whitepaper.py` read the **released** files in `examples/` and regenerate the audit/figures/PDF there. To audit a separately produced `reproduced/` directory, first compare it to `examples/` or copy the generated files to `examples/` in a separate working copy. The generator does not silently substitute the `reproduced/` outputs as its input.
+
+**GitHub equation formatting:** This README uses GitHub-supported `math` fenced blocks and backtick-protected dollar-delimited inline expressions. Run `python3 src/check_readme_math.py` after editing formulas; it flags unsupported delimiters and missing relative links. It checks Markdown structure, not whether a formula is physically correct. See [GitHub mathematical-expression documentation](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions).
 
 Python dependencies for optional reproduction are `numpy`, `matplotlib` and `reportlab`. The C++ executable itself requires **C++17, CMake and the externally supplied ABI-compatible paceval runtime**, not Python.
 
