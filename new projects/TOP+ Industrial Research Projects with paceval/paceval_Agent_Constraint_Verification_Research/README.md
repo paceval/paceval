@@ -21,7 +21,7 @@ The technical context is informed by the [NIST Generative AI Risk Management Pro
 For an admissible, finite input vector $\mathbf{u}=(x,y,z)$ the numerical convention is to compute a signed margin $g(\mathbf{u})$. A positive margin indicates that an inequality is satisfied, and a negative margin indicates violation. The actual host decision has a separate review band:
 
 ```math
-\operatorname{route}(g)=
+\mathrm{route}(g)=
 \begin{cases}
 \mathrm{ACCEPT}, & g>\tau,\\
 \mathrm{REVIEW}, & -\tau\leq g\leq\tau,\\

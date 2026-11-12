@@ -6,6 +6,8 @@ root=Path(__file__).resolve().parents[1]; md=(root/'README.md').read_text(encodi
 errors=[]
 if md.count('```math') != md.count('```math\n'):errors.append('Malformed opening math fence')
 if md.count('```')%2:errors.append('Unbalanced code fences')
+for forbidden in (r'\operatorname',):
+ if forbidden in md:errors.append('Math macro not permitted in target GitHub renderer: '+forbidden)
 for old in ('\\[','\\]','\\(','\\)'):
  if old in md:errors.append('Unsupported math delimiter '+old)
 links=re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',md)
