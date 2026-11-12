@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "sdk_score_evaluations": 48640,
+  "score_formulas": 128,
+  "causal_output_bars": 380,
+  "surface_evaluations": 3721,
+  "high_precision_digits": 80,
+  "high_precision_comparisons": 1014,
+  "max_absolute_difference_to_high_precision": 1.2981236874881254e-16,
+  "prefix_audit": {
+    "prefix_bars": 240,
+    "compared_state_rows": 200,
+    "compared_score_rows": 25600,
+    "identical": true
+  },
+  "note": "Decimal inputs read from 17-digit exported CSV; arithmetic accuracy is not a trading-performance claim"
+}
