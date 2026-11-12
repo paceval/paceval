@@ -1,0 +1,8 @@
+WP019 | paceval SDK material-formula feasibility: PASS
+candidate_graphs=1000 samples_per_candidate=60
+scalar_verified=60000 batch_verified=32000
+max_sdk_native_absolute_GPa_difference=0
+selected_by_validation_candidate=0 family=0
+selected_validation_rmse_GPa=0.0860476446658094 selected_test_rmse_GPa=0.089411005925092463
+checksum=7310913.9803381385
+Synthetic data only; no measured materials or physical law discovery.

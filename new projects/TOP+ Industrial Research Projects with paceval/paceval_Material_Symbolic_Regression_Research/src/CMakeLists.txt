@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.16)
+project(paceval_material_symbolic_regression LANGUAGES CXX)
+# Compile the original paceval SDK's public C++ facade together with our host.
+# The matching external Linux runtime is NOT bundled or redistributed.
+if(NOT PACEVAL_RUNTIME OR NOT EXISTS "${PACEVAL_RUNTIME}")
+  message(FATAL_ERROR "Pass -DPACEVAL_RUNTIME=/absolute/path/to/libpaceval_linux_sharedLIB.so")
+endif()
+add_executable(material_candidates material_candidate.cpp paceval_main.cpp)
+target_compile_features(material_candidates PRIVATE cxx_std_17)
+target_include_directories(material_candidates PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+target_link_libraries(material_candidates PRIVATE "${PACEVAL_RUNTIME}")
+if(MSVC)
+  target_compile_options(material_candidates PRIVATE /W4)
+else()
+  target_compile_options(material_candidates PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+if(UNIX AND NOT APPLE)
+  get_filename_component(PACEVAL_RUNTIME_DIR "${PACEVAL_RUNTIME}" DIRECTORY)
+  set_target_properties(material_candidates PROPERTIES BUILD_RPATH "${PACEVAL_RUNTIME_DIR}")
+endif()
+enable_testing()
+add_test(NAME paceval_material_scalar_and_batch
+ COMMAND material_candidates --test --out-prefix "${CMAKE_CURRENT_BINARY_DIR}/wp019_test")

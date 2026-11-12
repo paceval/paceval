@@ -1,0 +1,10 @@
+{
+  "oracle": "independently coded Python Decimal",
+  "decimal_precision": 80,
+  "checked_selected_prediction_rows": 60,
+  "passed": 60,
+  "max_absolute_difference_GPa": "2.077993958682660841899978776131954725662663500266958416117511173E-14",
+  "absolute_tolerance_GPa": "2e-10",
+  "scope": "selected candidate only; SDK/native comparisons are separate",
+  "errors": []
+}

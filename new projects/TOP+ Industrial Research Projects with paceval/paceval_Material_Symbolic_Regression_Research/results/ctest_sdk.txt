@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp019_build
+Test project /mnt/data/wp019_build
+    Start 1: paceval_material_scalar_and_batch
+1/1 Test #1: paceval_material_scalar_and_batch ...   Passed    0.37 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.37 sec
