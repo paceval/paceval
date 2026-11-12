@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Local auditable mathematical computation request (MCP-style schema example)",
+  "description": "Schema for an offline JSONL demonstration. This package is not an MCP server.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["request_id", "formula_id", "version", "x", "a", "unit"],
+  "properties": {
+    "request_id": {"type":"string","pattern":"^[A-Za-z0-9_-]{1,48}$"},
+    "formula_id": {"type":"string","const":"CHAIN_LOGRATIO"},
+    "version": {"type":"string","enum":["1.0","1.1"]},
+    "x": {"type":"number","minimum":-4.0,"maximum":4.0},
+    "a": {"type":"number","minimum":-2.0,"maximum":2.0},
+    "unit": {"type":"string","const":"dimensionless"}
+  },
+  "x-domain-policy": "The host independently enforces abs(1 + a*x) >= 0.05. This joint constraint cannot be expressed by the basic property-level schema above."
+}

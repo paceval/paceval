@@ -1,0 +1,16 @@
+{"audit_head": "63f9f54daabd461a968a8db8843f4ae7a00f647564ce75e7bd09c86a4fa9dd6f", "graph_reused": false, "request_id": "AI_000", "status": "OK", "value": 0.5676350544114163}
+{"audit_head": "2928aeb4d91a12bf4505967de6ceb9633fb5811a34c222da51c3d9a6ae734cc6", "graph_reused": false, "request_id": "AI_001", "status": "OK", "value": 0.37642872553860285}
+{"audit_head": "093f9cc696e8a5c5670a683f9d9ddb9c74dfa2f1873e1c91245a1020111b349d", "graph_reused": true, "request_id": "AI_002", "status": "OK", "value": 0.19971557721077962}
+{"audit_head": "df4bc0651403f774bbe9cfd325c4da457c04749397562b503991f47e6c83d18a", "graph_reused": true, "request_id": "AI_003", "status": "OK", "value": 0.06420873844347151}
+{"audit_head": "4f159348ca0f606e09c10da11a5ecd54defc86664cbc17599e932b54735eaa06", "graph_reused": true, "request_id": "AI_004", "status": "OK", "value": 0.012508975780258403}
+{"audit_head": "a096e922df188dc8cc6579ceb1779464e44f18195ff5eed416983b4f18b45a0f", "graph_reused": true, "request_id": "AI_005", "status": "OK", "value": 0.0024539363131077596}
+{"audit_head": "ab7cf4f5716f16d5b99ba73c336b75de3ed654c15b50b69a24f4509b20e02144", "graph_reused": true, "request_id": "AI_006", "status": "OK", "value": 0.050700531265885085}
+{"audit_head": "528be2e885a8b7eaf109d48fd8828a09842d56a5d9fe81742f63f398cc3e5273", "graph_reused": true, "request_id": "AI_007", "status": "OK", "value": 0.11359474117124735}
+{"audit_head": "62b1db14afd4e62974db186e5168b40c9e82884c3fbd881eb6a98dd5cbb36580", "graph_reused": true, "request_id": "AI_008", "status": "OK", "value": 0.20882577465622376}
+{"audit_head": "ad91abfd090428a0d121562f1b4cd0e3ff50e51bdcb7417577c717648a6f383d", "graph_reused": true, "request_id": "AI_009", "status": "OK", "value": 0.34815563798696253}
+{"audit_head": "fa4f2baaa95dc242d994cb1325c62bfcc8b1ff5515b88cdf5412611d6d129e16", "graph_reused": true, "request_id": "AI_010", "status": "OK", "value": 0.4190957409677662}
+{"audit_head": "607423720a37b49a371f8096a61cc02d444f81c119a1bf0a25771c26c1e52ef5", "graph_reused": true, "request_id": "AI_011", "status": "OK", "value": 0.5195027817792973}
+{"layer": "adapter", "reason": "unknown_formula_version", "request_id": "BAD_VERSION", "status": "REJECTED"}
+{"layer": "adapter", "reason": "ambiguous_or_incompatible_unit", "request_id": "BAD_UNIT", "status": "REJECTED"}
+{"layer": "adapter", "reason": "near_zero_denominator", "request_id": "BAD_DOMAIN", "status": "REJECTED"}
+{"layer": "adapter", "reason": "schema_field_mismatch", "request_id": "BAD_EXTRA", "status": "REJECTED"}

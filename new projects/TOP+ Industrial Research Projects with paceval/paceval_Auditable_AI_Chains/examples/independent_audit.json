@@ -1,0 +1,18 @@
+{
+  "accepted_requests": 110,
+  "rejected_requests": 20,
+  "high_precision_step_results": 440,
+  "audit_entries": 680,
+  "audit_head": "bd3dfe7725acc54b7fe6969ef710e55718be3a276567725a1aa8f81a942d1fa0",
+  "formula_versions": 5,
+  "max_high_precision_step_error": "8.7929664e-16",
+  "tinc_sample_count": 24,
+  "tinc_inclusions": 23,
+  "tinc_non_inclusion_indices": [
+    12
+  ],
+  "precision_digits": 100,
+  "audit_hash_check": "PASS",
+  "high_precision_check": "PASS",
+  "tamper_detection_test": "PASS"
+}
