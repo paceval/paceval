@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "precision_digits": 80,
+  "samples_checked": 632,
+  "decision_mismatches": 0,
+  "max_abs_difference": "6.601052383622703e-16",
+  "qualification": "Compares decimal representations of serialized floating-point inputs and outputs; does not provide global certification."
+}

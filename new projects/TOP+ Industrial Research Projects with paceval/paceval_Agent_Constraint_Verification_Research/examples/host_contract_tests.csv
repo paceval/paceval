@@ -1,0 +1,5 @@
+case,decision,reason
+wrong_unit,REJECT_INVALID,unit_schema
+unknown_action,REJECT_INVALID,permission_allowlist
+NaN_value,REJECT_INVALID,nonfinite_input
+out_of_range,REJECT_INVALID,range_schema

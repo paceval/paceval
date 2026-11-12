@@ -1,0 +1,12 @@
+sdk_status=PASS
+mathematical_graphs=1001
+original_guards=1000
+scalar_evaluations=103723
+batch_comparisons=8000
+accept=50758
+reject=31123
+review_boundary=18119
+false_accept=0
+false_reject=0
+maximum_absolute_difference=4.4408920985006262e-16
+version_delta=0.075000000000000011
