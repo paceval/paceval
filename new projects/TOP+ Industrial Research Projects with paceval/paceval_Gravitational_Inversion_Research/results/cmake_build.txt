@@ -1,0 +1,3 @@
+[ 33%] Building CXX object CMakeFiles/gravity_inversion.dir/gravity_inversion.cpp.o
+[ 66%] Linking CXX executable gravity_inversion
+[100%] Built target gravity_inversion

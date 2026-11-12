@@ -1,0 +1,8 @@
+{
+  "precision_decimal_digits": 80,
+  "samples": 101,
+  "checked_outputs": 202,
+  "all_pass": true,
+  "maximum_absolute_difference": 2.2790857953094198e-14,
+  "caveat": "Reference uses exported decimal inputs; this is a finite pointwise test, not a global error certificate."
+}

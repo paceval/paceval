@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp033_build
+Test project /mnt/data/wp033_build
+    Start 1: wp033_sdk_and_inversion
+1/1 Test #1: wp033_sdk_and_inversion ..........   Passed    0.81 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.81 sec

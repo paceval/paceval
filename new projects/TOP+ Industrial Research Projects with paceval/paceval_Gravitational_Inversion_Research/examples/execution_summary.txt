@@ -1,0 +1,13 @@
+paceval graphs: 8
+synthetic observations: 960
+surface samples: 3721
+scalar SDK calls: 3008
+batch results compared: 2048
+analytic derivative checks: 32
+holdout RMS km/s2: 3.5761027399750408e-12
+noisy recovered mu: 398879.46205615293
+noisy recovered J2: 0.0011205189891193824
+noiseless recovered mu: 398879.46210925991
+noiseless recovered J2: 0.001120518613799992
+max native scalar audit absolute difference: 7.5757438516843578e-12
+status: PASS
