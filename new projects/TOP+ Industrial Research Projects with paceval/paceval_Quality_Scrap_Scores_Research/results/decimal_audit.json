@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "precision_digits": 80,
+  "checks": 500,
+  "max_absolute_error_internal": "0.00000000000000011761429208637588588847326040899135542879715990447963363218576470402907651057782",
+  "reference": "independently implemented mpmath formulas; input strings from exported CSV"
+}

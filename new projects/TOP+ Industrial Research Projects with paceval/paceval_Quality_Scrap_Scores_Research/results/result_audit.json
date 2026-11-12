@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "records": 10000,
+  "models": 50,
+  "graph_versions": 51,
+  "surface_points": 3721,
+  "inspections": 2046,
+  "synthetic_defect_labels": 3710,
+  "model_families": 5
+}

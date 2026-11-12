@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp027_build
+Test project /mnt/data/wp027_build
+    Start 1: sdk_quality_integration
+1/1 Test #1: sdk_quality_integration ..........   Passed    2.10 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   2.10 sec
