@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp020_build
+Test project /mnt/data/wp020_build
+    Start 1: integration_paceval_options
+1/1 Test #1: integration_paceval_options ......   Passed    2.03 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   2.03 sec

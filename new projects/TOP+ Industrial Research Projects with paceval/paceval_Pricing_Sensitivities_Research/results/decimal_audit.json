@@ -1,0 +1,10 @@
+{
+  "precision_decimal_digits": 80,
+  "selected_cases": 105,
+  "comparisons": 1050,
+  "tolerance": "1e-9 * (1 + abs(reference))",
+  "maximum_absolute_difference": "3.48178085656135066e-14",
+  "worst_case": "case=25, output=put_rho",
+  "status": "PASS",
+  "note": "Precision compares exported decimal strings against independently evaluated mp.mpf formulas; no binary-exact enclosure assertion."
+}
