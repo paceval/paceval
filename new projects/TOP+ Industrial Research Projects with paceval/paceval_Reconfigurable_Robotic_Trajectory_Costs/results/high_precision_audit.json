@@ -1,0 +1,6 @@
+{
+  "digits": 80,
+  "values_checked": 510,
+  "all_within_2e-12": true,
+  "maximum_absolute_difference_from_exported_decimal": "0.00000000000000025302593272804352057256989567990206589641390630914847485864901437503915944540268"
+}

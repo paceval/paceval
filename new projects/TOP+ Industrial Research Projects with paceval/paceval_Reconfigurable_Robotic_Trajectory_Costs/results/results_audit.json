@@ -1,0 +1,9 @@
+{
+  "candidate_policy_pairs": 80,
+  "selected_policies": 5,
+  "sampled_selected_points": 255,
+  "formula_versions": 5,
+  "scalar_comparisons": 6783,
+  "batch_results": 320,
+  "passed": true
+}
