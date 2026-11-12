@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp037_build
+Test project /mnt/data/wp037_build
+    Start 1: space_transfer_actual_paceval
+1/1 Test #1: space_transfer_actual_paceval ....   Passed    0.08 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.09 sec

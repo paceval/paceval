@@ -1,0 +1,5 @@
+PDF pages rendered and individually inspected: 13
+PDF text blocks out of page bounds: 0
+Visible overlaps/clipped elements in contact sheet review: none found
+Cover concept art: 2400 x 1200 px, 2:1, proportional placement
+Notes: this is visual and geometric layout QA, not live GitHub rendering.

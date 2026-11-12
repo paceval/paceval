@@ -1,0 +1,9 @@
+{
+  "project": "WP_037",
+  "precision_digits": 80,
+  "independent_cases": 178,
+  "independent_values": 3026,
+  "max_absolute_difference_for_technical_audit_only": 6.809136688252347e-13,
+  "pass": true,
+  "notes": "80-digit independent formula translation and physical model invariants; not a mission optimizer or formal interval certificate."
+}

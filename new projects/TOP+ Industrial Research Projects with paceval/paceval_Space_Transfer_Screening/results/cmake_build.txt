@@ -1,0 +1,3 @@
+[ 33%] Building CXX object CMakeFiles/space_transfer.dir/space_transfer.cpp.o
+[ 66%] Linking CXX executable space_transfer
+[100%] Built target space_transfer

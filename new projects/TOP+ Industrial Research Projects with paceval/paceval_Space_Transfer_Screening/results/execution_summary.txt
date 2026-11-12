@@ -1,0 +1,14 @@
+project=WP037
+status=PASS
+engine=original paceval Linux SDK
+reusable_graphs=17
+candidates=8000
+multi_graph_batch_results=136000
+single_graph_surface_batch_results=11163
+independent_native_checked_values=7831
+passed_screen=1244
+bielliptic_lower_dv_coplanar_candidates=4538
+policy_v1_min_candidate=3607
+policy_v2_min_candidate=3607
+invalid_inputs_rejected=4
+max_internal_absolute_difference=4.5474735088646412e-13
