@@ -1,0 +1,16 @@
+{"engine":"paceval","formula_version":"1","graph_reused":false,"request_id":"TASK_1000","status":"OK","unit":"USD","value":13815.21091915676}
+{"engine":"paceval","formula_version":"1","graph_reused":false,"request_id":"TASK_1001","status":"OK","unit":"EUR","value":15647.039409999996}
+{"engine":"paceval","formula_version":"1","graph_reused":false,"request_id":"TASK_1002","status":"OK","unit":"USD","value":3458.7128110922004}
+{"engine":"paceval","formula_version":"1","graph_reused":false,"request_id":"TASK_1003","status":"OK","unit":"decimal_annual_return","value":0.08779607479792628}
+{"engine":"paceval","formula_version":"1","graph_reused":true,"request_id":"TASK_1004","status":"OK","unit":"USD","value":13587.497158424225}
+{"engine":"paceval","formula_version":"1","graph_reused":true,"request_id":"TASK_1005","status":"OK","unit":"EUR","value":17453.385944103993}
+{"engine":"paceval","formula_version":"1","graph_reused":true,"request_id":"TASK_1006","status":"OK","unit":"USD","value":7666.255954102734}
+{"engine":"paceval","formula_version":"1","graph_reused":true,"request_id":"TASK_1007","status":"OK","unit":"decimal_annual_return","value":0.042999290557765635}
+{"engine":"paceval","formula_version":"1","graph_reused":true,"request_id":"TASK_1008","status":"OK","unit":"USD","value":13369.019293468104}
+{"engine":"paceval","formula_version":"1","graph_reused":true,"request_id":"TASK_1009","status":"OK","unit":"EUR","value":20083.66586781055}
+{"engine":"paceval","formula_version":"1","graph_reused":true,"request_id":"TASK_1010","status":"OK","unit":"USD","value":11288.201418317012}
+{"engine":"paceval","formula_version":"1","graph_reused":true,"request_id":"TASK_1011","status":"OK","unit":"decimal_annual_return","value":0.02848071035122035}
+{"reason":"ambiguous_rate_unit","request_id":"JSON_BAD_UNIT","status":"REJECTED"}
+{"reason":"unknown_model","request_id":"JSON_UNAPPROVED_MODEL","status":"REJECTED"}
+{"reason":"unknown_version","request_id":"JSON_UNSUPPORTED_VERSION","status":"REJECTED"}
+{"reason":"missing_or_extra_fields","request_id":"JSON_AMBIGUOUS","status":"REJECTED"}

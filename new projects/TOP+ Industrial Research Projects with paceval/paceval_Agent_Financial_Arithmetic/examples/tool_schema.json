@@ -1,0 +1,226 @@
+{
+  "title": "evaluate_financial_scenario",
+  "description": "Local research-tool contract for fixed financial arithmetic models; not a hosted MCP server.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "request_id",
+      "model",
+      "version",
+      "currency",
+      "rate_unit",
+      "period",
+      "parameters"
+    ],
+    "properties": {
+      "request_id": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_-]{1,48}$"
+      },
+      "model": {
+        "type": "string",
+        "enum": [
+          "npv6",
+          "future_value",
+          "annuity_pv",
+          "cagr"
+        ]
+      },
+      "version": {
+        "type": "string",
+        "const": "1"
+      },
+      "currency": {
+        "type": "string",
+        "enum": [
+          "USD",
+          "EUR"
+        ]
+      },
+      "rate_unit": {
+        "type": "string",
+        "const": "decimal_per_year"
+      },
+      "period": {
+        "type": "string",
+        "const": "annual"
+      },
+      "parameters": {
+        "type": "object",
+        "description": "Model-specific parameters; see conditional constraints below"
+      }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "model": {
+              "const": "npv6"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "parameters": {
+              "type": "object",
+              "required": [
+                "rate",
+                "cashflows"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "rate": {
+                  "type": "number",
+                  "minimum": 0.001,
+                  "maximum": 0.3
+                },
+                "cashflows": {
+                  "type": "array",
+                  "minItems": 6,
+                  "maxItems": 6,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "model": {
+              "const": "future_value"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "parameters": {
+              "type": "object",
+              "required": [
+                "rate",
+                "years",
+                "principal"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "rate": {
+                  "type": "number"
+                },
+                "years": {
+                  "type": "integer"
+                },
+                "principal": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "model": {
+              "const": "annuity_pv"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "parameters": {
+              "type": "object",
+              "required": [
+                "rate",
+                "years",
+                "payment"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "rate": {
+                  "type": "number"
+                },
+                "years": {
+                  "type": "integer"
+                },
+                "payment": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "model": {
+              "const": "cagr"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "parameters": {
+              "type": "object",
+              "required": [
+                "years",
+                "principal",
+                "final"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "years": {
+                  "type": "integer"
+                },
+                "principal": {
+                  "type": "number"
+                },
+                "final": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "request_id": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "OK",
+          "REJECTED"
+        ]
+      },
+      "value": {
+        "type": "number"
+      },
+      "reason": {
+        "type": "string"
+      },
+      "graph_reused": {
+        "type": "boolean"
+      },
+      "formula_version": {
+        "type": "string"
+      },
+      "unit": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "request_id",
+      "status"
+    ]
+  }
+}

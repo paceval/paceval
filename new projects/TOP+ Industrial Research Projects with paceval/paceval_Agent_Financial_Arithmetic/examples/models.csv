@@ -1,0 +1,5 @@
+model,version,formula,variable_signature
+npv6,1,c0+c1/(1+rate)+c2/((1+rate)*(1+rate))+c3/((1+rate)*(1+rate)*(1+rate))+c4/((1+rate)*(1+rate)*(1+rate)*(1+rate))+c5/((1+rate)*(1+rate)*(1+rate)*(1+rate)*(1+rate)),"rate years c0 c1 c2 c3 c4 c5 principal final payment"
+future_value,1,principal*exp(years*ln(1+rate)),"rate years c0 c1 c2 c3 c4 c5 principal final payment"
+annuity_pv,1,payment*(1-exp(-(years)*ln(1+rate)))/rate,"rate years c0 c1 c2 c3 c4 c5 principal final payment"
+cagr,1,exp(ln(final/principal)/years)-1,"rate years c0 c1 c2 c3 c4 c5 principal final payment"

@@ -1,0 +1,46 @@
+{
+  "decimal_precision": 100,
+  "audited_values": 1600,
+  "failures": 0,
+  "max_absolute_difference": 1.0699494564459653e-10,
+  "formula_update_cases": 16,
+  "formula_update_failures": 0,
+  "tinc_formula": "principal*exp(-ln(1+rate))",
+  "tinc_exact_reference": "exact IEEE-754 binary64 input values, evaluated in Decimal(100)",
+  "fixed_tinc": {
+    "count": 24,
+    "reformulated_enclosed": 24,
+    "direct_division_enclosed": 22,
+    "failures": [],
+    "direct_fail_indices": [
+      4,
+      14
+    ]
+  },
+  "stress_tinc": {
+    "count": 1500,
+    "reformulated_enclosed": 1500,
+    "direct_division_enclosed": 1486,
+    "failures": [],
+    "direct_fail_indices": [
+      95,
+      231,
+      304,
+      421,
+      646,
+      701,
+      704,
+      942,
+      1099,
+      1148,
+      1153,
+      1183,
+      1190,
+      1312
+    ]
+  },
+  "tinc_sample_count": 24,
+  "raw_tinc_inclusions": 24,
+  "tinc_scope": "observed inclusion for the specified samples only; not a general proof",
+  "fail_examples": []
+}
