@@ -1,0 +1,15 @@
+{
+  "source": "independent Python decimal audit from binary64 inputs; 90 digits",
+  "models": 100,
+  "hours": 336,
+  "evaluations_checked": 33600,
+  "max_absolute_difference_eur": "6.9427043649684938350833358624915572302690863545492246100554467602705699392E-16",
+  "tolerance": "5e-12*(1+abs(reference))",
+  "tinc_raw_inclusions": 24,
+  "tinc_samples": 24,
+  "false_claim_outputs_checked": 100,
+  "quality_excluded_outputs_checked": 100,
+  "daily_energy_conservation_checked": 14,
+  "model_updates_checked": 128,
+  "status": "PASS"
+}

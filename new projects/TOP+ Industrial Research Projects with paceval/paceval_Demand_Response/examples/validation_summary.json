@@ -1,0 +1,12 @@
+{
+  "scope": "synthetic research; not regulatory settlement or operating control",
+  "days": 14,
+  "hours": 336,
+  "rules": 100,
+  "paceval_evaluations": 33600,
+  "max_native_absolute_error_eur": 0,
+  "quality_excluded_event_hours": 1,
+  "false_claim_event_hours": 1,
+  "capped_event_hours": 2,
+  "aggregate_modeled_value_eur": 6635.6885450000018
+}
