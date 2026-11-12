@@ -1,0 +1,10 @@
+{
+  "scope": "synthetic numerical feasibility, not approved actuarial ratemaking",
+  "policies": 1024,
+  "counterfactual_pairs": 512,
+  "models": 100,
+  "evaluations": 102400,
+  "max_native_absolute_difference": 0,
+  "max_nonrating_tag_pair_difference": 0,
+  "seed": 20261112
+}

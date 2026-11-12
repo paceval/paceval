@@ -1,0 +1,13 @@
+{
+  "decimal_precision_digits": 100,
+  "models": 100,
+  "policies": 1024,
+  "evaluations_checked": 102400,
+  "max_abs_difference": 4.1966592313698584e-13,
+  "max_scaled_difference": 6.246040824169738e-16,
+  "counterfactual_pairs": 512,
+  "tinc_raw_intervals_checked": 24,
+  "tinc_reference_included": 24,
+  "status": "PASS",
+  "note": "Finite sample checks are not a proof of universally outward-rounded intervals or a regulatory fairness audit."
+}
