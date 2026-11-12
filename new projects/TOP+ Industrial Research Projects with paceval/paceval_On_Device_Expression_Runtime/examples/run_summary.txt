@@ -1,0 +1,11 @@
+study=on_device_reusable_expression_runtime
+models=1000
+samples_per_model=32
+batch_size=64
+synthetic=true
+architecture=x86_64
+evaluations=32000
+max_native_abs_error=0
+version_change_id=17
+version_update_samples=16
+tinc_samples=24

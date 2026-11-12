@@ -1,0 +1,12 @@
+{
+  "models": 1000,
+  "precision_digits": 100,
+  "validated_evaluations": 32000,
+  "failed_evaluations": 0,
+  "max_absolute_error": "2.98823682755184e-15",
+  "tinc_samples": 24,
+  "tinc_containment_count": 24,
+  "tinc_missed_samples": [],
+  "tinc_max_interval_width": "3.49165141244612e-14",
+  "validation_scope": "synthetic bounded formulas and inputs; x86-64 Linux runtime"
+}
