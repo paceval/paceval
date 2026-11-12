@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/industrial_build
+Test project /mnt/data/industrial_build
+    Start 1: six_industrial_surfaces
+1/1 Test #1: six_industrial_surfaces ..........   Passed    5.52 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   5.52 sec

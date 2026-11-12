@@ -1,0 +1,7 @@
+heat_transfer: 6561 scalar values; 32 batch checks; max abs difference 0
+motor_resonance: 6561 scalar values; 32 batch checks; max abs difference 0
+robot_clearance: 6561 scalar values; 32 batch checks; max abs difference 0
+transformer_hotspot: 6561 scalar values; 32 batch checks; max abs difference 2.84217e-14
+reactor_conversion: 6561 scalar values; 32 batch checks; max abs difference 0
+pressure_loss: 6561 scalar values; 32 batch checks; max abs difference 0
+PASS: six original paceval graphs; 39366 scalar outputs; 192 batch checks; max abs difference 2.84217e-14
