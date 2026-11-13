@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "real_optimization_schedules": 36,
+  "verified_hourly_steps": 864,
+  "fixed_profile_rows": 144,
+  "registered_real_paceval_formulas": 23,
+  "transition_audit_rows": 1800,
+  "transition_scalar_checks": 41400,
+  "surface_points": 3721,
+  "all_SOC_constraints_and_fixed_travel_requirements_met": true,
+  "all_objective_sums_and_energy_invariants_met": true,
+  "two_formula_versions_independently_retained": true,
+  "measured_cell_aging_claim": false,
+  "synthetic_data_only": true
+}

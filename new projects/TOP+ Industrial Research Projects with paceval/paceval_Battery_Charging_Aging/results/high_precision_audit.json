@@ -1,0 +1,12 @@
+{
+  "independent_precision_decimal_digits": 80,
+  "sampled_transition_rows": 120,
+  "checked_paceval_graph_values": 2760,
+  "formula_graphs": 23,
+  "maximum_scaled_difference": "0.00000000000000045323310626347486455932196609765320430764216282610622679260037940138005505147015",
+  "maximum_absolute_difference_at_worst": "0.00000000000060000000000000000000000000000000000000000000000000000000000000000001832781541795",
+  "worst_graph_id": "grid_carbon_proxy",
+  "worst_row_index": 134,
+  "input_source": "ACTUAL executed paceval transition_audit.csv",
+  "status": "PASS"
+}
