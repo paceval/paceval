@@ -1,0 +1,14 @@
+metric,value
+candidate_invariants,36
+paceval_graphs,144
+observational_noise_levels,4
+trajectories_per_model,4
+points_per_trajectory,192
+paceval_sample_vectors,13441
+batch_api_invocations,161
+multi_graph_batch_outputs,645168
+scalar_sdk_calls,36
+analytic_lie_checks,6440
+analytic_lie_max_abs,1.7763568394002505e-15
+classification_rows,288
+selected_rows,96

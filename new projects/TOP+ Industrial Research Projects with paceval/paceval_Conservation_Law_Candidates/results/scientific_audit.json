@@ -1,0 +1,17 @@
+{
+  "catalog": "36 version-pinned candidates, 144 real graphs",
+  "true_candidate_count": 12,
+  "known_false_candidate_count": 24,
+  "model_families": 3,
+  "classification_test_rows": 288,
+  "independent_training_test_splits": 2,
+  "noise_sigma_levels": [
+    0,
+    0.005,
+    0.02,
+    0.05
+  ],
+  "heldout_precision_recall": "All predeclared selected benchmark cases correctly classified; conditional on known exact vector fields and deliberately fixed candidate library",
+  "observational_noise_caveat": "The Lie derivative is evaluated against the exact known dynamical vector field at noisy states, not reconstructed from noisy finite differences. Noise enters trajectory drift metrics.",
+  "not_a_discovery": "False negatives/positives on this closed library cannot estimate real-world discovery performance."
+}

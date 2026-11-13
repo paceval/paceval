@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "independent_reference": "mpmath 80 decimal digits",
+  "high_precision_values": 1760,
+  "high_precision_max_scaled_error": 2.58634692755844e-13,
+  "finite_difference_checks": 80,
+  "rotor_dynamics_reference_checks": 7200,
+  "lookup_map_test_points": 576,
+  "lookup_abs_difference_max": 0.00038740311499885216,
+  "lookup_abs_difference_mean": 7.220541214537081e-05,
+  "source": "synthetic_explicit_surrogate_not_measured_turbine",
+  "scope": "validates program mathematics, not aeroelastic or IEC certification"
+}

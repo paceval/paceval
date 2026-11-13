@@ -1,0 +1,18 @@
+{
+ "project":"WP_043",
+ "provenance":"synthetic pump, network, and steady water-quality surrogates",
+ "paceval_graphs":86,
+ "paceval_batch_calls":239,
+ "paceval_batch_outputs":1164440,
+ "native_audit_values":23520,
+ "max_native_scaled_error":2.84217094304e-14,
+ "sweep_points":6000,
+ "operating_surface_points":3721,
+ "hourly_trace_points":48,
+ "energy_base_kWh":2865.48124233,
+ "energy_v1_kWh":2882.52305089,
+ "energy_v20_kWh":2850.31500051,
+ "cost_base_currency":555.409789127,
+ "max_head_residual_m":2.13162820728e-14,
+ "max_branch_mass_balance_m3s":1.38777878078e-17
+}

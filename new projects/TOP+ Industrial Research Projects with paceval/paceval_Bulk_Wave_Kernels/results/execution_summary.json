@@ -1,0 +1,18 @@
+{
+  "project": "WP_044",
+  "model_scope": "idealized linear AdS5 conformal-coordinate Fourier-mode PDE",
+  "external_real_paceval_library": true,
+  "paceval_persistent_graphs": 28,
+  "multi_graph_batch_calls": 5623,
+  "paceval_batch_outputs": 663784,
+  "host_native_oracle_checks": 1260,
+  "sampled_continuum_operator_checks": 663,
+  "max_oracle_scaled_difference": 0.000000000000,
+  "time_duration": 0.600000000000,
+  "grid_sizes": [25,49,97],
+  "mode_count": 4,
+  "parameter_surface_points": 7623,
+  "max_final_L2_error": 0.000309744095,
+  "gravitational_wave_detection": false,
+  "nonlinear_einstein_equations_solved": false
+}

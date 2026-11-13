@@ -1,0 +1,11 @@
+{
+  "examples/formula_registry.csv": "29a396901efe5034ef45cfc3a83aba743133316f5709a56c0869e6f415e93e96",
+  "examples/paceval_coefficient_surface.csv": "6c14f8c5f2ae4f9c79c80aa20238715a9973040a34e5c6740de218a9973f8697",
+  "examples/paceval_operating_sweep.csv": "33194bec93a57ec97e1fbea037b1c155dfb9e2f590e966401a008af6e816ddff",
+  "examples/paceval_rotor_time_series.csv": "7f9d74074af295744e161f27d53a97b76cdab5ef02d67e5bb9d9e843811c2bd5",
+  "results/math_execution_inventory.csv": "53336d82044bdf071274e22aafc51655fe5027c9f8e613dd7662b74afd25d928",
+  "results/execution_summary.json": "4ae9a463dc76b55173bcc8869b928addcb7d516e985acae492fb3d632533a7fe",
+  "results/sdk_execution.log": "8cd220abd78a128e0fd1b8d21165c8688a67c13d975e57005dd5eeec0333b3cc",
+  "results/high_precision_validation.json": "97b41ec3bc55a253bd2c9e3e366c13fc4fa19ef33d026fb4a0a92281fa99358b",
+  "results/lookup_interpolation_audit.csv": "26c6a3e299256184ac971826bf9ee12e68701950c4b5b70618ec2a081339e477"
+}

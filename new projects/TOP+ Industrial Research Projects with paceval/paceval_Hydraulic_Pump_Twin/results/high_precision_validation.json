@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "precision_decimal_digits": 80,
+  "checked_values": 3559,
+  "max_scaled_difference": 8.013605771232404e-14,
+  "tested": "selected persisted real paceval outputs from sweep, operating surface and all versioned formulas",
+  "observational_data": false
+}

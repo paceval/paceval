@@ -1,0 +1,41 @@
+{
+  "full_original_sdk_replay_passed": true,
+  "tracked_byte_identical_files": 7,
+  "files": {
+    "results/candidate_metrics.csv": {
+      "byte_identical": true,
+      "sha256": "4379aab8b2912f3bc090b2a5345241879e3e1d1a3ccaacf8ccf1a98a57df5117",
+      "size": 25680
+    },
+    "results/precision_recall.csv": {
+      "byte_identical": true,
+      "sha256": "5fd37c265ffdb1ae2365d68a1574d4477b87135c4cd9b636b9c8ee71f4d6bc17",
+      "size": 1099
+    },
+    "results/execution_summary.csv": {
+      "byte_identical": true,
+      "sha256": "2c5424bc71c48c08b7f2cc1b694551e6e5c41447bfdeff2093f4cd432af2f1f2",
+      "size": 354
+    },
+    "results/math_execution_inventory.csv": {
+      "byte_identical": true,
+      "sha256": "debd67c0fed949945c82fbbf0e6ad2f53712a2afc2a3cc338c3c2e2827996902",
+      "size": 24429
+    },
+    "examples/trajectory_profiles.csv": {
+      "byte_identical": true,
+      "sha256": "6660b1da20944a51988a6f2d17e2d9b15493062cfa4e24ad32960dd69b67354f",
+      "size": 1361693
+    },
+    "examples/high_precision_reference_samples.csv": {
+      "byte_identical": true,
+      "sha256": "0b62005626eb4957c2fe66425a56767ace124cf9467a7a6b85d41e6dcf7e10ac",
+      "size": 117090
+    },
+    "examples/oscillator_lie_surface.csv": {
+      "byte_identical": true,
+      "sha256": "cc570f9dc5da439927214d5da7c90472a58e0d6bebbeaa5c3cb90733ddd78d98",
+      "size": 125929
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "byte_identical_file_count": 8,
+  "files": [
+    "examples/formula_registry.csv",
+    "examples/field_time_series.csv",
+    "examples/energy_and_error_diagnostics.csv",
+    "examples/spatial_operator_residuals.csv",
+    "examples/grid_convergence.csv",
+    "examples/parameterized_kernel_surface.csv",
+    "results/math_execution_inventory.csv",
+    "results/execution_summary.json"
+  ],
+  "original_external_sdk_used": true,
+  "build_artifacts_excluded_from_release": true
+}

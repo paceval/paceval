@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "files_checked": 7,
+  "all_byte_identical": true,
+  "files": [
+    "examples/formula_registry.csv",
+    "examples/paceval_operating_sweep.csv",
+    "examples/paceval_operating_surface.csv",
+    "examples/paceval_operating_trace.csv",
+    "examples/paceval_formula_version_profile.csv",
+    "results/math_execution_inventory.csv",
+    "results/execution_summary.json"
+  ]
+}

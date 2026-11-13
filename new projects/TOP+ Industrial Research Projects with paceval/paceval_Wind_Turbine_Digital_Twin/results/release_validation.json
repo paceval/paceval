@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "project": "WP_042",
+  "graphs": 31,
+  "batch_results": 308791,
+  "high_precision_values": 1760,
+  "figure_pairs": 11,
+  "whitepaper_pages": 15,
+  "hero_pixels": [
+    2400,
+    1200
+  ],
+  "original_sdk_cxx": true,
+  "tested_library_separate": true,
+  "scientific_scope": "synthetic_reduced_order_surrogate"
+}

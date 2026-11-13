@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "pdf_pages": 15,
+  "page_text_bounds": "No text outside A4 safety margins",
+  "hero_pixels": [
+    2400,
+    1200
+  ],
+  "scientific_png_figures": 11,
+  "vector_pdf_figures": 11,
+  "math_registry_rows": 36,
+  "actual_paceval_graph_inventory": 144,
+  "synthetic_metrics_rows": 288,
+  "note": "PDF was also visually reviewed as a 15-page contact sheet; no obvious overlap or clipping observed."
+}

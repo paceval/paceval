@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/paceval_Conservation_Law_Candidates_Research/build
+Test project /mnt/data/paceval_Conservation_Law_Candidates_Research/build
+    Start 1: original_paceval_smoke
+1/1 Test #1: original_paceval_smoke ...........   Passed    0.12 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.12 sec

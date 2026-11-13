@@ -1,0 +1,8 @@
+{
+  "precision_decimal_digits": 80,
+  "paceval_output_values_checked": 2304,
+  "all_checks_passed": true,
+  "largest_scaled_difference": 8.881784197001252e-16,
+  "worst_case": "damp_time_corrected_energy_squared lie_expression",
+  "method": "Independent SymPy parsing and 80-digit mpmath calculation from original exported formulas and held-out coordinate inputs; separate from the C++/paceval runtime"
+}

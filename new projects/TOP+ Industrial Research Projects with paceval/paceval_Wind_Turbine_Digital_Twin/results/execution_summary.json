@@ -1,0 +1,18 @@
+{
+ "project": "WP_042",
+ "model_provenance": "explicitly synthetic wind and rotor coefficient functions",
+ "full_aeroelastic_simulation": false,
+ "paceval_graphs": 31,
+ "batch_calls": 788,
+ "batch_graph_outputs": 308791,
+ "native_audit_values": 22841,
+ "max_native_scaled_error": 0.0000000000,
+ "coefficient_surface_points": 3721,
+ "operating_sweep_points": 4800,
+ "dynamic_steps_per_version": 720,
+ "timestep_seconds": 1.0,
+ "wind_range_m_s": [5.5171124085,12.8827231297],
+ "rotor_omega_range_rad_s": [0.6866496746,1.4971926337],
+ "energy_version1_kWh": 508.6462771064,
+ "energy_version2_kWh": 504.3865672108
+}

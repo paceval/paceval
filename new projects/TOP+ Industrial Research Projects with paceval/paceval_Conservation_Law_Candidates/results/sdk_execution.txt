@@ -1,0 +1,4 @@
+[OK] oscillator evaluated with 12 reusable formula candidates across 4 trajectories and 4 noise conditions
+[OK] kepler evaluated with 12 reusable formula candidates across 4 trajectories and 4 noise conditions
+[OK] damped evaluated with 12 reusable formula candidates across 4 trajectories and 4 noise conditions
+[SUCCESS] original paceval graphs=144, batch outputs=645168 scalar=36 candidates=288

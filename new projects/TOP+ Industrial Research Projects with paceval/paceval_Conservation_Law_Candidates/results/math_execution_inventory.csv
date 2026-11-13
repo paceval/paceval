@@ -1,0 +1,147 @@
+model,candidate_id,formula_kind,expression,owner,api,registered_graph,known_invariant
+oscillator,osc_E_x,candidate_value,"v^2/2 + x^2/2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_x,analytic_lie_derivative,"v*(-x) + v*x + 0*w + 0*(-4*y) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_x,normalized_lie,"sqrt((v*(-x) + v*x + 0*w + 0*(-4*y) + 0)^2)/(1+sqrt((v^2/2 + x^2/2)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_x,lie_derivative_squared,"(v*(-x) + v*x + 0*w + 0*(-4*y) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_y,candidate_value,"w^2/2 + 2*y^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_y,analytic_lie_derivative,"0*v + w*(-4*y) + w*(4*y) + 0*(-x) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_y,normalized_lie,"sqrt((0*v + w*(-4*y) + w*(4*y) + 0*(-x) + 0)^2)/(1+sqrt((w^2/2 + 2*y^2)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_y,lie_derivative_squared,"(0*v + w*(-4*y) + w*(4*y) + 0*(-x) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_total,candidate_value,"v^2/2 + w^2/2 + x^2/2 + 2*y^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_total,analytic_lie_derivative,"v*(-x) + v*x + w*(-4*y) + w*(4*y) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_total,normalized_lie,"sqrt((v*(-x) + v*x + w*(-4*y) + w*(4*y) + 0)^2)/(1+sqrt((v^2/2 + w^2/2 + x^2/2 + 2*y^2)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_total,lie_derivative_squared,"(v*(-x) + v*x + w*(-4*y) + w*(4*y) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_x_squared,candidate_value,"(v^2/2 + x^2/2)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_x_squared,analytic_lie_derivative,"v*(2*x*(v^2/2 + x^2/2)) + 0*w + (-x)*(2*v*(v^2/2 + x^2/2)) + 0*(-4*y) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_x_squared,normalized_lie,"sqrt((v*(2*x*(v^2/2 + x^2/2)) + 0*w + (-x)*(2*v*(v^2/2 + x^2/2)) + 0*(-4*y) + 0)^2)/(1+sqrt(((v^2/2 + x^2/2)^2)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_E_x_squared,lie_derivative_squared,"(v*(2*x*(v^2/2 + x^2/2)) + 0*w + (-x)*(2*v*(v^2/2 + x^2/2)) + 0*(-4*y) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+oscillator,osc_position_x,candidate_value,"x",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_position_x,analytic_lie_derivative,"1*v + 0*w + 0*(-x) + 0*(-4*y) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_position_x,normalized_lie,"sqrt((1*v + 0*w + 0*(-x) + 0*(-4*y) + 0)^2)/(1+sqrt((x)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_position_x,lie_derivative_squared,"(1*v + 0*w + 0*(-x) + 0*(-4*y) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_velocity_x,candidate_value,"v",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_velocity_x,analytic_lie_derivative,"0*v + 0*w + 1*(-x) + 0*(-4*y) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_velocity_x,normalized_lie,"sqrt((0*v + 0*w + 1*(-x) + 0*(-4*y) + 0)^2)/(1+sqrt((v)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_velocity_x,lie_derivative_squared,"(0*v + 0*w + 1*(-x) + 0*(-4*y) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_position_y,candidate_value,"y",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_position_y,analytic_lie_derivative,"0*v + 1*w + 0*(-x) + 0*(-4*y) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_position_y,normalized_lie,"sqrt((0*v + 1*w + 0*(-x) + 0*(-4*y) + 0)^2)/(1+sqrt((y)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_position_y,lie_derivative_squared,"(0*v + 1*w + 0*(-x) + 0*(-4*y) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_velocity_y,candidate_value,"w",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_velocity_y,analytic_lie_derivative,"0*v + 0*w + 0*(-x) + 1*(-4*y) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_velocity_y,normalized_lie,"sqrt((0*v + 0*w + 0*(-x) + 1*(-4*y) + 0)^2)/(1+sqrt((w)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_velocity_y,lie_derivative_squared,"(0*v + 0*w + 0*(-x) + 1*(-4*y) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_cross_xv,candidate_value,"v*x",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_cross_xv,analytic_lie_derivative,"v*v + 0*w + (-x)*x + 0*(-4*y) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_cross_xv,normalized_lie,"sqrt((v*v + 0*w + (-x)*x + 0*(-4*y) + 0)^2)/(1+sqrt((v*x)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_cross_xv,lie_derivative_squared,"(v*v + 0*w + (-x)*x + 0*(-4*y) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_cross_yw,candidate_value,"w*y",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_cross_yw,analytic_lie_derivative,"0*v + w*w + 0*(-x) + (-4*y)*y + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_cross_yw,normalized_lie,"sqrt((0*v + w*w + 0*(-x) + (-4*y)*y + 0)^2)/(1+sqrt((w*y)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_cross_yw,lie_derivative_squared,"(0*v + w*w + 0*(-x) + (-4*y)*y + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_position_x_squared,candidate_value,"x^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_position_x_squared,analytic_lie_derivative,"v*(2*x) + 0*w + 0*(-x) + 0*(-4*y) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_position_x_squared,normalized_lie,"sqrt((v*(2*x) + 0*w + 0*(-x) + 0*(-4*y) + 0)^2)/(1+sqrt((x^2)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_position_x_squared,lie_derivative_squared,"(v*(2*x) + 0*w + 0*(-x) + 0*(-4*y) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_velocity_x_squared,candidate_value,"v^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_velocity_x_squared,analytic_lie_derivative,"0*v + (2*v)*(-x) + 0*w + 0*(-4*y) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_velocity_x_squared,normalized_lie,"sqrt((0*v + (2*v)*(-x) + 0*w + 0*(-4*y) + 0)^2)/(1+sqrt((v^2)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+oscillator,osc_velocity_x_squared,lie_derivative_squared,"(0*v + (2*v)*(-x) + 0*w + 0*(-4*y) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_energy,candidate_value,"-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_energy,analytic_lie_derivative,"v*(-mu*x/(x^2 + y^2)^(3/2)) + v*(mu*x/(x^2 + y^2)^(3/2)) + w*(-mu*y/(x^2 + y^2)^(3/2)) + w*(mu*y/(x^2 + y^2)^(3/2)) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_energy,normalized_lie,"sqrt((v*(-mu*x/(x^2 + y^2)^(3/2)) + v*(mu*x/(x^2 + y^2)^(3/2)) + w*(-mu*y/(x^2 + y^2)^(3/2)) + w*(mu*y/(x^2 + y^2)^(3/2)) + 0)^2)/(1+sqrt((-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_energy,lie_derivative_squared,"(v*(-mu*x/(x^2 + y^2)^(3/2)) + v*(mu*x/(x^2 + y^2)^(3/2)) + w*(-mu*y/(x^2 + y^2)^(3/2)) + w*(mu*y/(x^2 + y^2)^(3/2)) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_angular_momentum,candidate_value,"-v*y + w*x",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_angular_momentum,analytic_lie_derivative,"(-v)*w + v*w + x*(-mu*y/(x^2 + y^2)^(3/2)) + (-y)*(-mu*x/(x^2 + y^2)^(3/2)) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_angular_momentum,normalized_lie,"sqrt(((-v)*w + v*w + x*(-mu*y/(x^2 + y^2)^(3/2)) + (-y)*(-mu*x/(x^2 + y^2)^(3/2)) + 0)^2)/(1+sqrt((-v*y + w*x)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_angular_momentum,lie_derivative_squared,"((-v)*w + v*w + x*(-mu*y/(x^2 + y^2)^(3/2)) + (-y)*(-mu*x/(x^2 + y^2)^(3/2)) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_LRL_x,candidate_value,"-mu*x/sqrt(x^2 + y^2) + w*(-v*y + w*x)",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_LRL_x,analytic_lie_derivative,"v*(mu*x^2/(x^2 + y^2)^(3/2) - mu/sqrt(x^2 + y^2) + w^2) + w*(mu*x*y/(x^2 + y^2)^(3/2) - v*w) + (-w*y)*(-mu*x/(x^2 + y^2)^(3/2)) + (-mu*y/(x^2 + y^2)^(3/2))*(-v*y + 2*w*x) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_LRL_x,normalized_lie,"sqrt((v*(mu*x^2/(x^2 + y^2)^(3/2) - mu/sqrt(x^2 + y^2) + w^2) + w*(mu*x*y/(x^2 + y^2)^(3/2) - v*w) + (-w*y)*(-mu*x/(x^2 + y^2)^(3/2)) + (-mu*y/(x^2 + y^2)^(3/2))*(-v*y + 2*w*x) + 0)^2)/(1+sqrt((-mu*x/sqrt(x^2 + y^2) + w*(-v*y + w*x))^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_LRL_x,lie_derivative_squared,"(v*(mu*x^2/(x^2 + y^2)^(3/2) - mu/sqrt(x^2 + y^2) + w^2) + w*(mu*x*y/(x^2 + y^2)^(3/2) - v*w) + (-w*y)*(-mu*x/(x^2 + y^2)^(3/2)) + (-mu*y/(x^2 + y^2)^(3/2))*(-v*y + 2*w*x) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_LRL_y,candidate_value,"-mu*y/sqrt(x^2 + y^2) - v*(-v*y + w*x)",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_LRL_y,analytic_lie_derivative,"v*(mu*x*y/(x^2 + y^2)^(3/2) - v*w) + w*(mu*y^2/(x^2 + y^2)^(3/2) - mu/sqrt(x^2 + y^2) + v^2) + (-v*x)*(-mu*y/(x^2 + y^2)^(3/2)) + (-mu*x/(x^2 + y^2)^(3/2))*(2*v*y - w*x) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_LRL_y,normalized_lie,"sqrt((v*(mu*x*y/(x^2 + y^2)^(3/2) - v*w) + w*(mu*y^2/(x^2 + y^2)^(3/2) - mu/sqrt(x^2 + y^2) + v^2) + (-v*x)*(-mu*y/(x^2 + y^2)^(3/2)) + (-mu*x/(x^2 + y^2)^(3/2))*(2*v*y - w*x) + 0)^2)/(1+sqrt((-mu*y/sqrt(x^2 + y^2) - v*(-v*y + w*x))^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_LRL_y,lie_derivative_squared,"(v*(mu*x*y/(x^2 + y^2)^(3/2) - v*w) + w*(mu*y^2/(x^2 + y^2)^(3/2) - mu/sqrt(x^2 + y^2) + v^2) + (-v*x)*(-mu*y/(x^2 + y^2)^(3/2)) + (-mu*x/(x^2 + y^2)^(3/2))*(2*v*y - w*x) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_energy_squared,candidate_value,"(-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_energy_squared,analytic_lie_derivative,"v*(2*mu*x*(-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2)/(x^2 + y^2)^(3/2)) + w*(2*mu*y*(-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2)/(x^2 + y^2)^(3/2)) + (2*v*(-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2))*(-mu*x/(x^2 + y^2)^(3/2)) + (2*w*(-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2))*(-mu*y/(x^2 + y^2)^(3/2)) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_energy_squared,normalized_lie,"sqrt((v*(2*mu*x*(-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2)/(x^2 + y^2)^(3/2)) + w*(2*mu*y*(-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2)/(x^2 + y^2)^(3/2)) + (2*v*(-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2))*(-mu*x/(x^2 + y^2)^(3/2)) + (2*w*(-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2))*(-mu*y/(x^2 + y^2)^(3/2)) + 0)^2)/(1+sqrt(((-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2)^2)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_energy_squared,lie_derivative_squared,"(v*(2*mu*x*(-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2)/(x^2 + y^2)^(3/2)) + w*(2*mu*y*(-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2)/(x^2 + y^2)^(3/2)) + (2*v*(-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2))*(-mu*x/(x^2 + y^2)^(3/2)) + (2*w*(-mu/sqrt(x^2 + y^2) + v^2/2 + w^2/2))*(-mu*y/(x^2 + y^2)^(3/2)) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_angular_momentum_squared,candidate_value,"(-v*y + w*x)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_angular_momentum_squared,analytic_lie_derivative,"v*(2*w*(-v*y + w*x)) + w*(-2*v*(-v*y + w*x)) + (2*x*(-v*y + w*x))*(-mu*y/(x^2 + y^2)^(3/2)) + (-2*y*(-v*y + w*x))*(-mu*x/(x^2 + y^2)^(3/2)) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_angular_momentum_squared,normalized_lie,"sqrt((v*(2*w*(-v*y + w*x)) + w*(-2*v*(-v*y + w*x)) + (2*x*(-v*y + w*x))*(-mu*y/(x^2 + y^2)^(3/2)) + (-2*y*(-v*y + w*x))*(-mu*x/(x^2 + y^2)^(3/2)) + 0)^2)/(1+sqrt(((-v*y + w*x)^2)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_angular_momentum_squared,lie_derivative_squared,"(v*(2*w*(-v*y + w*x)) + w*(-2*v*(-v*y + w*x)) + (2*x*(-v*y + w*x))*(-mu*y/(x^2 + y^2)^(3/2)) + (-2*y*(-v*y + w*x))*(-mu*x/(x^2 + y^2)^(3/2)) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+kepler,kep_position_x,candidate_value,"x",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_position_x,analytic_lie_derivative,"0*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + 1*v + 0*w + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_position_x,normalized_lie,"sqrt((0*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + 1*v + 0*w + 0)^2)/(1+sqrt((x)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_position_x,lie_derivative_squared,"(0*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + 1*v + 0*w + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_position_y,candidate_value,"y",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_position_y,analytic_lie_derivative,"0*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + 0*v + 1*w + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_position_y,normalized_lie,"sqrt((0*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + 0*v + 1*w + 0)^2)/(1+sqrt((y)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_position_y,lie_derivative_squared,"(0*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + 0*v + 1*w + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_velocity_x,candidate_value,"v",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_velocity_x,analytic_lie_derivative,"1*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + 0*v + 0*w + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_velocity_x,normalized_lie,"sqrt((1*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + 0*v + 0*w + 0)^2)/(1+sqrt((v)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_velocity_x,lie_derivative_squared,"(1*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + 0*v + 0*w + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_velocity_y,candidate_value,"w",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_velocity_y,analytic_lie_derivative,"0*(-mu*x/(x^2 + y^2)^(3/2)) + 1*(-mu*y/(x^2 + y^2)^(3/2)) + 0*v + 0*w + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_velocity_y,normalized_lie,"sqrt((0*(-mu*x/(x^2 + y^2)^(3/2)) + 1*(-mu*y/(x^2 + y^2)^(3/2)) + 0*v + 0*w + 0)^2)/(1+sqrt((w)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_velocity_y,lie_derivative_squared,"(0*(-mu*x/(x^2 + y^2)^(3/2)) + 1*(-mu*y/(x^2 + y^2)^(3/2)) + 0*v + 0*w + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_radius_squared,candidate_value,"x^2 + y^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_radius_squared,analytic_lie_derivative,"0*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + v*(2*x) + w*(2*y) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_radius_squared,normalized_lie,"sqrt((0*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + v*(2*x) + w*(2*y) + 0)^2)/(1+sqrt((x^2 + y^2)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_radius_squared,lie_derivative_squared,"(0*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + v*(2*x) + w*(2*y) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_mixed_xy,candidate_value,"x*y",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_mixed_xy,analytic_lie_derivative,"0*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + v*y + w*x + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_mixed_xy,normalized_lie,"sqrt((0*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + v*y + w*x + 0)^2)/(1+sqrt((x*y)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+kepler,kep_mixed_xy,lie_derivative_squared,"(0*(-mu*x/(x^2 + y^2)^(3/2)) + 0*(-mu*y/(x^2 + y^2)^(3/2)) + v*y + w*x + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_time_corrected_energy,candidate_value,"(v^2 + 2*v*x*zeta + x^2)*exp(2*t*zeta)",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+damped,damp_time_corrected_energy,analytic_lie_derivative,"v*((2*v*zeta + 2*x)*exp(2*t*zeta)) + 2*zeta*(v^2 + 2*v*x*zeta + x^2)*exp(2*t*zeta) + ((2*v + 2*x*zeta)*exp(2*t*zeta))*(-2*v*zeta - x)",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+damped,damp_time_corrected_energy,normalized_lie,"sqrt((v*((2*v*zeta + 2*x)*exp(2*t*zeta)) + 2*zeta*(v^2 + 2*v*x*zeta + x^2)*exp(2*t*zeta) + ((2*v + 2*x*zeta)*exp(2*t*zeta))*(-2*v*zeta - x))^2)/(1+sqrt(((v^2 + 2*v*x*zeta + x^2)*exp(2*t*zeta))^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+damped,damp_time_corrected_energy,lie_derivative_squared,"(v*((2*v*zeta + 2*x)*exp(2*t*zeta)) + 2*zeta*(v^2 + 2*v*x*zeta + x^2)*exp(2*t*zeta) + ((2*v + 2*x*zeta)*exp(2*t*zeta))*(-2*v*zeta - x))^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+damped,damp_time_corrected_energy_squared,candidate_value,"(v^2 + 2*v*x*zeta + x^2)^2*exp(4*t*zeta)",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+damped,damp_time_corrected_energy_squared,analytic_lie_derivative,"v*((4*v*zeta + 4*x)*(v^2 + 2*v*x*zeta + x^2)*exp(4*t*zeta)) + 4*zeta*(v^2 + 2*v*x*zeta + x^2)^2*exp(4*t*zeta) + ((4*v + 4*x*zeta)*(v^2 + 2*v*x*zeta + x^2)*exp(4*t*zeta))*(-2*v*zeta - x)",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+damped,damp_time_corrected_energy_squared,normalized_lie,"sqrt((v*((4*v*zeta + 4*x)*(v^2 + 2*v*x*zeta + x^2)*exp(4*t*zeta)) + 4*zeta*(v^2 + 2*v*x*zeta + x^2)^2*exp(4*t*zeta) + ((4*v + 4*x*zeta)*(v^2 + 2*v*x*zeta + x^2)*exp(4*t*zeta))*(-2*v*zeta - x))^2)/(1+sqrt(((v^2 + 2*v*x*zeta + x^2)^2*exp(4*t*zeta))^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+damped,damp_time_corrected_energy_squared,lie_derivative_squared,"(v*((4*v*zeta + 4*x)*(v^2 + 2*v*x*zeta + x^2)*exp(4*t*zeta)) + 4*zeta*(v^2 + 2*v*x*zeta + x^2)^2*exp(4*t*zeta) + ((4*v + 4*x*zeta)*(v^2 + 2*v*x*zeta + x^2)*exp(4*t*zeta))*(-2*v*zeta - x))^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,1
+damped,damp_raw_energy,candidate_value,"v^2/2 + x^2/2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_raw_energy,analytic_lie_derivative,"v*x + v*(-2*v*zeta - x) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_raw_energy,normalized_lie,"sqrt((v*x + v*(-2*v*zeta - x) + 0)^2)/(1+sqrt((v^2/2 + x^2/2)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_raw_energy,lie_derivative_squared,"(v*x + v*(-2*v*zeta - x) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_position_x,candidate_value,"x",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_position_x,analytic_lie_derivative,"1*v + 0*(-2*v*zeta - x) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_position_x,normalized_lie,"sqrt((1*v + 0*(-2*v*zeta - x) + 0)^2)/(1+sqrt((x)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_position_x,lie_derivative_squared,"(1*v + 0*(-2*v*zeta - x) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_velocity_x,candidate_value,"v",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_velocity_x,analytic_lie_derivative,"0*v + 1*(-2*v*zeta - x) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_velocity_x,normalized_lie,"sqrt((0*v + 1*(-2*v*zeta - x) + 0)^2)/(1+sqrt((v)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_velocity_x,lie_derivative_squared,"(0*v + 1*(-2*v*zeta - x) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_cross_xv,candidate_value,"v*x",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_cross_xv,analytic_lie_derivative,"v*v + x*(-2*v*zeta - x) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_cross_xv,normalized_lie,"sqrt((v*v + x*(-2*v*zeta - x) + 0)^2)/(1+sqrt((v*x)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_cross_xv,lie_derivative_squared,"(v*v + x*(-2*v*zeta - x) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_position_squared,candidate_value,"x^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_position_squared,analytic_lie_derivative,"v*(2*x) + 0*(-2*v*zeta - x) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_position_squared,normalized_lie,"sqrt((v*(2*x) + 0*(-2*v*zeta - x) + 0)^2)/(1+sqrt((x^2)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_position_squared,lie_derivative_squared,"(v*(2*x) + 0*(-2*v*zeta - x) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_velocity_squared,candidate_value,"v^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_velocity_squared,analytic_lie_derivative,"0*v + (2*v)*(-2*v*zeta - x) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_velocity_squared,normalized_lie,"sqrt((0*v + (2*v)*(-2*v*zeta - x) + 0)^2)/(1+sqrt((v^2)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_velocity_squared,lie_derivative_squared,"(0*v + (2*v)*(-2*v*zeta - x) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_exp_position,candidate_value,"x*exp(t*zeta)",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_exp_position,analytic_lie_derivative,"v*exp(t*zeta) + x*zeta*exp(t*zeta) + 0*(-2*v*zeta - x)",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_exp_position,normalized_lie,"sqrt((v*exp(t*zeta) + x*zeta*exp(t*zeta) + 0*(-2*v*zeta - x))^2)/(1+sqrt((x*exp(t*zeta))^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_exp_position,lie_derivative_squared,"(v*exp(t*zeta) + x*zeta*exp(t*zeta) + 0*(-2*v*zeta - x))^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_exp_velocity,candidate_value,"v*exp(t*zeta)",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_exp_velocity,analytic_lie_derivative,"v*zeta*exp(t*zeta) + 0*v + (-2*v*zeta - x)*exp(t*zeta)",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_exp_velocity,normalized_lie,"sqrt((v*zeta*exp(t*zeta) + 0*v + (-2*v*zeta - x)*exp(t*zeta))^2)/(1+sqrt((v*exp(t*zeta))^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_exp_velocity,lie_derivative_squared,"(v*zeta*exp(t*zeta) + 0*v + (-2*v*zeta - x)*exp(t*zeta))^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_time,candidate_value,"t",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_time,analytic_lie_derivative,"0*v + 0*(-2*v*zeta - x) + 1",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_time,normalized_lie,"sqrt((0*v + 0*(-2*v*zeta - x) + 1)^2)/(1+sqrt((t)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_time,lie_derivative_squared,"(0*v + 0*(-2*v*zeta - x) + 1)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_x_plus_v,candidate_value,"v + x",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_x_plus_v,analytic_lie_derivative,"1*v + 1*(-2*v*zeta - x) + 0",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_x_plus_v,normalized_lie,"sqrt((1*v + 1*(-2*v*zeta - x) + 0)^2)/(1+sqrt((v + x)^2))",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+damped,damp_x_plus_v,lie_derivative_squared,"(1*v + 1*(-2*v*zeta - x) + 0)^2",paceval,paceval_dGetMultipleComputationsResultsExt,1,0
+all,deterministic_samples,orchestration,,C++ host,analytic benchmark generator,0,0
+all,aggregated_rms_and_roc,orchestration,,C++ host,aggregation and threshold decisions,0,0

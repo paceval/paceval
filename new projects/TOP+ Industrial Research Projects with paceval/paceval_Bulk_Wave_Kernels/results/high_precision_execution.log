@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "precision_decimal_digits": 80,
+  "independently_checked_values": 2779,
+  "max_scaled_error": 1.502705884362404e-12,
+  "max_scaled_error_column": "rhs_v1",
+  "tested_modes": [
+    "zero_radial",
+    "bessel_J2",
+    "manufactured_forced",
+    "zero_radial_revision"
+  ],
+  "grid_sizes": [
+    25,
+    49,
+    97
+  ],
+  "source_is_synthetic": true,
+  "physical_detection_claim": false
+}

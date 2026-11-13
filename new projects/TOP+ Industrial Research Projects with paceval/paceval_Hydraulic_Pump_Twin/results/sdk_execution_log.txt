@@ -1,0 +1,1 @@
+ORIGINAL PACEVAL SDK SUCCESS graphs=86 batch outputs=1164440 independent C++ values=23520 trace energy(kWh)=2865.48

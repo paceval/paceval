@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "tested_physical_and_accounting_checks": 57164,
+  "sweep_points": 6000,
+  "operating_points": 3721,
+  "trace_points": 48,
+  "formula_versions": 20,
+  "paceval_graphs": 86
+}

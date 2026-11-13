@@ -1,0 +1,7 @@
+sympy
+mpmath
+numpy
+matplotlib
+Pillow
+reportlab
+PyMuPDF

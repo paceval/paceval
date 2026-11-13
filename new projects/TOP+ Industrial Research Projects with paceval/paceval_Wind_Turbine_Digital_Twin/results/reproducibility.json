@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "tracked_files": 9,
+  "byte_identical": 9,
+  "verified_files": [
+    "examples/formula_registry.csv",
+    "examples/paceval_coefficient_surface.csv",
+    "examples/paceval_operating_sweep.csv",
+    "examples/paceval_rotor_time_series.csv",
+    "results/math_execution_inventory.csv",
+    "results/execution_summary.json",
+    "results/sdk_execution.log",
+    "results/high_precision_validation.json",
+    "results/lookup_interpolation_audit.csv"
+  ]
+}

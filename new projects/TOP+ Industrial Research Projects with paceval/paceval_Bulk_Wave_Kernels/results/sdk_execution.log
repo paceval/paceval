@@ -1,0 +1,13 @@
+CASE zero_radial n=25 steps=48 l2=5.36961e-05 order=0
+CASE zero_radial n=49 steps=96 l2=1.34328e-05 order=1.99906
+CASE zero_radial n=97 steps=192 l2=3.35874e-06 order=1.99977
+CASE bessel_J2 n=25 steps=48 l2=0.000302248 order=0
+CASE bessel_J2 n=49 steps=96 l2=7.55279e-05 order=2.00065
+CASE bessel_J2 n=97 steps=192 l2=1.88798e-05 order=2.00016
+CASE manufactured_forced n=25 steps=48 l2=0.000309744 order=0
+CASE manufactured_forced n=49 steps=96 l2=7.74959e-05 order=1.99889
+CASE manufactured_forced n=97 steps=192 l2=1.93777e-05 order=1.99972
+CASE zero_radial_revision n=25 steps=48 l2=5.15587e-05 order=0
+CASE zero_radial_revision n=49 steps=96 l2=1.28984e-05 order=1.99902
+CASE zero_radial_revision n=97 steps=192 l2=3.22514e-06 order=1.99976
+ORIGINAL PACEVAL SUCCESS graphs=28 batch_calls=5623 outputs=663784 independent_cpp_audits=1260 maximum_scaled_difference=4.32724e-16

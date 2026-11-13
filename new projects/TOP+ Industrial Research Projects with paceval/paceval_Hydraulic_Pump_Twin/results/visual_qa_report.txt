@@ -1,0 +1,12 @@
+WP_043 visual document QA — 13 November 2026
+PDF: paceval_Hydraulic_Pump_Twin_Whitepaper_EN.pdf
+All 15 pages of the final publication rendered as individual PNG page images at 110 dpi.
+Contact sheet: WP043_Whitepaper_Visual_QA.png (available as separate audit artifact).
+Human visual review of complete contact sheet and detailed formula page 4:
+- Page count and pagination: PASS (15 pages)
+- Formula rendering: PASS; no raw GitHub math delimiters or unsupported macros in PDF
+- Figures/captions: PASS; no apparent clipped axes/figure captions
+- Overlapping blocks or visibly cropped text: none observed
+- Concept illustration vs actual scientific data: explicitly labeled
+- Readability limitation: full-scale computer display recommended for small figure labels
+The render review is a visual check, not a formal PDF accessibility certification.
