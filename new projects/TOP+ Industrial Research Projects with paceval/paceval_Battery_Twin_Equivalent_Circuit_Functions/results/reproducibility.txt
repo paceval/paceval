@@ -1,0 +1,18 @@
+WP048 ORIGINAL SDK REPRODUCIBILITY RECORD
+Data date: 2026-11-13
+Original SDK files: paceval_main.h / paceval_main.cpp, header version 4.25
+Runtime: original external 64-bit Linux ELF shared library, supplied separately by owner
+Runtime NOT included in publication ZIP.
+Compiler: Linux GCC C++17, CMake Release (tested in local sandbox)
+Build: cmake -S src -B build -DCMAKE_BUILD_TYPE=Release -DPACEVAL_RUNTIME=/path/to/original.so
+Then: cmake --build build -j; ctest --test-dir build --output-on-failure
+Full data: ./build/battery_twin --out . --steps 720
+Verify: python3 src/verify_results.py --root .
+Verify high precision: python3 src/high_precision_reference.py --root .
+Figures: python3 src/make_figures.py --root .
+PDF: python3 src/make_whitepaper.py --root .
+README check: python3 src/check_readme_math.py
+Model versions: v1=1RC, v2=2RC, deterministic synthetic data only.
+No thermodynamic battery safety validation, no speed comparisons.
+All 12 pages of the final PDF rendered to PNG and visually inspected.
+GitHub markdown/MathJax visual rendering not available; structural syntax and links checked.

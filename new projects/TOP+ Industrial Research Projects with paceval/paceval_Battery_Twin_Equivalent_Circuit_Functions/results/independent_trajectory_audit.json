@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "independent_cpp_equivalent_python_float_checks": 19854,
+  "scenarios": 18,
+  "max_scaled_error": 3.162727237416065e-16,
+  "max_algebraic_power_residual_W": 4.85722573273506e-15,
+  "verified_time_steps_per_scenario": 720,
+  "note": "synthetic model, algebraic power identity does not validate physical thermal losses; no performance conclusions"
+}

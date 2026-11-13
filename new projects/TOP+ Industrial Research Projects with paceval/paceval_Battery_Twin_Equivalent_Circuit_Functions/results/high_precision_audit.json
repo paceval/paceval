@@ -1,0 +1,9 @@
+{
+  "reference": "mpmath 80 decimal places (input floats reconstructed exactly)",
+  "comparisons": 4050,
+  "max_scaled_error": 2.3175905639050143e-15,
+  "largest_error_graph": "power_identity_residual_v1",
+  "all_registered_graphs_checked": true,
+  "passed": true,
+  "tolerance": 2e-10
+}
