@@ -1,0 +1,16 @@
+{
+  "pdf_pages": 14,
+  "pdf_renderer": "render_pdf.py / pdfium-or-poppler at 135 dpi",
+  "pages_rendered": 14,
+  "contact_sheet_path": "WP040_Whitepaper_Visual_QA.png (working QA, not distributed)",
+  "visual_observation": "14 pages inspected; no visible formula clipping, figure overlap, cut-off captions or page-edge collisions",
+  "whitepaper_in_repository_root": true,
+  "CMakeLists_in_src": true,
+  "hero_resolution_px": [
+    2400,
+    1200
+  ],
+  "figures_png": 10,
+  "figures_pdf": 10,
+  "scientific_figures_source": "actual executed paceval mathematical outputs and deterministic C++ event CSVs"
+}

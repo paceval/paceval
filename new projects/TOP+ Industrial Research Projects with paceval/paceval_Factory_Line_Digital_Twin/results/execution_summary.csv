@@ -1,0 +1,13 @@
+key,value
+original_paceval_graphs,38
+scenario_modules_executed,20
+synthetic_arrivals_per_scenario,440
+workstations,4
+real_multi_graph_batch_calls,98
+real_multi_graph_outputs,209798
+independent_C++_formula_checks,16302
+max_native_scaled_error,1.6471195827390907e-16
+observed_good_units_module01,426
+observed_scrapped_units_module01,14
+first_scenario_max_queue_station1,33
+experimental_status,synthetic_discrete_event_execution_not_live_plant

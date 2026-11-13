@@ -1,0 +1,8 @@
+{
+  "precision_decimal_digits": 80,
+  "independent_mpmath_checks": 1122,
+  "sampled_rows": 51,
+  "largest_scaled_difference": "0.00000000000000045500139986149842829788003675691919318584953558933520827846771693683784729275591",
+  "all_passed": true,
+  "scope": "synthetic analytical expression results; not physical model validation"
+}

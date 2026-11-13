@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "scenarios": 20,
+  "operation_rows": 1760,
+  "baseline_event_operations": 1734,
+  "checked_station_nonoverlap": true,
+  "checked_stage_precedence": true,
+  "checked_output_conservation": true,
+  "source": "executed original paceval CSV outputs plus deterministic C++ event trace"
+}

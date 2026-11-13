@@ -1,0 +1,51 @@
+{
+  "same_original_runtime_replay": true,
+  "byteidentical_file_count": 9,
+  "files": [
+    {
+      "file": "examples/formula_registry.csv",
+      "identical": true,
+      "sha256": "043f6a49ea336620fd0e4ac7007aec24b21bcb6694bc9c84c393eebcd2ed9d24"
+    },
+    {
+      "file": "examples/synthetic_line_event_inputs.csv",
+      "identical": true,
+      "sha256": "4459672dca0baf345ab1f0809e524f67e13edfffb4a625d275862a804a3f06f3"
+    },
+    {
+      "file": "examples/paceval_operation_results.csv",
+      "identical": true,
+      "sha256": "71b53ab25a06b3513dbe3b635a8562e473a67717ac4c33ac6cc07e6e6085d8ce"
+    },
+    {
+      "file": "examples/scenario_summary.csv",
+      "identical": true,
+      "sha256": "ea19ba08ea34fe14ecb7e8f1d311f5cdce192b8056ef1de2242f4c4527bad89a"
+    },
+    {
+      "file": "examples/station_performance.csv",
+      "identical": true,
+      "sha256": "cf0bb231318f15dbf324ea65dfdd7f19d1df7bc0a987febc928ce071663b6271"
+    },
+    {
+      "file": "examples/selected_event_timeline.csv",
+      "identical": true,
+      "sha256": "772c950261aeb4f7b133e6d0c10b355c7201d795906f511153f1b0d46693ab52"
+    },
+    {
+      "file": "examples/paceval_cycle_response_surface.csv",
+      "identical": true,
+      "sha256": "4b6452034aa52b48c59e31ca66f6025cfe45985c331875599fd090e67bce84df"
+    },
+    {
+      "file": "results/execution_summary.csv",
+      "identical": true,
+      "sha256": "233d3701f6a7eadecdc7bc6a6c58783a6d4b61026bf083fb6db89fdfbac88dd5"
+    },
+    {
+      "file": "results/math_execution_inventory.csv",
+      "identical": true,
+      "sha256": "7235717a92d070ca7bd4912e7f000f747986ab6134c32c12449406ca09b5cf94"
+    }
+  ]
+}
