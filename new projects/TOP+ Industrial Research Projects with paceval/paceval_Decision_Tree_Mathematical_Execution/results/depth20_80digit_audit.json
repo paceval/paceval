@@ -1,0 +1,9 @@
+{
+  "precision_decimal_digits": 80,
+  "sampled_leaf_indices": 15,
+  "verified_score_values": 30,
+  "max_abs_discrepancy_v1_audit_only": "4.65260072e-17",
+  "max_abs_discrepancy_v2_audit_only": "7.65583756e-17",
+  "status": "PASS",
+  "scope": "Selected 15 representative leaves; full exhaustive path and native score checks occur in C++"
+}

@@ -1,0 +1,15 @@
+{
+  "reference": "independent Python / mpmath decimal 80 dps; threshold traversal in binary64 semantic domain",
+  "checked_scalar_values": 60912,
+  "checked_complete_decisions": 3384,
+  "maximum_abs_difference_audit_only": "8.0e-15",
+  "verdict": "PASS",
+  "counts": {
+    "v1_ACCEPT": 414,
+    "v1_REJECT": 617,
+    "v1_REVIEW": 661,
+    "v2_ACCEPT": 388,
+    "v2_REJECT": 697,
+    "v2_REVIEW": 607
+  }
+}

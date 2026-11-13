@@ -1,0 +1,9 @@
+Original paceval 4.25, dynamic Linux shared library, real execution
+total_graphs=35
+input_samples=1692
+model_versions=2
+actual_graph_outputs=57540
+batch_calls=6
+scalar_api_calls=12
+tinc_used=false
+not_a_runtime_benchmark=true

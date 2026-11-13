@@ -1,0 +1,8 @@
+Decision-tree mathematical execution, real SDK 4.25 validation.
+Initial six-level study: 35 real graphs, 1,692 sensor vectors, 57,540 mathematical outputs.
+Separate complete structured twenty-level study: 4 real graphs, 1,048,576 terminal paths, 4,194,304 outputs, 256 multi-graph batches.
+Seven CTest cases were executed successfully including depth20 complete traversal and independent Python/80-digit references.
+The original external paceval Linux shared library is NOT included.
+The complete tree is structured and mathematically factored. A million-term expansion with arbitrary leaf values was not executed.
+README and 12-page English whitepaper have been authored; the PDF was rendered and visually reviewed on all pages.
+No performance benchmarking is represented in the publication.
