@@ -1,0 +1,25 @@
+{
+  "method": "Independent 80-decimal-digit mpmath; all stored samples audited",
+  "sample_rows": 1440,
+  "quantity_comparisons": 15840,
+  "precision_decimal_digits": 80,
+  "max_abs_discrepancy": 1.4173227826385097e-11,
+  "worst_case": "row 657 temperature_cycle v1 sensitivity_x",
+  "per_quantity_max_abs": {
+    "interpolant": 2.1720221899788236e-16,
+    "local_slope": 1.4060805532974575e-11,
+    "corrected_value": 3.747182022968471e-16,
+    "sensitivity_x": 1.4173227826385097e-11,
+    "sensitivity_T": 1.6872110042406676e-19,
+    "sensitivity_drift": 3.5e-19,
+    "combined_uncertainty": 2.8333986387642396e-15,
+    "residual": 3.8941820229684707e-16,
+    "acceptance_margin": 5.788161774398602e-15,
+    "rejection_margin": 5.810510738510251e-15,
+    "quality_fraction": 2.33922461283134e-13
+  },
+  "decision_agreement": true,
+  "tolerance": 5e-11,
+  "pass": true,
+  "limitations": "Synthetic model and independent decimal arithmetic; not traceable calibration or interval proof."
+}

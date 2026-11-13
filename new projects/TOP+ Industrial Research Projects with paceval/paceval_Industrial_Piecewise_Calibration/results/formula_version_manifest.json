@@ -1,0 +1,37 @@
+{
+  "model_name": "Industrial Mathematical Calibration at Formula Scale",
+  "sdk_version": "4.25",
+  "formula_approval_status": "RESEARCH_ONLY_NOT_CERTIFIED",
+  "dataset_origin": "fully synthetic",
+  "model_versions": {
+    "v1": {
+      "registered_graph_count": 60,
+      "formula_bundle_sha256": "3714cd5181e7bff043b8ac8c37e9c97cf885ddac7755326615526d4135210c53",
+      "status": "synthetic research version, not approved for metrology"
+    },
+    "v2": {
+      "registered_graph_count": 60,
+      "formula_bundle_sha256": "0279fdbf47884ed2bc0c5eb2e4a505492bd212f6ceb61e7055594b2fb9b2d2af",
+      "status": "synthetic research version, not approved for metrology"
+    }
+  },
+  "calibration_domain": {
+    "x": [
+      0,
+      1
+    ],
+    "temperature_C": [
+      0,
+      60
+    ],
+    "normalized_drift": [
+      -1,
+      1
+    ]
+  },
+  "knot_ownership": "right interval at internal knots; last interval includes x=1",
+  "uncertainty": "uncorrelated input linear propagation, illustrative standard uncertainties only",
+  "policy": "ACCEPT if tol - abs(error) - 2*u >= 0; REJECT if tol - abs(error) + 2*u < 0; else REVIEW",
+  "dataset_sha256": "fa84f0b7cf9fe8241c9cd52b0ae195cdc8f735fc6d75d51ccd504b2af9beb3db",
+  "traceability": "none: not a calibrated instrument or accredited laboratory result"
+}

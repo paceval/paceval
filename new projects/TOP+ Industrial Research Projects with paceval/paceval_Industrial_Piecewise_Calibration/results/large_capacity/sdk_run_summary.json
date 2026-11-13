@@ -1,0 +1,16 @@
+{
+  "sdk": "paceval 4.25",
+  "original_paceval_used": true,
+  "model_versions": 2,
+  "intervals_per_version": 65536,
+  "segments_per_graph": 512,
+  "sample_count": 720,
+  "graph_count": 569,
+  "batch_calls": 782,
+  "scalar_calls": 5,
+  "graph_outputs": 193265,
+  "data_origin": "synthetic",
+  "independent_cpp_numerical_checks": 15840,
+  "performance_comparison": false,
+  "tinc_certification": false
+}
