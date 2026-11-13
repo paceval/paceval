@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "mpmath_decimal_precision": 80,
+  "high_precision_independent_graph_checks": 1664,
+  "distinct_scenarios_checked": 32,
+  "distinct_graphs_per_scenario": 52,
+  "max_scaled_absolute_difference": "0.00000000000000048448962297675334317002812667554506943383443663088174933913049929051874399752321",
+  "reference_implementation": "handwritten_80_digit_mpmath_definitions_not_paceval_formula_eval",
+  "note": "Pointwise tests do not prove a global interval guarantee or real-shop-floor model validity"
+}

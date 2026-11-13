@@ -1,0 +1,2 @@
+Google OR-Tools 3-job example (jobs 0/1/2 with 3/3/2 tasks): published makespan optimum = 11 h (no setups).
+This benchmark is used as literature context, NOT claimed as a solved source instance by this demonstrator.

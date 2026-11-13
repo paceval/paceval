@@ -1,0 +1,27 @@
+WP050 original-paceval reproducibility manifest (2026-11-13)
+Main entry: ./build/production_planning --out .
+Original SDK source: src/paceval_main.cpp and src/paceval_main.h (copyright/AGPL intact)
+Original paceval runtime: separately supplied, not packaged
+Runtime file SHA-256=acf63a87df0ee822b467edbca887393d31ec0ea03562e1abf802d2512a5bfb12
+OS=Linux-6.18.57-x86_64-with-glibc2.41
+Machine=x86_64
+Compiler=g++ (Debian 14.2.0-19) 14.2.0
+Python=3.13.5
+CMake=cmake version 3.31.6
+Mathematical data: deterministic synthetic 4 jobs / 3 machines / 2 setup regimes
+Agent policies: examples/agent_requests.csv, whitelist weights and budget
+Reference data: public Google OR-Tools example used only as a methodological reference; no external production traces used
+Graph registry: results/formula_registry.csv
+Source-to-execution inventory: results/math_execution_inventory.csv
+Recorded SDK calculations: results/graph_probe_values.csv
+Main scenarios: results/scenario_summary.csv
+Scientific plots: python3 src/make_figures.py --root .
+Whitepaper: python3 src/make_whitepaper.py --root .
+Independent schedule audit: python3 src/verify_results.py --root .
+Independent 80-digit graph audit: python3 src/high_precision_reference.py --root .
+CTest: 4/4 pass in results/ctest_sdk.txt
+TINC: not used; no certification claim
+LLM: no live language-model inference; deterministic fixture agent policies only
+Build artifacts / external runtime must not enter published ZIP
+Math README structural checks: passed; live GitHub renderer not inspected.
+Result files generated using original SDK graph outputs, no substituted native production results.

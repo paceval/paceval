@@ -1,0 +1,12 @@
+status=PASS
+sdk=original_paceval_4_25
+policy_source=scripted_deterministic_agent_requests; no live LLM
+graphs_registered_and_executed=52
+scenario_policy_version_combinations=32
+feasible_machine_orders_per_setup_aggregated=3720
+multi_graph_batch_calls=643
+multi_graph_formula_outputs=3095426
+scalar_calls=2
+sampled_native_composed_checks=18144
+max_native_scaled_abs_difference=2.05293668078191e-16
+all_winner_feasibility_checks=PASS

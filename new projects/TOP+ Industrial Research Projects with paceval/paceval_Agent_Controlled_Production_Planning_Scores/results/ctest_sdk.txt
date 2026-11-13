@@ -1,0 +1,14 @@
+Internal ctest changing into directory: /mnt/data/work50_build
+Test project /mnt/data/work50_build
+    Start 1: original_paceval_sdk_execution
+1/4 Test #1: original_paceval_sdk_execution ............   Passed    8.25 sec
+    Start 2: independent_schedule_numeric_audit
+2/4 Test #2: independent_schedule_numeric_audit ........   Passed    1.29 sec
+    Start 3: github_readme_math_and_links
+3/4 Test #3: github_readme_math_and_links ..............   Passed    0.66 sec
+    Start 4: rejection_of_unvalidated_agent_requests
+4/4 Test #4: rejection_of_unvalidated_agent_requests ...   Passed    0.68 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =  10.89 sec
