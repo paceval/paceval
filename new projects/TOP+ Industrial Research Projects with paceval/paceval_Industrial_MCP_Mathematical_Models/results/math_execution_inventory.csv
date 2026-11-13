@@ -1,0 +1,25 @@
+function_id,execution_owner,graph_or_host_role,input_schema,provenance
+field_v1,paceval,real_persistent_graph,"x y z temp",field_v1.txt
+temp_sensitivity_v1,paceval,real_persistent_graph,"x y z temp",temp_sensitivity_v1.txt
+x_sensitivity_v1,paceval,real_persistent_graph,"x y z temp",x_sensitivity_v1.txt
+field_v2,paceval,real_persistent_graph,"x y z temp",field_v2.txt
+temp_sensitivity_v2,paceval,real_persistent_graph,"x y z temp",temp_sensitivity_v2.txt
+x_sensitivity_v2,paceval,real_persistent_graph,"x y z temp",x_sensitivity_v2.txt
+rbf_module_1,paceval,real_persistent_graph,"x y z temp",modular_block_01_v2.txt
+rbf_module_2,paceval,real_persistent_graph,"x y z temp",modular_block_02_v2.txt
+rbf_module_3,paceval,real_persistent_graph,"x y z temp",modular_block_03_v2.txt
+rbf_module_4,paceval,real_persistent_graph,"x y z temp",modular_block_04_v2.txt
+rbf_module_5,paceval,real_persistent_graph,"x y z temp",modular_block_05_v2.txt
+rbf_module_6,paceval,real_persistent_graph,"x y z temp",modular_block_06_v2.txt
+rbf_module_7,paceval,real_persistent_graph,"x y z temp",modular_block_07_v2.txt
+rbf_module_8,paceval,real_persistent_graph,"x y z temp",modular_block_08_v2.txt
+revision_delta,paceval,real_persistent_graph,"v1 v2 x y z temp target tol raw",revision_delta.txt
+target_residual,paceval,real_persistent_graph,"v1 v2 x y z temp target tol raw",target_residual.txt
+quality_score,paceval,real_persistent_graph,"v1 v2 x y z temp target tol raw",quality_score.txt
+quality_margin,paceval,real_persistent_graph,"v1 v2 x y z temp target tol raw",quality_margin.txt
+version_margin,paceval,real_persistent_graph,"v1 v2 x y z temp target tol raw",version_margin.txt
+governance_score,paceval,real_persistent_graph,"v1 v2 x y z temp target tol raw",governance_score.txt
+temperature_guard,paceval,real_persistent_graph,"v1 v2 x y z temp target tol raw",temperature_guard.txt
+corrected_measurement,paceval,real_persistent_graph,"v1 v2 x y z temp target tol raw",corrected_measurement.txt
+decision_selection,C++ host,interpret_policy_margins,graph_outputs,source_code
+validation,C++ host,check_domains_and_batch_shapes,CSV_fields,source_code

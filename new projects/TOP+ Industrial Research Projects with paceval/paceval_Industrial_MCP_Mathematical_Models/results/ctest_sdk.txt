@@ -1,0 +1,18 @@
+Internal ctest changing into directory: /mnt/data/work_mcp_build
+Test project /mnt/data/work_mcp_build
+    Start 1: original_paceval_sdk_full_pipeline
+1/6 Test #1: original_paceval_sdk_full_pipeline ...   Passed    0.90 sec
+    Start 2: rejects_invalid_measurement_inputs
+2/6 Test #2: rejects_invalid_measurement_inputs ...   Passed    0.85 sec
+    Start 3: high_precision_scientific_audit
+3/6 Test #3: high_precision_scientific_audit ......   Passed    4.10 sec
+    Start 4: live_mcp_record_validation
+4/6 Test #4: live_mcp_record_validation ...........   Passed    4.16 sec
+    Start 5: project_readme_math_and_links
+5/6 Test #5: project_readme_math_and_links ........   Passed    0.75 sec
+    Start 6: model_formula_sha256_manifest
+6/6 Test #6: model_formula_sha256_manifest ........   Passed    0.67 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =  11.44 sec

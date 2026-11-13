@@ -1,0 +1,1 @@
+0.55*abs(v2-target)/tol+0.25*abs(v2-v1)/tol+0.20*abs(temp-25)/25

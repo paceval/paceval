@@ -1,0 +1,61 @@
+{
+  "study": "NEW 8 independent 32-component RBF graphs using paceval MCP v4.26",
+  "api": "paceval_create_computation, paceval_evaluate_multiple_many, paceval_evaluate_many",
+  "variables": [
+    "x",
+    "y",
+    "z",
+    "temp"
+  ],
+  "graph_handles": [
+    "1648249584",
+    "1648248912",
+    "1648242032",
+    "1688851952",
+    "1688825888",
+    "1689269408",
+    "1689264832",
+    "1689260288"
+  ],
+  "inputs": [
+    [
+      0,
+      0,
+      0.25,
+      25
+    ],
+    [
+      0.33,
+      0.67,
+      0.5,
+      40
+    ],
+    [
+      1,
+      1,
+      0.75,
+      15
+    ],
+    [
+      0.5,
+      0.5,
+      0.5,
+      35
+    ]
+  ],
+  "recombined_graph_major_outputs": [
+    0.14772471145619534,
+    0.18301362349544364,
+    0.13614028078609786,
+    0.17543383068818424
+  ],
+  "direct_monolithic": [
+    0.147724711456195,
+    0.183013623495443,
+    0.136140280786097,
+    0.175433830688184
+  ],
+  "number_of_module_outputs": 32,
+  "all_mcp_errors_zero": true,
+  "outputs_reconstructed_by": "sum of graph-major results for each of four cases"
+}

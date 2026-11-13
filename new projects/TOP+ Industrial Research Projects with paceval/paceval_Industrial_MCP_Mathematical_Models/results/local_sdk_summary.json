@@ -1,0 +1,15 @@
+{
+  "original_sdk": "paceval 4.25",
+  "source": "synthetic only",
+  "graph_count": 22,
+  "model_versions": 2,
+  "data_records": 520,
+  "batch_calls": 27,
+  "computed_graph_outputs": 11440,
+  "model_accept": 332,
+  "model_review": 109,
+  "model_reject": 79,
+  "max_modular_gap": 3.6082248300317588e-16,
+  "tinc_certification": false,
+  "performance_comparison": false
+}

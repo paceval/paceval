@@ -1,0 +1,105 @@
+{
+  "project": "Industrial mathematical models via the paceval MCP server",
+  "experiment": "two versioned 256-component Gaussian RBF synthetic models",
+  "number_of_components_per_version": 256,
+  "variables": [
+    "x",
+    "y",
+    "z",
+    "temp"
+  ],
+  "model_is_synthetic": true,
+  "runtime_mcp": "4.26 (live service)",
+  "runtime_local_sdk": "4.25 (independent reproduction)",
+  "generation_rule": "model_generator.py",
+  "formulas": {
+    "corrected_measurement.txt": {
+      "length": 6,
+      "sha256": "2cd437c5623a942e53e77dc7db0e819b5a3d447fde8b7586b74871ee146454b9"
+    },
+    "field_v1.txt": {
+      "length": 34740,
+      "sha256": "430c2d0cab68dab87276a5b1c50c8f1e51769c776a11badd278928ecc307467f"
+    },
+    "field_v2.txt": {
+      "length": 34740,
+      "sha256": "300b0524b2809191eefc51256cb85f2fab9887ef6c1d84bb09bd28e631f122c8"
+    },
+    "governance_score.txt": {
+      "length": 64,
+      "sha256": "473ff6681ecc356ed88773d768541a38c1858523f3e3af286ecaa560e167b243"
+    },
+    "modular_block_01_v2.txt": {
+      "length": 4397,
+      "sha256": "94611f61dafcdc8fd098cf525d1de825224fec9b4e3c912c9f8e92f13bccca37"
+    },
+    "modular_block_02_v2.txt": {
+      "length": 4336,
+      "sha256": "29b4a7f4c9ae68349bf83987fb58ea483577010e022c0ec046e0ffd93bab6cd9"
+    },
+    "modular_block_03_v2.txt": {
+      "length": 4336,
+      "sha256": "d7c80bf2acccaa6078a3784a4f0cb33f20d6dcf7a7ca2f1c99dca8db78865046"
+    },
+    "modular_block_04_v2.txt": {
+      "length": 4336,
+      "sha256": "c478b9bc1c921483b28858cdcc51f23818641119e48bcab8b86a3fa15cd4a444"
+    },
+    "modular_block_05_v2.txt": {
+      "length": 4336,
+      "sha256": "a415ecae2d5cf92ce46600b31198987d9063b09dd1d7d407483472239e2024c8"
+    },
+    "modular_block_06_v2.txt": {
+      "length": 4336,
+      "sha256": "e045b2e07a2cde3277d0f929aa77ea87b7966f9882d84ece7b6fd17169d1c811"
+    },
+    "modular_block_07_v2.txt": {
+      "length": 4335,
+      "sha256": "e9a80a465d76e638d96d98121945f66be9d66d87946581b3235b3d52a7901a91"
+    },
+    "modular_block_08_v2.txt": {
+      "length": 4335,
+      "sha256": "3df30a0ad452a9c859d88b2c68e500615c26b024159f8cc45daae992a6f0f21a"
+    },
+    "quality_margin.txt": {
+      "length": 65,
+      "sha256": "17596e58265a9cd877f5f429d35f0be20c0b19be21f846a6ecd75a205c3f884a"
+    },
+    "quality_score.txt": {
+      "length": 61,
+      "sha256": "2f0c870ec28d31477c6e1ee3abefaebaf92abc9c1243511c64c38ecceaddbc50"
+    },
+    "revision_delta.txt": {
+      "length": 5,
+      "sha256": "567ab1c2bc97d57d196bf5e5d83494e64b772eedbfa1847a579317f4eb173276"
+    },
+    "target_residual.txt": {
+      "length": 9,
+      "sha256": "f4783ad7a1327a728f76fa04532a5e339d618bf9fd4f5c590986c6a080246073"
+    },
+    "temp_sensitivity_v1.txt": {
+      "length": 31725,
+      "sha256": "ca88150da834c3a5624b2a36bdb97edf962c434886fac5906a203a7e7a5d874f"
+    },
+    "temp_sensitivity_v2.txt": {
+      "length": 31725,
+      "sha256": "93080a060e860f3ed5200b1cae1ffb92de50c523c5c1e3a1df5239c0388ac04b"
+    },
+    "temperature_guard.txt": {
+      "length": 7,
+      "sha256": "904673109bd5efef412265ef6e61a30eed7ab2bf89a31ccc936d2e6e00231b5a"
+    },
+    "version_margin.txt": {
+      "length": 16,
+      "sha256": "67df4f9e146239e338370ea36b0b9b4d3d2da8a9cffa7a3bb011bf58bb6593b7"
+    },
+    "x_sensitivity_v1.txt": {
+      "length": 41598,
+      "sha256": "4757789259cc43d11c5e7290e3fc37973fe0928ad956bafe6e3e6cd698228dd4"
+    },
+    "x_sensitivity_v2.txt": {
+      "length": 41598,
+      "sha256": "cc8db40758d2d8d4d62987a8eb0179784b4b19121c2ac34cabc6d9e2a87f5eb2"
+    }
+  }
+}

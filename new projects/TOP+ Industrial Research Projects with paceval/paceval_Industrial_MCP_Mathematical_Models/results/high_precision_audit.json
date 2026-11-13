@@ -1,0 +1,10 @@
+{
+  "independent_implementation": true,
+  "precision_digits": 80,
+  "whole_dataset_rows": 520,
+  "field_checks": 3120,
+  "composite_checks": 4680,
+  "high_precision_checks": 144,
+  "maximum_absolute_disagreement_internal": 4.336808689942018e-19,
+  "passed": true
+}

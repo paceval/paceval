@@ -1,0 +1,60 @@
+{
+  "study": "NEW two-stage MCP batch: outputs from model graphs used as inputs to 8 genuinely executed score/guard/composite graphs",
+  "api": "paceval_create_computation and paceval_evaluate_multiple_many",
+  "runtime": "paceval 4.26",
+  "variables": [
+    "v1",
+    "v2",
+    "x",
+    "y",
+    "z",
+    "temp",
+    "target",
+    "tol",
+    "raw"
+  ],
+  "graph_names": [
+    "revision_delta",
+    "target_residual",
+    "quality_score",
+    "quality_margin",
+    "version_margin",
+    "governance_score",
+    "temperature_guard",
+    "corrected_measurement"
+  ],
+  "graph_handles": [
+    "1688847776",
+    "1688835072",
+    "1688830496",
+    "1691558784",
+    "1690662224",
+    "1691110080",
+    "1690241952",
+    "1691105840"
+  ],
+  "number_of_input_records": 16,
+  "number_of_graph_outputs": 128,
+  "all_mcp_errors_zero": true,
+  "first_row_results": [
+    0.00644196479940701,
+    -0.012275288543805,
+    0.210371664033458,
+    0.789628335966542,
+    0.017558035200593,
+    0.278729996631483,
+    25,
+    0.00227528854380499
+  ],
+  "last_row_results": [
+    0.008493682452025,
+    -0.00186161001422699,
+    0.0604752072858003,
+    0.9395247927142,
+    0.015506317547975,
+    0.104910204027703,
+    25,
+    0.181861610014227
+  ],
+  "note": "Only first and last stage outputs are archived individually here. All 128 results were produced without reported MCP errors. The model is synthetic."
+}
