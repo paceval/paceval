@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "decimal_precision": 80,
+  "audited_samples_per_version": 381,
+  "independent_network_and_score_comparisons": 2286,
+  "max_absolute_difference_in_neural_output": 1.4406136529301776e-15,
+  "threshold_flips_on_audit": 0,
+  "note": "Synthetic dataset; finite-sample checks are not global error bounds"
+}

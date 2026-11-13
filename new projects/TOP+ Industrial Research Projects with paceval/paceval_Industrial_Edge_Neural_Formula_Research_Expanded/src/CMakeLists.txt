@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.18)
+project(paceval_edge_neural_formula CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(PACEVAL_RUNTIME "" CACHE FILEPATH "Absolute path to paceval shared library")
+if(NOT EXISTS "${PACEVAL_RUNTIME}")
+ message(FATAL_ERROR "Specify -DPACEVAL_RUNTIME=/path/to/libpaceval_linux_sharedLIB.so")
+endif()
+add_executable(edge_neural_formula edge_neural_formula.cpp paceval_main.cpp)
+target_compile_options(edge_neural_formula PRIVATE -O3 -Wall -Wextra -pedantic)
+target_link_libraries(edge_neural_formula PRIVATE "${PACEVAL_RUNTIME}" dl pthread)
+get_filename_component(PACEVAL_LIB_DIR "${PACEVAL_RUNTIME}" DIRECTORY)
+set_target_properties(edge_neural_formula PROPERTIES BUILD_RPATH "${PACEVAL_LIB_DIR}")
+enable_testing()
+add_test(NAME original_paceval_128 COMMAND edge_neural_formula ${CMAKE_SOURCE_DIR}/.. 128)
+add_test(NAME original_paceval_256 COMMAND edge_neural_formula ${CMAKE_SOURCE_DIR}/.. 256)
+
+# Functional and numerical audits, run after the two original-SDK C++ executions.
+find_package(Python3 COMPONENTS Interpreter QUIET)
+if(Python3_Interpreter_FOUND)
+  add_test(NAME independent_decimal_reference COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/verify_independent.py)
+  add_test(NAME recordformula_operator_trace COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/trace_neural_formulas.py)
+endif()
+
+# Batch-size validation must reject invalid values before execution.
+add_test(NAME rejects_invalid_batch COMMAND edge_neural_formula ${CMAKE_SOURCE_DIR}/.. 0)
+set_tests_properties(rejects_invalid_batch PROPERTIES WILL_FAIL TRUE)

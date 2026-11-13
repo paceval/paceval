@@ -1,0 +1,23 @@
+{
+  "project": "Industrial Edge Neural Formula Execution with paceval",
+  "date": "2026-11-13",
+  "research_scope": "Functional feasibility and mathematical equivalence, synthetic sensor data only",
+  "original_paceval_sdk_header": "4.25",
+  "external_runtime": {
+    "included_in_package": false,
+    "sha256_for_reproduction": "acf63a87df0ee822b467edbca887393d31ec0ea03562e1abf802d2512a5bfb12",
+    "platform": "Linux x86-64"
+  },
+  "verified": {
+    "ctest_cases_passed": 5,
+    "ctest_cases_total": 5,
+    "executed_graphs": 60,
+    "graph_outputs": 117897,
+    "multi_graph_batches": 148,
+    "numerical_high_precision_checks": 2286,
+    "precision_decimal_digits": 80,
+    "recordformula_trace": "PASS"
+  },
+  "clinical_or_production_certification": false,
+  "fpga_or_asic_measured": false
+}

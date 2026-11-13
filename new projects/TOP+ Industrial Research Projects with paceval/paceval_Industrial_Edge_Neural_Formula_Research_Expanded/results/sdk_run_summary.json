@@ -1,0 +1,11 @@
+{
+  "graph_count": 60,
+  "samples": 1536,
+  "model_versions": 2,
+  "batch_calls": 148,
+  "scalar_calls": 1,
+  "graph_outputs": 117897,
+  "flattened_formula_characters_total": 17177,
+  "real_paceval_sdk": true,
+  "source_dataset": "synthetic only"
+}

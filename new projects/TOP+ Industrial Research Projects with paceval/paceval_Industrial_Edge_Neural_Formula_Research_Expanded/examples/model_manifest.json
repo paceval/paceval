@@ -1,0 +1,71 @@
+{
+  "dataset_kind": "synthetic feature vectors, no real measurements",
+  "seed": 20261113,
+  "architecture": "8-8-4-1",
+  "activations": "logistic",
+  "model_training": "batch Adam, 600 epochs, binary cross entropy; train virtual bearing groups only",
+  "version_seeds": {
+    "v1": 19,
+    "v2": 31
+  },
+  "normalization": "training-group only",
+  "dataset_split": "disjoint virtual bearing identities, 32 records per bearing, shift_test at higher speed",
+  "operating_decision": "illustrative advisory only; not a calibrated failure probability",
+  "threshold": 0.5,
+  "review_width": 0.08,
+  "source": "src/train_and_export.py",
+  "v1": {
+    "train": {
+      "count": 768,
+      "accuracy_at_0.5": 0.994792,
+      "false_alarms": 1,
+      "missed_faults": 3
+    },
+    "validation": {
+      "count": 256,
+      "accuracy_at_0.5": 0.886719,
+      "false_alarms": 4,
+      "missed_faults": 25
+    },
+    "test": {
+      "count": 256,
+      "accuracy_at_0.5": 0.96875,
+      "false_alarms": 7,
+      "missed_faults": 1
+    },
+    "shift_test": {
+      "count": 256,
+      "accuracy_at_0.5": 0.910156,
+      "false_alarms": 15,
+      "missed_faults": 8
+    }
+  },
+  "v2": {
+    "train": {
+      "count": 768,
+      "accuracy_at_0.5": 0.992188,
+      "false_alarms": 1,
+      "missed_faults": 5
+    },
+    "validation": {
+      "count": 256,
+      "accuracy_at_0.5": 0.90625,
+      "false_alarms": 1,
+      "missed_faults": 23
+    },
+    "test": {
+      "count": 256,
+      "accuracy_at_0.5": 0.964844,
+      "false_alarms": 8,
+      "missed_faults": 1
+    },
+    "shift_test": {
+      "count": 256,
+      "accuracy_at_0.5": 0.917969,
+      "false_alarms": 5,
+      "missed_faults": 16
+    }
+  },
+  "feature_dataset_sha256": "3a6370e8e5ef4ff6d44395d1ec3046cf273de7205d7d6f4104d1f04346a896ca",
+  "frozen_weights_sha256": "811c07ee5897c77ae70026f64db5549a1f371b60065e5e204a92bf609a9c899e"
+}
