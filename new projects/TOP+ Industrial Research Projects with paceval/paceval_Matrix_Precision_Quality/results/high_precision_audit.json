@@ -1,0 +1,23 @@
+{
+  "reference": "mpmath independent 85 decimal arithmetic using exact IEEE754 binary64 input values",
+  "new_mcp_cases": 5,
+  "new_mcp_grid": 81,
+  "TINC_q_and_margin_inclusions_successful": true,
+  "max_mcp_vs_high_precision_error_internal_only": "0.00000000000003416255987789327264181338250637054443359374999999999999999999999999999999372660387822",
+  "max_mcp_grid_vs_high_precision_error_internal_only": "0.00000000004988858652458034725896141026169061660766601562500000000000000000000000000001110544122",
+  "recorded_original_matrix_checks": {
+    "512": {
+      "full_matrix_max_residual_internal_only": 4.773959005888173e-15,
+      "all_entries_finite": true,
+      "full_matrix_checked": true
+    },
+    "1024": {
+      "full_matrix_max_residual_internal_only": 7.327471962526033e-15,
+      "all_entries_finite": true,
+      "full_matrix_checked": true
+    }
+  },
+  "problems": [],
+  "status": "PASS",
+  "local_cpp_executable_tested": false
+}

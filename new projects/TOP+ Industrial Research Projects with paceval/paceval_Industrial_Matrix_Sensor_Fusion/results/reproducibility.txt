@@ -1,0 +1,14 @@
+Project: Programmable Matrix Mathematics for Industrial Sensor Fusion with paceval
+Date: 2026-11-13
+SDK: original paceval 4.25 C++ API and externally supplied compatible Linux .so
+Verified new complete sizes: 128 and 512; historical 1024 is reference material only
+Relevant full matrix artifacts: results/matrix_{128,512}_{original,cholesky,inverse}.f64
+Format: row-major IEEE-754 little-endian binary64
+Full matrix entries audited by NumPy/LAPACK: 16,384 and 262,144 respectively
+Synthetic sensor fusion: 16 scenarios x 2 preserved model versions = 32
+Quality function grid: 25 x 25 = 625 points, six paceval function outputs each
+Model version outcomes per 16 scenarios: 9 ACCEPT, 3 REVIEW, 4 REJECT
+Independent 80 decimal precision values checked: 56
+TINC: not executed
+Hardware performance comparison: not part of this research release
+External binary paceval runtime in GitHub ZIP: absent by design

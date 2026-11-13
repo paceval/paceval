@@ -1,0 +1,18 @@
+function_id,domain_quantity,mathematical_definition,units,execution_owner,paceval_graph_id,formula_version,api_path,reference_test,status,host_reason
+q,Multichannel quality monitoring q,a*x*x+2*b*x*y+2*c*x*z+d*y*y+2*e*y*z+f*z*z,dimensionless,paceval,1691564544,v1,MCP bulk evaluation,src/high_precision_reference.py,verified_remote,
+q_v2,Multichannel quality monitoring q_v2,a*x*x+2*b*x*y+2*c*x*z+d*y*y+2*e*y*z+f*z*z+h*(x*x+y*y+z*z),dimensionless,paceval,1690663120,v2,MCP bulk evaluation,src/high_precision_reference.py,verified_remote,
+margin_v1,Multichannel quality monitoring margin_v1,t-(a*x*x+2*b*x*y+2*c*x*z+d*y*y+2*e*y*z+f*z*z),dimensionless,paceval,1691577376,v1,MCP bulk evaluation,src/high_precision_reference.py,verified_remote,
+margin_v2,Multichannel quality monitoring margin_v2,t-(a*x*x+2*b*x*y+2*c*x*z+d*y*y+2*e*y*z+f*z*z+h*(x*x+y*y+z*z)),dimensionless,paceval,1691107120,v2,MCP bulk evaluation,src/high_precision_reference.py,verified_remote,
+sensitivity_x_v1,Multichannel quality monitoring sensitivity_x_v1,2*a*x+2*b*y+2*c*z,dimensionless,paceval,1691750624,v1,MCP bulk evaluation,src/high_precision_reference.py,verified_remote,
+sensitivity_x_v2,Multichannel quality monitoring sensitivity_x_v2,2*a*x+2*b*y+2*c*z+2*h*x,dimensionless,paceval,1691665760,v2,MCP bulk evaluation,src/high_precision_reference.py,verified_remote,
+sensitivity_z_v2,Multichannel quality monitoring sensitivity_z_v2,2*c*x+2*e*y+2*f*z+2*h*z,dimensionless,paceval,1691704400,v2,MCP bulk evaluation,src/high_precision_reference.py,verified_remote,
+normalised_radius,Multichannel quality monitoring normalised_radius,sqrt(a*x*x+2*b*x*y+2*c*x*z+d*y*y+2*e*y*z+f*z*z),dimensionless,paceval,1691721520,v1,MCP bulk evaluation,src/high_precision_reference.py,verified_remote,
+delta_v2_v1,Versioned engineering score difference,h*(x*x+y*y+z*z),dimensionless,paceval,1167640672,v2_minus_v1,MCP bulk evaluation,src/high_precision_reference.py,verified_remote,
+q_tinc,Multichannel quality monitoring q_tinc,a*x*x+2*b*x*y+2*c*x*z+d*y*y+2*e*y*z+f*z*z,dimensionless,paceval,1691744832,v1,MCP bulk evaluation TINC,src/high_precision_reference.py,verified_remote,
+margin_tinc,Multichannel quality monitoring margin_tinc,t-(a*x*x+2*b*x*y+2*c*x*z+d*y*y+2*e*y*z+f*z*z),dimensionless,paceval,1691738880,v1,MCP bulk evaluation TINC,src/high_precision_reference.py,verified_remote,
+original_matrix_generation,SPD synthetic covariance A,see source notes,dimensionless,host,archived,archived,recorded original SDK,baseline verification,prior_recorded,The archived host generated its synthetic SPD test input.
+original_pivot_dependency,General SPD pivot sequencing,see source notes,dimensionless,host,archived,archived,recorded original SDK,baseline verification,prior_recorded,"State-dependent Cholesky control flow, recorded original C++ host."
+original_cholesky_kernels,Full dense SPD factorization,see source notes,dimensionless,paceval,archived,archived,recorded original SDK,baseline verification,prior_recorded,Recorded paceval graph kernels; see original baseline source.
+original_inverse_assembly,Full dense SPD inversion,see source notes,dimensionless,paceval,archived,archived,recorded original SDK,baseline verification,prior_recorded,Recorded paceval graph kernels; see original baseline source.
+host_classification,ACCEPT/REVIEW/REJECT labels,see source notes,dimensionless,host,archived,archived,host,unit test,host_implemented,Nonmathematical operational decision from paceval margin.
+input_validation,Finite inputs and symmetric SPD precondition,see source notes,dimensionless,host,archived,archived,host,unit test,host_implemented,Host validates before calling graph.

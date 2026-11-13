@@ -1,0 +1,37 @@
+{
+  "research_date": "2026-11-13",
+  "research_name": "Programmable Matrix Mathematics for Industrial Quality Monitoring",
+  "source_512_inverse": "recorded original paceval matrix study in user-supplied PDF and archived project",
+  "new_engine": "paceval MCP 4.26",
+  "new_sdk": "Original C/C++ SDK interface from archived SDK files. Local binary unavailable for current run.",
+  "formula_handles": {
+    "q": "1691564544",
+    "q_v2": "1690663120",
+    "margin_v1": "1691577376",
+    "margin_v2": "1691107120",
+    "sensitivity_x_v1": "1691750624",
+    "sensitivity_x_v2": "1691665760",
+    "sensitivity_z_v2": "1691704400",
+    "normalised_radius": "1691721520",
+    "q_tinc": "1691744832",
+    "margin_tinc": "1691738880",
+    "delta_v2_v1": "1167640672"
+  },
+  "remote_graphs_created": 11,
+  "remote_graphs_executed": 11,
+  "remote_batch_calls_observed": 4,
+  "remote_graph_point_evaluations": 293,
+  "remote_scenarios_distinct": 86,
+  "remote_grid_size": 81,
+  "new_local_sdk_executable_tested": false,
+  "new_local_ctest_passed": 0,
+  "new_local_ctest_total": 0,
+  "TINC_sample_count": 5,
+  "data_provenance": "Results transcribed from actually returned 4.26 paceval MCP outputs; remote grid text has 10-digit decimal output formatting. TINC sample values use full returned digits. Matrix data are preserved from previous archived original local SDK execution; not newly rerun.",
+  "model_assumptions": "512-dimensional synthetic SPD covariance. Only first 3 channels carry residual. Model v2 includes an ad hoc quadratic penalty; illustrative thresholds are not a statistical test calibrated for v2. TINC bounds describe computational rounding, not measurement uncertainty.",
+  "remote_grid_formulas": [
+    "q",
+    "q_v2",
+    "delta_v2_v1"
+  ]
+}

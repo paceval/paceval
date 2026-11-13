@@ -1,0 +1,2 @@
+matrix_size,mode,paceval_output_entries,total_output_entries,batch_size,creation_seconds,native_full_seconds,paceval_eval_seconds,max_absolute_error,max_relative_error,max_error_vs_long_double,errors_over_1e-9
+128,full,16384,16384,64,0.0016749,0.000558924,0.290994622,0,0,1.38777878078145e-16,0

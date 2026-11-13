@@ -1,0 +1,20 @@
+function_id,execution_owner,formula,variables,industrial_role,api_path,executed_outputs
+cholesky_pivot,paceval,"sqrt(a)","a","SPD factorization",original_sdk_batch_api,1280
+triangular_divide,paceval,"a/b","a b","factor and triangular inverse",original_sdk_batch_api,266752
+schur_and_forward_update,paceval,"a-b*c","a b c","Cholesky and forward substitution",original_sdk_batch_api,44748032
+gram_and_vector_accumulate,paceval,"a+b*c","a b c","inverse and vector arithmetic",original_sdk_batch_api,22512832
+log_pivot,paceval,"ln(a)","a","log determinant",original_sdk_batch_api,1280
+logdet_accumulator,paceval,"a+2*b","a b","log determinant sum",original_sdk_batch_api,1280
+matrix_sum,paceval,"a+b","a b","information and covariance fusion",original_sdk_batch_api,2880
+vector_difference,paceval,"a-b","a b","sensor innovation",original_sdk_batch_api,192
+component_square,paceval,"a*a","a","sensor norm",original_sdk_batch_api,192
+quality_score_v1,paceval,"d2+0.06*((temp-25)/25)^2+0.12*radius+0.3*abs(bias)","d2 temp radius bias","versioned sensor anomaly score",original_sdk_batch_api,657
+quality_score_v2,paceval,"d2+0.09*((temp-25)/25)^2+0.18*radius+0.18*abs(bias)","d2 temp radius bias","versioned sensor anomaly score",original_sdk_batch_api,657
+quality_guard_v1,paceval,"12.592-(d2+0.06*((temp-25)/25)^2+0.12*radius+0.3*abs(bias))","d2 temp radius bias","continuous acceptance margin",original_sdk_batch_api,657
+quality_guard_v2,paceval,"12.592-(d2+0.09*((temp-25)/25)^2+0.18*radius+0.18*abs(bias))","d2 temp radius bias","continuous acceptance margin",original_sdk_batch_api,657
+score_temp_sensitivity_v1,paceval,"0.12*(temp-25)/625","d2 temp radius bias","analytic sensitivity to temperature",original_sdk_batch_api,657
+score_temp_sensitivity_v2,paceval,"0.18*(temp-25)/625","d2 temp radius bias","analytic sensitivity to temperature",original_sdk_batch_api,657
+uncertainty_radius,paceval,"sqrt(a)","a","sqrt covariance trace proxy",original_sdk_batch_api,64
+bias_magnitude,paceval,"abs(a)","a","model difference support",original_sdk_batch_api,32
+pivot_order,C++ host,dependency ordering,indices,orchestration,host,512
+SPD_independent_residual,C++ reference,matrix verification,matrices,verification,reference_only,262144

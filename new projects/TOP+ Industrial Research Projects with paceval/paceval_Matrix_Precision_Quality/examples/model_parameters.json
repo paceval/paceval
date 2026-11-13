@@ -1,0 +1,38 @@
+{
+  "description": "Synthetic 512-dimensional SPD matrix from archived original paceval execution. Three active residual channels and 509 exact zero channels; the 3x3 leading precision submatrix of the full 512x512 inverse yields the exact full quadratic form for these sparse residuals. All quantities dimensionless. Not a measurement-system calibration.",
+  "source_matrix": "results/recorded_baseline/generic_spd_512_A.f64",
+  "source_inverse": "results/recorded_baseline/generic_spd_512_inverse.f64",
+  "precision_upper_triangle": {
+    "a": 0.5951045543842769,
+    "b": 0.0027247722510673794,
+    "c": 0.002443297083458761,
+    "d": 0.5948607875393555,
+    "e": 0.0021672782484055365,
+    "f": 0.5944413912901434
+  },
+  "threshold": 7.815,
+  "penalty_h": 0.08,
+  "z_grid": 0.75,
+  "grid_x": [
+    -4,
+    -3,
+    -2,
+    -1,
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "grid_y": [
+    -4,
+    -3,
+    -2,
+    -1,
+    0,
+    1,
+    2,
+    3,
+    4
+  ]
+}

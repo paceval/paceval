@@ -1,0 +1,18 @@
+graph_id,formula,variables,role,actual_api_calls,actual_graph_outputs
+cholesky_pivot,"sqrt(a)","a","SPD factorization",1280,1280
+triangular_divide,"a/b","a b","factor and triangular inverse",2431,266752
+schur_and_forward_update,"a-b*c","a b c","Cholesky and forward substitution",12700,44748032
+gram_and_vector_accumulate,"a+b*c","a b c","inverse and vector arithmetic",7493,22512832
+log_pivot,"ln(a)","a","log determinant",1280,1280
+logdet_accumulator,"a+2*b","a b","log determinant sum",1280,1280
+matrix_sum,"a+b","a b","information and covariance fusion",480,2880
+vector_difference,"a-b","a b","sensor innovation",32,192
+component_square,"a*a","a","sensor norm",32,192
+quality_score_v1,"d2+0.06*((temp-25)/25)^2+0.12*radius+0.3*abs(bias)","d2 temp radius bias","versioned sensor anomaly score",33,657
+quality_score_v2,"d2+0.09*((temp-25)/25)^2+0.18*radius+0.18*abs(bias)","d2 temp radius bias","versioned sensor anomaly score",33,657
+quality_guard_v1,"12.592-(d2+0.06*((temp-25)/25)^2+0.12*radius+0.3*abs(bias))","d2 temp radius bias","continuous acceptance margin",33,657
+quality_guard_v2,"12.592-(d2+0.09*((temp-25)/25)^2+0.18*radius+0.18*abs(bias))","d2 temp radius bias","continuous acceptance margin",33,657
+score_temp_sensitivity_v1,"0.12*(temp-25)/625","d2 temp radius bias","analytic sensitivity to temperature",33,657
+score_temp_sensitivity_v2,"0.18*(temp-25)/625","d2 temp radius bias","analytic sensitivity to temperature",33,657
+uncertainty_radius,"sqrt(a)","a","sqrt covariance trace proxy",64,64
+bias_magnitude,"abs(a)","a","model difference support",32,32

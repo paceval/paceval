@@ -1,0 +1,6 @@
+Local original paceval SDK runtime: NOT AVAILABLE in this execution environment.
+Original paceval_main.h and paceval_main.cpp: available, retained with upstream notices.
+New matrix_precision_paceval.cpp: g++ -std=c++17 -Wall -Wextra -pedantic -fsyntax-only passed on 2026-11-13.
+Local shared-library link and local main execution: NOT RUN.
+New paceval MCP 4.26 computations: REAL, executed, results in remote_paceval_* CSV.
+Previous complete dense SPD matrices: preserved recorded original paceval results, independently checked by Python.

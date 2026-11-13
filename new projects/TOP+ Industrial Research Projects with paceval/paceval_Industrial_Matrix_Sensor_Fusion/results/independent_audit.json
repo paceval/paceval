@@ -1,0 +1,36 @@
+{
+  "matrix_checks": {
+    "128": {
+      "validated_entries": 16384,
+      "matrix_input_check": 2.220446049250313e-16,
+      "max_abs_factor_difference": 6.661338147750939e-16,
+      "max_abs_inverse_difference": 1.4432899320127035e-15,
+      "inverse_residual": 1.9984014443252818e-15,
+      "cholesky_residual": 1.5543122344752192e-15,
+      "inverse_symmetry": 0.0,
+      "paceval_graph_outputs": 1108678,
+      "log_determinant": 33.94921620746102,
+      "positive_definite": true
+    },
+    "512": {
+      "validated_entries": 262144,
+      "matrix_input_check": 2.220446049250313e-16,
+      "max_abs_factor_difference": 1.9984014443252818e-15,
+      "max_abs_inverse_difference": 3.3306690738754696e-15,
+      "inverse_residual": 4.218847493575595e-15,
+      "cholesky_residual": 4.6629367034256575e-15,
+      "inverse_symmetry": 0.0,
+      "paceval_graph_outputs": 67538758,
+      "log_determinant": 135.92334950250577,
+      "positive_definite": true
+    }
+  },
+  "sensor_cases_checked": 32,
+  "high_precision_values_checked": 56,
+  "scientific_limitations": [
+    "synthetic models",
+    "well conditioned dense SPD inputs",
+    "no certified physical measurement or real-time claim"
+  ],
+  "surface_points_checked": 625
+}

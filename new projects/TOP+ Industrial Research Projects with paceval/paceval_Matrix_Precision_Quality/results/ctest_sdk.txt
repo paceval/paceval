@@ -1,0 +1,2 @@
+CTest: NOT RUN. CMake requires externally supplied compatible libpaceval_linux_sharedLIB.so.
+No passed/failed CTest numbers are claimed.

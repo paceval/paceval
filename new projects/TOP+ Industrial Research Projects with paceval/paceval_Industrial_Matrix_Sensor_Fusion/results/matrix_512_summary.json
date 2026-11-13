@@ -1,0 +1,14 @@
+{
+  "matrix_dimension": 512,
+  "all_inverse_entries": 262144,
+  "real_paceval_graphs": 17,
+  "sdk_calls": 27137,
+  "graph_outputs": 67538758,
+  "cholesky_full_residual": 4.6629367034256575e-15,
+  "inverse_full_residual": 4.9960036108132044e-15,
+  "log_determinant": 135.92334950250577,
+  "input_trace": 668.01745245536586,
+  "fusion_scenarios": 32,
+  "historical_1024_result_not_reexecuted": true,
+  "independent_external_validation_required": true
+}

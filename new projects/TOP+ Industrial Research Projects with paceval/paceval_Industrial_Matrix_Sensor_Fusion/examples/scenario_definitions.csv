@@ -1,0 +1,4 @@
+scenario_group,scenario_indices,first_model_version,second_model_version,meaning
+baseline,0-7,1,2,small_independent_sensor_disagreement
+review,8-11,1,2,moderate_independent_sensor_disagreement
+reject,12-15,1,2,strong_independent_sensor_disagreement

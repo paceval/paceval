@@ -1,0 +1,17 @@
+{
+  "matrix_size": 1024,
+  "full_dense_spd": true,
+  "smallest_eigenvalue": 1.1662432823357747,
+  "largest_eigenvalue": 2.9616248607639,
+  "eigenvalue_condition_2": 2.5394571661174337,
+  "max_abs_A_minus_AT": 0.0,
+  "max_abs_X_minus_XT": 0.0,
+  "max_abs_Ainv_minus_numpy_inverse_all_elements": 3.3306690738754696e-15,
+  "max_abs_A_times_X_minus_I_all_elements": 7.327471962526033e-15,
+  "max_abs_numpy_cholesky_reconstruction": 8.881784197001252e-16,
+  "reference_logdet": 637.7979554918365,
+  "numpy_cholesky_s": 0.0631912739991094,
+  "numpy_inverse_s": 0.11298418799924548,
+  "reference_library": "2.3.5",
+  "verified_element_count": 1048576
+}

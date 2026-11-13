@@ -1,0 +1,4 @@
+New complete original paceval SDK runs, 13 November 2026:
+PASS original paceval SDK 4.25 n=128 cholesky_resid=1.5543e-15 inverse_resid=1.9984e-15 graphs=17 outputs=1108678 batches=8490 fusion_scenarios=32
+PASS original paceval SDK 4.25 n=512 cholesky_resid=4.6629e-15 inverse_resid=4.996e-15 graphs=17 outputs=67538758 batches=27137 fusion_scenarios=32
+Individual outputs count = number of actual paceval outputs returned, not native reference checks.

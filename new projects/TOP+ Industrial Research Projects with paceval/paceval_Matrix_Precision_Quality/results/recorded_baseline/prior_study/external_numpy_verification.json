@@ -1,0 +1,34 @@
+[
+  {
+    "n": 512,
+    "status": "PASS",
+    "numpy_cholesky_s": 0.007663327000045683,
+    "numpy_inverse_s": 0.02441692700085696,
+    "numpy_inverse_residual_max": 2.886579864025407e-15,
+    "max_abs_inverse_error_on_exported_samples": 3.3306690738754696e-16,
+    "numpy_logdet": 99.96932728613088,
+    "paceval_logdet": 99.96932728613088,
+    "logdet_abs_error": 0.0,
+    "max_abs_covariance_error_on_exported_samples": 4.440892098500626e-16,
+    "covariance_symmetry_residual": 1.8214596497756474e-16,
+    "covariance_trace_difference": 0.0,
+    "min_cholesky_diag": 1.0724956730565427,
+    "max_cholesky_diag": 1.133522018394496
+  },
+  {
+    "n": 1024,
+    "status": "PASS",
+    "numpy_cholesky_s": 0.03533319699999993,
+    "numpy_inverse_s": 0.09046422199935478,
+    "numpy_inverse_residual_max": 3.1086244689504383e-15,
+    "max_abs_inverse_error_on_exported_samples": 4.440892098500626e-16,
+    "numpy_logdet": 199.97097727551665,
+    "paceval_logdet": 199.9709772755165,
+    "logdet_abs_error": 1.4210854715202004e-13,
+    "max_abs_covariance_error_on_exported_samples": 4.440892098500626e-16,
+    "covariance_symmetry_residual": 1.8214596497756474e-16,
+    "covariance_trace_difference": 0.0,
+    "min_cholesky_diag": 1.0724692095523949,
+    "max_cholesky_diag": 1.133522018394496
+  }
+]

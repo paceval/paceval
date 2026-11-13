@@ -1,0 +1,10 @@
+shape=1024 x 1024
+rank=3
+model=A=D+U*transpose(U)
+logdet_paceval=199.9709772755165
+logdet_reference=199.9709772755165
+determinant_core=3.8043402074151857
+max_core_error=1.1102230246251565e-16
+max_AAinv_minus_I=2.2204460492503131e-16
+max_inverse_error=1.1102230246251565e-16
+max_inverse_asymmetry=8.6736173798840355e-19
