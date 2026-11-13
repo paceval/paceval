@@ -1,0 +1,15 @@
+WP047 FINAL PDF VISUAL QUALITY CONTROL | 2026-11-13
+Document: paceval_Microfluidic_Reaction_Rate_Expressions_Whitepaper_EN.pdf
+Rendered complete PDF: 14 A4 pages at 150 dpi (all pages), using pdfs skill render_pdf.py.
+Reviewed full contact sheet and pages containing detailed charts/equations.
+Checked: cover hero 2:1 aspect without distortion, title and caption, diagram panels,
+figure 05 external colorbar not overlapping heatmap, figure 08 real sensitivity points,
+legible axes and captions, equations, A4 page margins, footer numbering and chapter flow.
+After detected issues in figure 05 colorbar and figure 08 sample selection, corrected
+source scripts, rebuilt all data-dependent figures and regenerated entire PDF.
+Final layout: no visible clipped or overlapping text/figures in rendered pages.
+Image: figures/00_microfluidic_hero.png, exactly 2400x1200 sRGB, conceptual, not a computed research result.
+Scientific figures 02-10: all based on recorded original paceval CSV data.
+Figure 01: system architecture diagram, not presented as numerical data.
+GitHub README syntax and links pass automated checks, but GitHub MathJax VISUAL rendering
+was NOT tested; do not claim live GitHub rendering verification.

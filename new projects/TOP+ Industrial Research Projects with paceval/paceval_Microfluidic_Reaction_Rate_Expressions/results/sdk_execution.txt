@@ -1,0 +1,14 @@
+ORIGINAL paceval SDK executed: SUCCESS
+registered_executed_graphs=82
+graph_outputs=6809202
+multi_graph_batch_calls=2890
+scalar_calls=258
+native_state_oracle_comparisons=2160
+max_native_relative_scaled_error=0
+scenarios=12
+cells=64
+steps=1440
+dt_seconds=0.10000000000000001
+full_inventory_probe_rows=35424
+full_inventory_probe_time_steps=9
+runtime_linked_externally_not_distributed=true

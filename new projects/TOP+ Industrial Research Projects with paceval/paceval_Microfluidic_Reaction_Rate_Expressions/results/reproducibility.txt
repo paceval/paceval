@@ -1,0 +1,23 @@
+WP047 REPRODUCIBILITY RECORD | 2026-11-13
+Project: synthetic isothermal one-dimensional microfluidic A+B<->C kinetics
+Hardware target: Linux x86-64 with original compatible external paceval runtime
+C++: C++17, CMake Release, original SDK C/C++ source in src/; minimal include path normalization only
+Runtime: original libpaceval_linux_sharedLIB.so passed as external -DPACEVAL_RUNTIME, NOT redistributed
+Normal scientific reproduction:
+ cmake -S src -B build -DCMAKE_BUILD_TYPE=Release -DPACEVAL_RUNTIME=/absolute/path/to/libpaceval_linux_sharedLIB.so
+ cmake --build build -j
+ ctest --test-dir build --output-on-failure
+ ./build/microfluidic_reactor --out . --cells 64 --steps 1440
+ python3 src/verify_results.py --root .
+ python3 src/mesh_refinement.py --root . --executable build/microfluidic_reactor
+ python3 src/make_figures.py --root .
+ python3 src/make_whitepaper.py --root .
+ python3 src/check_readme_math.py
+Fixed deterministic cases: three velocities, two forward rates, two kinetic graph versions; no RNG.
+Grid 64 cells, channel length 20 mm, dx=0.3125 mm; dt=0.1 sec, duration 144 sec.
+Specimen concentration and kinetics are synthetic; no validated device-specific chemical data.
+Execution: all published numerical result figures use actual original-SDK paceval output CSV.
+Verification: independent C++ local state checks and NumPy full trajectories + 80-digit mpmath independent analytical references, mass boundary balances.
+Published PDF/README omit any CPU speed or numerical native/paceval comparison table.
+The title image is a 2400x1200 conceptual illustration, not a physics simulation.
+Additional executed original-SDK mesh refinement: 32/64/128 cells at 144 s, 12 scenarios; results/mesh_refinement.csv; all successive outlet differences decrease.

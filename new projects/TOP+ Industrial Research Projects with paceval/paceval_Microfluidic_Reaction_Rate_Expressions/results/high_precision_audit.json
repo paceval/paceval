@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "high_precision_decimal_digits": 80,
+  "high_precision_graph_samples": 35424,
+  "verified_graph_ids": 82,
+  "native_independent_trajectory_fields": 216,
+  "max_scaled_high_precision_difference_technical_audit_only": 1.70402454741368e-16,
+  "max_scaled_trajectory_difference_technical_audit_only": 0,
+  "max_absolute_molar_balance_residual_technical_audit_only": 2.177813485104707e-12,
+  "scenario_count": 12,
+  "time_steps": 1440,
+  "grid_cells": 64,
+  "scientific_scope": "synthetic isothermal cross-section-averaged 1D reactor; no CFD validation"
+}

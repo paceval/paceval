@@ -1,0 +1,12 @@
+Internal ctest changing into directory: /mnt/data/work47/build
+Test project /mnt/data/work47/build
+    Start 1: original_paceval_microreactor
+1/3 Test #1: original_paceval_microreactor ......   Passed    0.56 sec
+    Start 2: independent_numerical_validation
+2/3 Test #2: independent_numerical_validation ...   Passed    5.02 sec
+    Start 3: github_readme_math_and_links
+3/3 Test #3: github_readme_math_and_links .......   Passed    0.70 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Total Test time (real) =   6.28 sec

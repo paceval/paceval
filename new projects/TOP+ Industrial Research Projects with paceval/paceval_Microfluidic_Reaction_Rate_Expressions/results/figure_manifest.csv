@@ -1,0 +1,11 @@
+figure_number,stem,caption,provenance
+1,workflow,"Schematic of the simulated 1-D microreactor, actual paceval graph evaluation and separate independent verification.",research architecture schematic
+2,spatial_species_profiles,"Actual paceval A, B, C profiles at three times for scenario 3 (v1, u=0.25 mm/s, kf=0.032).",results-derived
+3,product_spacetime_3d,3-D spatiotemporal surface from stored finite-volume C values computed by original paceval update graphs.,results-derived
+4,reacted_fraction_flow,Outlet reaction extent for both kinetic versions and forward-rate settings (t=144 s).,results-derived
+5,outlet_product_parameter_map,End-of-run product concentration across twelve original paceval scenarios.,results-derived
+6,versioned_reaction_outcome,Paired change in product concentration after switching the active kinetics to a saturation-dependent model.,results-derived
+7,stoichiometric_inventory,Conservative species-pair inventories and cumulative boundary transport for the same paceval trajectory.,results-derived
+8,local_kinetic_sensitivities,"Recorded analytical paceval derivative samples, colored by local B concentration (scenario 4).",results-derived
+9,peclet_damkohler_map,Dimensionless operating-point map with paceval-derived outlet reaction extent.,results-derived
+10,programmable_composite_scores,Twelve actual reusable composite-score graph outputs for matched operating settings.,results-derived
