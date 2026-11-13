@@ -1,0 +1,21 @@
+WP_045 | Building Thermal Twin Cost Functions | reproducibility record
+Date: 2026-11-13
+Source: deterministic synthetic one-zone 1R1C model (WP_045 proposal)
+Execution: original paceval C++ SDK 4.25, linked against user-supplied Linux x86-64 shared runtime
+Status: successful, independent native C++ and 80-digit mpmath reference verification passed
+Canonical steps: 384 (96 hours / 900 seconds)
+Canonical grid: 7 (49 version-1 + 343 version-2 candidates)
+Formula graph count: 62 (all executed in original SDK multi-graph path)
+Cost variants: 30 = 2 baseline residual loss + 28 weighted composite functions
+Runtime: external and intentionally excluded from the GitHub archive
+Build: cmake -S src -B build -DCMAKE_BUILD_TYPE=Release -DPACEVAL_RUNTIME=/absolute/path/to/libpaceval_linux_sharedLIB.so
+Compile: cmake --build build -j
+Tests: ctest --test-dir build --output-on-failure
+Run: ./build/building_thermal_twin --out . --steps 384 --grid 7
+Audit: python3 src/verify_results.py --root .
+Plots: python3 src/make_figures.py --root . --figures figures
+Report: python3 src/make_whitepaper.py --root .
+README checks: python3 src/check_readme_math.py
+Original SDK .cpp differs from upload solely in standalone include path.
+README GitHub visual math rendering NOT independently verified; structural math and local links passed.
+Scientific interpretation: synthetic, one-step teacher-forced, not an industrial model certification.

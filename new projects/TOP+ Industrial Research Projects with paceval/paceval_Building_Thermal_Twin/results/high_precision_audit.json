@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "source": "original paceval C++ execution CSVs",
+  "mpmath_decimal_digits": 80,
+  "samples": 384,
+  "independent_high_precision_comparisons": 1438,
+  "max_scaled_error_technical_audit_only": "0.0000000000000089397868911682347693286244942246408418235161111516192853510799995494114810157506",
+  "best_v2_parameters": {
+    "UA_WperK": "210",
+    "C_JperK": "7200000",
+    "kwind_WperKmps": "50",
+    "alpha": "0.65"
+  },
+  "reference_conditions": "one-step teacher-forced forecasting; synthetic truth generated from v2; no real-building validation"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "original_paceval_graph_count": 62,
+  "multi_graph_batch_calls": 1575,
+  "batch_graph_outputs": 324868,
+  "independent_native_checks": 18834,
+  "independent_high_precision_comparisons": 1438,
+  "source_sha256": {
+    "paceval_main.h": "f68a88b658b5e4aa70487a5d927e85e27c8062a4c9c416918a4ee58059802bc8",
+    "paceval_main.cpp": "d5906ecd19019cbc403be7d38f15e3bdc855a064822a4b3922b861cda5f4e101"
+  }
+}

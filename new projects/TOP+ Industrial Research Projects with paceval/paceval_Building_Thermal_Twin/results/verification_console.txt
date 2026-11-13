@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "source": "original paceval C++ execution CSVs",
+  "mpmath_decimal_digits": 80,
+  "samples": 384,
+  "independent_high_precision_comparisons": 1438,
+  "max_scaled_error_technical_audit_only": "0.0000000000000089397868911682347693286244942246408418235161111516192853510799995494114810157506",
+  "best_v2_parameters": {
+    "UA_WperK": "210",
+    "C_JperK": "7200000",
+    "kwind_WperKmps": "50",
+    "alpha": "0.65"
+  },
+  "reference_conditions": "one-step teacher-forced forecasting; synthetic truth generated from v2; no real-building validation"
+}
+{
+  "status": "PASS",
+  "original_paceval_graph_count": 62,
+  "multi_graph_batch_calls": 1575,
+  "batch_graph_outputs": 324868,
+  "independent_native_checks": 18834,
+  "independent_high_precision_comparisons": 1438,
+  "source_sha256": {
+    "paceval_main.h": "f68a88b658b5e4aa70487a5d927e85e27c8062a4c9c416918a4ee58059802bc8",
+    "paceval_main.cpp": "d5906ecd19019cbc403be7d38f15e3bdc855a064822a4b3922b861cda5f4e101"
+  }
+}

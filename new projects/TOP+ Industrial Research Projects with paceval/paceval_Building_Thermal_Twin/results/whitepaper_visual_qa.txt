@@ -1,0 +1,17 @@
+Whitepaper pages: 12
+All 12 pages raster-rendered and inspected in contact sheet, 13 Nov 2026.
+No cropped, overlapping or outside-page text observed in final render.
+Machine page-bound checks passed for all rendered text blocks.
+
+Page 01: text chars 727, blocks 8, off-page 0
+Page 02: text chars 2766, blocks 14, off-page 0
+Page 03: text chars 1583, blocks 14, off-page 0
+Page 04: text chars 1278, blocks 14, off-page 0
+Page 05: text chars 1695, blocks 14, off-page 0
+Page 06: text chars 2314, blocks 17, off-page 0
+Page 07: text chars 678, blocks 6, off-page 0
+Page 08: text chars 658, blocks 6, off-page 0
+Page 09: text chars 748, blocks 6, off-page 0
+Page 10: text chars 761, blocks 6, off-page 0
+Page 11: text chars 1539, blocks 8, off-page 0
+Page 12: text chars 2879, blocks 19, off-page 0

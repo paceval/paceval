@@ -1,0 +1,17 @@
+WP_045 original paceval SDK execution SUCCESS
+library_original=true
+graphs_registered_and_executed=62
+batch_calls=1575
+batch_graph_outputs=324868
+scalar_calls=388
+independent_native_checks=18834
+max_scaled_diff_internal_only=6.632222808042366e-18
+samples=384
+candidate_grid=7
+best_v1_UA=270
+best_v1_C=7200000
+best_v1_cost=0.0004184301686175862
+best_v2_UA=210
+best_v2_C=7200000
+best_v2_kwind=50
+best_v2_cost=0.0001966068238467341

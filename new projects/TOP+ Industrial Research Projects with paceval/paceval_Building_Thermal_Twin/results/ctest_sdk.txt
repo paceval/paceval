@@ -1,0 +1,12 @@
+Internal ctest changing into directory: /mnt/data/WP045_Building_Thermal_Twin_Paceval_Research/_build
+Test project /mnt/data/WP045_Building_Thermal_Twin_Paceval_Research/_build
+    Start 1: building_thermal_twin_original_paceval
+1/3 Test #1: building_thermal_twin_original_paceval ......   Passed    0.05 sec
+    Start 2: building_thermal_twin_80_digit_validation
+2/3 Test #2: building_thermal_twin_80_digit_validation ...   Passed    0.99 sec
+    Start 3: building_thermal_twin_readme_math
+3/3 Test #3: building_thermal_twin_readme_math ...........   Passed    0.84 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Total Test time (real) =   1.88 sec
