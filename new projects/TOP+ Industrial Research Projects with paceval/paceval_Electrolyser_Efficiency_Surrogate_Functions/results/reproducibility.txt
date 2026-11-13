@@ -1,0 +1,33 @@
+Reproducibility manifest - WP_049 - 2026-11-13
+
+Primary input: WP_049_Electrolyser_Efficiency_Surrogate_Functions.pdf (research proposal).
+
+Original vendor SDK: paceval_main.h / paceval_main.cpp, API 4.25, preserved license headers.
+
+One relative include path is changed in paceval_main.cpp for local src/ integration.
+
+Original runtime: externally supplied Linux x86-64 libpaceval_linux_sharedLIB(4).so.
+
+Original binary excluded from project ZIP by design.
+
+C++17, CMake >=3.16, Linux x86-64, linked to original shared library.
+
+Deterministic synthetic runs: 18 scenarios x 240 steps x 60 seconds.
+
+Independent oracle: separate native C++ sampled checks + Python independent complete trajectories + 80-digit mpmath on exact binary64 inputs.
+
+All registered graph IDs have executed original paceval probe values; graph registry and machine-readable inventory present.
+
+For whole batch/scalar counts inspect results/sdk_execution.txt; all 3 CTest cases pass.
+
+Run: cmake -S src -B build -DCMAKE_BUILD_TYPE=Release -DPACEVAL_RUNTIME=/absolute/path/to/libpaceval_linux_sharedLIB.so
+
+Then cmake --build build -j; ctest --test-dir build --output-on-failure; ./build/electrolyser_twin --out . --steps 240
+
+Then python3 src/verify_results.py --root .; python3 src/make_figures.py --root .; python3 src/check_readme_math.py; python3 src/make_whitepaper.py --root .
+
+Publication: no speed or native-vs-paceval accuracy comparisons; detailed audit JSONs included.
+
+TINC not invoked. No physical calibration, gas-purity assessment, pressure safety approval, or ISO conformance.
+
+The PDF has been rendered and the pages visually inspected; GitHub rendered math not live-previewed.

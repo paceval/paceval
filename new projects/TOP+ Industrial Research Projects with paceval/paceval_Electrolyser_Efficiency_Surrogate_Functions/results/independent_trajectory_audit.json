@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "scenario_count": 18,
+  "full_path_numeric_checks": 10152,
+  "reference": "independent native Python equations; complete state and all aggregate values",
+  "max_scaled_error": 6.608766311851908e-16,
+  "tolerance": 1e-09,
+  "synthetic_only": true
+}

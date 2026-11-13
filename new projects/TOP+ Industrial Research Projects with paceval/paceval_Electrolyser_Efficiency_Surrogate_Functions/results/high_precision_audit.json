@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "precision_dps": 80,
+  "comparisons": 4860,
+  "independent_formula_implementation": true,
+  "exact_binary64_inputs": true,
+  "all_graph_ids_executed": true,
+  "worst_graph_id": "lhv_specific_identity_residual_v2",
+  "max_scaled_error": 3.552713678800501e-15,
+  "tolerance": 2e-10,
+  "clinical_or_industrial_certification": false
+}

@@ -1,0 +1,14 @@
+ORIGINAL paceval SDK execution: SUCCESS
+registered_and_executed_graphs=90
+multi_graph_batch_calls=244
+graph_batch_outputs=152550
+scalar_calls=1
+independent_native_checks=2305
+max_scaled_native_difference=6.9378193571399929e-17
+graph_inventory_probe_rows=4860
+scenarios=18
+simulation_steps=240
+model_versions=baseline-polarization,transport-corrected
+synthetic_data_only=true
+TINC_not_executed=true
+external_library_not_redistributed=true
