@@ -1,0 +1,25 @@
+WP_046 | original-paceval deterministic experiment
+Date: 2026-11-13
+Model: synthetic one-compartment oral depot plus optional IV infusion
+C++: C++17 original SDK headers, CMake; 42 virtual profiles; 168 scenarios
+Parameters: 384 steps, h=0.25 h, 96 h, repeated events every 24 h
+Exact dose schedule and all fictional model assumptions documented in src/pharmacokinetic_kernels.cpp
+Primary generated results are obtained from genuine paceval multi-graph API calls.
+External runtime is deliberately excluded from the source distribution.
+Original runtime name when executed: libpaceval_linux_sharedLIB(4).so
+Build and test command: cmake -S src -B build -DCMAKE_BUILD_TYPE=Release -DPACEVAL_RUNTIME=/path/to/libpaceval_linux_sharedLIB.so ; cmake --build build -j ; ctest --test-dir build --output-on-failure
+Canonical reproducibility: ./build/pharmacokinetic_kernels --out . --steps 384 --patients 42
+Independent oracle: python3 src/verify_results.py --root .
+Figures: python3 src/make_figures.py --root . --figures figures
+Whitepaper: python3 src/make_whitepaper.py --root .
+README structural QA: python3 src/check_readme_math.py
+Independent verification result: PASS (9,932 checks; all 94 graph families covered)
+Figures are diagrams of actual original paceval CSV data except conceptual figure 01 workflow and conceptual cover.
+No clinical validation; no genuine patient data; arbitrary non-therapeutic score ceilings.
+SHA-256 file digests:
+d5906ecd19019cbc403be7d38f15e3bdc855a064822a4b3922b861cda5f4e101  src/paceval_main.cpp
+f68a88b658b5e4aa70487a5d927e85e27c8062a4c9c416918a4ee58059802bc8  src/paceval_main.h
+ab316f329cd736a50f4024fc0e71a8ca7c5761f34cafc366ceb5614baa732045  src/pharmacokinetic_kernels.cpp
+607401e5031afd133f10a95fb619f6d2f0685f6a01c33d2d5ee1af256e48e834  results/scenario_summary.csv
+64c63f1121026d7da59720013fc43ce76338a06ab70d41c8d1827a9a8314218e  examples/synthetic_virtual_profiles.csv
+0d3d00b3fb598179127850615335ff1eb86b76eeb2715d0bf7297237bcc5c5eb  results/formula_registry.csv

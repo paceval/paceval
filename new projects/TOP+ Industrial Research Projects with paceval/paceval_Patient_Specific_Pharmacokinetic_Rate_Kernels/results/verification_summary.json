@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "reference_precision_digits": 80,
+  "high_precision_graph_checks": 9776,
+  "full_trajectory_quantity_checks": 156,
+  "total_high_precision_checks": 9932,
+  "full_trajectories": 12,
+  "graphs_covered": 94,
+  "scenario_rows": 168,
+  "model": "synthetic one-compartment exact-transition oral and constant-rate IV"
+}

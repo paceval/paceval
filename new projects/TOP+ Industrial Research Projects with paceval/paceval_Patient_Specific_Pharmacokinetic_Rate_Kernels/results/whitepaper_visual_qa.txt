@@ -1,0 +1,18 @@
+WP046 final PDF QA PASS | 2026-11-13
+12 A4 pages rendered with pdftoppm at 130 dpi, contact sheet and detailed pages inspected.
+All extracted text spans within conservative A4 page bounds.
+Mathematics visually inspected (page 4) and 3D labeling checked (page 7).
+Original hero is RGB 2400 x 1200 (2:1), shown proportionally and labeled as concept illustration.
+PDF is a non-clinical original-SDK research demonstration.
+page 1: visually rendered; 25 text spans within page bounds; 1 embedded images
+page 2: visually rendered; 48 text spans within page bounds; 0 embedded images
+page 3: visually rendered; 36 text spans within page bounds; 1 embedded images
+page 4: visually rendered; 21 text spans within page bounds; 7 embedded images
+page 5: visually rendered; 56 text spans within page bounds; 0 embedded images
+page 6: visually rendered; 28 text spans within page bounds; 1 embedded images
+page 7: visually rendered; 15 text spans within page bounds; 2 embedded images
+page 8: visually rendered; 12 text spans within page bounds; 2 embedded images
+page 9: visually rendered; 17 text spans within page bounds; 2 embedded images
+page 10: visually rendered; 13 text spans within page bounds; 2 embedded images
+page 11: visually rendered; 46 text spans within page bounds; 0 embedded images
+page 12: visually rendered; 50 text spans within page bounds; 0 embedded images

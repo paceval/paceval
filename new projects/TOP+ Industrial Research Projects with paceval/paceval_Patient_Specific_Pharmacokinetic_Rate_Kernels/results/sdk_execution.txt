@@ -1,0 +1,14 @@
+WP_046 original paceval SDK execution SUCCESS
+original_library=true
+registered_and_executed_graphs=94
+multi_graph_batch_calls=417
+paceval_graph_outputs=1537542
+scalar_checks=1014
+native_cpp_checks=2286
+internal_max_scaled_difference=0
+virtual_profiles=42
+scenarios=168
+time_steps=384
+dt_hours=0.25
+multi_graph_probe_rows=39104
+periodic_full_graph_rows=5376
