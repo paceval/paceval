@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "independent_decimal_digits": 80,
+  "checked_values": 1096,
+  "checked_surface_rows": 137,
+  "maximum_absolute_difference_internal": 2.924474508890498e-13,
+  "source": "synthetic_spectral_surface.csv",
+  "scope": "synthetic paceval spectra only; no astronomy class inference"
+}

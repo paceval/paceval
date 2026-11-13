@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "decimal_precision": 80,
+  "independent_values_checked": 752,
+  "maximum_scaled_absolute_difference": 4.453162041583002e-16,
+  "source_data": "ORIGINAL_2FLE_FITS_PACEVAL_CSV",
+  "astrophysical_likelihood_verified": false
+}

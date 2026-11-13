@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "original_fits_sha256": "26ed9876420b8c4341f6e634aa70b57722b8107bc1ee56f1a0ed81fb6ba2c543",
+  "original_FITS_450_rows": 450,
+  "original_FITS_columns": 38,
+  "matched_new_60": 60,
+  "original_FITS_ASSOC3_38_and_22": true,
+  "real_paceval_16_graphs": true,
+  "batch_outputs": 152560,
+  "independent_native_checks": 7216,
+  "independent_80_digit_checks": 752,
+  "replayed_files_identical": 8,
+  "pdf_pages": 14,
+  "science_diagrams": 10,
+  "README_math_and_local_file_links": "PASS",
+  "no_instrument_response_likelihood_claimed": true
+}

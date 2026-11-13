@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/wp039_fermi_build
+Test project /mnt/data/wp039_fermi_build
+    Start 1: fermi_2fle_real_sdk
+1/1 Test #1: fermi_2fle_real_sdk ..............   Passed    0.14 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.14 sec

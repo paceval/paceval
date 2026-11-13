@@ -1,0 +1,13 @@
+{
+  "replay_status": "PASS",
+  "files": {
+    "examples/real_450_original_fits.csv": true,
+    "examples/real_60_original_fits.csv": true,
+    "examples/real_450_paceval_consistency.csv": true,
+    "examples/real_60_paceval_spectral_samples.csv": true,
+    "examples/paceval_curvature_sensitivity_surface_HYPOTHETICAL.csv": true,
+    "examples/paceval_formula_registry.csv": true,
+    "results/original_fits_catalog_summary.txt": true,
+    "results/math_execution_inventory.csv": true
+  }
+}

@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/paceval_Fermi_2FLE_Real_Catalog_Research/build
+Test project /mnt/data/paceval_Fermi_2FLE_Real_Catalog_Research/build
+    Start 1: original_fits_real_sdk
+1/1 Test #1: original_fits_real_sdk ...........   Passed    0.07 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.07 sec

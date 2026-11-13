@@ -1,0 +1,20 @@
+function,owner,execution,validation,meaning
+differential_powerlaw,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Published FITS power-law formula evaluated at E"
+spectral_energy_distribution,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"E squared times fitted differential flux"
+pivot_normalized_ratio,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"F(E)/N"
+log_differential_flux,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Logarithm of differential flux"
+index_sensitivity_log_flux,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Derivative of log flux with respect to g"
+catalog_powerlaw_photon_integral,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Analytical PL 20..200 MeV integral"
+catalog_powerlaw_energy_integral,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Analytical energy flux 20..200 MeV integral"
+independent_errors_fractional,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Diagnostic quadrature ignores N-g covariance"
+independent_errors_flux,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Diagnostic only, not calibrated uncertainty"
+plus_one_index_error,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Index-only sensitivity curve"
+minus_one_index_error,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Index-only sensitivity curve"
+illustrative_curved_spectrum,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Hypothetical q; never fitted to real photons"
+illustrative_log_flux_ratio,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Log of toy-curved over catalog PL"
+illustrative_curvature_sensitivity,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Derivative wrt hypothetical curvature parameter"
+localization_95_ellipse_area,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Small-angle planar area of 95-percent location ellipse"
+signal_to_pivot_ratio,paceval,paceval_dGetMultipleComputationsResultsExt,independent_C++_and_mpmath,"Energy / fitted pivot"
+read_original_FITS,CFITSIO,read columns and maintain source provenance,verified 450 rows,not mathematical execution
+select_exact_new_60,C++ host,match source names to previous V4 report,crosschecked 60 and ASSOC3,classification not inferred
+photon_IRF_folding,NOT_PERFORMED,requires event spacecraft exposure and IRFs,not tested,not inferable from this FITS

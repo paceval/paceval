@@ -1,0 +1,4 @@
+SOURCE: Fermi_2FLE_Research_Proposal_V4_DE.pdf
+SHA256: 04ca6ae75d188a8bfed025e8522c1925c609d01e482c5f3168a575f4e0b559e3
+TRANSCRIPTION: 60 source metadata records from Appendix A, pp. 11-13; NOT full NASA FITS or photon events
+COUNTS: 60 total; 22 without ASSOC3; 38 with unconfirmed ASSOC3; 10 with 3 useful bands

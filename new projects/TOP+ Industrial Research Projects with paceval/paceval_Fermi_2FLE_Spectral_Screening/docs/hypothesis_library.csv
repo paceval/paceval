@@ -1,0 +1,30 @@
+hypothesis_id,hypothesis_family,description,required_test
+N01,natural,FSRQ / blazar,radio WISE optical variability and GeV
+N02,natural,BL Lac / unknown blazar,radio X-ray IR GeV
+N03,natural,Other AGN or quasar,optical spectra redshift SED
+N04,natural,Radio galaxy jets lobes,resolved radio jets GeV
+N05,natural,Star-forming galaxy,radio infrared star-formation
+N06,natural,Young pulsar,barycentric timing gamma and radio
+N07,natural,Millisecond pulsar,radio gamma timing
+N08,natural,Pulsar-wind nebula,X-ray radio spatial extension
+N09,natural,Supernova remnant,radio shell CO HI gamma
+N10,natural,Gamma-ray binary microquasar,orbital periodicity optical X-ray
+N11,natural,Magnetar transient,bursts timing X-ray
+N12,natural,Gamma-ray burst afterglow,GBM Swift temporally localized event
+N13,natural,Compact object accretion,X-ray timing and spectral evidence
+N14,natural,Star cluster multiple MSPs,clusters X-ray radio timing
+N15,natural,Cosmic rays interstellar gas,CO HI diffuse templates
+N16,natural,Inverse-Compton or bremsstrahlung,gas radiation field templates
+N17,natural,Unresolved source population,PSF spatial source deblending
+N18,natural,Solar lunar moving source,ephemeris and event filtering
+N19,natural,Dark matter natural alternative,spatial halo templates and systematic studies
+N20,natural,New natural particle plasma emission,multimodal predictive physical model
+N21,natural,Diffuse foreground mismatch,alternate diffuse models ROI fits
+N22,natural,Detector reconstruction artifact,IRF event-class and null region controls
+T01,hypothetical_technology,Narrow energetic line pattern,photon energy-dispersion and natural-line controls
+T02,hypothetical_technology,Precisely periodic modulation,photon times barycentric timing red noise
+T03,hypothetical_technology,Directional narrow gamma beam,repeatability position broadband flux
+T04,hypothetical_technology,Antimatter engine byproducts,physical model broadband energy budget
+T05,hypothetical_technology,Engineered compact object energy extraction,natural compact-source alternatives
+T06,hypothetical_technology,Cross-band encoded correlation,radio X-ray optical gamma trials corrected
+T07,hypothetical_technology,Artificial repetitive transient burst,temporal injection recovery transient controls

@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "pdf_source_rows": 60,
+  "synthetic_recovery_rows": 60,
+  "spectral_scan_rows": 3660,
+  "spectral_surface_rows": 4225,
+  "all_hypothesis_source_pairs_not_tested": 1740,
+  "full_synthetic_argmax_oracle_checked_sources": 60,
+  "original_fits_present": false,
+  "claim_of_technosignature": false
+}

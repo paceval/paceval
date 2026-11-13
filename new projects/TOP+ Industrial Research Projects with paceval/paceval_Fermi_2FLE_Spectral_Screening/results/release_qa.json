@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "release_date": "2026-11-13",
+  "whitepaper_pages": 14,
+  "hero_dimensions": [
+    2400,
+    1200
+  ],
+  "scientific_figure_pairs": 10,
+  "original_paceval_sdk_real_test": "PASS",
+  "real_sdk_full_run": "PASS",
+  "replayed_files_identical": 8,
+  "readme_math_and_link_static_check": "PASS",
+  "pdf_page_images_in_bounds": "PASS",
+  "pdf_layout_visual_manual_review": "reviewed 14-page contact sheet plus full-size math and plot pages; no recognizable overlap",
+  "original_2FLE_FITS_included": false,
+  "scientific_scope": "metadata transcription plus paceval synthetic methods only"
+}
