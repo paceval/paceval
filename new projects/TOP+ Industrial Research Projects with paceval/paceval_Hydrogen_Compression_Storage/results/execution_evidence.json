@@ -1,0 +1,19 @@
+{
+  "research": "WP24 Hydrogen Compression and Storage Thermal Envelope",
+  "sdk_mode": "original paceval local C++ SDK (no MCP)",
+  "model_versions": 2,
+  "compressor_scenarios_per_version": 100000,
+  "compressor_model_cases": 200000,
+  "compressor_stage_visits": 500000,
+  "storage_profiles_per_version": 16,
+  "storage_step_evaluations": 5760,
+  "created_unique_graphs": 49,
+  "executed_unique_graphs": 49,
+  "scalar_calls": 416,
+  "multi_graph_batch_calls": 12016,
+  "graph_point_evaluations": 9081056,
+  "independent_native_checks": 6046722,
+  "storage_limit_exceedance_steps": 1052,
+  "v1_status": {"ACCEPT": 52602, "REVIEW": 6927, "REJECT": 40471},
+  "v2_status": {"ACCEPT": 51970, "REVIEW": 7135, "REJECT": 40895}
+}

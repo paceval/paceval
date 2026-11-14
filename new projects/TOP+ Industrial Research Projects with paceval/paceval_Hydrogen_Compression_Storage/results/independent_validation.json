@@ -1,0 +1,8 @@
+{
+  "high_precision_decimal_digits": 80,
+  "independent_high_precision_checks": 4494,
+  "storage_ideal_gas_identity_checks": 5760,
+  "full_csv_status_rows": 200000,
+  "maximum_absolute_difference_in_tested_fields": 4.846455578605708e-12,
+  "status": "PASS"
+}
