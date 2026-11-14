@@ -1,0 +1,60 @@
+graph_id,version,stage,expression,api,units
+v1_center_rate,v1,primary,"((33000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*1)",dGetMultipleComputationsResultsExt,nm_per_min
+v1_film_gradient_x,v1,primary,"((33000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*(0.050*x-0.012+0.004*y))",dGetMultipleComputationsResultsExt,nm_per_min_per_normalized_x
+v1_film_gradient_y,v1,primary,"((33000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*(0.050*y+0.010+0.004*x))",dGetMultipleComputationsResultsExt,nm_per_min_per_normalized_y
+v1_film_rate,v1,primary,"((33000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*(1+0.025*(sqr(x)+sqr(y))-0.012*x+0.010*y+0.004*x*y))",dGetMultipleComputationsResultsExt,nm_per_min
+v1_film_sensitivity_chemistry,v1,primary,"(((33000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*(1+0.025*(sqr(x)+sqr(y))-0.012*x+0.010*y+0.004*x*y))*0.12/(1+0.12*(chem-1)))",dGetMultipleComputationsResultsExt,nm_per_min_per_index
+v1_film_sensitivity_pressure,v1,primary,"(((33000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*(1+0.025*(sqr(x)+sqr(y))-0.012*x+0.010*y+0.004*x*y))*0.34/p)",dGetMultipleComputationsResultsExt,nm_per_min_per_mTorr
+v1_film_sensitivity_temperature,v1,primary,"(((33000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*(1+0.025*(sqr(x)+sqr(y))-0.012*x+0.010*y+0.004*x*y))*12800/(8.314462618*sqr(temp)))",dGetMultipleComputationsResultsExt,nm_per_min_per_kelvin
+v1_mask_rate,v1,primary,"((7000*exp(-13800/(8.314462618*temp))*(p/30)^0.20*(1+0.035*(chem-1))*(1+0.10*(bias-1)))*(1+0.012*(sqr(x)+sqr(y))+0.006*x-0.003*y))",dGetMultipleComputationsResultsExt,nm_per_min
+v1_bounded_film_fraction,v1,secondary,"(0 max (1 min ((film*etch)/filmzero)))",dGetMultipleComputationsResultsExt,fraction
+v1_center_relative_deviation,v1,secondary,"((film-center)/center)",dGetMultipleComputationsResultsExt,fraction
+v1_depth_margin,v1,secondary,"(depthtol-abs(((film*etch)-target)))",dGetMultipleComputationsResultsExt,nm
+v1_depth_residual,v1,secondary,"((film*etch)-target)",dGetMultipleComputationsResultsExt,nm
+v1_etch_depth,v1,secondary,"(film*etch)",dGetMultipleComputationsResultsExt,nm
+v1_film_rate_squared,v1,secondary,"sqr(film)",dGetMultipleComputationsResultsExt,nm2_per_min2
+v1_film_remaining,v1,secondary,"(filmzero-(film*etch))",dGetMultipleComputationsResultsExt,nm
+v1_mask_erosion,v1,secondary,"(mask*etch)",dGetMultipleComputationsResultsExt,nm
+v1_mask_margin,v1,secondary,"((maskzero-(mask*etch))-maskmin)",dGetMultipleComputationsResultsExt,nm
+v1_mask_remaining,v1,secondary,"(maskzero-(mask*etch))",dGetMultipleComputationsResultsExt,nm
+v1_mask_utilization,v1,secondary,"((mask*etch)/maskzero)",dGetMultipleComputationsResultsExt,fraction
+v1_minimum_relative_margin,v1,secondary,"((((film/(mask max 0.00000001))-smin)/smin) min (((maskzero-(mask*etch))-maskmin)/maskzero))",dGetMultipleComputationsResultsExt,fraction
+v1_quality_guard,v1,secondary,"((((sqr(x)+sqr(y)) <= 1) AND (((film/(mask max 0.00000001))-smin) >= 0)) AND ((((maskzero-(mask*etch))-maskmin) >= 0) AND ((depthtol-abs(((film*etch)-target))) >= 0)) AND (((0.08-abs(((film-center)/center))) >= 0) AND ((qmax-(0.48*sqr(((film*etch)-target)/target)+0.23*sqr(((film-center)/center)/0.08)+0.18*sqr((0 max (smin-(film/(mask max 0.00000001))))/smin)+0.11*sqr((mask*etch)/maskzero))) >= 0)))",dGetMultipleComputationsResultsExt,boolean
+v1_quality_margin,v1,secondary,"(qmax-(0.48*sqr(((film*etch)-target)/target)+0.23*sqr(((film-center)/center)/0.08)+0.18*sqr((0 max (smin-(film/(mask max 0.00000001))))/smin)+0.11*sqr((mask*etch)/maskzero)))",dGetMultipleComputationsResultsExt,dimensionless
+v1_quality_score,v1,secondary,"(0.48*sqr(((film*etch)-target)/target)+0.23*sqr(((film-center)/center)/0.08)+0.18*sqr((0 max (smin-(film/(mask max 0.00000001))))/smin)+0.11*sqr((mask*etch)/maskzero))",dGetMultipleComputationsResultsExt,dimensionless
+v1_radial_edge_indicator,v1,secondary,"exp(-sqr(((sqr(x)+sqr(y))-0.64)/0.18))",dGetMultipleComputationsResultsExt,fraction
+v1_radial_margin,v1,secondary,"(1-(sqr(x)+sqr(y)))",dGetMultipleComputationsResultsExt,fraction
+v1_selectivity,v1,secondary,"(film/(mask max 0.00000001))",dGetMultipleComputationsResultsExt,ratio
+v1_selectivity_margin,v1,secondary,"((film/(mask max 0.00000001))-smin)",dGetMultipleComputationsResultsExt,ratio
+v1_uniformity_margin,v1,secondary,"(0.08-abs(((film-center)/center)))",dGetMultipleComputationsResultsExt,fraction
+v2_center_rate,v2,primary,"((34000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*(1+0.025*exp(-sqr((0-0.64)/0.18))))",dGetMultipleComputationsResultsExt,nm_per_min
+v2_film_gradient_x,v2,primary,"((34000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*(0.030*x-0.008+0.004*y+0.025*exp(-sqr(((sqr(x)+sqr(y))-0.64)/0.18))*(-2*((sqr(x)+sqr(y))-0.64)/sqr(0.18))*2*x))",dGetMultipleComputationsResultsExt,nm_per_min_per_normalized_x
+v2_film_gradient_y,v2,primary,"((34000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*(0.030*y+0.009+0.004*x+0.025*exp(-sqr(((sqr(x)+sqr(y))-0.64)/0.18))*(-2*((sqr(x)+sqr(y))-0.64)/sqr(0.18))*2*y))",dGetMultipleComputationsResultsExt,nm_per_min_per_normalized_y
+v2_film_rate,v2,primary,"((34000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*(1+0.015*(sqr(x)+sqr(y))-0.008*x+0.009*y+0.004*x*y+0.025*exp(-sqr(((sqr(x)+sqr(y))-0.64)/0.18))))",dGetMultipleComputationsResultsExt,nm_per_min
+v2_film_sensitivity_chemistry,v2,primary,"(((34000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*(1+0.015*(sqr(x)+sqr(y))-0.008*x+0.009*y+0.004*x*y+0.025*exp(-sqr(((sqr(x)+sqr(y))-0.64)/0.18))))*0.12/(1+0.12*(chem-1)))",dGetMultipleComputationsResultsExt,nm_per_min_per_index
+v2_film_sensitivity_pressure,v2,primary,"(((34000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*(1+0.015*(sqr(x)+sqr(y))-0.008*x+0.009*y+0.004*x*y+0.025*exp(-sqr(((sqr(x)+sqr(y))-0.64)/0.18))))*0.34/p)",dGetMultipleComputationsResultsExt,nm_per_min_per_mTorr
+v2_film_sensitivity_temperature,v2,primary,"(((34000*exp(-12800/(8.314462618*temp))*(p/30)^0.34*(1+0.12*(chem-1))*(1+0.08*(bias-1)))*(1+0.015*(sqr(x)+sqr(y))-0.008*x+0.009*y+0.004*x*y+0.025*exp(-sqr(((sqr(x)+sqr(y))-0.64)/0.18))))*12800/(8.314462618*sqr(temp)))",dGetMultipleComputationsResultsExt,nm_per_min_per_kelvin
+v2_mask_rate,v2,primary,"((7300*exp(-13800/(8.314462618*temp))*(p/30)^0.20*(1+0.035*(chem-1))*(1+0.10*(bias-1)))*(1+0.016*(sqr(x)+sqr(y))+0.004*x-0.005*y+0.006*exp(-sqr(((sqr(x)+sqr(y))-0.64)/0.18))))",dGetMultipleComputationsResultsExt,nm_per_min
+v2_bounded_film_fraction,v2,secondary,"(0 max (1 min ((film*etch)/filmzero)))",dGetMultipleComputationsResultsExt,fraction
+v2_center_relative_deviation,v2,secondary,"((film-center)/center)",dGetMultipleComputationsResultsExt,fraction
+v2_depth_margin,v2,secondary,"(depthtol-abs(((film*etch)-target)))",dGetMultipleComputationsResultsExt,nm
+v2_depth_residual,v2,secondary,"((film*etch)-target)",dGetMultipleComputationsResultsExt,nm
+v2_etch_depth,v2,secondary,"(film*etch)",dGetMultipleComputationsResultsExt,nm
+v2_film_rate_squared,v2,secondary,"sqr(film)",dGetMultipleComputationsResultsExt,nm2_per_min2
+v2_film_remaining,v2,secondary,"(filmzero-(film*etch))",dGetMultipleComputationsResultsExt,nm
+v2_mask_erosion,v2,secondary,"(mask*etch)",dGetMultipleComputationsResultsExt,nm
+v2_mask_margin,v2,secondary,"((maskzero-(mask*etch))-maskmin)",dGetMultipleComputationsResultsExt,nm
+v2_mask_remaining,v2,secondary,"(maskzero-(mask*etch))",dGetMultipleComputationsResultsExt,nm
+v2_mask_utilization,v2,secondary,"((mask*etch)/maskzero)",dGetMultipleComputationsResultsExt,fraction
+v2_minimum_relative_margin,v2,secondary,"((((film/(mask max 0.00000001))-smin)/smin) min (((maskzero-(mask*etch))-maskmin)/maskzero))",dGetMultipleComputationsResultsExt,fraction
+v2_quality_guard,v2,secondary,"((((sqr(x)+sqr(y)) <= 1) AND (((film/(mask max 0.00000001))-smin) >= 0)) AND ((((maskzero-(mask*etch))-maskmin) >= 0) AND ((depthtol-abs(((film*etch)-target))) >= 0)) AND (((0.08-abs(((film-center)/center))) >= 0) AND ((qmax-(0.48*sqr(((film*etch)-target)/target)+0.23*sqr(((film-center)/center)/0.08)+0.18*sqr((0 max (smin-(film/(mask max 0.00000001))))/smin)+0.11*sqr((mask*etch)/maskzero))) >= 0)))",dGetMultipleComputationsResultsExt,boolean
+v2_quality_margin,v2,secondary,"(qmax-(0.48*sqr(((film*etch)-target)/target)+0.23*sqr(((film-center)/center)/0.08)+0.18*sqr((0 max (smin-(film/(mask max 0.00000001))))/smin)+0.11*sqr((mask*etch)/maskzero)))",dGetMultipleComputationsResultsExt,dimensionless
+v2_quality_score,v2,secondary,"(0.48*sqr(((film*etch)-target)/target)+0.23*sqr(((film-center)/center)/0.08)+0.18*sqr((0 max (smin-(film/(mask max 0.00000001))))/smin)+0.11*sqr((mask*etch)/maskzero))",dGetMultipleComputationsResultsExt,dimensionless
+v2_radial_edge_indicator,v2,secondary,"exp(-sqr(((sqr(x)+sqr(y))-0.64)/0.18))",dGetMultipleComputationsResultsExt,fraction
+v2_radial_margin,v2,secondary,"(1-(sqr(x)+sqr(y)))",dGetMultipleComputationsResultsExt,fraction
+v2_selectivity,v2,secondary,"(film/(mask max 0.00000001))",dGetMultipleComputationsResultsExt,ratio
+v2_selectivity_margin,v2,secondary,"((film/(mask max 0.00000001))-smin)",dGetMultipleComputationsResultsExt,ratio
+v2_uniformity_margin,v2,secondary,"(0.08-abs(((film-center)/center)))",dGetMultipleComputationsResultsExt,fraction
+summary_wafer_coefficient_variation,summary,aggregation,"(100*sqrt((mask/film)-sqr(center/film))/(center/film))",dGetMultipleComputationsResultsExt,percent
+summary_wafer_mean_rate,summary,aggregation,"(film/mask)",dGetMultipleComputationsResultsExt,nm_per_min
+summary_wafer_nonuniformity,summary,aggregation,"(100*(mask-film)/(2*center))",dGetMultipleComputationsResultsExt,percent

@@ -1,0 +1,14 @@
+{
+  "project": "WP06 Semiconductor Plasma Etch Uniformity and Selectivity Mapping",
+  "runtime": "original paceval SDK 4.25 with compatible Linux shared library",
+  "synthetic": true,
+  "recipe_count": 25,
+  "recipe_version_count": 2,
+  "wafer_points_per_recipe": 4096,
+  "total_model_point_rows": 204800,
+  "unique_graphs_created": 59,
+  "unique_graphs_executed": 59,
+  "batch_calls": 1750,
+  "scalar_calls": 0,
+  "graph_point_evaluations": 5734550
+}

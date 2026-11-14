@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "source": "Independent NumPy vectorized model and explicit mpmath model, not paceval expression parsing",
+  "point_rows": 204800,
+  "functions_checked": 22,
+  "elementwise_function_checks": 4505600,
+  "summary_checks": 500,
+  "high_precision_80_digit_values": 2048,
+  "max_abs_differences_in_private_audit": {
+    "filmRateNmPerMin": 6.821210263296962e-13,
+    "maskRateNmPerMin": 6.394884621840902e-14,
+    "centerRateNmPerMin": 5.684341886080801e-13,
+    "filmDepthNm": 5.343281372915953e-12,
+    "maskErosionNm": 5.400124791776761e-13,
+    "selectivity": 1.0658141036401503e-14,
+    "relativeDeviation": 6.522560269672795e-16,
+    "filmRemainingNm": 9.379164112033322e-13,
+    "maskRemainingNm": 5.115907697472721e-13,
+    "depthResidualNm": 1.0800249583553523e-12,
+    "depthMarginNm": 1.0800249583553523e-12,
+    "selectivityMargin": 7.327471962526033e-15,
+    "maskMarginNm": 1.2789769243681803e-13,
+    "uniformityMargin": 6.522560269672795e-16,
+    "qualityScore": 1.6653345369377348e-15,
+    "qualityMargin": 1.7208456881689926e-15,
+    "booleanGate": 0.0,
+    "gradientX": 8.86402062860725e-13,
+    "gradientY": 9.094947017729282e-13,
+    "sensitivityTemp": 7.993605777301127e-15,
+    "sensitivityPressure": 7.549516567451064e-15,
+    "sensitivityChemistry": 7.815970093361102e-14
+  },
+  "max_abs_high_precision_in_private_audit": 3.183231456205249e-12,
+  "models": [
+    1,
+    2
+  ],
+  "recipes": 25,
+  "quality_accept_count": 14351,
+  "quality_reject_count": 190449
+}
