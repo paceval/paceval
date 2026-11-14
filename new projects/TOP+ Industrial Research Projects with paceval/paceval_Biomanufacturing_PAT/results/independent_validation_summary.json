@@ -1,0 +1,33 @@
+{
+  "reference_precision_decimal_digits": 90,
+  "audit_checks": 533,
+  "audit_failures": 3,
+  "regular_numerical_checks": 515,
+  "tinc_samples": 18,
+  "tinc_reported_decimal_inclusions": 15,
+  "tinc_ambiguous_or_noninclusive_reported_bounds": 3,
+  "recorded_outputs_rounded_significant_digits": 13,
+  "maximum_absolute_recorded_decimal_difference": "4.7974522847e-12",
+  "status": "PARTIAL (rounded TINC outputs require typed-double verification)",
+  "failures": [
+    [
+      "tinc",
+      6,
+      "v2_score",
+      "0.0001000000000000000454498"
+    ],
+    [
+      "tinc",
+      7,
+      "v2_score",
+      "-0.0001000000000000000454498"
+    ],
+    [
+      "tinc",
+      11,
+      "v2_score",
+      "-0.0005000000000000000104083"
+    ]
+  ],
+  "note": "Reference uses exact IEEE binary64 inputs. Three returned TINC score intervals collapse to identical printed decimal endpoints and do not enclose the exact binary-input mathematical value when interpreted literally; typed SDK bounds may differ and require local execution."
+}

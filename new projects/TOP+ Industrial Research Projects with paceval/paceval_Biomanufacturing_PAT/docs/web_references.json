@@ -1,0 +1,42 @@
+[
+  {
+    "title": "FDA 2004 PAT Guidance",
+    "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/pat-framework-innovative-pharmaceutical-development-manufacturing-and-quality-assurance",
+    "year": "2004"
+  },
+  {
+    "title": "FDA ICH Q13, Continuous Manufacturing",
+    "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/q13-continuous-manufacturing-drug-substances-and-drug-products",
+    "year": "2023"
+  },
+  {
+    "title": "Bioreactor Sensor Benchmark",
+    "url": "https://doi.org/10.3303/CET25117018",
+    "year": "2025"
+  },
+  {
+    "title": "Real-Time OUR Monitoring for Antibody Production",
+    "url": "https://www.sciencedirect.com/science/article/pii/S1369703X2400250X",
+    "year": "2024"
+  },
+  {
+    "title": "Optical Fiber pH and DO Sensors",
+    "url": "https://doi.org/10.3390/s26010010",
+    "year": "2025/2026"
+  },
+  {
+    "title": "Raman PAT Soft-Sensor Review",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41420293/",
+    "year": "2025"
+  },
+  {
+    "title": "paceval Original API",
+    "url": "https://paceval.com/api/",
+    "year": "4.25 API, accessed 2026-11-14"
+  },
+  {
+    "title": "EMA ICH Q5E Comparability",
+    "url": "https://www.ema.europa.eu/de/node/69582",
+    "year": "2005"
+  }
+]

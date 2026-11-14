@@ -1,0 +1,222 @@
+{
+  "project": "WP05 Biomanufacturing Process Analytical Technology",
+  "engine": "paceval Mathematical Engine",
+  "observed_remote_engine_version": "4.26",
+  "variables": [
+    "S",
+    "DO",
+    "X",
+    "umax",
+    "Ks",
+    "Ko",
+    "Ki",
+    "Yxs",
+    "qO2",
+    "qG",
+    "kLa",
+    "DOstar",
+    "F",
+    "V",
+    "Sfeed",
+    "DOmin",
+    "tau",
+    "OURcap"
+  ],
+  "graph_ids": [
+    "mu_v1",
+    "mu_v2",
+    "substrate_consumption_v1",
+    "substrate_consumption_v2",
+    "oxygen_uptake_v1",
+    "oxygen_uptake_v2",
+    "oxygen_transfer",
+    "dDO_v1",
+    "dDO_v2",
+    "dS_v1",
+    "dS_v2",
+    "dX_v1",
+    "dX_v2",
+    "oxygen_margin_v1",
+    "oxygen_margin_v2",
+    "score_v1",
+    "score_v2",
+    "guard_v1",
+    "guard_v2",
+    "sensitivity_mu_S_v2",
+    "sensitivity_dDO_kLa",
+    "oxygen_capacity_ratio_v2",
+    "version_growth_delta",
+    "minimum_required_kLa_v2"
+  ],
+  "graphs": [
+    {
+      "id": "mu_v1",
+      "formula": "(umax*S/(Ks+S)*DO/(Ko+DO))",
+      "units": "1/h",
+      "formula_version": "v1",
+      "remote_handle_for_audit_only": "1094407616"
+    },
+    {
+      "id": "mu_v2",
+      "formula": "(umax*S/(Ks+S+S*S/Ki)*DO/(Ko+DO))",
+      "units": "1/h",
+      "formula_version": "v2",
+      "remote_handle_for_audit_only": "1202121104"
+    },
+    {
+      "id": "substrate_consumption_v1",
+      "formula": "((umax*S/(Ks+S)*DO/(Ko+DO))*X/Yxs)",
+      "units": "gS/L/h",
+      "formula_version": "v1",
+      "remote_handle_for_audit_only": "1020014128"
+    },
+    {
+      "id": "substrate_consumption_v2",
+      "formula": "((umax*S/(Ks+S+S*S/Ki)*DO/(Ko+DO))*X/Yxs)",
+      "units": "gS/L/h",
+      "formula_version": "v2",
+      "remote_handle_for_audit_only": "1692121920"
+    },
+    {
+      "id": "oxygen_uptake_v1",
+      "formula": "(qO2*X)",
+      "units": "gO2/L/h",
+      "formula_version": "v1",
+      "remote_handle_for_audit_only": "1093845920"
+    },
+    {
+      "id": "oxygen_uptake_v2",
+      "formula": "((qO2+qG*(umax*S/(Ks+S+S*S/Ki)*DO/(Ko+DO)))*X)",
+      "units": "gO2/L/h",
+      "formula_version": "v2",
+      "remote_handle_for_audit_only": "1094134064"
+    },
+    {
+      "id": "oxygen_transfer",
+      "formula": "(kLa*(DOstar-DO))",
+      "units": "gO2/L/h",
+      "formula_version": "shared",
+      "remote_handle_for_audit_only": "1039977360"
+    },
+    {
+      "id": "dDO_v1",
+      "formula": "((kLa*(DOstar-DO))-(qO2*X)-(F/V)*DO)",
+      "units": "gO2/L/h",
+      "formula_version": "v1",
+      "remote_handle_for_audit_only": "934024112"
+    },
+    {
+      "id": "dDO_v2",
+      "formula": "((kLa*(DOstar-DO))-((qO2+qG*(umax*S/(Ks+S+S*S/Ki)*DO/(Ko+DO)))*X)-(F/V)*DO)",
+      "units": "gO2/L/h",
+      "formula_version": "v2",
+      "remote_handle_for_audit_only": "1578886544"
+    },
+    {
+      "id": "dS_v1",
+      "formula": "((F/V)*(Sfeed-S)-(umax*S/(Ks+S)*DO/(Ko+DO))*X/Yxs)",
+      "units": "gS/L/h",
+      "formula_version": "v1",
+      "remote_handle_for_audit_only": "972571632"
+    },
+    {
+      "id": "dS_v2",
+      "formula": "((F/V)*(Sfeed-S)-(umax*S/(Ks+S+S*S/Ki)*DO/(Ko+DO))*X/Yxs)",
+      "units": "gS/L/h",
+      "formula_version": "v2",
+      "remote_handle_for_audit_only": "1613613984"
+    },
+    {
+      "id": "dX_v1",
+      "formula": "(((umax*S/(Ks+S)*DO/(Ko+DO))-(F/V))*X)",
+      "units": "gDW/L/h",
+      "formula_version": "v1",
+      "remote_handle_for_audit_only": "1239392528"
+    },
+    {
+      "id": "dX_v2",
+      "formula": "(((umax*S/(Ks+S+S*S/Ki)*DO/(Ko+DO))-(F/V))*X)",
+      "units": "gDW/L/h",
+      "formula_version": "v2",
+      "remote_handle_for_audit_only": "1582526064"
+    },
+    {
+      "id": "oxygen_margin_v1",
+      "formula": "((kLa*(DOstar-DO))-(qO2*X))",
+      "units": "gO2/L/h",
+      "formula_version": "v1",
+      "remote_handle_for_audit_only": "1039910064"
+    },
+    {
+      "id": "oxygen_margin_v2",
+      "formula": "((kLa*(DOstar-DO))-((qO2+qG*(umax*S/(Ks+S+S*S/Ki)*DO/(Ko+DO)))*X))",
+      "units": "gO2/L/h",
+      "formula_version": "v2",
+      "remote_handle_for_audit_only": "1039963216"
+    },
+    {
+      "id": "score_v1",
+      "formula": "((DO-DOmin) min (tau*((kLa*(DOstar-DO))-(qO2*X))))",
+      "units": "gO2/L",
+      "formula_version": "v1",
+      "remote_handle_for_audit_only": "1167635504"
+    },
+    {
+      "id": "score_v2",
+      "formula": "((DO-DOmin) min (tau*((kLa*(DOstar-DO))-((qO2+qG*(umax*S/(Ks+S+S*S/Ki)*DO/(Ko+DO)))*X))))",
+      "units": "gO2/L",
+      "formula_version": "v2",
+      "remote_handle_for_audit_only": "1198402496"
+    },
+    {
+      "id": "guard_v1",
+      "formula": "(((DO>=DOmin) AND (((kLa*(DOstar-DO))-(qO2*X))>=0)) AND (S>=0))",
+      "units": "boolean",
+      "formula_version": "v1",
+      "remote_handle_for_audit_only": "1167749136"
+    },
+    {
+      "id": "guard_v2",
+      "formula": "(((DO>=DOmin) AND (((kLa*(DOstar-DO))-((qO2+qG*(umax*S/(Ks+S+S*S/Ki)*DO/(Ko+DO)))*X))>=0)) AND (S>=0))",
+      "units": "boolean",
+      "formula_version": "v2",
+      "remote_handle_for_audit_only": "1582544960"
+    },
+    {
+      "id": "sensitivity_mu_S_v2",
+      "formula": "(umax*DO/(Ko+DO)*(Ks-S*S/Ki)/((Ks+S+S*S/Ki)*(Ks+S+S*S/Ki)))",
+      "units": "L/gS/h",
+      "formula_version": "v2",
+      "remote_handle_for_audit_only": "1167693184"
+    },
+    {
+      "id": "sensitivity_dDO_kLa",
+      "formula": "(DOstar-DO)",
+      "units": "gO2/L",
+      "formula_version": "shared",
+      "remote_handle_for_audit_only": "1198428560"
+    },
+    {
+      "id": "oxygen_capacity_ratio_v2",
+      "formula": "(((qO2+qG*(umax*S/(Ks+S+S*S/Ki)*DO/(Ko+DO)))*X)/(kLa*(DOstar-DO)))",
+      "units": "dimensionless",
+      "formula_version": "v2",
+      "remote_handle_for_audit_only": "1509515952"
+    },
+    {
+      "id": "version_growth_delta",
+      "formula": "((umax*S/(Ks+S+S*S/Ki)*DO/(Ko+DO))-(umax*S/(Ks+S)*DO/(Ko+DO)))",
+      "units": "1/h",
+      "formula_version": "shared",
+      "remote_handle_for_audit_only": "1020936256"
+    },
+    {
+      "id": "minimum_required_kLa_v2",
+      "formula": "(((qO2+qG*(umax*S/(Ks+S+S*S/Ki)*DO/(Ko+DO)))*X)/(DOstar-DO))",
+      "units": "1/h",
+      "formula_version": "v2",
+      "remote_handle_for_audit_only": "1578899680"
+    }
+  ],
+  "notes": "Opaque remote handles are evidence of executed session only. New runs always create their own handles."
+}
