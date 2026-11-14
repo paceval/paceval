@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "precision_decimal_digits": 85,
+  "independent_value_checks": 73728,
+  "subcritical_v2_rows": 70,
+  "maximum_absolute_difference_in_reference_units": 5.954133447144952e-10,
+  "source_sha256": "9e75b1157a5ec957ddba03267d47742aa18565d596ed59b2dd530e33f065ac32",
+  "reference": "Independent Python mpmath implementation; original CSV decimal values"
+}

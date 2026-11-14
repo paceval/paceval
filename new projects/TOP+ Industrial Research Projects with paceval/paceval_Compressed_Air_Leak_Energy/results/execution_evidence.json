@@ -1,0 +1,14 @@
+{
+ "sdk": "original paceval 4.25 with supplied Linux shared library",
+ "unique_graphs_created": 53,
+ "unique_graphs_executed": 53,
+ "scalar_calls_including_operator_tests": 13,
+ "batch_calls_including_layout_probe": 97,
+ "graph_point_evaluations_including_layout_probe": 162820,
+ "scenario_count": 3072,
+ "model_scenario_combinations": 6144,
+ "feasible_V1": 2511,
+ "feasible_V2": 2505,
+ "native_endvalue_assertions": 4360,
+ "reference_high_precision": "see high_precision_audit.json"
+}
