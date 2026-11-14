@@ -1,0 +1,18 @@
+{
+  "sdk": "original paceval 4.25 with supplied Linux shared runtime",
+  "model_scope": "synthetic single-bus active-power microgrid screening, no AC power-flow or live control",
+  "unique_domain_graphs_created": 69,
+  "unique_domain_graphs_executed": 69,
+  "scalar_calls_including_operator_tests": 13,
+  "multi_graph_batch_calls_including_layout_probe": 589,
+  "graph_point_evaluations_including_layout_probe": 1664284,
+  "schedule_count": 1080,
+  "hours_per_schedule": 24,
+  "scenario_count": 3,
+  "version_schedule_count": 2160,
+  "version_step_count": 51840,
+  "v1_feasible_schedules": 792,
+  "v2_feasible_schedules": 816,
+  "independent_native_reference_checks": 7452,
+  "high_precision_validation": "see results/high_precision_audit.json, created by independent script"
+}

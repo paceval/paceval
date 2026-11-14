@@ -1,0 +1,26 @@
+{
+  "all_passed": true,
+  "caution": "Finite sample of scenarios, not a proof of control-system or grid-code compliance",
+  "failures": [],
+  "maximum_absolute_differences_internal": {
+    "balance": 4.263256414560601e-14,
+    "charge_sensitivity": 5.754987964646292e-16,
+    "compound_guard": 0,
+    "discharge_sensitivity": 5.0784027200060255e-15,
+    "energy": 7.478276001449662e-13,
+    "energy_sensitivity": 4.938158068176555e-15,
+    "eta_charge": 5.754987964646292e-16,
+    "eta_discharge": 5.969361685580377e-16,
+    "full_day_final_energy": 7.478276001449662e-13,
+    "full_day_guard": 0,
+    "full_day_min_reserve": 7.762493095753702e-13,
+    "full_day_total_cost": 4.0282112664454736e-12,
+    "reserve": 7.762493095753702e-13,
+    "step_cost": 1.392613812405985e-14
+  },
+  "reference_assertions": 52216,
+  "reference_input": "binary64 CSV literals converted independently",
+  "sampled_complete_24h_schedules": 107,
+  "sampled_model_schedule_chains": 214,
+  "type": "independent native mpmath reference, 85 decimal digits"
+}
