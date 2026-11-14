@@ -1,0 +1,30 @@
+formula_id,model_versions,expression,units,execution_owner
+branch_current_magnitude,v1_v2,"sqrt(sqr(ire)+sqr(iim))",pu,paceval
+branch_feasible,v1_v2,"((vm>=Vmin) AND (vm<=Vmax) AND (cm<=Imax))",boolean,paceval
+branch_penalty_v1,v1_v2,"(sqr(0 max (Vmin-vm))+sqr(0 max (vm-Vmax))+0.4*sqr(0 max (cm-Imax)))",pu,paceval
+branch_penalty_v2,v1_v2,"(1.4*sqr(0 max (Vmin-vm))+1.8*sqr(0 max (vm-Vmax))+0.7*sqr(0 max (cm-Imax)))",pu,paceval
+branch_quality_score,v1_v2,"(weight*sqr(cm/Imax)+0.3*sqr((vm-1)/0.05))",pu,paceval
+branch_violated,v1_v2,"((vm<Vmin) OR (vm>Vmax) OR (cm>Imax))",boolean,paceval
+bus_voltage_magnitude,v1_v2,"sqrt(sqr(vre)+sqr(vim))",pu,paceval
+current_limit_ratio,v1_v2,"(cm/Imax)",pu,paceval
+current_margin,v1_v2,"(Imax-cm)",pu,paceval
+der_q_absorb,v1_v2,"(-0.25*pv)",pu,paceval
+der_q_unity,v1_v2,"(0*pv)",pu,paceval
+high_voltage_margin,v1_v2,"(Vmax-vm)",pu,paceval
+injection_current_imag,v1_v2,"((pnet*vim-qnet*vre)/(sqr(vre)+sqr(vim)))",pu,paceval
+injection_current_real,v1_v2,"((pnet*vre+qnet*vim)/(sqr(vre)+sqr(vim)))",pu,paceval
+line_active_power,v1_v2,"(vupre*ire+vupim*iim)",pu,paceval
+line_reactive_power,v1_v2,"(vupim*ire-vupre*iim)",pu,paceval
+linear_voltage_drop_proxy,v1_v2,"((R*(vupre*ire+vupim*iim)+X*(vupim*ire-vupre*iim))/Vref)",pu,paceval
+low_voltage_margin,v1_v2,"(vm-Vmin)",pu,paceval
+net_p,v1_v2,"(pload-pv)",pu,paceval
+net_q,v1_v2,"(qload-qder)",pu,paceval
+normalized_voltage_margin,v1_v2,"((vlow min vhigh)/(Vmax-Vmin))",pu,paceval
+ohmic_voltage_imag,v1_v2,"(vupim-(X*ire+R*iim))",pu,paceval
+ohmic_voltage_real,v1_v2,"(vupre-(R*ire-X*iim))",pu,paceval
+reactive_line_loss,v1_v2,"(X*(sqr(ire)+sqr(iim)))",pu,paceval
+real_line_loss,v1_v2,"(R*(sqr(ire)+sqr(iim)))",pu,paceval
+thermal_utilization,v1_v2,"(cm/Imax)",pu,paceval
+voltage_margin,v1_v2,"(vlow min vhigh)",pu,paceval
+voltage_sensitivity_approx_P,v1_v2,"(R/Vref)",pu,paceval
+voltage_sensitivity_approx_Q,v1_v2,"(X/Vref)",pu,paceval

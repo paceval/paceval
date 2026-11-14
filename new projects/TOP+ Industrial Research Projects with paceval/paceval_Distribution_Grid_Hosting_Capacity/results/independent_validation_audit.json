@@ -1,0 +1,202 @@
+{
+  "scenario_rows_checked": 1024,
+  "independent_python_reference_assertions": 22512,
+  "selected_scipy_nonlinear_nodal_solutions": 32,
+  "high_precision_decimal80_checks": 512,
+  "max_absolute_validation_difference": 1.4573231510439655e-11,
+  "all_passed": true,
+  "scipy_nodal_cases": [
+    {
+      "candidate_bus": 4,
+      "control_mode": 0,
+      "penetration_step": 0,
+      "max_kcl_nodal_residual": 5.533073998975624e-14
+    },
+    {
+      "candidate_bus": 4,
+      "control_mode": 0,
+      "penetration_step": 16,
+      "max_kcl_nodal_residual": 3.708144902248023e-14
+    },
+    {
+      "candidate_bus": 4,
+      "control_mode": 0,
+      "penetration_step": 32,
+      "max_kcl_nodal_residual": 6.838973831690964e-14
+    },
+    {
+      "candidate_bus": 4,
+      "control_mode": 0,
+      "penetration_step": 63,
+      "max_kcl_nodal_residual": 5.898059818321144e-14
+    },
+    {
+      "candidate_bus": 4,
+      "control_mode": 1,
+      "penetration_step": 0,
+      "max_kcl_nodal_residual": 5.533073998975624e-14
+    },
+    {
+      "candidate_bus": 4,
+      "control_mode": 1,
+      "penetration_step": 16,
+      "max_kcl_nodal_residual": 3.1377678233468487e-14
+    },
+    {
+      "candidate_bus": 4,
+      "control_mode": 1,
+      "penetration_step": 32,
+      "max_kcl_nodal_residual": 6.056266599330229e-14
+    },
+    {
+      "candidate_bus": 4,
+      "control_mode": 1,
+      "penetration_step": 63,
+      "max_kcl_nodal_residual": 5.390132784555135e-14
+    },
+    {
+      "candidate_bus": 6,
+      "control_mode": 0,
+      "penetration_step": 0,
+      "max_kcl_nodal_residual": 5.533073998975624e-14
+    },
+    {
+      "candidate_bus": 6,
+      "control_mode": 0,
+      "penetration_step": 16,
+      "max_kcl_nodal_residual": 4.4297898682543746e-14
+    },
+    {
+      "candidate_bus": 6,
+      "control_mode": 0,
+      "penetration_step": 32,
+      "max_kcl_nodal_residual": 5.0508208726540715e-14
+    },
+    {
+      "candidate_bus": 6,
+      "control_mode": 0,
+      "penetration_step": 63,
+      "max_kcl_nodal_residual": 3.8039016381219426e-14
+    },
+    {
+      "candidate_bus": 6,
+      "control_mode": 1,
+      "penetration_step": 0,
+      "max_kcl_nodal_residual": 5.533073998975624e-14
+    },
+    {
+      "candidate_bus": 6,
+      "control_mode": 1,
+      "penetration_step": 16,
+      "max_kcl_nodal_residual": 2.109597219135395e-14
+    },
+    {
+      "candidate_bus": 6,
+      "control_mode": 1,
+      "penetration_step": 32,
+      "max_kcl_nodal_residual": 3.7692071686024065e-14
+    },
+    {
+      "candidate_bus": 6,
+      "control_mode": 1,
+      "penetration_step": 63,
+      "max_kcl_nodal_residual": 3.502059753301978e-14
+    },
+    {
+      "candidate_bus": 9,
+      "control_mode": 0,
+      "penetration_step": 0,
+      "max_kcl_nodal_residual": 5.533073998975624e-14
+    },
+    {
+      "candidate_bus": 9,
+      "control_mode": 0,
+      "penetration_step": 16,
+      "max_kcl_nodal_residual": 3.712308238590367e-14
+    },
+    {
+      "candidate_bus": 9,
+      "control_mode": 0,
+      "penetration_step": 32,
+      "max_kcl_nodal_residual": 4.864164626638967e-14
+    },
+    {
+      "candidate_bus": 9,
+      "control_mode": 0,
+      "penetration_step": 63,
+      "max_kcl_nodal_residual": 5.5136450960446837e-14
+    },
+    {
+      "candidate_bus": 9,
+      "control_mode": 1,
+      "penetration_step": 0,
+      "max_kcl_nodal_residual": 5.533073998975624e-14
+    },
+    {
+      "candidate_bus": 9,
+      "control_mode": 1,
+      "penetration_step": 16,
+      "max_kcl_nodal_residual": 4.657385588302532e-14
+    },
+    {
+      "candidate_bus": 9,
+      "control_mode": 1,
+      "penetration_step": 32,
+      "max_kcl_nodal_residual": 5.054984208996416e-14
+    },
+    {
+      "candidate_bus": 9,
+      "control_mode": 1,
+      "penetration_step": 63,
+      "max_kcl_nodal_residual": 4.543587728278453e-14
+    },
+    {
+      "candidate_bus": 11,
+      "control_mode": 0,
+      "penetration_step": 0,
+      "max_kcl_nodal_residual": 5.533073998975624e-14
+    },
+    {
+      "candidate_bus": 11,
+      "control_mode": 0,
+      "penetration_step": 16,
+      "max_kcl_nodal_residual": 4.810041254188491e-14
+    },
+    {
+      "candidate_bus": 11,
+      "control_mode": 0,
+      "penetration_step": 32,
+      "max_kcl_nodal_residual": 3.71508379615193e-14
+    },
+    {
+      "candidate_bus": 11,
+      "control_mode": 0,
+      "penetration_step": 63,
+      "max_kcl_nodal_residual": 4.150846333317304e-14
+    },
+    {
+      "candidate_bus": 11,
+      "control_mode": 1,
+      "penetration_step": 0,
+      "max_kcl_nodal_residual": 5.533073998975624e-14
+    },
+    {
+      "candidate_bus": 11,
+      "control_mode": 1,
+      "penetration_step": 16,
+      "max_kcl_nodal_residual": 2.5340840537069198e-14
+    },
+    {
+      "candidate_bus": 11,
+      "control_mode": 1,
+      "penetration_step": 32,
+      "max_kcl_nodal_residual": 3.8566372317916375e-14
+    },
+    {
+      "candidate_bus": 11,
+      "control_mode": 1,
+      "penetration_step": 63,
+      "max_kcl_nodal_residual": 4.5227710465667315e-14
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "project": "WP11 Distribution Grid Hosting Capacity Constraint Kernels",
+  "runtime": "original paceval SDK 4.25 via locally provided Linux shared library",
+  "source_data": "synthetic balanced radial feeder, not official IEEE feeder or field measurement",
+  "feeder_buses": 12,
+  "der_location_count": 8,
+  "control_modes": 2,
+  "penetration_steps": 64,
+  "scenario_count": 1024,
+  "feasible_scenarios": 384,
+  "infeasible_scenarios": 640,
+  "all_ac_converged": true,
+  "unique_graphs_created": 29,
+  "unique_graphs_executed": 29,
+  "scalar_calls": 12320,
+  "batch_calls": 148908,
+  "graph_point_evaluations": 783596,
+  "native_cpp_reference_checks": 112640,
+  "total_branch_violations": 3781
+}
