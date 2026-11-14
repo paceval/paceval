@@ -1,0 +1,14 @@
+{
+  "checks": 31200,
+  "precision_digits": 80,
+  "audit_rows": 2600,
+  "model_rows": 1000000,
+  "independent_cpp_reference_checks": 21000000,
+  "decision_counts": {
+    "ACCEPT": 509567,
+    "REVIEW": 184329,
+    "REJECT": 306104
+  },
+  "validation": "passed",
+  "dataset": "synthetic"
+}

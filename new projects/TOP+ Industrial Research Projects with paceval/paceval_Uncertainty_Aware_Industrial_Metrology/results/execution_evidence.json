@@ -1,0 +1,18 @@
+{
+  "project": "WP09 Uncertainty-Aware Industrial Metrology and Tolerance Decisions",
+  "runtime": "original paceval SDK 4.25 and compatible Linux shared library",
+  "dataset": "deterministic synthetic research inputs; no physical calibration",
+  "calibration_revisions": 10,
+  "covariance_cases": 10,
+  "samples_per_scenario": 5000,
+  "model_versions": 2,
+  "unique_measurement_inputs": 500000,
+  "model_point_rows": 1000000,
+  "unique_graphs_created": 42,
+  "unique_graphs_executed": 42,
+  "batch_calls": 8000,
+  "scalar_calls": 0,
+  "graph_point_evaluations": 21000000,
+  "native_cpp_reference_checks": 21000000,
+  "end_to_end_trace_rows": 200
+}
