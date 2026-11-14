@@ -1,0 +1,9 @@
+# Research design and falsifiable questions
+
+**Primary research question:** Can a single established set of original paceval graph handles correctly execute coupled Monod-type nitrogen kinetics, rate capping, oxygen budget, a unit-consistent electricity proxy, alternative mathematical formula versions, and discrete admissibility guards across multiple synthetic conditions?
+
+**Independent mathematical acceptance:** All selected archived remote results agree with a separately coded 90-digit reference at the predeclared tolerance of absolute deviation not exceeding `1e-9 * max(1,abs(reference))`, counting the final guards exactly, and all sampled nitrogen-balance residuals are close to zero. This tolerance applies to the explicitly rounded **printed decimal transcription** and is not a claim of broader engine precision. The six separately printed TINC bounds must include the reference evaluated at the original binary64 input values. Domain limits must reject invalid numeric fields and nonphysical simple constraints.
+
+**Deliberately not tested:** Long-term process trajectories, sensor noise detection statistics, biological accuracy against treatment measurements, complete ASM1 or BSM2 reproduction, certified wastewater discharge compliance, actual blower electrical consumption, or runtime speedup. The 365-day hourly study mentioned in the original proposal is a proposal, not an achieved main result.
+
+**New research element:** Controlled coexistence of version v1 (simple oxygen-limited Monod rate) and version v2 (temperature and high-substrate inhibition), allowing direct mathematical comparison on one shared input vector. Rate clipping, oxygen transfer, power scaling and guard semantics are executed by meaningful paceval expressions. The C++ host owns files, input safety, handle lifetime and selection.

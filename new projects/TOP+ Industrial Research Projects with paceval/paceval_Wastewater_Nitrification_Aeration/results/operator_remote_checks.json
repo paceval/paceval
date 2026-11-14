@@ -1,0 +1,95 @@
+{
+  "engine": "paceval MCP 4.26",
+  "graph_registrations": 7,
+  "test_scenarios": 3,
+  "graph_point_checks": 21,
+  "hasError": false,
+  "variables": [
+    "x",
+    "y",
+    "z"
+  ],
+  "inputs": [
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      -1,
+      1,
+      0
+    ],
+    [
+      2,
+      1,
+      -1
+    ]
+  ],
+  "executed_expressions": [
+    {
+      "id": "percent_negative",
+      "expression": "(-1) % 10",
+      "results": [
+        -1,
+        -1,
+        -1
+      ]
+    },
+    {
+      "id": "mod_negative",
+      "expression": "(-1) mod 10",
+      "results": [
+        9,
+        9,
+        9
+      ]
+    },
+    {
+      "id": "infix_min",
+      "expression": "4 min 5",
+      "results": [
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "id": "infix_max",
+      "expression": "4 max 5",
+      "results": [
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "id": "logic_and",
+      "expression": "((x <= (2*y)) AND (z >= 0))",
+      "results": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "logic_not_or",
+      "expression": "((NOT(x = y)) OR (z <> 0))",
+      "results": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "logic_xor",
+      "expression": "((x = y) XOR (z <> 0))",
+      "results": [
+        1,
+        0,
+        1
+      ]
+    }
+  ],
+  "errors": "All 21 returned error-code 0. The results were compared with the corresponding independent boolean and remainder meanings."
+}

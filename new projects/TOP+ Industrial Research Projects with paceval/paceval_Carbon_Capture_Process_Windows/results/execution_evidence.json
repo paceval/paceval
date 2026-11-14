@@ -1,0 +1,15 @@
+{
+  "sdk": "original paceval 4.25 plus supplied Linux runtime",
+  "case_scope": "deterministic synthetic reduced-order amine process-window screening",
+  "unique_graphs_created": 56,
+  "unique_graphs_executed": 56,
+  "scalar_calls_including_operator_tests": 13,
+  "batch_calls_including_layout_probe": 73,
+  "graph_point_evaluations_including_layout_probe": 172036,
+  "scenario_count": 3072,
+  "model_case_combinations": 6144,
+  "feasible_V1": 2478,
+  "feasible_V2": 1228,
+  "native_assertions": 5332,
+  "high_precision_verification": "see high_precision_audit.json"
+}

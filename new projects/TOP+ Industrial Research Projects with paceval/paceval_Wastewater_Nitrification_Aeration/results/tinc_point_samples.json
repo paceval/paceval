@@ -1,0 +1,10 @@
+{
+ "engine": "paceval MCP 4.26", "mode": "TINC on point inputs", "global_input_interval_certificate": false,
+ "note": "Returned decimal text endpoints are assessed independently against exact binary64 input values.",
+ "formulae": ["nh4_out_v2", "aeration_power_v2"],
+ "cases": [
+  {"NH4":14,"DO":2.0,"Temp":18,"KL":3.8,"nh4_out":{"value":"0.968232118126149","lower":"0.968232118125351","upper":"0.968232118126949"},"power":{"value":"25.0946580084015","lower":"25.0946580083994","upper":"25.0946580084035"}},
+  {"NH4":20,"DO":1.5,"Temp":18,"KL":3.8,"nh4_out":{"value":"8.67473323772322","lower":"8.67473323772245","upper":"8.67473323772398"},"power":{"value":"21.8451954598354","lower":"21.8451954598336","upper":"21.8451954598372"}},
+  {"NH4":28,"DO":3.8,"Temp":20,"KL":4.0,"nh4_out":{"value":"12.7849919989105","lower":"12.7849919989097","upper":"12.7849919989113"},"power":{"value":"29.2519110687413","lower":"29.2519110687392","upper":"29.2519110687433"}}
+ ]
+}

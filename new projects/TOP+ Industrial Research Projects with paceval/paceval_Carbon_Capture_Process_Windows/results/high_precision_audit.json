@@ -1,0 +1,9 @@
+{
+  "reference": "independent handwritten mpmath analytical CO2 balance and energy model",
+  "precision_decimal_digits": 90,
+  "input_semantics": "exact IEEE-754 binary64 values of parsed CSV numeric tokens",
+  "checks_passed": 8672,
+  "max_scaled_reference_difference": 5.051391868441041e-15,
+  "status": "PASS",
+  "notes": "Differences/tolerances are technical audit only; not a public engine comparison. Model accuracy versus plant observations not established."
+}

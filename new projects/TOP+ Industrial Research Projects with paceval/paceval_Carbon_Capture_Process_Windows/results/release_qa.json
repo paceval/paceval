@@ -1,0 +1,20 @@
+{
+  "archive_markdown": {
+    "files_checked": 6,
+    "local_links_checked": 26,
+    "math_fences": 4,
+    "status": "PASS"
+  },
+  "research_graphs_executed": 56,
+  "model_case_rows": 6144,
+  "high_precision_checks": 8672,
+  "pdf_pages": 14,
+  "hero_image_resolution": [
+    2400,
+    1200
+  ],
+  "science_png_figures": 10,
+  "science_vector_figures": 10,
+  "pdf_text_blocks_inside_page": true,
+  "release_preflight": "PASS"
+}

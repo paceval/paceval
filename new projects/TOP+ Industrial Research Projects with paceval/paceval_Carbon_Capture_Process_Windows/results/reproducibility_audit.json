@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "method": "independent second original paceval binary invocation, exact SHA256 content equality",
+  "files_byte_identical": [
+    "screening.csv",
+    "model_comparison.csv",
+    "formula_manifest.csv",
+    "math_execution_inventory.csv",
+    "execution_evidence.json",
+    "native_audit.csv"
+  ],
+  "repeated_runs_counted_separately": true
+}

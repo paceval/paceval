@@ -1,0 +1,13 @@
+{
+  "markdown_files_checked": 6,
+  "negative_regression_cases": {
+    "bad_inline": true,
+    "bad_display": true,
+    "bad_macro": true,
+    "bad_dollar": true,
+    "bad_link": true
+  },
+  "issues": {},
+  "parser": "markdown-it-py commonmark with table plugin",
+  "github_visual_preview_checked": false
+}
