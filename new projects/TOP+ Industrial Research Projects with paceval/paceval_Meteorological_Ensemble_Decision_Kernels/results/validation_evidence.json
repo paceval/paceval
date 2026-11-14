@@ -1,0 +1,14 @@
+{
+  "categorical_audit_counts": {
+    "ACTION_CANDIDATE": 626,
+    "NO_ACTION": 1066,
+    "REVIEW": 198
+  },
+  "data_type": "synthetic, not issued weather forecasts",
+  "high_precision_audit_rows_verified": 1890,
+  "high_precision_compound_pair_samples_verified": 1219,
+  "high_precision_individual_values_verified": 20790,
+  "mathematical_check": "passed",
+  "reference_precision_decimal_digits": 80,
+  "summary_categories_verified": 24
+}

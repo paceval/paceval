@@ -1,0 +1,23 @@
+{
+  "study": "Site-Level Extreme Weather Decision Kernels",
+  "scientific_status": "synthetic mathematical functionality, not operational weather guidance",
+  "runtime": "original paceval 4.25 Linux SDK",
+  "site_count": 10000,
+  "windows_per_site": 4,
+  "hazards_per_window": 3,
+  "synthetic_feature_rows": 120000,
+  "model_versions": 2,
+  "model_point_rows": 240000,
+  "unique_graphs_created": 60,
+  "unique_graphs_executed": 60,
+  "scalar_calls": 0,
+  "multi_graph_batch_calls": 1452,
+  "graph_point_evaluations": 7460172,
+  "native_cpp_independent_model_checks": 6960000,
+  "compound_pairs_evaluated": 240000,
+  "compound_independent_checks": 480000,
+  "surface_rows": 10086,
+  "surface_independent_checks": 20172,
+  "high_precision_audit_candidate_rows": 1890,
+  "end_to_end_traces": 6
+}

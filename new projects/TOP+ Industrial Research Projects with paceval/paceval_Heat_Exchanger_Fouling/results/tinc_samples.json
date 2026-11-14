@@ -1,0 +1,54 @@
+{
+  "path": "real paceval MCP 4.26 TINC true",
+  "successful_q_checks": 5,
+  "count": 5,
+  "cases": [
+    {
+      "case_id": "HE0000",
+      "value_text": "552509.346321795",
+      "interval_low_text": "552509.34632175",
+      "interval_high_text": "552509.346321841",
+      "reference_exact_binary_inputs": "552509.34632179536084090019364670331673973342",
+      "reference_inside_text_interval": true,
+      "note": "only printed decimal bounds available; no global interval certificate"
+    },
+    {
+      "case_id": "HE0104",
+      "value_text": "564534.847452935",
+      "interval_low_text": "564534.84745288",
+      "interval_high_text": "564534.847452991",
+      "reference_exact_binary_inputs": "564534.847452935330885506920529092100662085569",
+      "reference_inside_text_interval": true,
+      "note": "only printed decimal bounds available; no global interval certificate"
+    },
+    {
+      "case_id": "HE0206",
+      "value_text": "548985.78342797",
+      "interval_low_text": "548985.783427904",
+      "interval_high_text": "548985.783428035",
+      "reference_exact_binary_inputs": "548985.783427969569791876599522818206986245493",
+      "reference_inside_text_interval": true,
+      "note": "only printed decimal bounds available; no global interval certificate"
+    },
+    {
+      "case_id": "HE0305",
+      "value_text": "675199.096038678",
+      "interval_low_text": "675199.096038598",
+      "interval_high_text": "675199.096038759",
+      "reference_exact_binary_inputs": "675199.096038677970078681032823932446756613346",
+      "reference_inside_text_interval": true,
+      "note": "only printed decimal bounds available; no global interval certificate"
+    },
+    {
+      "case_id": "HE0506",
+      "value_text": "754855.452213458",
+      "interval_low_text": "754855.452213368",
+      "interval_high_text": "754855.452213548",
+      "reference_exact_binary_inputs": "754855.452213458158463830324343875034606087553",
+      "reference_inside_text_interval": true,
+      "note": "only printed decimal bounds available; no global interval certificate"
+    }
+  ],
+  "separate_lmtd_near_equal_tinc_trial": "errorNumber 145 at D1=30.0000003,D2=30; pointwise series without TINC succeeded",
+  "scope": "pointwise binary input checks only"
+}

@@ -1,0 +1,65 @@
+{
+  "project": "WP14 Transformer Hotspot Temperature and Insulation Aging Screening",
+  "date": "2026-11-14",
+  "graph_count": 63,
+  "original_sdk_linked_and_executed": true,
+  "high_precision_assertions": 137184,
+  "independent_native_assertions": 23916,
+  "ctest_passed": 5,
+  "ctest_total": 5,
+  "readme_commonmark_and_local_link_check_passed": true,
+  "readme_link_checker_negative_tests_passed": true,
+  "input_rows": 48384,
+  "model_step_rows": 96768,
+  "byte_identical_repeat_files": [
+    {
+      "name": "hotspot_timeseries.csv",
+      "sha256": "af431544d707c7ecdd8514e6bc69324879ec3383c2c822da9cb1f3d1a68230c3",
+      "byte_identical_on_independent_repeat": true
+    },
+    {
+      "name": "asset_summary.csv",
+      "sha256": "62103c4e0ba68d66c48df256eac68c044299409db67a091209ececa0232bb695",
+      "byte_identical_on_independent_repeat": true
+    },
+    {
+      "name": "model_comparison.csv",
+      "sha256": "9a3b28c2309b706579b73206b4c44171b4d31c160dcc83b2620a316b55460b53",
+      "byte_identical_on_independent_repeat": true
+    },
+    {
+      "name": "native_audit.csv",
+      "sha256": "08963df8b54c327be9f23587149f212de7a96316eff3efd21a7e3a60b98036bf",
+      "byte_identical_on_independent_repeat": true
+    },
+    {
+      "name": "formula_manifest.csv",
+      "sha256": "9efd6fad2ab9e15cc89e62d83be82615ff32a39afac962143babe17589217462",
+      "byte_identical_on_independent_repeat": true
+    },
+    {
+      "name": "math_execution_inventory.csv",
+      "sha256": "1fcf8cf89fc610b5b01444bdb5f4e025e7392e26314302985ff52dd70db980e1",
+      "byte_identical_on_independent_repeat": true
+    },
+    {
+      "name": "execution_evidence.json",
+      "sha256": "f402bf645b37b2beede4a63979cc2c08b467ffc8cdf83ccc25ea848fcb3754b1",
+      "byte_identical_on_independent_repeat": true
+    },
+    {
+      "name": "high_precision_audit.json",
+      "sha256": "a22247c7e8cd056a3c5fbe04e84f9ceb64a651f92912eefe404d68b46e5b215f",
+      "byte_identical_on_independent_repeat": true
+    }
+  ],
+  "pdf_pages": 14,
+  "pdf_all_pages_rendered_and_contact_sheet_visually_inspected": true,
+  "pdf_text_boxes_within_page": true,
+  "data_based_scientific_figures_png_and_vector_pdf": 10,
+  "cover_image_px": [
+    2400,
+    1200
+  ],
+  "limitation": "No physical measurements, load-rating certification, complete IEEE C57.91-2025 method or remote GitHub rendering confirmation. Original external paceval library excluded from release."
+}

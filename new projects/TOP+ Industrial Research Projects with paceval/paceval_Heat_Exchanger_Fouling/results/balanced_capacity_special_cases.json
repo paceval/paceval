@@ -1,0 +1,25 @@
+{
+  "engine": "paceval MCP 4.26",
+  "graph": "balanced_effectiveness",
+  "status": "3/3 remote point evaluations passed, 3/3 high-precision numerical checks",
+  "cases": [
+    {
+      "Rf": 0.0,
+      "epsilon_paceval": 0.716981132075472,
+      "epsilon_reference_90digits": "0.71698113207547169811320754716981132075471698113208",
+      "pass": true
+    },
+    {
+      "Rf": 0.0003,
+      "epsilon_paceval": 0.663465735486687,
+      "epsilon_reference_90digits": "0.66346573548668704056693690409695902605877308693819",
+      "pass": true
+    },
+    {
+      "Rf": 0.0012,
+      "epsilon_paceval": 0.542082738944365,
+      "epsilon_reference_90digits": "0.54208273894436520416620588721458204987106666849239",
+      "pass": true
+    }
+  ]
+}

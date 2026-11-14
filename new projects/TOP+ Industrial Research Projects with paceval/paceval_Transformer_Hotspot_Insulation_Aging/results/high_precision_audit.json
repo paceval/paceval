@@ -1,0 +1,37 @@
+{
+  "all_passed": true,
+  "caution": "The verification establishes agreement with the declared simplified thermal model only; it does not validate transformer design constants, aging lifetime, IEEE C57.91-2025 implementation, calibration or safety.",
+  "failures": [],
+  "max_absolute_differences_internal": {
+    "aging": 3.4658637956688443e-13,
+    "aging_increment": 3.4658637956688443e-13,
+    "aging_margin": 3.5013909324568493e-13,
+    "compound_guard": 0.0,
+    "cumulative_aging": 1.2930633579377083e-11,
+    "dFAA_dHs": 3.290968166209571e-14,
+    "dFAA_dK": 2.4376614919348335e-12,
+    "dHs_dK": 6.366314032280874e-14,
+    "hot_rise": 5.84124699390197e-14,
+    "hotspot": 5.252943274050006e-13,
+    "hotspot_margin": 8.401994247881619e-14,
+    "load_margin": 6.093096533964476e-16,
+    "load_ratio": 4.994523313447037e-15,
+    "oil_margin": 7.580462823937567e-14,
+    "peak": 4.930081899468039e-13,
+    "series_feasibility": 0.0,
+    "series_min_margin": 5.7412654713939e-14,
+    "series_peak_hotspot": 4.930081899468039e-13,
+    "top_oil": 5.111563405946844e-13,
+    "top_rise": 6.207596278789191e-14,
+    "total_equiv_aging": 1.1248989683996096e-11
+  },
+  "method": "independent mpmath reference at 85-decimal-digit precision using binary64 input interpretations",
+  "reference_assertions": 137184,
+  "selected_asset_count": 4,
+  "selected_complete_series": 24,
+  "selected_model_hour_records": 8064,
+  "tolerances": {
+    "absolute": 8e-06,
+    "relative": 7e-08
+  }
+}

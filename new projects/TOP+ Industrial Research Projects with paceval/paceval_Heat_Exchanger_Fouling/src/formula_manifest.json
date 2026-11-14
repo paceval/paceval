@@ -1,0 +1,171 @@
+{
+  "title": "Industrial Heat Exchanger Fouling and Duty Optimization",
+  "date": "2026-11-14",
+  "variables": [
+    "Th",
+    "Tc",
+    "Ch",
+    "Cc",
+    "Uc",
+    "A",
+    "Rf",
+    "Fc",
+    "D1",
+    "D2",
+    "Qtarget",
+    "Rremain",
+    "H",
+    "Price",
+    "Cclean",
+    "Approach",
+    "DeltaP",
+    "DeltaPmax"
+  ],
+  "graph_count": 24,
+  "graphs": [
+    {
+      "id": "Ueff",
+      "expression": "(1/(1/Uc+Rf))",
+      "unit": "W/m2/K",
+      "purpose": "overall heat-transfer coefficient"
+    },
+    {
+      "id": "LMTD_direct",
+      "expression": "((D1-D2)/ln(D1/D2))",
+      "unit": "K",
+      "purpose": "terminal log-mean temperature difference"
+    },
+    {
+      "id": "LMTD_series",
+      "expression": "((D1+D2)/2*(1-((D1-D2)/(D1+D2))^2/3-4*((D1-D2)/(D1+D2))^4/45-44*((D1-D2)/(D1+D2))^6/945))",
+      "unit": "K",
+      "purpose": "numerically stable equal-terminal limit"
+    },
+    {
+      "id": "Q_LMTD_v1",
+      "expression": "((1/(1/Uc+Rf))*A*Fc*((D1-D2)/ln(D1/D2)))",
+      "unit": "W",
+      "purpose": "v1 terminal-data duty surrogate"
+    },
+    {
+      "id": "Q_LMTD_series_v1",
+      "expression": "((1/(1/Uc+Rf))*A*Fc*((D1+D2)/2*(1-((D1-D2)/(D1+D2))^2/3-4*((D1-D2)/(D1+D2))^4/45-44*((D1-D2)/(D1+D2))^6/945)))",
+      "unit": "W",
+      "purpose": "v1 equal-terminal limit duty"
+    },
+    {
+      "id": "capacity_ratio",
+      "expression": "((Ch min Cc)/(Ch max Cc))",
+      "unit": "1",
+      "purpose": "capacity-rate ratio"
+    },
+    {
+      "id": "NTU_v2",
+      "expression": "((1/(1/Uc+Rf))*A/(Ch min Cc))",
+      "unit": "1",
+      "purpose": "number of transfer units"
+    },
+    {
+      "id": "effectiveness_v2",
+      "expression": "((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc))))))",
+      "unit": "1",
+      "purpose": "counterflow effectiveness"
+    },
+    {
+      "id": "Q_NTU_v2",
+      "expression": "((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))",
+      "unit": "W",
+      "purpose": "energy-consistent counterflow duty"
+    },
+    {
+      "id": "Q_clean_option",
+      "expression": "((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))",
+      "unit": "W",
+      "purpose": "counterflow duty after modeled cleaning"
+    },
+    {
+      "id": "hot_out_v2",
+      "expression": "(Th-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Ch)",
+      "unit": "degC",
+      "purpose": "hot outlet temperature"
+    },
+    {
+      "id": "cold_out_v2",
+      "expression": "(Tc+((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Cc)",
+      "unit": "degC",
+      "purpose": "cold outlet temperature"
+    },
+    {
+      "id": "pinch_min_v2",
+      "expression": "((Th-(Tc+((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Cc)) min ((Th-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Ch)-Tc))",
+      "unit": "K",
+      "purpose": "minimum terminal approach"
+    },
+    {
+      "id": "duty_margin_v2",
+      "expression": "(((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))-Qtarget)",
+      "unit": "W",
+      "purpose": "duty requirement signed margin"
+    },
+    {
+      "id": "pinch_margin_v2",
+      "expression": "(((Th-(Tc+((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Cc)) min ((Th-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Ch)-Tc))-Approach)",
+      "unit": "K",
+      "purpose": "pinch requirement signed margin"
+    },
+    {
+      "id": "energy_balance_residual_v2",
+      "expression": "(Ch*(Th-(Th-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Ch))-Cc*((Tc+((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Cc)-Tc))",
+      "unit": "W",
+      "purpose": "heat-side energy-balance residual"
+    },
+    {
+      "id": "wait_cost_score",
+      "expression": "(Price*H*((Qtarget-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))) max 0)/1000)",
+      "unit": "EUR",
+      "purpose": "assumed no-clean scenario score"
+    },
+    {
+      "id": "clean_cost_score",
+      "expression": "(Cclean+Price*H*((Qtarget-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))) max 0)/1000)",
+      "unit": "EUR",
+      "purpose": "assumed cleaning scenario score"
+    },
+    {
+      "id": "cleaning_advantage_score",
+      "expression": "((Price*H*((Qtarget-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))) max 0)/1000)-(Cclean+Price*H*((Qtarget-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))) max 0)/1000))",
+      "unit": "EUR",
+      "purpose": "signed economic score in favor of cleaning"
+    },
+    {
+      "id": "cleaning_guard",
+      "expression": "((((Price*H*((Qtarget-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))) max 0)/1000)-(Cclean+Price*H*((Qtarget-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))) max 0)/1000))>0) AND (Rf>Rremain))",
+      "unit": "bool",
+      "purpose": "synthetic score-based cleaning flag"
+    },
+    {
+      "id": "operation_guard",
+      "expression": "(((((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))>=Qtarget) AND (((Th-(Tc+((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Cc)) min ((Th-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Ch)-Tc))>=Approach)) AND (DeltaP<=DeltaPmax))",
+      "unit": "bool",
+      "purpose": "candidate screening status, not safety approval"
+    },
+    {
+      "id": "sensitivity_U_Rf",
+      "expression": "(-1/((1/Uc+Rf)*(1/Uc+Rf)))",
+      "unit": "(W/m2/K)/(m2K/W)",
+      "purpose": "analytic dU/dRf"
+    },
+    {
+      "id": "sensitivity_Q_Rf",
+      "expression": "(-((Th-Tc)*A*(1-((Ch min Cc)/(Ch max Cc)))*(1-((Ch min Cc)/(Ch max Cc)))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/((1/Uc+Rf)^2*(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))^2))",
+      "unit": "W/(m2K/W)",
+      "purpose": "analytic dQ/dRf for unequal capacities"
+    },
+    {
+      "id": "balanced_effectiveness",
+      "expression": "(((1/(1/Uc+Rf))*A/(Ch min Cc))/(1+((1/(1/Uc+Rf))*A/(Ch min Cc))))",
+      "unit": "1",
+      "purpose": "analytic equal-capacity ratio limit"
+    }
+  ]
+}

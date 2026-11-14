@@ -1,0 +1,19 @@
+{
+  "sdk": "original paceval 4.25 using supplied Linux shared library",
+  "case_scope": "deterministic synthetic oil-immersed transformer thermal proxy, not standards conformity",
+  "unique_graphs_created": 63,
+  "unique_graphs_executed": 63,
+  "scalar_calls_including_operator_tests": 13,
+  "batch_calls_including_layout_probe": 2206,
+  "graph_point_evaluations_including_layout_probe": 3048196,
+  "unique_transformers": 48,
+  "scenario_count": 3,
+  "hours_per_scenario": 336,
+  "distinct_input_rows": 48384,
+  "model_hour_rows": 96768,
+  "asset_scenario_series": 144,
+  "v1_series_with_any_screening_failure": 113,
+  "v2_series_with_any_screening_failure": 113,
+  "native_assertions": 23916,
+  "high_precision_verification": "see high_precision_audit.json"
+}

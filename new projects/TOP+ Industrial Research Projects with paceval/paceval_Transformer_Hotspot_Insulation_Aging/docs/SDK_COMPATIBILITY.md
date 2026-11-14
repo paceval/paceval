@@ -1,0 +1,7 @@
+# SDK integration and responsibility boundary
+
+Original project files `src/paceval_main.h` (paceval 4.25), `src/paceval_main.cpp` (same SDK), and a separately supplied, prebuilt, proprietary-compatible Linux x86-64 library form the actual tested integration. The only project-specific edit to the original `.cpp` was the include path to the original SDK header. Source license notices are preserved. No replacement or simulated expression evaluator has been introduced.
+
+The genuine SDK calls include initialization/free, graph creation/deletion, scalar result, multigraph batched result, graph error checks, and numeric float/text conversion. The multigraph layout was discovered by a two-graph/two-row probe. In this SDK call, the Boolean function return of `false` denotes success in the tested path; every per-item error code was also checked. Scalar and batch results were compared in the original selftest.
+
+Model dynamics and cumulative aging are **mathematical paceval graph outputs**. Their values are transported unchanged by the C++ host to the next timestep. Sorting, reading, parsing regex validation, chronology, selecting previous state, final accounting, and I/O remain in C++. Independent native C++ and Python references are for verification only. Every graph claimed to be executed is registered and used in `--run`. TINC is not claimed or invoked. This study tests a local SDK, not a remote paceval MCP endpoint.

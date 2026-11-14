@@ -1,0 +1,144 @@
+{
+  "variables": [
+    "Th",
+    "Tc",
+    "Ch",
+    "Cc",
+    "Uc",
+    "A",
+    "Rf",
+    "Fc",
+    "D1",
+    "D2",
+    "Qtarget",
+    "Rremain",
+    "H",
+    "Price",
+    "Cclean",
+    "Approach",
+    "DeltaP",
+    "DeltaPmax"
+  ],
+  "formulas": [
+    {
+      "id": "Ueff",
+      "expression": "(1/(1/Uc+Rf))",
+      "unit": "W/m2/K"
+    },
+    {
+      "id": "LMTD_direct",
+      "expression": "((D1-D2)/ln(D1/D2))",
+      "unit": "K"
+    },
+    {
+      "id": "LMTD_series",
+      "expression": "((D1+D2)/2*(1-((D1-D2)/(D1+D2))^2/3-4*((D1-D2)/(D1+D2))^4/45-44*((D1-D2)/(D1+D2))^6/945))",
+      "unit": "K"
+    },
+    {
+      "id": "Q_LMTD_v1",
+      "expression": "((1/(1/Uc+Rf))*A*Fc*((D1-D2)/ln(D1/D2)))",
+      "unit": "W"
+    },
+    {
+      "id": "Q_LMTD_series_v1",
+      "expression": "((1/(1/Uc+Rf))*A*Fc*((D1+D2)/2*(1-((D1-D2)/(D1+D2))^2/3-4*((D1-D2)/(D1+D2))^4/45-44*((D1-D2)/(D1+D2))^6/945)))",
+      "unit": "W"
+    },
+    {
+      "id": "capacity_ratio",
+      "expression": "((Ch min Cc)/(Ch max Cc))",
+      "unit": "1"
+    },
+    {
+      "id": "NTU_v2",
+      "expression": "((1/(1/Uc+Rf))*A/(Ch min Cc))",
+      "unit": "1"
+    },
+    {
+      "id": "effectiveness_v2",
+      "expression": "((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc))))))",
+      "unit": "1"
+    },
+    {
+      "id": "Q_NTU_v2",
+      "expression": "((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))",
+      "unit": "W"
+    },
+    {
+      "id": "Q_clean_option",
+      "expression": "((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))",
+      "unit": "W"
+    },
+    {
+      "id": "hot_out_v2",
+      "expression": "(Th-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Ch)",
+      "unit": "degC"
+    },
+    {
+      "id": "cold_out_v2",
+      "expression": "(Tc+((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Cc)",
+      "unit": "degC"
+    },
+    {
+      "id": "pinch_min_v2",
+      "expression": "((Th-(Tc+((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Cc)) min ((Th-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Ch)-Tc))",
+      "unit": "K"
+    },
+    {
+      "id": "duty_margin_v2",
+      "expression": "(((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))-Qtarget)",
+      "unit": "W"
+    },
+    {
+      "id": "pinch_margin_v2",
+      "expression": "(((Th-(Tc+((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Cc)) min ((Th-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Ch)-Tc))-Approach)",
+      "unit": "K"
+    },
+    {
+      "id": "energy_balance_residual_v2",
+      "expression": "(Ch*(Th-(Th-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Ch))-Cc*((Tc+((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Cc)-Tc))",
+      "unit": "W"
+    },
+    {
+      "id": "wait_cost_score",
+      "expression": "(Price*H*((Qtarget-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))) max 0)/1000)",
+      "unit": "EUR"
+    },
+    {
+      "id": "clean_cost_score",
+      "expression": "(Cclean+Price*H*((Qtarget-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))) max 0)/1000)",
+      "unit": "EUR"
+    },
+    {
+      "id": "cleaning_advantage_score",
+      "expression": "((Price*H*((Qtarget-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))) max 0)/1000)-(Cclean+Price*H*((Qtarget-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))) max 0)/1000))",
+      "unit": "EUR"
+    },
+    {
+      "id": "cleaning_guard",
+      "expression": "((((Price*H*((Qtarget-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))) max 0)/1000)-(Cclean+Price*H*((Qtarget-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rremain))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))) max 0)/1000))>0) AND (Rf>Rremain))",
+      "unit": "bool"
+    },
+    {
+      "id": "operation_guard",
+      "expression": "(((((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))>=Qtarget) AND (((Th-(Tc+((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Cc)) min ((Th-((Ch min Cc)*(Th-Tc)*((1-exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))))/Ch)-Tc))>=Approach)) AND (DeltaP<=DeltaPmax))",
+      "unit": "bool"
+    },
+    {
+      "id": "sensitivity_U_Rf",
+      "expression": "(-1/((1/Uc+Rf)*(1/Uc+Rf)))",
+      "unit": "(W/m2/K)/(m2K/W)"
+    },
+    {
+      "id": "sensitivity_Q_Rf",
+      "expression": "(-((Th-Tc)*A*(1-((Ch min Cc)/(Ch max Cc)))*(1-((Ch min Cc)/(Ch max Cc)))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))/((1/Uc+Rf)^2*(1-((Ch min Cc)/(Ch max Cc))*exp(-((1/(1/Uc+Rf))*A/(Ch min Cc))*(1-((Ch min Cc)/(Ch max Cc)))))^2))",
+      "unit": "W/(m2K/W)"
+    },
+    {
+      "id": "balanced_effectiveness",
+      "expression": "(((1/(1/Uc+Rf))*A/(Ch min Cc))/(1+((1/(1/Uc+Rf))*A/(Ch min Cc))))",
+      "unit": "1"
+    }
+  ]
+}
