@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "paceval_sample_cells_independently_checked": 117144,
+  "categorical_exact_checks": 26032,
+  "high_precision_80_digit_cells": 4000,
+  "independent_lapack_fitted_coefficients_checked": 480,
+  "technical_max_abs_formula_difference": 7.460698725481052e-14,
+  "technical_max_abs_high_precision_difference": 6.528829093741152e-15,
+  "technical_max_abs_coefficient_difference": 3.419486915845482e-14,
+  "grid_sample_rows": 5000,
+  "holdout_rows": 1508,
+  "disclosure": "Detailed numeric differences are engineering audit data, not published performance or precision claims."
+}

@@ -1,0 +1,27 @@
+lot=0 version=quadratic_v1 graphs=18 grid=10000 holdout_total=377 grid_accept=8889 grid_review=1018 grid_reject=93
+lot=0 version=cubic_harmonic_v2 graphs=18 grid=10000 holdout_total=377 grid_accept=9762 grid_review=157 grid_reject=81
+lot=1 version=quadratic_v1 graphs=18 grid=10000 holdout_total=377 grid_accept=8727 grid_review=1171 grid_reject=102
+lot=1 version=cubic_harmonic_v2 graphs=18 grid=10000 holdout_total=377 grid_accept=9669 grid_review=255 grid_reject=76
+lot=2 version=quadratic_v1 graphs=18 grid=10000 holdout_total=377 grid_accept=9034 grid_review=884 grid_reject=82
+lot=2 version=cubic_harmonic_v2 graphs=18 grid=10000 holdout_total=377 grid_accept=9753 grid_review=159 grid_reject=88
+lot=3 version=quadratic_v1 graphs=18 grid=10000 holdout_total=377 grid_accept=9147 grid_review=787 grid_reject=66
+lot=3 version=cubic_harmonic_v2 graphs=18 grid=10000 holdout_total=377 grid_accept=9740 grid_review=168 grid_reject=92
+lot=4 version=quadratic_v1 graphs=18 grid=10000 holdout_total=377 grid_accept=8884 grid_review=1045 grid_reject=71
+lot=4 version=cubic_harmonic_v2 graphs=18 grid=10000 holdout_total=377 grid_accept=9737 grid_review=177 grid_reject=86
+lot=5 version=quadratic_v1 graphs=18 grid=10000 holdout_total=377 grid_accept=8709 grid_review=1173 grid_reject=118
+lot=5 version=cubic_harmonic_v2 graphs=18 grid=10000 holdout_total=377 grid_accept=9705 grid_review=206 grid_reject=89
+lot=6 version=quadratic_v1 graphs=18 grid=10000 holdout_total=377 grid_accept=8427 grid_review=1376 grid_reject=197
+lot=6 version=cubic_harmonic_v2 graphs=18 grid=10000 holdout_total=377 grid_accept=9520 grid_review=405 grid_reject=75
+lot=7 version=quadratic_v1 graphs=18 grid=10000 holdout_total=377 grid_accept=8689 grid_review=1166 grid_reject=145
+lot=7 version=cubic_harmonic_v2 graphs=18 grid=10000 holdout_total=377 grid_accept=9757 grid_review=162 grid_reject=81
+lot=8 version=quadratic_v1 graphs=18 grid=10000 holdout_total=377 grid_accept=9090 grid_review=826 grid_reject=84
+lot=8 version=cubic_harmonic_v2 graphs=18 grid=10000 holdout_total=377 grid_accept=9769 grid_review=147 grid_reject=84
+lot=9 version=quadratic_v1 graphs=18 grid=10000 holdout_total=377 grid_accept=9073 grid_review=848 grid_reject=79
+lot=9 version=cubic_harmonic_v2 graphs=18 grid=10000 holdout_total=377 grid_accept=9767 grid_review=145 grid_reject=88
+SDK=original paceval 4.25, Linux shared library, no performance comparisons
+graph_objects=360 graph_cell_evaluations=3735720 multi_graph_batches=420
+model_families=quadratic_v1,cubic_harmonic_v2
+csv_numeric_parse=paceval_dConvertStringToFloat + strict lexical validation
+csv_numeric_format=paceval_dConvertFloatToString (~15 significant decimal digits; audited)
+input_contract=normalized u,v radius 150 mm; temperatures 10..50 C; synthetic overlay nm
+physics_scope=synthetic, no fab qualification or actuator control
