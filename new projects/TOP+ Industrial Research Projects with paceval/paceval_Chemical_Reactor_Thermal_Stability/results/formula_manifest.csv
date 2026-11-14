@@ -1,0 +1,36 @@
+graph_id,version,variables,expression,units
+K_RATE,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))",1/s
+REACTION_RATE,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))*C",mol/(m3 s)
+Q_GEN,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"H*V*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))*C",W
+F_C,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"((Cin-C)/tau)-(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))*C",mol/(m3 s)
+C_EQ,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(Cin/(1+(tau*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref)))))))",mol/m3
+J11,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(-1/tau)-(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))",1/s
+J12,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(-C)*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))*(Ea/(Rg*T*T))",mol/(m3 s K)
+J21,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(H/rhoCp)*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))",K m3/(mol s)
+DK_DT,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))*(Ea/(Rg*T*T))",1/(s K)
+DQ_DT,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"H*V*C*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))*(Ea/(Rg*T*T))",W/K
+Q_FLOW,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(rhoCp*V*(Tin-T)/tau)",W
+CONVERSION,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"1-(C/Cin)",1
+DAMKOHLER,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"tau*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))",1
+DELTA_REM,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"UA*alpha*(T-Tref)*(T-Tc)",W
+DELTA_FRED,common,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(-UA*alpha*(T-Tref)*(T-Tc))/(rhoCp*V)",K/s
+V1_Q_REM,V1,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(UA*(T-Tc))",W
+V1_F_T,V1,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(((Tin-T)/tau)+((H/rhoCp)*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))*C)-((UA*(T-Tc))/(rhoCp*V)))",K/s
+V1_F_RED,V1,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(((Tin-T)/tau)+((H/rhoCp)*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))*(Cin/(1+(tau*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))))))-((UA*(T-Tc))/(rhoCp*V)))",K/s
+V1_J22,V1,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(-1/tau)+((H/rhoCp)*C*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))*(Ea/(Rg*T*T)))-((UA/(rhoCp*V))*1)",1/s
+V1_D_T_D_UA,V1,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(-(1*(T-Tc))/(rhoCp*V))",K/(s (W/K))
+V1_D_T_D_TC,V1,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(UA/(rhoCp*V))",1/s
+V2_Q_REM,V2,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"((UA*(1+(alpha*(T-Tref))))*(T-Tc))",W
+V2_F_T,V2,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(((Tin-T)/tau)+((H/rhoCp)*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))*C)-(((UA*(1+(alpha*(T-Tref))))*(T-Tc))/(rhoCp*V)))",K/s
+V2_F_RED,V2,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(((Tin-T)/tau)+((H/rhoCp)*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))*(Cin/(1+(tau*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))))))-(((UA*(1+(alpha*(T-Tref))))*(T-Tc))/(rhoCp*V)))",K/s
+V2_J22,V2,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(-1/tau)+((H/rhoCp)*C*(kref*exp((-Ea/Rg)*((1/T)-(1/Tref))))*(Ea/(Rg*T*T)))-((UA/(rhoCp*V))*(1+(alpha*((2*T)-Tref-Tc))))",1/s
+V2_D_T_D_UA,V2,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"(-((1+(alpha*(T-Tref)))*(T-Tc))/(rhoCp*V))",K/(s (W/K))
+V2_D_T_D_TC,V2,T C Cin Tin Tc tau kref Ea Tref rhoCp H UA V alpha Tlim Rg,"((UA*(1+(alpha*(T-Tref))))/(rhoCp*V))",1/s
+J_TRACE,stage2,a b c d T C Cin Tin Tlim tau,"a+d",1/s
+J_DET,stage2,a b c d T C Cin Tin Tlim tau,"a*d-b*c",1/s2
+EIG_MAX_RE,stage2,a b c d T C Cin Tin Tlim tau,"((a+d)/2)+(sqrt((((a+d)^2)-(4*(a*d-b*c))) max 0)/2)",1/s
+MARG_TRACE,stage2,a b c d T C Cin Tin Tlim tau,"(-tau*(a+d))",1
+MARG_DET,stage2,a b c d T C Cin Tin Tlim tau,"(tau*tau*(a*d-b*c))",1
+MARG_TEMP,stage2,a b c d T C Cin Tin Tlim tau,"Tlim-T",K
+SCREEN_SCORE,stage2,a b c d T C Cin Tin Tlim tau,"((((Tlim-T)/(Tlim-Tin)) min (-tau*(a+d))) min (tau*tau*(a*d-b*c)))",1
+SCREEN_GUARD,stage2,a b c d T C Cin Tin Tlim tau,"(((a+d)<0) AND ((a*d-b*c)>0) AND (T<=Tlim) AND (C>=0) AND (C<=Cin))",0/1

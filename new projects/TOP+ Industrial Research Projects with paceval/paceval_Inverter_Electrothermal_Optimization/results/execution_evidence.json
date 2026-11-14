@@ -1,0 +1,17 @@
+{
+  "library": "original paceval SDK 4.25 with supplied Linux shared library",
+  "synthetic_scenarios": 100000,
+  "created_graphs": 35,
+  "executed_graphs": 35,
+  "multi_graph_batch_calls": 15700,
+  "scalar_calls": 0,
+  "graph_point_evaluations": 12480049,
+  "model_counts": {
+    "v1": {"successfully_solved": 92175, "root_outside_domain": 7825, "other_solver_failures": 0, "accept": 51785, "review": 4219, "reject": 43996},
+    "v2": {"successfully_solved": 91499, "root_outside_domain": 8501, "other_solver_failures": 0, "accept": 51254, "review": 4173, "reject": 44573}
+  },
+  "complete_model_pairs": 91499,
+  "surface_points_per_version": 1681,
+  "transient_cases": 12,
+  "transient_samples_per_case": 480
+}

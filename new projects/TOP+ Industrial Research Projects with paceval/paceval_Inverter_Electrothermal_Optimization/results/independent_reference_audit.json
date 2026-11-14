@@ -1,0 +1,35 @@
+{
+  "all_reference_checks": "PASS",
+  "detailed_max_abs_difference": 1.8479227037460078e-09,
+  "excluded_from_domain": 16326,
+  "full_trajectory_checks": 17280,
+  "high_precision_checks_80digit": 1024,
+  "model_counts": {
+    "1": {
+      "decisions": {
+        "ACCEPT": 51785,
+        "REJECT": 43996,
+        "REVIEW": 4219
+      },
+      "status": {
+        "NO_ROOT_IN_250C_MODEL_DOMAIN": 7825,
+        "OK": 92175
+      }
+    },
+    "2": {
+      "decisions": {
+        "ACCEPT": 51254,
+        "REJECT": 44573,
+        "REVIEW": 4173
+      },
+      "status": {
+        "NO_ROOT_IN_250C_MODEL_DOMAIN": 8501,
+        "OK": 91499
+      }
+    }
+  },
+  "native_scalar_checks": 2204088,
+  "output_rows": 200000,
+  "scenarios": 100000,
+  "successes": 183674
+}

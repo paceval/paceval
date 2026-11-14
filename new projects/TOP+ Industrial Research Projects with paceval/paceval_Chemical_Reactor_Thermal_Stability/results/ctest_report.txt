@@ -1,0 +1,16 @@
+Internal ctest changing into directory: /mnt/data/WP04_chemical_build
+Test project /mnt/data/WP04_chemical_build
+    Start 1: sdk_operator_conversion_and_reference_tests
+1/5 Test #1: sdk_operator_conversion_and_reference_tests ...   Passed    0.08 sec
+    Start 2: readme_math_and_links
+2/5 Test #2: readme_math_and_links .........................   Passed    0.68 sec
+    Start 3: readme_checker_regressions
+3/5 Test #3: readme_checker_regressions ....................   Passed    0.63 sec
+    Start 4: full_csv_to_paceval_to_csv_pipeline
+4/5 Test #4: full_csv_to_paceval_to_csv_pipeline ...........   Passed    7.63 sec
+    Start 5: independent_high_precision_research_audit
+5/5 Test #5: independent_high_precision_research_audit .....   Passed    0.99 sec
+
+100% tests passed, 0 tests failed out of 5
+
+Total Test time (real) =  10.01 sec

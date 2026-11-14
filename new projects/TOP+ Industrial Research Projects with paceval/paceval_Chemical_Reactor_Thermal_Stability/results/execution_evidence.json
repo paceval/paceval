@@ -1,0 +1,36 @@
+{
+  "engine": "original paceval 4.25 SDK and supplied Linux ELF shared object",
+  "main_run": {
+    "unique_graphs_created": 37,
+    "unique_domain_graphs_created": 35,
+    "unique_domain_graphs_executed": 35,
+    "scalar_calls": 55086,
+    "batch_calls": 1007,
+    "graph_point_evaluations_batch": 78750,
+    "graph_point_evaluations_scalar": 55086,
+    "scenario_count": 81,
+    "model_scenario_count": 162,
+    "equilibrium_roots": 418,
+    "native_reference_checks": 168
+  },
+  "dataset_provenance": "deterministic synthetic test conditions; not plant or laboratory observations",
+  "tests": {
+    "ctest_passed": 5,
+    "ctest_total": 5,
+    "high_precision_root_records_checked": 418,
+    "high_precision_profile_rows_checked": 542,
+    "high_precision_failures": 0
+  },
+  "outputs": [
+    "equilibria.csv",
+    "profile.csv",
+    "scenario_surface.csv",
+    "phase_plane.csv",
+    "trajectories.csv",
+    "native_audit.csv",
+    "math_execution_inventory.csv",
+    "formula_manifest.csv"
+  ],
+  "published_figures": 10,
+  "publication_pdf_pages": 12
+}

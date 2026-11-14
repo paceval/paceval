@@ -1,0 +1,50 @@
+{
+  "reference": "independently coded mass and energy balances plus 85 digit mpmath",
+  "root_records_checked": 418,
+  "profile_rows_checked": 542,
+  "reference_quantity_checks": 960,
+  "max_absolute_differences_technical_only": {
+    "root_temperature_residual": 2.8128226080807737e-15,
+    "mass_residual": 2.5737787947340145e-85,
+    "concentration": 3.738978456789273e-11,
+    "trace": 2.940742854967135e-15,
+    "det": 2.4086492283933673e-17,
+    "eig": 1.188569713824742e-15,
+    "score": 4.093572177072154e-14,
+    "profile_gen": 6.624549135462802e-09,
+    "profile_rem": 3.3735033418337674e-80,
+    "profile_energy": 5.719157444894088e-16,
+    "sensitivity_dQgen": 5.692010022808331e-10,
+    "sensitivity_dUA": 2.4545467326488633e-91,
+    "sensitivity_dTc": 3.141819817790545e-89
+  },
+  "baseline_high_precision_roots": {
+    "V1_branch1": {
+      "temperature_K": "304.7129309393367615198609350537616888718",
+      "stability": "stable"
+    },
+    "V1_branch2": {
+      "temperature_K": "325.9632861967403084185742706222645803164",
+      "stability": "unstable"
+    },
+    "V1_branch3": {
+      "temperature_K": "347.9792362786676681934305159184325849376",
+      "stability": "stable"
+    },
+    "V2_branch1": {
+      "temperature_K": "305.0768838858356928643914188213309043145",
+      "stability": "stable"
+    },
+    "V2_branch2": {
+      "temperature_K": "325.2805466922818980479306372765329604798",
+      "stability": "unstable"
+    },
+    "V2_branch3": {
+      "temperature_K": "347.5365807377655038514755207884796074907",
+      "stability": "stable"
+    }
+  },
+  "failure_count": 0,
+  "failures": [],
+  "note": "Differences depend in part on paceval decimal formatting; no global interval guarantee or field safety validation is implied."
+}
