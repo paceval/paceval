@@ -16,29 +16,29 @@ A hypothetical operator may ask: *At which of several specified fouling levels a
 
 ## 2. Mathematical model and versions
 
-For effective clean coefficient \(U_c\) and total fouling resistance \(R_f\), the model uses
+For effective clean coefficient $U_c$ and total fouling resistance $R_f$, the model uses
 
-\[
+$$
 U_{eff}=\frac{1}{1/U_c+R_f}.
-\]
+$$
 
-**Model v1, terminal-data LMTD screening:** With two externally supplied, positive terminal temperature differences \(\Delta T_1\) and \(\Delta T_2\),
+**Model v1, terminal-data LMTD screening:** With two externally supplied, positive terminal temperature differences $\Delta T_1$ and $\Delta T_2$,
 
-\[
+$$
 Q_{LMTD}=U_{eff} A F_c\frac{\Delta T_1-\Delta T_2}{\ln(\Delta T_1/\Delta T_2)}.
-\]
+$$
 
 This is not a coupled model of hot and cold outlet temperatures. At equal terminal differences, the analytic LMTD limit is that common difference. A separate persistent paceval graph implements a near-equality series rather than the singular direct quotient.
 
-**Model v2, counterflow epsilon–NTU:** Let \(C_{min}=\min(C_h,C_c)\), \(C_r=C_{min}/C_{max}\), \(NTU=U_{eff}A/C_{min}\), and \(z=e^{-NTU(1-C_r)}\). For \(C_r \ne 1\),
+**Model v2, counterflow epsilon–NTU:** Let $C_{min}=\min(C_h,C_c)$, $C_r=C_{min}/C_{max}$, $NTU=U_{eff}A/C_{min}$, and $z=e^{-NTU(1-C_r)}$. For $C_r \ne 1$,
 
-\[
+$$
 \varepsilon=\frac{1-z}{1-C_r z},\qquad Q_{NTU}=\varepsilon C_{min}(T_{h,in}-T_{c,in}).
-\]
+$$
 
-For the balanced-capacity limit \(C_r=1\), the separate paceval expression is \(\varepsilon=NTU/(1+NTU)\). From the v2 duty, paceval graphs compute both outlet temperatures, the minimum terminal approach, duty and approach margins, and the hot/cold energy-balance residual. The host checks that parameters are within the mathematical domain before graph evaluation. In the main dataset \(C_r=0.8\).
+For the balanced-capacity limit $C_r=1$, the separate paceval expression is $\varepsilon=NTU/(1+NTU)$. From the v2 duty, paceval graphs compute both outlet temperatures, the minimum terminal approach, duty and approach margins, and the hot/cold energy-balance residual. The host checks that parameters are within the mathematical domain before graph evaluation. In the main dataset $C_r=0.8$.
 
-The cleaning option uses a *specified* residual resistance after cleaning \(R_{remain}\). Both the current duty and the post-cleaning duty are calculated through actual paceval graphs. An **illustrative** cost score uses a chosen time horizon, an assumed utility cost per kWh of thermal shortfall, and a chosen cleaning expense. A positive signed advantage is an **input-dependent mathematical score**, not evidence of a measured economic benefit. A logical guard also requires a positive duty margin, sufficient temperature approach and an externally supplied pressure-drop measurement below the declared limit.
+The cleaning option uses a *specified* residual resistance after cleaning $R_{remain}$. Both the current duty and the post-cleaning duty are calculated through actual paceval graphs. An **illustrative** cost score uses a chosen time horizon, an assumed utility cost per kWh of thermal shortfall, and a chosen cleaning expense. A positive signed advantage is an **input-dependent mathematical score**, not evidence of a measured economic benefit. A logical guard also requires a positive duty margin, sufficient temperature approach and an externally supplied pressure-drop measurement below the declared limit.
 
 ## 3. Inputs, outputs and actual mathematics execution
 

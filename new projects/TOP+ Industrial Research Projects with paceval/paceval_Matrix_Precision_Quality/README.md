@@ -40,19 +40,19 @@ For the synthetic sparse residual vector and a synthetic dimensionless threshold
 \mathbf{r}=(x,y,z,0,\ldots,0)^{\mathsf{T}}, \qquad q_1=\mathbf{r}^{\mathsf{T}}\mathbf{P}\mathbf{r}.
 ```
 
-The complete 512-dimensional quadratic form reduces **exactly for this sparse input** to the leading 3 × 3 block of the previously computed full precision matrix. It is not a claim that the entire 512-dimensional matrix is equivalent to a 3 × 3 matrix. With coefficients \(a=P_{11}\), \(b=P_{12}\), \(c=P_{13}\), \(d=P_{22}\), \(e=P_{23}\), \(f=P_{33}\), all taken from recorded paceval matrix output:
+The complete 512-dimensional quadratic form reduces **exactly for this sparse input** to the leading 3 × 3 block of the previously computed full precision matrix. It is not a claim that the entire 512-dimensional matrix is equivalent to a 3 × 3 matrix. With coefficients $a=P_{11}$, $b=P_{12}$, $c=P_{13}$, $d=P_{22}$, $e=P_{23}$, $f=P_{33}$, all taken from recorded paceval matrix output:
 
 ```math
 q_1=ax^2+2bxy+2cxz+dy^2+2eyz+fz^2.
 ```
 
-A controlled diagnostic policy revision introduces a nonnegative supplementary penalty with \(h=0.08\). Version 1 and version 2 remain separately available:
+A controlled diagnostic policy revision introduces a nonnegative supplementary penalty with $h=0.08$. Version 1 and version 2 remain separately available:
 
 ```math
 q_2=q_1+h(x^2+y^2+z^2), \qquad m_1=t-q_1, \qquad m_2=t-q_2.
 ```
 
-The illustrative threshold \(t=7.815\) is **not** an industrially calibrated specification. In particular, version 2 does not inherit a chi-square distribution merely because its input resembles a Mahalanobis statistic. The decision label is assigned by the C++ host from the paceval-computed margin. The graph also computes explicit analytic sensitivities and the square-root radial diagnostic:
+The illustrative threshold $t=7.815$ is **not** an industrially calibrated specification. In particular, version 2 does not inherit a chi-square distribution merely because its input resembles a Mahalanobis statistic. The decision label is assigned by the C++ host from the paceval-computed margin. The graph also computes explicit analytic sensitivities and the square-root radial diagnostic:
 
 ```math
 \frac{\partial q_2}{\partial x}=2ax+2by+2cz+2hx,\qquad \rho_1=\sqrt{q_1}.

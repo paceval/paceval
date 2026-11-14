@@ -22,7 +22,7 @@ The supplied [five-page original WP_043 proposal](inputs/WP_043_Hydraulic_Twin_P
 
 ## 2. Defined mathematical model and operating envelope
 
-A pump supplies a common pressure head to two parallel branches. Flow rate is in cubic metres per second, hydraulic head in metres and power in kilowatts. For a speed ratio \(n\), the simplified hydraulic pump and network curves are:
+A pump supplies a common pressure head to two parallel branches. Flow rate is in cubic metres per second, hydraulic head in metres and power in kilowatts. For a speed ratio $n$, the simplified hydraulic pump and network curves are:
 
 ```math
 H_p(Q,n)=H_0 n^2-aQ^2,
@@ -30,7 +30,7 @@ H_p(Q,n)=H_0 n^2-aQ^2,
 H_s(Q)=H_{static}+k_{eq}Q^2.
 ```
 
-The branch head losses satisfy \(k_A Q_A^2=k_BQ_B^2\) and \(Q_A+Q_B=Q\). The equivalent network resistance and operating flow are consequently:
+The branch head losses satisfy $k_A Q_A^2=k_BQ_B^2$ and $Q_A+Q_B=Q$. The equivalent network resistance and operating flow are consequently:
 
 ```math
 k_{eq}=\left(\frac{1}{\sqrt{k_A}}+\frac{1}{\sqrt{k_B}}\right)^{-2},
@@ -46,7 +46,7 @@ The base synthetic hydraulic-efficiency map is:
 \eta_0(Q,n)=0.78-0.20\left(\frac{Q/n-0.145}{0.12}\right)^2.
 ```
 
-The independently registered version \(j\) changes the map by a declared, small shape perturbation:
+The independently registered version $j$ changes the map by a declared, small shape perturbation:
 
 ```math
 \eta_j(Q,n)=\eta_0(Q,n)\left[1+0.0006(j-11)\sin(12Q/n)\right],
@@ -65,7 +65,7 @@ P_{elec,j}=\frac{P_{hyd}}{\eta_j\eta_m},
 C_j=p_{el}P_{elec,j}.
 ```
 
-The motor efficiency \(\eta_m=0.94\) is distinct from the hydraulic efficiency. Price \(p_{el}\) has an **illustrative arbitrary currency per kWh**, and an hourly price multiplied by kW yields an illustrative hourly cost. The time-series sum is a stateful aggregation in the C++ host, documented rather than misattributed to paceval.
+The motor efficiency $\eta_m=0.94$ is distinct from the hydraulic efficiency. Price $p_{el}$ has an **illustrative arbitrary currency per kWh**, and an hourly price multiplied by kW yields an illustrative hourly cost. The time-series sum is a stateful aggregation in the C++ host, documented rather than misattributed to paceval.
 
 ### Two-branch synthetic tracer surrogate
 
@@ -85,13 +85,13 @@ This is a **steady attenuation surrogate**, not a physically validated water-qua
 
 | Declared input | Synthetic value |
 |---|---:|
-| Pump shutoff head \(H_0\) | 58 m |
-| Head-flow coefficient \(a\) | 1,250 in consistent quadratic units |
-| Static head \(H_{static}\) | 15 m in the main trace |
-| Pipe coefficients \(k_A,k_B\) | 2,800 and 3,700 |
-| Fluid density \(\rho\) | 998.2 kg/m³ |
-| Gravitational acceleration \(g\) | 9.81 m/s² |
-| Motor efficiency \(\eta_m\) | 94% |
+| Pump shutoff head $H_0$ | 58 m |
+| Head-flow coefficient $a$ | 1,250 in consistent quadratic units |
+| Static head $H_{static}$ | 15 m in the main trace |
+| Pipe coefficients $k_A,k_B$ | 2,800 and 3,700 |
+| Fluid density $\rho$ | 998.2 kg/m³ |
+| Gravitational acceleration $g$ | 9.81 m/s² |
+| Motor efficiency $\eta_m$ | 94% |
 | Synthetic inlet concentration | 1.0 mg/L |
 | Decay coefficient and residence-volume terms | 0.012 s⁻¹, 3.5 m³, 5.0 m³ |
 | Time discretization for schedule | 1 hour |

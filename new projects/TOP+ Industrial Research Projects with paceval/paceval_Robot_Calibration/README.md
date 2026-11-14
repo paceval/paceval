@@ -14,10 +14,10 @@ The experiment uses an explicitly documented **six revolute-joint, three-dimensi
 
 The measured tool-center-point (TCP) position is modeled as
 
-\[
+$$
 \mathbf r_i = \mathbf p^{\mathrm{measured}}_i - \mathbf f(\mathbf q_i,\boldsymbol\theta),\quad
 \boldsymbol\theta=(o_1,\ldots,o_6,\Delta l_2,\Delta l_3,\Delta l_6).
-\]
+$$
 
 Every `q` and encoder offset is in **radians**, every length and coordinate in **metres**. The base coordinate system, link-length values other than `l2,l3,l6`, and tool frame are fixed; the calibration fits **position measurements only**, not full six-dimensional end-effector poses. There is no separate base-frame registration or orientation-error identification.
 

@@ -14,11 +14,11 @@ The C++ host rotates the layouts into wind coordinates, determines which turbine
 
 The research intentionally uses a **Jensen-inspired expansion term with a Gaussian lateral taper**, not the exact canonical Jensen top-hat model or a calibrated PyWake/FLORIS wake solver. For an upstream/downstream turbine pair with downstream distance `dx > 0` and crosswind separation `dy`, the dimensionless deficit is
 
-\[
+$$
 \delta(dx,dy)=(1-\sqrt{1-C_T})\left(\frac{D}{D+2k\,dx}\right)^2\exp\left[-\frac12\left(\frac{dy}{D/2+k\,dx}\right)^2\right].
-\]
+$$
 
-The host combines contributions \(\delta_j\) to each turbine as \(v_{\mathrm{eff}}=v_\infty \max(0.20,1-\sqrt{\sum_j\delta_j^2})\); its separate rated-power cap is \(P_{\mathrm{delivered}}=\min(5\,\mathrm{MW},\tfrac12\rho A C_p v_{\mathrm{eff}}^3/10^6)\). The 20% velocity floor and selected coefficients are **deliberate synthetic experiment choices**, not validated turbine physics. Graph expressions are defined in [the C++ source](src/wind_farm.cpp).
+The host combines contributions $\delta_j$ to each turbine as $v_{\mathrm{eff}}=v_\infty \max(0.20,1-\sqrt{\sum_j\delta_j^2})$; its separate rated-power cap is $P_{\mathrm{delivered}}=\min(5\,\mathrm{MW},\tfrac12\rho A C_p v_{\mathrm{eff}}^3/10^6)$. The 20% velocity floor and selected coefficients are **deliberate synthetic experiment choices**, not validated turbine physics. Graph expressions are defined in [the C++ source](src/wind_farm.cpp).
 
 ## What was actually executed
 

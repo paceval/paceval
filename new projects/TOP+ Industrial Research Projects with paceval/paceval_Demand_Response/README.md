@@ -20,12 +20,12 @@ The host checks the event-window flag, measurement-quality flag, positive measur
 
 For a rule `m`, the illustrative net modelled value is
 
-\[
+$$
 V_m = \alpha_m d(p_e-p_r)+b_m d
       -\mathbf{1}_{f_m\ge1}q_m(r-d)^2
       -\mathbf{1}_{f_m\ge2}c_m d^2
       -\mathbf{1}_{f_m\ge3}g_m d^3.
-\]
+$$
 
 Here `d` is **verified eligible** delivered energy (kWh); `r` is requested energy (kWh); `p_e` and `p_r` are respectively event- and recovery-period price assumptions (EUR/kWh). `alpha` is dimensionless, `b` is an illustrative separate incentive (EUR/kWh), `q` and `c` are synthetic costs in EUR/kWh², `g` is EUR/kWh³, and `f` selects one of four formula families. The terms represent an *illustrative* shifted-energy price advantage, a separately modelled program reward, and possible under-delivery and comfort costs, rather than a prescribed market settlement formula.
 

@@ -27,9 +27,9 @@ All percentages, latency comparisons, energy comparisons and extrapolated hardwa
 
 The input to the demonstrator is a set of **already computed** two-channel inference outputs `p1`, `p2`, an auxiliary normalized feature `x`, and a quality indicator `quality`. The basic formula is taken from the supplied research proposal:
 
-\[
+$$
 s_0 = \frac{p_1}{p_1+p_2+\varepsilon} + a\tanh(bx).
-\]
+$$
 
 **The score is a synthetic scalar, not a calibrated probability.** The denominator regularizer `eps` is strictly positive and checked at input. Its purpose is numerical stability, not an assertion of model validity. Five controlled additional terms extend the reference rule with quality, channel difference, bounded feature magnitude, squared channel difference, and a smooth feature correction. A validated CSV manifest selects which family and coefficient each version uses.
 

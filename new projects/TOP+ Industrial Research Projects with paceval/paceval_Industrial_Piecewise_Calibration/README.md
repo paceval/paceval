@@ -35,25 +35,25 @@ The existing industrial research identifies additional applications including pr
 
 For 4,096 intervals (default) or 65,536 intervals (capacity validation), `x_i=i/n`. With interval index `i`,
 
-\[
+$$
 S_v(x)=y_{i,v}+(y_{i+1,v}-y_{i,v})\frac{x-x_i}{x_{i+1}-x_i},\qquad x_i\le x<x_{i+1}.
-\]
+$$
 
 The final interval includes `x=1`. The synthetic knot generator is
 
-\[
+$$
 y_{i,1}=0.12+0.75x_i+0.09\sin(9x_i)+0.035\sin(37x_i)+0.04\exp[-((x_i-0.72)/0.06)^2],
-\]
+$$
 
-\[
+$$
 y_{i,2}=y_{i,1}+0.002\sin(5x_i)+0.001x_i.
-\]
+$$
 
 The full correction executed by paceval is
 
-\[
+$$
 G_v(x,T,d)=S_v(x)[1+0.00035(T-20)]+0.0005(T-20)+0.000075\sin(7x)(T-20)+d(0.001+0.0015x).
-\]
+$$
 
 The default domains are `x in [0,1]`, `T in [0,60] degrees Celsius`, and `d in [-1,1]`. The C++ host **rejects** any out-of-domain, missing or nonfinite input. All outputs are normalized synthetic model units, not SI-calibrated quantities.
 
@@ -61,9 +61,9 @@ Local analytical derivatives `dG/dx`, `dG/dT` and `dG/dd` are paceval graphs. At
 
 An *illustrative* first-order standard-uncertainty graph assumes uncorrelated inputs:
 
-\[
+$$
 u=\sqrt{(\partial_xG\,u_x)^2+(\partial_TG\,u_T)^2+(\partial_dG\,u_d)^2+u_{model}^2}.
-\]
+$$
 
 The inclusion of a model term does not demonstrate its actual statistical or metrological validity. For a synthetic reference `r` and tolerance `t`, the paceval decision margins are `m_accept=t-|G-r|-2u` and `m_reject=t-|G-r|+2u`. The host returns `ACCEPT` when `m_accept>=0`, `REJECT` when `m_reject<0`, and `REVIEW` otherwise. This is a **hypothetical decision-support test**, not an industrial release rule.
 

@@ -15,9 +15,9 @@ This repository takes the selected objective and constraint functions from the o
 
 The host simulates the scalar nonlinear discrete-time process
 
-\[
+$$
 x_{k+1}=a x_k+b u_k+d_k+c x_k^3.
-\]
+$$
 
 At every control step, C++ builds a finite set of candidate action sequences over a short predictive horizon. It asks **paceval**, through its original C/C++ API, to evaluate **eight reusable mathematical graphs** for each candidate:
 
@@ -38,7 +38,7 @@ All eight mathematical expressions use the **same ordered 14-variable schema**, 
 
 ### Deliberate extension beyond a single cost function
 
-The original proposal introduced the standard MPC objective \(\sum_k (x_k-x_{ref})^TQ(x_k-x_{ref}) + u_k^TRu_k\). This implementation adds a nonlinear transition, action-rate penalty, state/input/rate constraints, analytic sensitivity, four preset scenarios and an actual offline **receding-horizon loop**. The host optimizer uses a **finite control grid** `{-1, -0.5, 0, 0.5, 1}` and **beam search**, which is an intentionally simple *approximate* discrete optimizer. It is not a general nonlinear programming solver and does not guarantee a global optimum when pruning is active.
+The original proposal introduced the standard MPC objective $\sum_k (x_k-x_{ref})^TQ(x_k-x_{ref}) + u_k^TRu_k$. This implementation adds a nonlinear transition, action-rate penalty, state/input/rate constraints, analytic sensitivity, four preset scenarios and an actual offline **receding-horizon loop**. The host optimizer uses a **finite control grid** `{-1, -0.5, 0, 0.5, 1}` and **beam search**, which is an intentionally simple *approximate* discrete optimizer. It is not a general nonlinear programming solver and does not guarantee a global optimum when pruning is active.
 
 ![Synthetic one-step stage-cost landscape](figures/02_stage_cost_surface.png)
 
