@@ -1,0 +1,284 @@
+{
+  "study": "WP20 Injection Molding Rheology and Cavity Pressure Windows",
+  "source": "actual remote paceval MCP 4.26 registrations and evaluations",
+  "formula_versions": [
+    "v1: apparent viscosity/Hagen\u2013Poiseuille proxy",
+    "v2: analytically corrected isothermal power-law circular-pipe model",
+    "diagnostic: regularized Cross-Arrhenius viscosity proxy"
+  ],
+  "variables": [
+    "Q",
+    "T",
+    "rA",
+    "LA",
+    "rB",
+    "LB",
+    "K",
+    "n",
+    "E",
+    "Rg",
+    "Tref",
+    "etaZero",
+    "tauStar",
+    "MachineMax",
+    "CavityReq",
+    "ShearMax",
+    "Tmin",
+    "Tmax",
+    "Pheater",
+    "Theat",
+    "Pinject",
+    "Tinject",
+    "Emax"
+  ],
+  "graphs": [
+    {
+      "id": "gammaA",
+      "expression": "(4*Q/(pi*rA^3))",
+      "remote_handle": "1689765392",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "gammaB",
+      "expression": "(4*Q/(pi*rB^3))",
+      "remote_handle": "1239274016",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "etaApparentA_v1",
+      "expression": "(K*(4*Q/(pi*rA^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))",
+      "remote_handle": "1239046528",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "etaApparentB_v1",
+      "expression": "(K*(4*Q/(pi*rB^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))",
+      "remote_handle": "1239137600",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "pressureA_v1",
+      "expression": "(8*(K*(4*Q/(pi*rA^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))*LA*Q/(pi*rA^4))",
+      "remote_handle": "972274912",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "pressureB_v1",
+      "expression": "(8*(K*(4*Q/(pi*rB^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))*LB*Q/(pi*rB^4))",
+      "remote_handle": "932654176",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "pressureTotal_v1",
+      "expression": "((8*(K*(4*Q/(pi*rA^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))*LA*Q/(pi*rA^4))+(8*(K*(4*Q/(pi*rB^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))*LB*Q/(pi*rB^4)))",
+      "remote_handle": "1407589088",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "gammaWallA_v2",
+      "expression": "((4*Q/(pi*rA^3))*((3*n+1)/(4*n)))",
+      "remote_handle": "932282176",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "gammaWallB_v2",
+      "expression": "((4*Q/(pi*rB^3))*((3*n+1)/(4*n)))",
+      "remote_handle": "1094190336",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "pressureA_v2",
+      "expression": "(2*K*exp(E/Rg*(1/T-1/Tref))*LA/rA*((4*Q/(pi*rA^3))*((3*n+1)/(4*n)))^n)",
+      "remote_handle": "1474633312",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "pressureB_v2",
+      "expression": "(2*K*exp(E/Rg*(1/T-1/Tref))*LB/rB*((4*Q/(pi*rB^3))*((3*n+1)/(4*n)))^n)",
+      "remote_handle": "1239258480",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "pressureTotal_v2",
+      "expression": "((2*K*exp(E/Rg*(1/T-1/Tref))*LA/rA*((4*Q/(pi*rA^3))*((3*n+1)/(4*n)))^n)+(2*K*exp(E/Rg*(1/T-1/Tref))*LB/rB*((4*Q/(pi*rB^3))*((3*n+1)/(4*n)))^n))",
+      "remote_handle": "1689233136",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "pressureMargin_v1",
+      "expression": "(MachineMax-CavityReq-((8*(K*(4*Q/(pi*rA^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))*LA*Q/(pi*rA^4))+(8*(K*(4*Q/(pi*rB^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))*LB*Q/(pi*rB^4))))",
+      "remote_handle": "932050688",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "pressureMargin_v2",
+      "expression": "(MachineMax-CavityReq-((2*K*exp(E/Rg*(1/T-1/Tref))*LA/rA*((4*Q/(pi*rA^3))*((3*n+1)/(4*n)))^n)+(2*K*exp(E/Rg*(1/T-1/Tref))*LB/rB*((4*Q/(pi*rB^3))*((3*n+1)/(4*n)))^n)))",
+      "remote_handle": "1094286400",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "temperatureMargin",
+      "expression": "((T-Tmin) min (Tmax-T))",
+      "remote_handle": "987741136",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "shearMargin_v1",
+      "expression": "(ShearMax-((4*Q/(pi*rA^3)) max (4*Q/(pi*rB^3))))",
+      "remote_handle": "987684704",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "shearMargin_v2",
+      "expression": "(ShearMax-(((4*Q/(pi*rA^3))*((3*n+1)/(4*n))) max ((4*Q/(pi*rB^3))*((3*n+1)/(4*n)))))",
+      "remote_handle": "973324736",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "cycleEnergy",
+      "expression": "(Pheater*Theat+Pinject*Tinject)",
+      "remote_handle": "1193626576",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "energyMargin",
+      "expression": "(Emax-(Pheater*Theat+Pinject*Tinject))",
+      "remote_handle": "1040008736",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "guard_v1",
+      "expression": "((((((MachineMax-CavityReq-((8*(K*(4*Q/(pi*rA^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))*LA*Q/(pi*rA^4))+(8*(K*(4*Q/(pi*rB^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))*LB*Q/(pi*rB^4))))>=0) AND ((ShearMax-((4*Q/(pi*rA^3)) max (4*Q/(pi*rB^3))))>=0)) AND (((T-Tmin) min (Tmax-T))>=0)) AND ((Emax-(Pheater*Theat+Pinject*Tinject))>=0)))",
+      "remote_handle": "1193897104",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "guard_v2",
+      "expression": "((((((MachineMax-CavityReq-((2*K*exp(E/Rg*(1/T-1/Tref))*LA/rA*((4*Q/(pi*rA^3))*((3*n+1)/(4*n)))^n)+(2*K*exp(E/Rg*(1/T-1/Tref))*LB/rB*((4*Q/(pi*rB^3))*((3*n+1)/(4*n)))^n)))>=0) AND ((ShearMax-(((4*Q/(pi*rA^3))*((3*n+1)/(4*n))) max ((4*Q/(pi*rB^3))*((3*n+1)/(4*n)))))>=0)) AND (((T-Tmin) min (Tmax-T))>=0)) AND ((Emax-(Pheater*Theat+Pinject*Tinject))>=0)))",
+      "remote_handle": "1691222512",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "score_v1",
+      "expression": "((((MachineMax-CavityReq-((8*(K*(4*Q/(pi*rA^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))*LA*Q/(pi*rA^4))+(8*(K*(4*Q/(pi*rB^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))*LB*Q/(pi*rB^4))))/MachineMax) min ((ShearMax-((4*Q/(pi*rA^3)) max (4*Q/(pi*rB^3))))/ShearMax)) min ((((T-Tmin) min (Tmax-T))/(Tmax-Tmin)) min ((Emax-(Pheater*Theat+Pinject*Tinject))/Emax)))",
+      "remote_handle": "1691869040",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "score_v2",
+      "expression": "((((MachineMax-CavityReq-((2*K*exp(E/Rg*(1/T-1/Tref))*LA/rA*((4*Q/(pi*rA^3))*((3*n+1)/(4*n)))^n)+(2*K*exp(E/Rg*(1/T-1/Tref))*LB/rB*((4*Q/(pi*rB^3))*((3*n+1)/(4*n)))^n)))/MachineMax) min ((ShearMax-(((4*Q/(pi*rA^3))*((3*n+1)/(4*n))) max ((4*Q/(pi*rB^3))*((3*n+1)/(4*n)))))/ShearMax)) min ((((T-Tmin) min (Tmax-T))/(Tmax-Tmin)) min ((Emax-(Pheater*Theat+Pinject*Tinject))/Emax)))",
+      "remote_handle": "1691911984",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "pressureDelta_v2_v1",
+      "expression": "(((2*K*exp(E/Rg*(1/T-1/Tref))*LA/rA*((4*Q/(pi*rA^3))*((3*n+1)/(4*n)))^n)+(2*K*exp(E/Rg*(1/T-1/Tref))*LB/rB*((4*Q/(pi*rB^3))*((3*n+1)/(4*n)))^n))-((8*(K*(4*Q/(pi*rA^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))*LA*Q/(pi*rA^4))+(8*(K*(4*Q/(pi*rB^3))^(n-1)*exp(E/Rg*(1/T-1/Tref)))*LB*Q/(pi*rB^4))))",
+      "remote_handle": "1648290576",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "sensitivityPressureQ_v2",
+      "expression": "(n*((2*K*exp(E/Rg*(1/T-1/Tref))*LA/rA*((4*Q/(pi*rA^3))*((3*n+1)/(4*n)))^n)+(2*K*exp(E/Rg*(1/T-1/Tref))*LB/rB*((4*Q/(pi*rB^3))*((3*n+1)/(4*n)))^n))/Q)",
+      "remote_handle": "1094356624",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "sensitivityPressureT_v2",
+      "expression": "(-E/(Rg*T*T)*((2*K*exp(E/Rg*(1/T-1/Tref))*LA/rA*((4*Q/(pi*rA^3))*((3*n+1)/(4*n)))^n)+(2*K*exp(E/Rg*(1/T-1/Tref))*LB/rB*((4*Q/(pi*rB^3))*((3*n+1)/(4*n)))^n)))",
+      "remote_handle": "1582513904",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "crossEtaA_diagnostic",
+      "expression": "((etaZero*exp(E/Rg*(1/T-1/Tref)))/(1+((etaZero*exp(E/Rg*(1/T-1/Tref)))*(4*Q/(pi*rA^3))/tauStar)^(1-n)))",
+      "remote_handle": "1201754224",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "crossEtaB_diagnostic",
+      "expression": "((etaZero*exp(E/Rg*(1/T-1/Tref)))/(1+((etaZero*exp(E/Rg*(1/T-1/Tref)))*(4*Q/(pi*rB^3))/tauStar)^(1-n)))",
+      "remote_handle": "1690718656",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "pressureCrossProxy_diagnostic",
+      "expression": "(8*((etaZero*exp(E/Rg*(1/T-1/Tref)))/(1+((etaZero*exp(E/Rg*(1/T-1/Tref)))*(4*Q/(pi*rA^3))/tauStar)^(1-n)))*LA*Q/(pi*rA^4)+8*((etaZero*exp(E/Rg*(1/T-1/Tref)))/(1+((etaZero*exp(E/Rg*(1/T-1/Tref)))*(4*Q/(pi*rB^3))/tauStar)^(1-n)))*LB*Q/(pi*rB^4))",
+      "remote_handle": "1193780960",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "crossVsPowerEtaA_ratio",
+      "expression": "(((etaZero*exp(E/Rg*(1/T-1/Tref)))/(1+((etaZero*exp(E/Rg*(1/T-1/Tref)))*(4*Q/(pi*rA^3))/tauStar)^(1-n)))/(K*(4*Q/(pi*rA^3))^(n-1)*exp(E/Rg*(1/T-1/Tref))))",
+      "remote_handle": "1654918896",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "NewtonianLimitingPressure",
+      "expression": "(8*K*exp(E/Rg*(1/T-1/Tref))*Q/pi*(LA/rA^4+LB/rB^4))",
+      "remote_handle": "968173744",
+      "remote_registered": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    }
+  ]
+}

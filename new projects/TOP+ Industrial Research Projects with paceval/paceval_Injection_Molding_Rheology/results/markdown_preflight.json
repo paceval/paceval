@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "markdown_files_checked": 6,
+  "real_parser": "markdown-it-py CommonMark",
+  "negative_tests": {
+    "legacy_inline": true,
+    "legacy_display": true,
+    "forbidden_macro": true,
+    "unbalanced_inline": true,
+    "nested_display": true,
+    "unclosed_display": true
+  },
+  "negative_tests_passed": 6,
+  "local_link_check": "PASS",
+  "pdf_pages_checked_for_structure": 15,
+  "original_pdf_visually_rendered_separately": true,
+  "github_com_ui_preview_performed": false,
+  "errors": []
+}

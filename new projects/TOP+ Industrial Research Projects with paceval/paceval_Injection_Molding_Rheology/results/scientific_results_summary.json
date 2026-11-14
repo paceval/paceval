@@ -1,0 +1,17 @@
+{
+  "grid": 49,
+  "accepted_v1": 34,
+  "accepted_v2": 27,
+  "changed_between_versions": 7,
+  "main_unique_graphs": 31,
+  "main_scenarios": 61,
+  "main_graph_point_evaluations": 1891,
+  "independent_checks": 421,
+  "selected_observation_files": [
+    "results/mcp_grid_observed.csv",
+    "results/mcp_edge_observed.csv",
+    "results/mcp_rheology_diagnostics.csv"
+  ],
+  "synthetic": true,
+  "industrial_signoff": false
+}

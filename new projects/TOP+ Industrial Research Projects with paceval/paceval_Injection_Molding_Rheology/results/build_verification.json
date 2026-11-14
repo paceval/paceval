@@ -1,0 +1,25 @@
+{
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "command": "g++ -std=c++17 -Wall -Wextra -Wpedantic -fsyntax-only /mnt/data/WP20_Injection_Molding_Paceval_Research/src/injection_molding_paceval.cpp /mnt/data/WP20_Injection_Molding_Paceval_Research/src/paceval_main.cpp",
+  "exit_code": 0,
+  "stderr": "",
+  "source_syntax_test": "PASS",
+  "library_present": false,
+  "local_cpp_link_executed": false,
+  "local_sdk_runtime_executed": false,
+  "ctest_executed": false,
+  "ctest_passed": 0,
+  "ctest_total": 0,
+  "sdk_files": [
+    {
+      "name": "paceval_main.h",
+      "sha256": "f68a88b658b5e4aa70487a5d927e85e27c8062a4c9c416918a4ee58059802bc8",
+      "sha256_matches_prior_original": true
+    },
+    {
+      "name": "paceval_main.cpp",
+      "sha256": "d5906ecd19019cbc403be7d38f15e3bdc855a064822a4b3922b861cda5f4e101",
+      "sha256_matches_prior_original": true
+    }
+  ]
+}

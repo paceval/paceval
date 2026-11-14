@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "precision_decimal_digits": 90,
+  "reference_checks": 421,
+  "grid_rows": 49,
+  "edge_rows": 12,
+  "tinc_point_tests": 10,
+  "failure_count": 0,
+  "failures": [],
+  "selected_case_reference": [
+    {
+      "case_id": "G012",
+      "pressure_v1_MPa": 2.858769178332479,
+      "pressure_v2_MPa": 3.2073150192985396,
+      "guard_v1": 1,
+      "guard_v2": 0
+    },
+    {
+      "case_id": "G020",
+      "pressure_v1_MPa": 2.7735978387561087,
+      "pressure_v2_MPa": 3.1117594498921246,
+      "guard_v1": 1,
+      "guard_v2": 0
+    },
+    {
+      "case_id": "G028",
+      "pressure_v1_MPa": 2.674940132156527,
+      "pressure_v2_MPa": 3.001073233409632,
+      "guard_v1": 1,
+      "guard_v2": 0
+    },
+    {
+      "case_id": "S004",
+      "pressure_v1_MPa": 69.25758308850237,
+      "pressure_v2_MPa": 69.25758308850237,
+      "guard_v1": 0,
+      "guard_v2": 0
+    },
+    {
+      "case_id": "S011",
+      "pressure_v1_MPa": 2.2638995233562924,
+      "pressure_v2_MPa": 2.539917877412827,
+      "guard_v1": 1,
+      "guard_v2": 0
+    }
+  ],
+  "tolerance": "abs <= 1e-8 + 2e-12*abs(reference), boolean exact; TINC strict decimal inclusion"
+}

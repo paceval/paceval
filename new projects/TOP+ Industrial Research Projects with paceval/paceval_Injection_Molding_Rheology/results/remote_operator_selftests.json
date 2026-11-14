@@ -1,0 +1,60 @@
+{
+  "source": "paceval MCP 4.26 graph creation and evaluation; three input scenarios",
+  "inputs": [
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      -1,
+      1,
+      0
+    ],
+    [
+      2,
+      1,
+      -1
+    ]
+  ],
+  "results": {
+    "negative_remainder": [
+      -1,
+      -1,
+      -1
+    ],
+    "negative_modulo": [
+      9,
+      9,
+      9
+    ],
+    "infix_min": [
+      4,
+      4,
+      4
+    ],
+    "infix_max": [
+      5,
+      5,
+      5
+    ],
+    "and_boundary": [
+      1,
+      1,
+      0
+    ],
+    "not_or": [
+      0,
+      1,
+      1
+    ],
+    "xor": [
+      1,
+      0,
+      1
+    ]
+  },
+  "nonzero_error_codes": 0,
+  "graph_count": 7,
+  "point_evaluations": 21
+}
