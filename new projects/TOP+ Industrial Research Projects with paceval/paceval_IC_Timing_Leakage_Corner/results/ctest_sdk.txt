@@ -1,0 +1,2 @@
+CTest integration tests: 0 executed. No pass or failure statistics are fabricated.
+CTest is configured in src/CMakeLists.txt; successful execution requires the external ABI-compatible original paceval Linux library.

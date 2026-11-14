@@ -1,0 +1,16 @@
+{
+  "sdk": "4.25, original supplied Linux library",
+  "model": "uncalibrated synthetic steady-state IPMSM screening",
+  "unique_domain_graphs_created": 69,
+  "unique_domain_graphs_executed": 69,
+  "scalar_calls": 0,
+  "multi_graph_batch_calls_including_layout_probe": 457,
+  "graph_point_evaluations_including_layout_probe": 1338880,
+  "scenario_count": 19404,
+  "model_scenario_count": 38808,
+  "v1_feasible_grid_points": 9284,
+  "v2_feasible_grid_points": 9576,
+  "independent_native_reference_checks": 2316,
+  "coverage": "all 2 motor versions and 5 comparison graphs actually executed",
+  "scope": "mathematical functionality only; no FEA correlation or motor qualification"
+}

@@ -1,0 +1,63 @@
+{
+  "research_project": "WP10 Electric Motor Efficiency and Field-Weakening Maps",
+  "date": "2026-11-14",
+  "sdk_version": "4.25",
+  "original_shared_library_provided_separately": true,
+  "ctest_passed": 5,
+  "ctest_total": 5,
+  "scientific_pdf_pages": 19,
+  "pdf_pages_rendered_and_visually_inspected": 19,
+  "cover_size_px": [
+    2400,
+    1200
+  ],
+  "executed_graphs": 69,
+  "original_synthetic_scenarios": 19404,
+  "two_version_results": 38808,
+  "independent_native_checks": 2316,
+  "independent_90_digit_checks": 25002,
+  "byte_identical_files": [
+    {
+      "file": "screening.csv",
+      "sha256": "01385b9efbc628180ce94eb9cb27051cf647c2f1e5a13e4ac7b0bb1937e753d1",
+      "byte_identical_reproduction": true
+    },
+    {
+      "file": "model_comparison.csv",
+      "sha256": "f444a186166c1fa62c59e3459b2e37f021739611d515ba5faab896d983f33d9d",
+      "byte_identical_reproduction": true
+    },
+    {
+      "file": "torque_speed_envelope.csv",
+      "sha256": "6c18a7efc34ea747932a5069267ed80687fe07d80ee0d25a3cf2dfaa7eebe0fa",
+      "byte_identical_reproduction": true
+    },
+    {
+      "file": "efficiency_recommended.csv",
+      "sha256": "4ecc2f51e3886419359fd8f9f14e33b956c3a9b53c8363cf66b3697e8aabf5a0",
+      "byte_identical_reproduction": true
+    },
+    {
+      "file": "native_audit.csv",
+      "sha256": "25e79face1889d3ca7d4726712a297860f172c24eb786888d090bce08b5db45f",
+      "byte_identical_reproduction": true
+    },
+    {
+      "file": "formula_manifest.csv",
+      "sha256": "f929b428ab492d8c85d2ea4ba4b711e87a5273df5b498f1ff4f2571a4d7505f5",
+      "byte_identical_reproduction": true
+    },
+    {
+      "file": "math_execution_inventory.csv",
+      "sha256": "14d9efad21f90301891d78a71172b6e557a4ae654fe95c861df8e53305b5b8d8",
+      "byte_identical_reproduction": true
+    },
+    {
+      "file": "high_precision_audit.csv",
+      "sha256": "25e22db537f9bf08768991fae11441c19abbef5c702027449903051e120a3125",
+      "byte_identical_reproduction": true
+    }
+  ],
+  "real_github_online_render_test": false,
+  "runtime_library_included_in_zip": false
+}

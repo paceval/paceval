@@ -1,0 +1,5 @@
+Final PDF layout inspection, 14 November 2026.
+13 pages rendered at 1.5-1.65 scaling with PyMuPDF. Two final multi-page contact sheets were opened and visually reviewed for pages 1 through 13. Specific figures and tables were checked in the research PNG contact sheet. No visibly truncated page content, table overlap, damaged label or cutoff image was found. Independent programmatic check verified all PDF text/figure blocks lie within page limits, and that the cover illustration is displayed with its exact 2:1 aspect ratio. All pages were populated and page numbering is sequential.
+This visual check is a local PDF rendering inspection, not a successful GitHub preview.
+
+Final hero replaced 14 November 2026 with fresh semiconductor macro concept artwork. PDF rebuilt; all 13 pages nonempty and title illustration aspect ratio remains 2:1.

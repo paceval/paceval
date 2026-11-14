@@ -1,0 +1,15 @@
+{
+  "source": "Actual paceval MCP v4.26 values stored as decimal text; independent binary64-input mpmath (90 dps)",
+  "comparison_tolerance": "abs(reference - recorded) <= 2e-9*(1+abs(reference)) for truncated/transcribed numeric records",
+  "status": "PASS",
+  "regular_graph_point_checks": 1162,
+  "failed_regular_checks": 0,
+  "max_regular_abs_difference_technical_only": "4.89264206899e-11",
+  "max_regular_scaled_difference_technical_only": "3.87549255343e-13",
+  "tinc_printed_interval_checks": 24,
+  "tinc_printed_interval_inclusions": 24,
+  "tinc_printed_interval_unresolved": [],
+  "failures": [],
+  "local_sdk_runtime_test": "NOT EXECUTED: compatible shared library unavailable",
+  "note": "TINC printed decimal inclusion at finite input points is not a proof of global interval arithmetic or of PVT uncertainty propagation."
+}

@@ -1,0 +1,2 @@
+Rs25_Ohm,alphaR_invK,psi25_Wb,betaPsi_invK,Ld_H,Lq_H,pole_pairs,Imax_Apeak,Vdc_V,kFe_proxy,kMech_proxy,Tnom_Nm,EtaMin,Ttarget_Nm,Tref_C
+0.026,0.00393,0.135,-0.001,0.00034,0.00077,4,240,600,0.006,0.0008,230,0.9,120,25

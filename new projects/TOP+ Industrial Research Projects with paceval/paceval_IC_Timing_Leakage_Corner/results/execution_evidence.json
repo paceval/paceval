@@ -1,0 +1,66 @@
+{
+  "project": "WP08 Integrated Circuit Timing and Leakage Corner Sweeps",
+  "remote_engine": "original paceval MCP reported version 4.26",
+  "actual_remote_graphs": {
+    "main_distinct_expressions_created": 22,
+    "main_distinct_expressions_executed": 22,
+    "additional_interval_enabled_handles": 3,
+    "additional_operator_handles": 7,
+    "total_remote_create_successes": 32
+  },
+  "actual_remote_calls": {
+    "main_multi_graph_batch_calls": 2,
+    "interval_multi_graph_batch_calls": 1,
+    "operator_multi_graph_batch_calls": 1,
+    "main_grid_scenarios": 81,
+    "main_snapshot_scenarios": 16,
+    "interval_cases": 8,
+    "operator_cases": 3,
+    "main_graph_point_evaluations": 2134,
+    "interval_graph_point_evaluations": 24,
+    "operator_graph_point_evaluations": 21,
+    "total_all_remote_graph_point_evaluations": 2179
+  },
+  "archived_values": {
+    "grid_recorded_main_graphs_per_case": 10,
+    "grid_main_recorded_values": 810,
+    "snapshot_recorded_main_graphs_per_case": 22,
+    "snapshot_main_recorded_values": 352,
+    "main_recorded_values": 1162,
+    "high_precision_checks": 1162,
+    "tinc_checks": 24,
+    "tinc_inclusions": 24,
+    "operator_checks": 21,
+    "operator_passes": 21
+  },
+  "files": {
+    "grid": "results/mcp_corner_grid_recorded_81.csv",
+    "snapshots": "results/mcp_path_snapshots_recorded_16.csv",
+    "tinc": "results/mcp_tinc_recorded_24.csv",
+    "operators": "results/mcp_operator_selftest_record.csv",
+    "validation": "results/high_precision_audit.json",
+    "formulas": "src/formula_manifest.json"
+  },
+  "important_provenance_notes": [
+    "All results are from actual remote paceval MCP v4.26 calls, not an executed C++ program.",
+    "All 22 formulas executed across all grid and snapshot scenarios; the grid file preserves a specified subset of 10 returned outputs per grid point.",
+    "MCP handles are opaque session identifiers; new handles must be obtained during reproduction.",
+    "The recorded decimal values were transferred from the tool output, then independently checked.",
+    "No runtime speed/energy results, no Liberty timing tables, no STA signoff and no real silicon measurements.",
+    "Local SDK C++ source compiled with C++17 syntax only; no CTest success is asserted."
+  ],
+  "local_sdk_tests": {
+    "cpp_syntax_checked": true,
+    "sdk_runtime_library_available": false,
+    "local_graph_evaluation_executed": false,
+    "local_conversion_tests_executed": false,
+    "ctest_passed": 0,
+    "ctest_total_executed": 0
+  },
+  "error_status": {
+    "main_mcp_graph_point_error_codes": "all 0",
+    "operator_error_codes": "all 0",
+    "tinc_error_codes": "all 0"
+  },
+  "limitations": "Finite printed interval inclusions are not whole-domain certification."
+}

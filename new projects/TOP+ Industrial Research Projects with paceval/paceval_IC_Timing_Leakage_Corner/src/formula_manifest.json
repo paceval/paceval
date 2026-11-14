@@ -1,0 +1,202 @@
+{
+  "project": "WP08 integrated circuit timing and leakage corner sweeps",
+  "provenance": "All coefficients are synthetic educational scenarios, not a foundry library or signoff characterization.",
+  "variables": [
+    "V",
+    "T",
+    "C",
+    "S",
+    "t0",
+    "aC",
+    "aS",
+    "aT",
+    "aV",
+    "Vref",
+    "Tref",
+    "p",
+    "q",
+    "aCT",
+    "aCS",
+    "I0",
+    "bT",
+    "bV",
+    "bTT",
+    "bVT",
+    "Treq",
+    "Tarr",
+    "Ncells",
+    "Wire",
+    "Pcap",
+    "Pscale",
+    "Vmin",
+    "Vmax",
+    "Tmin",
+    "Tmax"
+  ],
+  "graphs": [
+    {
+      "id": "delay_v1_ps",
+      "formula": "(t0+aC*C+aS*S+aT*(T-Tref)+aV*(Vref/V)^p)",
+      "version": "v1",
+      "industrial_purpose": "Cell delay (ps)"
+    },
+    {
+      "id": "delay_v2_ps",
+      "formula": "(t0+aC*C*(Vref/V)^q+aS*S+aT*(T-Tref)+aV*(Vref/V)^p+aCT*C*(T-Tref)+aCS*C*S)",
+      "version": "v2",
+      "industrial_purpose": "Cell delay with load-temperature interactions (ps)"
+    },
+    {
+      "id": "leak_v1_nA",
+      "formula": "(I0*exp(bT*(T-Tref)+bV*(V-Vref)))",
+      "version": "v1",
+      "industrial_purpose": "Standby cell leakage (nA)"
+    },
+    {
+      "id": "leak_v2_nA",
+      "formula": "(I0*exp(bT*(T-Tref)+bV*(V-Vref)+bTT*(T-Tref)*(T-Tref)+bVT*(T-Tref)*(V-Vref)))",
+      "version": "v2",
+      "industrial_purpose": "Standby leakage temperature-voltage interaction (nA)"
+    },
+    {
+      "id": "leak_power_v1_nW",
+      "formula": "(V*(I0*exp(bT*(T-Tref)+bV*(V-Vref))))",
+      "version": "v1",
+      "industrial_purpose": "Static power (nW)"
+    },
+    {
+      "id": "leak_power_v2_nW",
+      "formula": "(V*(I0*exp(bT*(T-Tref)+bV*(V-Vref)+bTT*(T-Tref)*(T-Tref)+bVT*(T-Tref)*(V-Vref))))",
+      "version": "v2",
+      "industrial_purpose": "Static power (nW)"
+    },
+    {
+      "id": "path_delay_v1_ps",
+      "formula": "(Ncells*(t0+aC*C+aS*S+aT*(T-Tref)+aV*(Vref/V)^p)+Wire)",
+      "version": "v1",
+      "industrial_purpose": "Illustrative repeated-cell path plus fixed wire delay (ps)"
+    },
+    {
+      "id": "path_delay_v2_ps",
+      "formula": "(Ncells*(t0+aC*C*(Vref/V)^q+aS*S+aT*(T-Tref)+aV*(Vref/V)^p+aCT*C*(T-Tref)+aCS*C*S)+Wire)",
+      "version": "v2",
+      "industrial_purpose": "Illustrative repeated-cell path plus fixed wire delay (ps)"
+    },
+    {
+      "id": "slack_v1_ps",
+      "formula": "(Treq-Tarr-Wire-Ncells*(t0+aC*C+aS*S+aT*(T-Tref)+aV*(Vref/V)^p))",
+      "version": "v1",
+      "industrial_purpose": "Available slack after path delay (ps)"
+    },
+    {
+      "id": "slack_v2_ps",
+      "formula": "(Treq-Tarr-Wire-Ncells*(t0+aC*C*(Vref/V)^q+aS*S+aT*(T-Tref)+aV*(Vref/V)^p+aCT*C*(T-Tref)+aCS*C*S))",
+      "version": "v2",
+      "industrial_purpose": "Available slack after path delay (ps)"
+    },
+    {
+      "id": "leak_margin_v1_nW",
+      "formula": "(Pcap-(V*(I0*exp(bT*(T-Tref)+bV*(V-Vref)))))",
+      "version": "v1",
+      "industrial_purpose": "Power budget margin (nW)"
+    },
+    {
+      "id": "leak_margin_v2_nW",
+      "formula": "(Pcap-(V*(I0*exp(bT*(T-Tref)+bV*(V-Vref)+bTT*(T-Tref)*(T-Tref)+bVT*(T-Tref)*(V-Vref)))))",
+      "version": "v2",
+      "industrial_purpose": "Power budget margin (nW)"
+    },
+    {
+      "id": "composite_score_v1_ps",
+      "formula": "(((Treq-Tarr-Wire-Ncells*(t0+aC*C+aS*S+aT*(T-Tref)+aV*(Vref/V)^p))) min (Pscale*(Pcap-(V*(I0*exp(bT*(T-Tref)+bV*(V-Vref)))))))",
+      "version": "v1",
+      "industrial_purpose": "Minimum of slack and power margin rescaled to ps"
+    },
+    {
+      "id": "composite_score_v2_ps",
+      "formula": "(((Treq-Tarr-Wire-Ncells*(t0+aC*C*(Vref/V)^q+aS*S+aT*(T-Tref)+aV*(Vref/V)^p+aCT*C*(T-Tref)+aCS*C*S))) min (Pscale*(Pcap-(V*(I0*exp(bT*(T-Tref)+bV*(V-Vref)+bTT*(T-Tref)*(T-Tref)+bVT*(T-Tref)*(V-Vref)))))))",
+      "version": "v2",
+      "industrial_purpose": "Minimum of slack and power margin rescaled to ps"
+    },
+    {
+      "id": "corner_guard_v1",
+      "formula": "((((Treq-Tarr-Wire-Ncells*(t0+aC*C+aS*S+aT*(T-Tref)+aV*(Vref/V)^p)))>=0) AND (((Pcap-(V*(I0*exp(bT*(T-Tref)+bV*(V-Vref))))))>=0) AND (V>=Vmin) AND (V<=Vmax) AND (T>=Tmin) AND (T<=Tmax))",
+      "version": "v1",
+      "industrial_purpose": "Logical timing and leakage constraint acceptance (0/1)"
+    },
+    {
+      "id": "corner_guard_v2",
+      "formula": "((((Treq-Tarr-Wire-Ncells*(t0+aC*C*(Vref/V)^q+aS*S+aT*(T-Tref)+aV*(Vref/V)^p+aCT*C*(T-Tref)+aCS*C*S)))>=0) AND (((Pcap-(V*(I0*exp(bT*(T-Tref)+bV*(V-Vref)+bTT*(T-Tref)*(T-Tref)+bVT*(T-Tref)*(V-Vref))))))>=0) AND (V>=Vmin) AND (V<=Vmax) AND (T>=Tmin) AND (T<=Tmax))",
+      "version": "v2",
+      "industrial_purpose": "Logical timing and leakage constraint acceptance (0/1)"
+    },
+    {
+      "id": "delay_sensitivity_voltage_v2",
+      "formula": "(-aC*C*q*(Vref/V)^q/V-aV*p*(Vref/V)^p/V)",
+      "version": "v2",
+      "industrial_purpose": "Delay sensitivity to voltage (ps/V)"
+    },
+    {
+      "id": "delay_sensitivity_temp_v2",
+      "formula": "(aT+aCT*C)",
+      "version": "v2",
+      "industrial_purpose": "Delay sensitivity to temperature (ps/K)"
+    },
+    {
+      "id": "leak_sensitivity_temp_v2",
+      "formula": "((I0*exp(bT*(T-Tref)+bV*(V-Vref)+bTT*(T-Tref)*(T-Tref)+bVT*(T-Tref)*(V-Vref)))*(bT+2*bTT*(T-Tref)+bVT*(V-Vref)))",
+      "version": "v2",
+      "industrial_purpose": "Leakage sensitivity to temperature (nA/K)"
+    },
+    {
+      "id": "model_delta_delay_ps",
+      "formula": "((t0+aC*C*(Vref/V)^q+aS*S+aT*(T-Tref)+aV*(Vref/V)^p+aCT*C*(T-Tref)+aCS*C*S)-(t0+aC*C+aS*S+aT*(T-Tref)+aV*(Vref/V)^p))",
+      "version": "v2-v1",
+      "industrial_purpose": "Difference in delay model versions (ps)"
+    },
+    {
+      "id": "model_delta_power_nW",
+      "formula": "((V*(I0*exp(bT*(T-Tref)+bV*(V-Vref)+bTT*(T-Tref)*(T-Tref)+bVT*(T-Tref)*(V-Vref))))-(V*(I0*exp(bT*(T-Tref)+bV*(V-Vref)))))",
+      "version": "v2-v1",
+      "industrial_purpose": "Difference in power model versions (nW)"
+    },
+    {
+      "id": "leakage_power_fraction_v2",
+      "formula": "((V*(I0*exp(bT*(T-Tref)+bV*(V-Vref)+bTT*(T-Tref)*(T-Tref)+bVT*(T-Tref)*(V-Vref))))/Pcap)",
+      "version": "v2",
+      "industrial_purpose": "Ratio of static power to modeled budget"
+    }
+  ],
+  "units": {
+    "V": "V",
+    "T": "degC",
+    "C": "fF",
+    "S": "ps",
+    "t0": "ps",
+    "aC": "ps/fF",
+    "aS": "ps/ps",
+    "aT": "ps/K",
+    "aV": "ps",
+    "Vref": "V",
+    "Tref": "degC",
+    "p": "dimensionless",
+    "q": "dimensionless",
+    "aCT": "ps/(fF K)",
+    "aCS": "ps/(fF ps)",
+    "I0": "nA",
+    "bT": "1/K",
+    "bV": "1/V",
+    "bTT": "1/K2",
+    "bVT": "1/(K V)",
+    "Treq": "ps",
+    "Tarr": "ps",
+    "Ncells": "count",
+    "Wire": "ps",
+    "Pcap": "nW",
+    "Pscale": "ps/nW",
+    "Vmin": "V",
+    "Vmax": "V",
+    "Tmin": "degC",
+    "Tmax": "degC"
+  }
+}

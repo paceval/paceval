@@ -1,0 +1,14 @@
+{
+  "research_date": "2026-11-14",
+  "project": "WP08 IC Timing and Leakage Corner Sweeps",
+  "references": [
+    {"id":"OpenSTA architecture","url":"https://openroad.readthedocs.io/en/latest/main/src/sta/README.html","supports":"Established multi-file format static timing architecture including Liberty, SDC, SPEF"},
+    {"id":"OpenSTA Examples","url":"https://openroad.readthedocs.io/en/latest/main/src/sta/doc/Examples.html","supports":"Multi-corner, multi-mode scenes and LVF statistical analysis"},
+    {"id":"OpenSTA Release 3.0.1 2026-03-12","url":"https://openroad.readthedocs.io/en/latest/main/src/sta/doc/ChangeLog.html","supports":"2026 LVF normal and skew-normal statistical timing implementation"},
+    {"id":"ASAP7 predictive PDK","url":"https://asap.asu.edu/","supports":"Academic predictive process PDK, not manufactured silicon"},
+    {"id":"ASAP7 paper","url":"https://doi.org/10.1016/j.mejo.2016.04.006","supports":"2016 academic predictive PDK technical scope"},
+    {"id":"paceval original API","url":"https://paceval.com/api/","supports":"Official SDK documentation, require local binary signature verification"},
+    {"id":"paceval operator documentation","url":"https://paceval.com/product-brief/","supports":"Grammar including logical, relational, min/max and modulo families"}
+  ],
+  "source_scope_note":"The public references establish industrial and technological context. They do not prove any proprietary paceval runtime outcome, which is evidenced separately by actual MCP logs."
+}

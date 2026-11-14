@@ -1,0 +1,22 @@
+function,expression,inputs,expected,actual,error_code
+signed_remainder,(-1) % 10,"[1,1,0]",-1,-1,0
+mathematical_modulo,(-1) mod 10,"[1,1,0]",9,9,0
+infix_min,4 min 5,"[1,1,0]",4,4,0
+infix_max,4 max 5,"[1,1,0]",5,5,0
+logic_and,((x<=2*y) AND (z>=0)),"[1,1,0]",1,1,0
+logic_not_or,((NOT(x=y)) OR (z<>0)),"[1,1,0]",0,0,0
+logic_xor,((x=y) XOR (z<>0)),"[1,1,0]",1,1,0
+signed_remainder,(-1) % 10,"[2,1,-1]",-1,-1,0
+mathematical_modulo,(-1) mod 10,"[2,1,-1]",9,9,0
+infix_min,4 min 5,"[2,1,-1]",4,4,0
+infix_max,4 max 5,"[2,1,-1]",5,5,0
+logic_and,((x<=2*y) AND (z>=0)),"[2,1,-1]",0,0,0
+logic_not_or,((NOT(x=y)) OR (z<>0)),"[2,1,-1]",1,1,0
+logic_xor,((x=y) XOR (z<>0)),"[2,1,-1]",1,1,0
+signed_remainder,(-1) % 10,"[-1,0,1]",-1,-1,0
+mathematical_modulo,(-1) mod 10,"[-1,0,1]",9,9,0
+infix_min,4 min 5,"[-1,0,1]",4,4,0
+infix_max,4 max 5,"[-1,0,1]",5,5,0
+logic_and,((x<=2*y) AND (z>=0)),"[-1,0,1]",0,0,0
+logic_not_or,((NOT(x=y)) OR (z<>0)),"[-1,0,1]",1,1,0
+logic_xor,((x=y) XOR (z<>0)),"[-1,0,1]",1,1,0

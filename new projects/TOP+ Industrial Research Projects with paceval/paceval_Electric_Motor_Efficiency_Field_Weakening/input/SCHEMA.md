@@ -1,0 +1,9 @@
+# Input schemas
+
+All CSVs use UTF-8 text, comma as field separator, dot as decimal separator, one header row, and no quoted fields, commas or formula expressions inside numeric values. Signed finite decimal literals and scientific notation are allowed. Locale-aware decimal commas, thousand separators, NaN/Inf and formula strings are rejected before the official paceval conversion routine is invoked.
+
+`candidates.csv`: `case_id` is a unique alphanumeric/underscore/hyphen string (up to 69 characters), `speed_rpm` is mechanical rpm in [0,20000], `id_Apeak` is synchronous-frame d current in [-500,500] A peak, `iq_Apeak` is q current in [0,500] A peak, `temperature_C` is the illustrative common winding/magnet temperature in [-40,180] °C. Physical current limiting is performed separately with the paceval squared-current margin. This is motoring-only, not regenerative.
+
+`motor_parameters.csv`: one row, exact ordered columns as stored. `Rs25_Ohm` is positive reference phase resistance; `alphaR_invK` is its nonnegative temperature coefficient; `psi25_Wb` is reference PM flux linkage; `betaPsi_invK` is nonpositive magnet flux temperature coefficient; `Ld_H` and `Lq_H` are fixed positive d/q inductances; `pole_pairs` is a positive integer; `Imax_Apeak` is the peak phase current magnitude limit; `Vdc_V` is a positive DC bus value; `kFe_proxy` is the fitted coefficient in W/[ (rad/s)^2 Wb² ]; `kMech_proxy` is coefficient in W/(rad/s)^2; `Tnom_Nm` sets score scaling; `EtaMin` is a threshold between 0 and 1; `Ttarget_Nm` sets the torque-qualified efficiency search; and `Tref_C` is the reference temperature.
+
+All rows are deterministic synthetic research input only. Replacing them with industrial data requires validation of their source, model assumptions, license, and physical parameter domains.

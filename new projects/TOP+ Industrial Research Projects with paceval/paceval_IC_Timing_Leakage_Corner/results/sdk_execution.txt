@@ -1,0 +1,4 @@
+ORIGINAL LOCAL SDK EXECUTION: NOT PERFORMED.
+Reason: No ABI-compatible Linux x86-64 original paceval shared library was available in the working environment.
+The original paceval_main.h and paceval_main.cpp source files and the C++17 integration are included, and the C++ source passed syntax-only compiler checks. This does not confirm a link, actual SDK API execution, converter output, TINC raw doubles or application operation.
+The mathematical research runs instead used the actual external paceval MCP service, reporting version 4.26; see execution_evidence.json.

@@ -1,0 +1,12 @@
+{
+  "precision_digits": 90,
+  "verification_status": "PASS",
+  "high_precision_sampled_scenario_versions": 1133,
+  "independent_numeric_checks": 25002,
+  "max_relative_error_internal_only": "0.000000000000188401486941481090573106244992059559624102627710167471283077116230404601048850877415185031",
+  "full_records": 38808,
+  "envelope_points_checked": 88,
+  "efficiency_optima_checked": 66,
+  "data_provenance": "read original application CSV, exact IEEE-754 input conversion from CSV text; independent mpmath model",
+  "scope": "uncalibrated synthetic IPMSM mathematical verification; excludes FEM, dynamometer and motor safety qualification"
+}

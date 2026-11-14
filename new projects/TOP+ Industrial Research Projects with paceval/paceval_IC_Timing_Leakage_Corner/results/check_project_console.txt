@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "pdf_page_count": 13,
+  "hero_pixel_size": [
+    2400,
+    1200
+  ],
+  "hero_embedded_ratio": 2.0000001222474237,
+  "numbered_figure_pairs": 10,
+  "nonempty_pdf_pages_checked": 13,
+  "readme_check": "Run separately: python src/check_readme_math.py",
+  "original_local_sdk_binary_test": "NOT EXECUTED",
+  "observed_mcp_version": "4.26",
+  "ordinary_independent_checks": 1162,
+  "tinc_inclusions": 24,
+  "source_kind": "Actually evaluated remote MCP expressions plus independently generated original SDK-ready C++ source"
+}

@@ -1,0 +1,5 @@
+ACTUAL COMPILER SYNTAX CHECK: PASSED (exit status 0)
+Command run from project root:
+g++ -std=c++17 -Wall -Wextra -pedantic -fsyntax-only src/ic_corner_paceval.cpp src/test_numeric_conversions.cpp src/test_operator_semantics.cpp src/paceval_main.cpp
+Compiler: available GNU C++ in research environment, 14 November 2026.
+No linked executable or local SDK runtime test was produced by this command.
