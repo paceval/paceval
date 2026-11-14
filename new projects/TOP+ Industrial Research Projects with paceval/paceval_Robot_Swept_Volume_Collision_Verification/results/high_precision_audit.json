@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "decimal_precision": 90,
+  "checked_case_model_rows": 520,
+  "independent_checks": 2600,
+  "model_coverage": {
+    "V1": 270,
+    "V2": 250
+  },
+  "largest_observed_margin_difference": 5.308873221859802e-15,
+  "largest_observed_interior_time_difference": 5.35880935106581e-16,
+  "reference_method": "independently implemented physical center-distance equations, high-precision derivative cubic root isolation and global endpoint/stationary evaluation"
+}

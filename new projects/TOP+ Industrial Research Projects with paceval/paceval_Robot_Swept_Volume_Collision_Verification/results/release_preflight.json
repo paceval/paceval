@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "markdown_preflight": {
+    "files_checked": 6,
+    "local_links_checked": 23,
+    "math_fences": 5,
+    "status": "PASS"
+  },
+  "unique_graphs": 43,
+  "exact_rational_certificates": 8192,
+  "high_precision_assertions": 2600,
+  "scientific_figures": 10,
+  "total_files": 57,
+  "external_runtime_included": false
+}

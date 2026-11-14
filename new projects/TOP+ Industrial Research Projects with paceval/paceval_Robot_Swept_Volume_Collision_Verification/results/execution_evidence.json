@@ -1,0 +1,21 @@
+{
+ "sdk":"original paceval 4.25, supplied ELF x86-64 shared library",
+ "unique_graphs_created":43,
+ "unique_graphs_executed":43,
+ "scalar_calls_including_operator_tests":49152,
+ "batch_calls_including_layout_probe":325,
+ "graph_point_evaluations_including_layout_probe":5604052,
+ "trajectory_pair_count":4096,
+ "model_case_combinations":8192,
+ "coarse_grid_intervals":32,
+ "missed_overlap_by_coarse_grid_V1":2,
+ "missed_overlap_by_coarse_grid_V2":3,
+ "overlap_V1":1148,
+ "overlap_V2":1705,
+ "separated_V1":2945,
+ "separated_V2":2391,
+ "near_tangent_V1":3,
+ "near_tangent_V2":0,
+ "native_endvalue_assertions":2443,
+ "independent_certification":"see exact_interval_audit.json"
+}

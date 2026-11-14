@@ -1,0 +1,23 @@
+{
+  "method": "exact rational Bernstein degree-4 enclosure and exact rational witnesses on normalized [0,1]",
+  "input_representation": "all input coordinate/radius scalars are exact dyadic fractions of 1/256; no decimal rounding assumption",
+  "certificate_count": 8192,
+  "label_counts": {
+    "OVERLAP": 2853,
+    "CONTACT_WITNESS_NO_OVERLAP_PROVEN": 3,
+    "SEPARATED": 5336
+  },
+  "consistency_checks": 8192,
+  "uncertified_cases": [],
+  "uncertified_case_count": 0,
+  "scope": "3D quadratic relative center trajectories of two conservatively bounded spheres; exact polynomial of the entered dyadic coefficients; no safety certification of articulated robotics",
+  "max_subdivision_depth": 22,
+  "known_narrow_case": {
+    "V1": "OVERLAP",
+    "V2": "OVERLAP"
+  },
+  "known_tangent_case": {
+    "V1": "CONTACT_WITNESS_NO_OVERLAP_PROVEN",
+    "V2": "OVERLAP"
+  }
+}
