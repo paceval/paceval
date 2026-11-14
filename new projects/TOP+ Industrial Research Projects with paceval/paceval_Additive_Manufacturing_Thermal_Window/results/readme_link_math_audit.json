@@ -1,0 +1,11 @@
+{
+  "markdown_parser": "markdown-it-py commonmark",
+  "readme_relative_links": "PASS",
+  "display_math_pairs": "PASS",
+  "negative_tests": [
+    "broken_local_link_rejected",
+    "unbalanced_display_math_rejected",
+    "empty_image_link_rejected"
+  ],
+  "original_sdk_sources_present": true
+}

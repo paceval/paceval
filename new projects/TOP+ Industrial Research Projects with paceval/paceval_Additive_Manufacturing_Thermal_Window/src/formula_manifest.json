@@ -1,0 +1,45 @@
+{
+  "version": "WP02_AM_Thermal_Window_2026-11-14_v1",
+  "variables": [
+    "P",
+    "v",
+    "k",
+    "rho",
+    "cp",
+    "eta",
+    "T0",
+    "r0",
+    "Tliq",
+    "Tvap",
+    "beta",
+    "gamma",
+    "xs",
+    "ys",
+    "zs",
+    "xd",
+    "yd",
+    "zd"
+  ],
+  "variable_count": 18,
+  "source": "Master prompt v3 and user-supplied WP 02. Expressions registered and run via paceval MCP 4.26, November 14, 2026.",
+  "graph_formulas": {
+    "temp_surface_v1": "(T0+(eta*P/(2*pi*k*sqrt(xs*xs+ys*ys+zs*zs+r0*r0)))*exp((-v*(xs+sqrt(xs*xs+ys*ys+zs*zs+r0*r0))*rho*cp)/(2*k)))",
+    "temp_depth_v1": "(T0+(eta*P/(2*pi*k*sqrt(xd*xd+yd*yd+zd*zd+r0*r0)))*exp((-v*(xd+sqrt(xd*xd+yd*yd+zd*zd+r0*r0))*rho*cp)/(2*k)))",
+    "temp_surface_v2": "(T0+(eta*P/(2*pi*k*sqrt(xs*xs+(ys/beta)*(ys/beta)+(zs/gamma)*(zs/gamma)+r0*r0)))*exp((-v*(xs+sqrt(xs*xs+(ys/beta)*(ys/beta)+(zs/gamma)*(zs/gamma)+r0*r0))*rho*cp)/(2*k)))",
+    "temp_depth_v2": "(T0+(eta*P/(2*pi*k*sqrt(xd*xd+(yd/beta)*(yd/beta)+(zd/gamma)*(zd/gamma)+r0*r0)))*exp((-v*(xd+sqrt(xd*xd+(yd/beta)*(yd/beta)+(zd/gamma)*(zd/gamma)+r0*r0))*rho*cp)/(2*k)))",
+    "window_margin_v1": "(((T0+(eta*P/(2*pi*k*sqrt(xd*xd+yd*yd+zd*zd+r0*r0)))*exp((-v*(xd+sqrt(xd*xd+yd*yd+zd*zd+r0*r0))*rho*cp)/(2*k)))-Tliq) min (Tvap-(T0+(eta*P/(2*pi*k*sqrt(xs*xs+ys*ys+zs*zs+r0*r0)))*exp((-v*(xs+sqrt(xs*xs+ys*ys+zs*zs+r0*r0))*rho*cp)/(2*k)))))",
+    "window_margin_v2": "(((T0+(eta*P/(2*pi*k*sqrt(xd*xd+(yd/beta)*(yd/beta)+(zd/gamma)*(zd/gamma)+r0*r0)))*exp((-v*(xd+sqrt(xd*xd+(yd/beta)*(yd/beta)+(zd/gamma)*(zd/gamma)+r0*r0))*rho*cp)/(2*k)))-Tliq) min (Tvap-(T0+(eta*P/(2*pi*k*sqrt(xs*xs+(ys/beta)*(ys/beta)+(zs/gamma)*(zs/gamma)+r0*r0)))*exp((-v*(xs+sqrt(xs*xs+(ys/beta)*(ys/beta)+(zs/gamma)*(zs/gamma)+r0*r0))*rho*cp)/(2*k)))))",
+    "window_flag_v1": "((((T0+(eta*P/(2*pi*k*sqrt(xd*xd+yd*yd+zd*zd+r0*r0)))*exp((-v*(xd+sqrt(xd*xd+yd*yd+zd*zd+r0*r0))*rho*cp)/(2*k)))-Tliq)>=0) AND ((Tvap-(T0+(eta*P/(2*pi*k*sqrt(xs*xs+ys*ys+zs*zs+r0*r0)))*exp((-v*(xs+sqrt(xs*xs+ys*ys+zs*zs+r0*r0))*rho*cp)/(2*k))))>=0))",
+    "window_flag_v2": "((((T0+(eta*P/(2*pi*k*sqrt(xd*xd+(yd/beta)*(yd/beta)+(zd/gamma)*(zd/gamma)+r0*r0)))*exp((-v*(xd+sqrt(xd*xd+(yd/beta)*(yd/beta)+(zd/gamma)*(zd/gamma)+r0*r0))*rho*cp)/(2*k)))-Tliq)>=0) AND ((Tvap-(T0+(eta*P/(2*pi*k*sqrt(xs*xs+(ys/beta)*(ys/beta)+(zs/gamma)*(zs/gamma)+r0*r0)))*exp((-v*(xs+sqrt(xs*xs+(ys/beta)*(ys/beta)+(zs/gamma)*(zs/gamma)+r0*r0))*rho*cp)/(2*k))))>=0))",
+    "gradient_power_depth_v1": "((eta/(2*pi*k*sqrt(xd*xd+yd*yd+zd*zd+r0*r0)))*exp((-v*(xd+sqrt(xd*xd+yd*yd+zd*zd+r0*r0))*rho*cp)/(2*k)))",
+    "gradient_speed_surface_v1": "(-((eta*P/(2*pi*k*sqrt(xs*xs+ys*ys+zs*zs+r0*r0)))*exp((-v*(xs+sqrt(xs*xs+ys*ys+zs*zs+r0*r0))*rho*cp)/(2*k)))*((xs+sqrt(xs*xs+ys*ys+zs*zs+r0*r0))*rho*cp/(2*k)))",
+    "delta_depth_v2_v1": "((T0+(eta*P/(2*pi*k*sqrt(xd*xd+(yd/beta)*(yd/beta)+(zd/gamma)*(zd/gamma)+r0*r0)))*exp((-v*(xd+sqrt(xd*xd+(yd/beta)*(yd/beta)+(zd/gamma)*(zd/gamma)+r0*r0))*rho*cp)/(2*k)))-(T0+(eta*P/(2*pi*k*sqrt(xd*xd+yd*yd+zd*zd+r0*r0)))*exp((-v*(xd+sqrt(xd*xd+yd*yd+zd*zd+r0*r0))*rho*cp)/(2*k))))",
+    "thermal_diffusivity": "k/(rho*cp)"
+  },
+  "meaning": {
+    "v1": "Isotropic regularized moving point-source surrogate, original WP formula",
+    "v2": "Exploratory anisotropic effective-radius surrogate, not a PDE solution",
+    "hot": "surface temperature at xs,ys,zs below vaporization proxy threshold",
+    "melt": "depth temperature at xd,yd,zd above liquidus proxy threshold"
+  }
+}

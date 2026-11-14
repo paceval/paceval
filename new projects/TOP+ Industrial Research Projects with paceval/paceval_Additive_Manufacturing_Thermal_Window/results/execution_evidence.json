@@ -1,0 +1,46 @@
+{
+  "engine": "paceval MCP service",
+  "version": "4.26",
+  "actual_multi_graph_execution": {
+    "unique_graphs_created": 12,
+    "unique_graphs_executed": 12,
+    "scalar_calls": 0,
+    "batch_calls": 1,
+    "graph_point_evaluations": 972,
+    "scenario_count": 81,
+    "reference_checks": "see validation/high_precision_reference.py and results/high_precision_audit.json",
+    "errors": 0
+  },
+  "TINC": {
+    "unique_graphs_created": 3,
+    "batch_calls": 1,
+    "graph_point_evaluations": 9,
+    "scenario_count": 3,
+    "raw_intervals_path": "results/mcp_tinc_raw_record.csv"
+  },
+  "operator_selftests": {
+    "graphs_created": 6,
+    "evaluations": 18,
+    "raw_operator_results": [
+      "-1 % 10 -> -1",
+      "-1 mod 10 -> 9",
+      "4 min 5 -> 4",
+      "4 max 5 -> 5",
+      "AND OR NOT and XOR -> 0/1"
+    ]
+  },
+  "sdk_local_binary": "UNAVAILABLE; no local C++ linking or execution recorded",
+  "disclosure": "CSV 81-grid was reconstructed from raw returned, transcribed MCP endpoint values; full 81 x 12 MCP batch succeeded but complete response not machine-exported to archive. Do not treat reconstructed numbers as raw MCP export.",
+  "operator_test_file": "results/operator_mcp_record.json",
+  "total_distinct_graph_objects_created_across_sessions": 21,
+  "total_graph_point_evaluations_across_distinct_sessions": 999,
+  "numeric_string_converters": {
+    "in_cpp_source": true,
+    "local_sdk_runtime_executed": false,
+    "original_header_signatures_verified": true,
+    "strict_preconversion_numeric_literal_grammar": true
+  },
+  "local_cpp_compiler_syntax": "PASS",
+  "local_cpp_sdk_link": "NOT RUN - compatible original .so unavailable",
+  "local_ctest": "NOT RUN"
+}

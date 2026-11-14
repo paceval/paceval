@@ -1,0 +1,113 @@
+{
+  "endpoint_provenance": "Transcribed from successful actual paceval MCP 4.26 multi-graph batch for 81 scenarios (12 graphs). Not original machine-read tool export; decimal strings from tool were rounded for transfer.",
+  "speed_grid_m_per_s": [
+    0.15,
+    0.225,
+    0.3,
+    0.375,
+    0.45,
+    0.525,
+    0.6,
+    0.675,
+    0.75
+  ],
+  "power_endpoints_W": [
+    120,
+    440
+  ],
+  "recorded_endpoint_temperatures_K": {
+    "Ts1_low": [
+      1910.52734714,
+      1537.37257641,
+      1250.67674298,
+      1030.40754811,
+      861.174121781,
+      731.151616342,
+      631.254968929,
+      554.504100834,
+      495.536198448
+    ],
+    "Ts1_high": [
+      6205.26693952,
+      4837.03278018,
+      3785.81472425,
+      2978.16100974,
+      2357.63844653,
+      1880.88925992,
+      1514.60155274,
+      1233.18170306,
+      1016.96606097
+    ],
+    "Td1_low": [
+      1529.4471067,
+      1235.76483591,
+      1012.23546206,
+      842.101320701,
+      712.607708492,
+      614.046682061,
+      539.029267956,
+      481.931522296,
+      438.472912075
+    ],
+    "Td1_high": [
+      4807.97272458,
+      3731.13773165,
+      2911.53002754,
+      2287.70484257,
+      1812.89493114,
+      1451.50450089,
+      1176.44064917,
+      967.082248419,
+      807.734010941
+    ],
+    "Td2_low": [
+      1719.8487892,
+      1411.74165252,
+      1170.49375353,
+      981.596640027,
+      833.690193424,
+      717.879440464,
+      627.19961677,
+      556.197311588,
+      500.6025041
+    ],
+    "Td2_high": [
+      5506.11222705,
+      4376.38605925,
+      3491.81042962,
+      2799.1876801,
+      2256.86404255,
+      1832.22461503,
+      1499.73192816,
+      1239.39014249,
+      1035.54251503
+    ]
+  },
+  "all_81_scenarios_were_evaluated": true,
+  "graph_point_evaluations": 972,
+  "batch_errors": 0,
+  "independent_interpolation": "Intermediate CSV rows reconstructed from recorded endpoints because numeric export of the MCP service response to the container was unavailable; affine dependence on P is exact for fixed parameters. This is not a raw export of all 972 values.",
+  "transcription_checks": [
+    {
+      "P": 200,
+      "v": 0.3,
+      "Ts1": 1884.46123829,
+      "Td1": 1487.05910343,
+      "Td2": 1750.82292255
+    },
+    {
+      "P": 320,
+      "v": 0.375,
+      "Ts1": 2247.75346163,
+      "Td1": 1745.60352187,
+      "Td2": 2117.59104007
+    },
+    {
+      "P": 240,
+      "v": 0.225,
+      "Ts1": 2774.74515282,
+      "Td1": 2171.52967181,
+      "Td2": 2523.48330505
+    }
+  ]
+}

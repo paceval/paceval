@@ -1,0 +1,15 @@
+{
+  "paceval_version": "4.26",
+  "operator_tests_type": "Actual paceval MCP API handle creation + evaluate-many; not local SDK",
+  "graphs": [
+    {"formula":"(-1) % 10","actual_values":[-1,-1,-1],"errors":[0,0,0]},
+    {"formula":"(-1) mod 10","actual_values":[9,9,9],"errors":[0,0,0]},
+    {"formula":"4 min 5","actual_values":[4,4,4],"errors":[0,0,0]},
+    {"formula":"4 max 5","actual_values":[5,5,5],"errors":[0,0,0]},
+    {"formula":"(((x <= (2*y)) AND (z >= 0)) OR (NOT(x = y)))","actual_values":[1,1,1],"errors":[0,0,0]},
+    {"formula":"((x = y) XOR (z <> 0))","actual_values":[1,1,1],"errors":[0,0,0]}
+  ],
+  "variable_order":["x","y","z"],
+  "values":[[1,1,0],[-1,0,1],[2,1,-1]],
+  "execution_errors":0
+}

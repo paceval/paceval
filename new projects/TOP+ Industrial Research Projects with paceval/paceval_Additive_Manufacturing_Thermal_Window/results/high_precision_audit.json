@@ -1,0 +1,17 @@
+{
+  "reference": "Independent mpmath 90 decimal places, exact binary64 input values; not a replay of the paceval expression strings.",
+  "grid_cases": 81,
+  "grid_reconstructed_from_transcribed_endpoint_data": true,
+  "independent_temperature_and_margin_checks": 324,
+  "max_absolute_difference_after_transfer_rounding_K": {
+    "temperature_surface_v1_K": 4.3584630630275954e-09,
+    "temperature_depth_v1_K": 4.712238339649081e-09,
+    "temperature_depth_v2_K": 4.817252985433881e-09,
+    "combined_margin_v1_K": 4.71212465281136e-09
+  },
+  "discrete_status_disagreements": 0,
+  "tinc_inclusions_tested": 9,
+  "tinc_inclusions_passed": 9,
+  "global_interval_certification": false,
+  "test_result": "PASS"
+}

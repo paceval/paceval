@@ -1,0 +1,5 @@
+Rendered and visually inspected all 13 A4 pages of paceval_Additive_Manufacturing_Thermal_Window_Whitepaper_EN.pdf at 1.36x resolution, including the cover, formulas, tables, diagrams, 3D axes, figure captions, and bibliography.
+The complete 4-column contact sheet was reviewed, and higher-resolution pages 4 and 8 were inspected separately.
+No visible overlapping figures, cut-off paragraphs, raw LaTeX or missing page content detected.
+Hero is exactly 2400 x 1200 pixels, 2:1, with the same file referenced in README and PDF.
+No GitHub.com live preview was opened, so no claim of GitHub browser rendering is made.
