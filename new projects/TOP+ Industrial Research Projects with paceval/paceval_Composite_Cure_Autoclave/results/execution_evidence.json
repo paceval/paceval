@@ -1,0 +1,17 @@
+{
+ "sdk":"original paceval 4.25, Linux",
+ "unique_graphs_created":60,
+ "unique_graphs_executed":60,
+ "model_versions":2,
+ "scenario_count":36,
+ "thermal_nodes_per_scenario":10,
+ "time_steps_per_scenario_including_initial":841,
+ "model_node_time_evaluations":605520,
+ "scalar_calls_including_operator_tests":13,
+ "batch_calls_including_layout_probe":1828,
+ "graph_point_evaluations_including_layout_probe":12125524,
+ "native_endvalue_assertions":4000,
+ "feasible_V1":26,
+ "feasible_V2":25,
+ "high_precision_reference":"See high_precision_audit.json"
+}

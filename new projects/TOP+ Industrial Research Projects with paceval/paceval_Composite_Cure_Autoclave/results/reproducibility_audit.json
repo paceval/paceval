@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "files": {
+    "screening.csv": {
+      "sha256": "d946f5844f89246ddd4e65b8d829caa0dd3ce7f396170cff0255af02f1e3877a",
+      "identical_in_ctest_replay": true
+    },
+    "cure_profiles.csv": {
+      "sha256": "4f757ac68cfc969e068f6288bc611d91bbfb30840483e25b62a8ad1d180061d5",
+      "identical_in_ctest_replay": true
+    },
+    "model_comparison.csv": {
+      "sha256": "c8f26ed70b9ecf6f748c2afb173f875f41c9615f854c53d01d579ad5f8f84ae5",
+      "identical_in_ctest_replay": true
+    },
+    "high_precision_samples.csv": {
+      "sha256": "082e53cfd2ca96c2e917c534f7b6bbcd4eb054a1b4547ce20785d9e19983d23c",
+      "identical_in_ctest_replay": true
+    },
+    "formula_manifest.csv": {
+      "sha256": "5a88d0fa0871d4a3833659d24ae7c8fc4b28ff735063b29a8ec0f88de4cba03c",
+      "identical_in_ctest_replay": true
+    },
+    "math_execution_inventory.csv": {
+      "sha256": "4dc5a9909105344d82c7ef8a2732a287d2eecbbb460e921edac909c6a20e7ec1",
+      "identical_in_ctest_replay": true
+    },
+    "native_audit.csv": {
+      "sha256": "45d7b2fafedf5d2b7b122eccc290f509a15944baad567add5c635876ede9ecfd",
+      "identical_in_ctest_replay": true
+    },
+    "execution_evidence.json": {
+      "sha256": "932b1f2365d4e5d97d09f559295be7f0b5612ba9794ec1bc536f8f7aac082cf8",
+      "identical_in_ctest_replay": true
+    }
+  },
+  "note": "Comparisons between original main output and separately executed CTest main run; this is not evidence of accuracy of a real material model."
+}

@@ -1,0 +1,15 @@
+{
+ "study":"WP17 distillation VLE",
+ "sdk_mode":"original-local-C++",
+ "model_versions":2,
+ "input_pairs":250000,
+ "model_point_cases":500000,
+ "stagewise_configurations":3000,
+ "unique_graphs_created":73,
+ "unique_graphs_executed":73,
+ "scalar_calls":54049,
+ "multi_graph_batch_calls":7817,
+ "graph_point_evaluations":17804053,
+ "native_reference_checks":7003000,
+ "quality_indicator_accept":171421
+}

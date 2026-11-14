@@ -1,0 +1,19 @@
+{
+  "tested_recipe": "R032",
+  "versions": {
+    "V1": {
+      "end_centre_T_K": 402.5957854141213,
+      "end_centre_alpha": 0.9954010433547331
+    },
+    "V2": {
+      "end_centre_T_K": 402.5871682196053,
+      "end_centre_alpha": 0.9866295763174655
+    }
+  },
+  "comparison_points": 880,
+  "max_abs_temperature_residual_K": 6.821210263296962e-13,
+  "max_abs_conversion_residual": 2.4424906541753444e-15,
+  "method": "independent native NumPy full 10-node trajectory with dense linear solve (not paceval expression strings)",
+  "status": "PASS",
+  "scope_limit": "One representative recipe and two versions; not an industrial material calibration or a time/space convergence study"
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "executed_graphs": 60,
+  "recipes": 36,
+  "versions": 2,
+  "scientific_png_and_pdf_figures": 10,
+  "pdf_pages": 14,
+  "runtime_in_archive": false
+}

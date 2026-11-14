@@ -1,0 +1,13 @@
+{
+  "method": "independent 90-digit mpmath equations (not a second paceval formula parser)",
+  "source": "executed SDK csv samples, end-of-recipe tables, and state series",
+  "sample_rows_by_version": {
+    "V1": 91,
+    "V2": 91
+  },
+  "high_precision_endvalue_checks": 2942,
+  "state_monotonicity_checks": 15120,
+  "maximum_absolute_observed_residual": 9.3e-07,
+  "status": "PASS",
+  "scope_limit": "High precision pointwise/endvalue checks and recorded-state invariants; no 90-digit ODE trajectory integration or validated industrial resin fit"
+}

@@ -1,0 +1,18 @@
+Internal ctest changing into directory: /mnt/data/wp21_build
+Test project /mnt/data/wp21_build
+    Start 2: full_csv_paceval_pipeline
+    Start 4: archive_markdown_math_links
+1/6 Test #4: archive_markdown_math_links .............   Passed    0.69 sec
+    Start 5: markdown_negative_regression
+2/6 Test #5: markdown_negative_regression ............   Passed    0.70 sec
+    Start 1: sdk_scalar_batch_operators_conversion
+3/6 Test #1: sdk_scalar_batch_operators_conversion ...   Passed    0.01 sec
+4/6 Test #2: full_csv_paceval_pipeline ...............   Passed    9.06 sec
+    Start 3: high_precision_independent_reference
+    Start 6: independent_full_time_trajectory
+5/6 Test #6: independent_full_time_trajectory ........   Passed    0.91 sec
+6/6 Test #3: high_precision_independent_reference ....   Passed    0.97 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =  10.04 sec
