@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "markdown": {
+    "files_checked": 6,
+    "local_links_checked": 19,
+    "math_fences": 4,
+    "status": "PASS"
+  },
+  "markdown_negative_cases": "PASS",
+  "pdf_pages_rendered_and_reviewed": 17,
+  "pdf_text_bounding_boxes": "PASS",
+  "scientific_png_and_vector_pairs": 10,
+  "cover_pixels": [
+    2400,
+    1200
+  ],
+  "reproduced_files": 7,
+  "sdk_version": "4.25",
+  "true_engine_graphs": 60,
+  "ctest_total": 5,
+  "ctest_passed": 5,
+  "runtime_shared_library_in_archive": false,
+  "hosted_github_visual_preview": "not performed"
+}

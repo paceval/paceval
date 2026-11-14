@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "markdown_count": 7,
+  "parser": "markdown-it-py CommonMark",
+  "negative_regression_cases": {
+    "legacy_inline": true,
+    "legacy_display": true,
+    "forbidden_macro": true,
+    "unmatched_inline": true,
+    "nested_display": true,
+    "unclosed_display": true
+  },
+  "negative_regressions_passed": 6,
+  "pdf_pages": 15,
+  "rendered_pdf_pages": 15,
+  "github_com_ui_not_inspected": true,
+  "errors": []
+}

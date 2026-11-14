@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "decimal_precision": 85,
+  "checks": 138240,
+  "failed_checks": 0,
+  "illustrative_boundary_near_cases": 0,
+  "largest_abs_numeric_difference_in_mixed_units": 5.737442792209224e-13,
+  "source_sha256": "d3023e640a18772fcd4635dc985bb6cf8e5bb22fc175f06ea25a7106f1d436b0",
+  "failures": [],
+  "reference": "Independent mpmath derivation from original numeric input rows; simplified physical models only"
+}

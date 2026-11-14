@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "files_identical": {
+    "screening.csv": true,
+    "model_comparison.csv": true,
+    "formula_manifest.csv": true,
+    "native_audit.csv": true,
+    "math_execution_inventory.csv": true,
+    "execution_evidence.json": true,
+    "high_precision_audit.json": true
+  },
+  "rerun_command": "granulation_drying --run input/cases.csv repeat_results; verify_high_precision.py repeat_results input/cases.csv",
+  "note": "same environment, same binary and input, same output bytes"
+}

@@ -1,0 +1,14 @@
+{
+  "sdk": "original paceval 4.25 / supplied ELF x86-64 Linux runtime",
+  "unique_graphs_created": 60,
+  "unique_graphs_executed": 60,
+  "scalar_calls_including_operator_tests": 13,
+  "batch_calls_including_layout_probe": 109,
+  "graph_point_evaluations_including_layout_probe": 172804,
+  "scenario_count": 2880,
+  "model_scenario_combinations": 5760,
+  "feasible_V1": 1788,
+  "feasible_V2": 1775,
+  "native_endvalue_assertions": 3985,
+  "reference_high_precision": "see high_precision_audit.json"
+}

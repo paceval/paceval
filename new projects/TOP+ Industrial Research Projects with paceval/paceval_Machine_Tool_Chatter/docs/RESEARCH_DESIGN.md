@@ -1,0 +1,9 @@
+# Scope and independently falsifiable questions
+
+Main question: Can the original paceval Mathematical Engine evaluate reusable, versioned single- and two-mode receptance expressions together with scalar regenerative candidate-boundary equations, phase, lobe spindle speed, depth margins and algebraic characteristic residuals across many independent synthetic modal cases?
+
+Two versions: v1 uses a single viscously damped mass–spring mode; v2 adds a weighted second mode, but both retain the **same simplified scalar oriented constant-direction regenerative boundary**. Hence v2 is not a full multi-axis, time-periodic milling analysis; it is a more complex *receptance model* within the same simplified boundary method.
+
+The relation 1 + Ks b G(jw)[1-exp(-i w tau)]=0 is adopted by this research model. For ReG<0, ImG<0, bcrit=-1/(2 Ks ReG), theta=pi+2 atan(ImG/ReG), and rpm=60*w/(z*(theta+2*pi*lobe)). This choice of phase branch is valid for the specifically documented receptance sign/domain. Algebraic residuals of the characteristic equation at each constructed candidate boundary are checked independently. The graph's `screen_guard` is only `bcut <= bcrit` on the sampled candidate boundary. It is **not** a Floquet multiplier test and not a proven stable/unstable classification for arbitrary rpm-depth pairs.
+
+Falsification: compare all published remote output subsets with an independently coded 90-digit mpmath reference using exactly the binary input floats; verify phase consistency and characteristic residual; test zero/negative damping invalid domains, ReG near zero and resonance. Observe remote TINC inclusion for finitely many point inputs. C++ host domain and CSV controls are tested in source and independent test paths. Local shared library, link, CTest and physical cutting experiments are unavailable and not claimed.

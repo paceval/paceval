@@ -1,0 +1,17 @@
+# Scientific and regulatory source register
+
+Sources were researched on 15 November 2026. Public references establish sector context, not the validity of the synthetic coefficients or the paceval numerical results.
+
+1. **ICH Q13** (2022; FDA Guidance 2023). *Continuous Manufacturing of Drug Substances and Drug Products*. Control strategy, process monitoring, material traceability and diversion. [FDA primary source](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/q13-continuous-manufacturing-drug-substances-and-drug-products).
+2. **FDA PAT Guidance** (October 2004). *PAT - A Framework for Innovative Pharmaceutical Development, Manufacturing and Quality Assurance*. [FDA primary source](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/pat-framework-innovative-pharmaceutical-development-manufacturing-and-quality-assurance).
+3. **Tölle et al.** (2025), *Combined Temperature-Moisture Gray-Box Model for Horizontal Fluidized Bed Drying of Pharmaceutical Granules*, IFAC-PapersOnLine 59(10), 1089-1094. [Publisher](https://www.sciencedirect.com/science/article/pii/S2405896325009450). Combines moisture and granule-temperature predictions in a vibrated fluid-bed dryer using experimental data.
+4. **Kiricenko, Klinken, Kleinebudde** (2025), *Proof of a LOD prediction model with orthogonal PAT methods in continuous wet granulation and drying*, Journal of Pharmaceutical Sciences 114(1), 176-184. [Publisher](https://www.sciencedirect.com/science/article/pii/S0022354924002545). Orthogonal NIR and mass-balance information for moisture.
+5. **Meier et al.** (2023), *Drying capacity of a continuous vibrated fluid bed dryer: statistical and mechanistic model development*, International Journal of Pharmaceutics. [PubMed](https://pubmed.ncbi.nlm.nih.gov/37669728/). Describes product, air, and vibration sensitivities.
+6. **Mechanistic modeling of semicontinuous fluidized bed drying** (2023), International Journal of Pharmaceutics. [PubMed](https://pubmed.ncbi.nlm.nih.gov/37770009/). Documents particle-size and model-bias issues.
+7. **Cracking the code: spatial heterogeneity as the missing piece for modeling granular fluidized bed drying** (2024). [PubMed](https://pubmed.ncbi.nlm.nih.gov/38643808/). Spatial heterogeneity is material to process-model accuracy.
+8. **Niu et al.** (2026), *Twin-screw wet granulation in continuous pharmaceutical manufacturing*, International Journal of Pharmaceutics. [Publisher](https://www.sciencedirect.com/science/article/pii/S0378517326007702). New review of screw design, granulation mechanisms, and continuous manufacturing.
+9. **L.B. Bohle**, QbCon continuous wet granulation and drying equipment. [Official system documentation](https://www.lbbohle.com/pharma-machines-processes/continuous-granulation-and-drying-qbcon-1).
+10. **GEA**, ConsiGma Granulation and Drying modules. [Official system documentation](https://www.gea.com/de/products/granulators/continuous-granulation-lines/consigma-granulation-drying-gd-modules/).
+11. **paceval**, mathematical-engine API. [Official function reference](https://paceval.com/api/) and [product brief](https://paceval.com/product-brief/).
+
+Research provenance: public information was inspected as of the date above. Product-specific engineering claims in commercial pages are attributed to those vendors. No real equipment data, copyrighted plots, private patient data or supplier-specific material parameters were copied into the synthetic dataset.

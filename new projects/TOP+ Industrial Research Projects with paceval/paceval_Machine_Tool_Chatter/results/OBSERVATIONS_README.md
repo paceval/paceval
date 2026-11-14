@@ -1,0 +1,5 @@
+# Provenance of the recorded MCP result subsets
+
+`mcp_boundary_observed.csv` is a manually selected decimal transcription of the **actual 23-graph, 64-scenario** paceval MCP 4.26 result (separate computation handles). For the four lobe orders, the printed angular frequencies, FRF values, bcrit, and flags are independent of lobe order and are printed once per frequency, while all eight model-specific boundary RPMs are preserved from the four respective returned input sets. Only the lobe-zero residual is printed. This is not a complete byte-exact capture of the original multi-graph MCP JSON response. It is checked against a separately written 90-decimal-digit reference.
+
+Primary output on the **local SDK** path is `results/local_sdk_lobe.csv` and is written only by executing the original library; this file is NOT shipped as if it were executed. Figures in this package are generated exclusively from the observed MCP decimal CSV (not from independent reference calculations), except the conceptual cover and the explicitly identified conceptual architecture drawing.

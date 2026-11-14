@@ -1,0 +1,16 @@
+Internal ctest changing into directory: /mnt/data/_wp23_build
+Test project /mnt/data/_wp23_build
+    Start 1: sdk_scalar_batch_operators_conversion
+1/5 Test #1: sdk_scalar_batch_operators_conversion ...   Passed    0.02 sec
+    Start 2: full_csv_paceval_pipeline
+2/5 Test #2: full_csv_paceval_pipeline ...............   Passed    0.86 sec
+    Start 3: high_precision_independent_reference
+3/5 Test #3: high_precision_independent_reference ....   Passed    5.46 sec
+    Start 4: archive_markdown_math_links
+4/5 Test #4: archive_markdown_math_links .............   Passed    0.67 sec
+    Start 5: markdown_negative_regression
+5/5 Test #5: markdown_negative_regression ............   Passed    0.65 sec
+
+100% tests passed, 0 tests failed out of 5
+
+Total Test time (real) =   7.66 sec

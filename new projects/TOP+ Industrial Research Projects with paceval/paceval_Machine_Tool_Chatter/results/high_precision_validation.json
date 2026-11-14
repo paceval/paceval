@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "precision_decimal_digits": 90,
+  "recorded_synthetic_frequency_cases": 16,
+  "sample_reference_checks": 400,
+  "tinc_pointwise_checks": 12,
+  "frequency_domain": "3900..6900 rad/s, strictly negative real FRF for both model versions",
+  "maximum_decimal_transcription_discrepancy": "4.9367216e-10",
+  "tolerance_for_decimal_transcriptions": "2e-13 + 1e-12*abs(reference)",
+  "errors": [],
+  "no_global_stability_or_uncertain_input_certificate": true
+}

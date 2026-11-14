@@ -1,0 +1,65 @@
+{
+  "source": "remote paceval MCP 4.26 create-computation and evaluate-multiple-many",
+  "variables": [
+    "x",
+    "y",
+    "z"
+  ],
+  "cases": [
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      -1,
+      1,
+      0
+    ],
+    [
+      2,
+      1,
+      -1
+    ]
+  ],
+  "observed": {
+    "negative_remainder": [
+      -1,
+      -1,
+      -1
+    ],
+    "negative_modulo": [
+      9,
+      9,
+      9
+    ],
+    "minimum": [
+      4,
+      4,
+      4
+    ],
+    "maximum": [
+      5,
+      5,
+      5
+    ],
+    "logical_and": [
+      1,
+      1,
+      0
+    ],
+    "not_or": [
+      0,
+      1,
+      1
+    ],
+    "logical_xor": [
+      1,
+      0,
+      1
+    ]
+  },
+  "nonzero_error_codes": 0,
+  "graph_count": 7,
+  "graph_point_evaluations": 21
+}

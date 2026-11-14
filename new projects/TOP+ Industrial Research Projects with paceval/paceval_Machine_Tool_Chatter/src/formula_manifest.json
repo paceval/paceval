@@ -1,0 +1,208 @@
+{
+  "project": "WP22 Machine Tool Chatter Stability and Cutting Margin Maps",
+  "versions": {
+    "v1": "single SDOF mechanical receptance with one modal pole",
+    "v2": "weighted sum of two SDOF receptances with same scalar regenerative characteristic equation"
+  },
+  "interface": "remote paceval MCP 4.26, local SDK separately source prepared",
+  "variables": [
+    "w",
+    "mone",
+    "kone",
+    "cone",
+    "mtwo",
+    "ktwo",
+    "ctwo",
+    "alpha",
+    "Ks",
+    "depth",
+    "teeth",
+    "lobe"
+  ],
+  "graphs": [
+    {
+      "id": "frf_real_v1",
+      "expression": "((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))",
+      "remote_handle": "1691810528",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "frf_imag_v1",
+      "expression": "(-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))",
+      "remote_handle": "1020124864",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "amplitude_v1",
+      "expression": "sqrt(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))^2+(-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))^2)",
+      "remote_handle": "1093924560",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "critical_depth_v1",
+      "expression": "(-1/(2*Ks*((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))))",
+      "remote_handle": "1690780480",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "phase_v1",
+      "expression": "(pi+2*atan((-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))/((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))))",
+      "remote_handle": "1019762352",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "boundary_rpm_v1",
+      "expression": "(60*w/(teeth*((pi+2*atan((-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))/((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))))+2*pi*lobe)))",
+      "remote_handle": "972483024",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "depth_margin_v1",
+      "expression": "((-1/(2*Ks*((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))))-depth)",
+      "remote_handle": "1654998976",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "screen_guard_v1",
+      "expression": "((((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))<0) AND ((-1/(2*Ks*((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))))>=depth))",
+      "remote_handle": "1093495008",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "frf_real_v2",
+      "expression": "(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))",
+      "remote_handle": "1204462992",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "frf_imag_v2",
+      "expression": "((-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))-alpha*(ctwo*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))",
+      "remote_handle": "1690424608",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "amplitude_v2",
+      "expression": "sqrt((((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))^2+((-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))-alpha*(ctwo*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))^2)",
+      "remote_handle": "1474602560",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "critical_depth_v2",
+      "expression": "(-1/(2*Ks*(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))",
+      "remote_handle": "1407569136",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "phase_v2",
+      "expression": "(pi+2*atan(((-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))-alpha*(ctwo*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))/(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))",
+      "remote_handle": "972264128",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "boundary_rpm_v2",
+      "expression": "(60*w/(teeth*((pi+2*atan(((-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))-alpha*(ctwo*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))/(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))+2*pi*lobe)))",
+      "remote_handle": "1198471792",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "depth_margin_v2",
+      "expression": "((-1/(2*Ks*(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))-depth)",
+      "remote_handle": "1193734528",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "screen_guard_v2",
+      "expression": "(((((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))<0) AND ((-1/(2*Ks*(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))>=depth))",
+      "remote_handle": "1204442752",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "critical_depth_delta",
+      "expression": "((-1/(2*Ks*(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))-(-1/(2*Ks*((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2)))))",
+      "remote_handle": "1654827632",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "critical_depth_sensitivity_Ks_v2",
+      "expression": "(-(-1/(2*Ks*(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))/Ks)",
+      "remote_handle": "1692153024",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "relative_margin_v2",
+      "expression": "(((-1/(2*Ks*(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))-depth)/(-1/(2*Ks*(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2)))))",
+      "remote_handle": "1202131600",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "regenerative_residual_real_v2",
+      "expression": "(1+Ks*(-1/(2*Ks*(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))*((((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))*(1-cos(((pi+2*atan(((-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))-alpha*(ctwo*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))/(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))+2*pi*lobe)))-((-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))-alpha*(ctwo*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))*sin(((pi+2*atan(((-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))-alpha*(ctwo*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))/(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))+2*pi*lobe))))",
+      "remote_handle": "973051872",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "regenerative_residual_imag_v2",
+      "expression": "(Ks*(-1/(2*Ks*(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))*(((-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))-alpha*(ctwo*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))*(1-cos(((pi+2*atan(((-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))-alpha*(ctwo*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))/(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))+2*pi*lobe)))+(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))*sin(((pi+2*atan(((-(cone*w)/((kone-mone*w*w)^2+(cone*w)^2))-alpha*(ctwo*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))/(((kone-mone*w*w)/((kone-mone*w*w)^2+(cone*w)^2))+alpha*(ktwo-mtwo*w*w)/((ktwo-mtwo*w*w)^2+(ctwo*w)^2))))+2*pi*lobe))))",
+      "remote_handle": "1689015328",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "natural_frequency_rad_s",
+      "expression": "sqrt(kone/mone)",
+      "remote_handle": "1128905664",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    },
+    {
+      "id": "damping_ratio_v1",
+      "expression": "cone/(2*sqrt(kone*mone))",
+      "remote_handle": "1688859824",
+      "remote_created": true,
+      "remote_executed": true,
+      "local_sdk_executed": false
+    }
+  ]
+}
