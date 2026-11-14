@@ -1,0 +1,11 @@
+{
+  "research_scope": "synthetic laminate screening; not package qualification",
+  "precision_decimal_digits": 90,
+  "high_precision_endvalue_rows": 305,
+  "high_precision_checks": 2324,
+  "high_precision_check_status": "PASS",
+  "max_relative_error_audit_only": "0.00000000000000549198521073335005383004501948479562795599909655625367065765089627042975137878185098250755",
+  "binary_input_interpretation": "CSV double values represented exactly in mpmath using as_integer_ratio",
+  "cure_ode": "independent 90-digit RK4 verification of logged time program",
+  "review_note": "Scientific model validity requires calibration and independent material/FEM testing"
+}

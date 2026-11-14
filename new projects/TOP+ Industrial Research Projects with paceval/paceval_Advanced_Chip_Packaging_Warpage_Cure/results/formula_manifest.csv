@@ -1,0 +1,40 @@
+graph_id,version,stage,variable_list,expression,units
+KIN1,common,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","(k1*exp((-Ea1/Rg)*((1/T)-(1/Tkin))))",1/s
+KIN2,common,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","(k2*exp((-Ea2/Rg)*((1/T)-(1/Tkin))))",1/s
+CURE_RATE,common,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","((k1*exp((-Ea1/Rg)*((1/T)-(1/Tkin))))+(k2*exp((-Ea2/Rg)*((1/T)-(1/Tkin))))*a)*(1-a)",1/s
+CURE_SENS_A,common,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","((k2*exp((-Ea2/Rg)*((1/T)-(1/Tkin))))*(1-2*a))-(k1*exp((-Ea1/Rg)*((1/T)-(1/Tkin))))",1/s
+EBAR1,common,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","E1/(1-N1)",Pa
+EBAR2,common,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","E2/(1-N2)",Pa
+V1_EBAR3,V1,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","E3/(1-N3)",Pa
+V2_EBAR3,V2,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","(E3*(1+gE*(a-gel)))/(1-N3)",Pa
+EIGEN1,common,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","C1*(T-Tr)",1
+EIGEN2,common,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","C2*(T-Tr)",1
+V1_EIGEN3,V1,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","C3*(T-Tr)",1
+V2_EIGEN3,V2,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","(C3*(T-Tr))-(beta*((a-gel) max 0)/(1-gel))",1
+SHRINKAGE,V2,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","(-beta)*((a-gel) max 0)/(1-gel)",1
+MODULUS_FACTOR,V2,S1,"T Tr a gel beta H1 H2 H3 E1 E2 E3 N1 N2 N3 C1 C2 C3 W k1 k2 Ea1 Ea2 Tkin gE Wlim Slim Rg","1+gE*(a-gel)",1
+EXTENSION_A,common,S2,"P Q S e1 e2 e3 H1 H2 H3","P*H1+Q*H2+S*H3",N/m
+COUPLING_B,common,S2,"P Q S e1 e2 e3 H1 H2 H3","(P*H1^2+Q*((H1+H2)^2-H1^2)+S*((H1+H2+H3)^2-(H1+H2)^2))/2",N
+BENDING_D,common,S2,"P Q S e1 e2 e3 H1 H2 H3","(P*H1^3+Q*((H1+H2)^3-H1^3)+S*((H1+H2+H3)^3-(H1+H2)^3))/3",N m
+EIGEN_FORCE_N,common,S2,"P Q S e1 e2 e3 H1 H2 H3","P*H1*e1+Q*H2*e2+S*H3*e3",N/m
+EIGEN_MOMENT_M,common,S2,"P Q S e1 e2 e3 H1 H2 H3","(P*H1^2*e1+Q*((H1+H2)^2-H1^2)*e2+S*((H1+H2+H3)^2-(H1+H2)^2)*e3)/2",N
+LAMINATE_DET,common,S3,"A B D N M P Q S e1 e2 e3 H1 H2 H3 W C1 C2 C3 a gel beta","(A*D)-(B*B)",N2
+MEMBRANE_STRAIN,common,S3,"A B D N M P Q S e1 e2 e3 H1 H2 H3 W C1 C2 C3 a gel beta","((D*N-B*M)/((A*D)-(B*B)))",1
+SIGNED_CURVATURE,common,S3,"A B D N M P Q S e1 e2 e3 H1 H2 H3 W C1 C2 C3 a gel beta","((A*M-B*N)/((A*D)-(B*B)))",1/m
+EDGE_WARPAGE,common,S3,"A B D N M P Q S e1 e2 e3 H1 H2 H3 W C1 C2 C3 a gel beta","0.125*W*W*((A*M-B*N)/((A*D)-(B*B)))",m
+STRESS1_LOWER,common,S3,"A B D N M P Q S e1 e2 e3 H1 H2 H3 W C1 C2 C3 a gel beta","P*(((D*N-B*M)/((A*D)-(B*B)))+((A*M-B*N)/((A*D)-(B*B)))*0-e1)",Pa
+STRESS1_UPPER,common,S3,"A B D N M P Q S e1 e2 e3 H1 H2 H3 W C1 C2 C3 a gel beta","P*(((D*N-B*M)/((A*D)-(B*B)))+((A*M-B*N)/((A*D)-(B*B)))*H1-e1)",Pa
+STRESS2_LOWER,common,S3,"A B D N M P Q S e1 e2 e3 H1 H2 H3 W C1 C2 C3 a gel beta","Q*(((D*N-B*M)/((A*D)-(B*B)))+((A*M-B*N)/((A*D)-(B*B)))*H1-e2)",Pa
+STRESS2_UPPER,common,S3,"A B D N M P Q S e1 e2 e3 H1 H2 H3 W C1 C2 C3 a gel beta","Q*(((D*N-B*M)/((A*D)-(B*B)))+((A*M-B*N)/((A*D)-(B*B)))*(H1+H2)-e2)",Pa
+STRESS3_LOWER,common,S3,"A B D N M P Q S e1 e2 e3 H1 H2 H3 W C1 C2 C3 a gel beta","S*(((D*N-B*M)/((A*D)-(B*B)))+((A*M-B*N)/((A*D)-(B*B)))*(H1+H2)-e3)",Pa
+STRESS3_UPPER,common,S3,"A B D N M P Q S e1 e2 e3 H1 H2 H3 W C1 C2 C3 a gel beta","S*(((D*N-B*M)/((A*D)-(B*B)))+((A*M-B*N)/((A*D)-(B*B)))*(H1+H2+H3)-e3)",Pa
+D_CURV_D_T,common,S3,"A B D N M P Q S e1 e2 e3 H1 H2 H3 W C1 C2 C3 a gel beta","(A*(P*H1^2*C1+Q*((H1+H2)^2-H1^2)*C2+S*((H1+H2+H3)^2-(H1+H2)^2)*C3)/2-B*(P*H1*C1+Q*H2*C2+S*H3*C3))/((A*D)-(B*B))",1/(m K)
+V2_D_CURV_D_BETA,V2,S3,"A B D N M P Q S e1 e2 e3 H1 H2 H3 W C1 C2 C3 a gel beta","(A*(S*((H1+H2+H3)^2-(H1+H2)^2)*(-(a-gel)/(1-gel))/2)-B*(S*H3*(-(a-gel)/(1-gel))))/((A*D)-(B*B))",1/m
+MAX_STRESS,common,S4,"w s11 s12 s21 s22 s31 s32 Wlim Slim a","((((((abs(s11) max abs(s12)) max abs(s21)) max abs(s22)) max abs(s31)) max abs(s32)))",Pa
+WARP_MARGIN,common,S4,"w s11 s12 s21 s22 s31 s32 Wlim Slim a","Wlim-abs(w)",m
+STRESS_MARGIN,common,S4,"w s11 s12 s21 s22 s31 s32 Wlim Slim a","Slim-((((((abs(s11) max abs(s12)) max abs(s21)) max abs(s22)) max abs(s31)) max abs(s32)))",Pa
+SCREEN_GUARD,common,S4,"w s11 s12 s21 s22 s31 s32 Wlim Slim a","((abs(w)<=Wlim) AND (((((((abs(s11) max abs(s12)) max abs(s21)) max abs(s22)) max abs(s31)) max abs(s32)))<=Slim))",0/1
+SCREEN_SCORE,common,S4,"w s11 s12 s21 s22 s31 s32 Wlim Slim a","(abs(w)/Wlim)+(((((((abs(s11) max abs(s12)) max abs(s21)) max abs(s22)) max abs(s31)) max abs(s32)))/Slim)+0.1*(1-a)",1
+DELTA_CURVATURE,V1-V2,S5,"k1 k2 w1 w2","k2-k1",1/m
+DELTA_WARPAGE,V1-V2,S5,"k1 k2 w1 w2","w2-w1",m
+RELATIVE_WARPAGE,V1-V2,S5,"k1 k2 w1 w2","abs(w2)/((abs(w1)) max 1e-9)",1

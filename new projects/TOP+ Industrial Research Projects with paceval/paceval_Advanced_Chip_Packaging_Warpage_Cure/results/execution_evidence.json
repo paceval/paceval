@@ -1,0 +1,30 @@
+{
+  "sdk_version": "4.25",
+  "provenance": "deterministic synthetic, uncalibrated mechanical screening",
+  "unique_domain_graphs_created": 40,
+  "unique_domain_graphs_executed": 40,
+  "scalar_calls": 901,
+  "batch_calls": 752,
+  "batch_graph_point_evaluations": 119706,
+  "scenario_count": 1280,
+  "model_scenario_count": 2560,
+  "V1_screen_guard_passes": 1112,
+  "V2_screen_guard_passes": 630,
+  "native_reference_endvalue_checks": 702,
+  "recorded_results": [
+    "screening.csv",
+    "model_comparison.csv",
+    "thermal_profile.csv",
+    "cure_profile.csv",
+    "deflection_surface.csv",
+    "native_audit.csv"
+  ],
+  "scope": "functionality and numerical reproducibility only, no speed/energy/safety qualification",
+  "ctest_passed": 5,
+  "ctest_total": 5,
+  "high_precision_checked_rows": 305,
+  "high_precision_checks": 2324,
+  "scientific_figures": 10,
+  "source_wp": "WP07 Advanced Chip Packaging Warpage and Cure Stress Screening",
+  "run_evidence_semantics": "domain graphs exclude batch-layout/operator probes; scalar and batch calls are API invocations, and batch graph-point evaluations count formula x input-point combinations, not unique scenarios"
+}
