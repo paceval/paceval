@@ -1,0 +1,48 @@
+{
+  "research_date": "2026-11-14",
+  "purpose": "Public domain background and documented existing mathematical approaches. These sources do not establish any paceval result.",
+  "references": [
+    {
+      "title": "Design and simulation of district heating networks: A review of modeling approaches and tools",
+      "year": 2024,
+      "publication": "Energy 305, 132189",
+      "doi": "10.1016/j.energy.2024.132189",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0360544224019637"
+    },
+    {
+      "title": "A quasi-dynamic model and comprehensive simulation study of district heating networks considering temperature delay",
+      "year": 2025,
+      "publication": "Energy 318, 134855",
+      "doi": "10.1016/j.energy.2025.134855",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0360544225004979"
+    },
+    {
+      "title": "A transfer function method for thermal transient modeling in district heating networks",
+      "year": 2026,
+      "publication": "Energy 351, 140834",
+      "doi": "10.1016/j.energy.2026.140834",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0360544226009370"
+    },
+    {
+      "title": "Integrated Source-Network-Load Modeling and Optimization for District Heating Systems: Recent Advances and Future Directions",
+      "year": 2026,
+      "doi": "10.1155/er/8877364",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1155/er/8877364"
+    },
+    {
+      "title": "DHNx simulation models: steady-state pipe heat loss equation",
+      "year": null,
+      "url": "https://dhnx.readthedocs.io/en/v0.0.4/simulation_models.html"
+    },
+    {
+      "title": "DistrictHeatingSim 2.0.0 documentation",
+      "year": null,
+      "url": "https://districtheatingsim.readthedocs.io/en/latest/"
+    },
+    {
+      "title": "paceval original API and mathematical operators",
+      "year": 2026,
+      "url": "https://paceval.com/api/"
+    }
+  ]
+}

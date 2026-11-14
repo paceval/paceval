@@ -1,0 +1,187 @@
+{
+  "project": "WP13 District Heating Network Thermal Loss and Dispatch Maps",
+  "date": "2026-11-14",
+  "original_proposal": "docs/Original_WP13_Proposal.pdf",
+  "remote_service": "paceval MCP",
+  "remote_reported_version": "4.26",
+  "runtime_scope": "actual remotely executed persistent graph evaluations, no local C++ SDK run",
+  "original_local_sdk_bridge": "src/paceval_main.h and src/paceval_main.cpp (previously supplied original SDK 4.25)",
+  "unique_model_graphs_created": 47,
+  "unique_model_graphs_executed": 47,
+  "edge_graphs": 22,
+  "edge_independent_scenarios": 49,
+  "edge_graph_point_evaluations": 1078,
+  "network_graphs": 25,
+  "network_independent_scenarios": 25,
+  "network_graph_point_evaluations": 625,
+  "separate_boundary_graph_point_evaluations": 6,
+  "separate_tinc_graphs_created": 2,
+  "tinc_graph_point_evaluations": 6,
+  "graph_point_evaluations_including_boundary_tinc": 1715,
+  "primary_multi_graph_batches": 2,
+  "supplemental_multi_graph_batches": 2,
+  "scalar_sdk_calls_executed": 0,
+  "local_sdk_build_executed": false,
+  "ctest_passed": null,
+  "ctest_total": null,
+  "remote_errors_reported": 0,
+  "local_sdk_runtime_available": false,
+  "note": "Archived result CSV contains explicitly selected decimal service values rounded to stated digits, not the raw full service JSON. Any unarchived graph output is not treated as a released per-point result.",
+  "csv_provenance": {
+    "results/mcp_edge_observed.csv": "selected values from actual 22-graph 49-case MCP batch, decimal rounding in transcription",
+    "results/mcp_network_observed.csv": "selected values from actual 25-graph 25-case MCP batch, decimal rounding in transcription"
+  },
+  "model_graph_handles": {
+    "edge": {
+      "outlet_v1": "1093733664",
+      "outlet_v2": "1239456576",
+      "heat_loss_v1": "1198526080",
+      "heat_loss_v2": "1689386720",
+      "heat_delivery_v1": "1204416432",
+      "heat_delivery_v2": "1193646720",
+      "velocity": "1093757856",
+      "pressure_drop": "1204480944",
+      "temp_margin_v1": "972780288",
+      "temp_margin_v2": "1204537392",
+      "load_margin_v1": "1204424496",
+      "load_margin_v2": "1204368048",
+      "pressure_margin": "1204486320",
+      "guard_v1": "1582574848",
+      "guard_v2": "1193963136",
+      "sensitivity_outlet_UA_v2": "1055660832",
+      "sensitivity_outlet_m_v2": "1093673312",
+      "delta_outlet_v2_v1": "1204513200",
+      "pipe_pump_power": "1204437936",
+      "heat_loss_fraction_v2": "1198419472",
+      "conservation_v2": "1202132624",
+      "sensitivity_outlet_Tamb_v2": "1648203584"
+    },
+    "network": {
+      "hydraulic_path_head": "1689929968",
+      "pump_power": "1204459440",
+      "pump_margin": "1093744416",
+      "source_heat": "1690237792",
+      "trunk_out_v1": "1204359984",
+      "branchA_out_v1": "1093696032",
+      "branchB_out_v1": "972793648",
+      "delivered_total_v1": "1691901360",
+      "loss_total_v1": "1204505136",
+      "temp_margin_v1": "972583744",
+      "demand_margin_v1": "968254944",
+      "heat_balance_v1": "1093765920",
+      "guard_v1": "1093760544",
+      "trunk_out_v2": "1167683728",
+      "branchA_out_v2": "1204475568",
+      "branchB_out_v2": "1239131872",
+      "delivered_total_v2": "1692023296",
+      "loss_total_v2": "1690582320",
+      "temp_margin_v2": "1582465952",
+      "demand_margin_v2": "1691714576",
+      "heat_balance_v2": "1691814176",
+      "guard_v2": "968100704",
+      "loss_fraction_v2": "972479152",
+      "delivered_delta_v2_v1": "1690589776",
+      "dispatch_score_v2": "972650720"
+    }
+  },
+  "boundary_test": {
+    "description": "synthetic boundary discrimination; not an operational tolerance setting",
+    "ambient_C": -3,
+    "Ts_C": 74,
+    "Tmin_C": 67.777,
+    "v1_temp_margin_K": -0.000440161210107703,
+    "v2_temp_margin_K": 0.00063631673596376,
+    "v1_guard": 0,
+    "v2_guard": 1,
+    "mcp_error_codes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "tinc_sample_text": {
+    "graph_ids": [
+      "outlet_v2_TINC",
+      "heat_loss_v2_TINC"
+    ],
+    "cases": [
+      [
+        -8,
+        1500
+      ],
+      [
+        4,
+        1500
+      ],
+      [
+        28,
+        2700
+      ]
+    ],
+    "values": [
+      [
+        "78.8275964741144",
+        "79.2505836108991",
+        "78.6222268233805"
+      ],
+      [
+        "132606.467382019",
+        "114925.605064416",
+        "141190.918782696"
+      ]
+    ],
+    "lower": [
+      [
+        "78.8275964741125",
+        "79.2505836108974",
+        "78.6222268233791"
+      ],
+      [
+        "132606.467381937",
+        "114925.605064342",
+        "141190.918782636"
+      ]
+    ],
+    "upper": [
+      [
+        "78.8275964741163",
+        "79.2505836109009",
+        "78.6222268233819"
+      ],
+      [
+        "132606.467382101",
+        "114925.605064491",
+        "141190.918782755"
+      ]
+    ],
+    "error_codes": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "modeling_notes": [
+    "v1 uses midpoint-lumped steady-state pipe temperature model",
+    "v2 uses steady-state exponential distributed loss",
+    "no transient advection, branch return temperature solution or calibrated flow solver",
+    "pump pressure is a conservative path proxy with fixed friction factors",
+    "demand and temperatures are deliberately synthetic"
+  ],
+  "remote_operator_semantics_graphs": 7,
+  "remote_operator_semantics_graph_point_evaluations": 21,
+  "all_remote_graph_point_evaluations_including_operator_tests": 1736,
+  "cxx17_syntax_check": "PASS: g++ -std=c++17 -fsyntax-only (main, two unit-test files, original SDK bridge)",
+  "independent_90_digit_checks": 547,
+  "tinc_sample_text_inclusions_passed": 6,
+  "third_party_remote_graphs_created": 56
+}

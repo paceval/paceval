@@ -1,0 +1,18 @@
+{
+  "engine": "paceval MCP 4.26",
+  "executed": true,
+  "declared_variables": ["x", "y", "z"],
+  "values": [[1,1,0],[-1,1,0],[2,1,-1]],
+  "functions": [
+    {"id":"signed_remainder","expression":"(-1) % 10","handle":"972674112","results":[-1,-1,-1]},
+    {"id":"mathematical_modulo","expression":"(-1) mod 10","handle":"968257008","results":[9,9,9]},
+    {"id":"infix_min","expression":"4 min 5","handle":"1193853296","results":[4,4,4]},
+    {"id":"infix_max","expression":"4 max 5","handle":"1201929552","results":[5,5,5]},
+    {"id":"boolean_and","expression":"((x <= (2*y)) AND (z >= 0))","handle":"1202053712","results":[1,1,0]},
+    {"id":"boolean_not_or","expression":"((NOT(x = y)) OR (z <> 0))","handle":"1202084992","results":[0,1,1]},
+    {"id":"boolean_xor","expression":"((x = y) XOR (z <> 0))","handle":"1654906976","results":[1,0,1]}
+  ],
+  "all_error_codes": 0,
+  "graph_point_evaluations": 21,
+  "notes": "Executed remote selftest, not a local SDK CTest. No short-circuit guarantees claimed."
+}

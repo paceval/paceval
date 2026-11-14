@@ -1,0 +1,10 @@
+{
+  "Tmin_C": 67.777,
+  "ambient_C": -3,
+  "Ts_C": 74,
+  "v1_margin_K": -0.000440161210107703,
+  "v2_margin_K": 0.00063631673596376,
+  "v1_guard": 0,
+  "v2_guard": 1,
+  "mcp_verified": true
+}

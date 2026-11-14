@@ -1,0 +1,4 @@
+Remote MCP observations: see results/execution_evidence.json.
+Rebuild local original SDK demonstrator with scripts/build_and_test.sh /absolute/path/libpaceval_linux_sharedLIB.so.
+No local SDK binary was executed in this session.
+The selected decimal CSVs are recorded observed values; roundtrip binary precision is not asserted.

@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "precision_digits": 90,
+  "edge_scenarios": 49,
+  "network_scenarios": 25,
+  "accepted_v1": 15,
+  "accepted_v2": 15,
+  "reference_checks": 547,
+  "tinc_recorded_decimal_cases": 6,
+  "tinc_decimal_inclusion_count": 6,
+  "tinc_warning": "TINC checks apply to only fixed inputs and rounded decimal response bounds; not a proof for continuous input ranges.",
+  "all_synthetic": true,
+  "cpp_local_runtime_executed": false
+}

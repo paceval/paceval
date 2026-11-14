@@ -1,0 +1,385 @@
+{
+  "project": "WP13 District Heating Network Thermal Loss and Dispatch Maps",
+  "date": "2026-11-14",
+  "remote_engine_observed": "4.26",
+  "groups": {
+    "edge": {
+      "variables": [
+        "m",
+        "cp",
+        "Tin",
+        "Tamb",
+        "UA",
+        "Tr",
+        "Tmin",
+        "f",
+        "L",
+        "D",
+        "rho",
+        "eta",
+        "dpmax",
+        "Qreq"
+      ],
+      "graphs": [
+        {
+          "id": "outlet_v1",
+          "formula": "(Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2))",
+          "units": "degC",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "1093733664"
+        },
+        {
+          "id": "outlet_v2",
+          "formula": "(Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))",
+          "units": "degC",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1239456576"
+        },
+        {
+          "id": "heat_loss_v1",
+          "formula": "(UA*(Tin-Tamb)/(1+(UA/(m*cp))/2))",
+          "units": "W",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "1198526080"
+        },
+        {
+          "id": "heat_loss_v2",
+          "formula": "(m*cp*(Tin-(Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))))",
+          "units": "W",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1689386720"
+        },
+        {
+          "id": "heat_delivery_v1",
+          "formula": "(m*cp*((Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2))-Tr))",
+          "units": "W",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "1204416432"
+        },
+        {
+          "id": "heat_delivery_v2",
+          "formula": "(m*cp*((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))-Tr))",
+          "units": "W",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1193646720"
+        },
+        {
+          "id": "velocity",
+          "formula": "(4*m/(rho*pi*D*D))",
+          "units": "m/s",
+          "version": "shared",
+          "mcp_handle_for_audit_only": "1093757856"
+        },
+        {
+          "id": "pressure_drop",
+          "formula": "(f*(L/D)*rho*(4*m/(rho*pi*D*D))*(4*m/(rho*pi*D*D))/2)",
+          "units": "Pa",
+          "version": "shared",
+          "mcp_handle_for_audit_only": "1204480944"
+        },
+        {
+          "id": "temp_margin_v1",
+          "formula": "((Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2))-Tmin)",
+          "units": "K",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "972780288"
+        },
+        {
+          "id": "temp_margin_v2",
+          "formula": "((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))-Tmin)",
+          "units": "K",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1204537392"
+        },
+        {
+          "id": "load_margin_v1",
+          "formula": "((m*cp*((Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2))-Tr))-Qreq)",
+          "units": "W",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "1204424496"
+        },
+        {
+          "id": "load_margin_v2",
+          "formula": "((m*cp*((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))-Tr))-Qreq)",
+          "units": "W",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1204368048"
+        },
+        {
+          "id": "pressure_margin",
+          "formula": "(dpmax-(f*(L/D)*rho*(4*m/(rho*pi*D*D))*(4*m/(rho*pi*D*D))/2))",
+          "units": "Pa",
+          "version": "shared",
+          "mcp_handle_for_audit_only": "1204486320"
+        },
+        {
+          "id": "guard_v1",
+          "formula": "((((Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2))>=Tmin) AND ((m*cp*((Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2))-Tr))>=Qreq)) AND ((f*(L/D)*rho*(4*m/(rho*pi*D*D))*(4*m/(rho*pi*D*D))/2)<=dpmax))",
+          "units": "binary",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "1582574848"
+        },
+        {
+          "id": "guard_v2",
+          "formula": "((((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))>=Tmin) AND ((m*cp*((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))-Tr))>=Qreq)) AND ((f*(L/D)*rho*(4*m/(rho*pi*D*D))*(4*m/(rho*pi*D*D))/2)<=dpmax))",
+          "units": "binary",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1193963136"
+        },
+        {
+          "id": "sensitivity_outlet_UA_v2",
+          "formula": "(-(Tin-Tamb)*exp(-(UA/(m*cp)))/(m*cp))",
+          "units": "K^2/W",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1055660832"
+        },
+        {
+          "id": "sensitivity_outlet_m_v2",
+          "formula": "((Tin-Tamb)*exp(-(UA/(m*cp)))*UA/(m*m*cp))",
+          "units": "K*s/kg",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1093673312"
+        },
+        {
+          "id": "delta_outlet_v2_v1",
+          "formula": "((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))-(Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2)))",
+          "units": "K",
+          "version": "comparison",
+          "mcp_handle_for_audit_only": "1204513200"
+        },
+        {
+          "id": "pipe_pump_power",
+          "formula": "((m/rho)*(f*(L/D)*rho*(4*m/(rho*pi*D*D))*(4*m/(rho*pi*D*D))/2)/eta)",
+          "units": "W",
+          "version": "shared",
+          "mcp_handle_for_audit_only": "1204437936"
+        },
+        {
+          "id": "heat_loss_fraction_v2",
+          "formula": "((m*cp*(Tin-(Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))))/(m*cp*(Tin-Tr)))",
+          "units": "ratio",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1198419472"
+        },
+        {
+          "id": "conservation_v2",
+          "formula": "((m*cp*(Tin-Tr))-(m*cp*((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))-Tr))-(m*cp*(Tin-(Tamb+(Tin-Tamb)*exp(-(UA/(m*cp)))))))",
+          "units": "W",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1202132624"
+        },
+        {
+          "id": "sensitivity_outlet_Tamb_v2",
+          "formula": "(1-exp(-(UA/(m*cp))))",
+          "units": "ratio",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1648203584"
+        }
+      ]
+    },
+    "network": {
+      "variables": [
+        "mA",
+        "mB",
+        "cp",
+        "Ts",
+        "Tamb",
+        "UAt",
+        "UAa",
+        "UAb",
+        "Tr",
+        "Tmin",
+        "Demand",
+        "rho",
+        "eta",
+        "fT",
+        "LT",
+        "DT",
+        "fA",
+        "LA",
+        "DA",
+        "fB",
+        "LB",
+        "DB",
+        "Pmax"
+      ],
+      "graphs": [
+        {
+          "id": "hydraulic_path_head",
+          "formula": "((fT*(LT/DT)*rho*(4*(mA+mB)/(rho*pi*DT*DT))*(4*(mA+mB)/(rho*pi*DT*DT))/2)+((fA*(LA/DA)*rho*(4*mA/(rho*pi*DA*DA))*(4*mA/(rho*pi*DA*DA))/2) max (fB*(LB/DB)*rho*(4*mB/(rho*pi*DB*DB))*(4*mB/(rho*pi*DB*DB))/2)))",
+          "units": "Pa",
+          "version": "shared",
+          "mcp_handle_for_audit_only": "1689929968"
+        },
+        {
+          "id": "pump_power",
+          "formula": "(((mA+mB)/rho)*((fT*(LT/DT)*rho*(4*(mA+mB)/(rho*pi*DT*DT))*(4*(mA+mB)/(rho*pi*DT*DT))/2)+((fA*(LA/DA)*rho*(4*mA/(rho*pi*DA*DA))*(4*mA/(rho*pi*DA*DA))/2) max (fB*(LB/DB)*rho*(4*mB/(rho*pi*DB*DB))*(4*mB/(rho*pi*DB*DB))/2)))/eta)",
+          "units": "W",
+          "version": "shared",
+          "mcp_handle_for_audit_only": "1204459440"
+        },
+        {
+          "id": "pump_margin",
+          "formula": "(Pmax-(((mA+mB)/rho)*((fT*(LT/DT)*rho*(4*(mA+mB)/(rho*pi*DT*DT))*(4*(mA+mB)/(rho*pi*DT*DT))/2)+((fA*(LA/DA)*rho*(4*mA/(rho*pi*DA*DA))*(4*mA/(rho*pi*DA*DA))/2) max (fB*(LB/DB)*rho*(4*mB/(rho*pi*DB*DB))*(4*mB/(rho*pi*DB*DB))/2)))/eta))",
+          "units": "W",
+          "version": "shared",
+          "mcp_handle_for_audit_only": "1093744416"
+        },
+        {
+          "id": "source_heat",
+          "formula": "((mA+mB)*cp*(Ts-Tr))",
+          "units": "W",
+          "version": "shared",
+          "mcp_handle_for_audit_only": "1690237792"
+        },
+        {
+          "id": "trunk_out_v1",
+          "formula": "(Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))",
+          "units": "degC",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "1204359984"
+        },
+        {
+          "id": "branchA_out_v1",
+          "formula": "((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2))",
+          "units": "degC",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "1093696032"
+        },
+        {
+          "id": "branchB_out_v1",
+          "formula": "((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))",
+          "units": "degC",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "972793648"
+        },
+        {
+          "id": "delivered_total_v1",
+          "formula": "((mA*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2))-Tr))+(mB*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))-Tr)))",
+          "units": "W",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "1691901360"
+        },
+        {
+          "id": "loss_total_v1",
+          "formula": "((mA+mB)*cp*(Ts-(Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2)))+mA*cp*((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2)))+mB*cp*((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))))",
+          "units": "W",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "1204505136"
+        },
+        {
+          "id": "temp_margin_v1",
+          "formula": "((((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2)) min ((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2)))-Tmin)",
+          "units": "K",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "972583744"
+        },
+        {
+          "id": "demand_margin_v1",
+          "formula": "(((mA*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2))-Tr))+(mB*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))-Tr)))-Demand)",
+          "units": "W",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "968254944"
+        },
+        {
+          "id": "heat_balance_v1",
+          "formula": "((mA+mB)*cp*(Ts-Tr)-((mA*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2))-Tr))+(mB*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))-Tr)))-((mA+mB)*cp*(Ts-(Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2)))+mA*cp*((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2)))+mB*cp*((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2)))))",
+          "units": "W",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "1093765920"
+        },
+        {
+          "id": "guard_v1",
+          "formula": "((((((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2)) min ((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2)))>=Tmin) AND (((mA*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2))-Tr))+(mB*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))-Tr)))>=Demand)) AND ((((mA+mB)/rho)*((fT*(LT/DT)*rho*(4*(mA+mB)/(rho*pi*DT*DT))*(4*(mA+mB)/(rho*pi*DT*DT))/2)+((fA*(LA/DA)*rho*(4*mA/(rho*pi*DA*DA))*(4*mA/(rho*pi*DA*DA))/2) max (fB*(LB/DB)*rho*(4*mB/(rho*pi*DB*DB))*(4*mB/(rho*pi*DB*DB))/2)))/eta)<=Pmax))",
+          "units": "binary",
+          "version": "v1",
+          "mcp_handle_for_audit_only": "1093760544"
+        },
+        {
+          "id": "trunk_out_v2",
+          "formula": "(Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))",
+          "units": "degC",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1167683728"
+        },
+        {
+          "id": "branchA_out_v2",
+          "formula": "(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))",
+          "units": "degC",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1204475568"
+        },
+        {
+          "id": "branchB_out_v2",
+          "formula": "(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))",
+          "units": "degC",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1239131872"
+        },
+        {
+          "id": "delivered_total_v2",
+          "formula": "((mA*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))-Tr))+(mB*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))-Tr)))",
+          "units": "W",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1692023296"
+        },
+        {
+          "id": "loss_total_v2",
+          "formula": "((mA+mB)*cp*(Ts-(Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp)))))+mA*cp*((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp)))))+mB*cp*((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))))",
+          "units": "W",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1690582320"
+        },
+        {
+          "id": "temp_margin_v2",
+          "formula": "(((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp)))) min (Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp)))))-Tmin)",
+          "units": "K",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1582465952"
+        },
+        {
+          "id": "demand_margin_v2",
+          "formula": "(((mA*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))-Tr))+(mB*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))-Tr)))-Demand)",
+          "units": "W",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1691714576"
+        },
+        {
+          "id": "heat_balance_v2",
+          "formula": "((mA+mB)*cp*(Ts-Tr)-((mA*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))-Tr))+(mB*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))-Tr)))-((mA+mB)*cp*(Ts-(Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp)))))+mA*cp*((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp)))))+mB*cp*((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp)))))))",
+          "units": "W",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "1691814176"
+        },
+        {
+          "id": "guard_v2",
+          "formula": "(((((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp)))) min (Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp)))))>=Tmin) AND (((mA*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))-Tr))+(mB*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))-Tr)))>=Demand)) AND ((((mA+mB)/rho)*((fT*(LT/DT)*rho*(4*(mA+mB)/(rho*pi*DT*DT))*(4*(mA+mB)/(rho*pi*DT*DT))/2)+((fA*(LA/DA)*rho*(4*mA/(rho*pi*DA*DA))*(4*mA/(rho*pi*DA*DA))/2) max (fB*(LB/DB)*rho*(4*mB/(rho*pi*DB*DB))*(4*mB/(rho*pi*DB*DB))/2)))/eta)<=Pmax))",
+          "units": "binary",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "968100704"
+        },
+        {
+          "id": "loss_fraction_v2",
+          "formula": "(((mA+mB)*cp*(Ts-(Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp)))))+mA*cp*((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp)))))+mB*cp*((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))))/((mA+mB)*cp*(Ts-Tr)))",
+          "units": "ratio",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "972479152"
+        },
+        {
+          "id": "delivered_delta_v2_v1",
+          "formula": "(((mA*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))-Tr))+(mB*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))-Tr)))-((mA*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2))-Tr))+(mB*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))-Tr))))",
+          "units": "W",
+          "version": "comparison",
+          "mcp_handle_for_audit_only": "1690589776"
+        },
+        {
+          "id": "dispatch_score_v2",
+          "formula": "(((((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp)))) min (Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp)))))-Tmin) min ((((mA*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))-Tr))+(mB*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))-Tr)))-Demand)/((mA+mB)*cp))) min ((Pmax-(((mA+mB)/rho)*((fT*(LT/DT)*rho*(4*(mA+mB)/(rho*pi*DT*DT))*(4*(mA+mB)/(rho*pi*DT*DT))/2)+((fA*(LA/DA)*rho*(4*mA/(rho*pi*DA*DA))*(4*mA/(rho*pi*DA*DA))/2) max (fB*(LB/DB)*rho*(4*mB/(rho*pi*DB*DB))*(4*mB/(rho*pi*DB*DB))/2)))/eta))/2000))",
+          "units": "K-equivalent",
+          "version": "v2",
+          "mcp_handle_for_audit_only": "972650720"
+        }
+      ]
+    }
+  }
+}

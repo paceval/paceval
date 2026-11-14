@@ -1,0 +1,60 @@
+// Generated from formula_manifest.json; original SDK executes all production mathematics.
+#pragma once
+#include <array>
+#include <cstddef>
+struct GraphFormula {const char* id;const char* expression;};
+static constexpr const char* edge_variables="m cp Tin Tamb UA Tr Tmin f L D rho eta dpmax Qreq";
+static constexpr size_t edge_N=14;
+static constexpr std::array<GraphFormula,22> edge_graphs {{
+  GraphFormula{"outlet_v1","(Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2))"},
+  GraphFormula{"outlet_v2","(Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))"},
+  GraphFormula{"heat_loss_v1","(UA*(Tin-Tamb)/(1+(UA/(m*cp))/2))"},
+  GraphFormula{"heat_loss_v2","(m*cp*(Tin-(Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))))"},
+  GraphFormula{"heat_delivery_v1","(m*cp*((Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2))-Tr))"},
+  GraphFormula{"heat_delivery_v2","(m*cp*((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))-Tr))"},
+  GraphFormula{"velocity","(4*m/(rho*pi*D*D))"},
+  GraphFormula{"pressure_drop","(f*(L/D)*rho*(4*m/(rho*pi*D*D))*(4*m/(rho*pi*D*D))/2)"},
+  GraphFormula{"temp_margin_v1","((Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2))-Tmin)"},
+  GraphFormula{"temp_margin_v2","((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))-Tmin)"},
+  GraphFormula{"load_margin_v1","((m*cp*((Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2))-Tr))-Qreq)"},
+  GraphFormula{"load_margin_v2","((m*cp*((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))-Tr))-Qreq)"},
+  GraphFormula{"pressure_margin","(dpmax-(f*(L/D)*rho*(4*m/(rho*pi*D*D))*(4*m/(rho*pi*D*D))/2))"},
+  GraphFormula{"guard_v1","((((Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2))>=Tmin) AND ((m*cp*((Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2))-Tr))>=Qreq)) AND ((f*(L/D)*rho*(4*m/(rho*pi*D*D))*(4*m/(rho*pi*D*D))/2)<=dpmax))"},
+  GraphFormula{"guard_v2","((((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))>=Tmin) AND ((m*cp*((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))-Tr))>=Qreq)) AND ((f*(L/D)*rho*(4*m/(rho*pi*D*D))*(4*m/(rho*pi*D*D))/2)<=dpmax))"},
+  GraphFormula{"sensitivity_outlet_UA_v2","(-(Tin-Tamb)*exp(-(UA/(m*cp)))/(m*cp))"},
+  GraphFormula{"sensitivity_outlet_m_v2","((Tin-Tamb)*exp(-(UA/(m*cp)))*UA/(m*m*cp))"},
+  GraphFormula{"delta_outlet_v2_v1","((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))-(Tin-((Tin-Tamb)*(UA/(m*cp)))/(1+(UA/(m*cp))/2)))"},
+  GraphFormula{"pipe_pump_power","((m/rho)*(f*(L/D)*rho*(4*m/(rho*pi*D*D))*(4*m/(rho*pi*D*D))/2)/eta)"},
+  GraphFormula{"heat_loss_fraction_v2","((m*cp*(Tin-(Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))))/(m*cp*(Tin-Tr)))"},
+  GraphFormula{"conservation_v2","((m*cp*(Tin-Tr))-(m*cp*((Tamb+(Tin-Tamb)*exp(-(UA/(m*cp))))-Tr))-(m*cp*(Tin-(Tamb+(Tin-Tamb)*exp(-(UA/(m*cp)))))))"},
+  GraphFormula{"sensitivity_outlet_Tamb_v2","(1-exp(-(UA/(m*cp))))"},
+}};
+static constexpr const char* network_variables="mA mB cp Ts Tamb UAt UAa UAb Tr Tmin Demand rho eta fT LT DT fA LA DA fB LB DB Pmax";
+static constexpr size_t network_N=23;
+static constexpr std::array<GraphFormula,25> network_graphs {{
+  GraphFormula{"hydraulic_path_head","((fT*(LT/DT)*rho*(4*(mA+mB)/(rho*pi*DT*DT))*(4*(mA+mB)/(rho*pi*DT*DT))/2)+((fA*(LA/DA)*rho*(4*mA/(rho*pi*DA*DA))*(4*mA/(rho*pi*DA*DA))/2) max (fB*(LB/DB)*rho*(4*mB/(rho*pi*DB*DB))*(4*mB/(rho*pi*DB*DB))/2)))"},
+  GraphFormula{"pump_power","(((mA+mB)/rho)*((fT*(LT/DT)*rho*(4*(mA+mB)/(rho*pi*DT*DT))*(4*(mA+mB)/(rho*pi*DT*DT))/2)+((fA*(LA/DA)*rho*(4*mA/(rho*pi*DA*DA))*(4*mA/(rho*pi*DA*DA))/2) max (fB*(LB/DB)*rho*(4*mB/(rho*pi*DB*DB))*(4*mB/(rho*pi*DB*DB))/2)))/eta)"},
+  GraphFormula{"pump_margin","(Pmax-(((mA+mB)/rho)*((fT*(LT/DT)*rho*(4*(mA+mB)/(rho*pi*DT*DT))*(4*(mA+mB)/(rho*pi*DT*DT))/2)+((fA*(LA/DA)*rho*(4*mA/(rho*pi*DA*DA))*(4*mA/(rho*pi*DA*DA))/2) max (fB*(LB/DB)*rho*(4*mB/(rho*pi*DB*DB))*(4*mB/(rho*pi*DB*DB))/2)))/eta))"},
+  GraphFormula{"source_heat","((mA+mB)*cp*(Ts-Tr))"},
+  GraphFormula{"trunk_out_v1","(Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))"},
+  GraphFormula{"branchA_out_v1","((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2))"},
+  GraphFormula{"branchB_out_v1","((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))"},
+  GraphFormula{"delivered_total_v1","((mA*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2))-Tr))+(mB*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))-Tr)))"},
+  GraphFormula{"loss_total_v1","((mA+mB)*cp*(Ts-(Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2)))+mA*cp*((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2)))+mB*cp*((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))))"},
+  GraphFormula{"temp_margin_v1","((((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2)) min ((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2)))-Tmin)"},
+  GraphFormula{"demand_margin_v1","(((mA*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2))-Tr))+(mB*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))-Tr)))-Demand)"},
+  GraphFormula{"heat_balance_v1","((mA+mB)*cp*(Ts-Tr)-((mA*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2))-Tr))+(mB*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))-Tr)))-((mA+mB)*cp*(Ts-(Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2)))+mA*cp*((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2)))+mB*cp*((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2)))))"},
+  GraphFormula{"guard_v1","((((((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2)) min ((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2)))>=Tmin) AND (((mA*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2))-Tr))+(mB*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))-Tr)))>=Demand)) AND ((((mA+mB)/rho)*((fT*(LT/DT)*rho*(4*(mA+mB)/(rho*pi*DT*DT))*(4*(mA+mB)/(rho*pi*DT*DT))/2)+((fA*(LA/DA)*rho*(4*mA/(rho*pi*DA*DA))*(4*mA/(rho*pi*DA*DA))/2) max (fB*(LB/DB)*rho*(4*mB/(rho*pi*DB*DB))*(4*mB/(rho*pi*DB*DB))/2)))/eta)<=Pmax))"},
+  GraphFormula{"trunk_out_v2","(Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))"},
+  GraphFormula{"branchA_out_v2","(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))"},
+  GraphFormula{"branchB_out_v2","(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))"},
+  GraphFormula{"delivered_total_v2","((mA*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))-Tr))+(mB*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))-Tr)))"},
+  GraphFormula{"loss_total_v2","((mA+mB)*cp*(Ts-(Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp)))))+mA*cp*((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp)))))+mB*cp*((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))))"},
+  GraphFormula{"temp_margin_v2","(((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp)))) min (Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp)))))-Tmin)"},
+  GraphFormula{"demand_margin_v2","(((mA*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))-Tr))+(mB*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))-Tr)))-Demand)"},
+  GraphFormula{"heat_balance_v2","((mA+mB)*cp*(Ts-Tr)-((mA*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))-Tr))+(mB*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))-Tr)))-((mA+mB)*cp*(Ts-(Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp)))))+mA*cp*((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp)))))+mB*cp*((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp)))))))"},
+  GraphFormula{"guard_v2","(((((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp)))) min (Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp)))))>=Tmin) AND (((mA*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))-Tr))+(mB*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))-Tr)))>=Demand)) AND ((((mA+mB)/rho)*((fT*(LT/DT)*rho*(4*(mA+mB)/(rho*pi*DT*DT))*(4*(mA+mB)/(rho*pi*DT*DT))/2)+((fA*(LA/DA)*rho*(4*mA/(rho*pi*DA*DA))*(4*mA/(rho*pi*DA*DA))/2) max (fB*(LB/DB)*rho*(4*mB/(rho*pi*DB*DB))*(4*mB/(rho*pi*DB*DB))/2)))/eta)<=Pmax))"},
+  GraphFormula{"loss_fraction_v2","(((mA+mB)*cp*(Ts-(Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp)))))+mA*cp*((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp)))))+mB*cp*((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-(Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))))/((mA+mB)*cp*(Ts-Tr)))"},
+  GraphFormula{"delivered_delta_v2_v1","(((mA*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))-Tr))+(mB*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))-Tr)))-((mA*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAa/(mA*cp)))/(1+(UAa/(mA*cp))/2))-Tr))+(mB*cp*(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-(((Ts-((Ts-Tamb)*(UAt/((mA+mB)*cp)))/(1+(UAt/((mA+mB)*cp))/2))-Tamb)*(UAb/(mB*cp)))/(1+(UAb/(mB*cp))/2))-Tr))))"},
+  GraphFormula{"dispatch_score_v2","(((((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp)))) min (Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp)))))-Tmin) min ((((mA*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAa/(mA*cp))))-Tr))+(mB*cp*((Tamb+((Tamb+(Ts-Tamb)*exp(-(UAt/((mA+mB)*cp))))-Tamb)*exp(-(UAb/(mB*cp))))-Tr)))-Demand)/((mA+mB)*cp))) min ((Pmax-(((mA+mB)/rho)*((fT*(LT/DT)*rho*(4*(mA+mB)/(rho*pi*DT*DT))*(4*(mA+mB)/(rho*pi*DT*DT))/2)+((fA*(LA/DA)*rho*(4*mA/(rho*pi*DA*DA))*(4*mA/(rho*pi*DA*DA))/2) max (fB*(LB/DB)*rho*(4*mB/(rho*pi*DB*DB))*(4*mB/(rho*pi*DB*DB))/2)))/eta))/2000))"},
+}};
