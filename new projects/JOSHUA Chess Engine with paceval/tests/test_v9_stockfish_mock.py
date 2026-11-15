@@ -57,6 +57,9 @@ if move is None:sys.exit(9)
 with (out/'selfplay_timeline.csv').open('w',newline='') as f:
  w=csv.DictWriter(f,fieldnames=['chosen_uci','white_score_cp']);w.writeheader();w.writerow({'chosen_uci':move,'white_score_cp':0})
 (out/'run_evidence.json').write_text(json.dumps({'adaptive_graph_version':int(next(x.split('\t')[1] for x in pathlib.Path(opt('--graph-file')).read_text().splitlines() if x.startswith('version\t'))), 'adaptive_graph_evaluations':1,'paceval_graph_point_evaluations':1}))
+version=int(next(x.split('\t')[1] for x in pathlib.Path(opt('--graph-file')).read_text().splitlines() if x.startswith('version\t')))
+(out/'paceval_graph.txt').write_text(f'# MOCK OFFLINE ONLY\nversion={version}\nexpression=MOCK_NOT_REAL_GRAPH\n')
+(out/'paceval_graph_terms.csv').write_text('version,category,term,coefficient,paceval_expression\n')
 print('MOCK_JOSHUA_MOVE',move,flush=True)
 '''
 
@@ -144,7 +147,8 @@ def test_model_validation():
         # These are fake trials, not Stockfish measurements, verifying the gate itself.
         class Args:
             adapt=True
-            training_loss_cp=35
+            training_loss_pp=7
+            structural_step=.5
             train_positions=1
             holdout_positions=1
             max_holdout_regression=5
@@ -158,14 +162,19 @@ def test_model_validation():
             # positive direction hurts it. Heldout loss is unchanged, so the
             # selection policy should permit only the negative candidate.
             value = model['weights']['mobility']
-            return [{'cp_loss': (100+20*value if i==0 else 10.0),
+            for i in range(len(fens)):
+                sub = folder / f'{label}_{i}'
+                sub.mkdir(parents=True, exist_ok=True)
+                (sub/'paceval_graph.txt').write_text(f'version={model["version"]}\nexpression=MOCK_ONLY\n')
+                (sub/'paceval_graph_terms.csv').write_text('version,category,term,coefficient,paceval_expression\n')
+            return [{'loss_pp': (60+20*value if i==0 else 10.0), 'graph_folder':str(folder / f'{label}_{i}'),
                      'chosen_uci': 'e2e4' if value==0 else 'd2d4'} for i,_ in enumerate(fens)]
         mod.evaluate_model_on_fens = fake_trials
         logger = mod.Logger(tmp/'log.txt', 1)
         try:
-            report = mod.adjust_graph(1, [{'fen_before':mod.START, 'cp_loss':100}], active,
+            report = mod.adjust_graph(1, [{'fen_before':mod.START, 'loss_pp':60, 'mate_alert':False}], active,
                                       None, args, tmp, logger)
-            assert report['status'] == 'promoted', report
+            assert report['status'] == 'promoted_provisional', report
             assert mod.parse_model(active)['version'] == 1
             assert mod.parse_model(active)['weights']['mobility'] == -.5
         finally:

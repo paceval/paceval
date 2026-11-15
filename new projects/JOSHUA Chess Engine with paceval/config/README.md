@@ -1,5 +1,5 @@
-# Adaptive paceval graph configuration
+# Reloadable evaluation graph model
 
-`active_graph.tsv` is the initial mathematical V9 graph model. It contains only the enumerated numeric coefficients and a version. Changes are made after matches using the validated model update routine. The match session itself owns its current writable copy under `stockfish_sessions/active_graph.tsv`.
+`active_graph.tsv` is a strict two-column tab-separated file. It includes the version number, eight base coefficients, and optionally `feature.<name>` rows for one of the eight V10 nonlinear templates. Never paste a free-form formula into this TSV. In a running Stockfish session the authoritative model is `stockfish_sessions/active_graph.tsv` (not this factory default). Completed game archives preserve all trial and promoted versions. `active_graph_expression.txt`, `active_graph_terms.csv`, and `active_full_graph_catalog.csv` show the **actual paceval-executed** mathematical text in a readable form.
 
-The complete mathematical definition, feature mapping, legal data schema, safeguards, and limitations are documented in [V9 adaptive Stockfish research](../docs/V9_STOCKFISH_MATCH_AND_GRAPH_ADAPTATION.md). Arbitrary expression text in the TSV is intentionally prohibited.
+Use the source-compiled C++ runtime to regenerate mathematical graphs, rather than treating the TXT/CSV exports as executable code. Supported names and limits are defined in `src/adaptive_score_graph.h` and checked independently in `scripts/stockfish_match.py`.

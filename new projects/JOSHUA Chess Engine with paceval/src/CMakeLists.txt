@@ -274,3 +274,6 @@ endif()
 # coordinator and rejection/promote policy only, not engine chess quality.
 add_test(NAME joshua_v9_stockfish_protocol_offline_mock
  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../tests/test_v9_stockfish_mock.py")
+
+# V10 tests. The authentic SDK variant is executed when PACEVAL_RUNTIME is set.
+add_test(NAME joshua_v10_tactical_graph_policy COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../tests/test_v10_graphs.py")

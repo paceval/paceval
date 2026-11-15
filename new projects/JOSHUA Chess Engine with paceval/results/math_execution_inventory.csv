@@ -1,0 +1,10 @@
+function_id,domain_quantity,mathematical_definition,units,execution_owner,paceval_graph_id,formula_version,api_path,reference_test,status,host_reason
+model_features,Board feature extraction,48 material/positional/tactical board proxies,counts,host,,V4,C++ chess_rules + joshua_v4_features.h,legal moves and FEN check,executed,Board state/legality not a scalar math graph
+neural_hidden,Neural hidden evaluations,H0..H11 sigmoid composed weighted inputs,unitless,paceval,catalog per-process IDs,V4,paceval_CreateComputation and scalar/batch evaluation,real-sdk graph count reconciliation,executed_real_sdk,
+neural_score,Neural V4 fused evaluation,trained fused score graph on V4 features,centipawn-like,paceval,,V4,paceval_CreateComputation,real-sdk graph accounting,executed_real_sdk,
+adaptive_score,Adaptive composite evaluation,"base+min(160,max(-160,sum a*f+sum b*g))",centipawn-like,paceval,,v0 / 48 input variables,paceval_CreateComputation and scalar evaluation,authentic nonlinear SDK smoke,executed_real_sdk,
+king_tactics,Nonlinear king attack interactions,Db*(1+Qb+Rb)-Dw*(1+Qw+Rw),feature proxy,paceval,,V10 template,paceval_CreateComputation,authentic nonlinear SDK smoke,executed_real_sdk,
+hanging_pressure,Nonlinear hanging piece imbalance,HangingBlack^2-HangingWhite^2,feature proxy squared,paceval,,V10 template,paceval_CreateComputation,authentic nonlinear SDK smoke,executed_real_sdk,
+root_reduction,Select search best root score,minmax reductions in research mode; host alpha-beta cutoffs,centipawn-like,host,,V10 alpha-beta mode,C++ search orchestration,real-sdk smoke,executed_with_host_alpha_beta,Stateful alpha-beta recursion/cutoff not graph-suitable
+score_error,Heuristic expected points lost,"100*max(0,p_before+p_after_opponent-1)",percentage points,host,,V10,Python UCI orchestration,synthetic cp/mate tests,verified_mock_reference_only,Stockfish external reference and decision logic
+confidence,Paired opening comparison,sign test over matched color pairs,p-value,host,,V10,Python statistics,synthetic outcome tests,verified_mock_reference_only,Statistics and historical state

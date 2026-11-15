@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 TARGET="${1:?Usage: ./scripts/install_flat_linux.sh /path/to/joshua_autoplay}"
 [[ -d "$TARGET" ]] || { echo "Target directory does not exist: $TARGET" >&2; exit 2; }
-if command -v pgrep >/dev/null 2>&1 && pgrep -u "$(id -u)" -x joshua_selfplay >/dev/null; then
+if command -v pgrep >/dev/null 2>&1 && (pgrep -u "$(id -u)" -x joshua_selfplay >/dev/null || pgrep -u "$(id -u)" -f '/stockfish_match.py' >/dev/null); then
  echo 'Stop the running selfplay process with Ctrl+C before updating.' >&2; exit 2
 fi
 for name in joshua joshua_selfplay joshua_long_graph joshua_referee; do
@@ -13,6 +13,8 @@ for name in joshua joshua_selfplay joshua_long_graph joshua_referee; do
 done
 install -m 644 "$ROOT/scripts/stockfish_match.py" "$TARGET/stockfish_match.py"
 install -m 644 "$ROOT/scripts/export_stockfish_logs.py" "$TARGET/export_stockfish_logs.py"
+install -m 644 "$ROOT/formulas/v4_graph_expressions.tsv" "$TARGET/v4_graph_expressions.tsv"
+install -m 644 "$ROOT/docs/V10_TACTICAL_GRAPH_EVOLUTION.md" "$TARGET/V10_TACTICAL_GRAPH_EVOLUTION.md"
 mkdir -p "$TARGET/config"
 if [[ ! -f "$TARGET/config/active_graph.tsv" ]]; then
  install -m 644 "$ROOT/config/active_graph.tsv" "$TARGET/config/active_graph.tsv"
@@ -31,4 +33,4 @@ chmod 755 "$TARGET/run_stockfish_matches.sh"
 if [[ ! -f "$TARGET/libpaceval_linux_sharedLIB.so" && ! -f "$TARGET/runtime/libpaceval_linux_sharedLIB.so" ]]; then
  echo 'Original paceval runtime is missing. Set PACEVAL_RUNTIME or copy your authorized library.' >&2
 fi
-printf 'Installed V9 matches and four ELF programs in %s. Old logs and paceval runtime preserved.\n' "$TARGET"
+printf 'Installed V10 matches and four ELF programs in %s. Old logs and paceval runtime preserved.\n' "$TARGET"

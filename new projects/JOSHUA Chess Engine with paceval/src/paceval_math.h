@@ -1,17 +1,40 @@
 #pragma once
 struct Engine{
- vector<PACEVAL_HANDLE>owned;size_t scalar=0,batches=0,graphPoints=0;bool graphMajor=false;
+ struct Record {std::string formula, variables;std::size_t evaluated_points=0;};
+ vector<PACEVAL_HANDLE>owned;std::vector<Record>registered;
+ std::map<PACEVAL_HANDLE,std::size_t> handleIndex;
+ size_t scalar=0,batches=0,graphPoints=0;bool graphMajor=false;
  Engine(){insist(paceval_InitializeLibrary(nullptr),"paceval library init failed");}
  ~Engine(){for(auto h:owned)paceval_DeleteComputation(h);paceval_FreeLibrary();}
- PACEVAL_HANDLE create(const string& formula,const vector<string>&vars){auto names=join(vars);auto h=paceval_CreateComputation(formula.c_str(),vars.size(),names.c_str(),false,nullptr);insist(h&&!paceval_GetIsError(h),"Graph compile failed: "+formula);owned.push_back(h);return h;}
- double eval(PACEVAL_HANDLE h,const vector<double>&v){auto a=v;double r=paceval_dGetComputationResult(h,a.data(),nullptr,nullptr);scalar++;insist(!paceval_GetIsError(h)&&std::isfinite(r),"Scalar graph failed");graphPoints++;return r;}
+ PACEVAL_HANDLE create(const string& formula,const vector<string>&vars){auto names=join(vars);auto h=paceval_CreateComputation(formula.c_str(),vars.size(),names.c_str(),false,nullptr);insist(h&&!paceval_GetIsError(h),"Graph compile failed: "+formula);owned.push_back(h);handleIndex[h]=registered.size();
+ registered.push_back({formula,names,0});return h;}
+ double eval(PACEVAL_HANDLE h,const vector<double>&v){auto a=v;double r=paceval_dGetComputationResult(h,a.data(),nullptr,nullptr);scalar++;registered.at(handleIndex.at(h)).evaluated_points++;insist(!paceval_GetIsError(h)&&std::isfinite(r),"Scalar graph failed");graphPoints++;return r;}
  void probe(){auto a=create("x+2*y",{"x","y"}),b=create("3*x-y",{"x","y"});PACEVAL_HANDLE hs[]={a,b};double in[]={1,2,4,7},o[4]{},lo[4]{},hi[4]{};int err[4]{};bool failure=paceval_dGetMultipleComputationsResultsExt(hs,2,in,2,o,lo,hi,err);insist(!failure&&!err[0]&&!err[1]&&!err[2]&&!err[3],"API layout probe failed");
  if(std::abs(o[0]-5)<1e-8&&std::abs(o[1]-18)<1e-8&&std::abs(o[2]-1)<1e-8&&std::abs(o[3]-5)<1e-8)graphMajor=true;
  else if(std::abs(o[0]-5)<1e-8&&std::abs(o[1]-1)<1e-8&&std::abs(o[2]-18)<1e-8&&std::abs(o[3]-5)<1e-8)graphMajor=false;
- else throw std::runtime_error("Unexpected multi-graph output layout");batches++;graphPoints+=4;}
+ else throw std::runtime_error("Unexpected multi-graph output layout");batches++;graphPoints+=4;
+ registered.at(handleIndex.at(a)).evaluated_points+=2;
+ registered.at(handleIndex.at(b)).evaluated_points+=2;}
  vector<vector<double>> multi(const vector<PACEVAL_HANDLE>&h,const vector<vector<double>>&rows){insist(!h.empty()&&!rows.empty(),"Empty batch");size_t n=rows.size(),m=rows[0].size();vector<double>in;in.reserve(n*m);for(auto&r:rows){insist(r.size()==m,"Width mismatch");for(double v:r)insist(std::isfinite(v),"nonfinite input");in.insert(in.end(),r.begin(),r.end());}
- vector<double>out(n*h.size()),lo(out.size()),hi(out.size());vector<int>e(out.size(),-1);bool fail=paceval_dGetMultipleComputationsResultsExt(const_cast<PACEVAL_HANDLE*>(h.data()),h.size(),in.data(),n,out.data(),lo.data(),hi.data(),e.data());insist(!fail,"MultiGraph failed");for(int x:e)insist(x==0,"MultiGraph error code");vector<vector<double>>z(n,vector<double>(h.size()));for(size_t i=0;i<n;i++)for(size_t j=0;j<h.size();j++){z[i][j]=out[graphMajor?j*n+i:i*h.size()+j];insist(std::isfinite(z[i][j]),"Nonfinite graph result");}batches++;graphPoints+=out.size();return z;}
- vector<double>single(PACEVAL_HANDLE h,const vector<vector<double>>&rows){size_t n=rows.size(),m=rows[0].size();vector<double>in;in.reserve(n*m);for(auto&r:rows){insist(r.size()==m,"Variable mismatch");in.insert(in.end(),r.begin(),r.end());}vector<double>out(n),lo(n),hi(n);vector<int>err(n,-1);bool fail=paceval_dGetComputationResultExt(h,in.data(),n,out.data(),lo.data(),hi.data(),err.data());insist(!fail,"Single batch error");for(size_t i=0;i<n;i++)insist(err[i]==0&&std::isfinite(out[i]),"Single batch result error");batches++;graphPoints+=n;return out;}
+ vector<double>out(n*h.size()),lo(out.size()),hi(out.size());vector<int>e(out.size(),-1);bool fail=paceval_dGetMultipleComputationsResultsExt(const_cast<PACEVAL_HANDLE*>(h.data()),h.size(),in.data(),n,out.data(),lo.data(),hi.data(),e.data());insist(!fail,"MultiGraph failed");for(int x:e)insist(x==0,"MultiGraph error code");vector<vector<double>>z(n,vector<double>(h.size()));for(size_t i=0;i<n;i++)for(size_t j=0;j<h.size();j++){z[i][j]=out[graphMajor?j*n+i:i*h.size()+j];insist(std::isfinite(z[i][j]),"Nonfinite graph result");}batches++;graphPoints+=out.size();
+ for(auto handle:h)registered.at(handleIndex.at(handle)).evaluated_points+=n;
+ return z;}
+ vector<double>single(PACEVAL_HANDLE h,const vector<vector<double>>&rows){size_t n=rows.size(),m=rows[0].size();vector<double>in;in.reserve(n*m);for(auto&r:rows){insist(r.size()==m,"Variable mismatch");in.insert(in.end(),r.begin(),r.end());}vector<double>out(n),lo(n),hi(n);vector<int>err(n,-1);bool fail=paceval_dGetComputationResultExt(h,in.data(),n,out.data(),lo.data(),hi.data(),err.data());insist(!fail,"Single batch error");for(size_t i=0;i<n;i++)insist(err[i]==0&&std::isfinite(out[i]),"Single batch result error");batches++;graphPoints+=n;
+ registered.at(handleIndex.at(h)).evaluated_points+=n;
+ return out;}
+ void exportCatalog(const std::string&directory)const {
+  std::ofstream out(std::filesystem::path(directory)/"paceval_all_graphs.csv");
+  insist(bool(out),"Cannot write paceval_all_graphs.csv");
+  out<<"graph_id,created,evaluated_points,variables,paceval_expression\n";
+  auto quote=[](const std::string&value){std::string z="\"";
+   for(char c:value){if(c=='\"')z+="\"\"";else z+=c;}
+   return z+"\"";};
+  for(std::size_t i=0;i<registered.size();i++){
+   const auto&r=registered[i];out<<"G"<<std::setfill('0')<<std::setw(4)<<(i+1)
+   <<",1,"<<r.evaluated_points<<","<<quote(r.variables)<<","<<quote(r.formula)<<"\n";
+  }
+  insist(bool(out),"Failed writing paceval full graph catalog");
+ }
 };
 // Input features are literal counts, not native weighted evaluations.
 const vector<string> featureNames={"wp","wn","wb","wr","wq","bp","bn","bb","br","bq","wc","bc","wd","bd","wa","ba","wk","bk","bias"};

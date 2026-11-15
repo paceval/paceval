@@ -30,12 +30,28 @@ import time
 import zipfile
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent.parent
+SCRIPT_DIR = Path(__file__).resolve().parent
+BASE = SCRIPT_DIR if (SCRIPT_DIR / "joshua").exists() else SCRIPT_DIR.parent
 OPENINGS = ['e2e4', 'd2d4', 'c2c4', 'g1f3', 'b1c3', 'e2e3', 'd2d3',
             'g2g3', 'b2b3', 'f2f4', 'a2a3', 'h2h3', 'a2a4', 'h2h4']
 START = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
 TERMS = ('mobility', 'captures', 'hanging', 'attacked', 'passed', 'kingdanger', 'queenthreat', 'rookthreat')
 MEMORY_LIMIT = 25_000_000
+# Exact same whitelisted templates as src/adaptive_score_graph.h.
+# A TSV contains only names and bounded coefficients, never executable text.
+EXTRA_FORMULAS = {
+    'king_alarm': '((bkingDanger*bkingDanger)-(wkingDanger*wkingDanger))',
+    'king_tactics': '((bkingDanger*(1+bqueenThreat+brookThreat))-(wkingDanger*(1+wqueenThreat+wrookThreat)))',
+    'hanging_pressure': '((bhanging*bhanging)-(whanging*whanging))',
+    'queen_exposure': '((bqueenThreat*battacked)-(wqueenThreat*wattacked))',
+    'rook_exposure': '((brookThreat*battacked)-(wrookThreat*wattacked))',
+    'check_pressure': '(bcheck-wcheck)',
+    'pawn_race': '((wpassed*wpassed)-(bpassed*bpassed))',
+    'active_captures': '((wmob*wcaps)-(bmob*bcaps))',
+}
+# This approximate expected-score transform is a *heuristic* rather than
+# an official Stockfish WDL calibration. A forced mate is treated separately.
+
 STOP = False
 
 
@@ -68,7 +84,7 @@ def parse_model(path: Path):
         if len(parts) != 2 or parts[0] in values:
             raise ValueError('Invalid adaptive model TSV')
         values[parts[0]] = parts[1]
-    if set(values) != {'version', *TERMS} or not re.fullmatch(r'[0-9]{1,7}', values['version']):
+    if not {'version', *TERMS}.issubset(values) or not re.fullmatch(r'[0-9]{1,7}', values['version']):
         raise ValueError('Model keys or version invalid')
     if int(values['version']) > 9_999_998:
         raise ValueError('Model version rollover')
@@ -81,13 +97,29 @@ def parse_model(path: Path):
         if not math.isfinite(value) or abs(value) > 32:
             raise ValueError('Coefficient out of range ' + term)
         weights[term] = value
-    return {'version': int(values['version']), 'weights': weights}
+    extras = {}
+    for name, value in values.items():
+        if name in ('version', *TERMS):
+            continue
+        if not name.startswith('feature.') or name[8:] not in EXTRA_FORMULAS:
+            raise ValueError('Unrecognized nonlinear graph template: ' + name)
+        if not re.fullmatch(r'[+-]?(?:[0-9]+(?:\.[0-9]{1,4})?|\.[0-9]{1,4})', value):
+            raise ValueError('Invalid nonlinear weight: ' + name)
+        number = float(value)
+        if not math.isfinite(number) or abs(number) > 8:
+            raise ValueError('Nonlinear weight out of range: ' + name)
+        if number != 0:
+            extras[name[8:]] = number
+    if len(extras) > 6:
+        raise ValueError('Maximum six active nonlinear terms per graph')
+    return {'version': int(values['version']), 'weights': weights, 'extra': extras}
 
 
 def model_text(model):
     return '# Validated decimal paceval graph coefficients. Never inject formulas here.\n' + \
            'version\t' + str(model['version']) + '\n' + \
-           ''.join(f'{term}\t{model["weights"][term]:.4f}\n' for term in TERMS)
+           ''.join(f'{term}\t{model["weights"][term]:.4f}\n' for term in TERMS) + \
+           ''.join(f'feature.{name}\t{value:.4f}\n' for name, value in sorted(model.get('extra', {}).items()) if value != 0)
 
 
 class Logger:
@@ -271,36 +303,70 @@ def joshua_choice(binary, fen, model, graph_file, depth, quiescence, timeout,
         raise RuntimeError('Joshua did not load expected adaptive graph version')
     if evidence.get('adaptive_graph_evaluations', 0) < 1:
         raise RuntimeError('No evidence Joshua evaluated adaptive paceval graph')
-    return {'move': move, 'score': float(rows[0]['white_score_cp']),
+    return {'move': move, 'score': float(rows[0]['white_score_cp']), 'graph_folder':str(folder),
             'move_s': wall, 'evidence': {'version': evidence['adaptive_graph_version'],
              'graph_evaluations': evidence['adaptive_graph_evaluations'],
              'paceval_graph_points': evidence.get('paceval_graph_point_evaluations')}}
 
 
-def cp_value(score):
+def expected_score(score):
+    """Heuristic expected points (not Stockfish-calibrated WDL or FIDE Elo)."""
     if score is None:
         return None
-    kind, number = score
+    kind, raw = score
     if kind == 'mate':
-        return math.copysign(30000 - min(1000, abs(number)*100), number)
-    return float(number)
+        return 1.0 if raw > 0 else 0.0
+    cp = max(-2000.0, min(2000.0, float(raw)))
+    return 1.0 / (1.0 + math.exp(-cp / 180.0))
 
 
 def stockfish_loss(teacher, fen_before, fen_after, nodes, after_status="ongoing", logger=None, progress_seconds=5):
-    # UCI scores are always from the perspective of the side to move.
-    # The second position is seen from the opposite side, so invert it.
+    """Bounded expected-points loss with explicit mate alerts and raw UCI scores."""
     prior = teacher.go(fen_before, nodes, logger, progress_seconds, reset_hash=True)
-    if after_status == "checkmate":
-        b, after = -30000.0, {"depth": None}
-    elif after_status != "ongoing":
-        b, after = 0.0, {"depth": None}
+    if after_status == 'checkmate':
+        after = {'score': ('mate', -1), 'depth': None}
+    elif after_status != 'ongoing':
+        after = {'score': ('cp', 0), 'depth': None}
     else:
         after = teacher.go(fen_after, nodes, logger, progress_seconds, reset_hash=True)
-        b = cp_value(after["score"])
-    a = cp_value(prior["score"])
-    return {'cp_loss': round(max(0.0, a + b), 2) if a is not None and b is not None else None,
-            'before_cp': a, 'after_cp_opponent': b,
+    before_p = expected_score(prior['score'])
+    opponent_p = expected_score(after['score'])
+    loss = None if before_p is None or opponent_p is None else round(
+        max(0., min(100., 100. * (before_p + opponent_p - 1.0))), 3)
+    before_mate = prior['score'] is not None and prior['score'][0] == 'mate'
+    after_mate = after['score'] is not None and after['score'][0] == 'mate'
+    mate_alert = bool(after_mate and after['score'][1] > 0 and
+                      (not before_mate or prior['score'][1] > 0))
+    if mate_alert:
+        kind = 'mate_turnaround'
+    elif loss is not None and loss >= 20:
+        kind = 'major_tactical_regression'
+    elif loss is not None and loss >= 7:
+        kind = 'candidate_tactical_regression'
+    else:
+        kind = 'no_large_loss'
+    return {'loss_pp': loss, 'before_expected_score': before_p,
+            'after_expected_score': None if opponent_p is None else 1.0-opponent_p,
+            'before_uci_score': prior['score'], 'after_uci_score_opponent': after['score'],
+            'mate_alert': mate_alert, 'finding_type': kind,
             'before_depth': prior['depth'], 'after_depth': after['depth']}
+
+
+def sync_graph_export(target: Path, source: Path, version: int):
+    """Publish only graph expressions actually exported by an engine run."""
+    text_file = source / 'paceval_graph.txt'
+    csv_file = source / 'paceval_graph_terms.csv'
+    if not text_file.is_file() or not csv_file.is_file():
+        raise RuntimeError('Engine did not export actual registered graph files')
+    graph = text_file.read_text(encoding='utf-8')
+    if f'version={version}\n' not in graph or 'expression=' not in graph:
+        raise RuntimeError('Engine-exported graph version/expression mismatch')
+    atomic_text(target / 'active_graph_expression.txt', graph)
+    atomic_text(target / 'active_graph_terms.csv', csv_file.read_text(encoding='utf-8'))
+    full_catalog = source / 'paceval_all_graphs.csv'
+    if full_catalog.is_file():
+        atomic_text(target / 'active_full_graph_catalog.csv', full_catalog.read_text(encoding='utf-8'))
+    return hashlib.sha256(graph.encode('utf-8')).hexdigest()
 
 
 def check_active_limit(directory: Path, logger: Logger):
@@ -374,43 +440,42 @@ def evaluate_model_on_fens(fens, model, graph_file, args, teacher, directory, lo
         after = referee(args.referee, f, chosen['move'])
         assessment = stockfish_loss(teacher, f, after["fen"], args.teacher_nodes, after["status"], logger, args.progress_seconds)
         logger.event('GRAPH_TEST_END', graph_version=model['version'], group=label,
-                     index=i, cp_loss=assessment['cp_loss'], test_s=round(time.monotonic()-started, 3))
+                     index=i, loss_pp=assessment['loss_pp'], mate_alert=assessment['mate_alert'], test_s=round(time.monotonic()-started, 3))
         results.append({'fen': f, 'chosen_uci': chosen['move'],
-                        'cp_loss': assessment['cp_loss'], 'graph_evidence': chosen['evidence']})
+                        'loss_pp': assessment['loss_pp'], 'mate_alert': assessment['mate_alert'], 'graph_evidence': chosen['evidence'], 'graph_folder': str(directory / f'{label}_{i}')})
     return results
 
 
 def result_mean(items):
-    values = [item['cp_loss'] for item in items]
+    values = [item['loss_pp'] for item in items]
     if not values or any(x is None for x in values):
         return None
     return round(sum(values) / len(values), 3)
 
 
 def adjust_graph(game_id, errors, active_model_path, teacher, args, directory, logger):
-    """Bounded coordinate-search proposal. No speculative source-code rewriting.
+    """Bounded, real decision-based coordinate and STRUCTURAL graph proposals.
 
-    Train positions are the previous game's high-loss JOSHUA turns. Holdout
-    positions are fixed, *separate* FEN positions from known legal openings.
-    Candidates must change actual paceval decisions, improve the measured
-    training cp loss, and not worsen holdout mean or any held-out move by >5cp.
-    A short holdout does not prove Elo improvement; all trial data is retained.
+    This is not autonomous source-code rewriting or a general learning proof.
+    All models use the real paceval evaluator, and distinct FENs guard against
+    immediate regressions. Acceptance is provisional until paired match evidence.
     """
     report = {'status': 'not_attempted', 'reason': '', 'candidates': [],
-              'method': 'two signed coordinate trials; independent stockfish score; fixed separate holdout'}
+              'method': 'V10 fixed nonlinear tactical basis + bounded coefficient trials; held-out Stockfish heuristic expected-points loss',
+              'promotion_claim': 'Local gate only; not evidence of global chess-strength improvement'}
     if not args.adapt:
         report.update(status='disabled', reason='--no-adapt')
         return report
-    suspects = sorted((r for r in errors if r.get('cp_loss') is not None and r['cp_loss'] >= args.training_loss_cp),
-                      key=lambda x: -x['cp_loss'])
+    suspects = sorted((r for r in errors if r.get('loss_pp') is not None and r['loss_pp'] >= args.training_loss_pp),
+                      key=lambda x: (-bool(x.get('mate_alert')), -x['loss_pp']))
     if not suspects:
-        report.update(status='rejected', reason='No Stockfish-observed costly Joshua position')
+        report.update(status='rejected', reason='No measured high-loss Joshua position')
         return report
     active = parse_model(active_model_path)
     train_fens = list(dict.fromkeys(x['fen_before'] for x in suspects))[:args.train_positions]
     heldout = [f for f in baseline_holdouts(args.referee) if f not in train_fens][:args.holdout_positions]
     if not heldout:
-        report.update(status='rejected', reason='No independent holdout FEN')
+        report.update(status='rejected', reason='No separate holdout positions')
         return report
     stage = directory / 'graph_trials'
     stage.mkdir(exist_ok=True)
@@ -418,85 +483,185 @@ def adjust_graph(game_id, errors, active_model_path, teacher, args, directory, l
                                      args, teacher, stage, logger, 'baseline')
     btrain = result_mean(baseline[:len(train_fens)])
     bhold = result_mean(baseline[len(train_fens):])
-    report['baseline_train_cp_loss'] = btrain
-    report['baseline_holdout_cp_loss'] = bhold
+    report['baseline_train_loss_pp'] = btrain
+    report['baseline_holdout_loss_pp'] = bhold
     if btrain is None or bhold is None:
-        report.update(status='rejected', reason='Stockfish score unavailable')
+        report.update(status='rejected', reason='Stockfish expected-score estimate unavailable')
         return report
-    term = TERMS[((game_id - 1)//2) % len(TERMS)]
+    urgent_mate = any(x.get('mate_alert') for x in suspects)
+    structural = ['king_tactics', 'king_alarm'] if urgent_mate else [
+        'hanging_pressure', 'queen_exposure', 'king_alarm', 'active_captures', 'pawn_race'][((game_id//2)-1) % 5:]
+    if not urgent_mate:
+        structural += ['hanging_pressure', 'queen_exposure', 'king_alarm', 'active_captures', 'pawn_race']
+    structural = list(dict.fromkeys(structural))
+    # Prefer terms not yet in the current graph. These create NEW graph topology.
+    term_new = next((k for k in structural if k not in active['extra']), structural[0])
+    linear = TERMS[((game_id - 1)//2) % len(TERMS)]
+    plans = [('nonlinear', term_new, -args.structural_step),
+             ('nonlinear', term_new, args.structural_step),
+             ('linear', linear, -args.step),
+             ('linear', linear, args.step)]
     accepted = None
-    for direction in (-1, 1):
-        candidate = {'version': active['version']+1, 'weights': dict(active['weights'])}
-        candidate['weights'][term] = round(max(-32, min(32, candidate['weights'][term] + direction * args.step)), 4)
-        if candidate['weights'][term] == active['weights'][term]:
+    for category, term, change in plans:
+        candidate = {'version': active['version']+1, 'weights': dict(active['weights']),
+                     'extra': dict(active.get('extra', {}))}
+        key = 'extra' if category == 'nonlinear' else 'weights'
+        limit = 8 if category == 'nonlinear' else 32
+        old = candidate[key].get(term, 0.0)
+        new = round(max(-limit, min(limit, old + change)), 4)
+        if new == old:
             continue
-        candidate_path = stage / ('candidate_plus.tsv' if direction > 0 else 'candidate_minus.tsv')
+        if category == 'nonlinear' and new and term not in candidate['extra'] and len(candidate['extra']) >= 6:
+            report['candidates'].append({'term':term,'category':category,'pass':False,'reason':'six-term topology limit'})
+            continue
+        if new == 0 and category == 'nonlinear':
+            candidate['extra'].pop(term, None)
+        else:
+            candidate[key][term] = new
+        label = f'candidate_{len(report["candidates"]):02d}'
+        candidate_path = stage / (label + '.tsv')
         atomic_text(candidate_path, model_text(candidate))
-        checks = evaluate_model_on_fens(train_fens + heldout, candidate, candidate_path,
-                                       args, teacher, stage, logger, f'candidate_{direction}')
-        t = result_mean(checks[:len(train_fens)])
-        h = result_mean(checks[len(train_fens):])
-        decisions_changed = sum(x['chosen_uci'] != y['chosen_uci'] for x, y in zip(checks, baseline))
-        no_bad_holdout = all(y['cp_loss'] is not None and x['cp_loss'] is not None and
-                             y['cp_loss'] <= x['cp_loss'] + args.max_holdout_regression
-                             for x, y in zip(baseline[len(train_fens):], checks[len(train_fens):]))
-        okay = bool(decisions_changed and t is not None and h is not None and
-                    t <= btrain - args.min_improvement and
-                    h <= bhold and no_bad_holdout)
-        trial = {'term': term, 'direction': direction, 'version': candidate['version'],
-                 'train_cp_loss': t, 'holdout_cp_loss': h,
-                 'decisions_changed': decisions_changed, 'all_heldout_within_regression_bound': no_bad_holdout,
-                 'pass': okay, 'graph_tsv': candidate_path.name}
+        try:
+            checks = evaluate_model_on_fens(train_fens + heldout, candidate, candidate_path,
+                                           args, teacher, stage, logger, label)
+            t = result_mean(checks[:len(train_fens)])
+            h = result_mean(checks[len(train_fens):])
+            decisions_changed = sum(x['chosen_uci'] != y['chosen_uci'] for x, y in zip(checks, baseline))
+            holdout_safe = all(y['loss_pp'] is not None and x['loss_pp'] is not None and
+                               y['loss_pp'] <= x['loss_pp'] + args.max_holdout_regression
+                               for x, y in zip(baseline[len(train_fens):], checks[len(train_fens):]))
+            okay = bool(decisions_changed and t is not None and h is not None and
+                        t <= btrain - args.min_improvement and
+                        h <= bhold and holdout_safe)
+            trial = {'category':category,'term':term,'change':change,
+                     'version':candidate['version'],'train_loss_pp':t,
+                     'holdout_loss_pp':h,'decisions_changed':decisions_changed,
+                     'holdout_safe':holdout_safe,'pass':okay,
+                     'graph_tsv':candidate_path.name}
+            if okay and (accepted is None or t < accepted[0]):
+                accepted = (t, candidate_path, candidate, Path(checks[0]['graph_folder']))
+        except Exception as exc:
+            trial = {'category':category,'term':term,'change':change,'pass':False,
+                     'reason':'Candidate execution or reference validation failed: '+str(exc)[:250]}
         report['candidates'].append(trial)
         logger.event('GRAPH_TRIAL', **trial)
-        if okay and (accepted is None or t < accepted[0]):
-            accepted = (t, candidate_path, candidate)
     if accepted:
         old_text = active_model_path.read_text(encoding='utf-8')
         atomic_text(directory / 'model_previous.tsv', old_text)
+        # The expression was generated and successfully executed by authentic
+        # Joshua, not merely asserted by a Python-side string generator.
+        export_dir = active_model_path.parent
+        graph_hash = sync_graph_export(export_dir, accepted[3], accepted[2]['version'])
         atomic_text(active_model_path, accepted[1].read_text(encoding='utf-8'))
-        report.update(status='promoted', reason='Train improved; independent holdout criteria passed',
+        report.update(status='promoted_provisional',
+                      reason='Training decisions improved; separate holdout gate passed. Paired-match replication still needed.',
                       new_version=accepted[2]['version'],
+                      graph_sha256=graph_hash,
+                      new_graph_terms=accepted[2].get('extra', {}),
                       new_graph_coefficients=accepted[2]['weights'])
-        logger.event('GRAPH_PROMOTED', version=accepted[2]['version'], changed_term=term)
+        logger.event('GRAPH_PROMOTED_PROVISIONAL', version=accepted[2]['version'], changed_term=term_new,
+                     graph_sha256=graph_hash)
     else:
-        report.update(status='rejected', reason='No candidate passed measured decision improvement and holdout gates')
-        logger.event('GRAPH_REJECTED', reason=report['reason'], term=term)
+        report.update(status='rejected', reason='No real tested graph candidate met all local gates')
+        logger.event('GRAPH_REJECTED', reason=report['reason'])
     return report
 
 
+def comparison_key(row):
+    """Keep different opponents, depths, skill levels and teacher scales apart."""
+    fields = ('stockfish_id','stockfish_nodes','stockfish_skill','joshua_depth','quiescence')
+    if any(field not in row for field in fields):
+        return None  # Historical V9 index lacks the settings; not comparable.
+    return tuple(str(row[k]) for k in fields)
+
+
+def paired_opening_results(rows):
+    """Two consecutive games on one prescribed opening, opposite colors."""
+    grouped = {}
+    by_id = {int(r['game']):r for r in rows if r.get('joshua_points') is not None}
+    for odd, a in sorted(by_id.items()):
+        if odd % 2 == 0:continue
+        b = by_id.get(odd+1)
+        if not b or a.get('graph_version') != b.get('graph_version'):
+            continue
+        ka, kb = comparison_key(a), comparison_key(b)
+        if ka is None or ka != kb or a.get('opening_book') != b.get('opening_book'):
+            continue
+        if a.get('white') != 'Stockfish' or b.get('white') != 'JOSHUA':
+            continue
+        key = (ka, int(a['graph_version']), a.get('opening_book'))
+        grouped.setdefault(key, []).append((float(a['joshua_points'])+float(b['joshua_points']))/2.)
+    return grouped
+
+
+def sign_test_two_sided(diffs):
+    """Exploratory sign-test for distinct openings; ignore ties."""
+    outcomes = [1 if x > 0 else -1 for x in diffs if x != 0]
+    count = len(outcomes)
+    if not count:return None
+    positive = outcomes.count(1)
+    low = min(positive, count-positive)
+    return min(1., 2. * sum(math.comb(count,k) for k in range(low+1)) / (2**count))
+
+
 def summary_metrics(rows):
-    complete = [r for r in rows if r['result'] in ('1-0', '0-1', '1/2-1/2')]
+    complete = [r for r in rows if r['result'] in ('1-0','0-1','1/2-1/2') and r.get('joshua_points') is not None]
     if not complete:
-        return {'completed_games': 0, 'note': 'No completed games. No rating estimate.'}
+        return {'completed_games':0,'strength_claim':'INSUFFICIENT_DATA'}
     scores = [float(r['joshua_points']) for r in complete]
-    n = len(scores)
-    mean = sum(scores)/n
-    # The Elo conversion is a score transformation against this exact opponent
-    # setting. Never call it a FIDE Elo or a calibrated absolute engine rating.
-    elo = 400 * math.log10(mean/(1-mean)) if 0 < mean < 1 else None
-    strength = {'completed_games': n, 'wins': scores.count(1.0), 'draws': scores.count(0.5),
-                'losses': scores.count(0.0), 'mean_match_points': round(mean, 4),
-                'observed_relative_elo_difference': round(elo, 1) if elo is not None else None,
-                'elo_note': 'Exploratory relative score transform only; not absolute Elo. Confidence needs many paired games.'}
+    mean = sum(scores)/len(scores)
+    elo = 400*math.log10(mean/(1-mean)) if 0 < mean < 1 else None
     groups = {}
-    losses = {}
     for r in complete:
-        version = str(r['graph_version'])
-        groups.setdefault(version, []).append(float(r['joshua_points']))
-        if r.get('mean_stockfish_cp_loss') is not None:
-            losses.setdefault(version, []).append(float(r['mean_stockfish_cp_loss']))
-    strength['model_versions'] = {v: {'games': len(items), 'mean_match_points':round(sum(items)/len(items), 4),
-                         'mean_stockfish_cp_loss':round(sum(losses[v])/len(losses[v]),2) if v in losses else None}
-                                  for v, items in sorted(groups.items())}
-    strength['trend_claim'] = 'NOT ESTABLISHED: Stockfish fixed-node score is only a heuristic. Changes require held-out, paired match replication.'
-    return strength
+        key = str(r['graph_version']) + '|' + (str(comparison_key(r)) if comparison_key(r) else 'legacy-settings-unverified')
+        groups.setdefault(key,[]).append(r)
+    pair_data = paired_opening_results(complete)
+    versions = {}
+    for key,group in sorted(groups.items()):
+        points=[float(r['joshua_points']) for r in group]
+        losses=[float(r['mean_stockfish_loss_pp']) for r in group if r.get('mean_stockfish_loss_pp') is not None]
+        signature=comparison_key(group[0]);version=int(group[0]['graph_version'])
+        paired=sum(len(v) for (settings,v_id,_),v in pair_data.items() if settings==signature and v_id==version)
+        versions[key]={'games':len(group),'paired_color_opening_samples':paired,
+                       'wins':points.count(1.),'draws':points.count(.5),'losses':points.count(0.),
+                       'mean_points':round(sum(points)/len(points),4),
+                       'mean_heuristic_loss_pp':round(sum(losses)/len(losses),3) if losses else None,
+                       'status':'PRELIMINARY' if paired>=8 else 'INSUFFICIENT_PAIRED_OPENINGS'}
+    comparisons=[]
+    models=sorted({(setting,version) for setting,version,opening in pair_data},key=str)
+    for (a_settings,a_version) in models:
+        for (b_settings,b_version) in models:
+            if a_settings != b_settings or a_version >= b_version:continue
+            old={opening:sum(scores)/len(scores) for (setting,v,opening),scores in pair_data.items()
+                 if setting==a_settings and v==a_version}
+            new={opening:sum(scores)/len(scores) for (setting,v,opening),scores in pair_data.items()
+                 if setting==b_settings and v==b_version}
+            common=sorted(old.keys() & new.keys())
+            diffs=[new[k]-old[k] for k in common]
+            p=sign_test_two_sided(diffs) if len(common)>=8 else None
+            if p is None or p>=.05:
+                status='NOT_ESTABLISHED'
+            elif sum(diffs)>0:
+                status='BETTER_ON_COMPARED_OPENINGS_PROVISIONAL'
+            else:
+                status='WORSE_ON_COMPARED_OPENINGS_PROVISIONAL'
+            comparisons.append({'old_version':a_version,'new_version':b_version,
+                                'settings':list(a_settings),'matched_distinct_openings':len(common),
+                                'paired_score_delta':round(sum(diffs)/len(diffs),4) if diffs else None,
+                                'exploratory_sign_test_p':round(p,5) if p is not None else None,
+                                'status':status})
+    return {'completed_games':len(complete),'wins':scores.count(1.),'draws':scores.count(.5),
+            'losses':scores.count(0.),'mean_match_points':round(mean,4),
+            'observed_relative_elo_difference':round(elo,1) if elo is not None else None,
+            'model_versions':versions,'version_comparisons':comparisons,
+            'strength_claim':'NO_UNSUPPORTED_STRENGTH_GAIN_CLAIM',
+            'caveat':'Exploratory paired-opening outcomes against fixed settings. Same openings are correlated, and repeat games may be deterministic. No absolute Elo or independent generalization proof.'}
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Stockfish vs JOSHUA V9; rotating zipped logs; adaptive paceval graph')
-    parser.add_argument('--joshua', type=Path, default=BASE / 'bin/joshua')
-    parser.add_argument('--referee', type=Path, default=BASE / 'bin/joshua_referee')
+    parser = argparse.ArgumentParser(description='Stockfish vs JOSHUA V10; tactical score analysis and evolving paceval graph formulas')
+    parser.add_argument('--joshua', type=Path, default=(BASE / 'joshua' if (BASE / 'joshua').is_file() else BASE / 'bin/joshua'))
+    parser.add_argument('--referee', type=Path, default=(BASE / 'joshua_referee' if (BASE / 'joshua_referee').is_file() else BASE / 'bin/joshua_referee'))
     parser.add_argument('--stockfish', type=Path, default=Path(shutil.which('stockfish') or '/usr/games/stockfish'))
     parser.add_argument('--paceval-runtime', type=Path, default=None)
     parser.add_argument('--output', type=Path, default=Path('stockfish_sessions'))
@@ -516,11 +681,13 @@ def main():
     parser.add_argument('--max-logs-mb', type=float, default=25)
     parser.add_argument('--adapt', action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument('--step', type=float, default=2.0)
-    parser.add_argument('--training-loss-cp', type=float, default=35.0)
+    parser.add_argument('--training-loss-pp', type=float, default=7.0)
+    parser.add_argument('--structural-step', type=float, default=0.5)
     parser.add_argument('--train-positions', type=int, default=2)
-    parser.add_argument('--holdout-positions', type=int, default=4)
+    parser.add_argument('--holdout-positions', type=int, default=8)
+    parser.add_argument('--minimum-pairs-per-version', type=int, default=4)
     parser.add_argument('--min-improvement', type=float, default=1.0)
-    parser.add_argument('--max-holdout-regression', type=float, default=5.0)
+    parser.add_argument('--max-holdout-regression', type=float, default=2.0)
     args = parser.parse_args()
     if not 1 <= args.depth <= 10 or not 1 <= args.max_plies <= 1000 or not 0 <= args.max_games <= 1_000_000:
         parser.error('Invalid depth or game bounds')
@@ -528,7 +695,7 @@ def main():
         parser.error('Invalid Stockfish node count')
     if not (0 <= args.stockfish_skill <= 20 and 1 <= args.progress_seconds <= 60 and args.move_timeout >= 5):
         parser.error('Invalid skill, progress interval or move timeout')
-    if not (0 < args.step <= 4 and 1 <= args.train_positions <= 4 and 1 <= args.holdout_positions <= 4):
+    if not (0 < args.step <= 4 and 0 < args.structural_step <= 2 and 1 <= args.train_positions <= 4 and 1 <= args.holdout_positions <= 8 and 1 <= args.minimum_pairs_per_version <= 100):
         parser.error('Invalid learning bounds')
     for p in (args.joshua, args.referee, args.stockfish):
         if not p.is_file() or not os.access(p, os.X_OK):
@@ -631,11 +798,13 @@ def main():
                     logger.event('MOVE', ply=ply, actor=actor, uci=move, san=advanced['san'],
                                  move_s=move_s, score=played.get('score'))
                     if actor == 'JOSHUA':
+                        graph_hash = sync_graph_export(out, Path(played['graph_folder']), model['version'])
+                        row['adaptive_graph_sha256'] = graph_hash
                         grade = stockfish_loss(teacher, fen, advanced['fen'], args.teacher_nodes,
                                                advanced['status'], logger, args.progress_seconds)
                         e = {'ply': ply, 'fen_before': fen, 'chosen_uci': move, **grade}
                         joshua_errors.append(e)
-                        logger.event('STOCKFISH_GRADE', ply=ply, cp_loss=grade['cp_loss'],
+                        logger.event('STOCKFISH_GRADE', ply=ply, loss_pp=grade['loss_pp'], mate_alert=grade['mate_alert'], finding=grade['finding_type'],
                                      grading_s=round(time.monotonic()-start-move_s, 3))
                     fen = advanced['fen']
                     check_active_limit(game_dir, logger)
@@ -668,6 +837,18 @@ def main():
                 atomic_text(game_dir / 'game.pgn', pgn)
                 json_write(game_dir / 'moves.json', moves)
                 json_write(game_dir / 'joshua_stockfish_grades.json', joshua_errors)
+                # Reproducible, user-readable queue of positions worth deeper review.
+                with (game_dir / 'tactical_findings.csv').open('w', newline='', encoding='utf-8') as stream:
+                    columns = ['ply','fen_before','chosen_uci','loss_pp','mate_alert','finding_type',
+                               'before_expected_score','after_expected_score','before_uci_score','after_uci_score_opponent']
+                    writer = csv.DictWriter(stream, fieldnames=columns, extrasaction='ignore')
+                    writer.writeheader()
+                    for issue in sorted(joshua_errors, key=lambda e: -(e.get('loss_pp') or 0)):
+                        if issue.get('mate_alert') or (issue.get('loss_pp') or 0) >= args.training_loss_pp:
+                            writer.writerow(issue)
+                if (out / 'active_graph_expression.txt').exists():
+                    atomic_text(game_dir / 'evaluated_graph_expression.txt', (out / 'active_graph_expression.txt').read_text())
+                    atomic_text(game_dir / 'evaluated_graph_terms.csv', (out / 'active_graph_terms.csv').read_text())
                 if STOP:
                     adaptation = {'status': 'interrupted', 'reason': 'No model change in interrupted game'}
                 elif reason != 'max_plies_unfinished' and game_id_current % 2 == 1:
@@ -686,8 +867,25 @@ def main():
                     else:
                         all_errors = joshua_errors
                         logger.event('COLOR_PAIR_WARNING', note='Prior color not present with same graph version; no paired learning data')
-                    logger.event('GRAPH_VALIDATION_START', version=model['version'], failed_positions=len(all_errors))
-                    adaptation = adjust_graph(game_id_current, all_errors, graph_file, teacher,
+                    prior_index = out / 'match_index.json'
+                    historical = json.loads(prior_index.read_text()) if prior_index.exists() else []
+                    complete_pairs = sum(1 for row in historical
+                         if int(row.get('game',0)) % 2 == 0 and row.get('graph_version')==model['version']
+                         and row.get('metric_version')=='v10-bounded-loss-pp'
+                         and row.get('result') in ('1-0','0-1','1/2-1/2'))
+                    if not (paired.get('game') == game_id_current-1 and paired.get('graph_version') == model['version']):
+                        adaptation = {'status':'skipped_missing_color_pair',
+                            'reason':'No matching previous white/black game for training'}
+                        logger.event('GRAPH_DEFERRED_FOR_EVIDENCE', **adaptation)
+                    elif complete_pairs + 1 < args.minimum_pairs_per_version:
+                        adaptation = {'status':'deferred_until_model_pair_count',
+                            'reason':'Collect paired colors before another model update',
+                            'completed_pairs_after_this_game':complete_pairs+1,
+                            'minimum_pairs':args.minimum_pairs_per_version}
+                        logger.event('GRAPH_DEFERRED_FOR_EVIDENCE', **adaptation)
+                    else:
+                        logger.event('GRAPH_VALIDATION_START', version=model['version'], failed_positions=len(all_errors))
+                        adaptation = adjust_graph(game_id_current, all_errors, graph_file, teacher,
                                               args, game_dir, logger)
                     pending_file.unlink(missing_ok=True)
                 else:
@@ -699,16 +897,21 @@ def main():
                            'model_after':parse_model(graph_file)['version'],
                            'stockfish_binary':str(args.stockfish), 'stockfish_id':match.name,
                            'stockfish_skill':args.stockfish_skill, 'stockfish_nodes':args.stockfish_nodes,
-                           'teacher_nodes':args.teacher_nodes,'reference_scores':'fixed-node stockfish heuristic',
+                           'teacher_nodes':args.teacher_nodes,'reference_scores':'fixed-node stockfish heuristic; mate separated; bounded expected-score loss in percentage points',
                            'timestamp_utc':utc()})
                 completed += 1
                 jscore = 1.0 if (result == '1-0' and white == 'JOSHUA' or result == '0-1' and black == 'JOSHUA') else (0.5 if result == '1/2-1/2' else (0 if result != '*' else None))
                 index_path = out / 'match_index.json'
                 old = json.loads(index_path.read_text()) if index_path.exists() else []
-                measured_losses = [x['cp_loss'] for x in joshua_errors if x.get('cp_loss') is not None]
+                measured_losses = [x['loss_pp'] for x in joshua_errors if x.get('loss_pp') is not None]
                 old.append({'game':game_id_current, 'white':white, 'black':black,
                             'graph_version':model['version'], 'result':result,'joshua_points':jscore,
-                            'mean_stockfish_cp_loss':round(sum(measured_losses)/len(measured_losses),2) if measured_losses else None,
+                            'mean_stockfish_loss_pp':round(sum(measured_losses)/len(measured_losses),3) if measured_losses else None,
+                            'metric_version':'v10-bounded-loss-pp',
+                            'opening_book':OPENINGS[((game_id_current-1)//2)%len(OPENINGS)] if args.opening=='cycle' else 'none',
+                            'stockfish_id':match.name,'stockfish_nodes':args.stockfish_nodes,
+                            'stockfish_skill':args.stockfish_skill,'joshua_depth':args.depth,
+                            'quiescence':args.quiescence,
                             'termination':reason, 'archive':f'game_{game_id_current:06d}.zip'})
                 # Bounded index, retained summary only. Complete data is in game ZIP.
                 atomic_text(index_path, json.dumps(old[-250:], indent=2) + '\n')
@@ -747,5 +950,5 @@ if __name__ == '__main__':
     try:
         sys.exit(main())
     except (Exception, KeyboardInterrupt) as error:
-        print(f'JOSHUA_V9_MATCH_ERROR {error}', file=sys.stderr, flush=True)
+        print(f'JOSHUA_V10_MATCH_ERROR {error}', file=sys.stderr, flush=True)
         sys.exit(2)

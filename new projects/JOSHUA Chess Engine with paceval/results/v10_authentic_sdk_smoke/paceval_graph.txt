@@ -1,0 +1,6 @@
+# Actual whitelisted adaptive paceval graph registered in this Joshua run
+version=0
+feature_count=48
+input_variables=wp,wn,wb,wr,wq,bp,bn,bb,br,bq,wc,bc,wd,bd,wa,ba,wk,bk,bias,wpsq,bpsq,wdoub,bdoub,wisolated,bisolated,wpassed,bpassed,wbpair,bbpair,wshield,bshield,tempo,wmob,bmob,wcaps,bcaps,wcheck,bcheck,whanging,bhanging,wattacked,battacked,wqueenThreat,bqueenThreat,wrookThreat,brookThreat,wkingDanger,bkingDanger,base
+expression=(base+(((-160) max (0+(0.5000*((bkingDanger*(1+bqueenThreat+brookThreat))-(wkingDanger*(1+wqueenThreat+wrookThreat))))+(-0.2500*((bhanging*bhanging)-(whanging*whanging))))) min 160))
+note=Score is white-oriented centipawns; correction bounded to [-160,+160].

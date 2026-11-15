@@ -1,0 +1,16 @@
+{
+  "artifact": "JOSHUA V10 authentic paceval SDK smoke test",
+  "test_method": "Compiled C++17 x86-64 Joshua, user-provided original paceval Linux shared library",
+  "source": "user-provided joshua_autoplay.zip library, not redistributed",
+  "runtime_sha256": "acf63a87df0ee822b467edbca887393d31ec0ea03562e1abf802d2512a5bfb12",
+  "executable_sha256": "a3fd7126148b8fd70f4f9b7881782a92115b3623b3aee367ef3d24ad11e1cd47",
+  "graph_tsv": "version 0 with nonlinear king_tactics 0.5 and hanging_pressure -0.25",
+  "depth": 1,
+  "plies": 2,
+  "graphs_created": 48,
+  "graphs_executed": 19,
+  "graph_point_evaluations": 471,
+  "real_stockfish_used": false,
+  "match_strength_verified": false,
+  "graph_catalog_file": "paceval_all_graphs.csv"
+}
