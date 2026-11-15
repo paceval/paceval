@@ -1,0 +1,11 @@
+# Scientific scope and exclusions
+
+This research uses **synthetic** dangerous failure rates, diagnostic coverage, proof-test effectiveness, repair times, common-cause parameters, intervals and project screening targets. Its technical achievement is executing and independently checking reusable mathematical expressions through the **original paceval SDK**.
+
+The low-demand proxy $PFD_{avg}\simeq\lambda_{DU}T/2$ and its elaborations are illustrations under explicitly stated simplifying assumptions. The 1oo1 and 1oo2 models do not constitute a compliant verification of any actual safety instrumented function. The mathematical outputs omit systematic failures, validation evidence, safety requirement specifications, channel-specific proof-test schedules, real failure mode data, complete repair and maintenance state models, proof-test downtime and induced failure, mission/environment reliability changes, diagnostic test intervals, detailed common-cause mechanisms, hardware fault tolerance, operating procedures and many other requirements of the safety lifecycle.
+
+The partially uncovered mode uses a selected age parameter held fixed during each representative proof-test cycle. This is not a complete time-dependent maintenance/mission-life model. The simplified detected-failure availability term is a model assumption rather than an IEC-prescribed equation. The mathematical quotient survival $A(z)=(1-e^{-z})/z$ requires $z>0$ in the actual graph implementation, although its analytical limit at zero is one.
+
+**Important:** `SCREEN_PASS`, `SCREEN_REVIEW` and `SCREEN_REJECT` are classifications produced by hypothetical research policy thresholds. They are not safety approval categories and must not be used to authorise physical equipment, testing schedules, plant operation or SIL claims. Any industrial use requires a qualified functional-safety engineering process using independently supported rates and complete site-specific models.
+
+Sources are the ISA-84 standards catalogue, IEC 61508-6 and published industry reliability guidance. They contextualise the study but cannot validate these fictional parameter sets. The generated cover and architecture illustration are conceptual artistic work, not depictions of certified hardware or measured equipment.

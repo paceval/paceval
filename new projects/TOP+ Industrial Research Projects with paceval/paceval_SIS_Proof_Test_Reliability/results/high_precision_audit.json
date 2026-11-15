@@ -1,0 +1,10 @@
+{
+  "reference": "independent 85-digit mpmath with direct numerical quadrature",
+  "sampled_rows_per_model": 271,
+  "verified_quantities": 2710,
+  "independent_numerical_integrals": 24,
+  "analytic_sensitivity_checks": 64,
+  "maximum_tested_absolute_deviation": "1.95766326422033e-7",
+  "result": "PASS",
+  "scope": "synthetic mathematical equations only; NOT SIL verification"
+}

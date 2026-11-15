@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-15",
+  "engine": "paceval MCP 4.26",
+  "graph_count_main": 32,
+  "grid_scenarios": 49,
+  "snapshot_scenarios": 12,
+  "primary_graph_point_evaluations": 1952,
+  "tinc_graphs": 2,
+  "tinc_scenarios": 6,
+  "tinc_point_evaluations": 12,
+  "operator_selftest_graphs": 7,
+  "operator_cases": 3,
+  "operator_evaluations": 21,
+  "all_returned_main_error_codes_zero": true,
+  "all_returned_tinc_error_codes_zero": true,
+  "local_sdk_cpp_executed": false,
+  "mcp_raw_payload_preserved": false,
+  "observed_grid_table": "14-significant-digit transcription and linear row reconstruction, not raw MCP result JSON",
+  "measured_industrial_data": false,
+  "measured_performance": false,
+  "source": "actual calls to connected paceval MCP tool; same variables and graph expressions as manifest"
+}

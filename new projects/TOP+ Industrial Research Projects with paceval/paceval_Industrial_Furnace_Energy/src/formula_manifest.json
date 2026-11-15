@@ -1,0 +1,262 @@
+{
+  "project": "WP30 Furnace energy & emission constraint research",
+  "variables": [
+    "mf",
+    "LHV",
+    "eta",
+    "mp",
+    "cp",
+    "Tin",
+    "Tout",
+    "beta",
+    "U",
+    "A",
+    "Tw",
+    "Tamb",
+    "eps",
+    "sigma",
+    "mex",
+    "cpe",
+    "Tex",
+    "rec",
+    "efco2",
+    "cNOx",
+    "qflue",
+    "capco2",
+    "capnox",
+    "fuelcap",
+    "Tmax"
+  ],
+  "models": [
+    "v1 direct heat balance",
+    "v2 recuperation and cp(T)"
+  ],
+  "remote_engine_version": "paceval MCP 4.26",
+  "status": "32 formula expressions genuinely registered/evaluated via remote MCP; local SDK unexecuted",
+  "graphs": [
+    {
+      "id": "fuel_heat",
+      "expression": "mf*LHV*eta",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "product_heat_v1",
+      "expression": "mp*cp*(Tout-Tin)",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "product_heat_v2",
+      "expression": "mp*cp*((Tout-Tin)+beta*(Tout-Tin)^2/2)",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "wall_convection",
+      "expression": "U*A*(Tw-Tamb)",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "wall_radiation",
+      "expression": "eps*sigma*A*(Tw^4-Tamb^4)",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "exhaust_heat_gross",
+      "expression": "mex*cpe*(Tex-Tamb)",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "recovered_heat",
+      "expression": "rec*mex*cpe*(Tex-Tamb)",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "exhaust_heat_net",
+      "expression": "(1-rec)*mex*cpe*(Tex-Tamb)",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "heat_demand_v1",
+      "expression": "((mp*cp*(Tout-Tin))+(U*A*(Tw-Tamb))+(eps*sigma*A*(Tw^4-Tamb^4))+(mex*cpe*(Tex-Tamb)))",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "heat_demand_v2",
+      "expression": "((mp*cp*((Tout-Tin)+beta*(Tout-Tin)^2/2))+(U*A*(Tw-Tamb))+(eps*sigma*A*(Tw^4-Tamb^4))+((1-rec)*(mex*cpe*(Tex-Tamb))))",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "balance_margin_v1",
+      "expression": "((mf*LHV*eta)-((mp*cp*(Tout-Tin))+(U*A*(Tw-Tamb))+(eps*sigma*A*(Tw^4-Tamb^4))+(mex*cpe*(Tex-Tamb))))",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "balance_margin_v2",
+      "expression": "((mf*LHV*eta)-((mp*cp*((Tout-Tin)+beta*(Tout-Tin)^2/2))+(U*A*(Tw-Tamb))+(eps*sigma*A*(Tw^4-Tamb^4))+((1-rec)*(mex*cpe*(Tex-Tamb)))))",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "fuel_required_v2",
+      "expression": "(((mp*cp*((Tout-Tin)+beta*(Tout-Tin)^2/2))+(U*A*(Tw-Tamb))+(eps*sigma*A*(Tw^4-Tamb^4))+((1-rec)*(mex*cpe*(Tex-Tamb))))/(LHV*eta))",
+      "units": "kg/s",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "thermal_efficiency_v2",
+      "expression": "((mp*cp*((Tout-Tin)+beta*(Tout-Tin)^2/2))/(mf*LHV))",
+      "units": "fraction",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "balance_delta_v2_v1",
+      "expression": "(((mf*LHV*eta)-((mp*cp*((Tout-Tin)+beta*(Tout-Tin)^2/2))+(U*A*(Tw-Tamb))+(eps*sigma*A*(Tw^4-Tamb^4))+((1-rec)*(mex*cpe*(Tex-Tamb)))))-((mf*LHV*eta)-((mp*cp*(Tout-Tin))+(U*A*(Tw-Tamb))+(eps*sigma*A*(Tw^4-Tamb^4))+(mex*cpe*(Tex-Tamb)))))",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "emission_CO2_rate",
+      "expression": "mf*efco2",
+      "units": "kg/s",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "emission_NOx_measured_rate",
+      "expression": "(cNOx*qflue*0.000001)",
+      "units": "kg/s",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "CO2_margin",
+      "expression": "(capco2-(mf*efco2))",
+      "units": "kg/s",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "NOx_margin",
+      "expression": "(capnox-(cNOx*qflue*0.000001))",
+      "units": "kg/s",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "fuel_margin",
+      "expression": "(fuelcap-mf)",
+      "units": "kg/s",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "temperature_margin",
+      "expression": "(Tmax-Tout)",
+      "units": "K",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "constraint_guard_v1",
+      "expression": "(((((((mf*LHV*eta)-((mp*cp*(Tout-Tin))+(U*A*(Tw-Tamb))+(eps*sigma*A*(Tw^4-Tamb^4))+(mex*cpe*(Tex-Tamb))))>=0) AND ((capco2-(mf*efco2))>=0)) AND ((capnox-(cNOx*qflue*0.000001))>=0)) AND ((fuelcap-mf)>=0)) AND ((Tmax-Tout)>=0))",
+      "units": "0/1",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "constraint_guard_v2",
+      "expression": "(((((((mf*LHV*eta)-((mp*cp*((Tout-Tin)+beta*(Tout-Tin)^2/2))+(U*A*(Tw-Tamb))+(eps*sigma*A*(Tw^4-Tamb^4))+((1-rec)*(mex*cpe*(Tex-Tamb)))))>=0) AND ((capco2-(mf*efco2))>=0)) AND ((capnox-(cNOx*qflue*0.000001))>=0)) AND ((fuelcap-mf)>=0)) AND ((Tmax-Tout)>=0))",
+      "units": "0/1",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "score_v2",
+      "expression": "(((((((mf*LHV*eta)-((mp*cp*((Tout-Tin)+beta*(Tout-Tin)^2/2))+(U*A*(Tw-Tamb))+(eps*sigma*A*(Tw^4-Tamb^4))+((1-rec)*(mex*cpe*(Tex-Tamb)))))/(mf*LHV*eta)) min ((capco2-(mf*efco2))/capco2)) min ((capnox-(cNOx*qflue*0.000001))/capnox)) min ((fuelcap-mf)/fuelcap)) min ((Tmax-Tout)/Tmax))",
+      "units": "dimensionless",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "sensitivity_balance_to_fuel",
+      "expression": "(LHV*eta)",
+      "units": "J/kg",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "sensitivity_balance_to_recovery",
+      "expression": "(mex*cpe*(Tex-Tamb))",
+      "units": "W",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "sensitivity_radiation_to_wall_temp",
+      "expression": "(4*eps*sigma*A*Tw^3)",
+      "units": "W/K",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "sensitivity_product_heat_to_outlet",
+      "expression": "(mp*cp*(1+beta*(Tout-Tin)))",
+      "units": "W/K",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "sensitivity_fuel_required_to_recovery",
+      "expression": "(-(mex*cpe*(Tex-Tamb))/(LHV*eta))",
+      "units": "kg/s",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "CO2_intensity_per_GJ_useful",
+      "expression": "(mf*efco2*1000000000/(mp*cp*((Tout-Tin)+beta*(Tout-Tin)^2/2)))",
+      "units": "kg/GJ",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "recovery_fraction_of_gross_exhaust",
+      "expression": "(((1-rec)*(mex*cpe*(Tex-Tamb)))/(mex*cpe*(Tex-Tamb)))",
+      "units": "fraction",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    },
+    {
+      "id": "emission_and_energy_joint_margin",
+      "expression": "((((mf*LHV*eta)-((mp*cp*((Tout-Tin)+beta*(Tout-Tin)^2/2))+(U*A*(Tw-Tamb))+(eps*sigma*A*(Tw^4-Tamb^4))+((1-rec)*(mex*cpe*(Tex-Tamb)))))/(mf*LHV*eta)) min ((capco2-mf*efco2)/capco2) min ((capnox-cNOx*qflue*0.000001)/capnox))",
+      "units": "dimensionless",
+      "ownership": "paceval",
+      "remote_run": "successful, error 0"
+    }
+  ]
+}

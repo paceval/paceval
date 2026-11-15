@@ -1,0 +1,54 @@
+{
+  "1": {
+    "file": "01_architecture.png",
+    "caption": "Research architecture: paceval executes the mathematical kernels, while host and independent references retain separate responsibilities."
+  },
+  "2": {
+    "file": "02_proof_cycle.png",
+    "caption": "Actual paceval instantaneous probability curves and cycle-average levels for the same synthetic input."
+  },
+  "3": {
+    "file": "03_interval_vs_pfd.png",
+    "caption": "Recorded synthetic scenario points showing the variability of modeled PFD with proof-test interval."
+  },
+  "4": {
+    "file": "04_pfd_surface_model_1.png",
+    "caption": "paceval two-parameter PFD surface for model 1; parameters not shown are held fixed at one synthetic reference case."
+  },
+  "5": {
+    "file": "05_pfd_surface_model_2.png",
+    "caption": "paceval two-parameter PFD surface for model 2; parameters not shown are held fixed at one synthetic reference case."
+  },
+  "6": {
+    "file": "06_screening_status.png",
+    "caption": "Counts from hypothetical project-level screening rules, not SIL approval or operational permissions."
+  },
+  "7": {
+    "file": "07_pfd_distribution.png",
+    "caption": "Distribution across two synthetic architecture and assumption models; log y-axis is for display only."
+  },
+  "8": {
+    "file": "08_proof_coverage_sensitivity.png",
+    "caption": "Analytic paceval sensitivity of PFD to proof-test coverage, evaluated on the real synthetic scenario grid."
+  },
+  "9": {
+    "file": "09_interval_sensitivity.png",
+    "caption": "paceval analytic interval sensitivity, independently checked against high-precision differentiation."
+  },
+  "10": {
+    "file": "10_architecture_comparison.png",
+    "caption": "Paired model outputs for identical synthetic input rows; each model represents different architectural assumptions."
+  },
+  "11": {
+    "file": "11_target_margin.png",
+    "caption": "Signed project-level screening margins from actual paceval expressions. Positive does not imply conformity to IEC 61511."
+  },
+  "12": {
+    "file": "12_common_cause.png",
+    "caption": "Model 2 screening PFD as a function of the synthetic common-cause fraction, with other parameters varying."
+  },
+  "13": {
+    "file": "13_loss_proxy.png",
+    "caption": "paceval-calculated expected-loss proxy using arbitrary synthetic consequence weights; no economic validation."
+  }
+}

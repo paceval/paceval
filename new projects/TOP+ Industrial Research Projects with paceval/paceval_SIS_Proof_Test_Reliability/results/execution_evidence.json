@@ -1,0 +1,15 @@
+{
+  "project": "WP29 Safety Instrumented System Proof-Test Reliability Calculations",
+  "sdk_mode": "original paceval local C++ SDK",
+  "scenario_count": 100000,
+  "model_versions": 2,
+  "model_point_cases": 200000,
+  "unique_graphs_created": 40,
+  "unique_graphs_executed": 40,
+  "scalar_calls": 0,
+  "multi_graph_batch_calls": 1568,
+  "graph_point_evaluations": 4003704,
+  "independent_native_checks": 2401204,
+  "safety_certification": false,
+  "data_origin": "deterministic synthetic screening data"
+}

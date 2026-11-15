@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "markdown_files_checked": 6,
+  "negative_tests_passed": 7,
+  "negative_tests": {
+    "legacy_inline": true,
+    "legacy_display": true,
+    "operatorname": true,
+    "unclosed_inline": true,
+    "nested_display": true,
+    "unclosed_display": true,
+    "inline_display": true
+  },
+  "pdf_pages": 16,
+  "github_com_ui_not_tested": true,
+  "errors": []
+}
