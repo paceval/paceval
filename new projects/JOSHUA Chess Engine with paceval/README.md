@@ -4,6 +4,56 @@
 
 **JOSHUA** is a Linux C++ research program that plays chess **against itself**. The name is a personal tribute to the fictional Joshua in the film *WarGames* (1983). This independent project is not affiliated with the film or its owners. It does not include any movie content.
 
+## Optimized Linux release: two local paceval search modes (15 November 2026)
+
+**New executable default:** `--mode research` is a compact, complete fixed-depth
+reference search. The host uses lossless C++ make/unmake, a compact node and flat
+edge pool, target-centric attack checks and allocation-free piece direction
+lookup. **All distinct leaf features are evaluated through actual local paceval
+multi-graph batches**, while grouped internal min/max reductions are executed
+through persistent local paceval computation graphs.
+
+**Optional mode:** `--mode alphabeta` enables iterative deepening, alpha-beta
+cutoffs, move ordering and a conservative, depth-aware transposition table. It
+still uses persistent **local paceval** graphs for leaf evaluation and final
+root-value reduction; intermediate alpha-beta bounds are maintained in C++.
+Because the search often needs leaf values immediately, this mode calls paceval
+*scalar* evaluation for cache misses rather than claiming the same large batches
+as the research mode. Neither mode uses an MCP server.
+
+### Run on Linux
+
+```bash
+cmake -S src -B build -DCMAKE_BUILD_TYPE=Release \
+  -DPACEVAL_RUNTIME=/absolute/path/to/libpaceval_linux_sharedLIB.so
+cmake --build build --target joshua -j
+./build/joshua --mode research --depth 3 --plies 20 --model 2 --no-board --output results/manual_research
+./build/joshua --mode alphabeta --depth 3 --plies 20 --model 2 --no-board --output results/manual_alphabeta
+ctest --test-dir build --output-on-failure
+```
+
+The binary prints elapsed seconds, candidate move and German piece name, SAN,
+actual search nodes, and real paceval calls. Use `--mode research` for the
+maximal cached batch approach and for reproducible whole-tree experiments.
+Use `--mode alphabeta` to investigate pruning at larger depths.
+
+### Repeated, independently compared self-play
+
+On the same Linux machine and with identical CMake Release settings, the old
+full-width implementation took **3.87 s**, optimized full-width **1.26 s**, and
+alpha-beta **1.29 s** over 20 self-play halfmoves at depth 3, model V2.
+Both new modes reproduced **all 20 selected moves** and **all 478 root move
+scores** from the original. At this shallow depth, large paceval batches are
+competitive with alpha-beta's reduced search, a finding specific to this
+experiment, not a universal performance claim.
+
+See [the optimization study](OPTIMIZATION_VALIDATION.md),
+[the exact CSV comparison](results/optimization_summary.csv),
+[three real Linux console logs](docs/JOSHUA_optimized_research_release_console_20plies.txt),
+and the revised [English whitepaper](JOSHUA_Chess_Research_Whitepaper_EN.pdf).
+The original source code for independent baseline reproduction is retained
+under `validation/baseline_source/`.
+
 ## Current scope
 
 The same JOSHUA chess engine controls **both White and Black**. Before every move it builds a **complete, legal, fixed-depth** search tree (no pruning), evaluates the leaf feature vectors using persistent **local paceval** computation graphs, and evaluates grouped `min`/`max` parent reductions using additional persistent paceval graphs. JOSHUA selects the best move **under its chosen finite-depth evaluation function**. It does not claim objectively optimal play, a chess solution, or a professional playing strength.
@@ -110,3 +160,8 @@ Read the full [English research whitepaper](JOSHUA_Chess_Research_Whitepaper_EN.
 ## Source structure
 
 `src/joshua.cpp` is the public self-play executable. `src/chess_rules.h`, `src/paceval_math.h` and original `src/paceval_main.*` provide rules, features and the SDK interface. `src/chess_decision.cpp` and `src/chess_search.cpp` are auxiliary internal verification/research executables, **not other opponents**. `scripts/` contains the independent checks, figure creation and whitepaper generator; `results/` contains actual recorded runs; `docs/` contains actual full console logs; `figures/` contains the conceptual cover and data-driven board/math figures.
+
+To regenerate the combined 18-page report after re-running the original whitepaper
+script, use `python scripts/append_optimization_pdf.py
+JOSHUA_Chess_Research_Base_Whitepaper_EN.pdf`. The optimization addendum
+is also included separately under `docs/`.

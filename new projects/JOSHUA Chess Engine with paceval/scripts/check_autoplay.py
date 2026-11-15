@@ -32,15 +32,16 @@ def simple_move_coherence(before,after,uci):
 
 def audit(path):
  folder=Path(path);rows=list(csv.DictReader(open(folder/'selfplay_timeline.csv')));moves=list(csv.DictReader(open(folder/'root_move_rankings.csv')));ev=json.load(open(folder/'run_evidence.json'))
- assert rows and len(rows)<=ev['max_halfmoves'];assert ev['mcp_used'] is False and ev['search_mode']=='unpruned_full_width_minimax'
- assert ev['all_minmax_reductions_via_paceval'] is True and ev['leaf_multi_graph_count']==20
+ assert rows and len(rows)<=ev['max_halfmoves'];assert ev['mcp_used'] is False and ev['search_mode'] in ('research','alphabeta')
+ is_full = ev['search_mode']=='research'
+ assert ev['all_minmax_reductions_via_paceval'] is is_full and ev['leaf_multi_graph_count']==20
  last=-1;total_features=0;lastwhite=None
  for ix,r in enumerate(rows):
   assert int(r['halfmove'])==int(rows[0]['halfmove'])+ix
   assert r['side'] == ('white' if r['fen_before'].split()[1]=='w' else 'black')
   assert last <= float(r['start_s']) <= float(r['tree_ready_s']) <= float(r['leaf_values_ready_s']) <= float(r['decision_s'])
   assert int(r['tree_nodes']) >= int(r['leaf_nodes']) >= int(r['unique_feature_vectors'])>0
-  assert int(r['legal_root_moves'])>0 and int(r['score_batches'])>0 and int(r['reduction_batches'])>0
+  assert int(r['legal_root_moves'])>0 and (int(r['score_batches'])>0 if is_full else int(r['score_batches'])==0) and int(r['reduction_batches'])>0
   assert int(r['new_paceval_reduction_graphs'])>=0
   assert math.isclose(float(r['tree_generation_s']),float(r['tree_ready_s'])-float(r['start_s']),abs_tol=0.015)
   assert math.isclose(float(r['score_batch_s']),float(r['leaf_values_ready_s'])-float(r['tree_ready_s']),abs_tol=0.015)
@@ -63,8 +64,8 @@ def audit(path):
   values=[float(x['white_score_cp']) for x in options]
   if r['side']=='white':assert values==sorted(values,reverse=True)
   else:assert values==sorted(values)
- assert int(ev['paceval_graph_point_evaluations']) >= 20*total_features
+ assert int(ev['paceval_graph_point_evaluations']) >= (20*total_features if is_full else len(rows))
  assert int(ev['played_halfmoves'])>=len(rows)
- print(f'AUTOPLAY_AUDIT_PASS rows={len(rows)} unique_feature_evaluations={total_features} minmax_graphs={ev["paceval_graphs_created"]-22} graph_points={ev["paceval_graph_point_evaluations"]}')
+ print(f'AUTOPLAY_AUDIT_PASS mode={ev["search_mode"]} rows={len(rows)} unique_feature_vectors={total_features} graphs={ev["paceval_graphs_created"]} graph_points={ev["paceval_graph_point_evaluations"]}')
 
 if __name__=='__main__':audit(sys.argv[1])

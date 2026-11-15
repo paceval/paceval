@@ -50,3 +50,13 @@ set_tests_properties(joshua_independent_selfplay_audit PROPERTIES DEPENDS joshua
 add_test(NAME joshua_forced_opening_depth2 COMMAND joshua --first-move e2e4 --depth 2 --plies 3 --no-board --output "${CMAKE_CURRENT_BINARY_DIR}/forced_opening_test")
 add_test(NAME joshua_forced_opening_audit COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_autoplay.py" "${CMAKE_CURRENT_BINARY_DIR}/forced_opening_test")
 set_tests_properties(joshua_forced_opening_audit PROPERTIES DEPENDS joshua_forced_opening_depth2)
+
+# Optimized JOSHUA research full-width and optional exact-horizon alpha-beta.
+add_test(NAME joshua_opt_research_4plies_depth3 COMMAND joshua --mode research --depth 3 --plies 4 --no-board --output "${CMAKE_CURRENT_BINARY_DIR}/optimized_research_test")
+add_test(NAME joshua_opt_alphabeta_4plies_depth3 COMMAND joshua --mode alphabeta --depth 3 --plies 4 --no-board --output "${CMAKE_CURRENT_BINARY_DIR}/optimized_ab_test")
+add_test(NAME joshua_opt_research_independent_audit COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_autoplay.py" "${CMAKE_CURRENT_BINARY_DIR}/optimized_research_test")
+add_test(NAME joshua_opt_alphabeta_independent_audit COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_autoplay.py" "${CMAKE_CURRENT_BINARY_DIR}/optimized_ab_test")
+set_tests_properties(joshua_opt_research_independent_audit PROPERTIES DEPENDS joshua_opt_research_4plies_depth3)
+set_tests_properties(joshua_opt_alphabeta_independent_audit PROPERTIES DEPENDS joshua_opt_alphabeta_4plies_depth3)
+add_test(NAME joshua_opt_exact_mode_equivalence COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_mode_equivalence.py" "${CMAKE_CURRENT_BINARY_DIR}/optimized_research_test" "${CMAKE_CURRENT_BINARY_DIR}/optimized_ab_test")
+set_tests_properties(joshua_opt_exact_mode_equivalence PROPERTIES DEPENDS "joshua_opt_research_4plies_depth3;joshua_opt_alphabeta_4plies_depth3")

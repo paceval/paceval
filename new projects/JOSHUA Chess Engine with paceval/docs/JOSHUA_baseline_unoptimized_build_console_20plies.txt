@@ -1,0 +1,104 @@
+JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | full-width minimax | depth=3 | model=2
+[+0.000231s] start FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+[+0.001615s] paceval persistent feature graphs=20; multi-graph layout=graph-major; max batch rows=8192
+[+0.001680s] ply=1 WHITE legal=20; BUILD search tree
+[+0.434524s] tree nodes=9323 leaves=8902 | gen_s=0.432845
+[+0.458741s] paceval features unique=154 point_checks=154 batch_calls=1 | stage_s=0.024217
+[+0.466500s] paceval minmax checks=421 batch_calls=13 new_graphs=12 | stage_s=0.007405
+[+0.466500s] JOSHUA BEST WHITE b1c3 | Figur=Springer (Pferd) b1 -> c3 | SAN=Nc3 | score_white=30cp | FEN rnbqkbnr/pppppppp/8/8/8/2N5/PPPPPPPP/R1BQKBNR b KQkq - 1 1
+[+0.466643s] ply=2 BLACK legal=20; BUILD search tree
+[+1.017422s] tree nodes=10216 leaves=9755 | gen_s=0.550779
+[+1.046971s] paceval features unique=246 point_checks=246 batch_calls=1 | stage_s=0.029549
+[+1.054495s] paceval minmax checks=461 batch_calls=14 new_graphs=11 | stage_s=0.007243
+[+1.054495s] JOSHUA BEST BLACK b8c6 | Figur=Springer (Pferd) b8 -> c6 | SAN=Nc6 | score_white=0cp | FEN r1bqkbnr/pppppppp/2n5/8/8/2N5/PPPPPPPP/R1BQKBNR w KQkq - 2 2
+[+1.054625s] ply=3 WHITE legal=22; BUILD search tree
+[+1.664415s] tree nodes=12092 leaves=11587 | gen_s=0.609790
+[+1.702447s] paceval features unique=314 point_checks=314 batch_calls=1 | stage_s=0.038032
+[+1.710824s] paceval minmax checks=505 batch_calls=18 new_graphs=4 | stage_s=0.008010
+[+1.710824s] JOSHUA BEST WHITE c3d5 | Figur=Springer (Pferd) c3 -> d5 | SAN=Nd5 | score_white=68cp | FEN r1bqkbnr/pppppppp/2n5/3N4/8/8/PPPPPPPP/R1BQKBNR b KQkq - 3 2
+[+1.710931s] ply=4 BLACK legal=21; BUILD search tree
+[+2.480581s] tree nodes=12789 leaves=12202 | gen_s=0.769650
+[+2.517043s] paceval features unique=353 point_checks=353 batch_calls=1 | stage_s=0.036462
+[+2.527489s] paceval minmax checks=571 batch_calls=21 new_graphs=7 | stage_s=0.010117
+[+2.527489s] JOSHUA BEST BLACK c6d4 | Figur=Springer (Pferd) c6 -> d4 | SAN=Nd4 | score_white=-68cp | FEN r1bqkbnr/pppppppp/8/3N4/3n4/8/PPPPPPPP/R1BQKBNR w KQkq - 4 3
+[+2.527609s] ply=5 WHITE legal=26; BUILD search tree
+[+3.377709s] tree nodes=16348 leaves=15685 | gen_s=0.850100
+[+3.425051s] paceval features unique=443 point_checks=443 batch_calls=1 | stage_s=0.047342
+[+3.433453s] paceval minmax checks=645 batch_calls=28 new_graphs=9 | stage_s=0.007735
+[+3.433453s] JOSHUA BEST WHITE c2c3 | Figur=Bauer c2 -> c3 | SAN=c3 | score_white=103cp | FEN r1bqkbnr/pppppppp/8/3N4/3n4/2P5/PP1PPPPP/R1BQKBNR b KQkq - 0 3
+[+3.433573s] ply=6 BLACK legal=26; BUILD search tree
+[+4.547704s] tree nodes=17267 leaves=16564 | gen_s=1.114131
+[+4.598844s] paceval features unique=490 point_checks=490 batch_calls=1 | stage_s=0.051141
+[+4.611370s] paceval minmax checks=685 batch_calls=31 new_graphs=7 | stage_s=0.012050
+[+4.611370s] JOSHUA BEST BLACK g8f6 | Figur=Springer (Pferd) g8 -> f6 | SAN=Nf6 | score_white=-11cp | FEN r1bqkb1r/pppppppp/5n2/3N4/3n4/2P5/PP1PPPPP/R1BQKBNR w KQkq - 1 4
+[+4.611492s] ply=7 WHITE legal=28; BUILD search tree
+[+5.737929s] tree nodes=20493 leaves=19736 | gen_s=1.126437
+[+5.807031s] paceval features unique=528 point_checks=528 batch_calls=1 | stage_s=0.069102
+[+5.817940s] paceval minmax checks=740 batch_calls=35 new_graphs=5 | stage_s=0.010342
+[+5.817940s] JOSHUA BEST WHITE d5f6 | Figur=Springer (Pferd) d5 -> f6 (schlägt Springer (Pferd)) | SAN=Nxf6+ | score_white=323cp | FEN r1bqkb1r/pppppppp/5N2/8/3n4/2P5/PP1PPPPP/R1BQKBNR b KQkq - 0 4
+[+5.818045s] ply=8 BLACK legal=2; BUILD search tree
+[+5.883175s] tree nodes=1179 leaves=1134 | gen_s=0.065130
+[+5.887121s] paceval features unique=74 point_checks=74 batch_calls=1 | stage_s=0.003946
+[+5.889099s] paceval minmax checks=45 batch_calls=9 new_graphs=0 | stage_s=0.001931
+[+5.889099s] JOSHUA BEST BLACK e7f6 | Figur=Bauer e7 -> f6 (schlägt Springer (Pferd)) | SAN=exf6 | score_white=293cp | FEN r1bqkb1r/pppp1ppp/5p2/8/3n4/2P5/PP1PPPPP/R1BQKBNR w KQkq - 0 5
+[+5.889198s] ply=9 WHITE legal=21; BUILD search tree
+[+6.720036s] tree nodes=14264 leaves=13623 | gen_s=0.830838
+[+6.761340s] paceval features unique=339 point_checks=339 batch_calls=1 | stage_s=0.041305
+[+6.768399s] paceval minmax checks=628 batch_calls=27 new_graphs=0 | stage_s=0.006672
+[+6.768399s] JOSHUA BEST WHITE c3d4 | Figur=Bauer c3 -> d4 (schlägt Springer (Pferd)) | SAN=cxd4 | score_white=323cp | FEN r1bqkb1r/pppp1ppp/5p2/8/3P4/8/PP1PPPPP/R1BQKBNR b KQkq - 0 5
+[+6.768539s] ply=10 BLACK legal=22; BUILD search tree
+[+7.290404s] tree nodes=10768 leaves=10307 | gen_s=0.521865
+[+7.319813s] paceval features unique=218 point_checks=218 batch_calls=1 | stage_s=0.029410
+[+7.324155s] paceval minmax checks=461 batch_calls=19 new_graphs=1 | stage_s=0.004095
+[+7.324155s] JOSHUA BEST BLACK f8b4 | Figur=Läufer f8 -> b4 | SAN=Bb4 | score_white=236cp | FEN r1bqk2r/pppp1ppp/5p2/8/1b1P4/8/PP1PPPPP/R1BQKBNR w KQkq - 1 6
+[+7.324256s] ply=11 WHITE legal=18; BUILD search tree
+[+7.908988s] tree nodes=10963 leaves=10443 | gen_s=0.584732
+[+7.938632s] paceval features unique=240 point_checks=240 batch_calls=1 | stage_s=0.029643
+[+7.946329s] paceval minmax checks=520 batch_calls=25 new_graphs=2 | stage_s=0.007398
+[+7.946329s] JOSHUA BEST WHITE d1a4 | Figur=Dame d1 -> a4 | SAN=Qa4 | score_white=393cp | FEN r1bqk2r/pppp1ppp/5p2/8/Qb1P4/8/PP1PPPPP/R1B1KBNR b KQkq - 2 6
+[+7.946445s] ply=12 BLACK legal=26; BUILD search tree
+[+8.930050s] tree nodes=17275 leaves=16580 | gen_s=0.983605
+[+8.979234s] paceval features unique=410 point_checks=410 batch_calls=1 | stage_s=0.049184
+[+8.985999s] paceval minmax checks=695 batch_calls=30 new_graphs=1 | stage_s=0.006354
+[+8.985999s] JOSHUA BEST BLACK a7a5 | Figur=Bauer a7 -> a5 | SAN=a5 | score_white=230cp | FEN r1bqk2r/1ppp1ppp/5p2/p7/Qb1P4/8/PP1PPPPP/R1B1KBNR w KQkq a6 0 7
+[+8.986207s] ply=13 WHITE legal=24; BUILD search tree
+[+9.843573s] tree nodes=15784 leaves=15169 | gen_s=0.857367
+[+9.892961s] paceval features unique=473 point_checks=473 batch_calls=1 | stage_s=0.049388
+[+9.903259s] paceval minmax checks=615 batch_calls=30 new_graphs=0 | stage_s=0.009901
+[+9.903259s] JOSHUA BEST WHITE g1f3 | Figur=Springer (Pferd) g1 -> f3 | SAN=Nf3 | score_white=423cp | FEN r1bqk2r/1ppp1ppp/5p2/p7/Qb1P4/5N2/PP1PPPPP/R1B1KB1R b KQkq - 1 7
+[+9.903412s] ply=14 BLACK legal=25; BUILD search tree
+[+10.854880s] tree nodes=15991 leaves=15343 | gen_s=0.951468
+[+10.905044s] paceval features unique=455 point_checks=455 batch_calls=1 | stage_s=0.050164
+[+10.910478s] paceval minmax checks=648 batch_calls=31 new_graphs=0 | stage_s=0.005027
+[+10.910478s] JOSHUA BEST BLACK e8g8 | Figur=König e8 -> g8 (kurze Rochade) | SAN=O-O | score_white=231cp | FEN r1bq1rk1/1ppp1ppp/5p2/p7/Qb1P4/5N2/PP1PPPPP/R1B1KB1R w KQ - 2 8
+[+10.910622s] ply=15 WHITE legal=25; BUILD search tree
+[+11.716928s] tree nodes=16809 leaves=16179 | gen_s=0.806306
+[+11.767966s] paceval features unique=536 point_checks=536 batch_calls=1 | stage_s=0.051038
+[+11.775791s] paceval minmax checks=630 batch_calls=30 new_graphs=1 | stage_s=0.007382
+[+11.775791s] JOSHUA BEST WHITE e2e4 | Figur=Bauer e2 -> e4 | SAN=e4 | score_white=424cp | FEN r1bq1rk1/1ppp1ppp/5p2/p7/Qb1PP3/5N2/PP1P1PPP/R1B1KB1R b KQ e3 0 8
+[+11.775989s] ply=16 BLACK legal=24; BUILD search tree
+[+12.991824s] tree nodes=18577 leaves=17840 | gen_s=1.215835
+[+13.044556s] paceval features unique=543 point_checks=543 batch_calls=1 | stage_s=0.052732
+[+13.052760s] paceval minmax checks=737 batch_calls=24 new_graphs=0 | stage_s=0.007706
+[+13.052760s] JOSHUA BEST BLACK d8e7 | Figur=Dame d8 -> e7 | SAN=Qe7 | score_white=229cp | FEN r1b2rk1/1pppqppp/5p2/p7/Qb1PP3/5N2/PP1P1PPP/R1B1KB1R w KQ - 1 9
+[+13.052888s] ply=17 WHITE legal=30; BUILD search tree
+[+14.611896s] tree nodes=27501 leaves=26595 | gen_s=1.559008
+[+14.695433s] paceval features unique=675 point_checks=675 batch_calls=1 | stage_s=0.083537
+[+14.708904s] paceval minmax checks=905 batch_calls=31 new_graphs=1 | stage_s=0.012761
+[+14.708904s] JOSHUA BEST WHITE f1d3 | Figur=Läufer f1 -> d3 | SAN=Bd3 | score_white=454cp | FEN r1b2rk1/1pppqppp/5p2/p7/Qb1PP3/3B1N2/PP1P1PPP/R1B1K2R b KQ - 2 9
+[+14.709090s] ply=18 BLACK legal=29; BUILD search tree
+[+16.842274s] tree nodes=30056 leaves=29061 | gen_s=2.133184
+[+16.930838s] paceval features unique=599 point_checks=599 batch_calls=1 | stage_s=0.088564
+[+16.941400s] paceval minmax checks=995 batch_calls=31 new_graphs=3 | stage_s=0.009789
+[+16.941400s] JOSHUA BEST BLACK d7d5 | Figur=Bauer d7 -> d5 | SAN=d5 | score_white=228cp | FEN r1b2rk1/1pp1qppp/5p2/p2p4/Qb1PP3/3B1N2/PP1P1PPP/R1B1K2R w KQ d6 0 10
+[+16.941713s] ply=19 WHITE legal=35; BUILD search tree
+[+19.614255s] tree nodes=40548 leaves=39322 | gen_s=2.672542
+[+19.731948s] paceval features unique=813 point_checks=813 batch_calls=1 | stage_s=0.117693
+[+19.749213s] paceval minmax checks=1226 batch_calls=32 new_graphs=2 | stage_s=0.015629
+[+19.749213s] JOSHUA BEST WHITE e1g1 | Figur=König e1 -> g1 (kurze Rochade) | SAN=O-O | score_white=469cp | FEN r1b2rk1/1pp1qppp/5p2/p2p4/Qb1PP3/3B1N2/PP1P1PPP/R1B2RK1 b - - 1 10
+[+19.749366s] ply=20 BLACK legal=34; BUILD search tree
+[+22.342493s] tree nodes=39968 leaves=38837 | gen_s=2.593127
+[+22.471817s] paceval features unique=896 point_checks=896 batch_calls=1 | stage_s=0.129325
+[+22.485267s] paceval minmax checks=1131 batch_calls=32 new_graphs=3 | stage_s=0.012355
+[+22.485267s] JOSHUA BEST BLACK d5e4 | Figur=Bauer d5 -> e4 (schlägt Bauer) | SAN=dxe4 | score_white=-13cp | FEN r1b2rk1/1pp1qppp/5p2/p7/Qb1Pp3/3B1N2/PP1P1PPP/R1B2RK1 w - - 0 11
+[+22.485442s] JOSHUA SELF-PLAY END plies=20 paceval_graphs=91 paceval_batch_calls=532 graph_points=189248

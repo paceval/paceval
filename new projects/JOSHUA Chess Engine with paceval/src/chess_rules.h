@@ -58,13 +58,16 @@ const vector<int> knight={-33,-31,-18,-14,14,18,31,33};
 const vector<int> bishop={-17,-15,15,17};const vector<int> rook={-16,-1,1,16};
 const vector<int> king={-17,-16,-15,-1,1,15,16,17};
 int kingAt(const Board&s,int side){auto it=std::find(s.b.begin(),s.b.end(),side==1?'K':'k');return it==s.b.end()?-1:int(it-s.b.begin());}
+// Target-centric attack detection. Tests only squares capable of attacking target.
+// For the 0x88 board, rays terminate at first occupied square.
 bool attacked(const Board&s,int target,int by){
- for(int f=0;f<128;f++){if(!inside(f)||col(s.b[f])!=by)continue;char p=char(std::tolower(s.b[f]));
-  if(p=='p'){if(target==f-16*by-1||target==f-16*by+1)return true;continue;}
-  const vector<int>*d=&king;if(p=='n')d=&knight;else if(p=='b')d=&bishop;else if(p=='r')d=&rook;
-  else if(p=='q'){for(const auto&v:{bishop,rook})for(int delta:v)for(int t=f+delta;inside(t);t+=delta){if(t==target)return true;if(s.b[t]!='.')break;}continue;}
-  for(int delta:*d)for(int t=f+delta;inside(t);t+=delta){if(t==target)return true;if(s.b[t]!='.'||p=='n'||p=='k')break;}
- }
+ const char pawn=by==1?'P':'p', knightPiece=by==1?'N':'n', kingPiece=by==1?'K':'k';
+ const char bishopPiece=by==1?'B':'b', rookPiece=by==1?'R':'r',queenPiece=by==1?'Q':'q';
+ for(int d:{-1,1}){int from=target+16*by+d;if(inside(from)&&s.b[from]==pawn)return true;}
+ for(int d:knight){int from=target+d;if(inside(from)&&s.b[from]==knightPiece)return true;}
+ for(int d:king){int from=target+d;if(inside(from)&&s.b[from]==kingPiece)return true;}
+ for(int d:bishop)for(int from=target+d;inside(from);from+=d){char p=s.b[from];if(p!='.'){if(p==bishopPiece||p==queenPiece)return true;break;}}
+ for(int d:rook)for(int from=target+d;inside(from);from+=d){char p=s.b[from];if(p!='.'){if(p==rookPiece||p==queenPiece)return true;break;}}
  return false;
 }
 bool check(const Board&s,int side){int k=kingAt(s,side);insist(k>=0,"Missing king");return attacked(s,k,-side);}
@@ -77,7 +80,7 @@ Board apply(const Board&s,const Move&m){Board n=s;char p=n.b[m.f],cap=n.b[m.t];n
  if(std::tolower(cap)=='r')n.castle&=~bit(m.t);
  n.ep=std::tolower(p)=='p'&&std::abs(m.t-m.f)==32?(m.t+m.f)/2:-1;
  n.half=std::tolower(p)=='p'||cap!='.'||m.ep?0:s.half+1;n.full=s.full+(s.turn==-1);n.turn=-s.turn;return n;}
-vector<Move> pseudo(const Board&s){vector<Move>out;
+vector<Move> pseudo(const Board&s){vector<Move>out;out.reserve(80);
  for(int f=0;f<128;f++){if(!inside(f)||col(s.b[f])!=s.turn)continue;char p=char(std::tolower(s.b[f]));
   auto add=[&](int t,bool ep=false,bool castle=false){if(std::tolower(s.b[t])=='k')return;
    if(p=='p'&&(rankof(t)==0||rankof(t)==7))for(char q:string("qrbn"))out.push_back({f,t,q,ep,castle});else out.push_back({f,t,' ',ep,castle});};
@@ -86,8 +89,9 @@ vector<Move> pseudo(const Board&s){vector<Move>out;
    for(int d:{-1,1}){int u=t+d;if(!inside(u))continue;if(col(s.b[u])==-s.turn)add(u);
     else if(u==s.ep&&s.b[u]=='.'&&s.b[u+16*s.turn]==(s.turn==1?'p':'P'))add(u,true);}
   }else{
-   vector<int> d=p=='n'?knight:p=='b'?bishop:p=='r'?rook:king;if(p=='q'){d=bishop;d.insert(d.end(),rook.begin(),rook.end());}
-   for(int delta:d)for(int t=f+delta;inside(t);t+=delta){if(col(s.b[t])==s.turn)break;add(t);if(s.b[t]!='.'||p=='n'||p=='k')break;}
+   auto visit=[&](const vector<int>&dirs){for(int delta:dirs)for(int t=f+delta;inside(t);t+=delta){if(col(s.b[t])==s.turn)break;add(t);if(s.b[t]!='.'||p=='n'||p=='k')break;}};
+   if(p=='n')visit(knight);else if(p=='b')visit(bishop);else if(p=='r')visit(rook);
+   else if(p=='q'){visit(bishop);visit(rook);}else visit(king);
    int home=s.turn==1?116:4;char rp=s.turn==1?'R':'r';int bits=s.turn==1?1:4;
    if(p=='k'&&f==home&&!check(s,s.turn)){
     if((s.castle&bits)&&s.b[f+3]==rp&&s.b[f+1]=='.'&&s.b[f+2]=='.'&&!attacked(s,f+1,-s.turn)&&!attacked(s,f+2,-s.turn))add(f+2,false,true);
@@ -97,7 +101,34 @@ vector<Move> pseudo(const Board&s){vector<Move>out;
  }
  return out;
 }
-vector<Move> legal(const Board&s){vector<Move>out;for(auto&m:pseudo(s))if(!check(apply(s,m),s.turn))out.push_back(m);return out;}
+
+struct MoveUndo{char moving='.',captured='.',epCaptured='.',rook='.';int castle=0,ep=-1,half=0,full=1,turn=1;};
+MoveUndo makeMove(Board&s,const Move&m){
+ MoveUndo u;u.moving=s.b[m.f];u.captured=s.b[m.t];u.castle=s.castle;u.ep=s.ep;u.half=s.half;u.full=s.full;u.turn=s.turn;
+ char p=u.moving,cap=u.captured;
+ s.b[m.f]='.';s.b[m.t]=m.promo==' '?p:(u.turn==1?char(std::toupper(static_cast<unsigned char>(m.promo))):m.promo);
+ if(m.ep){int c=m.t+16*u.turn;u.epCaptured=s.b[c];s.b[c]='.';}
+ if(m.castle){int rf=m.t>m.f?m.f+3:m.f-4,rt=m.t>m.f?m.f+1:m.f-1;u.rook=s.b[rf];s.b[rt]=s.b[rf];s.b[rf]='.';}
+ if(p=='K')s.castle&=~3;if(p=='k')s.castle&=~12;
+ auto bit=[](int k){return k==119?1:k==112?2:k==7?4:k==0?8:0;};
+ if(std::tolower(static_cast<unsigned char>(p))=='r')s.castle&=~bit(m.f);
+ if(std::tolower(static_cast<unsigned char>(cap))=='r')s.castle&=~bit(m.t);
+ s.ep=std::tolower(static_cast<unsigned char>(p))=='p'&&std::abs(m.t-m.f)==32?(m.t+m.f)/2:-1;
+ s.half=std::tolower(static_cast<unsigned char>(p))=='p'||cap!='.'||m.ep?0:u.half+1;
+ s.full=u.full+(u.turn==-1);s.turn=-u.turn;
+ return u;
+}
+void unmakeMove(Board&s,const Move&m,const MoveUndo&u){
+ s.turn=u.turn;s.castle=u.castle;s.ep=u.ep;s.half=u.half;s.full=u.full;
+ s.b[m.f]=u.moving;s.b[m.t]=u.captured;
+ if(m.ep)s.b[m.t+16*u.turn]=u.epCaptured;
+ if(m.castle){int rf=m.t>m.f?m.f+3:m.f-4,rt=m.t>m.f?m.f+1:m.f-1;s.b[rf]=u.rook;s.b[rt]='.';}
+}
+vector<Move> legal(const Board&s){
+ vector<Move>out;out.reserve(80);Board work=s;
+ for(const auto&m:pseudo(s)){MoveUndo u=makeMove(work,m);const bool valid=!check(work,s.turn);unmakeMove(work,m,u);if(valid)out.push_back(m);}
+ return out;
+}
 string toFen(const Board&s){string z;for(int r=0;r<8;r++){if(r)z+='/';int empty=0;for(int f=0;f<8;f++){char p=s.b[r*16+f];if(p=='.')empty++;else{if(empty){z+=char('0'+empty);empty=0;}z+=p;}}if(empty)z+=char('0'+empty);}z+=s.turn==1?" w ":" b ";string cr;if(s.castle&1)cr+='K';if(s.castle&2)cr+='Q';if(s.castle&4)cr+='k';if(s.castle&8)cr+='q';z+=cr.empty()?"-":cr;z+=' ';z+=s.ep<0?"-":sq(s.ep);z+=' ';z+=std::to_string(s.half);z+=' ';z+=std::to_string(s.full);return z;}
 string boardKey(const Board&s){string k;for(int i=0;i<128;i++)if(inside(i))k.push_back(s.b[i]);k+=s.turn==1?'w':'b';k+=char('a'+s.castle);if(s.ep>=0)k+=sq(s.ep);return k;}
 size_t perft(const Board&s,int depth){if(depth==0)return 1;size_t count=0;for(auto&m:legal(s))count+=perft(apply(s,m),depth-1);return count;}
