@@ -9,6 +9,7 @@
 #include "chess_rules.h"
 #include "paceval_math.h"
 #include "v4_paceval.h"
+#include "adaptive_score_graph.h"
 #include <chrono>
 #include <functional>
 #include <ctime>
@@ -19,7 +20,7 @@
 #include <utility>
 using Clock=std::chrono::steady_clock;
 static const string START_FEN="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-struct Config {int depth=3,maxPlies=80,model=3,qdepth=0;size_t batchSize=8192,maxNodes=600000;string startFen=START_FEN,firstMove="",output="results",mode="alphabeta";bool selftest=false, printBoard=true;int explorePlies=0;double exploreCp=0.0;std::uint64_t gameSeed=0;};
+struct Config {int depth=3,maxPlies=80,model=3,qdepth=0;size_t batchSize=8192,maxNodes=600000;string startFen=START_FEN,firstMove="",output="results",mode="alphabeta",graphFile="";bool selftest=false, printBoard=true;int explorePlies=0;double exploreCp=0.0;std::uint64_t gameSeed=0;};
 // Compact nodes store only graph topology and metadata, not a full chessboard.
 // All child indices belong to one contiguous slice of a global edge array.
 struct Node {int firstEdge=0,count=0,ply=0,featureId=-1,terminal=0,turn=1;double val=0;Move action{};};
@@ -34,9 +35,9 @@ int scoreNative(const vector<double>&v,int model){insist(v.size()==19,"score inp
 string repetitionKey(const Board&s){string k;for(int i=0;i<128;i++)if(inside(i))k.push_back(s.b[i]);k+=(s.turn==1?'w':'b');k+=char('A'+s.castle);bool hasLegalEp=false;if(s.ep>=0)for(const Move&m:legal(s))if(m.ep){hasLegalEp=true;break;}if(hasLegalEp)k+=sq(s.ep);return k;}
 bool minorDraw(const Board&s){int minors=0;bool other=false;int bColor=-1;bool allSameBishops=true;for(int i=0;i<128;i++){if(!inside(i))continue;char p=char(std::tolower(s.b[i]));if(p=='.'||p=='k')continue;if(p=='p'||p=='r'||p=='q')other=true;else if(p=='b'){minors++;int c=(rankof(i)+fileof(i))%2;if(bColor<0)bColor=c;else if(bColor!=c)allSameBishops=false;}else if(p=='n'){minors++;allSameBishops=false;}}return !other&&(minors==0||minors==1||(allSameBishops&&minors>0));}
 struct TreeWorker {
- Engine&e;Evaluator&formula;EvaluatorV3&v3;NeuralV4* nn;const Config&cfg;double startS=0;
+ Engine&e;Evaluator&formula;EvaluatorV3&v3;NeuralV4* nn;joshua_adapt::Graph* adapt;const Config&cfg;double startS=0;
  std::map<std::pair<int,int>,PACEVAL_HANDLE> reductions;
- TreeWorker(Engine&x,Evaluator&f,EvaluatorV3&enhanced,NeuralV4* neural,const Config&c):e(x),formula(f),v3(enhanced),nn(neural),cfg(c){}
+ TreeWorker(Engine&x,Evaluator&f,EvaluatorV3&enhanced,NeuralV4* neural,joshua_adapt::Graph* ad,const Config&c):e(x),formula(f),v3(enhanced),nn(neural),adapt(ad),cfg(c){}
  PACEVAL_HANDLE reduction(int fanout,int turn,Metrics&met){insist(fanout>=2&&fanout<=218,"Invalid reduction arity");auto key=std::make_pair(fanout,turn);auto it=reductions.find(key);if(it!=reductions.end())return it->second;vector<string>vars;string expression="(";for(int i=0;i<fanout;i++){vars.push_back("v"+std::to_string(i));if(i)expression+=(turn==1?" max ":" min ");expression+=vars.back();}expression+=")";PACEVAL_HANDLE h=e.create(expression,vars);met.newGraphs++;reductions[key]=h;return h;}
  string outputTree(const Board&root,int requestedDepth,int turnNo,Metrics&met,Times&tm,vector<string>&ranked,vector<double>&values){
     auto beg=Clock::now();vector<Node>nodes;nodes.reserve(18000);
@@ -91,6 +92,7 @@ struct TreeWorker {
           near(classical,scoreNativeV3(first32[j]),1e-12);base.push_back(classical);
         }
         auto nnOutputs=nn->scoreBatch(rows,base);
+        if(adapt && adapt->active())nnOutputs=adapt->batch(rows,nnOutputs);
         met.scoreBatches+=3;
         for(size_t j=0;j<rows.size();j++){
            scores[i+j]=nnOutputs[j];met.scoreChecks++;
@@ -145,7 +147,7 @@ struct TreeWorker {
 // leaf formulas and the final root min/max graph. No external opponents or MCP.
 // This mode is not a full-width enumeration; its node count is visited nodes.
 struct AlphaBetaWorker {
- Engine&e; Evaluator&formula; EvaluatorV3&v3; NeuralV4* nn; const Config&cfg;
+ Engine&e;Evaluator&formula;EvaluatorV3&v3;NeuralV4* nn;joshua_adapt::Graph* adapt; const Config&cfg;
  struct TTEntry {int depth=0,ply=0;double value=0;int bound=0;Move best{};};
  // bounds: 0 EXACT, 1 LOWER, 2 UPPER.
  std::unordered_map<string,TTEntry> tt;
@@ -153,7 +155,7 @@ struct AlphaBetaWorker {
  std::set<vector<double>> visitedFeatures;
  std::map<std::pair<int,int>,PACEVAL_HANDLE> rootGraphs;
  size_t visited=0,evalLeaves=0,terminalLeaves=0,ttHits=0,prunes=0,scoreMisses=0;
- explicit AlphaBetaWorker(Engine&x,Evaluator&f,EvaluatorV3&enhanced,NeuralV4* neural,const Config&c):e(x),formula(f),v3(enhanced),nn(neural),cfg(c){}
+ explicit AlphaBetaWorker(Engine&x,Evaluator&f,EvaluatorV3&enhanced,NeuralV4* neural,joshua_adapt::Graph* ad,const Config&c):e(x),formula(f),v3(enhanced),nn(neural),adapt(ad),cfg(c){}
  double leafScore(const Board&b){
    auto f=cfg.model==4?featuresV4(b):(cfg.model==3?featuresV3(b):features(b));
    visitedFeatures.insert(f);auto it=scoreCache.find(f);
@@ -165,6 +167,7 @@ struct AlphaBetaWorker {
       const double base=e.eval(v3.expr[v3.by.at("SCORE")].h,v3inputs);
       near(base,scoreNativeV3(v3inputs),1e-12);
       white=nn->scoreOne(f,base);
+      if(adapt && adapt->active())white=adapt->one(f,white);
    }else{
       const size_t ix=cfg.model==3?v3.by.at("SCORE"):formula.by.at(cfg.model==1?"V1_SCORE":"V2_SCORE");
       // All scalar scores are calculated using the real persistent paceval handle.
@@ -373,7 +376,7 @@ int runGame(const Config&cfg){
  Board b=fen(cfg.startFen);insist(!check(b,-b.turn),"Invalid initial FEN: previous player still checked");
  std::cout<<"JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | mode="<<cfg.mode<<" | depth="<<cfg.depth<<" | model="<<cfg.model<<" | qdepth="<<cfg.qdepth<<"\n";
  std::cout<<"[+"<<cleanClock(elapsed())<<"s] start FEN: "<<toFen(b)<<"\n";
- Engine engine;engine.probe();Evaluator form(engine);EvaluatorV3 advanced(engine);std::unique_ptr<NeuralV4> neural; if(cfg.model==4)neural.reset(new NeuralV4(engine));TreeWorker worker(engine,form,advanced,neural.get(),cfg);AlphaBetaWorker abworker(engine,form,advanced,neural.get(),cfg);
+ Engine engine;engine.probe();Evaluator form(engine);EvaluatorV3 advanced(engine);std::unique_ptr<NeuralV4> neural; if(cfg.model==4)neural.reset(new NeuralV4(engine));joshua_adapt::Graph adaptive(engine,cfg.graphFile);TreeWorker worker(engine,form,advanced,neural.get(),&adaptive,cfg);AlphaBetaWorker abworker(engine,form,advanced,neural.get(),&adaptive,cfg);
  std::cout<<"[+"<<cleanClock(elapsed())<<"s] paceval persistent feature graphs="<<(form.expr.size()+advanced.expr.size()+(neural?size_t(V4_HIDDEN+1):0))<<"; multi-graph layout="<<(engine.graphMajor?"graph-major":"case-major")<<"; max batch rows="<<cfg.batchSize<<"\n";
  std::map<string,int>history;history[repetitionKey(b)]++;
  if(cfg.printBoard)boardAscii(b);
@@ -443,7 +446,7 @@ int runGame(const Config&cfg){
  endState<<"{\n  \"result\": \""<<result<<"\",\n  \"termination\": \""<<termination<<"\",\n  \"played_halfmoves\": "<<played.size()<<",\n  \"final_fen\": \""<<jsonEscape(toFen(b))<<"\",\n  \"analysis_status\": \"heuristic self-play, not automatically trained\"\n}\n";
  insist(bool(gamePgn)&&bool(endState),"Failed to write final game state");
  pgn<<"# JOSHUA chess self-play, UCI moves, not PGN SAN\n";for(auto&s:played)pgn<<s<<' ';pgn<<"\nfinal_fen "<<toFen(b)<<"\n";
- evidence<<"{\n"<<"  \"engine_name\": \"JOSHUA\",\n"<<"  \"opponents\": \"JOSHUA vs JOSHUA only\",\n"<<"  \"sdk\": \"local paceval 4.25-compatible original shared library\",\n"<<"  \"mcp_used\": false,\n"<<"  \"search_mode\": \""<<cfg.mode<<"\",\n"<<"  \"depth_each_move\": "<<cfg.depth<<",\n"<<"  \"model\": "<<cfg.model<<",\n"<<"  \"trained_neural_support\": "<<(cfg.model==4?"true":"false")<<",\n"<<"  \"neural_training_teacher\": \"V3 depth-two search on synthetic chess positions; NOT Stockfish or Lc0\",\n"<<"  \"neural_graphs\": "<<(cfg.model==4?V4_HIDDEN+1:0)<<",\n"<<"  \"neural_independent_checks\": "<<(neural?neural->checked:0)<<",\n"<<"  \"exploration_window_cp\": "<<cfg.exploreCp<<",\n"<<"  \"exploration_plies\": "<<cfg.explorePlies<<",\n"<<"  \"exploration_game_seed\": "<<cfg.gameSeed<<",\n"<<"  \"quiescence_plies\": "<<cfg.qdepth<<",\n"<<"  \"played_halfmoves\": "<<played.size()<<",\n"<<"  \"max_halfmoves\": "<<cfg.maxPlies<<",\n"<<"  \"maximum_batch_rows\": "<<cfg.batchSize<<",\n"<<"  \"all_formulas_reused\": true,\n"<<"  \"leaf_multi_graph_count\": "<<(cfg.model==4?advanced.expr.size()+size_t(V4_HIDDEN+1):(cfg.model==3?advanced.expr.size():form.expr.size()))<<",\n"<<"  \"all_minmax_reductions_via_paceval\": "<<(cfg.mode=="research"?"true":"false")<<",\n"<<"  \"paceval_graphs_created\": "<<engine.owned.size()<<",\n"<<"  \"paceval_batch_calls\": "<<engine.batches<<",\n"<<"  \"paceval_graph_point_evaluations\": "<<engine.graphPoints<<",\n"<<"  \"elapsed_seconds\": "<<cleanClock(elapsed())<<",\n"<<"  \"finished_game\": "<<(legal(b).empty()?"true":"false")<<",\n"<<"  \"final_fen\": \""<<jsonEscape(toFen(b))<<"\",\n"<<"  \"note\": \"Heuristic depth-limited selfplay; not proof of best chess play or engine-strength benchmark\"\n}\n";
+ evidence<<"{\n"<<"  \"engine_name\": \"JOSHUA\",\n"<<"  \"opponents\": \"JOSHUA vs JOSHUA only\",\n"<<"  \"sdk\": \"local paceval 4.25-compatible original shared library\",\n"<<"  \"mcp_used\": false,\n"<<"  \"adaptive_graph_version\": "<<adaptive.spec.version<<",\n"<<"  \"adaptive_graph_expression\": \""<<jsonEscape(adaptive.spec.expression)<<"\",\n"<<"  \"adaptive_graph_evaluations\": "<<adaptive.evaluations<<",\n"<<"  \"search_mode\": \""<<cfg.mode<<"\",\n"<<"  \"depth_each_move\": "<<cfg.depth<<",\n"<<"  \"model\": "<<cfg.model<<",\n"<<"  \"trained_neural_support\": "<<(cfg.model==4?"true":"false")<<",\n"<<"  \"neural_training_teacher\": \"V3 depth-two search on synthetic chess positions; NOT Stockfish or Lc0\",\n"<<"  \"neural_graphs\": "<<(cfg.model==4?V4_HIDDEN+1:0)<<",\n"<<"  \"neural_independent_checks\": "<<(neural?neural->checked:0)<<",\n"<<"  \"exploration_window_cp\": "<<cfg.exploreCp<<",\n"<<"  \"exploration_plies\": "<<cfg.explorePlies<<",\n"<<"  \"exploration_game_seed\": "<<cfg.gameSeed<<",\n"<<"  \"quiescence_plies\": "<<cfg.qdepth<<",\n"<<"  \"played_halfmoves\": "<<played.size()<<",\n"<<"  \"max_halfmoves\": "<<cfg.maxPlies<<",\n"<<"  \"maximum_batch_rows\": "<<cfg.batchSize<<",\n"<<"  \"all_formulas_reused\": true,\n"<<"  \"leaf_multi_graph_count\": "<<(cfg.model==4?advanced.expr.size()+size_t(V4_HIDDEN+1):(cfg.model==3?advanced.expr.size():form.expr.size()))<<",\n"<<"  \"all_minmax_reductions_via_paceval\": "<<(cfg.mode=="research"?"true":"false")<<",\n"<<"  \"paceval_graphs_created\": "<<engine.owned.size()<<",\n"<<"  \"paceval_batch_calls\": "<<engine.batches<<",\n"<<"  \"paceval_graph_point_evaluations\": "<<engine.graphPoints<<",\n"<<"  \"elapsed_seconds\": "<<cleanClock(elapsed())<<",\n"<<"  \"finished_game\": "<<(legal(b).empty()?"true":"false")<<",\n"<<"  \"final_fen\": \""<<jsonEscape(toFen(b))<<"\",\n"<<"  \"note\": \"Heuristic depth-limited selfplay; not proof of best chess play or engine-strength benchmark\"\n}\n";
  std::cout<<"[+"<<cleanClock(elapsed())<<"s] JOSHUA SELF-PLAY END plies="<<played.size()<<" paceval_graphs="<<engine.owned.size()<<" paceval_batch_calls="<<engine.batches<<" graph_points="<<engine.graphPoints<<"\n";
  return 0;
 }
@@ -453,8 +456,9 @@ int main(int argc,char**argv){try{
  std::cout.setf(std::ios::unitbuf);
  Config c;for(int i=1;i<argc;i++){
   string a=argv[i];auto value=[&]()->string{insist(i+1<argc,"Missing parameter for "+a);return argv[++i];};
-  if(a=="--help"){std::cout<<"Usage: joshua [--mode research|alphabeta] [--depth 1..10] [--plies 1..200] [--model 1|2|3|4] [--quiescence 0..4] [--fen SIX_PART_FEN] [--first-move e2e4] [--batch-rows 1..65536] [--max-nodes N] [--no-board] [--output DIR] [--explore-cp N] [--explore-plies N] [--game-seed N]\nDefault: JOSHUA plays both White and Black in Alpha-Beta mode, depth 3, V3 evaluation, local paceval SDK only.\n";return 0;}else if(a=="--mode")c.mode=value();else if(a=="--quiescence")c.qdepth=std::stoi(value());else if(a=="--depth")c.depth=std::stoi(value());else if(a=="--plies")c.maxPlies=std::stoi(value());else if(a=="--model")c.model=std::stoi(value());else if(a=="--batch-rows")c.batchSize=std::stoul(value());else if(a=="--max-nodes")c.maxNodes=std::stoul(value());else if(a=="--output")c.output=value();else if(a=="--explore-cp")c.exploreCp=std::stod(value());else if(a=="--explore-plies")c.explorePlies=std::stoi(value());else if(a=="--game-seed")c.gameSeed=std::stoull(value());else if(a=="--fen")c.startFen=value();else if(a=="--first-move")c.firstMove=value();else if(a=="--no-board")c.printBoard=false;else if(a=="--selftest")c.selftest=true;else throw std::runtime_error("Unknown flag: "+a);
+  if(a=="--help"){std::cout<<"Usage: joshua [--graph-file config/active_graph.tsv] [--mode research|alphabeta] [--depth 1..10] [--plies 1..200] [--model 1|2|3|4] [--quiescence 0..4] [--fen SIX_PART_FEN] [--first-move e2e4] [--batch-rows 1..65536] [--max-nodes N] [--no-board] [--output DIR] [--explore-cp N] [--explore-plies N] [--game-seed N]\nDefault: JOSHUA plays both White and Black in Alpha-Beta mode, depth 3, V3 evaluation, local paceval SDK only.\n";return 0;}else if(a=="--mode")c.mode=value();else if(a=="--quiescence")c.qdepth=std::stoi(value());else if(a=="--depth")c.depth=std::stoi(value());else if(a=="--plies")c.maxPlies=std::stoi(value());else if(a=="--model")c.model=std::stoi(value());else if(a=="--batch-rows")c.batchSize=std::stoul(value());else if(a=="--max-nodes")c.maxNodes=std::stoul(value());else if(a=="--output")c.output=value();else if(a=="--explore-cp")c.exploreCp=std::stod(value());else if(a=="--explore-plies")c.explorePlies=std::stoi(value());else if(a=="--game-seed")c.gameSeed=std::stoull(value());else if(a=="--graph-file")c.graphFile=value();else if(a=="--fen")c.startFen=value();else if(a=="--first-move")c.firstMove=value();else if(a=="--no-board")c.printBoard=false;else if(a=="--selftest")c.selftest=true;else throw std::runtime_error("Unknown flag: "+a);
  }
+ insist(c.graphFile.empty()||c.model==4,"--graph-file requires --model 4");
  insist(c.mode=="research"||c.mode=="alphabeta","--mode must be research or alphabeta");insist(c.depth>=1&&c.depth<=(c.mode=="research"?4:10),"--depth must be 1..4 (research) or 1..10 (alphabeta)");insist(c.maxPlies>=1&&c.maxPlies<=200,"--plies must be 1..200");insist(c.model>=1&&c.model<=4,"--model must be 1, 2, 3, or 4");insist(c.qdepth>=0&&c.qdepth<=4,"--quiescence must be 0..4");insist(c.qdepth==0||c.mode=="alphabeta","Quiescence is available only in alphabeta mode");insist(c.batchSize>=1&&c.batchSize<=65536,"--batch-rows must be 1..65536");
  insist(std::isfinite(c.exploreCp)&&c.exploreCp>=0.0&&c.exploreCp<=500.0&&c.explorePlies>=0&&c.explorePlies<=200,"Invalid exploration configuration");
  if(c.selftest){

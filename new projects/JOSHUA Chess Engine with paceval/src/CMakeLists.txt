@@ -259,3 +259,18 @@ add_test(NAME joshua_v8_progress_mock COMMAND "${Python3_EXECUTABLE}"
 add_test(NAME joshua_v8_longgraph_diversity_replay COMMAND "${Python3_EXECUTABLE}"
  "${CMAKE_CURRENT_LIST_DIR}/../scripts/test_v8_longgraph_diversity.py"
  "$<TARGET_FILE:joshua_selfplay>" "${CMAKE_CURRENT_LIST_DIR}/../results/v5_graph_rebuilt_selfplay_8ply")
+
+# V9 referee uses original legal-move logic but no mathematics runtime.
+add_executable(joshua_referee joshua_referee.cpp)
+# Discard unreferenced SDK CSV utility functions from chess_rules.h.
+# The actual referee never evaluates paceval mathematics.
+target_compile_options(joshua_referee PRIVATE -ffunction-sections -fdata-sections)
+target_link_options(joshua_referee PRIVATE -Wl,--gc-sections)
+if(UNIX AND NOT APPLE AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+ target_link_options(joshua_referee PRIVATE -static-libstdc++ -static-libgcc)
+endif()
+
+# Explicitly labelled offline UCI/paceval mocks. They verify the match
+# coordinator and rejection/promote policy only, not engine chess quality.
+add_test(NAME joshua_v9_stockfish_protocol_offline_mock
+ COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../tests/test_v9_stockfish_mock.py")

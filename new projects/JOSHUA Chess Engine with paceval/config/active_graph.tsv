@@ -1,0 +1,11 @@
+# JOSHUA V9; validated decimal coefficients in centipawn-like score units
+# Keys map to explicitly defined V4 feature differences. Model 4 is required.
+version	0
+mobility	0
+captures	0
+hanging	0
+attacked	0
+passed	0
+kingdanger	0
+queenthreat	0
+rookthreat	0

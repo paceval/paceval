@@ -1,3 +1,33 @@
+# JOSHUA V9: Stockfish matches and versioned paceval chess-evaluation graphs
+
+![JOSHUA research cover](figures/JOSHUA_Chess_Research_Cover_2400x1200.png)
+
+**New in V9:** Real Stockfish UCI match orchestration with alternating White/Black colors and paired controlled openings. A compiled JOSHUA chess referee validates every move. A C++ paceval adaptive evaluation graph reads versioned numeric coefficients at game start. After each complete color-pair, bounded coefficient changes are proposed from Stockfish analysis and tested against independent positions; only candidates meeting the acceptance criteria are activated without recompiling the engine. This does not guarantee stronger chess.
+
+**Every debug output now includes `delta_s` (seconds since the last debug line) and `elapsed_s` (seconds since game start); completed moves additionally show `move_s`.** Heartbeats identify ongoing searches. The complete game log and graph-proposal outcomes are saved in per-game ZIP files. The 25 MB oldest-first log archive rotation is retained.
+
+### Install into your existing Linux x64 directory
+
+Stop running JOSHUA with Ctrl+C before replacing binaries. From this unpacked package:
+
+```bash
+./scripts/install_flat_linux.sh "$HOME/Dropbox/joshua_autoplay"
+cd "$HOME/Dropbox/joshua_autoplay"
+export PACEVAL_RUNTIME="$PWD/libpaceval_linux_sharedLIB.so"
+# On Debian/Ubuntu: sudo apt-get install stockfish
+./run_stockfish_matches.sh --stockfish /usr/games/stockfish --max-games 2
+# Then continuous matches:
+./run_stockfish_matches.sh --stockfish /usr/games/stockfish --max-games 0
+```
+
+**Dependencies:** This package includes four genuine compiled Linux x86-64 ELF programs, C++17 source, CMake and Python orchestration. Stockfish must be installed separately and the original authorized `libpaceval_linux_sharedLIB.so` must be supplied. No Stockfish binary, trained external network or proprietary paceval `.so` is bundled. The external Stockfish project is GPL-3.0: <https://github.com/official-stockfish/Stockfish>. There is no universal Stockfish runtime strength rating associated with a fixed node budget. 
+
+The V9 orchestration and adaptation policy were exercised with explicitly identified offline mocks, **not** with actual Stockfish and the original paceval runtime in this environment. Full game strength improvements are unverified. Read the [V9 design and usage](docs/V9_STOCKFISH_MATCH_AND_GRAPH_ADAPTATION.md) and the [V9 release validation](V9_RELEASE_VALIDATION.md). The included PDF documents historical V5 research and does not claim to validate the new V9 match loop.
+
+---
+
+## Historical V8/V7/V5 self-play and research archive
+
 # JOSHUA V8: Live Chess Self-Play Progress and Reproducible Opening Diversity
 
 ![JOSHUA cover](figures/JOSHUA_Chess_Research_Cover_2400x1200.png)
@@ -109,7 +139,7 @@ For the new mathematical construction and exact tree-to-formula mapping, see
 [`docs/V5_LONG_GRAPH_MATHEMATICS.md`](docs/V5_LONG_GRAPH_MATHEMATICS.md).
 The package contains **one consolidated English scientific whitepaper**:
 [`JOSHUA_Chess_Research_Whitepaper_EN.pdf`](JOSHUA_Chess_Research_Whitepaper_EN.pdf).
-No MCP server or external competitive chess engine is used in the execution.
+The historical V5 research did not use an external competitive chess engine. V9 adds separate Stockfish match orchestration.
 
 ### Build and run the long-graph mode
 
@@ -227,6 +257,6 @@ Retraining changes the generated C++ weight header, expression header and model 
 
 ## Architecture, scope, and licensing
 
-Current release: **JOSHUA vs JOSHUA self-play only**. Stockfish and Leela are referenced for architecture context, not bundled or connected. Remote MCP is not used. The Linux paceval shared library is excluded; see [`LICENSE_NOTICES.md`](LICENSE_NOTICES.md). Prior V3 experiments remain in their historical `results/v3_...` folders and form a reproducible baseline, but there is exactly **one whitepaper**.
+Historical V5 through V8 baseline: **JOSHUA vs JOSHUA self-play only**. V9 adds separate Stockfish UCI match orchestration. Stockfish and Leela are not bundled. Remote MCP is not used. The Linux paceval shared library is excluded; see [`LICENSE_NOTICES.md`](LICENSE_NOTICES.md). Prior V3 experiments remain in their historical `results/v3_...` folders and form a reproducible baseline, but there is exactly **one whitepaper**.
 
 Research context: [Stockfish NNUE architecture](https://official-stockfish.github.io/docs/nnue-pytorch-wiki/docs/nnue.html), [Lichess CC0 computer evaluations](https://database.lichess.org/), [paceval developers](https://paceval.com/developers/). Lichess external evaluation data has **not** been used for V4 training.

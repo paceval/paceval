@@ -1,11 +1,10 @@
-# Compiled Linux Intel/AMD x86-64 programs
+# Compiled Linux x86-64 programs
 
-- `joshua`: original chess engine with model 1-4, optional Alpha-Beta or paceval research search, SAN PGN and unambiguous termination results.
-- `joshua_long_graph`: V5 complete legal finite-horizon mathematical decision-graph compiler, using genuine original paceval and independent C++ minimax checks.
-- `joshua_selfplay`: continuous games and rigorous game-by-game review queue in a separate process for each game, including the V5 longgraph mode. Each game is compressed into an individual ZIP archive, with oldest-first deletion under a default 25 MB retained-log budget. The archive writer uses statically linked zlib.
+- `joshua`: paceval mathematical chess evaluation, including the V9 reloadable adaptive graph via `--graph-file`.
+- `joshua_referee`: validates legal moves and returns FEN, SAN, checkmate/stalemate or automatic draw candidates; no paceval runtime required for rules.
+- `joshua_selfplay`: V8/V7 historical autonomous JOSHUA-vs-JOSHUA executable with ZIP log rotation.
+- `joshua_long_graph`: V5 full finite-horizon mathematical decision-graph experiment.
 
-All three are actual compiled x86-64 ELF programs. The authentic paceval runtime remains necessary to execute chess math. Place it in `../runtime/libpaceval_linux_sharedLIB.so` or set `PACEVAL_RUNTIME`. The optional `src/paceval_runtime_loader.cpp` is a transparent forwarding adapter that contains no paceval computation implementation.
+The original authorized `libpaceval_linux_sharedLIB.so` is needed separately to execute the math in `joshua` and `joshua_long_graph`. V9 Stockfish match orchestration is in `scripts/stockfish_match.py` (Python standard library only); Stockfish itself must be installed separately.
 
-The GNU C++ runtime was linked statically. System libraries `libc` and `libm` are supplied by the target Linux distribution. Native executables require a compatible Linux glibc ABI. Rebuild with `../scripts/build_linux.sh` if the target system is older.
-
-V8 `joshua_selfplay` prints live search, move and heartbeat messages. `joshua` optionally supports `--explore-cp`, `--explore-plies` and `--game-seed`. All actual mathematical evaluation still requires the compatible original paceval Linux shared library.
+The four binaries are actual compiled ELF x86-64 programs. The GNU C++ runtime is linked statically, but compatible Linux glibc remains required. No proprietary paceval runtime or Stockfish implementation is distributed.
