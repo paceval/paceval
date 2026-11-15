@@ -365,8 +365,8 @@ string description(const Board&before,const Move&m){
 void appendLine(std::ofstream&f,const string&s){f<<s<<'\n';insist(bool(f),"CSV/trace write failed");}
 int runGame(const Config&cfg){
  auto timerStart=Clock::now();const auto elapsed=[&](){return std::chrono::duration<double>(Clock::now()-timerStart).count();};
- fs::create_directories(cfg.output);std::ofstream timeline(fs::path(cfg.output)/"selfplay_timeline.csv"),moves(fs::path(cfg.output)/"root_move_rankings.csv"),pgn(fs::path(cfg.output)/"game_uci.txt"),evidence(fs::path(cfg.output)/"run_evidence.json");
- insist(timeline&&moves&&pgn&&evidence,"Failed to create output files");
+ fs::create_directories(cfg.output);std::ofstream timeline(fs::path(cfg.output)/"selfplay_timeline.csv"),moves(fs::path(cfg.output)/"root_move_rankings.csv"),pgn(fs::path(cfg.output)/"game_uci.txt"),evidence(fs::path(cfg.output)/"run_evidence.json"),gamePgn(fs::path(cfg.output)/"game.pgn"),endState(fs::path(cfg.output)/"end_state.json");
+ insist(timeline&&moves&&pgn&&evidence&&gamePgn&&endState,"Failed to create output files");
  appendLine(timeline,"halfmove,side,start_s,tree_ready_s,leaf_values_ready_s,decision_s,tree_generation_s,score_batch_s,reduction_s,legal_root_moves,tree_nodes,leaf_nodes,terminal_leaves,unique_feature_vectors,new_paceval_reduction_graphs,score_batches,reduction_batches,paceval_graph_points_total,chosen_uci,chosen_piece,chosen_san,from_square,to_square,is_capture,promotion,white_score_cp,fen_before,fen_after");
  appendLine(moves,"halfmove,depth,side,rank,uci,white_score_cp");
  Board b=fen(cfg.startFen);insist(!check(b,-b.turn),"Invalid initial FEN: previous player still checked");
@@ -376,10 +376,10 @@ int runGame(const Config&cfg){
  std::cout<<"[+"<<cleanClock(elapsed())<<"s] paceval persistent feature graphs="<<(form.expr.size()+advanced.expr.size()+(neural?size_t(V4_HIDDEN+1):0))<<"; multi-graph layout="<<(engine.graphMajor?"graph-major":"case-major")<<"; max batch rows="<<cfg.batchSize<<"\n";
  std::map<string,int>history;history[repetitionKey(b)]++;
  if(cfg.printBoard)boardAscii(b);
- vector<string>played;int actual=0;
+ vector<string>played, playedSan;int actual=0;
  if(!cfg.firstMove.empty()){
    auto legalMoves=legal(b);auto it=std::find_if(legalMoves.begin(),legalMoves.end(),[&](const Move&m){return uci(m)==cfg.firstMove;});insist(it!=legalMoves.end(),"--first-move is not legal for starting FEN");
-   std::cout<<"[+"<<cleanClock(elapsed())<<"s] JOSHUA scenario: user-forced opening move "<<cfg.firstMove<<" | Piece="<<description(b,*it)<<" | SAN="<<notationSan(b,*it,legalMoves)<<" (not engine-selected)\n";b=apply(b,*it);played.push_back(cfg.firstMove);history[repetitionKey(b)]++;actual++;
+   std::cout<<"[+"<<cleanClock(elapsed())<<"s] JOSHUA scenario: user-forced opening move "<<cfg.firstMove<<" | Piece="<<description(b,*it)<<" | SAN="<<notationSan(b,*it,legalMoves)<<" (not engine-selected)\n";playedSan.push_back(notationSan(b,*it,legalMoves));b=apply(b,*it);played.push_back(cfg.firstMove);history[repetitionKey(b)]++;actual++;
  }
  for(int h=actual;h<cfg.maxPlies;h++){
    auto legalMoves=legal(b);if(legalMoves.empty()){std::cout<<"[+"<<cleanClock(elapsed())<<"s] "<<(check(b,b.turn)?"CHECKMATE":"STALEMATE")<<"\n";break;}
@@ -392,7 +392,7 @@ int runGame(const Config&cfg){
    const bool capture=(old.b[it->t]!='.'||it->ep);
    const string promotion=it->promo==' '?"":pieceNameEnglish(it->promo);
    const string moveDescription=description(old,*it);
-   b=apply(b,*it);played.push_back(best);history[repetitionKey(b)]++;
+   b=apply(b,*it);played.push_back(best);playedSan.push_back(san);history[repetitionKey(b)]++;
    const double val=values[0];
    std::cout<<"[+"<<cleanClock(begin+t.generated)<<"s] tree nodes="<<m.nodes<<" leaves="<<m.leaves<<" | search_s="<<cleanClock(t.generated)<<"\n";
    std::cout<<"[+"<<cleanClock(begin+t.generated+t.features)<<"s] paceval features unique="<<m.uniqueVectors<<" point_checks="<<m.scoreChecks<<" batch_calls="<<m.scoreBatches<<" | stage_s="<<cleanClock(t.features)<<"\n";
@@ -405,6 +405,32 @@ int runGame(const Config&cfg){
    for(size_t i=0;i<ranking.size();i++)moves<<h+1<<','<<cfg.depth<<','<<(old.turn==1?"white":"black")<<','<<i+1<<','<<ranking[i]<<','<<values[i]<<'\n';
    insist(bool(timeline)&&bool(moves),"CSV write failed");
  }
+ // State the actual chess termination, distinguishing a capped trace from a draw.
+ string termination="max_halfmoves",result="*";
+ const auto remainingMoves=legal(b);
+ if(remainingMoves.empty()){
+   if(check(b,b.turn)){termination="checkmate";result=b.turn==1?"0-1":"1-0";}
+   else{termination="stalemate";result="1/2-1/2";}
+ }else if(history[repetitionKey(b)]>=3){termination="threefold_repetition";result="1/2-1/2";}
+ else if(b.half>=100){termination="fifty_move_rule";result="1/2-1/2";}
+ else if(minorDraw(b)){termination="insufficient_material";result="1/2-1/2";}
+ // This game PGN is generated from legal SAN notation recorded during play.
+ gamePgn<<"[Event \"JOSHUA continuous self-play\"]\n[Site \"Local paceval SDK\"]\n[White \"JOSHUA\"]\n[Black \"JOSHUA\"]\n[Result \""<<result<<"\"]\n";
+ if(cfg.startFen!=START_FEN)gamePgn<<"[SetUp \"1\"]\n[FEN \""<<cfg.startFen<<"\"]\n";
+ gamePgn<<"\n";
+ const Board initialPgnPosition=fen(cfg.startFen);
+ int printedMoveNumber=initialPgnPosition.full;
+ int printedTurn=initialPgnPosition.turn;
+ for(size_t i=0;i<playedSan.size();i++){
+   if(printedTurn==1)gamePgn<<printedMoveNumber<<". ";
+   else if(i==0)gamePgn<<printedMoveNumber<<"... ";
+   gamePgn<<playedSan[i]<<' ';
+   if(printedTurn==-1)++printedMoveNumber;
+   printedTurn=-printedTurn;
+ }
+ gamePgn<<result<<"\n";
+ endState<<"{\n  \"result\": \""<<result<<"\",\n  \"termination\": \""<<termination<<"\",\n  \"played_halfmoves\": "<<played.size()<<",\n  \"final_fen\": \""<<jsonEscape(toFen(b))<<"\",\n  \"analysis_status\": \"heuristic self-play, not automatically trained\"\n}\n";
+ insist(bool(gamePgn)&&bool(endState),"Failed to write final game state");
  pgn<<"# JOSHUA chess self-play, UCI moves, not PGN SAN\n";for(auto&s:played)pgn<<s<<' ';pgn<<"\nfinal_fen "<<toFen(b)<<"\n";
  evidence<<"{\n"<<"  \"engine_name\": \"JOSHUA\",\n"<<"  \"opponents\": \"JOSHUA vs JOSHUA only\",\n"<<"  \"sdk\": \"local paceval 4.25-compatible original shared library\",\n"<<"  \"mcp_used\": false,\n"<<"  \"search_mode\": \""<<cfg.mode<<"\",\n"<<"  \"depth_each_move\": "<<cfg.depth<<",\n"<<"  \"model\": "<<cfg.model<<",\n"<<"  \"trained_neural_support\": "<<(cfg.model==4?"true":"false")<<",\n"<<"  \"neural_training_teacher\": \"V3 depth-two search on synthetic chess positions; NOT Stockfish or Lc0\",\n"<<"  \"neural_graphs\": "<<(cfg.model==4?V4_HIDDEN+1:0)<<",\n"<<"  \"neural_independent_checks\": "<<(neural?neural->checked:0)<<",\n"<<"  \"quiescence_plies\": "<<cfg.qdepth<<",\n"<<"  \"played_halfmoves\": "<<played.size()<<",\n"<<"  \"max_halfmoves\": "<<cfg.maxPlies<<",\n"<<"  \"maximum_batch_rows\": "<<cfg.batchSize<<",\n"<<"  \"all_formulas_reused\": true,\n"<<"  \"leaf_multi_graph_count\": "<<(cfg.model==4?advanced.expr.size()+size_t(V4_HIDDEN+1):(cfg.model==3?advanced.expr.size():form.expr.size()))<<",\n"<<"  \"all_minmax_reductions_via_paceval\": "<<(cfg.mode=="research"?"true":"false")<<",\n"<<"  \"paceval_graphs_created\": "<<engine.owned.size()<<",\n"<<"  \"paceval_batch_calls\": "<<engine.batches<<",\n"<<"  \"paceval_graph_point_evaluations\": "<<engine.graphPoints<<",\n"<<"  \"elapsed_seconds\": "<<cleanClock(elapsed())<<",\n"<<"  \"finished_game\": "<<(legal(b).empty()?"true":"false")<<",\n"<<"  \"final_fen\": \""<<jsonEscape(toFen(b))<<"\",\n"<<"  \"note\": \"Heuristic depth-limited selfplay; not proof of best chess play or engine-strength benchmark\"\n}\n";
  std::cout<<"[+"<<cleanClock(elapsed())<<"s] JOSHUA SELF-PLAY END plies="<<played.size()<<" paceval_graphs="<<engine.owned.size()<<" paceval_batch_calls="<<engine.batches<<" graph_points="<<engine.graphPoints<<"\n";

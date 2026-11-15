@@ -1,6 +1,29 @@
-# JOSHUA V5: Long Mathematical Chess Decision Graphs and Neural Support with paceval
+# JOSHUA V6: Continuous Chess Self-Play with paceval Decision-Graph Evidence
 
 ![JOSHUA cover](figures/JOSHUA_Chess_Research_Cover_2400x1200.png)
+
+**New in V6:** This ZIP includes three **compiled Linux Intel/AMD x86-64 executables** in `bin/`: `joshua` (classical/research), `joshua_long_graph` (new full mathematical graph for every move), and `joshua_selfplay` (indefinite self-play supervisor). The supervisor starts a fresh child process for each game, records a correctly classified result and all legal moves, saves a machine-readable learning-evidence queue and appends `sessions/learning_log.md` **after every completed game**. Both the model-4 graph path and the V5 full-graph alternative remain supported. No automatic weight modification or reinforcement-learning claim is made.
+
+**Important runtime requirement:** The authentic `libpaceval_linux_sharedLIB.so` was not supplied, so the binaries' actual chess calculations **cannot run until the original paceval runtime is installed**. The optional `src/paceval_runtime_loader.cpp` contains only `dlopen` forwarding to real SDK FFI symbols, not a replacement math engine. The repo includes original `src/paceval_main.h` and `src/paceval_main.cpp`. GNU C++ runtime dependencies were linked statically for the three distributed binaries; compatible Linux glibc is still required. Original SDK runtime licensing must be respected and verified before redistribution.
+
+**Quick start after placing your authorized library in `runtime/`:**
+
+```bash
+./scripts/run_continuous.sh --mode alphabeta --model 4 --depth 2 \
+  --quiescence 2 --plies 160 --opening cycle --max-games 0
+
+# The full V5 mathematical decision-graph rebuild before each selected move:
+./scripts/run_continuous.sh --mode longgraph --model 4 --depth 2 \
+  --quiescence 0 --plies 160 --opening cycle --max-games 0
+```
+
+Use Ctrl+C to stop. Set `--max-games 2` for a bounded first run. Reusing the session directory continues at the next free game number rather than overwriting earlier games. See [V6 continuous self-play design and evidence](docs/V6_CONTINUOUS_SELFPLAY.md), [V6 exact release validation](V6_RELEASE_VALIDATION.md) and [runtime installation](runtime/README.md). **The included historical English PDF describes the V5 research baseline.** New V6 behavior is documented in the two files just linked; the V5 PDF is not misrepresented as a V6 verification report.
+
+---
+
+## Preserved V5 research archive
+
+### JOSHUA V5: Long Mathematical Chess Decision Graphs and Neural Support with paceval
 
 **JOSHUA** is an English-language, Linux/C++ chess research program that plays both sides automatically. It uses the **original local paceval SDK** to evaluate reusable mathematical expressions. The MCP server, Stockfish, and Leela Chess Zero are not needed and are not invoked during a JOSHUA self-play game. JOSHUA's name is a tribute to the computer in *WarGames*, not a claim of association with the film.
 
