@@ -1,0 +1,76 @@
+{
+  "service": "actual paceval remote MCP 4.26",
+  "main_experiment_counted_separately": true,
+  "variables": [
+    "x",
+    "y",
+    "z"
+  ],
+  "inputs": [
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      -1,
+      1,
+      0
+    ],
+    [
+      2,
+      1,
+      -1
+    ]
+  ],
+  "expressions": [
+    "(-1) % 10",
+    "(-1) mod 10",
+    "4 min 5",
+    "4 max 5",
+    "((x <= (2*y)) AND (z >= 0))",
+    "((NOT(x = y)) OR (z <> 0))",
+    "((x = y) XOR (z <> 0))"
+  ],
+  "actual_results_by_graph": [
+    [
+      -1,
+      -1,
+      -1
+    ],
+    [
+      9,
+      9,
+      9
+    ],
+    [
+      4,
+      4,
+      4
+    ],
+    [
+      5,
+      5,
+      5
+    ],
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      1
+    ]
+  ],
+  "status": "PASS",
+  "executed_graphs": 7,
+  "graph_point_evaluations": 21,
+  "error_count": 0
+}

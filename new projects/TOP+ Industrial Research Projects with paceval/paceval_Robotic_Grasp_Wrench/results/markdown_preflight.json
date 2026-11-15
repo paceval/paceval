@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "markdown_files_checked": 6,
+  "markdown_parser": "markdown-it-py CommonMark",
+  "negative_regressions_passed": 7,
+  "negative_regression_status": {
+    "legacy_inline": true,
+    "legacy_display": true,
+    "unsupported_macro": true,
+    "unmatched_inline": true,
+    "nested_display": true,
+    "unclosed_display": true,
+    "inline_display_mixed": true
+  },
+  "pdf_pages": 16,
+  "github_com_live_preview_not_inspected": true,
+  "errors": []
+}

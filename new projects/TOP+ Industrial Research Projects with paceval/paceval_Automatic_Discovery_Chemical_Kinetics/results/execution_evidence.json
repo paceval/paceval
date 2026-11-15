@@ -1,0 +1,17 @@
+{
+  "sdk":"original paceval 4.25 Linux shared library",
+  "seed":20261115,
+  "candidate_count":1000,
+  "training_samples":512,
+  "validation_samples":256,
+  "holdout_samples":256,
+  "unique_graphs_created":1031,
+  "unique_graphs_executed":1031,
+  "scalar_calls":7248,
+  "multi_graph_batch_calls":10130,
+  "graph_point_evaluations":2623248,
+  "verified_end_values":6272,
+  "verified_integration_properties":6480,
+  "v1_selected_id":92,
+  "v2_selected_id":301
+}

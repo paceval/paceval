@@ -1,0 +1,22 @@
+{
+  "independent_candidate_scoring_checks": 4000,
+  "independent_decision_and_stoichiometry_checks": 5698,
+  "independent_high_precision_80_digit_values": 450,
+  "selected_models": [
+    {
+      "model": "V1_MASS_ACTION",
+      "selected_id": "92",
+      "family": "0",
+      "kref": "0.302419574264854",
+      "holdout_normalized_loss": "0.00146004980860039"
+    },
+    {
+      "model": "V2_CONSTRAINED_SEARCH",
+      "selected_id": "301",
+      "family": "1",
+      "kref": "0.650144863771821",
+      "holdout_normalized_loss": "6.847079422183e-06"
+    }
+  ],
+  "status": "PASS"
+}

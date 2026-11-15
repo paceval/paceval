@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "engine_evidence": "remote paceval MCP 4.26 graph results transcribed to CSV",
+  "reference": "independent geometrical contact mechanics; mpmath 90 digits",
+  "checked_cases": 81,
+  "checked_numeric_and_boolean_cells": 567,
+  "passed_cells": 567,
+  "worst_absolute_difference_due_to_remote_decimal_transcription": 4.5036565105512394e-12,
+  "model_v1_candidate_pass_count": 21,
+  "model_v2_candidate_pass_count": 12,
+  "changed_candidate_status_count": 9,
+  "errors": [],
+  "tinc_printed_interval_point_checks": 8,
+  "tinc_passed": 8,
+  "pointwise_not_full_interval_coverage": true,
+  "measurement_or_force_closure_certification": false
+}
