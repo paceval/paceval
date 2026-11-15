@@ -1,0 +1,24 @@
+Internal ctest changing into directory: /mnt/data/_wp28_build
+Test project /mnt/data/_wp28_build
+    Start 1: sdk_scalar_batch_operators_conversion
+1/9 Test #1: sdk_scalar_batch_operators_conversion ...   Passed    0.01 sec
+    Start 2: csv_to_real_paceval_to_csv
+2/9 Test #2: csv_to_real_paceval_to_csv ..............   Passed   12.77 sec
+    Start 3: independent_high_precision
+3/9 Test #3: independent_high_precision ..............   Passed    1.74 sec
+    Start 4: analytic_lyapunov_certificate
+4/9 Test #4: analytic_lyapunov_certificate ...........   Passed    0.72 sec
+    Start 5: archive_markdown_math_links
+5/9 Test #5: archive_markdown_math_links .............   Passed    0.69 sec
+    Start 6: markdown_negative_regressions
+6/9 Test #6: markdown_negative_regressions ...........   Passed    0.65 sec
+    Start 7: independently_integrated_closed_loop
+7/9 Test #7: independently_integrated_closed_loop ....   Passed    0.68 sec
+    Start 8: deterministic_input_generation
+8/9 Test #8: deterministic_input_generation ..........   Passed    0.65 sec
+    Start 9: scientific_release_file_preflight
+9/9 Test #9: scientific_release_file_preflight .......   Passed    0.89 sec
+
+100% tests passed, 0 tests failed out of 9
+
+Total Test time (real) =  18.81 sec

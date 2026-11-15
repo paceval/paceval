@@ -1,0 +1,8 @@
+{
+  "precision_decimal_digits": 90,
+  "independent_checks": 56064,
+  "max_absolute_comparison_difference_internal_only": 6.419450673010098e-15,
+  "failures": [],
+  "pass": true,
+  "reference_origin": "separately written mpmath formulas with source numeric values converted to exact binary float first"
+}

@@ -1,0 +1,22 @@
+{
+  "valid_region": "V <= min(p1,p2)*R^2; implies x^2+y^2<=R^2",
+  "model": "2-state autonomous continuous-time controlled nonlinear plant; u not clipped",
+  "analytic_method": "elementary Young/Cauchy plus tanh(x)/x >= 1-R^2/3 on |x|<=R<=1",
+  "checks": 3537,
+  "certified_sufficient": {
+    "V1": 103,
+    "V2": 119
+  },
+  "sampled_pass": {
+    "V1": 144,
+    "V2": 176
+  },
+  "sampled_counterexamples": {
+    "V1": 48,
+    "V2": 16
+  },
+  "false_certificates": 0,
+  "failures": [],
+  "pass": true,
+  "not_claimed": "Global stability, actuator saturation dynamics, disturbances, complete original robot system, industrial safety certification"
+}

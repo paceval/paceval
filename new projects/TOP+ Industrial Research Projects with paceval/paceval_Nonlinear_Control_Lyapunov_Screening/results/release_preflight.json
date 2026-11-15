@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "pdf_pages": 16,
+  "scientific_png_count": 10,
+  "scientific_vector_pdf_count": 10,
+  "graphs_created_and_executed": 49,
+  "markdown_file_count": 6,
+  "runtime_library_included": false,
+  "note": "Visual review manually performed on all rendered pages. GitHub remote visual preview not inspected."
+}

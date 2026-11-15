@@ -1,0 +1,7 @@
+{
+  "independent_integration": "Python RK4 four times smaller step than C++ host",
+  "checks": 32,
+  "max_abs_difference_internal_only": 6.523278583969727e-10,
+  "failures": [],
+  "pass": true
+}

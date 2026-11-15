@@ -1,0 +1,18 @@
+{
+ "sdk":"original paceval 4.25, Linux x86-64 shared library",
+ "unique_graphs_created":49,
+ "unique_graphs_executed":49,
+ "scalar_calls":111146,
+ "batch_calls":961,
+ "graph_point_evaluations":2687428,
+ "candidate_count":192,
+ "model_candidate_combinations":384,
+ "sample_points_per_candidate":317,
+ "sampled_pass_V1":144,
+ "sampled_pass_V2":176,
+ "analytic_certificate_V1":103,
+ "analytic_certificate_V2":119,
+ "counterexample_candidate_V1":48,
+ "counterexample_candidate_V2":16,
+ "native_endvalue_assertions":4070
+}
