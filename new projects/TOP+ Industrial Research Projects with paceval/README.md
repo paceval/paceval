@@ -1,6 +1,6 @@
 # paceval. | Industrial Research Portfolio
 
-**101 research demonstrators across 15 industrial and scientific application clusters.**
+**TOP 100+ research demonstrators across 15 industrial and scientific application clusters.**
 
 This directory is a technical catalogue of research applications built around the [paceval. Mathematical Engine](https://paceval.com/). The projects illustrate how explicit mathematical expressions can be prepared as reusable computation objects and evaluated repeatedly within industrial workflows, scientific computing, AI tools, simulation pipelines and decision-support systems.
 
@@ -30,7 +30,7 @@ Industrial model, engineering experiment or agent tool request
 
 The paceval SDK accepts mathematical expressions and creates reusable computation objects that can be evaluated with different input values. The precise functions and calculation granularity depend on the project and SDK version. Some studies also document calculations through the paceval MCP service. A documented MCP execution is not the same evidence as a successfully linked and run local C++ executable.
 
-The mathematical engine is an execution layer, not a replacement for the full application. C++ or other host software remains responsible for tasks such as data acquisition, numerical solver iteration, event management, model training, physical simulation state, sensor interfaces, authentication and I/O where these are not implemented as paceval expressions. Projects may encode objectives, piecewise rules, nonlinear physical submodels, sensitivities, calibration functions and mathematical constraint margins in persistent graphs. **The presence of paceval API calls is not evidence that every part of an application executes within paceval.**
+The mathematical engine is an execution layer, not a replacement for the full application. C++ or other host software remains responsible for tasks such as data acquisition, numerical solver iteration, event management, model training, physical simulation state, sensor interfaces, authentication and I/O where these are not implemented as paceval expressions. Projects may encode objectives, piecewise rules, nonlinear physical submodels, sensitivities, calibration functions and mathematical constraint margins in persistent graphs. 
 
 For engine details, see the [official paceval API](https://paceval.com/api/), [developer documentation](https://paceval.com/developers/) and [MCP Server project](https://github.com/paceval/paceval/tree/main/examples_sources/MCP_server).
 
@@ -57,7 +57,7 @@ For engine details, see the [official paceval API](https://paceval.com/api/), [d
 
 ## All research projects
 
-The project title links to its local README. Adjacent links lead directly to its main English whitepaper and primary C++ source. All **303 catalogue file links** have been checked against the provided project archives. The paths are relative to this directory and are intended for a `README.md` placed in `new projects/TOP+ Industrial Research Projects with paceval/`.
+The project title links to its local README. Adjacent links lead directly to its main English whitepaper and primary C++ source. 
 
 <a id="cluster-1"></a>
 ### 1. AI agents, mathematical tools and MCP integration (10)
