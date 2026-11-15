@@ -1,0 +1,16 @@
+{
+  "sdk":"original paceval 4.25 Linux x86-64",
+  "data_source":"deterministic synthetic EUR cashflows",
+  "scenario_count":8,
+  "cashflow_count":1024,
+  "input_rows":8192,
+  "unique_graphs_created":51,
+  "unique_graphs_executed":51,
+  "scalar_calls":13,
+  "batch_calls":208,
+  "graph_point_evaluations":386196,
+  "native_reference_checks":930,
+  "illustrative_loss_guards_pass":16,
+  "model_versions":2,
+  "stress_surface_graph_points":82944
+}

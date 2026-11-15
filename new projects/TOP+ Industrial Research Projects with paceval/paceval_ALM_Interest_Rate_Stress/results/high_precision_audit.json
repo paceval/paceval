@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "mpmath_decimal_digits": 85,
+  "independent_comparisons": 114907,
+  "reference_model": "fixed deterministic EUR cashflows, analytic continuously compounded rates; mpmath independently authored",
+  "max_absolute_numeric_difference": "0.00000000006315632040882629772418546603052551544506390264361623355971463401445773999852185248538",
+  "failed_examples": [],
+  "full_cashflow_rows_checked": 8192,
+  "stress_surface_points_checked": 11
+}

@@ -1,0 +1,38 @@
+{
+  "date_utc": "2026-11-15",
+  "source_proposal": "WP 32 uploaded PDF, research plan only",
+  "remote_engine": "paceval MCP 4.26",
+  "registered_graphs": {
+    "axis": 30,
+    "aggregate": 8,
+    "quaternion": 5
+  },
+  "successful_graph_point_evaluations": {
+    "axis_147x30": 4410,
+    "aggregate_49x8": 392,
+    "quaternion_12x5": 60,
+    "desaturation_12x5": 60
+  },
+  "primary_total": 4922,
+  "primary_errors": 0,
+  "main_cases": 49,
+  "axis_vectors": 147,
+  "quaternion_cases": 12,
+  "desaturation_steps": 12,
+  "aggregate_results": {
+    "v1_eligible": 20,
+    "v2_eligible": 15,
+    "changed": 5
+  },
+  "observed_csv_types": "Selected transcriptions of real MCP response values, not complete raw protocol payload",
+  "tinc": {
+    "unique_interval_graphs": 2,
+    "evaluations": 12,
+    "no_error": 10,
+    "error_144": 2,
+    "input_interval_certification": false
+  },
+  "local_sdk_execution": "not performed; compatible libpaceval.so absent",
+  "performance": "not benchmarked",
+  "assumptions": "hypothetical 3-axis reaction-wheel geometry, synthetic values, first-order time step and quaternion normalized Euler update"
+}

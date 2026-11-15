@@ -1,0 +1,123 @@
+{
+  "remote_engine": "paceval MCP 4.26",
+  "actual_test_inputs": [
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      -1,
+      1,
+      0
+    ],
+    [
+      2,
+      1,
+      -1
+    ]
+  ],
+  "graph_count": 7,
+  "graph_point_count": 21,
+  "hasError": false,
+  "observed": [
+    {
+      "id": "negative_percent",
+      "expression": "(-1) % 10",
+      "observed_results": [
+        -1,
+        -1,
+        -1
+      ],
+      "per_row_error_numbers": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "negative_mod",
+      "expression": "(-1) mod 10",
+      "observed_results": [
+        9,
+        9,
+        9
+      ],
+      "per_row_error_numbers": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "min",
+      "expression": "4 min 5",
+      "observed_results": [
+        4,
+        4,
+        4
+      ],
+      "per_row_error_numbers": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "max",
+      "expression": "4 max 5",
+      "observed_results": [
+        5,
+        5,
+        5
+      ],
+      "per_row_error_numbers": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "and",
+      "expression": "((x <= (2*y)) AND (z >= 0))",
+      "observed_results": [
+        1,
+        1,
+        0
+      ],
+      "per_row_error_numbers": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "not_or",
+      "expression": "((NOT(x = y)) OR (z <> 0))",
+      "observed_results": [
+        0,
+        1,
+        1
+      ],
+      "per_row_error_numbers": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "xor",
+      "expression": "((x = y) XOR (z <> 0))",
+      "observed_results": [
+        1,
+        0,
+        1
+      ],
+      "per_row_error_numbers": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

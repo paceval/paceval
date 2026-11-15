@@ -1,0 +1,53 @@
+{
+  "folder": "/mnt/data/WP32_Satellite_Attitude_Paceval_Research",
+  "file_count": 7,
+  "files": [
+    {
+      "file": "LICENSE_NOTICE.md",
+      "inline_pairs": 0,
+      "display_delimiter_lines": 0,
+      "errors": []
+    },
+    {
+      "file": "README.md",
+      "inline_pairs": 11,
+      "display_delimiter_lines": 8,
+      "errors": []
+    },
+    {
+      "file": "README_COMPACT.md",
+      "inline_pairs": 0,
+      "display_delimiter_lines": 0,
+      "errors": []
+    },
+    {
+      "file": "RELEASE_STATUS.md",
+      "inline_pairs": 0,
+      "display_delimiter_lines": 0,
+      "errors": []
+    },
+    {
+      "file": "RESEARCH_VALIDATION.md",
+      "inline_pairs": 0,
+      "display_delimiter_lines": 0,
+      "errors": []
+    },
+    {
+      "file": "examples/DATA_SCHEMA.md",
+      "inline_pairs": 0,
+      "display_delimiter_lines": 0,
+      "errors": []
+    },
+    {
+      "file": "results/README_DATA.md",
+      "inline_pairs": 0,
+      "display_delimiter_lines": 0,
+      "errors": []
+    }
+  ],
+  "negative_cases": 8,
+  "negative_rejected": 8,
+  "failures": [],
+  "github_com_visual_render_verified": false,
+  "parser": "mistune AST with math plugin"
+}

@@ -1,0 +1,41 @@
+{
+  "reference_precision_decimal_digits": 90,
+  "checks_by_class": {
+    "observed_aggregate": 343,
+    "observed_axis": 96,
+    "observed_quaternion": 60,
+    "quaternion_unit_norm": 12,
+    "observed_desaturation": 72,
+    "momentum_exchange_invariant": 1,
+    "coupled_euler_invariant": 1
+  },
+  "total_compared": 585,
+  "max_absolute_differences": {
+    "observed_aggregate": 4.705882352941177e-16,
+    "observed_axis": 5.02262443438914e-15,
+    "observed_quaternion": 4.699787711367847e-15,
+    "quaternion_unit_norm": 5.814725531887668e-16,
+    "observed_desaturation": 4.6153846153846157e-17,
+    "momentum_exchange_invariant": 0.0,
+    "coupled_euler_invariant": 0.0
+  },
+  "failures": [],
+  "tinc": {
+    "confirmed": 7,
+    "point_inclusion_not_demonstrable_from_rounded_text": 3,
+    "paceval_error_144_unresolved": 2,
+    "input_interval_certification": false
+  },
+  "domain_negative_tests_documented": [
+    "I <= 0",
+    "Jw <= 0",
+    "dt <= 0",
+    "taumax <= 0",
+    "hmax <= 0",
+    "wlimit <= 0",
+    "NaN/Inf forbidden",
+    "wheel+body axes must be orthogonal in this version"
+  ],
+  "local_paceval_sdk_link_and_execution": "NOT EXECUTED",
+  "engine_numerical_speedup": "NOT MEASURED"
+}

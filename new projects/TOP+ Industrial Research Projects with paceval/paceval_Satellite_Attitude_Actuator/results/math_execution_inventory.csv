@@ -1,0 +1,44 @@
+group,graph_id,declared_variables,remote_mcp_model_points,units,owner,status
+axis,wheel_inertial_coupling,20,147,N m,paceval,ACTUAL MCP4.26 - no reported error
+axis,wheel_gyro_coupling,20,147,N m,paceval,ACTUAL MCP4.26 - no reported error
+axis,acceleration_v1,20,147,rad/s^2,paceval,ACTUAL MCP4.26 - no reported error
+axis,acceleration_v2,20,147,rad/s^2,paceval,ACTUAL MCP4.26 - no reported error
+axis,rate_next_v1,20,147,rad/s,paceval,ACTUAL MCP4.26 - no reported error
+axis,rate_next_v2,20,147,rad/s,paceval,ACTUAL MCP4.26 - no reported error
+axis,wheel_h_next,20,147,N m s,paceval,ACTUAL MCP4.26 - no reported error
+axis,torque_margin,20,147,N m,paceval,ACTUAL MCP4.26 - no reported error
+axis,momentum_margin,20,147,N m s,paceval,ACTUAL MCP4.26 - no reported error
+axis,rate_margin_v1,20,147,rad/s,paceval,ACTUAL MCP4.26 - no reported error
+axis,rate_margin_v2,20,147,rad/s,paceval,ACTUAL MCP4.26 - no reported error
+axis,candidate_guard_v1,20,147,0/1,paceval,ACTUAL MCP4.26 - no reported error
+axis,candidate_guard_v2,20,147,0/1,paceval,ACTUAL MCP4.26 - no reported error
+axis,normalized_score_v1,20,147,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+axis,normalized_score_v2,20,147,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+axis,cost_v1,20,147,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+axis,cost_v2,20,147,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+axis,sensitivity_accel_to_torque,20,147,1/(kg m^2),paceval,ACTUAL MCP4.26 - no reported error
+axis,sensitivity_momentum_to_torque,20,147,s,paceval,ACTUAL MCP4.26 - no reported error
+axis,acceleration_version_delta,20,147,rad/s^2,paceval,ACTUAL MCP4.26 - no reported error
+axis,angular_momentum_balance_residual_v2,20,147,N m,paceval,ACTUAL MCP4.26 - no reported error
+axis,wheel_spin_rate,20,147,rad/s,paceval,ACTUAL MCP4.26 - no reported error
+axis,wheel_mechanical_power_proxy,20,147,W,paceval,ACTUAL MCP4.26 - no reported error
+axis,body_and_wheel_momentum,20,147,N m s,paceval,ACTUAL MCP4.26 - no reported error
+axis,torque_utilization,20,147,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+axis,momentum_utilization,20,147,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+axis,gyro_to_torque_ratio,20,147,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+axis,sensitivity_acceleration_to_hj,20,147,1/s/(kg m^2),paceval,ACTUAL MCP4.26 - no reported error
+axis,sensitivity_acceleration_to_hk,20,147,1/s/(kg m^2),paceval,ACTUAL MCP4.26 - no reported error
+axis,score_delta_v2_v1,20,147,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+aggregate,joint_guard_v1,18,49,0/1,paceval,ACTUAL MCP4.26 - no reported error
+aggregate,joint_guard_v2,18,49,0/1,paceval,ACTUAL MCP4.26 - no reported error
+aggregate,joint_score_v1,18,49,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+aggregate,joint_score_v2,18,49,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+aggregate,decision_changed,18,49,0/1,paceval,ACTUAL MCP4.26 - no reported error
+aggregate,joint_score_delta,18,49,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+aggregate,smallest_torque_margin,18,49,N m,paceval,ACTUAL MCP4.26 - no reported error
+aggregate,smallest_momentum_margin,18,49,N m s,paceval,ACTUAL MCP4.26 - no reported error
+quaternion,quaternion_candidate_norm,8,12,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+quaternion,quaternion_next_q0,8,12,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+quaternion,quaternion_next_q1,8,12,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+quaternion,quaternion_next_q2,8,12,dimensionless,paceval,ACTUAL MCP4.26 - no reported error
+quaternion,quaternion_next_q3,8,12,dimensionless,paceval,ACTUAL MCP4.26 - no reported error

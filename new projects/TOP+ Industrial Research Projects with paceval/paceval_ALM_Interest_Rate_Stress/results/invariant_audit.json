@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "independent_accounting_and_domain_checks": 16668,
+  "scenario_versions": 16,
+  "input_valuations": 16384,
+  "maturity_bucket_rows": 15
+}

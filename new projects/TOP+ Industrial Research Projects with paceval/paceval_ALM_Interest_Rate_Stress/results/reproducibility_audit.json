@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "byte_identical_files": 12,
+  "repetition_is_separate_from_main_run": true,
+  "sha256": {
+    "cashflow_valuations.csv": "a0617958c7022f70aac428e03c7bdf72a464c9f348fc5797486741af75801d39",
+    "scenario_summary.csv": "e36e646fb8258a9bd7637fa9f72d907daceb58db3b004c2ec04ce3035646820f",
+    "model_comparison.csv": "fb5406712b50b90ab7fe463b6ef9fcc007baa7e9660548c91403af9f9f25f8fc",
+    "curve_profiles.csv": "44b51aa8ca130c6aa35760d4b14070c4d6c78584c0ec36325ee63af0b6291b27",
+    "maturity_buckets.csv": "2c2450ce6ce640466741035062390f32678f7336a37b0c30fb4a7648969f4963",
+    "stress_surface.csv": "3a2e5948c1e8b3161e53118a14bd8b4ef64c3aa85fca0834c7123e84e77a7e85",
+    "formula_manifest.csv": "ea2b25a798edc83c5138a7c3ba389f09323e1aabc5b0e9c3f32881f44e674010",
+    "math_execution_inventory.csv": "cc41ae8e323b486f90d7b154e29863b6eb22572614ef561552c91cda8687d378",
+    "native_audit.csv": "725088b88b981a2d997c8250e390af73177e87479e02b7552d4ad35f2d2f6210",
+    "execution_evidence.json": "e8824b939184bfcd29f31bc692fcb78a3e477b8c0aed33d53efb38b00a8e53c9",
+    "high_precision_audit.json": "22c7f1c72830688d3fbcf533b6d7eb410f2f36e88a7bf0abea2bac2d3d16372e",
+    "invariant_audit.json": "63568576005ac0fce58a58d3cc97c2ae92c67e5662ac946794b02880a9fed8d2"
+  }
+}

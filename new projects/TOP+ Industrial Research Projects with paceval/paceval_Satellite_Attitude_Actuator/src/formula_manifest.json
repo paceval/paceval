@@ -1,0 +1,339 @@
+{
+  "project": "WP32 Satellite Attitude Actuator Torque and Momentum Envelopes",
+  "remote_engine": "paceval MCP 4.26",
+  "model_versions": [
+    "v1 (rigid inertia coupling without wheel gyroscope)",
+    "v2 (rigid and wheel gyroscopic coupling)"
+  ],
+  "axis_domain": "I,Ij,Ik,Jw,dt,torque/momentum/rate limits strictly positive; orthogonal wheel geometry; finite values",
+  "graph_groups": [
+    {
+      "group": "axis",
+      "variables": [
+        "I",
+        "Ij",
+        "Ik",
+        "w",
+        "wj",
+        "wk",
+        "h",
+        "hj",
+        "hk",
+        "tau",
+        "ext",
+        "dt",
+        "taumax",
+        "hmax",
+        "wlimit",
+        "Jw",
+        "wF",
+        "wH",
+        "wA",
+        "targetAcc"
+      ],
+      "remote_registration": "successful for each expression, reported error 0",
+      "graphs": [
+        {
+          "id": "wheel_inertial_coupling",
+          "expression": "((Ik-Ij)*wj*wk)",
+          "units": "N m",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "wheel_gyro_coupling",
+          "expression": "(wj*hk-wk*hj)",
+          "units": "N m",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "acceleration_v1",
+          "expression": "((tau+ext-((Ik-Ij)*wj*wk))/I)",
+          "units": "rad/s^2",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "acceleration_v2",
+          "expression": "((tau+ext-((Ik-Ij)*wj*wk)-(wj*hk-wk*hj))/I)",
+          "units": "rad/s^2",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "rate_next_v1",
+          "expression": "(w+dt*((tau+ext-((Ik-Ij)*wj*wk))/I))",
+          "units": "rad/s",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "rate_next_v2",
+          "expression": "(w+dt*((tau+ext-((Ik-Ij)*wj*wk)-(wj*hk-wk*hj))/I))",
+          "units": "rad/s",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "wheel_h_next",
+          "expression": "(h-tau*dt)",
+          "units": "N m s",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "torque_margin",
+          "expression": "(taumax-abs(tau))",
+          "units": "N m",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "momentum_margin",
+          "expression": "(hmax-abs((h-tau*dt)))",
+          "units": "N m s",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "rate_margin_v1",
+          "expression": "(wlimit-abs((w+dt*((tau+ext-((Ik-Ij)*wj*wk))/I))))",
+          "units": "rad/s",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "rate_margin_v2",
+          "expression": "(wlimit-abs((w+dt*((tau+ext-((Ik-Ij)*wj*wk)-(wj*hk-wk*hj))/I))))",
+          "units": "rad/s",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "candidate_guard_v1",
+          "expression": "((((taumax-abs(tau))>=0) AND ((hmax-abs((h-tau*dt)))>=0)) AND ((wlimit-abs((w+dt*((tau+ext-((Ik-Ij)*wj*wk))/I))))>=0))",
+          "units": "0/1",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "candidate_guard_v2",
+          "expression": "((((taumax-abs(tau))>=0) AND ((hmax-abs((h-tau*dt)))>=0)) AND ((wlimit-abs((w+dt*((tau+ext-((Ik-Ij)*wj*wk)-(wj*hk-wk*hj))/I))))>=0))",
+          "units": "0/1",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "normalized_score_v1",
+          "expression": "((((taumax-abs(tau))/taumax) min ((hmax-abs((h-tau*dt)))/hmax)) min ((wlimit-abs((w+dt*((tau+ext-((Ik-Ij)*wj*wk))/I))))/wlimit))",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "normalized_score_v2",
+          "expression": "((((taumax-abs(tau))/taumax) min ((hmax-abs((h-tau*dt)))/hmax)) min ((wlimit-abs((w+dt*((tau+ext-((Ik-Ij)*wj*wk)-(wj*hk-wk*hj))/I))))/wlimit))",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "cost_v1",
+          "expression": "(wF*(tau/taumax)^2+wH*((h-tau*dt)/hmax)^2+wA*((((tau+ext-((Ik-Ij)*wj*wk))/I)-targetAcc)*dt/wlimit)^2)",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "cost_v2",
+          "expression": "(wF*(tau/taumax)^2+wH*((h-tau*dt)/hmax)^2+wA*((((tau+ext-((Ik-Ij)*wj*wk)-(wj*hk-wk*hj))/I)-targetAcc)*dt/wlimit)^2)",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "sensitivity_accel_to_torque",
+          "expression": "(1/I)",
+          "units": "1/(kg m^2)",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "sensitivity_momentum_to_torque",
+          "expression": "(-dt)",
+          "units": "s",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "acceleration_version_delta",
+          "expression": "(((tau+ext-((Ik-Ij)*wj*wk)-(wj*hk-wk*hj))/I)-((tau+ext-((Ik-Ij)*wj*wk))/I))",
+          "units": "rad/s^2",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "angular_momentum_balance_residual_v2",
+          "expression": "(I*((tau+ext-((Ik-Ij)*wj*wk)-(wj*hk-wk*hj))/I)-tau-ext+((Ik-Ij)*wj*wk)+(wj*hk-wk*hj))",
+          "units": "N m",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "wheel_spin_rate",
+          "expression": "(h/Jw)",
+          "units": "rad/s",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "wheel_mechanical_power_proxy",
+          "expression": "abs(tau*h/Jw)",
+          "units": "W",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "body_and_wheel_momentum",
+          "expression": "(I*w+h)",
+          "units": "N m s",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "torque_utilization",
+          "expression": "(abs(tau)/taumax)",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "momentum_utilization",
+          "expression": "(abs((h-tau*dt))/hmax)",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "gyro_to_torque_ratio",
+          "expression": "(abs((wj*hk-wk*hj))/taumax)",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "sensitivity_acceleration_to_hj",
+          "expression": "(wk/I)",
+          "units": "1/s/(kg m^2)",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "sensitivity_acceleration_to_hk",
+          "expression": "(-wj/I)",
+          "units": "1/s/(kg m^2)",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "score_delta_v2_v1",
+          "expression": "(((((taumax-abs(tau))/taumax) min ((hmax-abs((h-tau*dt)))/hmax)) min ((wlimit-abs((w+dt*((tau+ext-((Ik-Ij)*wj*wk)-(wj*hk-wk*hj))/I))))/wlimit))-((((taumax-abs(tau))/taumax) min ((hmax-abs((h-tau*dt)))/hmax)) min ((wlimit-abs((w+dt*((tau+ext-((Ik-Ij)*wj*wk))/I))))/wlimit)))",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        }
+      ]
+    },
+    {
+      "group": "aggregate",
+      "variables": [
+        "mtx",
+        "mty",
+        "mtz",
+        "mhx",
+        "mhy",
+        "mhz",
+        "mwx1",
+        "mwy1",
+        "mwz1",
+        "mwx2",
+        "mwy2",
+        "mwz2",
+        "sx1",
+        "sy1",
+        "sz1",
+        "sx2",
+        "sy2",
+        "sz2"
+      ],
+      "remote_registration": "successful for each expression, reported error 0",
+      "graphs": [
+        {
+          "id": "joint_guard_v1",
+          "expression": "((sx1>=0) AND ((sy1>=0) AND (sz1>=0)))",
+          "units": "0/1",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "joint_guard_v2",
+          "expression": "((sx2>=0) AND ((sy2>=0) AND (sz2>=0)))",
+          "units": "0/1",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "joint_score_v1",
+          "expression": "((sx1 min sy1) min sz1)",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "joint_score_v2",
+          "expression": "((sx2 min sy2) min sz2)",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "decision_changed",
+          "expression": "((((sx1 min sy1) min sz1)>=0) <> (((sx2 min sy2) min sz2)>=0))",
+          "units": "0/1",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "joint_score_delta",
+          "expression": "(((sx2 min sy2) min sz2)-((sx1 min sy1) min sz1))",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "smallest_torque_margin",
+          "expression": "((mtx min mty) min mtz)",
+          "units": "N m",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "smallest_momentum_margin",
+          "expression": "((mhx min mhy) min mhz)",
+          "units": "N m s",
+          "owner": "paceval persistent mathematical graph"
+        }
+      ]
+    },
+    {
+      "group": "quaternion",
+      "variables": [
+        "q0",
+        "q1",
+        "q2",
+        "q3",
+        "wx",
+        "wy",
+        "wz",
+        "dt"
+      ],
+      "remote_registration": "successful for each expression, reported error 0",
+      "graphs": [
+        {
+          "id": "quaternion_candidate_norm",
+          "expression": "sqrt(((q0+dt*(-0.5*(q1*wx+q2*wy+q3*wz))))^2+((q1+dt*(0.5*(q0*wx+q2*wz-q3*wy))))^2+((q2+dt*(0.5*(q0*wy+q3*wx-q1*wz))))^2+((q3+dt*(0.5*(q0*wz+q1*wy-q2*wx))))^2)",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "quaternion_next_q0",
+          "expression": "((q0+dt*(-0.5*(q1*wx+q2*wy+q3*wz)))/sqrt(((q0+dt*(-0.5*(q1*wx+q2*wy+q3*wz))))^2+((q1+dt*(0.5*(q0*wx+q2*wz-q3*wy))))^2+((q2+dt*(0.5*(q0*wy+q3*wx-q1*wz))))^2+((q3+dt*(0.5*(q0*wz+q1*wy-q2*wx))))^2))",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "quaternion_next_q1",
+          "expression": "((q1+dt*(0.5*(q0*wx+q2*wz-q3*wy)))/sqrt(((q0+dt*(-0.5*(q1*wx+q2*wy+q3*wz))))^2+((q1+dt*(0.5*(q0*wx+q2*wz-q3*wy))))^2+((q2+dt*(0.5*(q0*wy+q3*wx-q1*wz))))^2+((q3+dt*(0.5*(q0*wz+q1*wy-q2*wx))))^2))",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "quaternion_next_q2",
+          "expression": "((q2+dt*(0.5*(q0*wy+q3*wx-q1*wz)))/sqrt(((q0+dt*(-0.5*(q1*wx+q2*wy+q3*wz))))^2+((q1+dt*(0.5*(q0*wx+q2*wz-q3*wy))))^2+((q2+dt*(0.5*(q0*wy+q3*wx-q1*wz))))^2+((q3+dt*(0.5*(q0*wz+q1*wy-q2*wx))))^2))",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        },
+        {
+          "id": "quaternion_next_q3",
+          "expression": "((q3+dt*(0.5*(q0*wz+q1*wy-q2*wx)))/sqrt(((q0+dt*(-0.5*(q1*wx+q2*wy+q3*wz))))^2+((q1+dt*(0.5*(q0*wx+q2*wz-q3*wy))))^2+((q2+dt*(0.5*(q0*wy+q3*wx-q1*wz))))^2+((q3+dt*(0.5*(q0*wz+q1*wy-q2*wx))))^2))",
+          "units": "dimensionless",
+          "owner": "paceval persistent mathematical graph"
+        }
+      ]
+    }
+  ]
+}

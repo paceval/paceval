@@ -1,0 +1,22 @@
+Internal ctest changing into directory: /mnt/data/_wp33_build
+Test project /mnt/data/_wp33_build
+    Start 2: cashflow_csv_paceval_batches
+    Start 6: github_markdown_negative_tests
+1/8 Test #6: github_markdown_negative_tests .......................   Passed    0.79 sec
+    Start 5: github_markdown_math_links
+2/8 Test #2: cashflow_csv_paceval_batches .........................   Passed    1.25 sec
+    Start 3: independent_mpmath_financial_validation
+3/8 Test #5: github_markdown_math_links ...........................   Passed    0.76 sec
+    Start 4: independent_curve_and_shock_invariants
+4/8 Test #4: independent_curve_and_shock_invariants ...............   Passed    0.89 sec
+    Start 7: deterministic_input_generator
+5/8 Test #7: deterministic_input_generator ........................   Passed    0.73 sec
+    Start 1: real_paceval_sdk_conversion_and_operator_semantics
+6/8 Test #1: real_paceval_sdk_conversion_and_operator_semantics ...   Passed    0.01 sec
+7/8 Test #3: independent_mpmath_financial_validation ..............   Passed    5.19 sec
+    Start 8: scientific_release_preflight
+8/8 Test #8: scientific_release_preflight .........................   Passed    1.98 sec
+
+100% tests passed, 0 tests failed out of 8
+
+Total Test time (real) =   8.43 sec

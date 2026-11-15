@@ -1,0 +1,21 @@
+{
+  "attempt": "positive-rate branch removes abs operator under positive predicted-rate domain precondition",
+  "remote_engine": "paceval MCP 4.26",
+  "input_cases": [
+    "T01",
+    "T02",
+    "T03",
+    "T04",
+    "T05",
+    "T06"
+  ],
+  "returned_error_numbers": [
+    0,
+    144,
+    0,
+    0,
+    0,
+    144
+  ],
+  "interpretation": "Same 144 errors remain on T02 and T06, not counted among confirmed intervals"
+}
