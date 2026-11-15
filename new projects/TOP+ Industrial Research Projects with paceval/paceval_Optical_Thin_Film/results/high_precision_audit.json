@@ -1,0 +1,8 @@
+{
+  "precision_decimal_digits": 90,
+  "checks": 8208,
+  "pass": true,
+  "internal_max_absolute_reference_discrepancy": 1.4136412268074843e-12,
+  "failures": [],
+  "reference_method": "Independent explicit mpmath Fresnel/Beer optics using exact binary floating-point inputs, direct composite spectral objective"
+}

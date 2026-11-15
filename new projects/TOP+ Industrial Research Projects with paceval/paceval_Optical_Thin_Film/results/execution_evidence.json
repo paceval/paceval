@@ -1,0 +1,18 @@
+{
+  "original_sdk":"paceval 4.25, Linux x86-64",
+  "unique_graphs_created":33,
+  "unique_graphs_executed":33,
+  "scalar_calls":2751,
+  "batch_calls":6338,
+  "graph_point_evaluations":263709,
+  "site_count":144,
+  "wavelengths_per_site":9,
+  "spectral_sample_rows":1296,
+  "model_versions":2,
+  "beer_tolerance_pass":130,
+  "film_tolerance_pass":129,
+  "joint_recovery_within_3nm":144,
+  "native_reference_assertions":1296,
+  "mean_absolute_thickness_recovery_error_beer_nm":0.17909738651,
+  "mean_absolute_thickness_recovery_error_film_nm":0.0899065814308
+}

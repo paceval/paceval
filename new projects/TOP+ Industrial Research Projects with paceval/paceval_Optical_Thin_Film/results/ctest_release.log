@@ -1,0 +1,22 @@
+Internal ctest changing into directory: /mnt/data/_wp31_build
+Test project /mnt/data/_wp31_build
+    Start 2: csv_paceval_multigraph_inverse
+    Start 7: deterministic_input_generation
+    Start 6: markdown_negative_regressions
+1/8 Test #6: markdown_negative_regressions .......   Passed    0.85 sec
+    Start 5: github_markdown_math_and_links
+2/8 Test #5: github_markdown_math_and_links ......   Passed    0.89 sec
+    Start 1: real_sdk_operators_and_conversion
+3/8 Test #1: real_sdk_operators_and_conversion ...   Passed    0.01 sec
+    Start 8: scientific_release_file_preflight
+4/8 Test #7: deterministic_input_generation ......   Passed    1.77 sec
+5/8 Test #8: scientific_release_file_preflight ...   Passed    1.01 sec
+6/8 Test #2: csv_paceval_multigraph_inverse ......   Passed    2.99 sec
+    Start 4: independent_inversion_and_alias
+    Start 3: independent_high_precision
+7/8 Test #3: independent_high_precision ..........   Passed    1.08 sec
+8/8 Test #4: independent_inversion_and_alias .....   Passed    1.28 sec
+
+100% tests passed, 0 tests failed out of 8
+
+Total Test time (real) =   4.27 sec

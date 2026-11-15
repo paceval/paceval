@@ -1,0 +1,9 @@
+{
+  "independent_inversion_checks": 435,
+  "independent_scipy_recovered_sites": 144,
+  "pass": true,
+  "max_optimizer_thickness_difference_nm_internal": 1.6415573327321908e-06,
+  "single_wavelength_alias_verified": true,
+  "failed_cases": [],
+  "scope": "synthetic nine-wavelength lossless single-layer normal-incidence optics"
+}

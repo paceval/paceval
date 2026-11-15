@@ -1,0 +1,75 @@
+{
+  "same_input_linux_repeat_count": 2,
+  "compared_result_files": 12,
+  "bit_identical_files": 12,
+  "not_bit_identical": [],
+  "test_suite_passed": 8,
+  "test_suite_total": 8,
+  "original_shared_library_sha256": "acf63a87df0ee822b467edbca887393d31ec0ea03562e1abf802d2512a5bfb12",
+  "runtime_binary_embedded": false,
+  "input_seed": 20261115,
+  "result_file_hashes": [
+    {
+      "file": "alias_case.csv",
+      "sha256": "fd8f0920b6bc98a8cc210a688c9d4aedcb01ede52f4bf8005c643e4809cd727a",
+      "byte_reproduced": true
+    },
+    {
+      "file": "alias_curve.csv",
+      "sha256": "38f6600308cffbb0ab319628c52bb6ecddbacad8eaeb57d62586a833441bfad9",
+      "byte_reproduced": true
+    },
+    {
+      "file": "execution_evidence.json",
+      "sha256": "5004d4cdd9dc02efa49f2f04dae0072f200ddd0dade1fd9d62de2a3653e4f13b",
+      "byte_reproduced": true
+    },
+    {
+      "file": "formula_manifest.csv",
+      "sha256": "fc058828952fd46d0c878673d6da1c86658e1ab7b27ceab334ae3c477a4becdd",
+      "byte_reproduced": true
+    },
+    {
+      "file": "high_precision_audit.json",
+      "sha256": "45ed4baa815162a2a45bfccaf1fbd8dd1898076197741356377963c6642249db",
+      "byte_reproduced": true
+    },
+    {
+      "file": "inverse_reference_audit.json",
+      "sha256": "8ee3515ea4fe031706a9167548fe35ed2dada0e95deaafd06e179e545a5d7c76",
+      "byte_reproduced": true
+    },
+    {
+      "file": "math_execution_inventory.csv",
+      "sha256": "0862b4b5b0f0abdd3c883d44222d00a8528691e01ad5c80d9f2841b51cc1d802",
+      "byte_reproduced": true
+    },
+    {
+      "file": "model_comparison.csv",
+      "sha256": "34cd190718940b2c1467540e910e2dca7226c6d39a5247b2d8136aef1f54508f",
+      "byte_reproduced": true
+    },
+    {
+      "file": "native_audit.csv",
+      "sha256": "ada986042c6696063541fd20fe86636fc3be11d940ed4104f815c399e0226043",
+      "byte_reproduced": true
+    },
+    {
+      "file": "objective_profiles.csv",
+      "sha256": "0650ca9c60be803f9ff0cd6717bc987b3af86876b888c69bca930c771b0b1b85",
+      "byte_reproduced": true
+    },
+    {
+      "file": "site_summary.csv",
+      "sha256": "ffb36defcfe1c1dffe546dc010e0f81f713ed2c719204d414c5f56da57d329d3",
+      "byte_reproduced": true
+    },
+    {
+      "file": "spectral_samples.csv",
+      "sha256": "a1318fcd6af7af5223d84fd4977cd26fcf34930cc32eef5225f6f2c4ffe49707",
+      "byte_reproduced": true
+    }
+  ],
+  "sdk_version": "4.25",
+  "method_note": "Repeat verification means identical emitted file bytes; original library supplied separately"
+}
