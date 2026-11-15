@@ -4,7 +4,19 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # The supervisor can always be built and tested without the proprietary paceval
 # shared object. It only orchestrates the real paceval-linked JOSHUA executable.
-add_executable(joshua_selfplay joshua_selfplay.cpp)
+add_executable(joshua_selfplay joshua_selfplay.cpp zip_log_archive.cpp)
+if(UNIX AND NOT APPLE AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+  target_link_options(joshua_selfplay PRIVATE -static-libstdc++ -static-libgcc)
+endif()
+# Write compressed ZIP files inside the C++ supervisor without depending on
+# an external zip CLI or Python. Prefer static zlib for the distributed binary.
+find_package(ZLIB REQUIRED)
+find_library(JOSHUA_ZLIB_STATIC NAMES libz.a)
+if(JOSHUA_ZLIB_STATIC)
+  target_link_libraries(joshua_selfplay PRIVATE "${JOSHUA_ZLIB_STATIC}")
+else()
+  target_link_libraries(joshua_selfplay PRIVATE ZLIB::ZLIB)
+endif()
 # Only chess move helpers from chess_rules.h are needed; discard the unrelated
 # SDK CSV conversion functions from this SDK-independent supervisor.
 if(UNIX AND NOT APPLE)
@@ -16,8 +28,12 @@ if(UNIX AND NOT APPLE)
 endif()
 option(JOSHUA_SELFPLAY_MANAGER_ONLY "Build only the subprocess supervisor without the paceval runtime" OFF)
 if(JOSHUA_SELFPLAY_MANAGER_ONLY)
+ find_package(Python3 COMPONENTS Interpreter REQUIRED)
  enable_testing()
  add_test(NAME joshua_selfplay_supervisor_parser COMMAND joshua_selfplay --selftest)
+ add_test(NAME joshua_selfplay_zip_retention COMMAND "${Python3_EXECUTABLE}"
+  "${CMAKE_CURRENT_LIST_DIR}/../scripts/test_v7_zip_retention.py"
+  "$<TARGET_FILE:joshua_selfplay>" "${CMAKE_CURRENT_LIST_DIR}/../results/v3_ab_depth4_q1_10ply")
  return()
 endif()
 # Official SDK adapter exposes many optional FFI entry points. Keep only those
@@ -62,6 +78,15 @@ if(UNIX AND NOT APPLE)
 endif()
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 enable_testing()
+add_test(NAME joshua_v7_offline_supervisor COMMAND "${Python3_EXECUTABLE}"
+ "${CMAKE_CURRENT_LIST_DIR}/../scripts/test_v6_supervisor.py"
+ "$<TARGET_FILE:joshua_selfplay>" "${CMAKE_CURRENT_LIST_DIR}/../results/v3_ab_depth4_q1_10ply")
+add_test(NAME joshua_v7_zip_retention COMMAND "${Python3_EXECUTABLE}"
+ "${CMAKE_CURRENT_LIST_DIR}/../scripts/test_v7_zip_retention.py"
+ "$<TARGET_FILE:joshua_selfplay>" "${CMAKE_CURRENT_LIST_DIR}/../results/v3_ab_depth4_q1_10ply")
+add_test(NAME joshua_v7_longgraph_offline_replay COMMAND "${Python3_EXECUTABLE}"
+ "${CMAKE_CURRENT_LIST_DIR}/../scripts/test_v6_longgraph_supervisor.py"
+ "$<TARGET_FILE:joshua_selfplay>" "${CMAKE_CURRENT_LIST_DIR}/../results/v5_graph_rebuilt_selfplay_8ply")
 add_test(NAME chess_perft_special_moves_and_sdk COMMAND chess_decision --selftest)
 add_test(NAME chess_full_depth3_paceval_graph COMMAND chess_decision --depth 3 --output "${CMAKE_CURRENT_BINARY_DIR}/test_output")
 add_test(NAME chess_independent_results COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_results.py" "${CMAKE_CURRENT_BINARY_DIR}/test_output")

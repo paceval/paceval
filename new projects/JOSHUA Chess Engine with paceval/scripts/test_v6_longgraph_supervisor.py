@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Recorded-fixture replay of V5 long-graph process supervision; no fresh SDK work."""
 from pathlib import Path
-import tempfile,subprocess,sys,json,csv,shutil
+import tempfile,subprocess,sys,json,csv,shutil,zipfile,io
 manager=Path(sys.argv[1]).resolve();fixtures=Path(sys.argv[2]).resolve()
 with tempfile.TemporaryDirectory() as temp:
  p=Path(temp);fake=p/'mock_longgraph.py';fake.write_text('#!/usr/bin/env python3\n'
@@ -18,14 +18,19 @@ with tempfile.TemporaryDirectory() as temp:
  cmd=[str(manager),'--engine',str(fake),'--mode','longgraph','--opening','fixed','--quiescence','0','--depth','3','--model','4','--plies','8','--max-games','1','--output',str(p/'run')]
  res=subprocess.run(cmd,capture_output=True,text=True,timeout=45)
  assert res.returncode==0,(res.stdout,res.stderr)
- game=p/'run'/'game_000001';rows=list(csv.DictReader((game/'selfplay_timeline.csv').open()))
+ game=p/'run'/'archives'/'game_000001.zip'
+ with zipfile.ZipFile(game) as z:
+  assert z.testzip() is None
+  rows=list(csv.DictReader(io.StringIO(z.read('selfplay_timeline.csv').decode())))
  assert len(rows)==8,(len(rows),res.stdout)
- summary=json.loads((game/'run_evidence.json').read_text());end=json.loads((game/'end_state.json').read_text())
+ with zipfile.ZipFile(game) as z:
+  summary=json.loads(z.read('run_evidence.json'));end=json.loads(z.read('end_state.json'))
+  assert 'learning_report.md' in z.namelist() and 'analysis_queue.csv' in z.namelist()
  assert summary['full_tree_paceval_graphs_built']==8 and summary['independently_checked_graphs']==8
  assert end['termination']=='max_halfmoves' and end['result']=='*'
  for i,r in enumerate(rows):
   source=json.loads((fixtures/f'ply_{i+1:02d}'/'run_evidence.json').read_text())
   assert r['chosen_uci']==source['selected_move'] and r['fen_after']==source['fen_after']
- assert (game/'learning_report.md').exists()
+ assert not (p/'run'/'game_000001').exists()
  assert len((p/'run'/'learning_events.jsonl').read_text().splitlines())==1
- print('V6_LONGGRAPH_OFFLINE_REPLAY_PASS eight_prior_real_graph_evidence_records no_new_runtime_execution')
+ print('V7_LONGGRAPH_OFFLINE_REPLAY_PASS eight_prior_real_graph_evidence_records no_new_runtime_execution')

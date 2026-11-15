@@ -1,5 +1,7 @@
 # JOSHUA V6: Continuous paceval Self-Play and Learning-Evidence Log
 
+> **Historical document.** The unbounded raw folders and append-only logs described below were the V6 implementation. V7 supersedes this storage model with automatically compressed, oldest-first rotating ZIP logs under a default 25 MB quota. See [V7 ZIP retention](V7_ZIP_RETENTION.md).
+
 ## What this release does
 
 JOSHUA continuously plays chess against itself without an external chess engine. A Linux x86-64 supervisor starts a fresh original-JOSHUA child for every game, then validates and stores the new game data, writes a structured list of experimental follow-ups, and proceeds to the next game. `--max-games 0` means **unbounded game count** until stopped by a signal, storage exhaustion, or a detected engine error. Every completed game is saved before the next is started.

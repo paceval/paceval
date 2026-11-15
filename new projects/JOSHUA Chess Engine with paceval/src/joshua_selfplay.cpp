@@ -1,4 +1,4 @@
-// JOSHUA V6 continuous self-play supervisor and reproducible diagnostic logger.
+// JOSHUA V7 continuous self-play, reproducible diagnostic logger and ZIP rotator.
 // This program does not evaluate chess mathematics. It starts the ORIGINAL JOSHUA
 // executable, which must use the local original paceval Mathematical Engine.
 // Each game runs in its own subprocess to release ALL paceval handles at exit.
@@ -23,8 +23,10 @@
 #include <cmath>
 #include <vector>
 #include <ctime>
+#include <climits>
 #include "paceval_main.h"
 #include "chess_rules.h"
+#include "zip_log_archive.h"
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <fcntl.h>
@@ -40,6 +42,15 @@ static string escapeJson(const string&s){string r;for(unsigned char c:s){if(c=='
 static string readText(const fs::path&p){std::ifstream f(p,std::ios::binary);require(bool(f),"Cannot read "+p.string());return string(std::istreambuf_iterator<char>(f),{});}
 static void writeText(const fs::path&p,const string&s){std::ofstream f(p,std::ios::binary|std::ios::trunc);require(bool(f),"Cannot write "+p.string());f<<s;f.flush();require(bool(f),"Failed to flush "+p.string());}
 static void appendText(const fs::path&p,const string&s){std::ofstream f(p,std::ios::binary|std::ios::app);require(bool(f),"Cannot append "+p.string());f<<s;f.flush();require(bool(f),"Failed to flush "+p.string());}
+// Only keep a small tail of manager errors, including errors across failed runs.
+static void boundedError(const fs::path&root,const string&message){
+ const auto p=root/"manager_errors.log";
+ string content=fs::exists(p)?readText(p):"";
+ content+=message;
+ constexpr size_t max=16384;
+ if(content.size()>max)content=content.substr(content.size()-max);
+ writeText(p,content);
+}
 static string isoNow(){std::time_t t=std::time(nullptr);std::tm u{};gmtime_r(&t,&u);char buff[32];std::strftime(buff,sizeof(buff),"%Y-%m-%dT%H:%M:%SZ",&u);return buff;}
 static string csvSafe(const string&s){string r="\"";for(char c:s){if(c=='"')r+='"';if(c=='\n'||c=='\r')r+=' ';else r+=c;}return r+'"';}
 static vector<string> csvFields(const string&line){vector<string>out;string part;bool quoted=false;for(size_t i=0;i<line.size();i++){char c=line[i];if(c=='"'){if(quoted&&i+1<line.size()&&line[i+1]=='"'){part+='"';i++;}else quoted=!quoted;}else if(c==','&&!quoted){out.push_back(part);part.clear();}else part+=c;}require(!quoted,"Unterminated CSV quote");out.push_back(part);return out;}
@@ -93,23 +104,23 @@ static Analysis analyze(const fs::path&dir){
 static void logAnalysis(const Analysis&a,const fs::path&root,int gameNumber,const string&opening,const string&stamp){
  std::ostringstream out;
  out<<"\n## Game "<<gameNumber<<" | "<<stamp<<"\n\n";
- out<<"Game folder: `"<<a.gamePath<<"`  \nOpening control: `"<<(opening.empty()?"engine-selected":opening)<<"`  \n";
+ out<<"Original game directory before ZIP archival: `"<<a.gamePath<<"`  \nOpening control: `"<<(opening.empty()?"engine-selected":opening)<<"`  \n";
  out<<"Result: `"<<a.result<<"`; termination: `"<<a.reason<<"`; played plies: "<<a.plies<<"  \n";
  out<<"Observed search nodes (sum of recorded root searches): "<<a.nodes<<". paceval graph-point counter: "<<(a.pacevalPoints>0?std::to_string(a.pacevalPoints):"not available for the V5 full-graph path")<<". These counts do not measure chess strength.  \n";
  out<<"Diagnostic summary: score reversals="<<a.largeSwings<<", near-tied root choices="<<a.closeChoices<<", recurring board states="<<a.repeatedPositions<<", captures="<<a.captureMoves<<".\n\n";
  out<<"### Review candidates (not automatically trained)\n\n";
  for(auto&f:a.findings)out<<"- **"<<f.code<<"**, "<<f.location<<": "<<f.detail<<"  Suggested experiment: "<<f.proposal<<"\n";
  out<<"\n**Limits:** Score jumps are heuristic alarms, not independently proven mistakes. The code does not update neural weights, evolve graphs, or prove that any proposed improvement works. All actual game evaluations must come from the original paceval runtime.\n";
- writeText(fs::path(a.gamePath)/"learning_report.md",out.str());appendText(root/"learning_log.md",out.str());
+ writeText(fs::path(a.gamePath)/"learning_report.md",out.str());writeText(root/"learning_log.md",out.str()); // Rolling snapshot: latest game only.
  std::ostringstream js;js<<"{\"game\":"<<gameNumber<<",\"timestamp\":\""<<escapeJson(stamp)<<"\",\"directory\":\""<<escapeJson(a.gamePath)<<"\",\"opening\":\""<<escapeJson(opening)<<"\",\"result\":\""<<escapeJson(a.result)<<"\",\"termination\":\""<<escapeJson(a.reason)<<"\",\"plies\":"<<a.plies<<",\"score_reversals\":"<<a.largeSwings<<",\"close_choices\":"<<a.closeChoices<<",\"repeated_positions\":"<<a.repeatedPositions<<",\"paceval_graph_points\":"<<a.pacevalPoints<<",\"flags\":[";
  for(size_t i=0;i<a.findings.size();i++){if(i)js<<',';auto&f=a.findings[i];js<<"{\"code\":\""<<escapeJson(f.code)<<"\",\"location\":\""<<escapeJson(f.location)<<"\",\"detail\":\""<<escapeJson(f.detail)<<"\",\"proposal\":\""<<escapeJson(f.proposal)<<"\"}";}
- js<<"]}\n";appendText(root/"learning_events.jsonl",js.str());
- if(!fs::exists(root/"games_index.csv"))appendText(root/"games_index.csv","game,timestamp,directory,opening,result,termination,plies,score_reversals,close_choices,repeated_positions,paceval_graph_points\n");
- appendText(root/"games_index.csv",std::to_string(gameNumber)+","+csvSafe(stamp)+","+csvSafe(a.gamePath)+","+csvSafe(opening)+","+csvSafe(a.result)+","+csvSafe(a.reason)+","+std::to_string(a.plies)+","+std::to_string(a.largeSwings)+","+std::to_string(a.closeChoices)+","+std::to_string(a.repeatedPositions)+","+std::to_string(a.pacevalPoints)+"\n");
+ js<<"]}\n";writeText(fs::path(a.gamePath)/"learning_event.jsonl",js.str());writeText(root/"learning_events.jsonl",js.str());
+ const string indexHeader="game,timestamp,directory,opening,result,termination,plies,score_reversals,close_choices,repeated_positions,paceval_graph_points\n";
+ const string indexRow=std::to_string(gameNumber)+","+csvSafe(stamp)+","+csvSafe(a.gamePath)+","+csvSafe(opening)+","+csvSafe(a.result)+","+csvSafe(a.reason)+","+std::to_string(a.plies)+","+std::to_string(a.largeSwings)+","+std::to_string(a.closeChoices)+","+std::to_string(a.repeatedPositions)+","+std::to_string(a.pacevalPoints)+"\n";
+ writeText(root/"games_index.csv",indexHeader+indexRow);writeText(fs::path(a.gamePath)/"games_index.csv",indexHeader+indexRow);
  // Exact FEN and UCI rows turn the suggestions into a reproducible experiment
  // queue for the next source-code iteration, not automatic neural training.
  const fs::path queue=root/"analysis_queue.csv";
- if(!fs::exists(queue))appendText(queue,"game,ply,flag,uci,fen_before,white_score_cp,proposed_followup\n");
  const fs::path local=fs::path(a.gamePath)/"analysis_queue.csv";
  writeText(local,"game,ply,flag,uci,fen_before,white_score_cp,proposed_followup\n");
  const auto rows=csvRead(fs::path(a.gamePath)/"selfplay_timeline.csv");
@@ -120,10 +131,12 @@ static void logAnalysis(const Analysis&a,const fs::path&root,int gameNumber,cons
    auto it=byPly.find(ply);if(it==byPly.end())continue;
    const auto&r=it->second;
    const string row=std::to_string(gameNumber)+","+std::to_string(ply)+","+csvSafe(f.code)+","+csvSafe(get(r,"chosen_uci"))+","+csvSafe(get(r,"fen_before"))+","+get(r,"white_score_cp")+","+csvSafe(f.proposal)+"\n";
-   appendText(queue,row);appendText(local,row);
+   appendText(local,row);
  }
+ // Small convenience snapshot. The complete per-game queue is archived in ZIP.
+ writeText(queue,readText(local));
 }
-struct Settings{fs::path engine="",output="selfplay_sessions",analyzeOnly="";int depth=2,model=4,quiescence=2,plies=160,maxGames=0,pauseMs=0,seed=20261115;string mode="alphabeta",opening="cycle",firstMove="";int maxNodes=25000,maxChars=2500000;};
+struct Settings{fs::path engine="",output="selfplay_sessions",analyzeOnly="";int depth=2,model=4,quiescence=2,plies=160,maxGames=0,pauseMs=0,seed=20261115;string mode="alphabeta",opening="cycle",firstMove="";int maxNodes=25000,maxChars=2500000;std::uint64_t archiveLimitBytes=25000000,activeLimitBytes=25000000;};
 static vector<string> openings(){return {"e2e4","d2d4","c2c4","g1f3","b1c3","e2e3","d2d3","g2g3","b2b3","f2f4","a2a3","h2h3","a2a4","h2h4"};}
 static void usage(){std::cout<<"JOSHUA V6 continuous self-play supervisor (Linux x86-64, uses genuine local paceval via ./joshua)\n"
  "  --engine PATH           Existing genuine JOSHUA executable (default: ./joshua next to supervisor)\n"
@@ -135,14 +148,79 @@ static void usage(){std::cout<<"JOSHUA V6 continuous self-play supervisor (Linux
  "  --seed N                Deterministic opening rotation (default: 20261115)\n"
  "  --max-nodes N --max-chars N  Full V5 mathematical decision-tree budgets\n"
  "  --pause-ms N            Pause between games; no background service\n"
+ "  --log-limit-bytes N     Compressed ZIP archive plus snapshot quota (default 25000000)\n"
+ "  --max-active-bytes N    Abort runaway game output (default 25000000)\n"
  "  --analyze-only DIR      Offline analyse existing game without paceval execution\n"
  "  --selftest              Test parser and signals without executing paceval\n";}
-static int nextGameNumber(const fs::path&root){int n=1;if(fs::exists(root))for(const auto&e:fs::directory_iterator(root)){if(!e.is_directory())continue;const string s=e.path().filename().string();if(s.size()==11&&s.rfind("game_",0)==0){try{n=std::max(n,asInt(s.substr(5))+1);}catch(const std::exception&){}}}return n;}
-static int runChild(const vector<string>&argv,const fs::path&out){
+static int nextGameNumber(const fs::path&root){
+ int n=1;
+ const fs::path state=root/"next_game_id.txt";
+ if(fs::exists(state)){int x=asInt(trim(readText(state)));require(x>=1,"Invalid next game ID");n=x;}
+ auto observe=[&](const fs::path& p){
+  const string x=p.filename().string();
+  if(x.rfind("game_",0)!=0)return;
+  string digits=x.substr(5);if(digits.size()>4&&digits.substr(digits.size()-4)==".zip")digits.resize(digits.size()-4);
+  if(digits.empty()||digits.find_first_not_of("0123456789")!=string::npos)return;
+  try{int id=asInt(digits);if(id>=n&&id<INT_MAX)n=id+1;}catch(const std::exception&){}
+ };
+ for(const auto& e:fs::directory_iterator(root)){if(e.is_directory())observe(e.path());}
+ if(fs::exists(root/"archives"))for(const auto&e:fs::directory_iterator(root/"archives")){if(e.is_regular_file())observe(e.path());}
+ return n;
+}
+static void saveNextGameNumber(const fs::path&root,int id){
+ const fs::path tmp=root/"next_game_id.tmp",p=root/"next_game_id.txt";
+ writeText(tmp,std::to_string(id)+"\n");fs::rename(tmp,p);
+}
+static std::uint64_t metadataBytes(const fs::path&root){
+ std::uint64_t total=0;
+ for(const char*name:{"learning_log.md","learning_events.jsonl","games_index.csv","analysis_queue.csv","manager_errors.log","next_game_id.txt","retention_status.json"}){
+   const fs::path p=root/name;if(fs::is_regular_file(p))total+=joshua_zip::allocatedBytes(p);
+ }
+ return total;
+}
+static void archiveGame(const fs::path&root,const fs::path&dir,std::uint64_t limitBytes){
+ const auto archives=root/"archives";fs::create_directories(archives);
+ const auto target=archives/(dir.filename().string()+".zip");
+ const auto result=joshua_zip::zipDirectoryAtomically(dir,target);
+ // Only remove raw output AFTER a complete, closed, atomically committed ZIP exists.
+ require(fs::is_regular_file(target)&&fs::file_size(target)==result.compressed_bytes,"Archive integrity check failed");
+ fs::remove_all(dir);
+ const auto meta=metadataBytes(root);
+ // Reserve one 4 KiB filesystem block for the status written after pruning; count physical
+ // allocation, not only logical ZIP lengths (small files cost disk blocks).
+ const std::uint64_t reserve=4096;
+ const std::uint64_t zipBudget=meta+reserve>=limitBytes?0:limitBytes-meta-reserve;
+ std::size_t pruned=0;
+ auto kept=joshua_zip::pruneArchives(archives,zipBudget,&pruned);
+ std::ostringstream status;
+ status<<"{\n  \"archive_limit_bytes\": "<<limitBytes<<",\n  \"archives_bytes\": "<<kept
+       <<",\n  \"latest_snapshot_bytes\": "<<meta<<",\n  \"latest_archive\": \""<<escapeJson(target.filename().string())
+       <<"\",\n  \"latest_archive_retained\": "<<(fs::exists(target)?"true":"false")
+       <<",\n  \"pruned_archives_after_game\": "<<pruned<<"\n}\n";
+ writeText(root/"retention_status.json",status.str());
+ // Include the retention status in the budget on the very first run as well.
+ const auto metaAfter=metadataBytes(root);
+ const auto finalBudget=metaAfter>=limitBytes?0:limitBytes-metaAfter;
+ std::size_t extra=0;kept=joshua_zip::pruneArchives(archives,finalBudget,&extra);
+ std::cout<<"ARCHIVE_COMMITTED "<<target.filename().string()<<" files="<<result.files
+          <<" raw_bytes="<<result.source_bytes<<" zipped_bytes="<<result.compressed_bytes
+          <<" stored_archives_bytes="<<kept<<" pruned="<<(pruned+extra)
+          <<" latest_retained="<<(fs::exists(target)?"yes":"no")<<std::endl;
+}
+static int runChild(const vector<string>&argv,const fs::path&out,const fs::path&gameRoot,std::uint64_t activeLimit){
  require(!argv.empty(),"Missing engine");std::ofstream(out/"launch_arguments.txt")<<"Arguments are recorded in game_console.log header.\n";
  pid_t pid=fork();require(pid>=0,"fork() failed");
- if(pid==0){int fd=open((out/"game_console.log").c_str(),O_WRONLY|O_CREAT|O_TRUNC,0644);if(fd<0)_exit(127);dup2(fd,STDOUT_FILENO);dup2(fd,STDERR_FILENO);close(fd);vector<char*>cargs;for(auto&x:argv)cargs.push_back(const_cast<char*>(x.c_str()));cargs.push_back(nullptr);execv(argv[0].c_str(),cargs.data());std::cerr<<"execv failed: "<<std::strerror(errno)<<'\n';_exit(127);}
- childPid=pid;int status=0;for(;;){pid_t n=waitpid(pid,&status,0);if(n==pid)break;if(n<0&&errno==EINTR)continue;throw std::runtime_error("waitpid() failed");}childPid=0;
+ if(pid==0){int fd=open((out/"game_console.log").c_str(),O_WRONLY|O_CREAT|O_TRUNC,0644);if(fd<0)_exit(127);dup2(fd,STDOUT_FILENO);dup2(fd,STDERR_FILENO);close(fd);vector<char*>cargs;for(auto&x:argv)cargs.push_back(const_cast<char*>(x.c_str()));cargs.push_back(nullptr);execv(argv[0].c_str(),cargs.data());_exit(127);}
+ childPid=pid;int status=0;bool overLimit=false;
+ try{
+   for(;;){pid_t n=waitpid(pid,&status,WNOHANG);if(n==pid)break;if(n<0&&errno==EINTR)continue;
+     require(n>=0,"waitpid failed");
+     if(joshua_zip::directorySize(gameRoot)>activeLimit){overLimit=true;kill(pid,SIGKILL);waitpid(pid,&status,0);break;}
+     std::this_thread::sleep_for(std::chrono::milliseconds(150));
+   }
+ }catch(...){kill(pid,SIGKILL);waitpid(pid,&status,0);childPid=0;throw;}
+ childPid=0;
+ if(overLimit||joshua_zip::directorySize(gameRoot)>activeLimit)return 98;
  if(WIFEXITED(status))return WEXITSTATUS(status);if(WIFSIGNALED(status))return 128+WTERMSIG(status);return 127;
 }
 // The second route implements V5's genuine full-tree mathematical graph, rebuilt
@@ -177,7 +255,7 @@ static void playLongGraph(const Settings&s,const fs::path&dir,const string&openi
    const auto current=dir/tag.str();fs::create_directories(current);
    const string before=toFen(board),side=board.turn==1?"white":"black";
    const vector<string>args={s.engine.string(),"--depth",std::to_string(s.depth),"--model",std::to_string(s.model),"--fen",before,"--max-nodes",std::to_string(s.maxNodes),"--max-chars",std::to_string(s.maxChars),"--output",current.string()};
-   const int exitCode=runChild(args,current);
+   const int exitCode=runChild(args,current,dir,s.activeLimitBytes);
    if(exitCode!=0)throw std::runtime_error("V5 graph compilation failed on ply "+std::to_string(ply+1)+" (exit "+std::to_string(exitCode)+"). See "+(current/"game_console.log").string());
    const string ev=readText(current/"run_evidence.json");
    require(jsonNumber(ev,"graph_result_verified")=="true"&&jsonNumber(ev,"reused_graph_result_verified")=="true","Independent paceval graph checks not passed");
@@ -223,20 +301,52 @@ static void selftest(){
 int main(int argc,char**argv){try{
  Settings s;for(int i=1;i<argc;i++){string a=argv[i];auto getarg=[&](){require(i+1<argc,"Missing value for "+a);return string(argv[++i]);};
   if(a=="--help"){usage();return 0;}else if(a=="--selftest"){selftest();return 0;}
-  else if(a=="--engine")s.engine=getarg();else if(a=="--output")s.output=getarg();else if(a=="--depth")s.depth=asInt(getarg());else if(a=="--model")s.model=asInt(getarg());else if(a=="--quiescence")s.quiescence=asInt(getarg());else if(a=="--plies")s.plies=asInt(getarg());else if(a=="--max-games")s.maxGames=asInt(getarg());else if(a=="--pause-ms")s.pauseMs=asInt(getarg());else if(a=="--seed")s.seed=asInt(getarg());else if(a=="--mode")s.mode=getarg();else if(a=="--max-nodes")s.maxNodes=asInt(getarg());else if(a=="--max-chars")s.maxChars=asInt(getarg());else if(a=="--opening")s.opening=getarg();else if(a=="--first-move")s.firstMove=getarg();else if(a=="--analyze-only")s.analyzeOnly=getarg();else throw std::runtime_error("Unknown option: "+a);
+  else if(a=="--engine")s.engine=getarg();else if(a=="--output")s.output=getarg();else if(a=="--depth")s.depth=asInt(getarg());else if(a=="--model")s.model=asInt(getarg());else if(a=="--quiescence")s.quiescence=asInt(getarg());else if(a=="--plies")s.plies=asInt(getarg());else if(a=="--max-games")s.maxGames=asInt(getarg());else if(a=="--pause-ms")s.pauseMs=asInt(getarg());else if(a=="--seed")s.seed=asInt(getarg());else if(a=="--mode")s.mode=getarg();else if(a=="--max-nodes")s.maxNodes=asInt(getarg());else if(a=="--max-chars")s.maxChars=asInt(getarg());else if(a=="--opening")s.opening=getarg();else if(a=="--first-move")s.firstMove=getarg();else if(a=="--analyze-only")s.analyzeOnly=getarg();else if(a=="--log-limit-bytes")s.archiveLimitBytes=std::stoull(getarg());else if(a=="--max-active-bytes")s.activeLimitBytes=std::stoull(getarg());else throw std::runtime_error("Unknown option: "+a);
  }
  require(s.depth>=1&&s.depth<=10&&s.model>=1&&s.model<=4&&s.quiescence>=0&&s.quiescence<=4&&s.plies>=1&&s.plies<=200,"Invalid search configuration");
  require(s.mode=="alphabeta"||s.mode=="research"||s.mode=="longgraph","Unknown --mode");require((s.mode=="alphabeta")||(s.depth<=4&&s.quiescence==0),"Research and longgraph require depth<=4 and quiescence=0");require(s.mode!="longgraph"||(s.model>=3&&s.maxNodes>=100&&s.maxChars>=100),"Longgraph requires model 3 or 4 and positive resource budgets");
- require(s.maxGames>=0&&s.pauseMs>=0&&s.pauseMs<=3600000,"Invalid max games or pause");require(s.opening=="cycle"||s.opening=="fixed","Invalid opening policy");
+ require(s.maxGames>=0&&s.pauseMs>=0&&s.pauseMs<=3600000,"Invalid max games or pause");require(s.archiveLimitBytes>=4096&&s.activeLimitBytes>=4096,"Invalid logging budget");require(s.opening=="cycle"||s.opening=="fixed","Invalid opening policy");
  if(!s.analyzeOnly.empty()){auto a=analyze(s.analyzeOnly);fs::create_directories(s.output);logAnalysis(a,s.output,nextGameNumber(s.output),"offline-analysis",isoNow());std::cout<<"ANALYSIS_OK result="<<a.result<<" plies="<<a.plies<<" flags="<<a.findings.size()<<"\n";return 0;}
  if(s.engine.empty()){fs::path local=fs::absolute(argv[0]).parent_path()/(s.mode=="longgraph"?"joshua_long_graph":"joshua");s.engine=local;}
  s.engine=fs::absolute(s.engine);require(fs::exists(s.engine),"JOSHUA executable unavailable at "+s.engine.string()+"; build it against the original paceval runtime first");require(access(s.engine.c_str(),X_OK)==0,"JOSHUA executable not executable");
  s.output=fs::absolute(s.output);fs::create_directories(s.output);
  struct sigaction sa{};sa.sa_handler=stopHandler;sigemptyset(&sa.sa_mask);sigaction(SIGTERM,&sa,nullptr);sigaction(SIGINT,&sa,nullptr);
- int game=nextGameNumber(s.output),completed=0;const vector<string>openingSet=openings();
+ // Upgrade older V6 sessions: archive previous per-game folders so they cannot
+ // accumulate forever after switching to V7. Incomplete folders are identified.
+ fs::create_directories(s.output/"archives");
+ const int initialNext=nextGameNumber(s.output);
+ vector<fs::path> priorGameDirectories;
+ for(const auto&entry:fs::directory_iterator(s.output)){
+   if(!entry.is_directory())continue;
+   const auto name=entry.path().filename().string();
+   if(name.size()<6||name.rfind("game_",0)!=0||name.substr(5).find_first_not_of("0123456789")!=string::npos)continue;
+   priorGameDirectories.push_back(entry.path());
+ }
+ std::sort(priorGameDirectories.begin(),priorGameDirectories.end());
+ for(const auto&dir:priorGameDirectories){
+   if(!fs::exists(dir/"end_state.json"))writeText(dir/"incomplete_prior_run.txt","Recovered incomplete legacy game; not a completed match.\n");
+   archiveGame(s.output,dir,s.archiveLimitBytes);
+ }
+ // Archive any former unbounded V6 aggregate log exactly once on upgrade.
+ const auto marker=s.output/"v7_archive_migration.marker";
+ if(!fs::exists(marker)){
+   const auto legacy=s.output/"game_000000";bool hasLegacy=false;
+   for(const char*name:{"learning_log.md","learning_events.jsonl","games_index.csv","analysis_queue.csv","manager_errors.log"}){
+     const auto p=s.output/name;if(fs::is_regular_file(p)){
+       fs::create_directories(legacy);fs::rename(p,legacy/name);hasLegacy=true;
+     }
+   }
+   if(hasLegacy){
+     const auto target=s.output/"archives"/"game_000000.zip";
+     if(!fs::exists(target))archiveGame(s.output,legacy,s.archiveLimitBytes);
+     else throw std::runtime_error("Existing legacy archive conflicts with migration; keep both artifacts for manual recovery");
+   }
+   writeText(marker,"V7 session archives initialized. Previous aggregate logs migrated.\n");
+ }
+ int game=std::max(initialNext,nextGameNumber(s.output)),completed=0;saveNextGameNumber(s.output,game);const vector<string>openingSet=openings();
  std::cout<<"JOSHUA CONTINUOUS SELFPLAY: engine="<<s.engine<<" output="<<s.output<<" max-games="<<s.maxGames<<" (0=infinite)\n";
  while(!stopRequested&&(s.maxGames==0||completed<s.maxGames)){
-   std::ostringstream name;name<<"game_"<<std::setw(6)<<std::setfill('0')<<game;const fs::path dir=s.output/name.str();require(!fs::exists(dir),"Refusing to overwrite existing game directory");fs::create_directories(dir);
+   std::ostringstream name;name<<"game_"<<std::setw(6)<<std::setfill('0')<<game;const fs::path dir=s.output/name.str();require(!fs::exists(dir),"Refusing to overwrite existing game directory");fs::create_directories(dir);saveNextGameNumber(s.output,game+1);
    string opening=s.opening=="cycle"?openingSet[(static_cast<unsigned long long>(s.seed)+static_cast<unsigned long long>(game-1))%openingSet.size()]:s.firstMove;
    vector<string>args={s.engine.string(),"--mode",s.mode,"--depth",std::to_string(s.depth),"--model",std::to_string(s.model),"--quiescence",std::to_string(s.quiescence),"--plies",std::to_string(s.plies),"--no-board","--output",dir.string()};if(!opening.empty()){args.push_back("--first-move");args.push_back(opening);}
    const auto ts=isoNow();std::cout<<"GAME_START "<<game<<" opening="<<(opening.empty()?"engine-selected":opening)<<" "<<ts<<std::endl;
@@ -245,19 +355,21 @@ int main(int argc,char**argv){try{
      // The dedicated V5 executable has a different command line and creates
      // one complete paceval graph for each move, not a traditional AB search.
      try{playLongGraph(s,dir,opening);}catch(const std::exception&ex){
-       appendText(s.output/"manager_errors.log",ts+" V5_LONGGRAPH_ERROR game "+std::to_string(game)+": "+ex.what()+"\n");
-       if(stopRequested){writeText(dir/"interrupted.txt","User signal interrupted this V5 graph game. Results are incomplete.\n");return 0;}
-       std::cerr<<ex.what()<<'\n';return 2;
+       boundedError(s.output,ts+" V5_LONGGRAPH_ERROR game "+std::to_string(game)+": "+ex.what()+"\n");
+       if(stopRequested){writeText(dir/"interrupted.txt","User signal interrupted this V5 graph game. Results are incomplete.\n");archiveGame(s.output,dir,s.archiveLimitBytes);return 0;}
+       writeText(dir/"incomplete_game.txt",string("V5 graph error: ")+ex.what()+"\n");archiveGame(s.output,dir,s.archiveLimitBytes);std::cerr<<ex.what()<<'\n';return 2;
      }
-   }else exitCode=runChild(args,dir);
+   }else exitCode=runChild(args,dir,dir,s.activeLimitBytes);
    writeText(dir/"manager_exit_code.txt",std::to_string(exitCode)+"\n");
    if(stopRequested){
      writeText(dir/"interrupted.txt","Stopped by user signal while the game was active. This is NOT a completed chess game.\n");
+     archiveGame(s.output,dir,s.archiveLimitBytes);
      std::cout<<"SUPERVISOR_STOP interrupted_game="<<game<<" completed_games="<<completed<<" reason=user_signal\n";
      return 0;
    }
-   if(exitCode!=0){string msg="JOSHUA engine exited with code "+std::to_string(exitCode)+". Read "+(dir/"game_console.log").string()+". The manager stops to prevent an infinite failure loop.\n";appendText(s.output/"manager_errors.log",ts+" "+msg);std::cerr<<msg;return exitCode==0?1:exitCode;}
-   try{auto a=analyze(dir);logAnalysis(a,s.output,game,opening,ts);std::cout<<"GAME_END "<<game<<" result="<<a.result<<" termination="<<a.reason<<" plies="<<a.plies<<" diagnostic_flags="<<a.findings.size()<<"\n";}catch(const std::exception&ex){appendText(s.output/"manager_errors.log",ts+" ANALYSIS_ERROR game "+std::to_string(game)+": "+ex.what()+"\n");throw;}
+   if(exitCode!=0){string msg="JOSHUA engine exited with code "+std::to_string(exitCode)+". Inspect game_console.log inside the corresponding game ZIP. The manager stops to prevent an infinite failure loop.\n";boundedError(s.output,ts+" "+msg);writeText(dir/"incomplete_game.txt",msg);archiveGame(s.output,dir,s.archiveLimitBytes);std::cerr<<msg;return exitCode==0?1:exitCode;}
+   try{auto a=analyze(dir);logAnalysis(a,s.output,game,opening,ts);std::cout<<"GAME_END "<<game<<" result="<<a.result<<" termination="<<a.reason<<" plies="<<a.plies<<" diagnostic_flags="<<a.findings.size()<<"\n";}catch(const std::exception&ex){boundedError(s.output,ts+" ANALYSIS_ERROR game "+std::to_string(game)+": "+ex.what()+"\n");writeText(dir/"incomplete_analysis.txt",string("Analysis failed: ")+ex.what()+"\n");archiveGame(s.output,dir,s.archiveLimitBytes);throw;}
+   archiveGame(s.output,dir,s.archiveLimitBytes);
    ++game;++completed;
    if(s.pauseMs>0&&!stopRequested)for(int n=0;n<s.pauseMs&&!stopRequested;n+=100)std::this_thread::sleep_for(std::chrono::milliseconds(std::min(100,s.pauseMs-n)));
  }

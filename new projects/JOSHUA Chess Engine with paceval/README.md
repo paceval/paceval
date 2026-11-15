@@ -1,8 +1,10 @@
-# JOSHUA V6: Continuous Chess Self-Play with paceval Decision-Graph Evidence
+# JOSHUA V7: Continuous Chess Self-Play with Automatic ZIP Log Rotation
 
 ![JOSHUA cover](figures/JOSHUA_Chess_Research_Cover_2400x1200.png)
 
-**New in V6:** This ZIP includes three **compiled Linux Intel/AMD x86-64 executables** in `bin/`: `joshua` (classical/research), `joshua_long_graph` (new full mathematical graph for every move), and `joshua_selfplay` (indefinite self-play supervisor). The supervisor starts a fresh child process for each game, records a correctly classified result and all legal moves, saves a machine-readable learning-evidence queue and appends `sessions/learning_log.md` **after every completed game**. Both the model-4 graph path and the V5 full-graph alternative remain supported. No automatic weight modification or reinforcement-learning claim is made.
+**New in V7:** The Linux x86-64 `joshua_selfplay` executable now **automatically compresses the complete logs of each finished game** into `sessions/archives/game_NNNNNN.zip` in C++ using statically linked zlib. It deletes the oldest ZIP archive whenever the managed retained-log footprint exceeds **25,000,000 bytes (25 MB)**. The rolling top-level `learning_log.md`, `learning_events.jsonl`, `games_index.csv` and `analysis_queue.csv` show the **latest game only**, so they no longer grow indefinitely. The original raw game folder is removed only after its ZIP has been written. If a single ZIP exceeds the budget, it too is deleted and the latest summary remains. Both trained model-4 and the full-graph alternative remain available. No automatic modification of weights or reinforcement-learning claim is made.
+
+Three compiled Linux Intel/AMD x86-64 programs are included: `bin/joshua`, `bin/joshua_long_graph` and `bin/joshua_selfplay`. The supervisor builds archives without `/usr/bin/zip` or Python. Its default additional active-output limit is 25 MB per unfinished game, enforced by periodic size checks. For full details and caveats see [V7 archive safety and log specification](docs/V7_ZIP_RETENTION.md) and [V7 release validation](V7_RELEASE_VALIDATION.md).
 
 **Important runtime requirement:** The authentic `libpaceval_linux_sharedLIB.so` was not supplied, so the binaries' actual chess calculations **cannot run until the original paceval runtime is installed**. The optional `src/paceval_runtime_loader.cpp` contains only `dlopen` forwarding to real SDK FFI symbols, not a replacement math engine. The repo includes original `src/paceval_main.h` and `src/paceval_main.cpp`. GNU C++ runtime dependencies were linked statically for the three distributed binaries; compatible Linux glibc is still required. Original SDK runtime licensing must be respected and verified before redistribution.
 
@@ -17,7 +19,7 @@
   --quiescence 0 --plies 160 --opening cycle --max-games 0
 ```
 
-Use Ctrl+C to stop. Set `--max-games 2` for a bounded first run. Reusing the session directory continues at the next free game number rather than overwriting earlier games. See [V6 continuous self-play design and evidence](docs/V6_CONTINUOUS_SELFPLAY.md), [V6 exact release validation](V6_RELEASE_VALIDATION.md) and [runtime installation](runtime/README.md). **The included historical English PDF describes the V5 research baseline.** New V6 behavior is documented in the two files just linked; the V5 PDF is not misrepresented as a V6 verification report.
+Use Ctrl+C to stop. Set `--max-games 2` for a bounded first run. Reusing the session directory advances a durable game counter, even when older ZIPs were deleted. After every game, look in `sessions/archives/` for the complete compressed logs and in `sessions/learning_log.md` for the latest analysis. To share all retained logs, run `python3 scripts/export_retained_logs.py --session sessions --output JOSHUA_Logs_For_Analysis.zip`. See [V7 ZIP retention](docs/V7_ZIP_RETENTION.md), [V7 release validation](V7_RELEASE_VALIDATION.md) and [runtime installation](runtime/README.md). **The included historical English PDF describes the V5 research baseline.** New V6 behavior is documented in the two files just linked; the V5 PDF is not misrepresented as a V6 verification report.
 
 ---
 
