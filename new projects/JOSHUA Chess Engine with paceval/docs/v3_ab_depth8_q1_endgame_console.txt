@@ -1,0 +1,16 @@
+JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | mode=alphabeta | depth=8 | model=3 | qdepth=1
+[+0.000214s] start FEN: 8/8/8/8/8/7P/2k5/K7 w - - 0 1
+[+0.002090s] paceval persistent feature graphs=30; multi-graph layout=graph-major; max batch rows=8192
+[+0.002103s] ply=1 WHITE legal=2; SEARCH legal moves
+[+0.053283s] tree nodes=9811 leaves=3520 | search_s=0.051180
+[+0.053283s] paceval features unique=85 point_checks=85 batch_calls=0 | stage_s=0.000000
+[+0.053413s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000106
+[+0.053413s] alpha-beta TT_hits=1095 cutoffs=1434 leaf_scalar_paceval_evaluations=85
+[+0.053413s] JOSHUA BEST WHITE h3h4 | Piece=Pawn h3 -> h4 | SAN=h4 | score_white=862cp | FEN 8/8/8/8/7P/8/2k5/K7 b - - 0 1
+[+0.053480s] ply=2 BLACK legal=6; SEARCH legal moves
+[+0.071619s] tree nodes=7888 leaves=2666 | search_s=0.018138
+[+0.071619s] paceval features unique=68 point_checks=11 batch_calls=0 | stage_s=0.000000
+[+0.071716s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000089
+[+0.071716s] alpha-beta TT_hits=1145 cutoffs=1221 leaf_scalar_paceval_evaluations=11
+[+0.071716s] JOSHUA BEST BLACK c2b3 | Piece=King c2 -> b3 | SAN=Kb3 | score_white=862cp | FEN 8/8/8/8/7P/1k6/8/K7 w - - 1 2
+[+0.071746s] JOSHUA SELF-PLAY END plies=2 paceval_graphs=34 paceval_batch_calls=3 graph_points=102

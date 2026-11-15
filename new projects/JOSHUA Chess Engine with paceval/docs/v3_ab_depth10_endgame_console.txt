@@ -1,0 +1,10 @@
+JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | mode=alphabeta | depth=10 | model=3 | qdepth=0
+[+0.000318s] start FEN: 8/8/8/8/8/7P/2k5/K7 w - - 0 1
+[+0.002966s] paceval persistent feature graphs=30; multi-graph layout=graph-major; max batch rows=8192
+[+0.002978s] ply=1 WHITE legal=2; BUILD search tree
+[+0.113572s] tree nodes=28475 leaves=14351 | search_s=0.110593
+[+0.113572s] paceval features unique=113 point_checks=113 batch_calls=0 | stage_s=0.000000
+[+0.113714s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000134
+[+0.113714s] alpha-beta exact horizon TT_hits=6585 cutoffs=5243 leaf_scalar_paceval_evaluations=113
+[+0.113714s] JOSHUA BEST WHITE h3h4 | Piece=Pawn h3 -> h4 | SAN=h4 | score_white=876cp | FEN 8/8/8/8/7P/8/2k5/K7 b - - 0 1
+[+0.113763s] JOSHUA SELF-PLAY END plies=1 paceval_graphs=33 paceval_batch_calls=2 graph_points=118

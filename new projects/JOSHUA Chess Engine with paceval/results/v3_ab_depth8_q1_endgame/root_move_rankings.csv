@@ -1,0 +1,9 @@
+halfmove,depth,side,rank,uci,white_score_cp
+1,8,white,1,h3h4,862
+1,8,white,2,a1a2,114
+2,8,black,1,c2b3,862
+2,8,black,2,c2c1,862
+2,8,black,3,c2c3,862
+2,8,black,4,c2d1,862
+2,8,black,5,c2d2,862
+2,8,black,6,c2d3,862

@@ -1,0 +1,28 @@
+JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | mode=alphabeta | depth=4 | model=3 | qdepth=2
+[+0.000447s] start FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+[+0.002150s] paceval persistent feature graphs=30; multi-graph layout=graph-major; max batch rows=8192
+[+0.002164s] ply=1 WHITE legal=20; BUILD search tree
+[+0.931259s] tree nodes=64486 leaves=31603 | search_s=0.929095
+[+0.931259s] paceval features unique=2784 point_checks=2784 batch_calls=0 | stage_s=0.000000
+[+0.931428s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000157
+[+0.931428s] alpha-beta exact horizon TT_hits=175 cutoffs=2959 leaf_scalar_paceval_evaluations=2784
+[+0.931428s] JOSHUA BEST WHITE b1c3 | Piece=Knight b1 -> c3 | SAN=Nc3 | score_white=7cp | FEN rnbqkbnr/pppppppp/8/8/8/2N5/PPPPPPPP/R1BQKBNR b KQkq - 1 1
+[+0.931473s] ply=2 BLACK legal=20; BUILD search tree
+[+2.181150s] tree nodes=82038 leaves=42085 | search_s=1.249678
+[+2.181150s] paceval features unique=5711 point_checks=5157 batch_calls=0 | stage_s=0.000000
+[+2.181772s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000178
+[+2.181772s] alpha-beta exact horizon TT_hits=178 cutoffs=5687 leaf_scalar_paceval_evaluations=5157
+[+2.181772s] JOSHUA BEST BLACK b8c6 | Piece=Knight b8 -> c6 | SAN=Nc6 | score_white=11cp | FEN r1bqkbnr/pppppppp/2n5/8/8/2N5/PPPPPPPP/R1BQKBNR w KQkq - 2 2
+[+2.181815s] ply=3 WHITE legal=22; BUILD search tree
+[+4.061958s] tree nodes=131019 leaves=68047 | search_s=1.880144
+[+4.061958s] paceval features unique=9121 point_checks=8139 batch_calls=0 | stage_s=0.000000
+[+4.063153s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000202
+[+4.063153s] alpha-beta exact horizon TT_hits=486 cutoffs=11447 leaf_scalar_paceval_evaluations=8139
+[+4.063153s] JOSHUA BEST WHITE d2d3 | Piece=Pawn d2 -> d3 | SAN=d3 | score_white=7cp | FEN r1bqkbnr/pppppppp/2n5/8/8/2NP4/PPP1PPPP/R1BQKBNR b KQkq - 0 2
+[+4.063198s] ply=4 BLACK legal=22; BUILD search tree
+[+6.875392s] tree nodes=166904 leaves=88435 | search_s=2.812194
+[+6.875392s] paceval features unique=15959 point_checks=13846 batch_calls=0 | stage_s=0.000000
+[+6.877654s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000165
+[+6.877654s] alpha-beta exact horizon TT_hits=337 cutoffs=12273 leaf_scalar_paceval_evaluations=13846
+[+6.877654s] JOSHUA BEST BLACK d7d6 | Piece=Pawn d7 -> d6 | SAN=d6 | score_white=38cp | FEN r1bqkbnr/ppp1pppp/2np4/8/8/2NP4/PPP1PPPP/R1BQKBNR w KQkq - 0 3
+[+6.877701s] JOSHUA SELF-PLAY END plies=4 paceval_graphs=36 paceval_batch_calls=5 graph_points=29934

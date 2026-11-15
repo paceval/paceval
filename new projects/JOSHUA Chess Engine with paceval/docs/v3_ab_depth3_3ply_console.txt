@@ -1,0 +1,22 @@
+JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | mode=alphabeta | depth=3 | model=3 | qdepth=0
+[+0.000253s] start FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+[+0.001838s] paceval persistent feature graphs=30; multi-graph layout=graph-major; max batch rows=8192
+[+0.001852s] ply=1 WHITE legal=20; BUILD search tree
+[+0.094972s] tree nodes=3498 leaves=3058 | search_s=0.093119
+[+0.094972s] paceval features unique=265 point_checks=265 batch_calls=0 | stage_s=0.000000
+[+0.095130s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000144
+[+0.095130s] alpha-beta exact horizon TT_hits=0 cutoffs=360 leaf_scalar_paceval_evaluations=265
+[+0.095130s] JOSHUA BEST WHITE b1c3 | Piece=Knight b1 -> c3 | SAN=Nc3 | score_white=47cp | FEN rnbqkbnr/pppppppp/8/8/8/2N5/PPPPPPPP/R1BQKBNR b KQkq - 1 1
+[+0.095177s] ply=2 BLACK legal=20; BUILD search tree
+[+0.219536s] tree nodes=3428 leaves=2948 | search_s=0.124359
+[+0.219536s] paceval features unique=507 point_checks=453 batch_calls=0 | stage_s=0.000000
+[+0.219740s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000179
+[+0.219740s] alpha-beta exact horizon TT_hits=0 cutoffs=359 leaf_scalar_paceval_evaluations=453
+[+0.219740s] JOSHUA BEST BLACK b8c6 | Piece=Knight b8 -> c6 | SAN=Nc6 | score_white=7cp | FEN r1bqkbnr/pppppppp/2n5/8/8/2N5/PPPPPPPP/R1BQKBNR w KQkq - 2 2
+[+0.219783s] ply=3 WHITE legal=22; BUILD search tree
+[+0.337562s] tree nodes=3687 leaves=3161 | search_s=0.117779
+[+0.337562s] paceval features unique=590 point_checks=473 batch_calls=0 | stage_s=0.000000
+[+0.337788s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000172
+[+0.337788s] alpha-beta exact horizon TT_hits=0 cutoffs=437 leaf_scalar_paceval_evaluations=473
+[+0.337788s] JOSHUA BEST WHITE c3d5 | Piece=Knight c3 -> d5 | SAN=Nd5 | score_white=60cp | FEN r1bqkbnr/pppppppp/2n5/3N4/8/8/PPPPPPPP/R1BQKBNR b KQkq - 3 2
+[+0.337837s] JOSHUA SELF-PLAY END plies=3 paceval_graphs=35 paceval_batch_calls=4 graph_points=1198

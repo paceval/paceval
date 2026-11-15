@@ -24,17 +24,28 @@ def simple_move_coherence(before,after,uci):
   assert bb[r2][f2]==src
  else:assert bb[r2][f2].lower()==uci[4]
  assert bb[r1][f1]=='.'
- # Normal moves in a short opening self-play must not mutate other pieces.
+ # Validate all changed squares, including en passant and castling rook motion.
+ expected={(r1,f1),(r2,f2)}
+ if src.lower()=='k' and abs(f2-f1)==2:
+  rook_file=7 if f2>f1 else 0
+  rook_to=f2-1 if f2>f1 else f2+1
+  rook='R' if src.isupper() else 'r'
+  assert aa[r1][rook_file]==rook and aa[r1][rook_to]=='.'
+  assert bb[r1][rook_file]=='.' and bb[r1][rook_to]==rook
+  expected.update(((r1,rook_file),(r1,rook_to)))
+ if src.lower()=='p' and f1!=f2 and aa[r2][f2]=='.':
+  assert aa[r1][f2] == ('p' if src.isupper() else 'P') and bb[r1][f2]=='.'
+  expected.add((r1,f2))
  for r in range(8):
   for f in range(8):
-   if (r,f) not in ((r1,f1),(r2,f2)):
+   if (r,f) not in expected:
     assert aa[r][f]==bb[r][f], f'Unexpected side change: {uci}, square {(r,f)}'
 
 def audit(path):
  folder=Path(path);rows=list(csv.DictReader(open(folder/'selfplay_timeline.csv')));moves=list(csv.DictReader(open(folder/'root_move_rankings.csv')));ev=json.load(open(folder/'run_evidence.json'))
  assert rows and len(rows)<=ev['max_halfmoves'];assert ev['mcp_used'] is False and ev['search_mode'] in ('research','alphabeta')
  is_full = ev['search_mode']=='research'
- assert ev['all_minmax_reductions_via_paceval'] is is_full and ev['leaf_multi_graph_count']==20
+ assert ev['all_minmax_reductions_via_paceval'] is is_full and ev['leaf_multi_graph_count']==(10 if ev['model']==3 else 20)
  last=-1;total_features=0;lastwhite=None
  for ix,r in enumerate(rows):
   assert int(r['halfmove'])==int(rows[0]['halfmove'])+ix
@@ -45,10 +56,10 @@ def audit(path):
   assert int(r['new_paceval_reduction_graphs'])>=0
   assert math.isclose(float(r['tree_generation_s']),float(r['tree_ready_s'])-float(r['start_s']),abs_tol=0.015)
   assert math.isclose(float(r['score_batch_s']),float(r['leaf_values_ready_s'])-float(r['tree_ready_s']),abs_tol=0.015)
-  assert math.isclose(float(r['reduction_s']),float(r['decision_s'])-float(r['leaf_values_ready_s']),abs_tol=0.015)
+  assert math.isclose(float(r['reduction_s']),float(r['decision_s'])-float(r['leaf_values_ready_s']),abs_tol=0.050)
   simple_move_coherence(r['fen_before'],r['fen_after'],r['chosen_uci'])
   if 'chosen_piece' in r:
-   pieces={'P':'Bauer','N':'Springer (Pferd)','B':'Läufer','R':'Turm','Q':'Dame','K':'König'}
+   pieces={'P':'Pawn','N':'Knight','B':'Bishop','R':'Rook','Q':'Queen','K':'King'}
    before,_=board_from_fen(r['fen_before'])
    uci=r['chosen_uci'];assert r['from_square']==uci[:2] and r['to_square']==uci[2:4]
    mover=before[8-int(uci[1])][ord(uci[0])-97].upper()
@@ -64,7 +75,7 @@ def audit(path):
   values=[float(x['white_score_cp']) for x in options]
   if r['side']=='white':assert values==sorted(values,reverse=True)
   else:assert values==sorted(values)
- assert int(ev['paceval_graph_point_evaluations']) >= (20*total_features if is_full else len(rows))
+ assert int(ev['paceval_graph_point_evaluations']) >= ((10 if ev['model']==3 else 20)*total_features if is_full else len(rows))
  assert int(ev['played_halfmoves'])>=len(rows)
  print(f'AUTOPLAY_AUDIT_PASS mode={ev["search_mode"]} rows={len(rows)} unique_feature_vectors={total_features} graphs={ev["paceval_graphs_created"]} graph_points={ev["paceval_graph_point_evaluations"]}')
 

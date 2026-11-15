@@ -1,4 +1,0 @@
-label,elapsed_s,wall_s,peak_kb,graphs,batch_calls,graph_points,move_count
-Original full-width,3.873069,3.87,26660,91,532,189248,20
-Optimized full-width,1.260127,1.26,9912,91,532,189248,20
-Optimized alpha-beta,1.287065,1.29,4660,41,21,4051,20

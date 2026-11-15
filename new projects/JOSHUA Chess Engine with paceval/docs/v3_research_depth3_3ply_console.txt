@@ -1,0 +1,19 @@
+JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | mode=research | depth=3 | model=3 | qdepth=0
+[+0.000291s] start FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+[+0.002095s] paceval persistent feature graphs=30; multi-graph layout=graph-major; max batch rows=8192
+[+0.002109s] ply=1 WHITE legal=20; BUILD search tree
+[+0.033131s] tree nodes=9323 leaves=8902 | search_s=0.031022
+[+0.039076s] paceval features unique=399 point_checks=399 batch_calls=1 | stage_s=0.005944
+[+0.045610s] paceval minmax checks=421 batch_calls=13 new_graphs=12 | stage_s=0.006436
+[+0.045610s] JOSHUA BEST WHITE b1c3 | Piece=Knight b1 -> c3 | SAN=Nc3 | score_white=47cp | FEN rnbqkbnr/pppppppp/8/8/8/2N5/PPPPPPPP/R1BQKBNR b KQkq - 1 1
+[+0.045659s] ply=2 BLACK legal=20; BUILD search tree
+[+0.084073s] tree nodes=10216 leaves=9755 | search_s=0.038414
+[+0.090882s] paceval features unique=644 point_checks=644 batch_calls=1 | stage_s=0.006809
+[+0.096430s] paceval minmax checks=461 batch_calls=14 new_graphs=11 | stage_s=0.005489
+[+0.096430s] JOSHUA BEST BLACK b8c6 | Piece=Knight b8 -> c6 | SAN=Nc6 | score_white=7cp | FEN r1bqkbnr/pppppppp/2n5/8/8/2N5/PPPPPPPP/R1BQKBNR w KQkq - 2 2
+[+0.096553s] ply=3 WHITE legal=22; BUILD search tree
+[+0.138937s] tree nodes=12092 leaves=11587 | search_s=0.042384
+[+0.147125s] paceval features unique=920 point_checks=920 batch_calls=1 | stage_s=0.008188
+[+0.153449s] paceval minmax checks=505 batch_calls=18 new_graphs=4 | stage_s=0.006239
+[+0.153449s] JOSHUA BEST WHITE c3d5 | Piece=Knight c3 -> d5 | SAN=Nd5 | score_white=60cp | FEN r1bqkbnr/pppppppp/2n5/3N4/8/8/PPPPPPPP/R1BQKBNR b KQkq - 3 2
+[+0.153500s] JOSHUA SELF-PLAY END plies=3 paceval_graphs=59 paceval_batch_calls=49 graph_points=21021

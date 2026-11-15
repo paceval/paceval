@@ -1,0 +1,23 @@
+{
+  "engine_name": "JOSHUA",
+  "opponents": "JOSHUA vs JOSHUA only",
+  "sdk": "local paceval 4.25-compatible original shared library",
+  "mcp_used": false,
+  "search_mode": "alphabeta",
+  "depth_each_move": 8,
+  "model": 3,
+  "quiescence_plies": 1,
+  "played_halfmoves": 2,
+  "max_halfmoves": 2,
+  "maximum_batch_rows": 8192,
+  "all_formulas_reused": true,
+  "leaf_multi_graph_count": 10,
+  "all_minmax_reductions_via_paceval": false,
+  "paceval_graphs_created": 34,
+  "paceval_batch_calls": 3,
+  "paceval_graph_point_evaluations": 102,
+  "elapsed_seconds": 0.071744,
+  "finished_game": false,
+  "final_fen": "8/8/8/8/7P/1k6/8/K7 w - - 1 2",
+  "note": "Heuristic depth-limited selfplay; not proof of best chess play or engine-strength benchmark"
+}

@@ -60,3 +60,23 @@ set_tests_properties(joshua_opt_research_independent_audit PROPERTIES DEPENDS jo
 set_tests_properties(joshua_opt_alphabeta_independent_audit PROPERTIES DEPENDS joshua_opt_alphabeta_4plies_depth3)
 add_test(NAME joshua_opt_exact_mode_equivalence COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_mode_equivalence.py" "${CMAKE_CURRENT_BINARY_DIR}/optimized_research_test" "${CMAKE_CURRENT_BINARY_DIR}/optimized_ab_test")
 set_tests_properties(joshua_opt_exact_mode_equivalence PROPERTIES DEPENDS "joshua_opt_research_4plies_depth3;joshua_opt_alphabeta_4plies_depth3")
+
+# V3 independent physical feature extraction and high-precision graph verification.
+add_executable(joshua_v3_audit joshua_v3_audit.cpp paceval_main.cpp)
+target_include_directories(joshua_v3_audit PRIVATE "${CMAKE_CURRENT_LIST_DIR}")
+target_link_libraries(joshua_v3_audit PRIVATE paceval_runtime)
+if(UNIX AND NOT APPLE)
+ target_link_libraries(joshua_v3_audit PRIVATE dl pthread)
+endif()
+add_test(NAME joshua_v3_graph_numeric_audit COMMAND joshua_v3_audit "${CMAKE_CURRENT_BINARY_DIR}/v3_audit.csv")
+add_test(NAME joshua_v3_independent_decimal COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_v3_audit.py" "${CMAKE_CURRENT_BINARY_DIR}/v3_audit.csv")
+set_tests_properties(joshua_v3_independent_decimal PROPERTIES DEPENDS joshua_v3_graph_numeric_audit)
+add_test(NAME joshua_v3_research_3plies_depth3 COMMAND joshua --mode research --model 3 --depth 3 --plies 3 --no-board --output "${CMAKE_CURRENT_BINARY_DIR}/v3_research")
+add_test(NAME joshua_v3_alphabeta_3plies_depth3 COMMAND joshua --mode alphabeta --model 3 --depth 3 --plies 3 --no-board --output "${CMAKE_CURRENT_BINARY_DIR}/v3_alphabeta")
+add_test(NAME joshua_v3_cross_mode_scores COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_mode_equivalence.py" "${CMAKE_CURRENT_BINARY_DIR}/v3_research" "${CMAKE_CURRENT_BINARY_DIR}/v3_alphabeta")
+set_tests_properties(joshua_v3_cross_mode_scores PROPERTIES DEPENDS "joshua_v3_research_3plies_depth3;joshua_v3_alphabeta_3plies_depth3")
+add_test(NAME joshua_v3_depth10_endgame COMMAND joshua --mode alphabeta --model 3 --depth 10 --plies 1 --fen "8/8/8/8/8/7P/2k5/K7 w - - 0 1" --no-board --output "${CMAKE_CURRENT_BINARY_DIR}/v3_depth10")
+
+# Validate the recorded English ten-halfmove release trace without spending
+# an additional minute rerunning the full chess game during CTest.
+add_test(NAME joshua_v3_english_10ply_recorded_audit COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_autoplay.py" "${CMAKE_CURRENT_LIST_DIR}/../results/v3_ab_depth4_q1_10ply")

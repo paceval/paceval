@@ -1,0 +1,64 @@
+JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | mode=alphabeta | depth=4 | model=3 | qdepth=1
+[+0.000227s] start FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+[+0.002348s] paceval persistent feature graphs=30; multi-graph layout=graph-major; max batch rows=8192
+[+0.002362s] ply=1 WHITE legal=20; SEARCH legal moves
+[+1.582505s] tree nodes=110528 leaves=58767 | search_s=1.580143
+[+1.582505s] paceval features unique=5270 point_checks=5270 batch_calls=0 | stage_s=0.000000
+[+1.582774s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000256
+[+1.582774s] alpha-beta TT_hits=342 cutoffs=14809 leaf_scalar_paceval_evaluations=5270
+[+1.582774s] JOSHUA BEST WHITE e2e3 | Piece=Pawn e2 -> e3 | SAN=e3 | score_white=80cp | FEN rnbqkbnr/pppppppp/8/8/8/4P3/PPPP1PPP/RNBQKBNR b KQkq - 0 1
+[+1.582821s] ply=2 BLACK legal=20; SEARCH legal moves
+[+3.954243s] tree nodes=154148 leaves=84327 | search_s=2.371422
+[+3.954243s] paceval features unique=12299 point_checks=10534 batch_calls=0 | stage_s=0.000000
+[+3.955661s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000159
+[+3.955661s] alpha-beta TT_hits=157 cutoffs=20559 leaf_scalar_paceval_evaluations=10534
+[+3.955661s] JOSHUA BEST BLACK e7e6 | Piece=Pawn e7 -> e6 | SAN=e6 | score_white=-61cp | FEN rnbqkbnr/pppp1ppp/4p3/8/8/4P3/PPPP1PPP/RNBQKBNR w KQkq - 0 2
+[+3.955704s] ply=3 WHITE legal=30; SEARCH legal moves
+[+11.073459s] tree nodes=428132 leaves=247938 | search_s=7.117755
+[+11.073459s] paceval features unique=31585 point_checks=27412 batch_calls=0 | stage_s=0.000000
+[+11.075886s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000188
+[+11.075886s] alpha-beta TT_hits=1364 cutoffs=75749 leaf_scalar_paceval_evaluations=27412
+[+11.075886s] JOSHUA BEST WHITE g1f3 | Piece=Knight g1 -> f3 | SAN=Nf3 | score_white=120cp | FEN rnbqkbnr/pppp1ppp/4p3/8/8/4PN2/PPPP1PPP/RNBQKB1R b KQkq - 1 2
+[+11.075936s] ply=4 BLACK legal=30; SEARCH legal moves
+[+16.138758s] tree nodes=234079 leaves=135309 | search_s=5.062822
+[+16.138758s] paceval features unique=26902 point_checks=22909 batch_calls=0 | stage_s=0.000000
+[+16.146682s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000227
+[+16.146682s] alpha-beta TT_hits=348 cutoffs=41675 leaf_scalar_paceval_evaluations=22909
+[+16.146682s] JOSHUA BEST BLACK d8f6 | Piece=Queen d8 -> f6 | SAN=Qf6 | score_white=-144cp | FEN rnb1kbnr/pppp1ppp/4pq2/8/8/4PN2/PPPP1PPP/RNBQKB1R w KQkq - 2 3
+[+16.146730s] ply=5 WHITE legal=28; SEARCH legal moves
+[+23.698821s] tree nodes=336252 leaves=199905 | search_s=7.552092
+[+23.698821s] paceval features unique=41369 point_checks=34463 batch_calls=0 | stage_s=0.000000
+[+23.705838s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000173
+[+23.705838s] alpha-beta TT_hits=664 cutoffs=70464 leaf_scalar_paceval_evaluations=34463
+[+23.705838s] JOSHUA BEST WHITE f1c4 | Piece=Bishop f1 -> c4 | SAN=Bc4 | score_white=146cp | FEN rnb1kbnr/pppp1ppp/4pq2/8/2B5/4PN2/PPPP1PPP/RNBQK2R b KQkq - 3 3
+[+23.705888s] ply=6 BLACK legal=37; SEARCH legal moves
+[+32.325165s] tree nodes=385539 leaves=242017 | search_s=8.619276
+[+32.325165s] paceval features unique=52550 point_checks=43730 batch_calls=0 | stage_s=0.000000
+[+32.336405s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000228
+[+32.336405s] alpha-beta TT_hits=889 cutoffs=87950 leaf_scalar_paceval_evaluations=43730
+[+32.336405s] JOSHUA BEST BLACK f6g6 | Piece=Queen f6 -> g6 | SAN=Qg6 | score_white=-193cp | FEN rnb1kbnr/pppp1ppp/4p1q1/8/2B5/4PN2/PPPP1PPP/RNBQK2R w KQkq - 4 4
+[+32.336458s] ply=7 WHITE legal=33; SEARCH legal moves
+[+38.885684s] tree nodes=324294 leaves=193180 | search_s=6.549226
+[+38.885684s] paceval features unique=42653 point_checks=31834 batch_calls=0 | stage_s=0.000000
+[+38.900124s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000242
+[+38.900124s] alpha-beta TT_hits=522 cutoffs=64298 leaf_scalar_paceval_evaluations=31834
+[+38.900124s] JOSHUA BEST WHITE e1g1 | Piece=King e1 -> g1 (kingside castling) | SAN=O-O | score_white=192cp | FEN rnb1kbnr/pppp1ppp/4p1q1/8/2B5/4PN2/PPPP1PPP/RNBQ1RK1 b kq - 5 4
+[+38.900209s] ply=8 BLACK legal=36; SEARCH legal moves
+[+51.602849s] tree nodes=532537 leaves=347950 | search_s=12.702640
+[+51.602849s] paceval features unique=70577 point_checks=64639 batch_calls=0 | stage_s=0.000000
+[+51.614267s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000227
+[+51.614267s] alpha-beta TT_hits=1823 cutoffs=120709 leaf_scalar_paceval_evaluations=64639
+[+51.614267s] JOSHUA BEST BLACK g6e4 | Piece=Queen g6 -> e4 | SAN=Qe4 | score_white=-166cp | FEN rnb1kbnr/pppp1ppp/4p3/8/2B1q3/4PN2/PPPP1PPP/RNBQ1RK1 w kq - 6 5
+[+51.614363s] ply=9 WHITE legal=29; SEARCH legal moves
+[+56.878047s] tree nodes=245443 leaves=144491 | search_s=5.263684
+[+56.878047s] paceval features unique=35114 point_checks=28174 batch_calls=0 | stage_s=0.000000
+[+56.897891s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000225
+[+56.897891s] alpha-beta TT_hits=296 cutoffs=42267 leaf_scalar_paceval_evaluations=28174
+[+56.897891s] JOSHUA BEST WHITE d2d3 | Piece=Pawn d2 -> d3 | SAN=d3 | score_white=261cp | FEN rnb1kbnr/pppp1ppp/4p3/8/2B1q3/3PPN2/PPP2PPP/RNBQ1RK1 b kq - 0 5
+[+56.897941s] ply=10 BLACK legal=40; SEARCH legal moves
+[+60.313732s] tree nodes=147604 leaves=83364 | search_s=3.415791
+[+60.313732s] paceval features unique=22573 point_checks=16648 batch_calls=0 | stage_s=0.000000
+[+60.324860s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000308
+[+60.324860s] alpha-beta TT_hits=435 cutoffs=19815 leaf_scalar_paceval_evaluations=16648
+[+60.324860s] JOSHUA BEST BLACK e4c6 | Piece=Queen e4 -> c6 | SAN=Qc6 | score_white=-93cp | FEN rnb1kbnr/pppp1ppp/2q1p3/8/2B5/3PPN2/PPP2PPP/RNBQ1RK1 w kq - 1 6
+[+60.324925s] JOSHUA SELF-PLAY END plies=10 paceval_graphs=42 paceval_batch_calls=11 graph_points=285627
