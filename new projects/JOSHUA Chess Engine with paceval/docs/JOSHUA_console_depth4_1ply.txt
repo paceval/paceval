@@ -1,0 +1,29 @@
+JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | full-width minimax | depth=4 | model=2
+[+0.000246s] start FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+[+0.001319s] paceval persistent feature graphs=20; multi-graph layout=graph-major; max batch rows=8192
+    a b c d e f g h
+ 8  r n b q k b n r  8
+ 7  p p p p p p p p  7
+ 6  . . . . . . . .  6
+ 5  . . . . . . . .  5
+ 4  . . . . . . . .  4
+ 3  . . . . . . . .  3
+ 2  P P P P P P P P  2
+ 1  R N B Q K B N R  1
+    a b c d e f g h
+[+0.001384s] ply=1 WHITE legal=20; BUILD search tree
+[+11.571075s] tree nodes=206604 leaves=197281 | gen_s=11.569692
+[+12.144318s] paceval features unique=777 point_checks=777 batch_calls=1 | stage_s=0.573243
+[+12.189932s] paceval minmax checks=9319 batch_calls=32 new_graphs=30 | stage_s=0.038954
+[+12.189932s] JOSHUA BEST WHITE b1c3 score_white=0cp | FEN rnbqkbnr/pppppppp/8/8/8/2N5/PPPPPPPP/R1BQKBNR b KQkq - 1 1
+    a b c d e f g h
+ 8  r n b q k b n r  8
+ 7  p p p p p p p p  7
+ 6  . . . . . . . .  6
+ 5  . . . . . . . .  5
+ 4  . . . . . . . .  4
+ 3  . . N . . . . .  3
+ 2  P P P P P P P P  2
+ 1  R . B Q K B N R  1
+    a b c d e f g h
+[+12.190050s] JOSHUA SELF-PLAY END plies=1 paceval_graphs=52 paceval_batch_calls=34 graph_points=24863

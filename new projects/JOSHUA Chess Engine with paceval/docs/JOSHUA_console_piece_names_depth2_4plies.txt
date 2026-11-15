@@ -1,0 +1,24 @@
+JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | full-width minimax | depth=2 | model=2
+[+0.000271s] start FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+[+0.001803s] paceval persistent feature graphs=20; multi-graph layout=graph-major; max batch rows=8192
+[+0.001867s] ply=1 WHITE legal=20; BUILD search tree
+[+0.023417s] tree nodes=421 leaves=400 | gen_s=0.021550
+[+0.025163s] paceval features unique=36 point_checks=36 batch_calls=1 | stage_s=0.001746
+[+0.026034s] paceval minmax checks=21 batch_calls=2 new_graphs=2 | stage_s=0.000780
+[+0.026034s] JOSHUA BEST WHITE b1c3 | Figur=Springer (Pferd) b1 -> c3 | SAN=Nc3 | score_white=0cp | FEN rnbqkbnr/pppppppp/8/8/8/2N5/PPPPPPPP/R1BQKBNR b KQkq - 1 1
+[+0.026129s] ply=2 BLACK legal=20; BUILD search tree
+[+0.046919s] tree nodes=461 leaves=440 | gen_s=0.020789
+[+0.049030s] paceval features unique=56 point_checks=56 batch_calls=1 | stage_s=0.002112
+[+0.049789s] paceval minmax checks=21 batch_calls=2 new_graphs=1 | stage_s=0.000728
+[+0.049789s] JOSHUA BEST BLACK b8c6 | Figur=Springer (Pferd) b8 -> c6 | SAN=Nc6 | score_white=30cp | FEN r1bqkbnr/pppppppp/2n5/8/8/2N5/PPPPPPPP/R1BQKBNR w KQkq - 2 2
+[+0.049880s] ply=3 WHITE legal=22; BUILD search tree
+[+0.077469s] tree nodes=505 leaves=482 | gen_s=0.027588
+[+0.080020s] paceval features unique=83 point_checks=83 batch_calls=1 | stage_s=0.002551
+[+0.081000s] paceval minmax checks=23 batch_calls=3 new_graphs=2 | stage_s=0.000943
+[+0.081000s] JOSHUA BEST WHITE g1f3 | Figur=Springer (Pferd) g1 -> f3 | SAN=Nf3 | score_white=0cp | FEN r1bqkbnr/pppppppp/2n5/8/8/2N2N2/PPPPPPPP/R1BQKB1R b KQkq - 3 2
+[+0.081098s] ply=4 BLACK legal=22; BUILD search tree
+[+0.107790s] tree nodes=549 leaves=526 | gen_s=0.026692
+[+0.110273s] paceval features unique=66 point_checks=66 batch_calls=1 | stage_s=0.002484
+[+0.111184s] paceval minmax checks=23 batch_calls=3 new_graphs=2 | stage_s=0.000876
+[+0.111184s] JOSHUA BEST BLACK g8f6 | Figur=Springer (Pferd) g8 -> f6 | SAN=Nf6 | score_white=19cp | FEN r1bqkb1r/pppppppp/2n2n2/8/8/2N2N2/PPPPPPPP/R1BQKB1R w KQkq - 4 3
+[+0.111292s] JOSHUA SELF-PLAY END plies=4 paceval_graphs=29 paceval_batch_calls=15 graph_points=4912

@@ -1,0 +1,90 @@
+JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | full-width minimax | depth=3 | model=2
+[+0.000383s] start FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+[+0.001728s] paceval persistent feature graphs=20; multi-graph layout=graph-major; max batch rows=8192
+    a b c d e f g h
+ 8  r n b q k b n r  8
+ 7  p p p p p p p p  7
+ 6  . . . . . . . .  6
+ 5  . . . . . . . .  5
+ 4  . . . . . . . .  4
+ 3  . . . . . . . .  3
+ 2  P P P P P P P P  2
+ 1  R N B Q K B N R  1
+    a b c d e f g h
+[+0.001795s] JOSHUA scenario: user-forced opening move e2e4 (not engine-selected)
+[+0.001918s] ply=2 BLACK legal=20; BUILD search tree
+[+0.903938s] tree nodes=13781 leaves=13160 | gen_s=0.902020
+[+0.942840s] paceval features unique=267 point_checks=267 batch_calls=1 | stage_s=0.038902
+[+0.952738s] paceval minmax checks=619 batch_calls=20 new_graphs=19 | stage_s=0.009315
+[+0.952738s] JOSHUA BEST BLACK g8f6 score_white=-38cp | FEN rnbqkb1r/pppppppp/5n2/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 1 2
+    a b c d e f g h
+ 8  r n b q k b . r  8
+ 7  p p p p p p p p  7
+ 6  . . . . . n . .  6
+ 5  . . . . . . . .  5
+ 4  . . . . P . . .  4
+ 3  . . . . . . . .  3
+ 2  P P P P . P P P  2
+ 1  R N B Q K B N R  1
+    a b c d e f g h
+[+0.952860s] ply=3 WHITE legal=30; BUILD search tree
+[+1.970583s] tree nodes=20875 leaves=20190 | gen_s=1.017723
+[+2.035423s] paceval features unique=365 point_checks=365 batch_calls=1 | stage_s=0.064840
+[+2.050390s] paceval minmax checks=685 batch_calls=27 new_graphs=20 | stage_s=0.014114
+[+2.050390s] JOSHUA BEST WHITE d1f3 score_white=119cp | FEN rnbqkb1r/pppppppp/5n2/8/4P3/5Q2/PPPP1PPP/RNB1KBNR b KQkq - 2 2
+    a b c d e f g h
+ 8  r n b q k b . r  8
+ 7  p p p p p p p p  7
+ 6  . . . . . n . .  6
+ 5  . . . . . . . .  5
+ 4  . . . . P . . .  4
+ 3  . . . . . Q . .  3
+ 2  P P P P . P P P  2
+ 1  R N B . K B N R  1
+    a b c d e f g h
+[+2.050550s] ply=4 BLACK legal=22; BUILD search tree
+[+3.647084s] tree nodes=20665 leaves=19803 | gen_s=1.596534
+[+3.705936s] paceval features unique=455 point_checks=455 batch_calls=1 | stage_s=0.058852
+[+3.714862s] paceval minmax checks=857 batch_calls=23 new_graphs=3 | stage_s=0.008451
+[+3.714862s] JOSHUA BEST BLACK b8c6 score_white=-117cp | FEN r1bqkb1r/pppppppp/2n2n2/8/4P3/5Q2/PPPP1PPP/RNB1KBNR w KQkq - 3 3
+    a b c d e f g h
+ 8  r . b q k b . r  8
+ 7  p p p p p p p p  7
+ 6  . . n . . n . .  6
+ 5  . . . . . . . .  5
+ 4  . . . . P . . .  4
+ 3  . . . . . Q . .  3
+ 2  P P P P . P P P  2
+ 1  R N B . K B N R  1
+    a b c d e f g h
+[+3.715003s] ply=5 WHITE legal=38; BUILD search tree
+[+5.560212s] tree nodes=34987 leaves=34043 | gen_s=1.845209
+[+5.657086s] paceval features unique=396 point_checks=396 batch_calls=1 | stage_s=0.096874
+[+5.673318s] paceval minmax checks=944 batch_calls=25 new_graphs=2 | stage_s=0.015055
+[+5.673318s] JOSHUA BEST WHITE f1c4 score_white=333cp | FEN r1bqkb1r/pppppppp/2n2n2/8/2B1P3/5Q2/PPPP1PPP/RNB1K1NR b KQkq - 4 3
+    a b c d e f g h
+ 8  r . b q k b . r  8
+ 7  p p p p p p p p  7
+ 6  . . n . . n . .  6
+ 5  . . . . . . . .  5
+ 4  . . B . P . . .  4
+ 3  . . . . . Q . .  3
+ 2  P P P P . P P P  2
+ 1  R N B . K . N R  1
+    a b c d e f g h
+[+5.673440s] ply=6 BLACK legal=24; BUILD search tree
+[+7.844632s] tree nodes=26196 leaves=25177 | gen_s=2.171192
+[+7.921633s] paceval features unique=522 point_checks=522 batch_calls=1 | stage_s=0.077001
+[+7.934623s] paceval minmax checks=1004 batch_calls=22 new_graphs=2 | stage_s=0.012315
+[+7.934623s] JOSHUA BEST BLACK c6e5 score_white=-258cp | FEN r1bqkb1r/pppppppp/5n2/4n3/2B1P3/5Q2/PPPP1PPP/RNB1K1NR w KQkq - 5 4
+    a b c d e f g h
+ 8  r . b q k b . r  8
+ 7  p p p p p p p p  7
+ 6  . . . . . n . .  6
+ 5  . . . . n . . .  5
+ 4  . . B . P . . .  4
+ 3  . . . . . Q . .  3
+ 2  P P P P . P P P  2
+ 1  R N B . K . N R  1
+    a b c d e f g h
+[+7.934795s] JOSHUA SELF-PLAY END plies=6 paceval_graphs=68 paceval_batch_calls=123 graph_points=44213

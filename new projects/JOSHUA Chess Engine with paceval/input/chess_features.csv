@@ -1,0 +1,7 @@
+id,wp,wn,wb,wr,wq,bp,bn,bb,br,bq,wc,bc,wd,bd,wa,ba,wk,bk,bias
+start,8,2,2,2,1,8,2,2,2,1,0,0,0,0,0,0,0,0,1
+white_knight_developed,8,2,2,2,1,8,2,2,2,1,1,0,1,0,0,0,0,0,1
+white_extra_pawn,9,2,2,2,1,8,2,2,2,1,0,0,0,0,0,0,0,0,1
+black_queen_missing,8,2,2,2,1,8,2,2,2,0,0,0,0,0,0,0,0,0,1
+white_king_developed,8,2,2,2,1,8,2,2,2,1,0,0,0,0,0,0,1,0,1
+neutral_centers,8,2,2,2,1,8,2,2,2,1,3,3,2,2,4,4,0,0,1
