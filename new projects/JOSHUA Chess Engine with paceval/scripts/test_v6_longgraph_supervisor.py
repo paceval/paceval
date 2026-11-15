@@ -15,7 +15,7 @@ with tempfile.TemporaryDirectory() as temp:
   '    shutil.copy(source.parent/"root_moves.csv",folder/"root_moves.csv")\n'
   '    break\n'
   'else: raise SystemExit("Unknown FEN in prerecorded fixture: "+fen)\n');fake.chmod(0o755)
- cmd=[str(manager),'--engine',str(fake),'--mode','longgraph','--opening','fixed','--quiescence','0','--depth','3','--model','4','--plies','8','--max-games','1','--output',str(p/'run')]
+ cmd=[str(manager),'--engine',str(fake),'--mode','longgraph','--opening','fixed','--quiescence','0','--depth','3','--model','4','--plies','8','--max-games','1','--explore-cp','0','--output',str(p/'run')]
  res=subprocess.run(cmd,capture_output=True,text=True,timeout=45)
  assert res.returncode==0,(res.stdout,res.stderr)
  game=p/'run'/'archives'/'game_000001.zip'

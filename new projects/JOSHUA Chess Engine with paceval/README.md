@@ -1,6 +1,34 @@
-# JOSHUA V7: Continuous Chess Self-Play with Automatic ZIP Log Rotation
+# JOSHUA V8: Live Chess Self-Play Progress and Reproducible Opening Diversity
 
 ![JOSHUA cover](figures/JOSHUA_Chess_Research_Cover_2400x1200.png)
+
+**New in V8:** A live console now shows search start, completed moves in UCI/SAN, current game and halfmove, paceval-root-search status where emitted by the engine, controlled exploratory choices, and a regular heartbeat (default: every 5 seconds). No more unexplained silence while a long search is running. The original complete engine console and per-move diagnostic data are still stored in each finished game ZIP.
+
+**Opening diversity:** V7 already cycled fourteen different legal first moves. That policy repeats deterministically after fourteen games and cannot guarantee different complete games. V8 additionally supports deterministic, auditable selection among near-best moves during the first fourteen halfmoves, based on existing paceval evaluation values. Default admissible loss: **30 centipawn-like evaluation units**. The per-game seed changes with the monotonically increasing game number. Variation is not trained play or a guarantee of stronger moves. Disable it with `--explore-cp 0` for strict best-ranked continuation.
+
+**Retention:** The V7 25,000,000-byte rotating ZIP log limit remains in force, including oldest-first deletion and the latest-game rolling snapshots. Raw active-game and temporary ZIP storage can temporarily exceed the retained-archives budget.
+
+Three Linux Intel/AMD x86-64 ELF programs are distributed in `bin/`: `joshua`, `joshua_long_graph`, and `joshua_selfplay`. The authentic proprietary `libpaceval_linux_sharedLIB.so` is **still required separately**. No replacement engine or bundled proprietary library is provided. This build was tested for compilation and the offline supervisor/selection/ZIP paths, but a new full original paceval V8 chess run could not be executed locally without that library. See [V8 details](docs/V8_LIVE_PROGRESS_AND_EXPLORATION.md) and [V8 validation](V8_RELEASE_VALIDATION.md).
+
+### Upgrade your existing `~/Dropbox/joshua_autoplay` installation
+
+Stop the running process with **Ctrl+C** first. From the unpacked V8 GitHub package, run:
+
+```bash
+./scripts/install_flat_linux.sh "$HOME/Dropbox/joshua_autoplay"
+cd "$HOME/Dropbox/joshua_autoplay"
+PACEVAL_RUNTIME="$PWD/libpaceval_linux_sharedLIB.so" \
+  ./joshua_selfplay --max-games 0 --opening cycle \
+  --progress-seconds 5 --explore-cp 30 --explore-plies 14
+```
+
+The installer updates only three executables. It preserves your original `libpaceval_linux_sharedLIB.so` and `selfplay_sessions` folder. Run without `sudo`. To see a heartbeat every second, use `--progress-seconds 1`. To return to strict deterministic best-move selection, use `--explore-cp 0`.
+
+For a GitHub checkout, use `./scripts/run_continuous.sh` and place the original `.so` in `runtime/` (or set `PACEVAL_RUNTIME`). A game that reaches `--plies` without a formal chess termination is not automatically a draw. Each retained ZIP stores its own analysis and ranked root-move list, with a `selected` column marking explorative selections separately from the best-ranked move.
+
+---
+
+## V7 archive rotation (retained)
 
 **New in V7:** The Linux x86-64 `joshua_selfplay` executable now **automatically compresses the complete logs of each finished game** into `sessions/archives/game_NNNNNN.zip` in C++ using statically linked zlib. It deletes the oldest ZIP archive whenever the managed retained-log footprint exceeds **25,000,000 bytes (25 MB)**. The rolling top-level `learning_log.md`, `learning_events.jsonl`, `games_index.csv` and `analysis_queue.csv` show the **latest game only**, so they no longer grow indefinitely. The original raw game folder is removed only after its ZIP has been written. If a single ZIP exceeds the budget, it too is deleted and the latest summary remains. Both trained model-4 and the full-graph alternative remain available. No automatic modification of weights or reinforcement-learning claim is made.
 

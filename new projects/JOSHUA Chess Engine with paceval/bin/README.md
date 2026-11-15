@@ -7,3 +7,5 @@
 All three are actual compiled x86-64 ELF programs. The authentic paceval runtime remains necessary to execute chess math. Place it in `../runtime/libpaceval_linux_sharedLIB.so` or set `PACEVAL_RUNTIME`. The optional `src/paceval_runtime_loader.cpp` is a transparent forwarding adapter that contains no paceval computation implementation.
 
 The GNU C++ runtime was linked statically. System libraries `libc` and `libm` are supplied by the target Linux distribution. Native executables require a compatible Linux glibc ABI. Rebuild with `../scripts/build_linux.sh` if the target system is older.
+
+V8 `joshua_selfplay` prints live search, move and heartbeat messages. `joshua` optionally supports `--explore-cp`, `--explore-plies` and `--game-seed`. All actual mathematical evaluation still requires the compatible original paceval Linux shared library.

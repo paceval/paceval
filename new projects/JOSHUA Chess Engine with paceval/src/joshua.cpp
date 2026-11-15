@@ -5,6 +5,7 @@
 // persistent paceval graphs, grouped in batch by fanout and player to move.
 // This is a technical demonstration, NOT a modern chess-strength engine.
 #include "paceval_main.h"
+#include "selfplay_exploration.h"
 #include "chess_rules.h"
 #include "paceval_math.h"
 #include "v4_paceval.h"
@@ -18,7 +19,7 @@
 #include <utility>
 using Clock=std::chrono::steady_clock;
 static const string START_FEN="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-struct Config {int depth=3,maxPlies=80,model=3,qdepth=0;size_t batchSize=8192,maxNodes=600000;string startFen=START_FEN,firstMove="",output="results",mode="alphabeta";bool selftest=false, printBoard=true;};
+struct Config {int depth=3,maxPlies=80,model=3,qdepth=0;size_t batchSize=8192,maxNodes=600000;string startFen=START_FEN,firstMove="",output="results",mode="alphabeta";bool selftest=false, printBoard=true;int explorePlies=0;double exploreCp=0.0;std::uint64_t gameSeed=0;};
 // Compact nodes store only graph topology and metadata, not a full chessboard.
 // All child indices belong to one contiguous slice of a global edge array.
 struct Node {int firstEdge=0,count=0,ply=0,featureId=-1,terminal=0,turn=1;double val=0;Move action{};};
@@ -368,7 +369,7 @@ int runGame(const Config&cfg){
  fs::create_directories(cfg.output);std::ofstream timeline(fs::path(cfg.output)/"selfplay_timeline.csv"),moves(fs::path(cfg.output)/"root_move_rankings.csv"),pgn(fs::path(cfg.output)/"game_uci.txt"),evidence(fs::path(cfg.output)/"run_evidence.json"),gamePgn(fs::path(cfg.output)/"game.pgn"),endState(fs::path(cfg.output)/"end_state.json");
  insist(timeline&&moves&&pgn&&evidence&&gamePgn&&endState,"Failed to create output files");
  appendLine(timeline,"halfmove,side,start_s,tree_ready_s,leaf_values_ready_s,decision_s,tree_generation_s,score_batch_s,reduction_s,legal_root_moves,tree_nodes,leaf_nodes,terminal_leaves,unique_feature_vectors,new_paceval_reduction_graphs,score_batches,reduction_batches,paceval_graph_points_total,chosen_uci,chosen_piece,chosen_san,from_square,to_square,is_capture,promotion,white_score_cp,fen_before,fen_after");
- appendLine(moves,"halfmove,depth,side,rank,uci,white_score_cp");
+ appendLine(moves,"halfmove,depth,side,rank,uci,white_score_cp,selected");
  Board b=fen(cfg.startFen);insist(!check(b,-b.turn),"Invalid initial FEN: previous player still checked");
  std::cout<<"JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | mode="<<cfg.mode<<" | depth="<<cfg.depth<<" | model="<<cfg.model<<" | qdepth="<<cfg.qdepth<<"\n";
  std::cout<<"[+"<<cleanClock(elapsed())<<"s] start FEN: "<<toFen(b)<<"\n";
@@ -386,6 +387,12 @@ int runGame(const Config&cfg){
    if(b.half>=100||minorDraw(b)||history[repetitionKey(b)]>=3){std::cout<<"[+"<<cleanClock(elapsed())<<"s] DRAW under chosen auto-claim policy\n";break;}
    const double begin=elapsed();std::cout<<"[+"<<cleanClock(begin)<<"s] ply="<<(h+1)<<" "<<(b.turn==1?"WHITE":"BLACK")<<" legal="<<legalMoves.size()<<"; SEARCH legal moves\n";
    Metrics m;Times t;vector<string>ranking;vector<double>values;string best=cfg.mode=="research"?worker.outputTree(b,cfg.depth,h,m,t,ranking,values):abworker.outputTree(b,cfg.depth,h,m,t,ranking,values);
+   // Optional V8 exploration selects a nearby evaluated alternative. All
+   // candidate scores remain from the ORIGINAL paceval-backed root search.
+   // The ranked best move and the deliberately played move are distinct data.
+   const auto choice=joshua_explore::choose(values,b.turn,toFen(b),h+1,cfg.exploreCp,cfg.explorePlies,cfg.gameSeed);
+   const string policyBest=best;
+   if(choice.index>0){best=ranking.at(choice.index);}
    const double now=elapsed();Board old=b;auto it=std::find_if(legalMoves.begin(),legalMoves.end(),[&](const Move&mv){return uci(mv)==best;});insist(it!=legalMoves.end(),"Generated move not legal at root");
    const string piece=pieceNameEnglish(old.b[it->f]);
    const string san=notationSan(old,*it,legalMoves);
@@ -393,16 +400,20 @@ int runGame(const Config&cfg){
    const string promotion=it->promo==' '?"":pieceNameEnglish(it->promo);
    const string moveDescription=description(old,*it);
    b=apply(b,*it);played.push_back(best);playedSan.push_back(san);history[repetitionKey(b)]++;
-   const double val=values[0];
+   const double val=values.at(choice.index);
    std::cout<<"[+"<<cleanClock(begin+t.generated)<<"s] tree nodes="<<m.nodes<<" leaves="<<m.leaves<<" | search_s="<<cleanClock(t.generated)<<"\n";
    std::cout<<"[+"<<cleanClock(begin+t.generated+t.features)<<"s] paceval features unique="<<m.uniqueVectors<<" point_checks="<<m.scoreChecks<<" batch_calls="<<m.scoreBatches<<" | stage_s="<<cleanClock(t.features)<<"\n";
    std::cout<<"[+"<<cleanClock(now)<<"s] paceval minmax checks="<<m.reductionChecks<<" batch_calls="<<m.reductionBatches<<" new_graphs="<<m.newGraphs<<" | stage_s="<<cleanClock(t.reduced)<<"\n";
    if(cfg.model==4)std::cout<<"[+"<<cleanClock(now)<<"s] V4 neural support active: "<<V4_HIDDEN<<" hidden paceval graphs + 1 fused graph; independent checks="<<(neural?neural->checked:0)<<"\n";
    if(cfg.mode=="alphabeta")std::cout<<"[+"<<cleanClock(now)<<"s] alpha-beta TT_hits="<<m.ttHits<<" cutoffs="<<m.prunes<<" leaf_scalar_paceval_evaluations="<<m.scoreChecks<<"\n";
-   std::cout<<"[+"<<cleanClock(now)<<"s] JOSHUA BEST "<<(old.turn==1?"WHITE":"BLACK")<<" "<<best<<" | Piece="<<moveDescription<<" | SAN="<<san<<" | score_white="<<val<<"cp | FEN "<<toFen(b)<<"\n";
+   if(cfg.exploreCp>0.0 && h+1<=cfg.explorePlies)
+     std::cout<<"[+"<<cleanClock(now)<<"s] EXPLORE ply="<<(h+1)<<" candidates="<<choice.eligible
+              <<" policy_best="<<policyBest<<" played="<<best<<" loss_cp="<<choice.regretCp
+              <<" seed="<<cfg.gameSeed<<"\n";
+   std::cout<<"[+"<<cleanClock(now)<<"s] "<<(choice.index>0?"JOSHUA PLAYED ":"JOSHUA BEST ")<<(old.turn==1?"WHITE":"BLACK")<<" "<<best<<" | Piece="<<moveDescription<<" | SAN="<<san<<" | score_white="<<val<<"cp | FEN "<<toFen(b)<<"\n";
    if(cfg.printBoard)boardAscii(b);
    timeline<<h+1<<','<<(old.turn==1?"white":"black")<<','<<cleanClock(begin)<<','<<cleanClock(begin+t.generated)<<','<<cleanClock(begin+t.generated+t.features)<<','<<cleanClock(now)<<','<<cleanClock(t.generated)<<','<<cleanClock(t.features)<<','<<cleanClock(t.reduced)<<','<<legalMoves.size()<<','<<m.nodes<<','<<m.leaves<<','<<m.terminal<<','<<m.uniqueVectors<<','<<m.newGraphs<<','<<m.scoreBatches<<','<<m.reductionBatches<<','<<m.graphPoints<<','<<best<<",\""<<piece<<"\",\""<<san<<"\","<<sq(it->f)<<','<<sq(it->t)<<','<<(capture?1:0)<<",\""<<promotion<<"\","<<val<<",\""<<toFen(old)<<"\",\""<<toFen(b)<<"\"\n";
-   for(size_t i=0;i<ranking.size();i++)moves<<h+1<<','<<cfg.depth<<','<<(old.turn==1?"white":"black")<<','<<i+1<<','<<ranking[i]<<','<<values[i]<<'\n';
+   for(size_t i=0;i<ranking.size();i++)moves<<h+1<<','<<cfg.depth<<','<<(old.turn==1?"white":"black")<<','<<i+1<<','<<ranking[i]<<','<<values[i]<<','<<(ranking[i]==best?1:0)<<'\n';
    insist(bool(timeline)&&bool(moves),"CSV write failed");
  }
  // State the actual chess termination, distinguishing a capped trace from a draw.
@@ -432,16 +443,20 @@ int runGame(const Config&cfg){
  endState<<"{\n  \"result\": \""<<result<<"\",\n  \"termination\": \""<<termination<<"\",\n  \"played_halfmoves\": "<<played.size()<<",\n  \"final_fen\": \""<<jsonEscape(toFen(b))<<"\",\n  \"analysis_status\": \"heuristic self-play, not automatically trained\"\n}\n";
  insist(bool(gamePgn)&&bool(endState),"Failed to write final game state");
  pgn<<"# JOSHUA chess self-play, UCI moves, not PGN SAN\n";for(auto&s:played)pgn<<s<<' ';pgn<<"\nfinal_fen "<<toFen(b)<<"\n";
- evidence<<"{\n"<<"  \"engine_name\": \"JOSHUA\",\n"<<"  \"opponents\": \"JOSHUA vs JOSHUA only\",\n"<<"  \"sdk\": \"local paceval 4.25-compatible original shared library\",\n"<<"  \"mcp_used\": false,\n"<<"  \"search_mode\": \""<<cfg.mode<<"\",\n"<<"  \"depth_each_move\": "<<cfg.depth<<",\n"<<"  \"model\": "<<cfg.model<<",\n"<<"  \"trained_neural_support\": "<<(cfg.model==4?"true":"false")<<",\n"<<"  \"neural_training_teacher\": \"V3 depth-two search on synthetic chess positions; NOT Stockfish or Lc0\",\n"<<"  \"neural_graphs\": "<<(cfg.model==4?V4_HIDDEN+1:0)<<",\n"<<"  \"neural_independent_checks\": "<<(neural?neural->checked:0)<<",\n"<<"  \"quiescence_plies\": "<<cfg.qdepth<<",\n"<<"  \"played_halfmoves\": "<<played.size()<<",\n"<<"  \"max_halfmoves\": "<<cfg.maxPlies<<",\n"<<"  \"maximum_batch_rows\": "<<cfg.batchSize<<",\n"<<"  \"all_formulas_reused\": true,\n"<<"  \"leaf_multi_graph_count\": "<<(cfg.model==4?advanced.expr.size()+size_t(V4_HIDDEN+1):(cfg.model==3?advanced.expr.size():form.expr.size()))<<",\n"<<"  \"all_minmax_reductions_via_paceval\": "<<(cfg.mode=="research"?"true":"false")<<",\n"<<"  \"paceval_graphs_created\": "<<engine.owned.size()<<",\n"<<"  \"paceval_batch_calls\": "<<engine.batches<<",\n"<<"  \"paceval_graph_point_evaluations\": "<<engine.graphPoints<<",\n"<<"  \"elapsed_seconds\": "<<cleanClock(elapsed())<<",\n"<<"  \"finished_game\": "<<(legal(b).empty()?"true":"false")<<",\n"<<"  \"final_fen\": \""<<jsonEscape(toFen(b))<<"\",\n"<<"  \"note\": \"Heuristic depth-limited selfplay; not proof of best chess play or engine-strength benchmark\"\n}\n";
+ evidence<<"{\n"<<"  \"engine_name\": \"JOSHUA\",\n"<<"  \"opponents\": \"JOSHUA vs JOSHUA only\",\n"<<"  \"sdk\": \"local paceval 4.25-compatible original shared library\",\n"<<"  \"mcp_used\": false,\n"<<"  \"search_mode\": \""<<cfg.mode<<"\",\n"<<"  \"depth_each_move\": "<<cfg.depth<<",\n"<<"  \"model\": "<<cfg.model<<",\n"<<"  \"trained_neural_support\": "<<(cfg.model==4?"true":"false")<<",\n"<<"  \"neural_training_teacher\": \"V3 depth-two search on synthetic chess positions; NOT Stockfish or Lc0\",\n"<<"  \"neural_graphs\": "<<(cfg.model==4?V4_HIDDEN+1:0)<<",\n"<<"  \"neural_independent_checks\": "<<(neural?neural->checked:0)<<",\n"<<"  \"exploration_window_cp\": "<<cfg.exploreCp<<",\n"<<"  \"exploration_plies\": "<<cfg.explorePlies<<",\n"<<"  \"exploration_game_seed\": "<<cfg.gameSeed<<",\n"<<"  \"quiescence_plies\": "<<cfg.qdepth<<",\n"<<"  \"played_halfmoves\": "<<played.size()<<",\n"<<"  \"max_halfmoves\": "<<cfg.maxPlies<<",\n"<<"  \"maximum_batch_rows\": "<<cfg.batchSize<<",\n"<<"  \"all_formulas_reused\": true,\n"<<"  \"leaf_multi_graph_count\": "<<(cfg.model==4?advanced.expr.size()+size_t(V4_HIDDEN+1):(cfg.model==3?advanced.expr.size():form.expr.size()))<<",\n"<<"  \"all_minmax_reductions_via_paceval\": "<<(cfg.mode=="research"?"true":"false")<<",\n"<<"  \"paceval_graphs_created\": "<<engine.owned.size()<<",\n"<<"  \"paceval_batch_calls\": "<<engine.batches<<",\n"<<"  \"paceval_graph_point_evaluations\": "<<engine.graphPoints<<",\n"<<"  \"elapsed_seconds\": "<<cleanClock(elapsed())<<",\n"<<"  \"finished_game\": "<<(legal(b).empty()?"true":"false")<<",\n"<<"  \"final_fen\": \""<<jsonEscape(toFen(b))<<"\",\n"<<"  \"note\": \"Heuristic depth-limited selfplay; not proof of best chess play or engine-strength benchmark\"\n}\n";
  std::cout<<"[+"<<cleanClock(elapsed())<<"s] JOSHUA SELF-PLAY END plies="<<played.size()<<" paceval_graphs="<<engine.owned.size()<<" paceval_batch_calls="<<engine.batches<<" graph_points="<<engine.graphPoints<<"\n";
  return 0;
 }
 int main(int argc,char**argv){try{
+ // Flush status lines in real time although the supervisor redirects stdout
+ // to a per-game log file. Numeric work remains inside the paceval engine.
+ std::cout.setf(std::ios::unitbuf);
  Config c;for(int i=1;i<argc;i++){
   string a=argv[i];auto value=[&]()->string{insist(i+1<argc,"Missing parameter for "+a);return argv[++i];};
-  if(a=="--help"){std::cout<<"Usage: joshua [--mode research|alphabeta] [--depth 1..10] [--plies 1..200] [--model 1|2|3|4] [--quiescence 0..4] [--fen SIX_PART_FEN] [--first-move e2e4] [--batch-rows 1..65536] [--max-nodes N] [--no-board] [--output DIR]\nDefault: JOSHUA plays both White and Black in Alpha-Beta mode, depth 3, V3 evaluation, local paceval SDK only.\n";return 0;}else if(a=="--mode")c.mode=value();else if(a=="--quiescence")c.qdepth=std::stoi(value());else if(a=="--depth")c.depth=std::stoi(value());else if(a=="--plies")c.maxPlies=std::stoi(value());else if(a=="--model")c.model=std::stoi(value());else if(a=="--batch-rows")c.batchSize=std::stoul(value());else if(a=="--max-nodes")c.maxNodes=std::stoul(value());else if(a=="--output")c.output=value();else if(a=="--fen")c.startFen=value();else if(a=="--first-move")c.firstMove=value();else if(a=="--no-board")c.printBoard=false;else if(a=="--selftest")c.selftest=true;else throw std::runtime_error("Unknown flag: "+a);
+  if(a=="--help"){std::cout<<"Usage: joshua [--mode research|alphabeta] [--depth 1..10] [--plies 1..200] [--model 1|2|3|4] [--quiescence 0..4] [--fen SIX_PART_FEN] [--first-move e2e4] [--batch-rows 1..65536] [--max-nodes N] [--no-board] [--output DIR] [--explore-cp N] [--explore-plies N] [--game-seed N]\nDefault: JOSHUA plays both White and Black in Alpha-Beta mode, depth 3, V3 evaluation, local paceval SDK only.\n";return 0;}else if(a=="--mode")c.mode=value();else if(a=="--quiescence")c.qdepth=std::stoi(value());else if(a=="--depth")c.depth=std::stoi(value());else if(a=="--plies")c.maxPlies=std::stoi(value());else if(a=="--model")c.model=std::stoi(value());else if(a=="--batch-rows")c.batchSize=std::stoul(value());else if(a=="--max-nodes")c.maxNodes=std::stoul(value());else if(a=="--output")c.output=value();else if(a=="--explore-cp")c.exploreCp=std::stod(value());else if(a=="--explore-plies")c.explorePlies=std::stoi(value());else if(a=="--game-seed")c.gameSeed=std::stoull(value());else if(a=="--fen")c.startFen=value();else if(a=="--first-move")c.firstMove=value();else if(a=="--no-board")c.printBoard=false;else if(a=="--selftest")c.selftest=true;else throw std::runtime_error("Unknown flag: "+a);
  }
  insist(c.mode=="research"||c.mode=="alphabeta","--mode must be research or alphabeta");insist(c.depth>=1&&c.depth<=(c.mode=="research"?4:10),"--depth must be 1..4 (research) or 1..10 (alphabeta)");insist(c.maxPlies>=1&&c.maxPlies<=200,"--plies must be 1..200");insist(c.model>=1&&c.model<=4,"--model must be 1, 2, 3, or 4");insist(c.qdepth>=0&&c.qdepth<=4,"--quiescence must be 0..4");insist(c.qdepth==0||c.mode=="alphabeta","Quiescence is available only in alphabeta mode");insist(c.batchSize>=1&&c.batchSize<=65536,"--batch-rows must be 1..65536");
+ insist(std::isfinite(c.exploreCp)&&c.exploreCp>=0.0&&c.exploreCp<=500.0&&c.explorePlies>=0&&c.explorePlies<=200,"Invalid exploration configuration");
  if(c.selftest){
   // Verify the displayed piece and SAN against concrete legal positions.
   const auto checkNotation=[&](const string&position,const string&uciMove,const string&expectedPiece,const string&expectedSan){

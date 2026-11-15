@@ -34,6 +34,9 @@ if(JOSHUA_SELFPLAY_MANAGER_ONLY)
  add_test(NAME joshua_selfplay_zip_retention COMMAND "${Python3_EXECUTABLE}"
   "${CMAKE_CURRENT_LIST_DIR}/../scripts/test_v7_zip_retention.py"
   "$<TARGET_FILE:joshua_selfplay>" "${CMAKE_CURRENT_LIST_DIR}/../results/v3_ab_depth4_q1_10ply")
+ add_test(NAME joshua_v8_progress_mock COMMAND "${Python3_EXECUTABLE}"
+  "${CMAKE_CURRENT_LIST_DIR}/../scripts/test_v8_live_progress.py"
+  "$<TARGET_FILE:joshua_selfplay>" "${CMAKE_CURRENT_LIST_DIR}/../results/v3_ab_depth4_q1_10ply")
  return()
 endif()
 # Official SDK adapter exposes many optional FFI entry points. Keep only those
@@ -245,3 +248,14 @@ add_test(NAME joshua_v5_eight_ply_graph_selfplay_replay COMMAND joshua_v5_selfpl
 add_test(NAME joshua_v5_eight_ply_graph_evidence COMMAND "${Python3_EXECUTABLE}"
  "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_v5_selfplay_evidence.py"
  "${CMAKE_CURRENT_LIST_DIR}/../results/v5_graph_rebuilt_selfplay_8ply")
+
+# SDK-independent exploration policy. It does not claim a genuine paceval game.
+add_executable(joshua_v8_exploration_policy_test "${CMAKE_CURRENT_LIST_DIR}/../tests/explore_policy_test.cpp")
+target_include_directories(joshua_v8_exploration_policy_test PRIVATE "${CMAKE_CURRENT_LIST_DIR}")
+add_test(NAME joshua_v8_exploration_policy COMMAND joshua_v8_exploration_policy_test)
+add_test(NAME joshua_v8_progress_mock COMMAND "${Python3_EXECUTABLE}"
+ "${CMAKE_CURRENT_LIST_DIR}/../scripts/test_v8_live_progress.py"
+ "$<TARGET_FILE:joshua_selfplay>" "${CMAKE_CURRENT_LIST_DIR}/../results/v3_ab_depth4_q1_10ply")
+add_test(NAME joshua_v8_longgraph_diversity_replay COMMAND "${Python3_EXECUTABLE}"
+ "${CMAKE_CURRENT_LIST_DIR}/../scripts/test_v8_longgraph_diversity.py"
+ "$<TARGET_FILE:joshua_selfplay>" "${CMAKE_CURRENT_LIST_DIR}/../results/v5_graph_rebuilt_selfplay_8ply")

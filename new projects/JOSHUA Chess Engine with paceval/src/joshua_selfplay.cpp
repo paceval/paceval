@@ -1,4 +1,4 @@
-// JOSHUA V7 continuous self-play, reproducible diagnostic logger and ZIP rotator.
+// JOSHUA V8 continuous self-play, live progress, diversified openings and ZIP rotator.
 // This program does not evaluate chess mathematics. It starts the ORIGINAL JOSHUA
 // executable, which must use the local original paceval Mathematical Engine.
 // Each game runs in its own subprocess to release ALL paceval handles at exit.
@@ -27,6 +27,7 @@
 #include "paceval_main.h"
 #include "chess_rules.h"
 #include "zip_log_archive.h"
+#include "selfplay_exploration.h"
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <fcntl.h>
@@ -68,7 +69,7 @@ static string jsonNumber(const string&doc,const string&key,const string&fallback
 }
 static string positionKey(const string&fen){std::istringstream f(fen);string a,b,c,d;if(!(f>>a>>b>>c>>d))return fen;return a+" "+b+" "+c+" "+d;}
 struct Observation{string code,location,detail,proposal;};
-struct Analysis{string result="*",reason="unknown",finalFen="", gamePath="";size_t plies=0,largeSwings=0,closeChoices=0,repeatedPositions=0,captureMoves=0,uniquePositions=0;long long nodes=0,pacevalPoints=0;vector<Observation>findings;string firstMove="";};
+struct Analysis{string result="*",reason="unknown",finalFen="", gamePath="";size_t plies=0,largeSwings=0,closeChoices=0,repeatedPositions=0,captureMoves=0,uniquePositions=0,exploratoryChoices=0;long long nodes=0,pacevalPoints=0;vector<Observation>findings;string firstMove="";};
 static Analysis analyze(const fs::path&dir){
  Analysis a; a.gamePath=dir.string();const auto rows=csvRead(dir/"selfplay_timeline.csv"), rankings=csvRead(dir/"root_move_rankings.csv");
  require(fs::exists(dir/"run_evidence.json"),"Missing evidence file in "+dir.string());
@@ -78,7 +79,13 @@ static Analysis analyze(const fs::path&dir){
  else {a.reason="legacy_unclassified";a.finalFen=jsonString(evidence,"final_fen","");a.plies=static_cast<size_t>(std::stoul(jsonNumber(evidence,"played_halfmoves","0")));}
  const int expected=asInt(jsonNumber(evidence,"played_halfmoves","0"));require(expected>=int(rows.size()),"Evidence moves smaller than timeline");if(!a.plies)a.plies=static_cast<size_t>(expected);
  std::map<int,vector<double>> ranked;std::map<int,string> chosen;
- for(auto&r:rankings){int ply=asInt(get(r,"halfmove"));ranked[ply].push_back(asDouble(get(r,"white_score_cp")));if(get(r,"rank")=="1")chosen[ply]=get(r,"uci");}
+ for(auto&r:rankings){int ply=asInt(get(r,"halfmove"));ranked[ply].push_back(asDouble(get(r,"white_score_cp")));
+  const auto selected=r.find("selected");
+  if(selected!=r.end()){
+   if(selected->second=="1")require(chosen.emplace(ply,get(r,"uci")).second,"Multiple selected moves in ranking for ply "+std::to_string(ply));
+   else require(selected->second=="0","Invalid selected flag");
+  }else if(get(r,"rank")=="1")chosen[ply]=get(r,"uci");
+ }
  std::map<string,int>positions;double previous=0;bool havePrevious=false;string previousFen;
  for(const auto&r:rows){
   const int ply=asInt(get(r,"halfmove"));const string side=get(r,"side"),fenBefore=get(r,"fen_before"),fenAfter=get(r,"fen_after"),uci=get(r,"chosen_uci");
@@ -87,6 +94,15 @@ static Analysis analyze(const fs::path&dir){
   if(!previousFen.empty())require(previousFen==fenBefore,"Broken FEN chain at ply "+std::to_string(ply));previousFen=fenAfter;
   if(positions.empty())positions[positionKey(fenBefore)]++;
   if(++positions[positionKey(fenAfter)]==2){a.repeatedPositions++;if(a.repeatedPositions<=4)a.findings.push_back({"REPEATED_POSITION","ply "+std::to_string(ply),"A prior board state recurred.","Review draw-aware evaluation, repetition penalties and transposition-history handling."});}
+  for(const auto&rankRow:rankings){
+    if(asInt(get(rankRow,"halfmove"))==ply && get(rankRow,"uci")==uci && get(rankRow,"rank")!="1"){
+      ++a.exploratoryChoices;
+      if(a.exploratoryChoices<=4)a.findings.push_back({"CONTROLLED_EXPLORATION","ply "+std::to_string(ply)+" "+uci,
+        "The self-play policy deliberately selected a near-best alternative instead of the best-ranked move.",
+        "Compare this FEN under deterministic no-exploration and varying seeds; do not score the variation itself as a search mistake."});
+      break;
+    }
+  }
   a.nodes+=std::stoll(get(r,"tree_nodes"));a.pacevalPoints=static_cast<long long>(asDouble(get(r,"paceval_graph_points_total")));
   if(get(r,"is_capture")=="1")a.captureMoves++;
   const double score=asDouble(get(r,"white_score_cp"));
@@ -98,7 +114,7 @@ static Analysis analyze(const fs::path&dir){
  if(a.reason=="max_halfmoves"){a.findings.push_back({"MOVE_LIMIT","game end","Search stopped at the configured halfmove limit. This is NOT a completed or drawn chess game.","Raise --plies if acceptable, and compare decisive-game rates under identical search settings."});}
  if(a.reason=="threefold_repetition"||a.reason=="fifty_move_rule"||a.reason=="insufficient_material")a.findings.push_back({"DRAW_MECHANISM","game end","Draw recorded by a defined termination rule: "+a.reason,"Investigate repetition-awareness, progress incentives and endgame-specific evaluation with an independent holdout test."});
  if(a.reason=="checkmate")a.findings.push_back({"DECISIVE_GAME","game end","Legal checkmate outcome reported by the chess host.","Retain the complete move trajectory for tactical replay and compare alternative model versions against fixed positions."});
- if(a.largeSwings==0&&a.closeChoices==0&&a.repeatedPositions==0)a.findings.push_back({"NO_TRIGGER","game end","No configured diagnostic threshold was crossed.","Keep this game as a baseline. No algorithmic improvement can be inferred from this trace alone."});
+ if(a.largeSwings==0&&a.closeChoices==0&&a.repeatedPositions==0&&a.exploratoryChoices==0)a.findings.push_back({"NO_TRIGGER","game end","No configured diagnostic threshold was crossed.","Keep this game as a baseline. No algorithmic improvement can be inferred from this trace alone."});
  return a;
 }
 static void logAnalysis(const Analysis&a,const fs::path&root,int gameNumber,const string&opening,const string&stamp){
@@ -107,12 +123,12 @@ static void logAnalysis(const Analysis&a,const fs::path&root,int gameNumber,cons
  out<<"Original game directory before ZIP archival: `"<<a.gamePath<<"`  \nOpening control: `"<<(opening.empty()?"engine-selected":opening)<<"`  \n";
  out<<"Result: `"<<a.result<<"`; termination: `"<<a.reason<<"`; played plies: "<<a.plies<<"  \n";
  out<<"Observed search nodes (sum of recorded root searches): "<<a.nodes<<". paceval graph-point counter: "<<(a.pacevalPoints>0?std::to_string(a.pacevalPoints):"not available for the V5 full-graph path")<<". These counts do not measure chess strength.  \n";
- out<<"Diagnostic summary: score reversals="<<a.largeSwings<<", near-tied root choices="<<a.closeChoices<<", recurring board states="<<a.repeatedPositions<<", captures="<<a.captureMoves<<".\n\n";
+ out<<"Diagnostic summary: score reversals="<<a.largeSwings<<", near-tied root choices="<<a.closeChoices<<", recurring board states="<<a.repeatedPositions<<", controlled exploration choices="<<a.exploratoryChoices<<", captures="<<a.captureMoves<<".\n\n";
  out<<"### Review candidates (not automatically trained)\n\n";
  for(auto&f:a.findings)out<<"- **"<<f.code<<"**, "<<f.location<<": "<<f.detail<<"  Suggested experiment: "<<f.proposal<<"\n";
  out<<"\n**Limits:** Score jumps are heuristic alarms, not independently proven mistakes. The code does not update neural weights, evolve graphs, or prove that any proposed improvement works. All actual game evaluations must come from the original paceval runtime.\n";
  writeText(fs::path(a.gamePath)/"learning_report.md",out.str());writeText(root/"learning_log.md",out.str()); // Rolling snapshot: latest game only.
- std::ostringstream js;js<<"{\"game\":"<<gameNumber<<",\"timestamp\":\""<<escapeJson(stamp)<<"\",\"directory\":\""<<escapeJson(a.gamePath)<<"\",\"opening\":\""<<escapeJson(opening)<<"\",\"result\":\""<<escapeJson(a.result)<<"\",\"termination\":\""<<escapeJson(a.reason)<<"\",\"plies\":"<<a.plies<<",\"score_reversals\":"<<a.largeSwings<<",\"close_choices\":"<<a.closeChoices<<",\"repeated_positions\":"<<a.repeatedPositions<<",\"paceval_graph_points\":"<<a.pacevalPoints<<",\"flags\":[";
+ std::ostringstream js;js<<"{\"game\":"<<gameNumber<<",\"timestamp\":\""<<escapeJson(stamp)<<"\",\"directory\":\""<<escapeJson(a.gamePath)<<"\",\"opening\":\""<<escapeJson(opening)<<"\",\"result\":\""<<escapeJson(a.result)<<"\",\"termination\":\""<<escapeJson(a.reason)<<"\",\"plies\":"<<a.plies<<",\"score_reversals\":"<<a.largeSwings<<",\"close_choices\":"<<a.closeChoices<<",\"repeated_positions\":"<<a.repeatedPositions<<",\"controlled_exploration_choices\":"<<a.exploratoryChoices<<",\"paceval_graph_points\":"<<a.pacevalPoints<<",\"flags\":[";
  for(size_t i=0;i<a.findings.size();i++){if(i)js<<',';auto&f=a.findings[i];js<<"{\"code\":\""<<escapeJson(f.code)<<"\",\"location\":\""<<escapeJson(f.location)<<"\",\"detail\":\""<<escapeJson(f.detail)<<"\",\"proposal\":\""<<escapeJson(f.proposal)<<"\"}";}
  js<<"]}\n";writeText(fs::path(a.gamePath)/"learning_event.jsonl",js.str());writeText(root/"learning_events.jsonl",js.str());
  const string indexHeader="game,timestamp,directory,opening,result,termination,plies,score_reversals,close_choices,repeated_positions,paceval_graph_points\n";
@@ -136,16 +152,19 @@ static void logAnalysis(const Analysis&a,const fs::path&root,int gameNumber,cons
  // Small convenience snapshot. The complete per-game queue is archived in ZIP.
  writeText(queue,readText(local));
 }
-struct Settings{fs::path engine="",output="selfplay_sessions",analyzeOnly="";int depth=2,model=4,quiescence=2,plies=160,maxGames=0,pauseMs=0,seed=20261115;string mode="alphabeta",opening="cycle",firstMove="";int maxNodes=25000,maxChars=2500000;std::uint64_t archiveLimitBytes=25000000,activeLimitBytes=25000000;};
+struct Settings{fs::path engine="",output="selfplay_sessions",analyzeOnly="";int depth=2,model=4,quiescence=2,plies=160,maxGames=0,pauseMs=0,seed=20261115,progressSeconds=5,explorePlies=14;double exploreCp=30.0;string mode="alphabeta",opening="cycle",firstMove="";int maxNodes=25000,maxChars=2500000;std::uint64_t archiveLimitBytes=25000000,activeLimitBytes=25000000;};
 static vector<string> openings(){return {"e2e4","d2d4","c2c4","g1f3","b1c3","e2e3","d2d3","g2g3","b2b3","f2f4","a2a3","h2h3","a2a4","h2h4"};}
-static void usage(){std::cout<<"JOSHUA V6 continuous self-play supervisor (Linux x86-64, uses genuine local paceval via ./joshua)\n"
+static void usage(){std::cout<<"JOSHUA V8 continuous self-play supervisor (Linux x86-64, uses genuine local paceval via ./joshua)\n"
  "  --engine PATH           Existing genuine JOSHUA executable (default: ./joshua next to supervisor)\n"
  "  --output DIR            Durable session directory (default: selfplay_sessions)\n"
  "  --max-games N           N=0 means indefinitely, Ctrl+C stops after SIGTERM\n"
  "  --depth N --model 1..4 --quiescence N --plies N --mode alphabeta|research|longgraph\n"
- "  --opening cycle|fixed  Cycle deterministic, legal first moves to avoid identical games\n"
+ "  --opening cycle|fixed|engine   Cycle 14 first moves by default\n"
  "  --first-move UCI        Used with --opening fixed; empty allows normal selection\n"
- "  --seed N                Deterministic opening rotation (default: 20261115)\n"
+ "  --explore-cp N          Max evaluation loss (centipawns) for early-move alternatives; default 30\n"
+ "  --explore-plies N       Max halfmove number eligible for exploration; default 14\n"
+ "  --progress-seconds N    Console heartbeat while thinking; default 5; zero disables heartbeat\n"
+ "  --seed N                Reproducible opening rotation and exploration seed\n"
  "  --max-nodes N --max-chars N  Full V5 mathematical decision-tree budgets\n"
  "  --pause-ms N            Pause between games; no background service\n"
  "  --log-limit-bytes N     Compressed ZIP archive plus snapshot quota (default 25000000)\n"
@@ -207,19 +226,86 @@ static void archiveGame(const fs::path&root,const fs::path&dir,std::uint64_t lim
           <<" stored_archives_bytes="<<kept<<" pruned="<<(pruned+extra)
           <<" latest_retained="<<(fs::exists(target)?"yes":"no")<<std::endl;
 }
-static int runChild(const vector<string>&argv,const fs::path&out,const fs::path&gameRoot,std::uint64_t activeLimit){
+// The real engine writes durable trace files. Tail its redirected stdout and
+// display selected human-readable progress lines without leaking unbounded logs
+// into a second file. The heartbeat is independent of engine stdout buffering.
+struct ConsoleFollow {std::uint64_t cursor=0;string pending;int currentPly=0,lastPly=0;string lastMove="none",stage="starting";};
+static void interpretLiveLine(const string&line, ConsoleFollow&progress,int game,int plyContext){
+ const auto search=line.find("s] ply=");
+ if(search!=string::npos){
+  size_t at=search+7,end=at;while(end<line.size()&&line[end]>='0'&&line[end]<='9')end++;
+  if(end>at){progress.currentPly=asInt(line.substr(at,end-at));progress.stage="searching";
+   std::cout<<"SEARCH game="<<game<<" ply="<<progress.currentPly<<" "<<line.substr(end)<<std::endl;}
+  return;
+ }
+ if(line.find("JOSHUA scenario: user-forced opening move")!=string::npos){
+  progress.stage="forced opening applied";const auto pos=line.find("user-forced opening move");
+  std::cout<<"OPENING game="<<game<<" "<<line.substr(pos)<<std::endl;return;
+ }
+ const auto best=line.find("JOSHUA BEST ");
+ const auto played=line.find("JOSHUA PLAYED ");
+ if(best!=string::npos||played!=string::npos){
+  progress.lastPly=progress.currentPly;progress.stage="between moves";
+  const auto start=best!=string::npos?best+12:played+14;
+  const auto mark=best!=string::npos?best:played;
+  const auto space=line.find(' ',start),bar=line.find(" | FEN",start);
+  if(space!=string::npos){const auto next=line.find(' ',space+1);progress.lastMove=line.substr(space+1,next==string::npos?string::npos:next-space-1);}
+  std::cout<<"MOVE game="<<game<<" ply="<<progress.lastPly<<" "<<line.substr(mark,bar==string::npos?string::npos:bar-mark)<<std::endl;
+  return;
+ }
+ if(line.find("EXPLORE ply=")!=string::npos){
+  const auto pos=line.find("EXPLORE ply=");std::cout<<"DIVERSITY game="<<game<<" "<<line.substr(pos)<<std::endl;return;
+ }
+ if(line.find("JOSHUA SELF-PLAY END")!=string::npos){
+  std::cout<<"ENGINE_END game="<<game<<" "<<line.substr(line.find("JOSHUA SELF-PLAY END"))<<std::endl;
+ }
+ (void)plyContext;
+}
+static void followEngineConsole(const fs::path&console,ConsoleFollow&progress,int game,int plyContext){
+ std::ifstream f(console,std::ios::binary);
+ if(!f)return;
+ f.seekg(0,std::ios::end);
+ const auto end=f.tellg();if(end<0||std::uint64_t(end)<progress.cursor)return;
+ f.seekg(static_cast<std::streamoff>(progress.cursor));
+ char buf[8192];int maxChunks=64;
+ while(maxChunks-- && f){
+  f.read(buf,sizeof(buf));const auto n=f.gcount();if(n<=0)break;
+  progress.cursor+=std::uint64_t(n);progress.pending.append(buf,size_t(n));
+  size_t cut=0;
+  while((cut=progress.pending.find('\n'))!=string::npos){
+   string line=progress.pending.substr(0,cut);progress.pending.erase(0,cut+1);
+   if(!line.empty()&&line.back()=='\r')line.pop_back();
+   interpretLiveLine(line,progress,game,plyContext);
+  }
+  if(progress.pending.size()>16384){progress.pending.clear();progress.stage="long console line discarded from live display";}
+ }
+}
+static int runChild(const vector<string>&argv,const fs::path&out,const fs::path&gameRoot,
+                    std::uint64_t activeLimit,int game,int progressSeconds,int plyContext=0){
  require(!argv.empty(),"Missing engine");std::ofstream(out/"launch_arguments.txt")<<"Arguments are recorded in game_console.log header.\n";
  pid_t pid=fork();require(pid>=0,"fork() failed");
  if(pid==0){int fd=open((out/"game_console.log").c_str(),O_WRONLY|O_CREAT|O_TRUNC,0644);if(fd<0)_exit(127);dup2(fd,STDOUT_FILENO);dup2(fd,STDERR_FILENO);close(fd);vector<char*>cargs;for(auto&x:argv)cargs.push_back(const_cast<char*>(x.c_str()));cargs.push_back(nullptr);execv(argv[0].c_str(),cargs.data());_exit(127);}
- childPid=pid;int status=0;bool overLimit=false;
+ childPid=pid;int status=0;bool overLimit=false;ConsoleFollow follow;
+ const auto begin=std::chrono::steady_clock::now();auto lastHeartbeat=begin;
  try{
-   for(;;){pid_t n=waitpid(pid,&status,WNOHANG);if(n==pid)break;if(n<0&&errno==EINTR)continue;
+   for(;;){
+     followEngineConsole(out/"game_console.log",follow,game,plyContext);
+     pid_t n=waitpid(pid,&status,WNOHANG);if(n==pid)break;if(n<0&&errno==EINTR)continue;
      require(n>=0,"waitpid failed");
      if(joshua_zip::directorySize(gameRoot)>activeLimit){overLimit=true;kill(pid,SIGKILL);waitpid(pid,&status,0);break;}
+     const auto now=std::chrono::steady_clock::now();
+     if(progressSeconds>0 && now-lastHeartbeat>=std::chrono::seconds(progressSeconds)){
+       lastHeartbeat=now;
+       const auto seconds=std::chrono::duration_cast<std::chrono::seconds>(now-begin).count();
+       std::cout<<"HEARTBEAT game="<<game<<" elapsed_s="<<seconds
+                <<" active_ply="<<(plyContext>0?plyContext:follow.currentPly)
+                <<" last_ply="<<follow.lastPly<<" last_move="<<follow.lastMove
+                <<" stage="<<follow.stage<<" console_bytes="<<follow.cursor<<std::endl;
+     }
      std::this_thread::sleep_for(std::chrono::milliseconds(150));
    }
  }catch(...){kill(pid,SIGKILL);waitpid(pid,&status,0);childPid=0;throw;}
- childPid=0;
+ followEngineConsole(out/"game_console.log",follow,game,plyContext);childPid=0;
  if(overLimit||joshua_zip::directorySize(gameRoot)>activeLimit)return 98;
  if(WIFEXITED(status))return WEXITSTATUS(status);if(WIFSIGNALED(status))return 128+WTERMSIG(status);return 127;
 }
@@ -227,7 +313,7 @@ static int runChild(const vector<string>&argv,const fs::path&out,const fs::path&
 // once for EVERY engine-selected halfmove. The supervisor decides only when chess
 // ends and writes an interoperable record; paceval still evaluates leaf/decision
 // formulas inside the original joshua_long_graph executable.
-static void playLongGraph(const Settings&s,const fs::path&dir,const string&opening){
+static void playLongGraph(const Settings&s,const fs::path&dir,const string&opening,int game,std::uint64_t gameSeed){
  const string initial="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
  Board board=fen(initial);
  std::map<string,int>history;history[positionKey(toFen(board))]++;
@@ -242,7 +328,7 @@ static void playLongGraph(const Settings&s,const fs::path&dir,const string&openi
  std::ofstream timeline(dir/"selfplay_timeline.csv"),moves(dir/"root_move_rankings.csv"),games(dir/"game_uci.txt");
  require(bool(timeline)&&bool(moves)&&bool(games),"Cannot create V5 longgraph result files");
  timeline<<"halfmove,side,tree_nodes,paceval_graph_points_total,chosen_uci,is_capture,white_score_cp,fen_before,fen_after\n";
- moves<<"halfmove,depth,side,rank,uci,white_score_cp\n";
+ moves<<"halfmove,depth,side,rank,uci,white_score_cp,selected\n";
  string termination="max_halfmoves",result="*";long long graphChars=0,graphCount=0,verified=0;
  for(int ply=forced;ply<s.plies;ply++){
    const auto allowed=legal(board);
@@ -255,25 +341,35 @@ static void playLongGraph(const Settings&s,const fs::path&dir,const string&openi
    const auto current=dir/tag.str();fs::create_directories(current);
    const string before=toFen(board),side=board.turn==1?"white":"black";
    const vector<string>args={s.engine.string(),"--depth",std::to_string(s.depth),"--model",std::to_string(s.model),"--fen",before,"--max-nodes",std::to_string(s.maxNodes),"--max-chars",std::to_string(s.maxChars),"--output",current.string()};
-   const int exitCode=runChild(args,current,dir,s.activeLimitBytes);
+   std::cout<<"GRAPH_START game="<<game<<" ply="<<(ply+1)<<" side="<<side<<" legal="<<allowed.size()<<std::endl;
+   const int exitCode=runChild(args,current,dir,s.activeLimitBytes,game,s.progressSeconds,ply+1);
    if(exitCode!=0)throw std::runtime_error("V5 graph compilation failed on ply "+std::to_string(ply+1)+" (exit "+std::to_string(exitCode)+"). See "+(current/"game_console.log").string());
    const string ev=readText(current/"run_evidence.json");
    require(jsonNumber(ev,"graph_result_verified")=="true"&&jsonNumber(ev,"reused_graph_result_verified")=="true","Independent paceval graph checks not passed");
    require(jsonString(ev,"fen_before")==before,"V5 generated graph for an incorrect FEN");
-   const string chosen=jsonString(ev,"selected_move"),after=jsonString(ev,"fen_after");
-   auto matched=std::find_if(allowed.begin(),allowed.end(),[&](const Move&m){return uci(m)==chosen;});
-   require(matched!=allowed.end(),"V5 selected illegal move "+chosen);
-   const Board next=apply(board,*matched);require(toFen(next)==after,"V5 incorrect next-board FEN for "+chosen);
-   const bool capture=board.b[matched->t]!='.'||matched->ep;
+   const string engineBest=jsonString(ev,"selected_move"),engineAfter=jsonString(ev,"fen_after");
+   auto engineMatched=std::find_if(allowed.begin(),allowed.end(),[&](const Move&m){return uci(m)==engineBest;});
+   require(engineMatched!=allowed.end(),"V5 independently verified engine best move illegal: "+engineBest);
+   require(toFen(apply(board,*engineMatched))==engineAfter,"V5 engine best next-board FEN mismatch");
    auto opts=csvRead(current/"root_moves.csv");require(opts.size()==allowed.size(),"V5 root rank count mismatch");
    vector<std::pair<string,double>>ranked;for(auto&r:opts)ranked.push_back({get(r,"move"),asDouble(get(r,"score_white_cp"))});
    std::sort(ranked.begin(),ranked.end(),[&](const auto&a,const auto&b){if(a.second!=b.second)return board.turn==1?a.second>b.second:a.second<b.second;return a.first<b.first;});
-   require(!ranked.empty()&&ranked.front().first==chosen,"V5 best move inconsistent with sorted root values");
-   for(size_t j=0;j<ranked.size();j++)moves<<(ply+1)<<','<<s.depth<<','<<side<<','<<(j+1)<<','<<ranked[j].first<<','<<ranked[j].second<<'\n';
-   timeline<<(ply+1)<<','<<side<<','<<jsonNumber(ev,"nodes","0")<<",0,"<<chosen<<','<<(capture?1:0)<<','<<ranked.front().second<<",\""<<before<<"\",\""<<after<<"\"\n";
+   require(!ranked.empty()&&ranked.front().first==engineBest,"V5 best move inconsistent with sorted root values");
+   vector<double>scores;for(const auto&r:ranked)scores.push_back(r.second);
+   const auto choice=joshua_explore::choose(scores,board.turn,before,ply+1,s.exploreCp,s.explorePlies,gameSeed);
+   const string selected=ranked.at(choice.index).first;
+   auto matched=std::find_if(allowed.begin(),allowed.end(),[&](const Move&m){return uci(m)==selected;});
+   require(matched!=allowed.end(),"V5 selected exploration move illegal: "+selected);
+   const Board next=apply(board,*matched);
+   const bool capture=board.b[matched->t]!='.'||matched->ep;
+   for(size_t j=0;j<ranked.size();j++)moves<<(ply+1)<<','<<s.depth<<','<<side<<','<<(j+1)<<','<<ranked[j].first<<','<<ranked[j].second<<','<<(ranked[j].first==selected?1:0)<<'\n';
+   timeline<<(ply+1)<<','<<side<<','<<jsonNumber(ev,"nodes","0")<<",0,"<<selected<<','<<(capture?1:0)<<','<<ranked.at(choice.index).second<<",\""<<before<<"\",\""<<toFen(next)<<"\"\n";
+   std::cout<<"GRAPH_MOVE game="<<game<<" ply="<<(ply+1)<<" side="<<side
+            <<" policy_best="<<engineBest<<" played="<<selected<<" score_white_cp="<<ranked.at(choice.index).second
+            <<" eligible="<<choice.eligible<<" loss_cp="<<choice.regretCp<<std::endl;
    require(bool(moves)&&bool(timeline),"V5 timeline write failed");
    graphChars+=std::stoll(jsonNumber(ev,"graph_characters","0"));graphCount++;verified++;
-   board=next;played.push_back(chosen);history[positionKey(toFen(board))]++;
+   board=next;played.push_back(selected);history[positionKey(toFen(board))]++;
  }
  if(termination=="max_halfmoves"){
   const auto lm=legal(board);
@@ -296,16 +392,16 @@ static void selftest(){
  require(legal(mate).empty()&&check(mate,mate.turn),"Checkmate classification fixture failed");
  const Board stalemate=fen("7k/5Q2/6K1/8/8/8/8/8 b - - 0 1");
  require(legal(stalemate).empty()&&!check(stalemate,stalemate.turn),"Stalemate classification fixture failed");
- std::cout<<"JOSHUA_SELFPLAY_MANAGER_SELFTEST_PASS parser json FEN openings mate stalemate\n";
+ std::cout<<"JOSHUA_SELFPLAY_MANAGER_SELFTEST_PASS V8 parser json FEN openings mate stalemate\n";
 }
 int main(int argc,char**argv){try{
  Settings s;for(int i=1;i<argc;i++){string a=argv[i];auto getarg=[&](){require(i+1<argc,"Missing value for "+a);return string(argv[++i]);};
   if(a=="--help"){usage();return 0;}else if(a=="--selftest"){selftest();return 0;}
-  else if(a=="--engine")s.engine=getarg();else if(a=="--output")s.output=getarg();else if(a=="--depth")s.depth=asInt(getarg());else if(a=="--model")s.model=asInt(getarg());else if(a=="--quiescence")s.quiescence=asInt(getarg());else if(a=="--plies")s.plies=asInt(getarg());else if(a=="--max-games")s.maxGames=asInt(getarg());else if(a=="--pause-ms")s.pauseMs=asInt(getarg());else if(a=="--seed")s.seed=asInt(getarg());else if(a=="--mode")s.mode=getarg();else if(a=="--max-nodes")s.maxNodes=asInt(getarg());else if(a=="--max-chars")s.maxChars=asInt(getarg());else if(a=="--opening")s.opening=getarg();else if(a=="--first-move")s.firstMove=getarg();else if(a=="--analyze-only")s.analyzeOnly=getarg();else if(a=="--log-limit-bytes")s.archiveLimitBytes=std::stoull(getarg());else if(a=="--max-active-bytes")s.activeLimitBytes=std::stoull(getarg());else throw std::runtime_error("Unknown option: "+a);
+  else if(a=="--engine")s.engine=getarg();else if(a=="--output")s.output=getarg();else if(a=="--depth")s.depth=asInt(getarg());else if(a=="--model")s.model=asInt(getarg());else if(a=="--quiescence")s.quiescence=asInt(getarg());else if(a=="--plies")s.plies=asInt(getarg());else if(a=="--max-games")s.maxGames=asInt(getarg());else if(a=="--pause-ms")s.pauseMs=asInt(getarg());else if(a=="--seed")s.seed=asInt(getarg());else if(a=="--progress-seconds")s.progressSeconds=asInt(getarg());else if(a=="--explore-plies")s.explorePlies=asInt(getarg());else if(a=="--explore-cp")s.exploreCp=asDouble(getarg());else if(a=="--mode")s.mode=getarg();else if(a=="--max-nodes")s.maxNodes=asInt(getarg());else if(a=="--max-chars")s.maxChars=asInt(getarg());else if(a=="--opening")s.opening=getarg();else if(a=="--first-move")s.firstMove=getarg();else if(a=="--analyze-only")s.analyzeOnly=getarg();else if(a=="--log-limit-bytes")s.archiveLimitBytes=std::stoull(getarg());else if(a=="--max-active-bytes")s.activeLimitBytes=std::stoull(getarg());else throw std::runtime_error("Unknown option: "+a);
  }
  require(s.depth>=1&&s.depth<=10&&s.model>=1&&s.model<=4&&s.quiescence>=0&&s.quiescence<=4&&s.plies>=1&&s.plies<=200,"Invalid search configuration");
  require(s.mode=="alphabeta"||s.mode=="research"||s.mode=="longgraph","Unknown --mode");require((s.mode=="alphabeta")||(s.depth<=4&&s.quiescence==0),"Research and longgraph require depth<=4 and quiescence=0");require(s.mode!="longgraph"||(s.model>=3&&s.maxNodes>=100&&s.maxChars>=100),"Longgraph requires model 3 or 4 and positive resource budgets");
- require(s.maxGames>=0&&s.pauseMs>=0&&s.pauseMs<=3600000,"Invalid max games or pause");require(s.archiveLimitBytes>=4096&&s.activeLimitBytes>=4096,"Invalid logging budget");require(s.opening=="cycle"||s.opening=="fixed","Invalid opening policy");
+ require(s.maxGames>=0&&s.pauseMs>=0&&s.pauseMs<=3600000,"Invalid max games or pause");require(s.archiveLimitBytes>=4096&&s.activeLimitBytes>=4096,"Invalid logging budget");require(s.opening=="cycle"||s.opening=="fixed"||s.opening=="engine","Invalid opening policy");require(s.progressSeconds>=0&&s.progressSeconds<=3600,"Invalid progress interval");require(s.exploreCp>=0.0&&s.exploreCp<=500.0&&s.explorePlies>=0&&s.explorePlies<=200,"Invalid exploration policy");
  if(!s.analyzeOnly.empty()){auto a=analyze(s.analyzeOnly);fs::create_directories(s.output);logAnalysis(a,s.output,nextGameNumber(s.output),"offline-analysis",isoNow());std::cout<<"ANALYSIS_OK result="<<a.result<<" plies="<<a.plies<<" flags="<<a.findings.size()<<"\n";return 0;}
  if(s.engine.empty()){fs::path local=fs::absolute(argv[0]).parent_path()/(s.mode=="longgraph"?"joshua_long_graph":"joshua");s.engine=local;}
  s.engine=fs::absolute(s.engine);require(fs::exists(s.engine),"JOSHUA executable unavailable at "+s.engine.string()+"; build it against the original paceval runtime first");require(access(s.engine.c_str(),X_OK)==0,"JOSHUA executable not executable");
@@ -347,19 +443,22 @@ int main(int argc,char**argv){try{
  std::cout<<"JOSHUA CONTINUOUS SELFPLAY: engine="<<s.engine<<" output="<<s.output<<" max-games="<<s.maxGames<<" (0=infinite)\n";
  while(!stopRequested&&(s.maxGames==0||completed<s.maxGames)){
    std::ostringstream name;name<<"game_"<<std::setw(6)<<std::setfill('0')<<game;const fs::path dir=s.output/name.str();require(!fs::exists(dir),"Refusing to overwrite existing game directory");fs::create_directories(dir);saveNextGameNumber(s.output,game+1);
-   string opening=s.opening=="cycle"?openingSet[(static_cast<unsigned long long>(s.seed)+static_cast<unsigned long long>(game-1))%openingSet.size()]:s.firstMove;
-   vector<string>args={s.engine.string(),"--mode",s.mode,"--depth",std::to_string(s.depth),"--model",std::to_string(s.model),"--quiescence",std::to_string(s.quiescence),"--plies",std::to_string(s.plies),"--no-board","--output",dir.string()};if(!opening.empty()){args.push_back("--first-move");args.push_back(opening);}
-   const auto ts=isoNow();std::cout<<"GAME_START "<<game<<" opening="<<(opening.empty()?"engine-selected":opening)<<" "<<ts<<std::endl;
+   string opening=s.opening=="cycle"?openingSet[(static_cast<unsigned long long>(s.seed)+static_cast<unsigned long long>(game-1))%openingSet.size()]:(s.opening=="fixed"?s.firstMove:"");
+   const std::uint64_t gameSeed=std::uint64_t(static_cast<std::uint32_t>(s.seed))+std::uint64_t(game);
+   vector<string>args={s.engine.string(),"--mode",s.mode,"--depth",std::to_string(s.depth),"--model",std::to_string(s.model),"--quiescence",std::to_string(s.quiescence),"--plies",std::to_string(s.plies),"--no-board","--output",dir.string(),"--explore-cp",std::to_string(s.exploreCp),"--explore-plies",std::to_string(s.explorePlies),"--game-seed",std::to_string(gameSeed)};if(!opening.empty()){args.push_back("--first-move");args.push_back(opening);}
+   const auto ts=isoNow();std::cout<<"GAME_START "<<game<<" opening="<<(opening.empty()?"engine-selected":opening)<<" seed="<<gameSeed
+            <<" explore_cp="<<s.exploreCp<<" explore_plies="<<s.explorePlies
+            <<" heartbeat_s="<<s.progressSeconds<<" "<<ts<<std::endl;
    int exitCode=0;
    if(s.mode=="longgraph"){
      // The dedicated V5 executable has a different command line and creates
      // one complete paceval graph for each move, not a traditional AB search.
-     try{playLongGraph(s,dir,opening);}catch(const std::exception&ex){
+     try{playLongGraph(s,dir,opening,game,gameSeed);}catch(const std::exception&ex){
        boundedError(s.output,ts+" V5_LONGGRAPH_ERROR game "+std::to_string(game)+": "+ex.what()+"\n");
        if(stopRequested){writeText(dir/"interrupted.txt","User signal interrupted this V5 graph game. Results are incomplete.\n");archiveGame(s.output,dir,s.archiveLimitBytes);return 0;}
        writeText(dir/"incomplete_game.txt",string("V5 graph error: ")+ex.what()+"\n");archiveGame(s.output,dir,s.archiveLimitBytes);std::cerr<<ex.what()<<'\n';return 2;
      }
-   }else exitCode=runChild(args,dir,dir,s.activeLimitBytes);
+   }else exitCode=runChild(args,dir,dir,s.activeLimitBytes,game,s.progressSeconds);
    writeText(dir/"manager_exit_code.txt",std::to_string(exitCode)+"\n");
    if(stopRequested){
      writeText(dir/"interrupted.txt","Stopped by user signal while the game was active. This is NOT a completed chess game.\n");

@@ -7,7 +7,11 @@ mkdir -p "$ROOT/bin"
 cp "$ROOT/build/joshua" "$ROOT/build/joshua_long_graph" "$ROOT/build/joshua_selfplay" "$ROOT/bin/"
 "$ROOT/bin/joshua_selfplay" --selftest
 python3 "$ROOT/scripts/test_v6_supervisor.py" "$ROOT/bin/joshua_selfplay" "$ROOT/results/v3_ab_depth4_q1_10ply"
+python3 "$ROOT/scripts/test_v8_live_progress.py" "$ROOT/bin/joshua_selfplay" "$ROOT/results/v3_ab_depth4_q1_10ply"
 python3 "$ROOT/scripts/test_v7_zip_retention.py" "$ROOT/bin/joshua_selfplay" "$ROOT/results/v3_ab_depth4_q1_10ply"
+g++ -std=c++17 -O2 -I"$ROOT/src" "$ROOT/tests/explore_policy_test.cpp" -o "$ROOT/bin/joshua_v8_exploration_policy_test"
+"$ROOT/bin/joshua_v8_exploration_policy_test"
+python3 "$ROOT/scripts/test_v8_longgraph_diversity.py" "$ROOT/bin/joshua_selfplay" "$ROOT/results/v5_graph_rebuilt_selfplay_8ply"
 python3 "$ROOT/scripts/test_v6_longgraph_supervisor.py" "$ROOT/bin/joshua_selfplay" "$ROOT/results/v5_graph_rebuilt_selfplay_8ply"
 python3 "$ROOT/scripts/check_markdown.py" "$ROOT"
 python3 "$ROOT/scripts/check_markdown.py" --selftest

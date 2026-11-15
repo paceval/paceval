@@ -71,7 +71,16 @@ def audit(path):
   lastwhite=r['fen_after'];last=float(r['decision_s']);total_features+=int(r['unique_feature_vectors'])
   options=[o for o in moves if int(o['halfmove'])==int(r['halfmove'])]
   assert len(options)==int(r['legal_root_moves']) and [int(x['rank']) for x in options]==list(range(1,len(options)+1))
-  assert options[0]['uci']==r['chosen_uci'] and float(options[0]['white_score_cp'])==float(r['white_score_cp'])
+  selected=[o for o in options if o.get('selected')=='1'] if 'selected' in options[0] else [options[0]]
+  assert len(selected)==1, 'Exactly one selected root move is required'
+  chosen=selected[0]
+  assert chosen['uci']==r['chosen_uci'] and float(chosen['white_score_cp'])==float(r['white_score_cp'])
+  if chosen['uci']!=options[0]['uci']:
+   cp_window=float(ev.get('exploration_window_cp',0))
+   max_ply=int(ev.get('exploration_plies',0))
+   assert int(r['halfmove'])<=max_ply, 'Exploration outside allowed halfmove range'
+   loss=(float(options[0]['white_score_cp'])-float(chosen['white_score_cp']))*(1 if r['side']=='white' else -1)
+   assert -1e-7<=loss<=cp_window+1e-7, f'Exploratory move outside admissible centipawn range: {loss} > {cp_window}' 
   values=[float(x['white_score_cp']) for x in options]
   if r['side']=='white':assert values==sorted(values,reverse=True)
   else:assert values==sorted(values)
