@@ -1,0 +1,75 @@
+JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | mode=alphabeta | depth=2 | model=4 | qdepth=0
+[+0.000233s] start FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+[+0.011133s] paceval persistent feature graphs=43; multi-graph layout=graph-major; max batch rows=8192
+[+0.011150s] ply=1 WHITE legal=20; SEARCH legal moves
+[+0.313819s] tree nodes=440 leaves=420 | search_s=0.302669
+[+0.313819s] paceval features unique=225 point_checks=225 batch_calls=0 | stage_s=0.000000
+[+0.313991s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000159
+[+0.313991s] V4 neural support active: 12 hidden paceval graphs + 1 fused graph; independent checks=225
+[+0.313991s] alpha-beta TT_hits=0 cutoffs=0 leaf_scalar_paceval_evaluations=225
+[+0.313991s] JOSHUA BEST WHITE b1c3 | Piece=Knight b1 -> c3 | SAN=Nc3 | score_white=44.616cp | FEN rnbqkbnr/pppppppp/8/8/8/2N5/PPPPPPPP/R1BQKBNR b KQkq - 1 1
+[+0.314041s] ply=2 BLACK legal=20; SEARCH legal moves
+[+0.636446s] tree nodes=480 leaves=460 | search_s=0.322405
+[+0.636446s] paceval features unique=289 point_checks=275 batch_calls=0 | stage_s=0.000000
+[+0.636654s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000156
+[+0.636654s] V4 neural support active: 12 hidden paceval graphs + 1 fused graph; independent checks=500
+[+0.636654s] alpha-beta TT_hits=0 cutoffs=0 leaf_scalar_paceval_evaluations=275
+[+0.636654s] JOSHUA BEST BLACK b8a6 | Piece=Knight b8 -> a6 | SAN=Na6 | score_white=17.8792cp | FEN r1bqkbnr/pppppppp/n7/8/8/2N5/PPPPPPPP/R1BQKBNR w KQkq - 2 2
+[+0.636697s] ply=3 WHITE legal=22; SEARCH legal moves
+[+1.075285s] tree nodes=482 leaves=460 | search_s=0.438588
+[+1.075285s] paceval features unique=380 point_checks=362 batch_calls=0 | stage_s=0.000000
+[+1.075502s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000155
+[+1.075502s] V4 neural support active: 12 hidden paceval graphs + 1 fused graph; independent checks=862
+[+1.075502s] alpha-beta TT_hits=0 cutoffs=0 leaf_scalar_paceval_evaluations=362
+[+1.075502s] JOSHUA BEST WHITE g1f3 | Piece=Knight g1 -> f3 | SAN=Nf3 | score_white=58.04cp | FEN r1bqkbnr/pppppppp/n7/8/8/2N2N2/PPPPPPPP/R1BQKB1R b KQkq - 3 2
+[+1.075564s] ply=4 BLACK legal=20; SEARCH legal moves
+[+1.391263s] tree nodes=519 leaves=499 | search_s=0.315700
+[+1.391263s] paceval features unique=357 point_checks=336 batch_calls=0 | stage_s=0.000000
+[+1.391436s] paceval minmax checks=1 batch_calls=1 new_graphs=0 | stage_s=0.000041
+[+1.391436s] V4 neural support active: 12 hidden paceval graphs + 1 fused graph; independent checks=1198
+[+1.391436s] alpha-beta TT_hits=0 cutoffs=0 leaf_scalar_paceval_evaluations=336
+[+1.391436s] JOSHUA BEST BLACK g8h6 | Piece=Knight g8 -> h6 | SAN=Nh6 | score_white=-65.0362cp | FEN r1bqkb1r/pppppppp/n6n/8/8/2N2N2/PPPPPPPP/R1BQKB1R w KQkq - 4 3
+[+1.391482s] ply=5 WHITE legal=24; SEARCH legal moves
+[+1.696396s] tree nodes=524 leaves=500 | search_s=0.304914
+[+1.696396s] paceval features unique=283 point_checks=268 batch_calls=0 | stage_s=0.000000
+[+1.696655s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000180
+[+1.696655s] V4 neural support active: 12 hidden paceval graphs + 1 fused graph; independent checks=1466
+[+1.696655s] alpha-beta TT_hits=0 cutoffs=0 leaf_scalar_paceval_evaluations=268
+[+1.696655s] JOSHUA BEST WHITE f3e5 | Piece=Knight f3 -> e5 | SAN=Ne5 | score_white=84.1022cp | FEN r1bqkb1r/pppppppp/n6n/4N3/8/2N5/PPPPPPPP/R1BQKB1R b KQkq - 5 3
+[+1.696702s] ply=6 BLACK legal=19; SEARCH legal moves
+[+2.125338s] tree nodes=587 leaves=568 | search_s=0.428636
+[+2.125338s] paceval features unique=457 point_checks=440 batch_calls=0 | stage_s=0.000000
+[+2.125676s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000107
+[+2.125676s] V4 neural support active: 12 hidden paceval graphs + 1 fused graph; independent checks=1906
+[+2.125676s] alpha-beta TT_hits=0 cutoffs=0 leaf_scalar_paceval_evaluations=440
+[+2.125676s] JOSHUA BEST BLACK a8b8 | Piece=Rook a8 -> b8 | SAN=Rb8 | score_white=6cp | FEN 1rbqkb1r/pppppppp/n6n/4N3/8/2N5/PPPPPPPP/R1BQKB1R w KQk - 6 4
+[+2.125722s] ply=7 WHITE legal=29; SEARCH legal moves
+[+2.616341s] tree nodes=587 leaves=558 | search_s=0.490619
+[+2.616341s] paceval features unique=512 point_checks=481 batch_calls=0 | stage_s=0.000000
+[+2.616812s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000166
+[+2.616812s] V4 neural support active: 12 hidden paceval graphs + 1 fused graph; independent checks=2387
+[+2.616812s] alpha-beta TT_hits=0 cutoffs=0 leaf_scalar_paceval_evaluations=481
+[+2.616812s] JOSHUA BEST WHITE a2a4 | Piece=Pawn a2 -> a4 | SAN=a4 | score_white=115.023cp | FEN 1rbqkb1r/pppppppp/n6n/4N3/P7/2N5/1PPPPPPP/R1BQKB1R b KQk a3 0 4
+[+2.616884s] ply=8 BLACK legal=18; SEARCH legal moves
+[+3.109458s] tree nodes=575 leaves=557 | search_s=0.492574
+[+3.109458s] paceval features unique=529 point_checks=506 batch_calls=0 | stage_s=0.000000
+[+3.109694s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000107
+[+3.109694s] V4 neural support active: 12 hidden paceval graphs + 1 fused graph; independent checks=2893
+[+3.109694s] alpha-beta TT_hits=0 cutoffs=0 leaf_scalar_paceval_evaluations=506
+[+3.109694s] JOSHUA BEST BLACK a6c5 | Piece=Knight a6 -> c5 | SAN=Nc5 | score_white=21.1289cp | FEN 1rbqkb1r/pppppppp/7n/2n1N3/P7/2N5/1PPPPPPP/R1BQKB1R w KQk - 1 5
+[+3.109753s] ply=9 WHITE legal=30; SEARCH legal moves
+[+3.841444s] tree nodes=758 leaves=728 | search_s=0.731691
+[+3.841444s] paceval features unique=722 point_checks=688 batch_calls=0 | stage_s=0.000000
+[+3.841790s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000184
+[+3.841790s] V4 neural support active: 12 hidden paceval graphs + 1 fused graph; independent checks=3581
+[+3.841790s] alpha-beta TT_hits=0 cutoffs=0 leaf_scalar_paceval_evaluations=688
+[+3.841790s] JOSHUA BEST WHITE b2b4 | Piece=Pawn b2 -> b4 | SAN=b4 | score_white=133cp | FEN 1rbqkb1r/pppppppp/7n/2n1N3/PP6/2N5/2PPPPPP/R1BQKB1R b KQk b3 0 5
+[+3.841845s] ply=10 BLACK legal=23; SEARCH legal moves
+[+4.502759s] tree nodes=748 leaves=725 | search_s=0.660914
+[+4.502759s] paceval features unique=724 point_checks=700 batch_calls=0 | stage_s=0.000000
+[+4.503130s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000132
+[+4.503130s] V4 neural support active: 12 hidden paceval graphs + 1 fused graph; independent checks=4281
+[+4.503130s] alpha-beta TT_hits=0 cutoffs=0 leaf_scalar_paceval_evaluations=700
+[+4.503130s] JOSHUA BEST BLACK c5e6 | Piece=Knight c5 -> e6 | SAN=Ne6 | score_white=71.0446cp | FEN 1rbqkb1r/pppppppp/4n2n/4N3/PP6/2N5/2PPPPPP/R1BQKB1R w KQk - 1 6
+[+4.503183s] JOSHUA SELF-PLAY END plies=10 paceval_graphs=54 paceval_batch_calls=8573 graph_points=59948
+wall=4.50 s peak_rss_KB=8284

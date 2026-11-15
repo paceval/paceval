@@ -1,130 +1,99 @@
-# JOSHUA: Local paceval Chess Research Engine
+# JOSHUA V4: A Chess Research Engine with Trained Neural Support in paceval
 
-**An executable, independently checked Linux chess research demonstrator.** Both White and Black are controlled by JOSHUA. All chess positions, move descriptions, console logs, source comments, result columns, and the single consolidated whitepaper are in English. The name **JOSHUA** is a personal homage to the film *WarGames*; the film and its rights holders are not associated with this project.
+![JOSHUA cover](figures/JOSHUA_Chess_Research_Cover_2400x1200.png)
 
-![JOSHUA chess and search tree cover](figures/JOSHUA_Chess_Research_Cover_2400x1200.png)
+**JOSHUA** is an English-language, Linux/C++ chess research program that plays both sides automatically. It uses the **original local paceval SDK** to evaluate reusable mathematical expressions. The MCP server, Stockfish, and Leela Chess Zero are not needed and are not invoked during a JOSHUA self-play game. JOSHUA's name is a tribute to the computer in *WarGames*, not a claim of association with the film.
 
-JOSHUA uses the **real local paceval Mathematical Engine** for reusable numerical graphs, including material and positional scores and dynamically compiled `max`/`min` reductions. The application **does not call the paceval MCP server**, Stockfish, Leela Chess Zero, or a remote chess service. No Stockfish or Leela code, models, or weights are distributed here.
+The new optional **model 4** combines the transparent classical JOSHUA V3 score with a **genuinely trained** shallow neural network. The neural weights were learned from reproducibly generated legal chess positions labelled by JOSHUA's own **two-ply V3 minimax teacher**. They are not weights from Stockfish, Leela, or human grandmaster games. **Training-fit improvement is not proof of stronger chess play.** Models 1, 2, and 3 remain supported and unchanged.
 
-**Research status:** Fully functional proof of concept, not competitive chess strength, training evidence, an exact chess solution, or a fair head-to-head engine benchmark.
+## What is actually implemented
 
-## What is new
+The original move generator implements legal chess moves, check detection, castling, en passant, promotion, and make/unmake. It passes established perft tests. In `--mode research`, all legal continuations to a fixed search depth are built, feature vectors are evaluated through the original paceval **multi-graph batch API**, and internal min/max functions are evaluated through persistent paceval graphs. In `--mode alphabeta`, the search uses iterative deepening, exact-width alpha-beta at the chosen depth, and a transposition table; the position evaluator (including the optional neural network) is executed through the local paceval SDK, while alpha-beta control flow stays in C++. Quiescence search is optional and can change fixed-horizon equivalence.
 
-JOSHUA now includes three explicit evaluation models:
+Model 4 uses **48 scalar inputs**. The first 32 are unchanged V3 features. The additional 16 are pseudo-legal mobility, pseudo-legal captures, check status, hanging/attacked pieces, queen/rook threats, and local king-square attack pressure. The learned network is **48 → 12 sigmoid neurons → 1 capped residual**. The V3 base evaluation and the 13 neural graphs are all compiled by paceval. **All 13 formula strings**, including exact coefficients, are in [`formulas/v4_graph_expressions.tsv`](formulas/v4_graph_expressions.tsv). Exact lengths and variable counts are in [`formulas/v4_graph_manifest.csv`](formulas/v4_graph_manifest.csv).
 
-* **V1**: Material only, retained unchanged for regression and controlled tests.
-* **V2**: Material plus center, development, pawn advance, and a simple king-zone score, retained unchanged.
-* **V3**: Material and positional features using **32 documented inputs**, including piece-square activity, doubled/isolated/passed pawns, bishop pairs, pawn cover around kings, and tempo. Every numerical weight and composite score in V3 is implemented in actual, persistent paceval graph expressions; C++ only extracts the raw position facts.
+A source-level mathematical catalog is also available in [`docs/MATHEMATICAL_PACEVAL_GRAPH_CATALOG.md`](docs/MATHEMATICAL_PACEVAL_GRAPH_CATALOG.md). A single research report, [`JOSHUA_Chess_Research_Whitepaper_EN.pdf`](JOSHUA_Chess_Research_Whitepaper_EN.pdf), contains the complete mathematical model, use cases, FEN-consistent board drawings, validation, and limitations. No second whitepaper is distributed.
 
-The Alpha-Beta mode accepts **depths 1 through 10** with iterative deepening, legal move ordering, reversible make/unmake moves, a conservative transposition table, and optional bounded tactical capture/check-evasion extension (`--quiescence 0..4`). The full-width, batched Research mode remains limited to depth 4 for manageable memory usage and mathematical cross-checks. Quiescence is selective and bounded: its horizon score is an estimate, not an exact theorem.
+## Reproducible Linux build
 
-Crucially, **depth 10 has been executed on a constrained legal king-and-pawn endgame**, and depth 6 has been executed on the standard opening position. A depth-10 opening-position search with this implementation has not been demonstrated. Comparing those two cases as if they had equal search complexity would be misleading.
-
-## Linux build
-
-Requires a C++17 compiler, CMake, Python 3, and a separately obtained compatible `libpaceval_linux_sharedLIB.so` (the original local library). The supplied `src/paceval_main.h` and `src/paceval_main.cpp` are the original paceval SDK interface files and must be used with the corresponding library.
+The original `paceval_main.h` and `paceval_main.cpp` are in `src/`. Obtain the original compatible Linux paceval runtime separately according to its licensing terms. The shared library is intentionally not included here.
 
 ```bash
 cmake -S src -B build -DCMAKE_BUILD_TYPE=Release \
   -DPACEVAL_RUNTIME=/absolute/path/to/libpaceval_linux_sharedLIB.so
-cmake --build build -j
+cmake --build build --target joshua joshua_v4_audit -j
 ctest --test-dir build --output-on-failure
 ```
 
-## Run JOSHUA against itself
-
-The program always plays both colors. It reports a monotonic timestamp in **seconds since start** for each search and move, plus the English piece name, UCI move, SAN, candidate ranking, and FEN.
+Try the **trained neural support**, with an English console trace and elapsed seconds since launch:
 
 ```bash
-# Recommended initial V3 self-play, with a finite tactical extension:
-./build/joshua --mode alphabeta --model 3 --depth 5 --quiescence 2 \
-  --plies 10 --no-board --output results/my_v3_selfplay
-
-# Deeper demonstration; choose a suitable constrained endgame FEN:
-./build/joshua --mode alphabeta --model 3 --depth 10 --quiescence 0 \
-  --fen "8/8/8/8/8/7P/2k5/K7 w - - 0 1" --plies 1 --no-board \
-  --output results/my_depth10_endgame
-
-# Mathematical full-width reference with the maximum configured batch usage:
-./build/joshua --mode research --model 3 --depth 3 --batch-rows 65536 \
-  --plies 3 --no-board --output results/my_fullwidth
-
-# Regression model V2:
-./build/joshua --mode research --model 2 --depth 3 --plies 2 --no-board \
-  --output results/my_v2
+./build/joshua --mode alphabeta --model 4 --depth 2 --plies 10 --no-board --output results/my_v4_game
 ```
 
-The batch row setting controls maximum rows per SDK call. `65536` is a **configured ceiling, not proof that all input states fit in one batch**. The full-width mode actually uses `paceval_dGetMultipleComputationsResultsExt` for groups of nonterminal leaves and `paceval_dGetComputationResultExt` for groups of internal min/max nodes. The Alpha-Beta mode instead uses `paceval_dGetComputationResult` at demanded leaves and a final reused root `max`/`min` graph; it does **not** batch every leaf during interactive pruning.
+For a mathematically full-width comparison, use a moderate depth and larger batches:
 
-## Mathematics and graph ownership
+```bash
+./build/joshua --mode research --model 4 --depth 2 --plies 3 --batch-rows 8192 --no-board --output results/my_v4_research
+```
 
-The V3 mathematical score is:
+To retain the original manual evaluation, change `--model 4` to `--model 3`. For detailed usage, run `./build/joshua --help`. A configured maximum of 65,536 batch rows is an upper software setting, not an experimentally established optimal row count.
+
+## Mathematics: what and why
+
+The V3 score is a weighted, **explainable hand-designed** position evaluation. In mathematical notation, where `w` and `b` denote White and Black feature counts, its first terms are
 
 ```math
-\begin{aligned}
-E_{\mathrm{V3}} =&\;100(P_w-P_b)+320(N_w-N_b)+330(B_w-B_b)\\
-&+500(R_w-R_b)+900(Q_w-Q_b)+13(C_w-C_b)\\
-&+17(D_w-D_b)+3(A_w-A_b)+18(K_w-K_b)\\
-&+(PSQ_w-PSQ_b)-16(DP_w-DP_b)-12(IP_w-IP_b)\\
-&+22(PP_w-PP_b)+28(BP_w-BP_b)\\
-&+9(SH_w-SH_b)+7\,\mathrm{turn}.
-\end{aligned}
+E_3(s) = 100(w_p-b_p) + 320(w_n-b_n) + 330(w_b-b_b) + 500(w_r-b_r) + 900(w_q-b_q) + E_{\mathrm{position}}(s).
 ```
 
-The full exact source string is `v3_score` in [`src/paceval_math.h`](src/paceval_math.h), alongside the feature extraction and component graphs. The independent 80-digit validation is in [`scripts/check_v3_audit.py`](scripts/check_v3_audit.py). The weights are **illustrative handcrafted design choices**, not learned coefficients and not calibrated Elo gains.
+The neural network learns a **bounded residual** relative to a two-ply V3 search target. Features are standardized using the means and scales computed *only from training games*:
 
-### Two different graph strategies
-
-1. **Research mode:** Construct all legal paths to the fixed horizon within the configured node cap. Convert their feature rows into many local paceval batch evaluations. Group internal `max`/`min` nodes by fan-out and side, then evaluate those dynamically generated paceval expressions in batches. This mode permits exact, independent fixed-horizon minimax comparisons for the chosen heuristic.
-2. **Alpha-Beta mode:** Perform iterative deepening and partial tree exploration using C++ for search control, legal moves, alpha/beta cutoffs, move ordering, and transpositions. The actual V3 leaf score is calculated by local paceval, cached by feature vector; after every iteration the final root-reduction graph is also calculated by paceval. Not all internal Alpha-Beta nodes are paceval `min`/`max` graph calls. This distinction is intentional and measured.
-
-![Actual search architecture](figures/03_actual_architecture.png)
-
-## Actual measured executions
-
-| Experiment | Position | Search depth | Tactical extension | Plies played | Elapsed time | Source |
-|---|---|---:|---:|---:|---:|---|
-| V3 full-width | Standard start | 3 | 0 | 3 | 0.153 s | [Run evidence](results/v3_research_depth3_3ply/run_evidence.json) |
-| V3 Alpha-Beta | Standard start | 3 | 0 | 3 | 0.338 s | [Run evidence](results/v3_ab_depth3_3ply/run_evidence.json) |
-| V3 Alpha-Beta | Standard start | 4 | 2 | 4 | 6.878 s | [Run evidence](results/v3_ab_depth4_4ply/run_evidence.json) |
-| V3 Alpha-Beta | Standard start | 5 | 2 | 2 | 12.228 s | [Run evidence](results/v3_ab_depth5_q2_2ply/run_evidence.json) |
-| V3 Alpha-Beta | Standard start | 6 | 0 | 1 | 28.783 s | [Run evidence](results/v3_ab_depth6_initial/run_evidence.json) |
-| V3 Alpha-Beta | Constrained king + pawn endgame | 8 | 1 | 2 | 0.072 s | [Run evidence](results/v3_ab_depth8_q1_endgame/run_evidence.json) |
-| V3 Alpha-Beta | Constrained king + pawn endgame | 10 | 0 | 1 | 0.114 s | [Run evidence](results/v3_ab_depth10_endgame/run_evidence.json) |
-| V3 Alpha-Beta | Standard start | 4 | 1 | 10 | 60.325 s | [Run evidence](results/v3_ab_depth4_q1_10ply/run_evidence.json) |
-
-Observed times are from this container's particular Linux environment, **not directly comparable across different positions, ply budgets, or tactical extensions**. No cross-engine speed or playing-strength claims are made.
-
-The V3 full-width and Alpha-Beta modes agreed on all **62 root moves and their values** across the same three opening halfmoves at depth 3 with quiescence disabled. This is a correctness observation under the same evaluation, not a speed comparison. The ten-position [V3 graph audit](results/v3_audit.csv) passed 420 independently calculated feature/expression comparisons using 80-digit Python Decimal arithmetic.
-
-## Output format
-
-```text
-[+5.451066s] JOSHUA BEST WHITE c2c4 | Piece=Pawn c2 -> c4 | SAN=c4 | score_white=16cp
-[+12.227797s] JOSHUA BEST BLACK d7d6 | Piece=Pawn d7 -> d6 | SAN=d6 | score_white=-8cp
+```math
+z_i=(x_i-\mu_i)/\sigma_i,\qquad
+h_j=\frac{1}{1+\exp[-(b_j+\sum_{i=1}^{48}W_{ji}z_i)]}.
 ```
 
-Actual full logs, including [the ten-halfmove English self-play](docs/v3_ab_depth4_q1_10ply_console.txt), are in [`docs/v3_ab_depth5_q2_2ply_console.txt`](docs/v3_ab_depth5_q2_2ply_console.txt) and machine-readable timelines, ranked moves, UCI move lists, and provenance JSON in [`results/v3_ab_depth5_q2_2ply/`](results/v3_ab_depth5_q2_2ply/run_evidence.json).
+The final graph combines the manually interpretable V3 score with the trained support:
 
-## Independent validation and limitations
+```math
+E_4(s)=E_3(s)+\operatorname{clip}_{[-150,150]}\left(100\left[c+\sum_{j=1}^{12}v_j h_j(s)\right]\right).
+```
 
-* `joshua --selftest` exercises special chess moves, the original local SDK, reversible make/unmake, and Perft up to depth 4 (197,281 legal continuations).
-* `joshua_v3_audit` runs actual local paceval V3 formula batches; Python independently reconstructs the 32 features and ten graph outputs at 80-digit precision.
-* Automated mode-equivalence compares every root-move score between full-width and Alpha-Beta (when quiescence is disabled).
-* Automatic self-play checks English piece names, correct square transitions, notation, and move-ranking coherence.
-* The current fixed-depth search does not incorporate full path-dependent threefold repetition into every search branch. It does handle game-level claim policy; any future playing-strength comparison must correct and further validate path-dependent transposition behavior.
-* Bounded quiescence improves some tactical horizons but may still stop in an unstable position and is **not** equivalent to Stockfish's fully developed quiescence implementation.
-* Annotations and example board diagrams are generated from **recorded FEN and UCI**. The board is always displayed with White on the bottom.
-* No Stockfish, Leela Chess Zero, opening-book, tablebase or neural weights are included. JOSHUA vs JOSHUA remains the only current play mode.
+The cap is an explicit safety-of-integration **heuristic**, not a proof of chess reliability. The actual fused paceval graph uses an equivalent absolute-value expression for clipping. C++ produces legal positions and feature vectors; paceval executes the mathematical expressions and reused reduction graphs. The full account of each formula and its reason for existence is in the sole PDF report.
 
-## Whitepaper
+## Training, independent validation and measured evidence
 
-Exactly **one consolidated English whitepaper** is released: [JOSHUA Chess Research Engine: Architecture, Graphs and Validation](JOSHUA_Chess_Research_Whitepaper_EN.pdf). It documents formulas, source-derived diagrams, tested depths, measured results, and limitations. Earlier whitepapers/addenda are not bundled.
+The model was fitted using a fixed maximum of 280 L-BFGS iterations; the candidate fits reached that iteration limit, so optimizer convergence is not claimed. The legacy constant `bias` input normalizes to zero and provides no extra information. The model was fitted on **1,788 deterministic chess positions from 150 generated games**, split by complete game identity into 1,289 training, 252 validation, and 247 untouched test rows. No test position was used to select the neural architecture. The target is a clipped two-ply V3 minimax score residual, **not** an independent measure of true chess strength.
 
-## Sources
+The held-out **test MAE** against this synthetic teacher decreased from **123.04 centipawns** for the uncorrected V3 residual to **105.06 centipawns** for V4. The training MAE was lower, which signals a generalization gap. The example is deliberately an early technical prototype, not a competitive neural chess evaluator.
 
-* [Stockfish official documentation](https://stockfishchess.org/documentation) and [public search.cpp](https://github.com/official-stockfish/Stockfish/blob/master/src/search.cpp)
-* [Leela Chess Zero, search algorithms and neural backends](https://lczero.org/dev/overview/)
-* [paceval developers](https://paceval.com/developers/)
+In an independent local SDK audit, **110 held-out positions** were evaluated with all 12 neural hidden paceval graphs and the final fused paceval graph. The same positions were checked with 85-digit `mpmath` arithmetic; the recorded maximum absolute error was below `5e-7` centipawns. Full-width V4 search and Alpha-Beta V4 search selected the same moves and returned identical root move scores at an exact shared horizon in the tested three-halfmove trial. Ten halfmoves of model-4 self-play are included in `results/v4_alphabeta_10ply/` and `docs/v4_alphabeta_10ply_console.txt`.
 
-This project is not affiliated with those external engines, the filmmakers or *WarGames* rights holders. See [License notices](LICENSE_NOTICES.md).
+Verification programs:
+
+- [`scripts/train_v4.py`](scripts/train_v4.py) - deterministic grouped training and exact text-formula exporter (Python / NumPy / scikit-learn)
+- [`src/joshua_v4_teacher.cpp`](src/joshua_v4_teacher.cpp) - reproducible legal positions and native V3 two-ply labels
+- [`src/joshua_v4_audit.cpp`](src/joshua_v4_audit.cpp) - real paceval batch audit of held-out positions
+- [`scripts/check_v4_high_precision.py`](scripts/check_v4_high_precision.py) - 85-digit independent neural mathematics
+- [`scripts/check_mode_equivalence.py`](scripts/check_mode_equivalence.py) - fixed-horizon root scores and moves
+- [`scripts/check_autoplay.py`](scripts/check_autoplay.py) - independent FEN and move coherence
+
+## How to retrain
+
+The published model artifacts are committed; retraining is **optional**. With a Python environment providing NumPy, scikit-learn and mpmath:
+
+```bash
+./build/joshua_v4_teacher training/teacher_positions.csv 150
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/train_v4.py
+cmake --build build --target joshua joshua_v4_audit -j
+ctest --test-dir build --output-on-failure
+```
+
+Retraining changes the generated C++ weight header, expression header and model files, so recompilation is required. A production quality chess model would need substantially broader datasets, policy/value supervision, independent Elo testing, robust tactical search, quantization studies, and benchmarking against NNUE inference. None of these are claimed here.
+
+## Architecture, scope, and licensing
+
+Current release: **JOSHUA vs JOSHUA self-play only**. Stockfish and Leela are referenced for architecture context, not bundled or connected. Remote MCP is not used. The Linux paceval shared library is excluded; see [`LICENSE_NOTICES.md`](LICENSE_NOTICES.md). Prior V3 experiments remain in their historical `results/v3_...` folders and form a reproducible baseline, but there is exactly **one whitepaper**.
+
+Research context: [Stockfish NNUE architecture](https://official-stockfish.github.io/docs/nnue-pytorch-wiki/docs/nnue.html), [Lichess CC0 computer evaluations](https://database.lichess.org/), [paceval developers](https://paceval.com/developers/). Lichess external evaluation data has **not** been used for V4 training.

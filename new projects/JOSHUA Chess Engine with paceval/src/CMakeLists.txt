@@ -80,3 +80,39 @@ add_test(NAME joshua_v3_depth10_endgame COMMAND joshua --mode alphabeta --model 
 # Validate the recorded English ten-halfmove release trace without spending
 # an additional minute rerunning the full chess game during CTest.
 add_test(NAME joshua_v3_english_10ply_recorded_audit COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_autoplay.py" "${CMAKE_CURRENT_LIST_DIR}/../results/v3_ab_depth4_q1_10ply")
+
+# JOSHUA V4 model-specific tests (local paceval only)
+add_executable(joshua_v4_teacher joshua_v4_teacher.cpp paceval_main.cpp)
+target_include_directories(joshua_v4_teacher PRIVATE "${CMAKE_CURRENT_LIST_DIR}")
+target_link_libraries(joshua_v4_teacher PRIVATE paceval_runtime)
+if(UNIX AND NOT APPLE)
+ target_link_libraries(joshua_v4_teacher PRIVATE dl pthread)
+endif()
+
+add_executable(joshua_v4_audit joshua_v4_audit.cpp paceval_main.cpp)
+target_include_directories(joshua_v4_audit PRIVATE "${CMAKE_CURRENT_LIST_DIR}")
+target_link_libraries(joshua_v4_audit PRIVATE paceval_runtime)
+if(UNIX AND NOT APPLE)
+ target_link_libraries(joshua_v4_audit PRIVATE dl pthread)
+endif()
+add_test(NAME joshua_v4_trained_graph_audit COMMAND joshua_v4_audit
+ "${CMAKE_CURRENT_LIST_DIR}/../training/teacher_positions.csv"
+ "${CMAKE_CURRENT_LIST_DIR}/../formulas/v4_training_example_predictions.csv"
+ "${CMAKE_CURRENT_BINARY_DIR}/v4_audit.csv")
+add_test(NAME joshua_v4_high_precision_reference COMMAND "${Python3_EXECUTABLE}"
+ "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_v4_high_precision.py"
+ "${CMAKE_CURRENT_BINARY_DIR}/v4_audit.csv"
+ "${CMAKE_CURRENT_LIST_DIR}/../formulas/v4_trained_weights.json")
+set_tests_properties(joshua_v4_high_precision_reference PROPERTIES DEPENDS joshua_v4_trained_graph_audit)
+add_test(NAME joshua_v4_research_depth2 COMMAND joshua --mode research --model 4 --depth 2 --plies 3 --no-board --output "${CMAKE_CURRENT_BINARY_DIR}/v4_research")
+add_test(NAME joshua_v4_alphabeta_depth2 COMMAND joshua --mode alphabeta --model 4 --depth 2 --plies 3 --no-board --output "${CMAKE_CURRENT_BINARY_DIR}/v4_alphabeta")
+add_test(NAME joshua_v4_search_equivalence COMMAND "${Python3_EXECUTABLE}"
+ "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_mode_equivalence.py"
+ "${CMAKE_CURRENT_BINARY_DIR}/v4_research" "${CMAKE_CURRENT_BINARY_DIR}/v4_alphabeta")
+set_tests_properties(joshua_v4_search_equivalence PROPERTIES DEPENDS "joshua_v4_research_depth2;joshua_v4_alphabeta_depth2")
+add_test(NAME joshua_v4_research_chess_trace COMMAND "${Python3_EXECUTABLE}"
+ "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_autoplay.py" "${CMAKE_CURRENT_BINARY_DIR}/v4_research")
+set_tests_properties(joshua_v4_research_chess_trace PROPERTIES DEPENDS joshua_v4_research_depth2)
+add_test(NAME joshua_v4_alphabeta_chess_trace COMMAND "${Python3_EXECUTABLE}"
+ "${CMAKE_CURRENT_LIST_DIR}/../scripts/check_autoplay.py" "${CMAKE_CURRENT_BINARY_DIR}/v4_alphabeta")
+set_tests_properties(joshua_v4_alphabeta_chess_trace PROPERTIES DEPENDS joshua_v4_alphabeta_depth2)

@@ -45,7 +45,7 @@ def audit(path):
  folder=Path(path);rows=list(csv.DictReader(open(folder/'selfplay_timeline.csv')));moves=list(csv.DictReader(open(folder/'root_move_rankings.csv')));ev=json.load(open(folder/'run_evidence.json'))
  assert rows and len(rows)<=ev['max_halfmoves'];assert ev['mcp_used'] is False and ev['search_mode'] in ('research','alphabeta')
  is_full = ev['search_mode']=='research'
- assert ev['all_minmax_reductions_via_paceval'] is is_full and ev['leaf_multi_graph_count']==(10 if ev['model']==3 else 20)
+ assert ev['all_minmax_reductions_via_paceval'] is is_full and ev['leaf_multi_graph_count']==(23 if ev['model']==4 else (10 if ev['model']==3 else 20))
  last=-1;total_features=0;lastwhite=None
  for ix,r in enumerate(rows):
   assert int(r['halfmove'])==int(rows[0]['halfmove'])+ix
@@ -75,7 +75,7 @@ def audit(path):
   values=[float(x['white_score_cp']) for x in options]
   if r['side']=='white':assert values==sorted(values,reverse=True)
   else:assert values==sorted(values)
- assert int(ev['paceval_graph_point_evaluations']) >= ((10 if ev['model']==3 else 20)*total_features if is_full else len(rows))
+ assert int(ev['paceval_graph_point_evaluations']) >= ((23 if ev['model']==4 else (10 if ev['model']==3 else 20))*total_features if is_full else len(rows))
  assert int(ev['played_halfmoves'])>=len(rows)
  print(f'AUTOPLAY_AUDIT_PASS mode={ev["search_mode"]} rows={len(rows)} unique_feature_vectors={total_features} graphs={ev["paceval_graphs_created"]} graph_points={ev["paceval_graph_point_evaluations"]}')
 

@@ -1,0 +1,3 @@
+# JOSHUA chess self-play, UCI moves, not PGN SAN
+b1c3 b8a6 g1f3 g8h6 f3e5 a8b8 a2a4 a6c5 b2b4 c5e6 
+final_fen 1rbqkb1r/pppppppp/4n2n/4N3/PP6/2N5/2PPPPPP/R1BQKB1R w KQk - 1 6
