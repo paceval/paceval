@@ -1,0 +1,23 @@
+===== PLY 1 BEGIN elapsed=0.000017s =====
+[+0.009795843s] JOSHUA LONG GRAPH build full legal search depth=3 model=4 FEN=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+[+0.532448401s] complete_tree_nodes=9323 distinct_leaf_inputs=2893 graph_characters=83672
+[+0.532449062s] paceval_graph_compiled=0.088331039s evaluation=0.001097964s reuse_evaluation=0.000902533s root_value=51.498526588 independent_value=51.498526588
+[+0.532450704s] BEST WHITE d2d4 score_white=51.498526588cp VERIFIED
+
+===== PLY 2 BEGIN elapsed=0.539456s =====
+[+0.009791176s] JOSHUA LONG GRAPH build full legal search depth=3 model=4 FEN=rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq d3 0 1
+[+1.053641483s] complete_tree_nodes=13016 distinct_leaf_inputs=5556 graph_characters=122555
+[+1.053642264s] paceval_graph_compiled=0.209826848s evaluation=0.001518705s reuse_evaluation=0.001450222s root_value=-69.164773477 independent_value=-69.164773477
+[+1.053643917s] BEST BLACK b8c6 score_white=-69.164773477cp VERIFIED
+
+===== PLY 3 BEGIN elapsed=1.601800s =====
+[+0.009670965s] JOSHUA LONG GRAPH build full legal search depth=3 model=4 FEN=r1bqkbnr/pppppppp/2n5/8/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 1 2
+[+1.513483188s] complete_tree_nodes=18606 distinct_leaf_inputs=7568 graph_characters=177046
+[+1.513483909s] paceval_graph_compiled=0.378396922s evaluation=0.001836105s reuse_evaluation=0.002067075s root_value=31.432352387 independent_value=31.432352387
+[+1.513485582s] BEST WHITE c1f4 score_white=31.432352387cp VERIFIED
+
+===== PLY 4 BEGIN elapsed=3.125341s =====
+[+0.009764692s] JOSHUA LONG GRAPH build full legal search depth=3 model=4 FEN=r1bqkbnr/pppppppp/2n5/8/3P1B2/8/PPP1PPPP/RN1QKBNR b KQkq - 2 2
+[+1.527785045s] complete_tree_nodes=17483 distinct_leaf_inputs=8016 graph_characters=166175
+[+1.527785836s] paceval_graph_compiled=0.333283889s evaluation=0.001572347s reuse_evaluation=0.001623695s root_value=-81.918301107 independent_value=-81.918301107
+[+1.527787528s] BEST BLACK g8f6 score_white=-81.918301107cp VERIFIED

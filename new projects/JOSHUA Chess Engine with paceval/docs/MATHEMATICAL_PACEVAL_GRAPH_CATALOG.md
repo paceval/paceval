@@ -50,14 +50,14 @@ E_3=M+13C+17D+3A+18K+P+S+H+T.
 
 Purpose of each V3 graph: `MATERIAL` preserves interpretable piece values; `POSITIONAL_ACTIVITY` rewards relative piece-square placement; `PAWN_STRUCTURE` penalizes doubled and isolated pawns and rewards passed pawns and bishop pairs; `KING_SHELTER` measures friendly pawn presence around each king; `TEMPO` distinguishes the side to move. The separate `SENSITIVITY_ACTIVITY_WEIGHT` is the mathematical factor `P`, which is the derivative of a linear score with respect to its own activity coefficient when that coefficient is treated as a free model parameter. `POSITIONAL_COMPOSITE` is the sum `13C+17D+P`.
 
-All baseline models also supply diagnostics:
+All baseline models also supply diagnostics: `SCORE_MARGIN` is denoted by $M_i$ and `SCORE_GUARD` by $G_i$:
 
 ```math
-\operatorname{SCORE\_MARGIN}=2000-|E_i|,
+M_i=2000-|E_i|,
 ```
 
 ```math
-\operatorname{SCORE\_GUARD}=\mathbf{1}\{ |E_i|\leq2000\}\cdot\mathbf{1}\{wp\geq0\}\cdot\mathbf{1}\{bp\geq0\}.
+G_i=\mathbf{1}\{ |E_i|\leq2000\}\cdot\mathbf{1}\{wp\geq0\}\cdot\mathbf{1}\{bp\geq0\}.
 ```
 
 The margin/guard detect modeled score-envelope conditions; they are **not** a formal proof that a position is balanced or safe. The available V1/V2 `COMPOSITE_PIECE_ACTIVITY` is `13C+17D`. All V1/V2/V3 persisted C++ formula strings are stored in [`../src/paceval_math.h`](../src/paceval_math.h).
@@ -89,13 +89,13 @@ R(x)=100\left(c+\sum_{j=1}^{12}v_jh_j(x)\right),
 ```
 
 ```math
-E_4(x)=E_3(x)+\operatorname{clip}_{[-150,150]}(R(x)).
+E_4(x)=E_3(x)+\max(-150,\min(150,R(x))).
 ```
 
-The equivalent SDK expression for clipping, chosen to avoid a dependency on conditional parsing, is
+Here $C(R)$ denotes the bounded correction. The equivalent SDK expression for clipping, chosen to avoid a dependency on conditional parsing, is
 
 ```math
-\operatorname{clip}_{[-150,150]}(R)=\frac{|R+150|-|R-150|}{2}.
+C(R)=\frac{|R+150|-|R-150|}{2}.
 ```
 
 The clipped residual limits the impact of a speculative model. It is an engineering integration choice, **not a guarantee of chess correctness**. The source code evaluates every neural graph and compares its output against an independently coded native feedforward model; a separate high-precision checker does not call paceval.

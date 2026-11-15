@@ -1,0 +1,11 @@
+JOSHUA | JOSHUA (WHITE) vs JOSHUA (BLACK) | local paceval SDK | mode=alphabeta | depth=2 | model=4 | qdepth=0
+[+0.000202s] start FEN: r1bqkb1r/pp1p1pp1/n1p1p3/4P2p/1PnPBB2/PQN2N2/5PPP/R4RK1 b kq - 1 15
+[+0.009729s] paceval persistent feature graphs=43; multi-graph layout=graph-major; max batch rows=8192
+[+0.009747s] ply=1 BLACK legal=38; SEARCH legal moves
+[+1.933600s] tree nodes=1963 leaves=1925 | search_s=1.923853
+[+1.933600s] paceval features unique=1847 point_checks=1847 batch_calls=0 | stage_s=0.000000
+[+1.933976s] paceval minmax checks=1 batch_calls=1 new_graphs=1 | stage_s=0.000322
+[+1.933976s] V4 neural support active: 12 hidden paceval graphs + 1 fused graph; independent checks=1847
+[+1.933976s] alpha-beta TT_hits=0 cutoffs=0 leaf_scalar_paceval_evaluations=1847
+[+1.933976s] JOSHUA BEST BLACK c4e5 | Piece=Knight c4 -> e5 (captures Pawn) | SAN=Nxe5 | score_white=149cp | FEN r1bqkb1r/pp1p1pp1/n1p1p3/4n2p/1P1PBB2/PQN2N2/5PPP/R4RK1 w kq - 0 16
+[+1.934038s] JOSHUA SELF-PLAY END plies=1 paceval_graphs=46 paceval_batch_calls=3696 graph_points=25863

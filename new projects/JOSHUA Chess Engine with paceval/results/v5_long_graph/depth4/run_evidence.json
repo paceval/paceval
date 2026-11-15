@@ -1,0 +1,21 @@
+{
+  "sdk": "original local paceval",
+  "mcp_used": false,
+  "depth": 4,
+  "model": 3,
+  "nodes": 206604,
+  "terminal_nodes": 8,
+  "unique_feature_vectors": 3436,
+  "graph_characters": 1857759,
+  "root_legal_moves": 20,
+  "selected_move": "b1c3",
+  "paceval_value_cp": 7,
+  "independent_cpp_minimax_cp": 7,
+  "graph_generation_seconds": 0.74290864,
+  "paceval_leaf_batch_seconds": 0.029906247,
+  "expression_serialization_seconds": 0.008558004,
+  "paceval_graph_creation_seconds": 1.591851817,
+  "paceval_graph_evaluation_seconds": 0.017950349,
+  "graph_result_verified": true,
+  "elapsed_seconds": 2.398640216
+}

@@ -1,0 +1,12 @@
+{
+  "played_plies": 8,
+  "depth": 3,
+  "model": 4,
+  "mcp_used": false,
+  "paceval_local_graphs_per_move": true,
+  "total_graph_characters_generated": 1571370,
+  "elapsed_seconds": 15.384029548000399,
+  "final_fen": "r1bqkb1r/pppppppp/2n2n2/8/3P1B2/2N2P2/PPP1P1PP/R2QKBNR w KQkq - 1 5",
+  "independent_minimax_checks_passed": 8,
+  "reused_graph_checks_passed": 8
+}

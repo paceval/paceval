@@ -1,0 +1,5 @@
+ply,side,elapsed_seconds,move_uci,depth,model,graph_characters,search_nodes,distinct_leaf_inputs,paceval_value_cp,graph_creation_seconds,graph_evaluation_seconds,fen_before,fen_after
+1,white,0.539425,d2d4,3,4,83672,9323,2893,51.4985265883,0.088331039,0.001097964,rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1,rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq d3 0 1
+2,black,1.601771,b8c6,3,4,122555,13016,5556,-69.1647734766,0.209826848,0.001518705,rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq d3 0 1,r1bqkbnr/pppppppp/2n5/8/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 1 2
+3,white,3.125312,c1f4,3,4,177046,18606,7568,31.4323523874,0.378396922,0.001836105,r1bqkbnr/pppppppp/2n5/8/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 1 2,r1bqkbnr/pppppppp/2n5/8/3P1B2/8/PPP1PPPP/RN1QKBNR b KQkq - 2 2
+4,black,4.663635,g8f6,3,4,166175,17483,8016,-81.9183011074,0.333283889,0.001572347,r1bqkbnr/pppppppp/2n5/8/3P1B2/8/PPP1PPPP/RN1QKBNR b KQkq - 2 2,r1bqkb1r/pppppppp/2n2n2/8/3P1B2/8/PPP1PPPP/RN1QKBNR w KQkq - 3 3

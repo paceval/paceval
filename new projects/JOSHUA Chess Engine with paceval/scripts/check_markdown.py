@@ -23,6 +23,7 @@ def check(path):
    if token.type=='fence':
     if token.info.strip().split(' ')[0]=='math':blocks+=1
     if token.info.strip().split(' ')[0]=='math' and ('$' in token.content or '\\(' in token.content or '\\[' in token.content):raise ValueError(f'Nested math delimiters in {md}')
+    if token.info.strip().split(' ')[0]=='math' and re.search(r'\\operatorname\b',token.content):raise ValueError(f'Unsupported operatorname macro in math fence: {md}')
   # Strip fenced code segments by line parser; preserve math fence presence.
   cleaned=[];infence=False
   for line in data.splitlines():
@@ -52,7 +53,7 @@ def check(path):
 def selftest():
  with tempfile.TemporaryDirectory() as td:
   p=Path(td)/'README.md';(Path(td)/'ok.png').write_bytes(b'foo')
-  cases=['# Title\nWrong \\(x+y\\)\n','# Title\n\\operatorname{foo}\n','# Title\n$$\nabc\n','# Title\n```math\n$nested$\n```\n','# Title\n[bad](missing.csv)\n','# Title\n```python\nhello\n']
+  cases=['# Title\n```math\n\\operatorname{clip}(x)\n```\n','# Title\nWrong \\(x+y\\)\n','# Title\n\\operatorname{foo}\n','# Title\n$$\nabc\n','# Title\n```math\n$nested$\n```\n','# Title\n[bad](missing.csv)\n','# Title\n```python\nhello\n']
   # Last test is unclosed fence; preceding tests cover math, link errors.
   for case in cases:
    p.write_text(case,encoding='utf8')

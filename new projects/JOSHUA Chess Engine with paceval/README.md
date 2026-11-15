@@ -1,10 +1,90 @@
-# JOSHUA V4: A Chess Research Engine with Trained Neural Support in paceval
+# JOSHUA V5: Long Mathematical Chess Decision Graphs and Neural Support with paceval
 
 ![JOSHUA cover](figures/JOSHUA_Chess_Research_Cover_2400x1200.png)
 
 **JOSHUA** is an English-language, Linux/C++ chess research program that plays both sides automatically. It uses the **original local paceval SDK** to evaluate reusable mathematical expressions. The MCP server, Stockfish, and Leela Chess Zero are not needed and are not invoked during a JOSHUA self-play game. JOSHUA's name is a tribute to the computer in *WarGames*, not a claim of association with the film.
 
 The new optional **model 4** combines the transparent classical JOSHUA V3 score with a **genuinely trained** shallow neural network. The neural weights were learned from reproducibly generated legal chess positions labelled by JOSHUA's own **two-ply V3 minimax teacher**. They are not weights from Stockfish, Leela, or human grandmaster games. **Training-fit improvement is not proof of stronger chess play.** Models 1, 2, and 3 remain supported and unchanged.
+
+
+[Current V5 release validation and test scope](V5_RELEASE_VALIDATION.md).
+
+## V5: What is new and what is independently verified
+
+**JOSHUA V5** adds an experimental, **full-width legal-tree-to-formula compiler** in
+[`src/joshua_long_graph.cpp`](src/joshua_long_graph.cpp). The normal self-play engine
+(`src/joshua.cpp`) and its V3/V4 search modes remain available as reference implementations.
+The compiler performs legal chess enumeration in C++, evaluates leaf features through
+**persistent local paceval V3 or trained-V4 graphs**, then emits one explicit, nested
+`min`/`max` expression representing the exact finite-horizon decision tree.
+A second C++ minimax implementation verifies the returned paceval value.
+The same compiled graph is also evaluated with an independently perturbed leaf-score
+vector, without recompilation, to test mathematical graph reuse.
+
+Measured and executed on the available Linux system:
+
+| Position / model | Depth (plies) | Legal tree nodes | Distinct leaf-score variables | Exact expression length | paceval graph creation | Graph evaluation |
+|---|---:|---:|---:|---:|---:|---:|
+| Initial position / V3 | 3 | 9,323 | 399 | 75,551 characters | 0.0396 s | 0.0010 s |
+| Initial position / V4 | 3 | 9,323 | 2,893 | 83,672 characters | 0.0764 s | 0.0011 s |
+| Initial position / V3 | 4 | 206,604 | 3,436 | 1,857,759 characters | 1.5919 s | 0.0180 s |
+| Initial position / V4 | 4 | 206,604 | 40,946 | **2,088,691 characters** | **16.4167 s** | **0.0189 s** |
+
+The last row includes the complete 197,281 four-ply legal continuations. Numbers above are
+recorded experiment-specific measurements, **not claims of outperforming any other chess engine**.
+Source artifacts (including exact entire formula text, feature-score input values and JSON
+measurements) are stored under [`results/v5_long_graph/`](results/v5_long_graph/depth4_v4/run_evidence.json).
+Text length is not an internal SDK node count.
+
+**Graph regenerated before every move:** An additional, actually executed V4 self-play
+regenerates the full depth-3 mathematical expression **eight times**, once for each halfmove.
+This produced **1,571,370 total expression characters** across eight different graphs and
+finished in 15.38 seconds on the available Linux runtime. Every move was verified by
+replaying legal chess state transitions, and every mathematical result and reuse experiment
+matched independent C++ minimax. The full trace and all eight expressions are preserved in
+[`results/v5_graph_rebuilt_selfplay_8ply/`](results/v5_graph_rebuilt_selfplay_8ply/summary.json).
+This is a deliberately bounded eight-halfmove experiment, not a whole finished chess game.
+
+**Observed tactical mistake regression:** The original 94-halfmove ChatGPT/JOSHUA game
+contains a black knight loss after `15...Nxe5 16.dxe5`. Reusing the recorded FEN,
+a V4 depth-2 search without tactical extension again selected `15...Nxe5`, while
+adding two quiescence plies selected `15...Nb6`. A deeper alternative selected another move.
+This is a measured change in decision, not proof of universally superior chess play.
+See [`results/game_analysis/`](results/game_analysis/historical_audit.json) and the legal board figures.
+
+For the new mathematical construction and exact tree-to-formula mapping, see
+[`docs/V5_LONG_GRAPH_MATHEMATICS.md`](docs/V5_LONG_GRAPH_MATHEMATICS.md).
+The package contains **one consolidated English scientific whitepaper**:
+[`JOSHUA_Chess_Research_Whitepaper_EN.pdf`](JOSHUA_Chess_Research_Whitepaper_EN.pdf).
+No MCP server or external competitive chess engine is used in the execution.
+
+### Build and run the long-graph mode
+
+```bash
+cmake -S src -B build -DCMAKE_BUILD_TYPE=Release \
+  -DPACEVAL_RUNTIME=/absolute/path/to/libpaceval_linux_sharedLIB.so
+cmake --build build --target joshua_long_graph joshua_v5_selfplay_audit joshua -j
+
+# A complete depth-three decision graph from the initial position:
+./build/joshua_long_graph --model 4 --depth 3 --max-nodes 40000 \
+  --max-chars 500000 --output results/my_graph
+
+# Recompile a fresh graph before each move, for eight halfmoves:
+python3 scripts/run_long_graph_selfplay.py --binary ./build/joshua_long_graph \
+  --depth 3 --model 4 --plies 8 --max-nodes 150000 --max-chars 5000000 \
+  --output results/my_eight_ply_experiment
+
+# Verify the recorded game, the formulas and all source checks:
+ctest --test-dir build --output-on-failure -j 1 \
+  -E 'joshua_v5_huge_v4_neural_graph|joshua_v5_huge_v4_graph_independent_evidence'
+```
+
+The depth-4 graph compilation requires substantially more memory; use the documented
+[`scripts/run_graph_with_memory_limit.sh`](scripts/run_graph_with_memory_limit.sh)
+on memory-constrained Linux hosts. Chess rules and board transitions are handled by C++;
+long expressions do not allow unlimited legal topologies, undo moves, detect all historical
+repetitions or replace a complete chess search engine. The feature-vector deduplication is
+only valid for the particular mathematical evaluator and does not assert identical tactics.
 
 ## What is actually implemented
 
@@ -57,7 +137,7 @@ h_j=\frac{1}{1+\exp[-(b_j+\sum_{i=1}^{48}W_{ji}z_i)]}.
 The final graph combines the manually interpretable V3 score with the trained support:
 
 ```math
-E_4(s)=E_3(s)+\operatorname{clip}_{[-150,150]}\left(100\left[c+\sum_{j=1}^{12}v_j h_j(s)\right]\right).
+E_4(s)=E_3(s)+\max\left(-150,\min\left(150,100\left[c+\sum_{j=1}^{12}v_j h_j(s)\right]\right)\right).
 ```
 
 The cap is an explicit safety-of-integration **heuristic**, not a proof of chess reliability. The actual fused paceval graph uses an equivalent absolute-value expression for clipping. C++ produces legal positions and feature vectors; paceval executes the mathematical expressions and reused reduction graphs. The full account of each formula and its reason for existence is in the sole PDF report.

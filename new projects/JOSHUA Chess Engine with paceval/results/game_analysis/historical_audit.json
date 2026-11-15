@@ -1,0 +1,11 @@
+{
+  "verified_halfmoves": 94,
+  "chatgpt_white_moves": 47,
+  "joshua_black_moves": 47,
+  "joshua_knight_moves": 13,
+  "white_captures": 13,
+  "black_captures": 9,
+  "black_knights_captured": 2,
+  "game_finished": false,
+  "final_fen": "8/1B1N2pk/4Q3/7p/7P/8/5PP1/6K1 w - - 1 48"
+}

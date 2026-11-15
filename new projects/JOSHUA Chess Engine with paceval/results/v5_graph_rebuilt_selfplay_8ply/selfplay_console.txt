@@ -1,0 +1,47 @@
+===== PLY 1 BEGIN elapsed=0.000018s =====
+[+0.009458664s] JOSHUA LONG GRAPH build full legal search depth=3 model=4 FEN=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+[+0.569093536s] complete_tree_nodes=9323 distinct_leaf_inputs=2893 graph_characters=83672
+[+0.569094297s] paceval_graph_compiled=0.077221856s evaluation=0.001220643s reuse_evaluation=0.000746627s root_value=51.498526588 independent_value=51.498526588
+[+0.569095989s] BEST WHITE d2d4 score_white=51.498526588cp VERIFIED
+
+===== PLY 2 BEGIN elapsed=0.576164s =====
+[+0.016428439s] JOSHUA LONG GRAPH build full legal search depth=3 model=4 FEN=rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq d3 0 1
+[+1.079705781s] complete_tree_nodes=13016 distinct_leaf_inputs=5556 graph_characters=122555
+[+1.079706742s] paceval_graph_compiled=0.194114488s evaluation=0.001392032s reuse_evaluation=0.001186141s root_value=-69.164773477 independent_value=-69.164773477
+[+1.079708435s] BEST BLACK b8c6 score_white=-69.164773477cp VERIFIED
+
+===== PLY 3 BEGIN elapsed=1.665417s =====
+[+0.009188004s] JOSHUA LONG GRAPH build full legal search depth=3 model=4 FEN=r1bqkbnr/pppppppp/2n5/8/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 1 2
+[+1.492380562s] complete_tree_nodes=18606 distinct_leaf_inputs=7568 graph_characters=177046
+[+1.492381343s] paceval_graph_compiled=0.343952913s evaluation=0.001704404s reuse_evaluation=0.001726508s root_value=31.432352387 independent_value=31.432352387
+[+1.492382926s] BEST WHITE c1f4 score_white=31.432352387cp VERIFIED
+
+===== PLY 4 BEGIN elapsed=3.167369s =====
+[+0.009501418s] JOSHUA LONG GRAPH build full legal search depth=3 model=4 FEN=r1bqkbnr/pppppppp/2n5/8/3P1B2/8/PPP1PPPP/RN1QKBNR b KQkq - 2 2
+[+1.537513476s] complete_tree_nodes=17483 distinct_leaf_inputs=8016 graph_characters=166175
+[+1.537514127s] paceval_graph_compiled=0.339919601s evaluation=0.002030147s reuse_evaluation=0.001604384s root_value=-81.918301107 independent_value=-81.918301107
+[+1.537515840s] BEST BLACK g8f6 score_white=-81.918301107cp VERIFIED
+
+===== PLY 5 BEGIN elapsed=4.714286s =====
+[+0.009632542s] JOSHUA LONG GRAPH build full legal search depth=3 model=4 FEN=r1bqkb1r/pppppppp/2n2n2/8/3P1B2/8/PPP1PPPP/RN1QKBNR w KQkq - 3 3
+[+2.208391062s] complete_tree_nodes=25388 distinct_leaf_inputs=10122 graph_characters=244299
+[+2.208391884s] paceval_graph_compiled=0.679110025s evaluation=0.002066001s reuse_evaluation=0.002241737s root_value=44.465240480 independent_value=44.465240480
+[+2.208393586s] BEST WHITE b1c3 score_white=44.465240480cp VERIFIED
+
+===== PLY 6 BEGIN elapsed=6.935106s =====
+[+0.009449046s] JOSHUA LONG GRAPH build full legal search depth=3 model=4 FEN=r1bqkb1r/pppppppp/2n2n2/8/3P1B2/2N5/PPP1PPPP/R2QKBNR b KQkq - 4 3
+[+2.165861562s] complete_tree_nodes=22277 distinct_leaf_inputs=10563 graph_characters=213142
+[+2.165862293s] paceval_graph_compiled=0.561618476s evaluation=0.003254211s reuse_evaluation=0.001910656s root_value=-99.000000000 independent_value=-99.000000000
+[+2.165863995s] BEST BLACK f6g4 score_white=-99.000000000cp VERIFIED
+
+===== PLY 7 BEGIN elapsed=9.114510s =====
+[+0.009526242s] JOSHUA LONG GRAPH build full legal search depth=3 model=4 FEN=r1bqkb1r/pppppppp/2n5/8/3P1Bn1/2N5/PPP1PPPP/R2QKBNR w KQkq - 5 4
+[+3.565217338s] complete_tree_nodes=31967 distinct_leaf_inputs=15333 graph_characters=318665
+[+3.565218079s] paceval_graph_compiled=1.221685692s evaluation=0.003912101s reuse_evaluation=0.002663935s root_value=120.055683463 independent_value=120.055683463
+[+3.565219692s] BEST WHITE f2f3 score_white=120.055683463cp VERIFIED
+
+===== PLY 8 BEGIN elapsed=12.695043s =====
+[+0.009626320s] JOSHUA LONG GRAPH build full legal search depth=3 model=4 FEN=r1bqkb1r/pppppppp/2n5/8/3P1Bn1/2N2P2/PPP1P1PP/R2QKBNR b KQkq - 0 4
+[+2.675329209s] complete_tree_nodes=25285 distinct_leaf_inputs=12449 graph_characters=245816
+[+2.675330010s] paceval_graph_compiled=0.745476391s evaluation=0.002951274s reuse_evaluation=0.002131965s root_value=-37.420230093 independent_value=-37.420230093
+[+2.675331613s] BEST BLACK g4f6 score_white=-37.420230093cp VERIFIED

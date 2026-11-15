@@ -1,0 +1,2 @@
+d2d4 b8c6 c1f4 g8f6
+final_fen r1bqkb1r/pppppppp/2n2n2/8/3P1B2/8/PPP1PPPP/RN1QKBNR w KQkq - 3 3

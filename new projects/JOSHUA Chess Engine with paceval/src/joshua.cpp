@@ -194,7 +194,27 @@ struct AlphaBetaWorker {
    if(b.half>=100||minorDraw(b)){terminalLeaves++;return 0.0;}
    const double stand=leafScore(b);evalLeaves++;
    if(!inCheck){if(stand>=beta)return stand;if(stand>alpha)alpha=stand;}
-   if(budget<=0)return stand; // explicit finite tactical horizon
+   if(budget<=0){
+     if(!inCheck)return stand;
+     // Never declare an in-check position quiet at the tactical horizon.
+     // Extend forced evasions by one legal reply only, then evaluate the
+     // resulting nonterminal position. This is bounded, not a mate oracle.
+     double bestEvasion=-32001.0;
+     for(const Move&m:moves){
+       const auto undo=makeMove(b,m);
+       const auto replies=legal(b);
+       double v=0.0;
+       if(replies.empty()){
+          const bool mate=check(b,b.turn);
+          v=mate?(30000.0-(ply+1)):0.0;
+          terminalLeaves++;
+       }else if(b.half>=100||minorDraw(b)){v=0.0;terminalLeaves++;}
+       else{v=-leafScore(b);evalLeaves++;}
+       unmakeMove(b,m,undo);
+       bestEvasion=std::max(bestEvasion,v);
+     }
+     return bestEvasion;
+   }
    vector<Move>tactical;
    for(const Move&m:moves)if(inCheck||b.b[m.t]!='.'||m.ep||m.promo!=' ')tactical.push_back(m);
    orderMoves(tactical,b,Move{});

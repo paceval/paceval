@@ -1,0 +1,2 @@
+d2d4 b8c6 c1f4 g8f6 b1c3 f6g4 f2f3 g4f6
+final_fen r1bqkb1r/pppppppp/2n2n2/8/3P1B2/2N2P2/PPP1P1PP/R2QKBNR w KQkq - 1 5
