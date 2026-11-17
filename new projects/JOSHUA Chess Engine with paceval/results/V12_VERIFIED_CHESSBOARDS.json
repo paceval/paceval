@@ -1,0 +1,32 @@
+[
+  {
+    "game": 1,
+    "ply": 6,
+    "old": "d7d6",
+    "new": "e4c5",
+    "image": "v12_real_game1_ply6_before_old_verified.png",
+    "fen_before": "rnbqkb1r/pppppppp/8/4P3/4n3/3P4/PPP2PPP/RNBQKBNR b KQkq - 0 3",
+    "old_fen_after": "rnbqkb1r/ppp1pppp/3p4/4P3/4n3/3P4/PPP2PPP/RNBQKBNR w KQkq - 0 4",
+    "new_fen_after": "rnbqkb1r/pppppppp/8/2n1P3/8/3P4/PPP2PPP/RNBQKBNR w KQkq - 1 4"
+  },
+  {
+    "game": 2,
+    "ply": 9,
+    "old": "c2c4",
+    "new": "e2g1",
+    "image": "v12_real_game2_ply9_before_old_verified.png",
+    "fen_before": "r1bqkbnr/ppp2ppp/2n5/4p3/3pP3/5N2/PPPPNPPP/R1BQKB1R w KQkq - 2 5",
+    "old_fen_after": "r1bqkbnr/ppp2ppp/2n5/4p3/2PpP3/5N2/PP1PNPPP/R1BQKB1R b KQkq c3 0 5",
+    "new_fen_after": "r1bqkbnr/ppp2ppp/2n5/4p3/3pP3/5N2/PPPP1PPP/R1BQKBNR b KQkq - 3 5"
+  },
+  {
+    "game": 2,
+    "ply": 15,
+    "old": "a4d7",
+    "new": "a4a5",
+    "image": "v12_real_game2_ply15_before_old_verified.png",
+    "fen_before": "r2qkbnr/pppb1ppp/8/4p3/QnP1P3/3p1NN1/PP1P1PPP/R1B1KB1R w KQkq - 4 8",
+    "old_fen_after": "r2qkbnr/pppQ1ppp/8/4p3/1nP1P3/3p1NN1/PP1P1PPP/R1B1KB1R b KQkq - 0 8",
+    "new_fen_after": "r2qkbnr/pppb1ppp/8/Q3p3/1nP1P3/3p1NN1/PP1P1PPP/R1B1KB1R b KQkq - 5 8"
+  }
+]

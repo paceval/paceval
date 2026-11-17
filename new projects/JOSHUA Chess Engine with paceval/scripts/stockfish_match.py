@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Joshua V11: durable Stockfish-vs-paceval Joshua matches and bounded graph evolution.
+"""Joshua V12: durable Stockfish-vs-paceval Joshua matches and bounded graph evolution.
 
 Every move is adjudicated by the compiled Joshua C++ referee, not by a simulated
 chess package. Stockfish speaks UCI. Joshua runs the authentic local paceval
@@ -274,13 +274,15 @@ def referee(binary, fen, move=None):
 
 
 def joshua_choice(binary, fen, model, graph_file, depth, quiescence, timeout,
-                  folder: Path, logger: Logger, progress, explore_cp=0, explore_plies=0, seed=0):
+                  folder: Path, logger: Logger, progress, explore_cp=0, explore_plies=0, seed=0,
+                  verify_margin_cp=0.0, verify_extra_depth=0):
     folder.mkdir(parents=True, exist_ok=True)
     command = [str(binary), '--mode', 'alphabeta', '--model', '4', '--depth', str(depth),
                '--quiescence', str(quiescence), '--plies', '1', '--fen', fen,
                '--graph-file', str(graph_file), '--no-board', '--output', str(folder),
                '--explore-cp', str(explore_cp), '--explore-plies', str(explore_plies),
-               '--game-seed', str(seed)]
+               '--game-seed', str(seed), '--verify-margin-cp', str(verify_margin_cp),
+               '--verify-extra-depth', str(verify_extra_depth)]
     logfile = folder / 'engine_console.log'
     begin = time.monotonic()
     with logfile.open('w', encoding='utf-8') as output:
@@ -317,7 +319,11 @@ def joshua_choice(binary, fen, model, graph_file, depth, quiescence, timeout,
     return {'move': move, 'score': float(rows[0]['white_score_cp']), 'graph_folder':str(folder),
             'move_s': wall, 'evidence': {'version': evidence['adaptive_graph_version'],
              'graph_evaluations': evidence['adaptive_graph_evaluations'],
-             'paceval_graph_points': evidence.get('paceval_graph_point_evaluations')}}
+             'paceval_graph_points': evidence.get('paceval_graph_point_evaluations'),
+             'verified_moves': evidence.get('v12_verified_moves', 0),
+             'verify_changed': evidence.get('v12_verified_decisions_changed', 0),
+             'verify_margin_cp': evidence.get('v12_verify_margin_cp', 0),
+             'verify_extra_depth': evidence.get('v12_verify_extra_depth', 0)}}
 
 
 def expected_score(score):
@@ -449,7 +455,9 @@ def evaluate_model_on_fens(fens, model, graph_file, args, teacher, directory, lo
         logger.event('GRAPH_TEST_START', graph_version=model['version'], group=label, index=i, fen=f)
         chosen = joshua_choice(args.joshua, f, model, graph_file, args.depth,
                                args.quiescence, args.move_timeout, directory / f'{label}_{i}',
-                               logger, args.progress_seconds)
+                               logger, args.progress_seconds,
+                               verify_margin_cp=args.verify_margin_cp,
+                               verify_extra_depth=args.verify_extra_depth)
         after = referee(args.referee, f, chosen['move'])
         assessment = stockfish_loss(teacher, f, after["fen"], args.teacher_nodes, after["status"], logger, args.progress_seconds)
         logger.event('GRAPH_TEST_END', graph_version=model['version'], group=label,
@@ -468,6 +476,30 @@ def result_mean(items):
     return round(sum(values) / len(values), 3)
 
 
+def candidate_plans(game_id, urgent_mate, active, args):
+    """Generate a bounded deterministic V12 candidate pool from whitelisted mathematical templates."""
+    if urgent_mate:
+        priority = ['king_check_combo', 'king_tactics', 'king_alarm', 'check_pressure']
+    else:
+        pool = ['hanging_capture_combo', 'hanging_pressure', 'queen_exposure',
+                'active_captures', 'king_tactics', 'king_alarm', 'pawn_race']
+        offset = ((game_id // 2)-1) % len(pool)
+        priority = pool[offset:] + pool[:offset]
+    fresh = [term for term in priority if term not in active['extra']]
+    existing = [term for term in priority if term in active['extra']]
+    selected = (fresh + existing)[:3]
+    index = ((game_id - 1)//2) % len(TERMS)
+    linear = [TERMS[index], TERMS[(index+3)%len(TERMS)]]
+    plans = []
+    for term in selected:
+        for delta in (-args.structural_step,args.structural_step):
+            plans.append(('nonlinear', term, delta))
+    for term in linear:
+        for delta in (-args.step,args.step):
+            plans.append(('linear',term,delta))
+    return plans[:getattr(args,'candidate_budget',8)]
+
+
 def adjust_graph(game_id, errors, active_model_path, teacher, args, directory, logger):
     """Bounded, real decision-based coordinate and STRUCTURAL graph proposals.
 
@@ -476,7 +508,7 @@ def adjust_graph(game_id, errors, active_model_path, teacher, args, directory, l
     immediate regressions. Acceptance is provisional until paired match evidence.
     """
     report = {'status': 'not_attempted', 'reason': '', 'candidates': [],
-              'method': 'V11 fixed tactical basis + bounded coefficient trials; held-out reference checks; actual paired challenger-versus-frozen-champion match',
+              'method': 'V12 multi-template bounded trials; held-out reference checks; champion/challenger paired matches',
               'promotion_claim': 'Local gate only; not evidence of global chess-strength improvement'}
     if not args.adapt:
         report.update(status='disabled', reason='--no-adapt')
@@ -504,14 +536,8 @@ def adjust_graph(game_id, errors, active_model_path, teacher, args, directory, l
         report.update(status='rejected', reason='Stockfish expected-score estimate unavailable')
         return report
     urgent_mate = any(x.get('mate_alert') for x in suspects)
-    structural = ['king_check_combo', 'king_tactics', 'king_alarm'] if urgent_mate else [
-        'hanging_capture_combo', 'hanging_pressure', 'queen_exposure', 'king_alarm', 'active_captures', 'pawn_race'][((game_id//2)-1) % 6:]
-    if not urgent_mate:
-        structural += ['hanging_capture_combo', 'hanging_pressure', 'queen_exposure', 'king_alarm', 'active_captures', 'pawn_race']
-    structural = list(dict.fromkeys(structural))
-    # Prefer terms not yet in the current graph. These create NEW graph topology.
-    term_new = next((k for k in structural if k not in active['extra']), structural[0])
-    linear = TERMS[((game_id - 1)//2) % len(TERMS)]
+    plans = candidate_plans(game_id, urgent_mate, active, args)
+    report['candidate_plan'] = [{'category':c,'term':term,'change':delta} for c,term,delta in plans]
     revisions = active_model_path.parent / 'model_versions'
     historical_ids = [int(x.stem.removeprefix('version_')) for x in revisions.glob('version_*.tsv')
                       if re.fullmatch(r'version_[0-9]{7}', x.stem)] if revisions.exists() else []
@@ -519,10 +545,6 @@ def adjust_graph(game_id, errors, active_model_path, teacher, args, directory, l
     if next_version >= 9_999_999:
         report.update(status='rejected',reason='Model version registry exhausted')
         return report
-    plans = [('nonlinear', term_new, -args.structural_step),
-             ('nonlinear', term_new, args.structural_step),
-             ('linear', linear, -args.step),
-             ('linear', linear, args.step)]
     accepted = None
     for category, term, change in plans:
         candidate = {'version': next_version, 'weights': dict(active['weights']),
@@ -620,7 +642,10 @@ def comparison_key(row):
     fields = ('stockfish_id','stockfish_nodes','stockfish_skill','joshua_depth','quiescence')
     if any(field not in row for field in fields):
         return None  # Historical V9 index lacks the settings; not comparable.
-    return tuple(str(row[k]) for k in fields)
+    # Search policies with different selective depth must NOT be grouped.
+    # Pre-V12 games had no verification; represent their implicit setting as 0.
+    return tuple(str(row[k]) for k in fields) + (
+        str(row.get('verify_margin_cp', 0)), str(row.get('verify_extra_depth', 0)))
 
 
 def paired_opening_results(rows):
@@ -707,7 +732,7 @@ def summary_metrics(rows):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Stockfish vs JOSHUA V11; tactical score analysis and evolving paceval graph formulas')
+    parser = argparse.ArgumentParser(description='Stockfish vs JOSHUA V12; tactical score analysis and evolving paceval graph formulas')
     parser.add_argument('--joshua', type=Path, default=(BASE / 'joshua' if (BASE / 'joshua').is_file() else BASE / 'bin/joshua'))
     parser.add_argument('--referee', type=Path, default=(BASE / 'joshua_referee' if (BASE / 'joshua_referee').is_file() else BASE / 'bin/joshua_referee'))
     parser.add_argument('--stockfish', type=Path, default=Path(shutil.which('stockfish') or '/usr/games/stockfish'))
@@ -717,6 +742,10 @@ def main():
     parser.add_argument('--max-games', type=int, default=0)
     parser.add_argument('--max-plies', type=int, default=400)
     parser.add_argument('--depth', type=int, default=2)
+    parser.add_argument('--verify-margin-cp', type=float, default=25.0,
+                        help='V12: investigate ambiguous root choices when top two are within this many centipawns; 0 disables')
+    parser.add_argument('--verify-extra-depth', type=int, default=1,
+                        help='V12: add one or two full search plies for ambiguous roots')
     parser.add_argument('--quiescence', type=int, default=2)
     parser.add_argument('--stockfish-nodes', type=int, default=1000)
     parser.add_argument('--teacher-nodes', type=int, default=2500)
@@ -728,6 +757,8 @@ def main():
     parser.add_argument('--opening', choices=['cycle', 'none'], default='cycle')
     parser.add_argument('--max-logs-mb', type=float, default=25)
     parser.add_argument('--adapt', action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument('--candidate-budget', type=int, default=8,
+                        help='V12 whitelisted candidate trials (4..12)')
     parser.add_argument('--step', type=float, default=2.0)
     parser.add_argument('--training-loss-pp', type=float, default=7.0)
     parser.add_argument('--structural-step', type=float, default=0.5)
@@ -742,10 +773,16 @@ def main():
     args = parser.parse_args()
     if not 1 <= args.depth <= 10 or not 1 <= args.max_plies <= 1000 or not 0 <= args.max_games <= 1_000_000:
         parser.error('Invalid depth or game bounds')
+    if not (math.isfinite(args.verify_margin_cp) and 0 <= args.verify_margin_cp <= 10000 and
+            0 <= args.verify_extra_depth <= 2 and args.depth + args.verify_extra_depth <= 10 and
+            (args.verify_extra_depth == 0 or args.verify_margin_cp > 0)):
+        parser.error('Invalid V12 verification depth/margin combination')
     if not (1 <= args.stockfish_nodes <= 2_000_000 and 1 <= args.teacher_nodes <= 2_000_000):
         parser.error('Invalid Stockfish node count')
     if not (0 <= args.stockfish_skill <= 20 and 1 <= args.progress_seconds <= 60 and args.move_timeout >= 5):
         parser.error('Invalid skill, progress interval or move timeout')
+    if not (4 <= args.candidate_budget <= 12):
+        parser.error('candidate-budget must be 4..12')
     if not (0 < args.step <= 4 and 0 < args.structural_step <= 2 and 1 <= args.train_positions <= 4 and 1 <= args.holdout_positions <= 8 and 1 <= args.minimum_pairs_per_version <= 100):
         parser.error('Invalid learning bounds')
     if not (1 <= args.champion_pairs <= len(champion_gate.CHALLENGE_OPENINGS) and 20 <= args.champion_max_plies <= 200 and .5 < args.champion_min_score <= 1.0):
@@ -838,7 +875,9 @@ def main():
                         played = joshua_choice(args.joshua, fen, model, graph_file, args.depth,
                                               args.quiescence, args.move_timeout,
                                               game_dir / f'joshua_ply_{ply:03d}', logger,
-                                              args.progress_seconds)
+                                              args.progress_seconds,
+                                              verify_margin_cp=args.verify_margin_cp,
+                                              verify_extra_depth=args.verify_extra_depth)
                     move_s = round(time.monotonic() - start, 3)
                     move = played['move']
                     advanced = referee(args.referee, fen, move)
@@ -851,6 +890,11 @@ def main():
                     logger.event('MOVE', ply=ply, actor=actor, uci=move, san=advanced['san'],
                                  move_s=move_s, score=played.get('score'))
                     if actor == 'JOSHUA':
+                        row['v12_verified_moves'] = played['evidence'].get('verified_moves', 0)
+                        row['v12_verify_changed'] = played['evidence'].get('verify_changed', 0)
+                        logger.event('V12_SEARCH_POLICY', ply=ply,
+                            margin_cp=args.verify_margin_cp, extra_depth=args.verify_extra_depth,
+                            verification_used=row['v12_verified_moves'], changed=row['v12_verify_changed'])
                         graph_hash = sync_graph_export(out, Path(played['graph_folder']), model['version'])
                         row['adaptive_graph_sha256'] = graph_hash
                         grade = stockfish_loss(teacher, fen, advanced['fen'], args.teacher_nodes,
@@ -902,31 +946,49 @@ def main():
                 if (out / 'active_graph_expression.txt').exists():
                     atomic_text(game_dir / 'evaluated_graph_expression.txt', (out / 'active_graph_expression.txt').read_text())
                     atomic_text(game_dir / 'evaluated_graph_terms.csv', (out / 'active_graph_terms.csv').read_text())
+                pair_signature = {
+                    'model_sha256': hashlib.sha256(graph_file.read_bytes()).hexdigest(),
+                    'graph_version':model['version'],
+                    'stockfish_id':match.name,'stockfish_nodes':args.stockfish_nodes,
+                    'stockfish_skill':args.stockfish_skill,
+                    'joshua_depth':args.depth,'quiescence':args.quiescence,
+                    'verify_margin_cp':args.verify_margin_cp,
+                    'verify_extra_depth':args.verify_extra_depth,
+                    'opening':OPENINGS[((game_id_current-1)//2)%len(OPENINGS)] if args.opening=='cycle' else 'none'
+                }
                 if STOP:
                     adaptation = {'status': 'interrupted', 'reason': 'No model change in interrupted game'}
                 elif reason != 'max_plies_unfinished' and game_id_current % 2 == 1:
                     # Preserve paired-color comparability. The same graph version
                     # must face Stockfish on both colors before it is promoted.
                     json_write(out / 'pending_pair.json', {'game':game_id_current,
-                        'graph_version':model['version'], 'errors':joshua_errors[:40]})
+                        'graph_version':model['version'], 'errors':joshua_errors[:40],
+                        'pair_signature':pair_signature})
                     adaptation = {'status':'deferred_for_color_pair',
                                   'reason':'First color of fixed-opening pair. Change evaluated after return game.'}
                     logger.event('GRAPH_DEFERRED', reason=adaptation['reason'])
                 elif reason != 'max_plies_unfinished':
                     pending_file = out / 'pending_pair.json'
                     paired = json.loads(pending_file.read_text()) if pending_file.exists() else {}
-                    if paired.get('game') == game_id_current-1 and paired.get('graph_version') == model['version']:
+                    if paired.get('game') == game_id_current-1 and paired.get('pair_signature') == pair_signature:
                         all_errors = paired.get('errors', []) + joshua_errors
                     else:
                         all_errors = joshua_errors
                         logger.event('COLOR_PAIR_WARNING', note='Prior color not present with same graph version; no paired learning data')
                     prior_index = out / 'match_index.json'
                     historical = json.loads(prior_index.read_text()) if prior_index.exists() else []
+                    # Never count V9/V10/V11 games with incompatible search
+                    # settings towards a new version's minimum evidence window.
+                    current_setting = (str(match.name),str(args.stockfish_nodes),
+                                       str(args.stockfish_skill),str(args.depth),
+                                       str(args.quiescence),str(args.verify_margin_cp),
+                                       str(args.verify_extra_depth))
                     complete_pairs = sum(1 for row in historical
                          if int(row.get('game',0)) % 2 == 0 and row.get('graph_version')==model['version']
                          and row.get('metric_version')=='v10-bounded-loss-pp'
+                         and comparison_key(row) == current_setting
                          and row.get('result') in ('1-0','0-1','1/2-1/2'))
-                    if not (paired.get('game') == game_id_current-1 and paired.get('graph_version') == model['version']):
+                    if not (paired.get('game') == game_id_current-1 and paired.get('pair_signature') == pair_signature):
                         adaptation = {'status':'skipped_missing_color_pair',
                             'reason':'No matching previous white/black game for training'}
                         logger.event('GRAPH_DEFERRED_FOR_EVIDENCE', **adaptation)
@@ -950,7 +1012,9 @@ def main():
                            'model_after':parse_model(graph_file)['version'],
                            'stockfish_binary':str(args.stockfish), 'stockfish_id':match.name,
                            'stockfish_skill':args.stockfish_skill, 'stockfish_nodes':args.stockfish_nodes,
-                           'teacher_nodes':args.teacher_nodes,'reference_scores':'fixed-node stockfish heuristic; mate separated; bounded expected-score loss in percentage points',
+                           'teacher_nodes':args.teacher_nodes,
+                           'verify_margin_cp':args.verify_margin_cp,'verify_extra_depth':args.verify_extra_depth,
+                           'reference_scores':'fixed-node stockfish heuristic; mate separated; bounded expected-score loss in percentage points',
                            'timestamp_utc':utc()})
                 completed += 1
                 jscore = 1.0 if (result == '1-0' and white == 'JOSHUA' or result == '0-1' and black == 'JOSHUA') else (0.5 if result == '1/2-1/2' else (0 if result != '*' else None))
@@ -964,7 +1028,8 @@ def main():
                             'opening_book':OPENINGS[((game_id_current-1)//2)%len(OPENINGS)] if args.opening=='cycle' else 'none',
                             'stockfish_id':match.name,'stockfish_nodes':args.stockfish_nodes,
                             'stockfish_skill':args.stockfish_skill,'joshua_depth':args.depth,
-                            'quiescence':args.quiescence,
+                            'quiescence':args.quiescence,'verify_margin_cp':args.verify_margin_cp,
+                            'verify_extra_depth':args.verify_extra_depth,
                             'termination':reason, 'archive':f'game_{game_id_current:06d}.zip'})
                 # Bounded index, retained summary only. Complete data is in game ZIP.
                 atomic_text(index_path, json.dumps(old[-250:], indent=2) + '\n')

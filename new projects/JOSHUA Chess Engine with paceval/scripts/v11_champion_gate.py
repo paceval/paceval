@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""V11 immutable champion-versus-challenger match gate.
+"""V12 immutable champion-versus-challenger match gate.
 
 This is a decision-quality / chess-result gate, NOT a training oracle or a
 statistical proof of stronger play. Every move comes from the real Joshua
@@ -17,10 +17,18 @@ import tempfile
 import time
 from pathlib import Path
 
-# Separate from V10 Stockfish game training openings, as far as possible.
-# Predeclared, fixed start moves. No positions are selected by candidate score.
-CHALLENGE_OPENINGS = ('b2b4', 'c2c3', 'f2f3', 'g2g4', 'b1a3', 'g1h3')
-
+# Balanced complete four-ply openings, fixed before training. Each candidate
+# plays twice from the identical resulting FEN, once per color. Unlike the
+# earlier single-ply gate these are normal, symmetric opening developments.
+CHALLENGE_LINES = {
+    'open_king': ('e2e4','e7e5','g1f3','b8c6'),
+    'queen_pawn': ('d2d4','d7d5','g1f3','g8f6'),
+    'english': ('c2c4','e7e5','b1c3','g8f6'),
+    'reti': ('g1f3','d7d5','g2g3','g8f6'),
+    'fianchetto': ('b2b3','e7e5','c1b2','b8c6'),
+    'sicilian': ('e2e4','c7c5','g1f3','d7d6'),
+}
+CHALLENGE_OPENINGS = tuple(CHALLENGE_LINES)
 
 def sha256(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -64,15 +72,22 @@ def play_one(opening, candidate_color, frozen_champion, candidate_path,
              champion, challenger, args, directory, logger, api):
     """Creates a full trace while deleting large per-move scratch outputs."""
     fen = api.START
-    a = api.referee(args.referee, fen, opening)
-    fen = a['fen']; position_counts = {api.referee(args.referee,api.START)['key']:1,a['key']:1}
-    moves = [{'ply':1,'actor':'forced opening','uci':opening,'san':a['san'], 'fen_after':fen}]
+    position_counts = {api.referee(args.referee, fen)['key']: 1}
+    moves = []
+    for forced_move in CHALLENGE_LINES[opening]:
+        previous_fen = fen
+        a = api.referee(args.referee, fen, forced_move)
+        fen = a['fen']
+        position_counts[a['key']] = position_counts.get(a['key'],0) + 1
+        moves.append({'ply':len(moves)+1,'actor':'forced opening',
+                      'uci':forced_move,'san':a['san'],
+                      'fen_before':previous_fen,'fen_after':fen})
     end_reason='max_plies_unfinished'
     count=0
     # Temporary per-move engine outputs are deleted after evidence verification.
     with tempfile.TemporaryDirectory(prefix='v11_chess_scratch_') as temporary:
         scratch=Path(temporary)
-        for ply in range(2,args.champion_max_plies+1):
+        for ply in range(len(moves)+1,args.champion_max_plies+1):
             if api.STOP:
                 raise InterruptedError('Stopped during champion gate, no model promotion')
             state=api.referee(args.referee,fen)
@@ -85,7 +100,9 @@ def play_one(opening, candidate_color, frozen_champion, candidate_path,
             out_dir=scratch/f'ply_{ply}'
             begin=time.monotonic()
             chosen=api.joshua_choice(args.joshua,fen,selecting,model_path,args.depth,args.quiescence,
-                                     args.move_timeout,out_dir,logger,args.progress_seconds)
+                                     args.move_timeout,out_dir,logger,args.progress_seconds,
+                                     verify_margin_cp=args.verify_margin_cp,
+                                     verify_extra_depth=args.verify_extra_depth)
             advance=api.referee(args.referee,fen,chosen['move'])
             row={'ply':ply,'actor':'challenger' if actor_color==candidate_color else 'champion',
                  'graph_version':selecting['version'], 'side':actor_color,
@@ -137,6 +154,9 @@ def compare(champion_path, candidate_path, args, folder, logger, api):
              'champion_sha256':sha256(frozen),'candidate_sha256':sha256(candidate_snapshot),
              'paired_openings':list(CHALLENGE_OPENINGS[:args.champion_pairs]),
              'depth':args.depth,'quiescence':args.quiescence,'max_plies':args.champion_max_plies,
+             'verify_margin_cp':args.verify_margin_cp,
+             'verify_extra_depth':args.verify_extra_depth,
+             'opening_lines':{name:list(CHALLENGE_LINES[name]) for name in CHALLENGE_OPENINGS[:args.champion_pairs]},
              'results':[{k:v for k,v in r.items() if k!='moves'} for r in results],
              **verdict}
     api.json_write(folder/'champion_gate_verdict.json',summary)

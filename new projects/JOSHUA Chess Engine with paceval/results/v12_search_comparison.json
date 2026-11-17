@@ -1,0 +1,33 @@
+{
+  "source": "genuine V12 paceval engine with original user-supplied runtime, individual successfully completed runs",
+  "strength_claim": "NOT_ESTABLISHED",
+  "cases": [
+    {
+      "game": 1,
+      "ply": 6,
+      "old_choice": "d7d6",
+      "new_choice": "e4c5",
+      "verify": "1",
+      "depth": "3",
+      "rc": 0
+    },
+    {
+      "game": 2,
+      "ply": 9,
+      "old_choice": "c2c4",
+      "new_choice": "e2g1",
+      "verify": "1",
+      "depth": "3",
+      "rc": 0
+    },
+    {
+      "game": 2,
+      "ply": 15,
+      "old_choice": "a4d7",
+      "new_choice": "a4a5",
+      "verify": "1",
+      "depth": "3",
+      "rc": 0
+    }
+  ]
+}

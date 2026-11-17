@@ -282,3 +282,16 @@ add_test(NAME joshua_v10_tactical_graph_policy COMMAND "${Python3_EXECUTABLE}" "
 add_test(NAME joshua_v11_champion_gate_offline COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../tests/test_v11_champion_gate.py")
 
 add_test(NAME joshua_v11_controller_policy_offline COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../tests/test_v11_controller_policy.py")
+
+# V12 independently replayed critical positions with genuine paceval + referee.
+add_test(NAME joshua_v12_tactical_verification_actual_paceval COMMAND "${Python3_EXECUTABLE}"
+ "${CMAKE_CURRENT_LIST_DIR}/../tests/test_v12_search_policy.py"
+ --joshua "$<TARGET_FILE:joshua>" --referee "$<TARGET_FILE:joshua_referee>"
+ --graph "${CMAKE_CURRENT_LIST_DIR}/../config/active_graph.tsv"
+ --results "${CMAKE_CURRENT_BINARY_DIR}/v12_regression")
+add_test(NAME joshua_v12_balanced_openings_referee COMMAND "${Python3_EXECUTABLE}"
+ "${CMAKE_CURRENT_LIST_DIR}/../tests/test_v12_opening_gate.py"
+ --referee "$<TARGET_FILE:joshua_referee>"
+ --scripts "${CMAKE_CURRENT_LIST_DIR}/../scripts")
+add_test(NAME joshua_v12_multi_template_candidate_policy COMMAND "${Python3_EXECUTABLE}"
+ "${CMAKE_CURRENT_LIST_DIR}/../tests/test_v12_candidate_plan.py")

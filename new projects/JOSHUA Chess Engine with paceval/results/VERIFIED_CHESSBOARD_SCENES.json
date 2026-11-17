@@ -1,0 +1,34 @@
+{
+  "evidence_status": "verified from original archived logs and original compiled C++ referee",
+  "scenes": [
+    {
+      "source": "V10 retained user Stockfish/Joshua game 259",
+      "game_id": 259,
+      "model_version": 7,
+      "fen_before": "rnbqkbnr/pppppppp/8/8/8/5N2/PPPPPPPP/RNBQKB1R b KQkq - 1 1",
+      "uci_move": "g8h6",
+      "san": "Nh6",
+      "fen_after": "rnbqkb1r/pppppppp/7n/8/8/5N2/PPPPPPPP/RNBQKB1R w KQkq - 2 2",
+      "referee_terminal": "ongoing",
+      "logged_heuristic_loss_pp": 11.47,
+      "interpretation": "Local review signal only; Stockfish does not certify an optimal move",
+      "diagram_file": "v10_game259_real_board_Nh6.png"
+    },
+    {
+      "source": "V11 authentic Joshua champion/challenger gate",
+      "candidate_color_trial": "white",
+      "challenger_version": 1,
+      "incumbent_version": 0,
+      "fen_before": "rnb1kb1r/ppppnppp/4p3/1P1q4/3P4/2P1P3/P4PPP/RNBQKBNR w KQkq - 1 6",
+      "uci_move": "d1g4",
+      "san": "Qg4",
+      "fen_after": "rnb1kb1r/ppppnppp/4p3/1P1q4/3P2Q1/2P1P3/P4PPP/RNB1KBNR b KQkq - 2 6",
+      "referee_terminal": "ongoing",
+      "same_move_both_trials": true,
+      "game_status": "max_plies_unfinished in both trials",
+      "gate_accepted": false,
+      "interpretation": "Candidate was correctly rejected, no strength improvement certified",
+      "diagram_file": "v11_real_pair_board_Qg4.png"
+    }
+  ]
+}

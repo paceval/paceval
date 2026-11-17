@@ -1,0 +1,4 @@
+case,source_game,source_ply,fen_before,archived_v11_move,v12_verified_move,independent_depth3_move,proven_chess_strength_improvement
+game1_ply6,1,6,rnbqkb1r/pppppppp/8/4P3/4n3/3P4/PPP2PPP/RNBQKBNR b KQkq - 0 3,d7d6,e4c5,e4c5,NO
+game2_ply9,2,9,r1bqkbnr/ppp2ppp/2n5/4p3/3pP3/5N2/PPPPNPPP/R1BQKB1R w KQkq - 2 5,c2c4,e2g1,e2g1,NO
+game2_ply15,2,15,r2qkbnr/pppb1ppp/8/4p3/QnP1P3/3p1NN1/PP1P1PPP/R1B1KB1R w KQkq - 4 8,a4d7,a4a5,a4a5,NO

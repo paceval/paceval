@@ -1,0 +1,22 @@
+Internal ctest changing into directory: /mnt/data/joshua_v12_work/project_build
+Test project /mnt/data/joshua_v12_work/project_build
+    Start  9: github_markdown_negative_tests
+1/8 Test  #9: github_markdown_negative_tests ....................   Passed    0.75 sec
+    Start 53: joshua_v9_stockfish_protocol_offline_mock
+2/8 Test #53: joshua_v9_stockfish_protocol_offline_mock .........   Passed    7.75 sec
+    Start 54: joshua_v10_tactical_graph_policy
+3/8 Test #54: joshua_v10_tactical_graph_policy ..................   Passed    1.24 sec
+    Start 55: joshua_v11_champion_gate_offline
+4/8 Test #55: joshua_v11_champion_gate_offline ..................   Passed    1.05 sec
+    Start 56: joshua_v11_controller_policy_offline
+5/8 Test #56: joshua_v11_controller_policy_offline ..............   Passed    1.35 sec
+    Start 57: joshua_v12_tactical_verification_actual_paceval
+6/8 Test #57: joshua_v12_tactical_verification_actual_paceval ...   Passed   16.07 sec
+    Start 58: joshua_v12_balanced_openings_referee
+7/8 Test #58: joshua_v12_balanced_openings_referee ..............   Passed    0.81 sec
+    Start 59: joshua_v12_multi_template_candidate_policy
+8/8 Test #59: joshua_v12_multi_template_candidate_policy ........   Passed    0.98 sec
+
+100% tests passed, 0 tests failed out of 8
+
+Total Test time (real) =  30.00 sec

@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-17",
+  "upload": "joshua_autoplay(2).zip",
+  "completed_games": 2,
+  "new_model_promotions": 0,
+  "games": [
+    {
+      "game": 1,
+      "model_used": 0,
+      "result": "1-0",
+      "termination": "checkmate",
+      "moves": 35,
+      "stockfish_id": "Stockfish 16",
+      "stockfish_nodes": 1000,
+      "stockfish_skill": 20
+    },
+    {
+      "game": 2,
+      "model_used": 0,
+      "result": "0-1",
+      "termination": "checkmate",
+      "moves": 24,
+      "stockfish_id": "Stockfish 16",
+      "stockfish_nodes": 1000,
+      "stockfish_skill": 20
+    }
+  ]
+}

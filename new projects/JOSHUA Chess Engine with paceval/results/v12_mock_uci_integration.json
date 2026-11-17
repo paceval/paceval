@@ -1,0 +1,54 @@
+{
+  "test_only": "GENUINE_JOSHUA_WITH_MOCK_UCI_OPPONENT",
+  "stockfish_used": false,
+  "games": [
+    {
+      "archive": "game_000001.zip",
+      "CRC": "PASS",
+      "summary": {
+        "black": "JOSHUA",
+        "game": 1,
+        "model_after": 0,
+        "model_used": 0,
+        "moves": 6,
+        "reference_scores": "fixed-node stockfish heuristic; mate separated; bounded expected-score loss in percentage points",
+        "result": "*",
+        "stockfish_binary": "/mnt/data/joshua_v12_work/mock_real_test/mock_uci_opponent.py",
+        "stockfish_id": "OFFLINE MOCK STOCKFISH NOT AUTHENTIC",
+        "stockfish_nodes": 50,
+        "stockfish_skill": 20,
+        "teacher_nodes": 50,
+        "termination": "max_plies_unfinished",
+        "timestamp_utc": "2026-11-17T16:59:05+00:00",
+        "verify_extra_depth": 1,
+        "verify_margin_cp": 25.0,
+        "white": "Stockfish"
+      },
+      "search_policy_log_included": true
+    },
+    {
+      "archive": "game_000002.zip",
+      "CRC": "PASS",
+      "summary": {
+        "black": "Stockfish",
+        "game": 2,
+        "model_after": 0,
+        "model_used": 0,
+        "moves": 6,
+        "reference_scores": "fixed-node stockfish heuristic; mate separated; bounded expected-score loss in percentage points",
+        "result": "*",
+        "stockfish_binary": "/mnt/data/joshua_v12_work/mock_real_test/mock_uci_opponent.py",
+        "stockfish_id": "OFFLINE MOCK STOCKFISH NOT AUTHENTIC",
+        "stockfish_nodes": 50,
+        "stockfish_skill": 20,
+        "teacher_nodes": 50,
+        "termination": "max_plies_unfinished",
+        "timestamp_utc": "2026-11-17T16:59:15+00:00",
+        "verify_extra_depth": 1,
+        "verify_margin_cp": 25.0,
+        "white": "JOSHUA"
+      },
+      "search_policy_log_included": true
+    }
+  ]
+}

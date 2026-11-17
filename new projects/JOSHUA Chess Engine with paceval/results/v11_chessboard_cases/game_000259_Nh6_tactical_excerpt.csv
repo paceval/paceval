@@ -1,0 +1,2 @@
+ply,fen_before,chosen_uci,loss_pp,mate_alert,finding_type,before_expected_score,after_expected_score,before_uci_score,after_uci_score_opponent
+2,rnbqkbnr/pppppppp/8/8/8/5N2/PPPPPPPP/RNBQKB1R b KQkq - 1 1,g8h6,11.47,False,candidate_tactical_regression,0.48056535186994487,0.36586440898919925,"('cp', -14)","('cp', 99)"

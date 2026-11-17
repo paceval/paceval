@@ -17,6 +17,8 @@ install -m 644 "$ROOT/scripts/v11_restore_graph.py" "$TARGET/v11_restore_graph.p
 install -m 644 "$ROOT/scripts/export_stockfish_logs.py" "$TARGET/export_stockfish_logs.py"
 install -m 644 "$ROOT/formulas/v4_graph_expressions.tsv" "$TARGET/v4_graph_expressions.tsv"
 install -m 644 "$ROOT/docs/V11_CHAMPION_GATE.md" "$TARGET/V11_CHAMPION_GATE.md"
+install -m 644 "$ROOT/docs/V12_TACTICAL_VALIDATION_AND_GRAPH_EVOLUTION.md" "$TARGET/V12_TACTICAL_VALIDATION_AND_GRAPH_EVOLUTION.md"
+install -m 644 "$ROOT/V12_RELEASE_VALIDATION.md" "$TARGET/V12_RELEASE_VALIDATION.md"
 mkdir -p "$TARGET/config"
 if [[ ! -f "$TARGET/config/active_graph.tsv" ]]; then
  install -m 644 "$ROOT/config/active_graph.tsv" "$TARGET/config/active_graph.tsv"
@@ -35,4 +37,4 @@ chmod 755 "$TARGET/run_stockfish_matches.sh"
 if [[ ! -f "$TARGET/libpaceval_linux_sharedLIB.so" && ! -f "$TARGET/runtime/libpaceval_linux_sharedLIB.so" ]]; then
  echo 'Original paceval runtime is missing. Set PACEVAL_RUNTIME or copy your authorized library.' >&2
 fi
-printf 'Installed V11 matches and four ELF programs in %s. Old logs and paceval runtime preserved.\n' "$TARGET"
+printf 'Installed V12 matches and four ELF programs in %s. Old logs and paceval runtime preserved.\n' "$TARGET"
