@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Joshua V9: durable Stockfish-vs-paceval Joshua matches and bounded graph evolution.
+"""Joshua V11: durable Stockfish-vs-paceval Joshua matches and bounded graph evolution.
 
 Every move is adjudicated by the compiled Joshua C++ referee, not by a simulated
 chess package. Stockfish speaks UCI. Joshua runs the authentic local paceval
@@ -29,6 +29,8 @@ import threading
 import time
 import zipfile
 from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+import v11_champion_gate as champion_gate
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 BASE = SCRIPT_DIR if (SCRIPT_DIR / "joshua").exists() else SCRIPT_DIR.parent
@@ -48,11 +50,20 @@ EXTRA_FORMULAS = {
     'check_pressure': '(bcheck-wcheck)',
     'pawn_race': '((wpassed*wpassed)-(bpassed*bpassed))',
     'active_captures': '((wmob*wcaps)-(bmob*bcaps))',
+    'king_check_combo': '((bcheck*(1+bkingDanger+bqueenThreat))-(wcheck*(1+wkingDanger+wqueenThreat)))',
+    'hanging_capture_combo': '((bhanging*wcaps)-(whanging*bcaps))',
 }
 # This approximate expected-score transform is a *heuristic* rather than
 # an official Stockfish WDL calibration. A forced mate is treated separately.
 
 STOP = False
+
+class RuntimeAPI:
+    """Live access to this controller, including asynchronous STOP updates."""
+    def __getattr__(self, name):
+        if name not in globals(): raise AttributeError(name)
+        return globals()[name]
+
 
 
 def utc():
@@ -419,7 +430,9 @@ def archive_game(directory: Path, archives: Path, game: int, limit: int, logger:
 
 
 def baseline_holdouts(referee_binary):
-    # Separately validated fixed FENs covering BOTH side-to-move colors.
+    # Fixed and independent positions covering BOTH colors, not a proof of chess strength.
+    # The first position reproduces the historically documented 15...Nxe5 risk.
+    yield 'r1bqkb1r/pp1p1pp1/n1p1p3/4P2p/1PnPBB2/PQN2N2/5PPP/R4RK1 b kq - 1 15'
     for white_move, black_reply in (('e2e4', 'e7e5'), ('d2d4', 'd7d5'),
                                     ('c2c4', 'e7e5'), ('g1f3', 'g8f6')):
         black_to_move = referee(referee_binary, START, white_move)['fen']
@@ -442,7 +455,9 @@ def evaluate_model_on_fens(fens, model, graph_file, args, teacher, directory, lo
         logger.event('GRAPH_TEST_END', graph_version=model['version'], group=label,
                      index=i, loss_pp=assessment['loss_pp'], mate_alert=assessment['mate_alert'], test_s=round(time.monotonic()-started, 3))
         results.append({'fen': f, 'chosen_uci': chosen['move'],
-                        'loss_pp': assessment['loss_pp'], 'mate_alert': assessment['mate_alert'], 'graph_evidence': chosen['evidence'], 'graph_folder': str(directory / f'{label}_{i}')})
+                        'loss_pp': assessment['loss_pp'], 'mate_alert': assessment['mate_alert'],
+                        'finding_type':assessment['finding_type'],
+                        'graph_evidence': chosen['evidence'], 'graph_folder': str(directory / f'{label}_{i}')})
     return results
 
 
@@ -461,7 +476,7 @@ def adjust_graph(game_id, errors, active_model_path, teacher, args, directory, l
     immediate regressions. Acceptance is provisional until paired match evidence.
     """
     report = {'status': 'not_attempted', 'reason': '', 'candidates': [],
-              'method': 'V10 fixed nonlinear tactical basis + bounded coefficient trials; held-out Stockfish heuristic expected-points loss',
+              'method': 'V11 fixed tactical basis + bounded coefficient trials; held-out reference checks; actual paired challenger-versus-frozen-champion match',
               'promotion_claim': 'Local gate only; not evidence of global chess-strength improvement'}
     if not args.adapt:
         report.update(status='disabled', reason='--no-adapt')
@@ -489,21 +504,28 @@ def adjust_graph(game_id, errors, active_model_path, teacher, args, directory, l
         report.update(status='rejected', reason='Stockfish expected-score estimate unavailable')
         return report
     urgent_mate = any(x.get('mate_alert') for x in suspects)
-    structural = ['king_tactics', 'king_alarm'] if urgent_mate else [
-        'hanging_pressure', 'queen_exposure', 'king_alarm', 'active_captures', 'pawn_race'][((game_id//2)-1) % 5:]
+    structural = ['king_check_combo', 'king_tactics', 'king_alarm'] if urgent_mate else [
+        'hanging_capture_combo', 'hanging_pressure', 'queen_exposure', 'king_alarm', 'active_captures', 'pawn_race'][((game_id//2)-1) % 6:]
     if not urgent_mate:
-        structural += ['hanging_pressure', 'queen_exposure', 'king_alarm', 'active_captures', 'pawn_race']
+        structural += ['hanging_capture_combo', 'hanging_pressure', 'queen_exposure', 'king_alarm', 'active_captures', 'pawn_race']
     structural = list(dict.fromkeys(structural))
     # Prefer terms not yet in the current graph. These create NEW graph topology.
     term_new = next((k for k in structural if k not in active['extra']), structural[0])
     linear = TERMS[((game_id - 1)//2) % len(TERMS)]
+    revisions = active_model_path.parent / 'model_versions'
+    historical_ids = [int(x.stem.removeprefix('version_')) for x in revisions.glob('version_*.tsv')
+                      if re.fullmatch(r'version_[0-9]{7}', x.stem)] if revisions.exists() else []
+    next_version = max([active['version'], *historical_ids]) + 1
+    if next_version >= 9_999_999:
+        report.update(status='rejected',reason='Model version registry exhausted')
+        return report
     plans = [('nonlinear', term_new, -args.structural_step),
              ('nonlinear', term_new, args.structural_step),
              ('linear', linear, -args.step),
              ('linear', linear, args.step)]
     accepted = None
     for category, term, change in plans:
-        candidate = {'version': active['version']+1, 'weights': dict(active['weights']),
+        candidate = {'version': next_version, 'weights': dict(active['weights']),
                      'extra': dict(active.get('extra', {}))}
         key = 'extra' if category == 'nonlinear' else 'weights'
         limit = 8 if category == 'nonlinear' else 32
@@ -530,13 +552,15 @@ def adjust_graph(game_id, errors, active_model_path, teacher, args, directory, l
             holdout_safe = all(y['loss_pp'] is not None and x['loss_pp'] is not None and
                                y['loss_pp'] <= x['loss_pp'] + args.max_holdout_regression
                                for x, y in zip(baseline[len(train_fens):], checks[len(train_fens):]))
+            mate_guard = all(not (y.get('mate_alert') and not x.get('mate_alert'))
+                             for x, y in zip(baseline[len(train_fens):], checks[len(train_fens):]))
             okay = bool(decisions_changed and t is not None and h is not None and
                         t <= btrain - args.min_improvement and
-                        h <= bhold and holdout_safe)
+                        h <= bhold and holdout_safe and mate_guard)
             trial = {'category':category,'term':term,'change':change,
                      'version':candidate['version'],'train_loss_pp':t,
                      'holdout_loss_pp':h,'decisions_changed':decisions_changed,
-                     'holdout_safe':holdout_safe,'pass':okay,
+                     'holdout_safe':holdout_safe,'mate_guard':mate_guard,'local_gate_pass':okay,'pass':False,
                      'graph_tsv':candidate_path.name}
             if okay and (accepted is None or t < accepted[0]):
                 accepted = (t, candidate_path, candidate, Path(checks[0]['graph_folder']))
@@ -548,19 +572,43 @@ def adjust_graph(game_id, errors, active_model_path, teacher, args, directory, l
     if accepted:
         old_text = active_model_path.read_text(encoding='utf-8')
         atomic_text(directory / 'model_previous.tsv', old_text)
-        # The expression was generated and successfully executed by authentic
-        # Joshua, not merely asserted by a Python-side string generator.
-        export_dir = active_model_path.parent
-        graph_hash = sync_graph_export(export_dir, accepted[3], accepted[2]['version'])
-        atomic_text(active_model_path, accepted[1].read_text(encoding='utf-8'))
-        report.update(status='promoted_provisional',
-                      reason='Training decisions improved; separate holdout gate passed. Paired-match replication still needed.',
-                      new_version=accepted[2]['version'],
-                      graph_sha256=graph_hash,
-                      new_graph_terms=accepted[2].get('extra', {}),
-                      new_graph_coefficients=accepted[2]['weights'])
-        logger.event('GRAPH_PROMOTED_PROVISIONAL', version=accepted[2]['version'], changed_term=term_new,
-                     graph_sha256=graph_hash)
+        # A local Stockfish decision gate is NOT evidence that the new model
+        # improves chess play. Test actual fully-adjudicated games against the
+        # immutable incumbent before changing the active TSV.
+        try:
+            verdict=champion_gate.compare(active_model_path, accepted[1], args,
+                                           directory/'champion_duel', logger, RuntimeAPI())
+            report['champion_gate']=verdict
+            if not verdict['accepted']:
+                report.update(status='rejected_after_champion_gate', reason=verdict['reason'])
+                logger.event('GRAPH_NOT_PROMOTED', reason=verdict['reason'])
+                return report
+            # Store both frozen models before touching the active model. This
+            # ensures a failure in the snapshot preparation leaves it unchanged.
+            snapshots=active_model_path.parent/'model_versions'
+            snapshots.mkdir(exist_ok=True)
+            atomic_text(snapshots/f'version_{active["version"]:07d}.tsv', old_text)
+            atomic_text(snapshots/f'version_{accepted[2]["version"]:07d}.tsv',
+                        accepted[1].read_text(encoding='utf-8'))
+            # The expression was generated and successfully executed by authentic
+            # paceval, rather than generated as an unvalidated Python string.
+            graph_hash=sync_graph_export(active_model_path.parent, accepted[3], accepted[2]['version'])
+            if active_model_path.read_text(encoding='utf-8') != old_text:
+                raise RuntimeError('Active model changed during model gate')
+            atomic_text(active_model_path, accepted[1].read_text(encoding='utf-8'))
+            # Bound auxiliary history. The complete duel is still in the ZIP.
+            for previous in sorted(snapshots.glob('version_*.tsv'))[:-16]:
+                previous.unlink()
+            report.update(status='promoted_provisional',
+                 reason='Local FEN tests and actual paired champion matches passed. General chess strength NOT established.',
+                 new_version=accepted[2]['version'], graph_sha256=graph_hash,
+                 new_graph_terms=accepted[2].get('extra', {}),
+                 new_graph_coefficients=accepted[2]['weights'])
+            logger.event('GRAPH_PROMOTED_PROVISIONAL', version=accepted[2]['version'],
+                         graph_sha256=graph_hash,duel_score=verdict.get('score'))
+        except Exception as exc:
+            report.update(status='rejected_champion_gate_error',reason=str(exc)[:300])
+            logger.event('GRAPH_GATE_ERROR', reason=report['reason'])
     else:
         report.update(status='rejected', reason='No real tested graph candidate met all local gates')
         logger.event('GRAPH_REJECTED', reason=report['reason'])
@@ -659,7 +707,7 @@ def summary_metrics(rows):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Stockfish vs JOSHUA V10; tactical score analysis and evolving paceval graph formulas')
+    parser = argparse.ArgumentParser(description='Stockfish vs JOSHUA V11; tactical score analysis and evolving paceval graph formulas')
     parser.add_argument('--joshua', type=Path, default=(BASE / 'joshua' if (BASE / 'joshua').is_file() else BASE / 'bin/joshua'))
     parser.add_argument('--referee', type=Path, default=(BASE / 'joshua_referee' if (BASE / 'joshua_referee').is_file() else BASE / 'bin/joshua_referee'))
     parser.add_argument('--stockfish', type=Path, default=Path(shutil.which('stockfish') or '/usr/games/stockfish'))
@@ -688,6 +736,9 @@ def main():
     parser.add_argument('--minimum-pairs-per-version', type=int, default=4)
     parser.add_argument('--min-improvement', type=float, default=1.0)
     parser.add_argument('--max-holdout-regression', type=float, default=2.0)
+    parser.add_argument('--champion-pairs', type=int, default=4, help='Distinct color-paired challenger/champion openings, 1..6')
+    parser.add_argument('--champion-max-plies', type=int, default=100, help='Maximum plies per duel; truncation cannot qualify')
+    parser.add_argument('--champion-min-score', type=float, default=0.625, help='Minimum candidate match score; provisional gate only')
     args = parser.parse_args()
     if not 1 <= args.depth <= 10 or not 1 <= args.max_plies <= 1000 or not 0 <= args.max_games <= 1_000_000:
         parser.error('Invalid depth or game bounds')
@@ -697,6 +748,8 @@ def main():
         parser.error('Invalid skill, progress interval or move timeout')
     if not (0 < args.step <= 4 and 0 < args.structural_step <= 2 and 1 <= args.train_positions <= 4 and 1 <= args.holdout_positions <= 8 and 1 <= args.minimum_pairs_per_version <= 100):
         parser.error('Invalid learning bounds')
+    if not (1 <= args.champion_pairs <= len(champion_gate.CHALLENGE_OPENINGS) and 20 <= args.champion_max_plies <= 200 and .5 < args.champion_min_score <= 1.0):
+        parser.error('Invalid champion comparison settings')
     for p in (args.joshua, args.referee, args.stockfish):
         if not p.is_file() or not os.access(p, os.X_OK):
             parser.error(f'Required executable missing or not executable: {p}')
@@ -950,5 +1003,5 @@ if __name__ == '__main__':
     try:
         sys.exit(main())
     except (Exception, KeyboardInterrupt) as error:
-        print(f'JOSHUA_V10_MATCH_ERROR {error}', file=sys.stderr, flush=True)
+        print(f'JOSHUA_V11_MATCH_ERROR {error}', file=sys.stderr, flush=True)
         sys.exit(2)

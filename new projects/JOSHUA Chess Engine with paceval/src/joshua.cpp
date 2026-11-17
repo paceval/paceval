@@ -1,4 +1,4 @@
-// JOSHUA Chess Engine. Linux C++17; only JOSHUA vs JOSHUA; local paceval runtime only.
+// JOSHUA V11 Chess Engine. Linux C++17; host chess rules and real local paceval evaluation.
 // Research mode builds a complete bounded search tree; Alpha-Beta supports depth 10.
 // All distinct nonterminal leaf feature vectors are evaluated by the real paceval
 // multi-graph batch API; all internal min/max reductions are evaluated by real
@@ -220,7 +220,19 @@ struct AlphaBetaWorker {
      return bestEvasion;
    }
    vector<Move>tactical;
-   for(const Move&m:moves)if(inCheck||b.b[m.t]!='.'||m.ep||m.promo!=' ')tactical.push_back(m);
+   for(const Move&m:moves){
+     const bool captureOrPromotion=(b.b[m.t]!='.'||m.ep||m.promo!=' ');
+     if(inCheck||captureOrPromotion){tactical.push_back(m);continue;}
+     // V11: discover noncapturing checks at the initial quiescence horizon.
+     // A check may force an immediate reply even when no capture occurs.
+     // Restrict checking extensions to budget>=2 to bound the graph workload.
+     if(budget>=2){
+       const MoveUndo u=makeMove(b,m);
+       const bool givesCheck=check(b,b.turn);
+       unmakeMove(b,m,u);
+       if(givesCheck)tactical.push_back(m);
+     }
+   }
    orderMoves(tactical,b,Move{});
    double best=inCheck?-32001.0:stand;
    for(const Move&m:tactical){auto undo=makeMove(b,m);

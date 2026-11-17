@@ -18,10 +18,10 @@ static const std::array<std::pair<const char*,const char*>,8> TERMS = {{
  {"passed","(wpassed-bpassed)"}, {"kingdanger","(bkingDanger-wkingDanger)"},
  {"queenthreat","(bqueenThreat-wqueenThreat)"}, {"rookthreat","(brookThreat-wrookThreat)"}
 }};
-// V10: whitelisted nonlinear tactical templates. A promoted model may append
+// V11: whitelisted nonlinear tactical templates. A promoted model may append
 // terms without recompiling the engine. No user-controlled expression syntax
 // is passed to the paceval parser.
-static const std::array<std::pair<const char*,const char*>,8> EXTRA_TERMS = {{
+static const std::array<std::pair<const char*,const char*>,10> EXTRA_TERMS = {{
  {"king_alarm","((bkingDanger*bkingDanger)-(wkingDanger*wkingDanger))"},
  {"king_tactics","((bkingDanger*(1+bqueenThreat+brookThreat))-(wkingDanger*(1+wqueenThreat+wrookThreat)))"},
  {"hanging_pressure","((bhanging*bhanging)-(whanging*whanging))"},
@@ -29,7 +29,9 @@ static const std::array<std::pair<const char*,const char*>,8> EXTRA_TERMS = {{
  {"rook_exposure","((brookThreat*battacked)-(wrookThreat*wattacked))"},
  {"check_pressure","(bcheck-wcheck)"},
  {"pawn_race","((wpassed*wpassed)-(bpassed*bpassed))"},
- {"active_captures","((wmob*wcaps)-(bmob*bcaps))"}
+ {"active_captures","((wmob*wcaps)-(bmob*bcaps))"},
+ {"king_check_combo","((bcheck*(1+bkingDanger+bqueenThreat))-(wcheck*(1+wkingDanger+wqueenThreat)))"},
+ {"hanging_capture_combo","((bhanging*wcaps)-(whanging*bcaps))"}
 }};
 inline bool validNumber(const std::string& s) {
  static const std::regex pattern(R"(^[+-]?(?:[0-9]+(?:\.[0-9]{1,4})?|\.[0-9]{1,4})$)");

@@ -65,7 +65,7 @@ def test_structural_promotion_policy():
                 folder=directory/f'{label}_{i}';folder.mkdir(parents=True,exist_ok=True)
                 (folder/'paceval_graph.txt').write_text(f'version={model["version"]}\nexpression=MOCK_TEST_ONLY\n')
                 (folder/'paceval_graph_terms.csv').write_text('version,category,term,coefficient,paceval_expression\n')
-                value=model.get('extra',{}).get('king_tactics',0)
+                value=model.get('extra',{}).get('king_check_combo',0)
                 loss=60+20*value if i==0 else 10.
                 out.append({'loss_pp':loss,'chosen_uci':'a2a4' if value<0 else 'e2e4','graph_folder':str(folder)})
             return out
@@ -74,11 +74,10 @@ def test_structural_promotion_policy():
         try:
             report=mod.adjust_graph(2,[{'fen_before':mod.START,'loss_pp':60,'mate_alert':True}],
                                     active,None,Args(),root,logger)
-            assert report['status']=='promoted_provisional',report
+            assert report['status'] in ('rejected_after_champion_gate','rejected_champion_gate_error'),report
             changed=mod.parse_model(active)
-            assert changed['version']==1 and changed['extra']['king_tactics']==-.5,changed
-            assert (root/'active_graph_expression.txt').is_file()
-            print('STRUCTURAL_PROMOTION_GATE_PASS: MOCK candidate accepted; real chess strength not asserted')
+            assert changed['version']==0 and not changed['extra'],changed
+            print('V11_FAIL_CLOSED_PASS: mock local gate cannot bypass real champion matches')
         finally:
             logger.close();mod.evaluate_model_on_fens=originals
 

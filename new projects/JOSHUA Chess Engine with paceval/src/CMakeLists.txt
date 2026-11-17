@@ -277,3 +277,8 @@ add_test(NAME joshua_v9_stockfish_protocol_offline_mock
 
 # V10 tests. The authentic SDK variant is executed when PACEVAL_RUNTIME is set.
 add_test(NAME joshua_v10_tactical_graph_policy COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../tests/test_v10_graphs.py")
+
+# V11: cross-model match policy. No mock is treated as a real chess-strength result.
+add_test(NAME joshua_v11_champion_gate_offline COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../tests/test_v11_champion_gate.py")
+
+add_test(NAME joshua_v11_controller_policy_offline COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_LIST_DIR}/../tests/test_v11_controller_policy.py")

@@ -1,0 +1,12 @@
+version,category,term,coefficient,paceval_expression
+0,base,base,1,base
+0,linear,mobility,0,"(wmob-bmob)"
+0,linear,captures,0,"(wcaps-bcaps)"
+0,linear,hanging,0,"(bhanging-whanging)"
+0,linear,attacked,0,"(battacked-wattacked)"
+0,linear,passed,0,"(wpassed-bpassed)"
+0,linear,kingdanger,0,"(bkingDanger-wkingDanger)"
+0,linear,queenthreat,0,"(bqueenThreat-wqueenThreat)"
+0,linear,rookthreat,0,"(brookThreat-wrookThreat)"
+0,nonlinear,king_check_combo,0.5,"((bcheck*(1+bkingDanger+bqueenThreat))-(wcheck*(1+wkingDanger+wqueenThreat)))"
+0,nonlinear,hanging_capture_combo,-0.25,"((bhanging*wcaps)-(whanging*bcaps))"

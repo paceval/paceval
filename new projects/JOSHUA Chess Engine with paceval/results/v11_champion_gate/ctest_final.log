@@ -1,0 +1,16 @@
+Internal ctest changing into directory: /mnt/data/JOSHUA_V11_Work/build
+Test project /mnt/data/JOSHUA_V11_Work/build
+    Start  1: joshua_selfplay_supervisor_parser
+1/5 Test  #1: joshua_selfplay_supervisor_parser ......   Passed    0.00 sec
+    Start 50: joshua_v8_exploration_policy
+2/5 Test #50: joshua_v8_exploration_policy ...........   Passed    0.00 sec
+    Start 54: joshua_v10_tactical_graph_policy
+3/5 Test #54: joshua_v10_tactical_graph_policy .......   Passed    0.97 sec
+    Start 55: joshua_v11_champion_gate_offline
+4/5 Test #55: joshua_v11_champion_gate_offline .......   Passed    0.70 sec
+    Start 56: joshua_v11_controller_policy_offline
+5/5 Test #56: joshua_v11_controller_policy_offline ...   Passed    0.74 sec
+
+100% tests passed, 0 tests failed out of 5
+
+Total Test time (real) =   2.42 sec

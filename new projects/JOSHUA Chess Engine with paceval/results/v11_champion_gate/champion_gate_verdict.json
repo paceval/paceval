@@ -1,0 +1,35 @@
+{
+  "accepted": false,
+  "candidate_sha256": "d5a526099f5b6a61254e0f66ed0f79801e3531b4a4ad618fa8a77a07d654770b",
+  "challenger_version": 1,
+  "champion_sha256": "2c88e1bcc45fd4020088e18dd7d9eb30ff450a123632a23fec436c0828d133f0",
+  "champion_version": 0,
+  "depth": 1,
+  "gate": "V11_champion_challenger_actual_Joshua_match",
+  "max_plies": 20,
+  "paired_openings": [
+    "b2b4"
+  ],
+  "quiescence": 1,
+  "reason": "Incomplete or truncated comparison game",
+  "results": [
+    {
+      "candidate_color": "black",
+      "candidate_model_sha256": "d5a526099f5b6a61254e0f66ed0f79801e3531b4a4ad618fa8a77a07d654770b",
+      "champion_model_sha256": "2c88e1bcc45fd4020088e18dd7d9eb30ff450a123632a23fec436c0828d133f0",
+      "opening": "b2b4",
+      "played_plies": 20,
+      "result": "*",
+      "termination": "max_plies_unfinished"
+    },
+    {
+      "candidate_color": "white",
+      "candidate_model_sha256": "d5a526099f5b6a61254e0f66ed0f79801e3531b4a4ad618fa8a77a07d654770b",
+      "champion_model_sha256": "2c88e1bcc45fd4020088e18dd7d9eb30ff450a123632a23fec436c0828d133f0",
+      "opening": "b2b4",
+      "played_plies": 20,
+      "result": "*",
+      "termination": "max_plies_unfinished"
+    }
+  ]
+}

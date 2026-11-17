@@ -12,9 +12,11 @@ for name in joshua joshua_selfplay joshua_long_graph joshua_referee; do
  install -m 755 "$ROOT/bin/$name" "$TARGET/$name"
 done
 install -m 644 "$ROOT/scripts/stockfish_match.py" "$TARGET/stockfish_match.py"
+install -m 644 "$ROOT/scripts/v11_champion_gate.py" "$TARGET/v11_champion_gate.py"
+install -m 644 "$ROOT/scripts/v11_restore_graph.py" "$TARGET/v11_restore_graph.py"
 install -m 644 "$ROOT/scripts/export_stockfish_logs.py" "$TARGET/export_stockfish_logs.py"
 install -m 644 "$ROOT/formulas/v4_graph_expressions.tsv" "$TARGET/v4_graph_expressions.tsv"
-install -m 644 "$ROOT/docs/V10_TACTICAL_GRAPH_EVOLUTION.md" "$TARGET/V10_TACTICAL_GRAPH_EVOLUTION.md"
+install -m 644 "$ROOT/docs/V11_CHAMPION_GATE.md" "$TARGET/V11_CHAMPION_GATE.md"
 mkdir -p "$TARGET/config"
 if [[ ! -f "$TARGET/config/active_graph.tsv" ]]; then
  install -m 644 "$ROOT/config/active_graph.tsv" "$TARGET/config/active_graph.tsv"
@@ -33,4 +35,4 @@ chmod 755 "$TARGET/run_stockfish_matches.sh"
 if [[ ! -f "$TARGET/libpaceval_linux_sharedLIB.so" && ! -f "$TARGET/runtime/libpaceval_linux_sharedLIB.so" ]]; then
  echo 'Original paceval runtime is missing. Set PACEVAL_RUNTIME or copy your authorized library.' >&2
 fi
-printf 'Installed V10 matches and four ELF programs in %s. Old logs and paceval runtime preserved.\n' "$TARGET"
+printf 'Installed V11 matches and four ELF programs in %s. Old logs and paceval runtime preserved.\n' "$TARGET"

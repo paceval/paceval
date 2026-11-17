@@ -174,13 +174,13 @@ def test_model_validation():
         try:
             report = mod.adjust_graph(1, [{'fen_before':mod.START, 'loss_pp':60, 'mate_alert':False}], active,
                                       None, args, tmp, logger)
-            assert report['status'] == 'promoted_provisional', report
-            assert mod.parse_model(active)['version'] == 1
-            assert mod.parse_model(active)['weights']['mobility'] == -.5
+            assert report['status'] == 'rejected_champion_gate_error', report
+            assert mod.parse_model(active)['version'] == 0
+            assert mod.parse_model(active)['weights']['mobility'] == 0
         finally:
             logger.close()
             mod.evaluate_model_on_fens = originals
-        print('V9_OFFLINE_ADAPTIVE_POLICY_MOCK_PASS: bounded coefficients, promoted only after independent heldout check')
+        print('V11_OFFLINE_FAIL_CLOSED_PASS: V9-style local-only gate cannot promote a model')
 
 
 if __name__ == '__main__':

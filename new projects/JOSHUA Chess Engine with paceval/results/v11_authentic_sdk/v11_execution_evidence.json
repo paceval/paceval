@@ -1,0 +1,34 @@
+{
+  "version": "JOSHUA V11",
+  "date": "2026-11-17",
+  "authentic_paceval": {
+    "graphs_registered": 47,
+    "graphs_executed": 18,
+    "graph_point_evaluations": 200,
+    "adaptive_graph_evaluations": 13,
+    "new_formula_terms": [
+      "king_check_combo",
+      "hanging_capture_combo"
+    ]
+  },
+  "champion_gate": {
+    "real_engine_moves": 38,
+    "paired_color_games": 2,
+    "completed_games": 0,
+    "candidate_promoted": false,
+    "reason": "Incomplete or truncated comparison game"
+  },
+  "ctest": {
+    "selected": 5,
+    "passed": 5
+  },
+  "no_new_real_stockfish_games": true,
+  "strength_improvement_proven": false,
+  "binary_sha256": {
+    "joshua": "2c409b4dcd70ba18383832fb91a7a97075ab18eaa2b88ec91a6b45b48aa30572",
+    "joshua_referee": "e75c75fc68efc2986a76770f10d1c80c80d3ac0ca4596c1acc076ba1c6cbe40a",
+    "joshua_selfplay": "fd0fa84b2f38932862884a62040725214454895e4c93dc9061fbb0d6036c468d",
+    "joshua_long_graph": "8204aedf7788acfa1244290a5eef78e6a72d9d0426f8f44c93671c224f776ea3"
+  },
+  "paceval_runtime_distributed_in_public_zip": false
+}
