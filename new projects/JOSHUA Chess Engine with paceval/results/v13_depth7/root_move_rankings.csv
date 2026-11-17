@@ -1,0 +1,10 @@
+halfmove,depth,side,rank,uci,white_score_cp,selected
+1,7,white,1,g3f4,101.259,1
+1,7,white,2,g3f3,95.7436,0
+1,7,white,3,g3g4,95.7436,0
+1,7,white,4,h2h3,95.7436,0
+1,7,white,5,h2h4,93.3463,0
+1,7,white,6,g3h3,89.0237,0
+1,7,white,7,g3h4,89.0237,0
+1,7,white,8,g3f2,85.4872,0
+1,7,white,9,g3g2,85.4872,0

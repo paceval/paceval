@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "sdk": "original external paceval library",
+  "requested_depth": 7,
+  "actual_depth_test": 7,
+  "quiescence_depth": 2,
+  "fused_unfused_root_values": "AGREE",
+  "fused_graph_registered_executed": true,
+  "fused_graphs_total": 1,
+  "budget_case_completed_depth": 2,
+  "budget_stop_reason": "nodes",
+  "playing_strength_improvement": "NOT_ESTABLISHED"
+}

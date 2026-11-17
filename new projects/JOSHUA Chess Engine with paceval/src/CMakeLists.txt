@@ -295,3 +295,12 @@ add_test(NAME joshua_v12_balanced_openings_referee COMMAND "${Python3_EXECUTABLE
  --scripts "${CMAKE_CURRENT_LIST_DIR}/../scripts")
 add_test(NAME joshua_v12_multi_template_candidate_policy COMMAND "${Python3_EXECUTABLE}"
  "${CMAKE_CURRENT_LIST_DIR}/../tests/test_v12_candidate_plan.py")
+
+# V13: depth-7 endgame with quiescence, actual fused/unfused paceval graph
+# equality, verified graph catalog and bounded search fallback.
+add_test(NAME joshua_v13_depth7_original_paceval COMMAND "${Python3_EXECUTABLE}"
+ "${CMAKE_CURRENT_LIST_DIR}/../tests/test_v13_depth7.py"
+ --joshua "$<TARGET_FILE:joshua>"
+ --graph "${CMAKE_CURRENT_LIST_DIR}/../config/active_graph.tsv"
+ --output "${CMAKE_CURRENT_BINARY_DIR}/v13_depth7_evidence")
+set_tests_properties(joshua_v13_depth7_original_paceval PROPERTIES TIMEOUT 120 RUN_SERIAL TRUE)

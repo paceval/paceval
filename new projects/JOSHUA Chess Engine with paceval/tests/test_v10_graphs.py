@@ -95,7 +95,8 @@ def test_strength_comparison():
                              'joshua_points':0. if v==0 else 1.,
                              'result':'0-1' if v==0 and color else ('1-0' if v==0 else ('0-1' if color else '1-0')),
                              'stockfish_id':'FIXED_MOCK','stockfish_nodes':1000,
-                             'stockfish_skill':20,'joshua_depth':2,'quiescence':2})
+                             'stockfish_skill':20,'joshua_depth':2,'quiescence':2,
+                             'joshua_search_ms':65000,'joshua_search_nodes':750000})
     report=mod.summary_metrics(data)
     assert report['version_comparisons'][-1]['status']=='BETTER_ON_COMPARED_OPENINGS_PROVISIONAL',report
     assert report['version_comparisons'][-1]['matched_distinct_openings']==8

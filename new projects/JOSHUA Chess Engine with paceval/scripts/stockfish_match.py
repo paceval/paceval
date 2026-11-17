@@ -275,14 +275,16 @@ def referee(binary, fen, move=None):
 
 def joshua_choice(binary, fen, model, graph_file, depth, quiescence, timeout,
                   folder: Path, logger: Logger, progress, explore_cp=0, explore_plies=0, seed=0,
-                  verify_margin_cp=0.0, verify_extra_depth=0):
+                  verify_margin_cp=0.0, verify_extra_depth=0,
+                  search_ms=65000, search_nodes=750000):
     folder.mkdir(parents=True, exist_ok=True)
     command = [str(binary), '--mode', 'alphabeta', '--model', '4', '--depth', str(depth),
                '--quiescence', str(quiescence), '--plies', '1', '--fen', fen,
                '--graph-file', str(graph_file), '--no-board', '--output', str(folder),
                '--explore-cp', str(explore_cp), '--explore-plies', str(explore_plies),
                '--game-seed', str(seed), '--verify-margin-cp', str(verify_margin_cp),
-               '--verify-extra-depth', str(verify_extra_depth)]
+               '--verify-extra-depth', str(verify_extra_depth),
+               '--search-ms', str(search_ms), '--search-nodes', str(search_nodes)]
     logfile = folder / 'engine_console.log'
     begin = time.monotonic()
     with logfile.open('w', encoding='utf-8') as output:
@@ -323,7 +325,10 @@ def joshua_choice(binary, fen, model, graph_file, depth, quiescence, timeout,
              'verified_moves': evidence.get('v12_verified_moves', 0),
              'verify_changed': evidence.get('v12_verified_decisions_changed', 0),
              'verify_margin_cp': evidence.get('v12_verify_margin_cp', 0),
-             'verify_extra_depth': evidence.get('v12_verify_extra_depth', 0)}}
+             'verify_extra_depth': evidence.get('v12_verify_extra_depth', 0),
+             'requested_depth': evidence.get('v13_search_requested_depth', depth),
+             'actual_depth': evidence.get('v13_search_actual_depth_last_move', depth),
+             'fused_graph': evidence.get('v13_fused_adaptive_graph', False)}}
 
 
 def expected_score(score):
@@ -457,7 +462,9 @@ def evaluate_model_on_fens(fens, model, graph_file, args, teacher, directory, lo
                                args.quiescence, args.move_timeout, directory / f'{label}_{i}',
                                logger, args.progress_seconds,
                                verify_margin_cp=args.verify_margin_cp,
-                               verify_extra_depth=args.verify_extra_depth)
+                               verify_extra_depth=args.verify_extra_depth,
+                               search_ms=getattr(args,"joshua_search_ms",65000),
+                               search_nodes=getattr(args,"joshua_search_nodes",750000))
         after = referee(args.referee, f, chosen['move'])
         assessment = stockfish_loss(teacher, f, after["fen"], args.teacher_nodes, after["status"], logger, args.progress_seconds)
         logger.event('GRAPH_TEST_END', graph_version=model['version'], group=label,
@@ -639,7 +646,8 @@ def adjust_graph(game_id, errors, active_model_path, teacher, args, directory, l
 
 def comparison_key(row):
     """Keep different opponents, depths, skill levels and teacher scales apart."""
-    fields = ('stockfish_id','stockfish_nodes','stockfish_skill','joshua_depth','quiescence')
+    fields = ('stockfish_id','stockfish_nodes','stockfish_skill','joshua_depth','quiescence',
+              'joshua_search_ms','joshua_search_nodes')
     if any(field not in row for field in fields):
         return None  # Historical V9 index lacks the settings; not comparable.
     # Search policies with different selective depth must NOT be grouped.
@@ -732,7 +740,7 @@ def summary_metrics(rows):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Stockfish vs JOSHUA V12; tactical score analysis and evolving paceval graph formulas')
+    parser = argparse.ArgumentParser(description='Stockfish vs JOSHUA V13; tactical score analysis and evolving paceval graph formulas')
     parser.add_argument('--joshua', type=Path, default=(BASE / 'joshua' if (BASE / 'joshua').is_file() else BASE / 'bin/joshua'))
     parser.add_argument('--referee', type=Path, default=(BASE / 'joshua_referee' if (BASE / 'joshua_referee').is_file() else BASE / 'bin/joshua_referee'))
     parser.add_argument('--stockfish', type=Path, default=Path(shutil.which('stockfish') or '/usr/games/stockfish'))
@@ -741,12 +749,14 @@ def main():
     parser.add_argument('--graph-file', type=Path, default=None)
     parser.add_argument('--max-games', type=int, default=0)
     parser.add_argument('--max-plies', type=int, default=400)
-    parser.add_argument('--depth', type=int, default=2)
+    parser.add_argument('--depth', type=int, default=7)
     parser.add_argument('--verify-margin-cp', type=float, default=25.0,
                         help='V12: investigate ambiguous root choices when top two are within this many centipawns; 0 disables')
-    parser.add_argument('--verify-extra-depth', type=int, default=1,
+    parser.add_argument('--verify-extra-depth', type=int, default=0,
                         help='V12: add one or two full search plies for ambiguous roots')
     parser.add_argument('--quiescence', type=int, default=2)
+    parser.add_argument('--joshua-search-ms', type=int, default=65000, help='Per-move soft time limit; completed depths only')
+    parser.add_argument('--joshua-search-nodes', type=int, default=750000, help='Per-move node limit; completed depths only')
     parser.add_argument('--stockfish-nodes', type=int, default=1000)
     parser.add_argument('--teacher-nodes', type=int, default=2500)
     parser.add_argument('--stockfish-skill', type=int, default=20)
@@ -773,6 +783,8 @@ def main():
     args = parser.parse_args()
     if not 1 <= args.depth <= 10 or not 1 <= args.max_plies <= 1000 or not 0 <= args.max_games <= 1_000_000:
         parser.error('Invalid depth or game bounds')
+    if not (100 <= args.joshua_search_ms <= 900000 and 1000 <= args.joshua_search_nodes <= 100000000):
+        parser.error('Invalid Joshua search budgets')
     if not (math.isfinite(args.verify_margin_cp) and 0 <= args.verify_margin_cp <= 10000 and
             0 <= args.verify_extra_depth <= 2 and args.depth + args.verify_extra_depth <= 10 and
             (args.verify_extra_depth == 0 or args.verify_margin_cp > 0)):
@@ -877,7 +889,9 @@ def main():
                                               game_dir / f'joshua_ply_{ply:03d}', logger,
                                               args.progress_seconds,
                                               verify_margin_cp=args.verify_margin_cp,
-                                              verify_extra_depth=args.verify_extra_depth)
+                                              verify_extra_depth=args.verify_extra_depth,
+                                              search_ms=args.joshua_search_ms,
+                                              search_nodes=args.joshua_search_nodes)
                     move_s = round(time.monotonic() - start, 3)
                     move = played['move']
                     advanced = referee(args.referee, fen, move)
@@ -892,7 +906,8 @@ def main():
                     if actor == 'JOSHUA':
                         row['v12_verified_moves'] = played['evidence'].get('verified_moves', 0)
                         row['v12_verify_changed'] = played['evidence'].get('verify_changed', 0)
-                        logger.event('V12_SEARCH_POLICY', ply=ply,
+                        logger.event('V13_SEARCH_POLICY', ply=ply, requested_depth=played['evidence']['requested_depth'],
+                            actual_depth=played['evidence']['actual_depth'], fused_adaptive=played['evidence']['fused_graph'],
                             margin_cp=args.verify_margin_cp, extra_depth=args.verify_extra_depth,
                             verification_used=row['v12_verified_moves'], changed=row['v12_verify_changed'])
                         graph_hash = sync_graph_export(out, Path(played['graph_folder']), model['version'])
@@ -954,6 +969,8 @@ def main():
                     'joshua_depth':args.depth,'quiescence':args.quiescence,
                     'verify_margin_cp':args.verify_margin_cp,
                     'verify_extra_depth':args.verify_extra_depth,
+                    'joshua_search_ms':args.joshua_search_ms,
+                    'joshua_search_nodes':args.joshua_search_nodes,
                     'opening':OPENINGS[((game_id_current-1)//2)%len(OPENINGS)] if args.opening=='cycle' else 'none'
                 }
                 if STOP:
@@ -981,7 +998,8 @@ def main():
                     # settings towards a new version's minimum evidence window.
                     current_setting = (str(match.name),str(args.stockfish_nodes),
                                        str(args.stockfish_skill),str(args.depth),
-                                       str(args.quiescence),str(args.verify_margin_cp),
+                                       str(args.quiescence),str(args.joshua_search_ms),
+                                       str(args.joshua_search_nodes),str(args.verify_margin_cp),
                                        str(args.verify_extra_depth))
                     complete_pairs = sum(1 for row in historical
                          if int(row.get('game',0)) % 2 == 0 and row.get('graph_version')==model['version']
@@ -1030,6 +1048,8 @@ def main():
                             'stockfish_skill':args.stockfish_skill,'joshua_depth':args.depth,
                             'quiescence':args.quiescence,'verify_margin_cp':args.verify_margin_cp,
                             'verify_extra_depth':args.verify_extra_depth,
+                            'joshua_search_ms':args.joshua_search_ms,
+                            'joshua_search_nodes':args.joshua_search_nodes,
                             'termination':reason, 'archive':f'game_{game_id_current:06d}.zip'})
                 # Bounded index, retained summary only. Complete data is in game ZIP.
                 atomic_text(index_path, json.dumps(old[-250:], indent=2) + '\n')

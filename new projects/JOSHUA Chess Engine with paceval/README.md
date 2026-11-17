@@ -1,122 +1,102 @@
-# JOSHUA V12: Tactical Search Verification and Evolving paceval Chess Graphs
+# JOSHUA V13: Depth-7 Chess Search with Reusable and Fused paceval Graphs
 
-![JOSHUA chess graph research](figures/JOSHUA_Chess_Research_Cover_2400x1200.png)
+![JOSHUA chess research](figures/JOSHUA_Chess_Research_Cover_2400x1200.png)
 
-**Research release:** 17 November 2026. **Platform:** Linux x86-64. **Implementation:** C++17, genuine paceval Mathematical Engine, Python 3 UCI controller. **Evidence:** Authentic paceval executions and real historical chess positions. **No proven new Stockfish playing-strength gain.**
+**Status: 17 November 2026.** Linux x86-64, C++17, original local paceval Mathematical Engine, versioned adaptive mathematical evaluation, independent C++ chess referee, and optional Stockfish 16 UCI matches. **Depth 7 was actually completed in an authentic paceval test, but not for every opening position and not in a new Stockfish strength tournament.** See the [V13 English whitepaper](JOSHUA_Chess_Research_Whitepaper_EN.pdf), [V13 test results](V13_RELEASE_VALIDATION.md), and [exact source implementation notes](docs/V13_DEPTH7_GRAPH_FUSION.md).
 
-JOSHUA is a research chess engine. C++ implements the legal game state, alpha-beta search, tactical extension and search policy. The original paceval Mathematical Engine calculates persistent numerical leaf-evaluation graphs, an exported 12-neuron V4 model, whitelisted nonlinear adaptive corrections and root min/max reductions. Stockfish is an external opponent and a separate, imperfect evaluation reference. The C++ referee validates legal moves and game endings but never grades their chess quality.
+## 1. Scientific use case and current technology
 
-The [current English research whitepaper](JOSHUA_Chess_Research_Whitepaper_EN.pdf) includes the earlier verified chessboards and the new V12 position-by-position comparisons. Detailed implementation and test sources are in [V12 research notes](docs/V12_TACTICAL_VALIDATION_AND_GRAPH_EVOLUTION.md) and [V12 release evidence](V12_RELEASE_VALIDATION.md).
+An experimental chess engine repeatedly evaluates many candidate legal positions. The chess state, move generation, repetition policy, Alpha-Beta search, timeout/iteration management and match orchestration are handled by C++. The **original paceval library** executes reusable mathematical position score graphs. The baseline V4 network has twelve sigmoid formula graphs and a fused neural output. V13 additionally offers one **combined graph** for the neural output and the active whitelisted adaptive correction. The final root min/max comparison remains a genuine paceval graph. This research studies the feasibility and correctness of this mathematical organization, not a presumed advantage over Stockfish or Leela Chess Zero.
 
-## 1. What changed in V12?
+Stockfish, when installed by the user, is a separate UCI opponent and diagnostic teacher. The C++ referee checks legal moves, FEN continuity, SAN and game termination; it does **not** judge whether a legal move is strategically good. Stockfish's bounded searches also do not prove the mathematical optimality of a move.
 
-| Research improvement | What the running program actually does |
+## 2. What V13 actually changes in source code
+
+| Mathematical or engine function | Actual owner and implementation |
 |---|---|
-| Ambiguous-root verification | If the two best root scores differ by no more than the configurable margin, all legal root moves are independently rescored at the deeper horizon |
-| Original paceval retained | The existing V4, adaptive and final min/max graph calculations still execute on the original SDK; search-depth choice remains C++ orchestration |
-| Expanded graph trials | The controller now examines up to eight bounded changes by default, across three distinct whitelisted nonlinear templates and linear weights |
-| Safer paired-game evidence | A color pair must use the same model SHA-256, opponent identity, opening and search settings |
-| Fairer frozen-model gate | Six fixed four-ply opening lines replace unusual single-move V11 test openings; each chosen line is played in both colors |
-| Strength accounting | Version comparisons distinguish the V11 search policy from the new V12 depth-verification policy |
-| Transparent logs | `V12_VERIFY_START`, `V12_VERIFY_END`, chosen move, original move, actual search depth, `delta_s`, `elapsed_s`, `move_s` and graph version |
-| Existing protections retained | 25 MB ZIP log rotation, real C++ referee, model rollback, human-readable formula TXT/CSV |
+| V3 weighted classical chess scores | Persistent paceval score graphs |
+| Twelve 48-feature neural hidden functions | Twelve persistent paceval sigmoid graphs |
+| Final V4 neural + adaptive bounded correction | **One new persistent paceval graph**, when an adaptive model is active |
+| Separate comparison/reference path | Previously existing unfused genuine paceval graphs, controlled by `--no-fused-adaptive` |
+| Root min/max of completed search | Persistent paceval root-reduction graph |
+| Legal moves, pruning, move ordering and iterative depth 1..7 | C++ host, not misrepresented as a paceval graph |
+| Previous-iteration root and search move hints | C++ safe move-ordering hints; values remain searched at the requested horizon |
+| Node/time budgets | C++ host. Only a fully completed depth is published as `search_depth_actual` |
+| Automatic allowed formula candidates | Python controller proposes bounded TSV coefficients, then actual paceval computes candidates |
+| Model promotion | Independent tests plus completed frozen-champion color-paired games; no unconditional promotion |
 
-**V12 changes source code and Linux executables**, not just documentation. It is not a claim that lengthening a graph automatically strengthens chess play. The adaptive model remains unchanged until independent candidate tests and completed champion matches pass.
+**Crucial:** The full legal seven-ply game tree is **not** compiled into one giant paceval expression. The normal depth-7 path is Alpha-Beta in C++ with paceval leaf-evaluation and root-reduction graphs. The separate `joshua_long_graph` program continues to demonstrate bounded *full-width* graphs and does not have the same depth-7 completion evidence.
 
-## 2. Real archived Stockfish cases and three verified move changes
+## 3. Actual depth-7 validation
 
-The latest user archive contained two completed Stockfish 16 games (35 and 24 halfmoves). Joshua lost both with nominal search depth 2, quiescence 2, graph version 0 and Stockfish 1,000 nodes per move. No learning version was promoted. From the exact stored FENs, three selected moves changed when the V12 ambiguity rule triggered a depth-3 search. All moves were verified legal by the C++ referee and match an independent full-depth-3 Joshua analysis.
+One nonterminal king-and-pawn FEN was evaluated by the recompiled authentic paceval engine:
 
-| Case | Recorded depth-2 choice | V12 verified choice | Actual deeper re-search | Independent Stockfish quality proof? |
-|---|---|---|---|---|
-| Game 1, ply 6, Black | `d7d6` | `e4c5` | Depth 3 | **No** |
-| Game 2, ply 9, White | `c2c4` | `e2g1` | Depth 3 | **No** |
-| Game 2, ply 15, White | `a4d7` | `a4a5` | Depth 3 | **No** |
+`8/7k/8/8/8/6K1/7P/8 w - - 0 1`
 
-The first two comparisons are visualized on real chessboards below. They show **changed decisions**, not verified better decisions. In particular, a deeper move such as `e2g1` must be checked by an independent, stronger chess analysis before it can be considered an improvement.
+With `--model 4 --depth 7 --quiescence 2` and a nonzero approved `feature.king_tactics` correction, the complete depth-7 search returned `g3f4` (`Kf4`). The recorded experiment visited 31,652 search nodes over all completed iterations; 1,077 unique feature vectors were scored. These are **execution counts**, not performance or chess-strength comparisons. An independent run with the nonfused score path produced matching ranked root evaluations in the separate depth-7 regression. The current dedicated regression is runnable with CTest and writes a JSON evidence file.
 
-![Game 1 Black before move, original d7d6, and V12 e4c5](figures/v12_real_game1_ply6_before_old_verified.png)
+![Source-derived before/after chessboards](figures/v13_verified_depth7_board_pair.png)
 
-![Game 2 White before move, original c2c4, and V12 e2g1](figures/v12_real_game2_ply9_before_old_verified.png)
+A separate start-position test deliberately exhausted a 4,500-node limit. It reported `requested=7`, `actual=2`, `budget_stop=nodes` and returned a legal move from the **completed depth-2 iteration**. In other words, specifying depth 7 is a *target*, not a guarantee that the limit will be reached in complex positions. Time and node limits can be adjusted; do not describe an incomplete search as completed depth 7.
 
-Source data: [`results/v12_critical_positions.csv`](results/v12_critical_positions.csv), [`results/v12_search_comparison.json`](results/v12_search_comparison.json) and [`results/V12_VERIFIED_CHESSBOARDS.json`](results/V12_VERIFIED_CHESSBOARDS.json).
+![Actual search iterations](figures/v13_depth7_completed_iterations.png)
 
-## 3. Direct Linux x64 installation
+## 4. Install on your existing Linux computer
 
-For your existing `~/Dropbox/joshua_autoplay`, use the **V12 flat Linux package**, not the entire GitHub archive. Stop running engines with Ctrl+C first. Extract the flat package directly into that directory:
+Use the **separate V13 flat Linux ZIP** for `~/Dropbox/joshua_autoplay`. Stop any running engine first. The private flat archive is designed not to overwrite any of your existing `stockfish_sessions/`, `selfplay_sessions/` or active learned graph.
 
 ```bash
 cd "$HOME/Dropbox/joshua_autoplay"
-unzip -o "$HOME/Downloads/JOSHUA_V12_Flat_Linux_x64.zip"
+unzip -o "$HOME/Downloads/JOSHUA_V13_Flat_Linux_x64.zip"
 chmod 755 joshua joshua_referee joshua_selfplay joshua_long_graph run_stockfish_matches.sh
 export PACEVAL_RUNTIME="$PWD/libpaceval_linux_sharedLIB.so"
-./run_stockfish_matches.sh --stockfish /usr/games/stockfish --max-games 2 --progress-seconds 5
+./run_stockfish_matches.sh --stockfish /usr/games/stockfish --max-games 2 \
+  --depth 7 --quiescence 2 --verify-extra-depth 0 \
+  --joshua-search-ms 65000 --joshua-search-nodes 750000 --progress-seconds 5
 ```
 
-After confirming two **completed** real Stockfish matches and inspecting their archives, start continuous play with `--max-games 0`. The new defaults are `--depth 2 --quiescence 2 --verify-margin-cp 25 --verify-extra-depth 1 --candidate-budget 8`. For a deterministic V11-style comparison without extra verification use `--verify-margin-cp 0 --verify-extra-depth 0`. To run a full independent deeper search, specify `--depth 3 --verify-margin-cp 0 --verify-extra-depth 0`.
+For continuous matches, after the two actual matches have ended successfully, use the same command with `--max-games 0`. Run without `sudo`. Stockfish is separately installed and is not in either release ZIP. The public GitHub package excludes the proprietary paceval runtime. Place your authorized copy at `runtime/libpaceval_linux_sharedLIB.so` or supply `PACEVAL_RUNTIME`.
 
-**Preservation:** The install does not modify existing `stockfish_sessions/`, `selfplay_sessions/`, or any existing active model. The private flat package contains the original user-supplied `libpaceval_linux_sharedLIB.so`. Do **not** upload that binary to public GitHub. Stockfish must be installed separately, for instance using `sudo apt install stockfish` on Ubuntu. Run Joshua itself **without sudo**.
+For an engine-only control of the seven-ply search with a strict budget:
 
-From a full GitHub checkout, supply the original runtime separately:
+```bash
+./joshua --mode alphabeta --model 4 --depth 7 --quiescence 2 \
+ --search-ms 65000 --search-nodes 750000 --plies 1 --no-board \
+ --graph-file config/active_graph.tsv --output results/my_depth7_search
+```
+
+An independent *functional* equality check for the same FEN uses the same command with `--no-fused-adaptive`. Use this option for audits, not for automatic graph optimization. The run continues to use genuine paceval in both configurations.
+
+## 5. Human-readable mathematical graphs
+
+| File | Meaning |
+|---|---|
+| `stockfish_sessions/active_graph.tsv` | Version and whitelisted numeric coefficients, not a serialized optimized execution structure |
+| `stockfish_sessions/active_graph_expression.txt` | Exact earlier adaptive mathematical expression created by Joshua |
+| `stockfish_sessions/active_full_graph_catalog.csv` | Every actually registered paceval expression, its variables and real evaluation-point counts |
+| `stockfish_sessions/archives/game_XXXXXX.zip` | Game, move timing, exact graph exports, evaluations and candidate-gate decisions |
+| `joshua_ply_*/paceval_v13_fused_score.txt` inside game ZIP | **Exact combined V4 neural-output and adaptive score expression** generated in V13 |
+| [`results/v13_depth7/paceval_v13_fused_score.txt`](results/v13_depth7/paceval_v13_fused_score.txt) | Genuine example fused formula, produced during the new depth-7 run |
+| [`results/v13_depth7/paceval_all_graphs.csv`](results/v13_depth7/paceval_all_graphs.csv) | Reproduced SDK graph registration and executed-point evidence |
+| [`formulas/v4_graph_expressions.tsv`](formulas/v4_graph_expressions.tsv) | Historic literal 12 hidden and one output V4 formula strings |
+
+The V13 combined graph accepts twelve neural hidden outputs, the V3 base score, and all 48 features. It includes the existing trained-neural clipping operation and the whitelisted nonlinear adaptive correction. The genuinely compiled formula is visible as plain text. It is **not** an export of paceval's private optimized internal machine graph.
+
+## 6. Automatic learning and controls
+
+After color-swapped games against fixed Stockfish settings, the controller records legal FEN positions, bounded reference losses, mate alerts, model-version SHA-256 and attempted adjustments. Only whitelisted bounded linear/nonlinear terms can change. Each candidate must pass separate held-out position checks **and** completed champion-vs-challenger games. A longer graph does not automatically qualify. Model snapshots are retained; manual rollback remains available. The current V13 source does not claim automatic algorithm discovery or stronger real-world chess performance.
+
+Stored ZIP logs retain a total archive budget of 25,000,000 bytes and include per-move `delta_s`, `elapsed_s` and `move_s`. In-progress logs and temporary ZIPs can briefly require additional space. Search-budget details and the **actual** achieved depth are included in engine CSV/JSON evidence.
+
+## 7. Build, repeat and limitations
 
 ```bash
 cmake -S src -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --target joshua joshua_referee joshua_selfplay joshua_long_graph -j2
 export PACEVAL_RUNTIME=/absolute/path/libpaceval_linux_sharedLIB.so
-ctest --test-dir build -R 'joshua_v12_|joshua_v11_champion_gate_offline' --output-on-failure
-./scripts/run_stockfish_matches.sh --stockfish /usr/games/stockfish --max-games 2
+ctest --test-dir build -R 'joshua_v13_depth7_original_paceval|joshua_v11_champion_gate_offline' --output-on-failure
 ```
 
-## 4. Mathematics and human-readable paceval graphs
+The V13 genuine paceval depth-7, combined/uncombined graph equality and budget-fallback tests passed. Six focused tests passed together after updating a historical synthetic comparison fixture to include the new search-budget grouping fields. An older V12 regression batch timed out in the environment and is **not** claimed as passed. The new program has not been validated by a complete depth-7 match against the actual Stockfish executable, and no general Elo gain is established. See [the detailed V13 audit](V13_RELEASE_VALIDATION.md).
 
-For a side-neutral board-derived feature vector $x(s)$, the fixed V4 mathematical score is its classical V3 score plus the trained neural residual. The adaptive model evaluates a white-oriented composite correction:
-
-```math
-S_{12}(s)=S_4(s)+\min\left(160,\max\left(-160,\sum_i a_i f_i(s)+\sum_j b_j g_j(s)\right)\right).
-```
-
-The C++ host extracts features from the board and chooses the search horizon. paceval evaluates all numerical scoring formulas, including nonlinear combinations, through actual SDK graph handles. The allowed adaptive templates remain finite and documented; the model cannot execute arbitrary source code from a TSV file. Example:
-
-```math
-g_{king}(s)=D_b(1+Q_b+R_b)-D_w(1+Q_w+R_w).
-```
-
-The math expresses only a heuristic king-danger interaction. No finite feature vector can prove a long forced tactical sequence without the required chess search.
-
-| Actual file | What it contains |
-|---|---|
-| `stockfish_sessions/active_graph.tsv` | Currently selected version and coefficients. **Not** itself the compiled graph |
-| `stockfish_sessions/active_graph_expression.txt` | The actual mathematical expression registered by the running Joshua process |
-| `stockfish_sessions/active_graph_terms.csv` | Every active base/nonlinear mathematical term and coefficient |
-| `stockfish_sessions/active_full_graph_catalog.csv` | Complete formula and `evaluated_points` for every registered SDK computation in the last Joshua invocation |
-| `stockfish_sessions/model_versions/` | Prior immutable accepted model snapshots, when present |
-| `stockfish_sessions/archives/game_XXXXXX.zip` | Per-game graph expressions, move scores, FENs, Stockfish diagnostics, challenger decisions and failure reports |
-| [`formulas/v4_graph_expressions.tsv`](formulas/v4_graph_expressions.tsv) | Exact historic V4 trained-neural expressions |
-
-Run `cat stockfish_sessions/active_graph_expression.txt` to inspect the current formula in plain text. The original runtime's optimized internal execution structure is not exported as a portable text file. Its **exact input expression**, variable list and verified evaluation counts are preserved so the same formula can be recreated with the matching SDK.
-
-## 5. Model learning, referee and release safety
-
-The controller identifies tactical regression candidates from legal game positions and Stockfish reference scores. It makes up to eight deterministic whitelisted graph variations, executes each candidate with genuine paceval, tests separate held-out positions, and only then starts **actual** frozen-champion versus challenger games. A candidate is activated only after finishing and passing the predeclared color-pair gate; interrupted or artificially truncated games cannot count as success. The controller saves all reasons for acceptance and rejection. There is no automatic editing of C++ source code.
-
-The `joshua_referee` validates legal UCI moves, applies them to FEN positions, emits SAN and detects relevant terminal states. It does **not** evaluate chess strength. Stockfish serves as a separate bounded diagnostic engine, not as a rules arbiter. Importantly, V12 gates now use four-ply, legally verified openings instead of the previous V11 `f3`/`g4`-style single-move choices.
-
-The current auto-learning inputs and results must always be assessed separately from the current search-policy experiment. More candidate graphs do not constitute a successful promotion or an Elo gain. The archived user graph was version **0**, and it remains version **0** here.
-
-## 6. Validation status and limitations
-
-The four Linux x86-64 programs were rebuilt. The exact historical FEN regression was run with the **authentic original paceval runtime**. Eight selected CTest cases passed, including the prior graph/controller mock tests, the actual one-FEN depth-verification test, all six champion opening lines and the multi-template policy test. Two bounded integration games using the genuine Joshua/pac eval engine and a **clearly marked mock UCI opponent** successfully created ZIP logs and timing fields. These were intentionally incomplete and do not count as Stockfish games.
-
-Stockfish itself was not installed in the build environment; no new completed V12 Stockfish strength tournament has been run. Another long replay encountered an execution timeout, so no unsupported full-suite claim is made. Results from distinct hardware or search-depth settings must not be silently compared. The altered search can use more computational work; nothing in this research demonstrates a speed advantage.
-
-See [the complete current V12 explanation](docs/V12_TACTICAL_VALIDATION_AND_GRAPH_EVOLUTION.md), [verification table](V12_RELEASE_VALIDATION.md), [the last-user-archive summary](results/V12_LATEST_UPLOAD_AUDIT.json), and [full PDF with real boards](JOSHUA_Chess_Research_Whitepaper_EN.pdf).
-
-### Historical experimental chessboards
-
-The previous V11 source-derived board sequences remain in the repository for continuity:
-
-![Real Stockfish-Joshua game 259: 1...Nh6](figures/v10_game259_real_board_Nh6.png)
-
-![Earlier champion/challenger pair: 6.Qg4](figures/v11_real_pair_board_Qg4.png)
-
-These are historical records, not results of the V12 search-verification experiment. [Original FEN and referee audit](results/VERIFIED_CHESSBOARD_SCENES.json).
+Read the [V13 graph and search research notes](docs/V13_DEPTH7_GRAPH_FUSION.md), [V12 historical work](docs/V12_TACTICAL_VALIDATION_AND_GRAPH_EVOLUTION.md), and [official paceval API](https://paceval.com/api/). Stockfish is documented in its [upstream repository](https://github.com/official-stockfish/Stockfish). All earlier comparisons should be regarded as historical experiments with their own distinct settings.
