@@ -130,13 +130,65 @@ Use `stockfish_sessions/strength_summary.json` to review results **by graph vers
 
 Reliable conclusions require many independent, held-out opening pairs and repeated matches with **frozen** model versions. Testing a model on the very positions used to select it is not evidence of general playing-strength gain. An improvement in evaluation loss is not automatically an improvement in completed-game results.
 
-## 8. Live diagnostics and bounded disk use
+## 8. Real V10 Stockfish games, graph tests, and referee: 17 November 2026
+
+**Outcome: graph evolution works as software, but higher chess strength has not been demonstrated.** The user-provided V10 session contains a **bounded index of 250 completed games (game IDs 10 to 259)** against **Stockfish 16** at Skill Level 20 and 1,000 nodes per played move. Joshua used depth 2 and quiescence depth 2. The session records **0 Joshua wins, 8 draws and 242 losses**. Model versions 0 to 7 were actually used, proving that persistent model data changed. None of the **28 exploratory version comparisons** is marked as establishing an improvement. This differs from the original release's mock-UCI software test: real Stockfish games have since been played on the user's Linux system.
+
+![Observed Joshua match score by active graph version. Scores are descriptive, not independent strength claims.](figures/v10_real_stockfish_points_by_version.png)
+
+| Active graph version | Recorded games | W / D / L | Joshua match score | Mean heuristic loss (pp) |
+|---|---:|---:|---:|---:|
+| 0 | 25 | 0 / 1 / 24 | 2.00% | 3.015 |
+| 1 | 16 | 0 / 2 / 14 | 6.25% | 2.787 |
+| 2 | 18 | 0 / 3 / 15 | 8.33% | 2.467 |
+| 3 | 14 | 0 / 0 / 14 | 0.00% | 2.837 |
+| 4 | 60 | 0 / 0 / 60 | 0.00% | 2.606 |
+| 5 | 70 | 0 / 2 / 68 | 1.43% | 2.664 |
+| 6 | 14 | 0 / 0 / 14 | 0.00% | 2.693 |
+| **7, current** | **33** | **0 / 0 / 33** | **0.00%** | **2.883** |
+
+The relatively better observed V2 score is not proof that V2 is stronger. Version samples are small, unequally sized, adaptively selected and share opening schedules. In the **33 surviving ZIP game archives (227 to 259)**, the controller logged **52 candidate trials with zero accepted**. All 33 ZIP files passed CRC verification, and their outcome/model metadata agree with the index. Older per-game archives were deleted under the 25 MB rolling quota; therefore the 250-game index can be analyzed statistically, but only 33 games still have full surviving move-by-move audit files. See [the complete observed-match method and referee explanation](docs/V10_REAL_MATCH_METHOD_AND_REFEREE_2026-11-17.md) and [the machine-readable audit](results/REAL_STOCKFISH_AUDIT_2026-11-17.json).
+
+### How one chess position changes a paceval graph
+
+1. The C++ referee validates the FEN state and the selected UCI move, then emits the resulting FEN, SAN and status. The Python controller also maintains threefold-repetition counts. Neither of these components assigns a Stockfish-quality score.
+2. Joshua's C++ search builds its legal candidate tree and computes **48 chess features**. The original paceval library evaluates the V4 neural score plus the versioned adaptive formula. The engine returns a legal chosen move with `run_evidence.json` and its graph export.
+3. A separate Stockfish UCI query grades the *before* and *after* positions at a fixed reference node budget (2,500 nodes in the retained session summaries). Centipawn and mate signals are retained separately. A bounded heuristic score loss identifies candidate mistakes, not certified blunders.
+4. After a sufficient complete paired-color window, the controller proposes up to four bounded linear/nonlinear coefficient changes, builds real new paceval expressions and replays selected training FENs and separate fixed holdouts. A changed move, improved training loss and nonworsening holdouts are required before a **provisional** promotion.
+5. The promoted version is written to the TSV for the *next* game. Actual improvement still requires a **separate, frozen-version head-to-head tournament** against an unchanged Stockfish opponent. Current automatic promotion does not require that final tournament and thus is not proof of greater strength.
+
+### What exactly does the referee do?
+
+`src/joshua_referee.cpp` is a chess-rule adjudicator written in C++ without paceval or Stockfish. It parses the six-field FEN, rejects invalid prior-side-in-check positions, enumerates legal moves, rejects illegal UCI moves, updates the board and produces a five-line response: `FEN`, `status`, `SAN`, `repetition key`, and `legal-move count`. It identifies checkmate, stalemate, a 50-move-rule claim threshold, and a limited insufficient-material rule. The Python host counts repeat position keys to report a claimable threefold repetition. The referee **does not evaluate tactical quality, choose moves, optimize graph coefficients, or independently validate Stockfish's evaluation**. Its draw and insufficient-material handling is a specific demonstrator policy, not a claim of full tournament-arbitration certification.
+
+### Where to read the *actual* paceval expression
+
+- **Whole current adaptive expression:** `stockfish_sessions/active_graph_expression.txt`. The supplied run contains **version 7**, with linear `mobility=2`, `captures=2`, plus nonzero nonlinear `king_tactics=0.5`, `hanging_pressure=0.5`, `active_captures=-0.5`. This is the actual exported parser expression, not merely the configuration.
+- **Individual human-readable terms:** `stockfish_sessions/active_graph_terms.csv`.
+- **Editable persistent coefficient/model version:** `stockfish_sessions/active_graph.tsv` (not a complete formula; changes require valid schema).
+- **Every registered graph including long V4 neural expressions:** `stockfish_sessions/active_full_graph_catalog.csv`. The `evaluated_points` column distinguishes used graphs from registered-but-unused graphs.
+- **Exact executed expression of a historic move:** `stockfish_sessions/archives/game_000259.zip`, for example `joshua_ply_002/paceval_graph.txt`, and the file `evaluated_graph_expression.txt` at the ZIP root. Each surviving game contains an immutable per-move record.
+- **V4 original graph expressions:** [`formulas/v4_graph_expressions.tsv`](formulas/v4_graph_expressions.tsv). A verified snapshot of the user-run V7 adaptive graph is provided in [`formulas/observed_active_graph_v7.txt`](formulas/observed_active_graph_v7.txt).
+
+For a flat Linux installation, run:
+
+```bash
+cat stockfish_sessions/active_graph_expression.txt
+column -s, -t < stockfish_sessions/active_graph_terms.csv | less -S
+head -n 5 stockfish_sessions/active_full_graph_catalog.csv
+unzip -p stockfish_sessions/archives/game_000259.zip evaluated_graph_expression.txt
+unzip -p stockfish_sessions/archives/game_000259.zip joshua_ply_002/paceval_graph.txt
+```
+
+**Next engineering improvements:** (i) freeze the strongest historical candidate and require independent color-balanced A/B matches before promotion; (ii) avoid picking the same fixed holdouts for every candidate by reserving unseen openings and positions; (iii) add mate-in-1/2 tactical regression suites and more informative features; (iv) study search depth and quiescence independently from the score model; (v) log graph hashes, decision changes, teacher node count and strict rollback reasons for every release. Increasing expression length alone is not an acceptance criterion.
+
+## 9. Live diagnostics and bounded disk use
 
 The console prints `GAME_START`, `SEARCH_START`, per-move records and periodic `HEARTBEAT` events. Time fields include `delta_s` (since prior printed event), `elapsed_s` (since the game start), and `move_s` (observed move computation and process overhead). Successful game records are compressed to `stockfish_sessions/archives/game_XXXXXX.zip`; old retained archives are deleted when the configured **25 MB archive quota** is exceeded. Active logs and temporary files can use additional transient space, so this quota is **not a global filesystem cap**. Logs can be exported with `scripts/export_stockfish_logs.py` or `export_stockfish_logs.py` in a flat installation.
 
-## 9. Reproducibility, limitations and research roadmap
+## 10. Reproducibility, limitations and research roadmap
 
-The release includes the documented SDK smoke output, a complete graph catalog and supporting scripts. Selected tests include the supervisor, V8 progress and V10 tactical-policy tests. The C++ SDK smoke and the mock UCI controller have passed; a **real V10 Stockfish tournament and a verified strength improvement are still open**. The original 48-feature model compresses board structure and may miss deeper tactics. Increasing graph length cannot by itself compensate for inadequate search depth or feature information.
+The release includes the documented SDK smoke output, a complete graph catalog and supporting scripts. Selected tests include the supervisor, V8 progress and V10 tactical-policy tests. The release SDK smoke and the mock UCI controller passed in the development environment. **Real V10 games have now been performed on the user system:** 250 bounded-index results are present, but a **separate frozen-model strength-validation tournament and a verified strength improvement are still open**. The original 48-feature model compresses board structure and may miss deeper tactics. Increasing graph length cannot by itself compensate for inadequate search depth or feature information.
 
 The most informative next study is an independent Stockfish match series across a frozen baseline and a promoted V10 graph, with identical openings, balanced colors, predefined resource limits and a disjoint evaluation set. Report both game outcomes and candidate rejection reasons. See [`V10_RELEASE_VALIDATION.md`](V10_RELEASE_VALIDATION.md), [`docs/V10_TACTICAL_GRAPH_EVOLUTION.md`](docs/V10_TACTICAL_GRAPH_EVOLUTION.md), and the [current whitepaper](JOSHUA_Chess_Research_Whitepaper_EN.pdf).
 

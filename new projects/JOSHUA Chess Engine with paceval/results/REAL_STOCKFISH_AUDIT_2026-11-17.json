@@ -1,0 +1,136 @@
+{
+  "document_date": "2026-11-17",
+  "source": "User-supplied joshua_autoplay(1).zip, stockfish_sessions match_index.json and strength_summary.json",
+  "archive_sha256": "fa68bfb358ce957d9ef82a8218d4953863b733a63dd70622024b66b367187b0c",
+  "index_window": {
+    "first_game": 10,
+    "last_game": 259,
+    "complete_game_rows": 250,
+    "note": "Bounded last-250 index. No claim for games 1..9 or unretained raw game archives."
+  },
+  "aggregate": {
+    "completed_games": 250,
+    "wins": 0,
+    "draws": 8,
+    "losses": 242,
+    "mean_match_points": 0.016,
+    "strength_claim": "NO_UNSUPPORTED_STRENGTH_GAIN_CLAIM"
+  },
+  "opponent": {
+    "id": "Stockfish 16",
+    "nodes_per_played_move": 1000,
+    "skill": 20,
+    "teacher_nodes_per_reference_evaluation": "2500 (observed in retained game summary; not represented in bounded match index)",
+    "joshua_depth": 2,
+    "quiescence": 2
+  },
+  "models": [
+    {
+      "version": 0,
+      "games": 25,
+      "wins": 0,
+      "draws": 1,
+      "losses": 24,
+      "match_points": 0.5,
+      "match_score_percent": 2.0,
+      "mean_heuristic_loss_pp": 3.015
+    },
+    {
+      "version": 1,
+      "games": 16,
+      "wins": 0,
+      "draws": 2,
+      "losses": 14,
+      "match_points": 1.0,
+      "match_score_percent": 6.25,
+      "mean_heuristic_loss_pp": 2.787
+    },
+    {
+      "version": 2,
+      "games": 18,
+      "wins": 0,
+      "draws": 3,
+      "losses": 15,
+      "match_points": 1.5,
+      "match_score_percent": 8.333,
+      "mean_heuristic_loss_pp": 2.467
+    },
+    {
+      "version": 3,
+      "games": 14,
+      "wins": 0,
+      "draws": 0,
+      "losses": 14,
+      "match_points": 0,
+      "match_score_percent": 0.0,
+      "mean_heuristic_loss_pp": 2.837
+    },
+    {
+      "version": 4,
+      "games": 60,
+      "wins": 0,
+      "draws": 0,
+      "losses": 60,
+      "match_points": 0,
+      "match_score_percent": 0.0,
+      "mean_heuristic_loss_pp": 2.606
+    },
+    {
+      "version": 5,
+      "games": 70,
+      "wins": 0,
+      "draws": 2,
+      "losses": 68,
+      "match_points": 1.0,
+      "match_score_percent": 1.429,
+      "mean_heuristic_loss_pp": 2.664
+    },
+    {
+      "version": 6,
+      "games": 14,
+      "wins": 0,
+      "draws": 0,
+      "losses": 14,
+      "match_points": 0,
+      "match_score_percent": 0.0,
+      "mean_heuristic_loss_pp": 2.693
+    },
+    {
+      "version": 7,
+      "games": 33,
+      "wins": 0,
+      "draws": 0,
+      "losses": 33,
+      "match_points": 0,
+      "match_score_percent": 0.0,
+      "mean_heuristic_loss_pp": 2.883
+    }
+  ],
+  "comparison_statuses": {
+    "NOT_ESTABLISHED": 28
+  },
+  "latest_graph_version": 7,
+  "retained_archives": {
+    "min_game": 227,
+    "max_game": 259,
+    "count": 33,
+    "crc_checked": 33,
+    "index_consistency_checked": 33,
+    "all_losses": true,
+    "candidate_trials_documented": 52,
+    "candidate_trials_passed": 0,
+    "adaptation_outcomes": {
+      "deferred_for_color_pair": 17,
+      "deferred_until_model_pair_count": 3,
+      "rejected": 13
+    }
+  },
+  "conclusion": "Real matches completed, adaptive model versions created and used. Higher chess playing strength relative to baseline is not established. Candidate screening success is provisional and not equivalent to Elo improvement. Version 7 scored 0/33 in recorded matches.",
+  "limitations": [
+    "Game index is bounded to last 250; only 33 raw game ZIP archives remain.",
+    "Graph versions were selected adaptively and not evaluated in an independent frozen head-to-head tournament.",
+    "Repeated opening schedules and deterministic searches create statistical dependence.",
+    "Match opponent uses Stockfish 16 at 1000 nodes and does not represent elite-strength benchmark with unrestricted resources.",
+    "Difference in local Stockfish heuristic loss does not imply a calibrated expected match score or Elo."
+  ]
+}

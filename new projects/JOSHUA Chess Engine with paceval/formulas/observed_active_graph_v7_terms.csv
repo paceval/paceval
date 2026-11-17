@@ -1,0 +1,13 @@
+version,category,term,coefficient,paceval_expression
+7,base,base,1,base
+7,linear,mobility,2,"(wmob-bmob)"
+7,linear,captures,2,"(wcaps-bcaps)"
+7,linear,hanging,0,"(bhanging-whanging)"
+7,linear,attacked,0,"(battacked-wattacked)"
+7,linear,passed,0,"(wpassed-bpassed)"
+7,linear,kingdanger,0,"(bkingDanger-wkingDanger)"
+7,linear,queenthreat,0,"(bqueenThreat-wqueenThreat)"
+7,linear,rookthreat,0,"(brookThreat-wrookThreat)"
+7,nonlinear,king_tactics,0.5,"((bkingDanger*(1+bqueenThreat+brookThreat))-(wkingDanger*(1+wqueenThreat+wrookThreat)))"
+7,nonlinear,hanging_pressure,0.5,"((bhanging*bhanging)-(whanging*whanging))"
+7,nonlinear,active_captures,-0.5,"((wmob*wcaps)-(bmob*bcaps))"

@@ -1,0 +1,13 @@
+# Validated decimal paceval graph coefficients. Never inject formulas here.
+version	7
+mobility	2.0000
+captures	2.0000
+hanging	0.0000
+attacked	0.0000
+passed	0.0000
+kingdanger	0.0000
+queenthreat	0.0000
+rookthreat	0.0000
+feature.active_captures	-0.5000
+feature.hanging_pressure	0.5000
+feature.king_tactics	0.5000
